@@ -1,6 +1,6 @@
 # 如何在 Python 中使用标准缩放器和最小最大缩放器变换
 
-> 原文:[https://machinelearningmasterment . com/standard scaler-and-minmax scaler-transforms-in-python/](https://machinelearningmastery.com/standardscaler-and-minmaxscaler-transforms-in-python/)
+> 原文：<https://machinelearningmastery.com/standardscaler-and-minmaxscaler-transforms-in-python/>
 
 最后更新于 2020 年 8 月 28 日
 

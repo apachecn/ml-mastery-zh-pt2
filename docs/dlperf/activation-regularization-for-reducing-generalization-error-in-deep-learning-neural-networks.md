@@ -1,6 +1,6 @@
 # 深度学习中激活正则化的温和介绍
 
-> 原文:[https://machinelearning master . com/activation-regulation-for-reduction-generation-error-in-deep-learning-neural-networks/](https://machinelearningmastery.com/activation-regularization-for-reducing-generalization-error-in-deep-learning-neural-networks/)
+> 原文：<https://machinelearningmastery.com/activation-regularization-for-reducing-generalization-error-in-deep-learning-neural-networks/>
 
 最后更新于 2019 年 8 月 6 日
 

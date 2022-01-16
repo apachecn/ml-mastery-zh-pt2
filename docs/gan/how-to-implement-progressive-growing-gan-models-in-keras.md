@@ -1,6 +1,6 @@
 # 如何在 Keras 中实现渐进式生长 GAN 模型
 
-> 原文:[https://machinelearning master . com/如何实现-渐进-成长-gan-models-in-keras/](https://machinelearningmastery.com/how-to-implement-progressive-growing-gan-models-in-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-implement-progressive-growing-gan-models-in-keras/>
 
 渐进增长生成对抗网络是一种训练深度卷积神经网络模型以生成合成图像的方法。
 

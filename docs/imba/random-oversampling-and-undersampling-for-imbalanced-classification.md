@@ -1,6 +1,6 @@
 # 用于不平衡分类的随机过采样和欠采样
 
-> 原文:[https://machinelearningmaster . com/随机-过采样-欠采样-不平衡分类/](https://machinelearningmastery.com/random-oversampling-and-undersampling-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/random-oversampling-and-undersampling-for-imbalanced-classification/>
 
 最后更新于 2021 年 1 月 5 日
 

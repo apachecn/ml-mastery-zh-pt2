@@ -1,6 +1,6 @@
 # 我开始机器学习时犯的最大错误，以及如何避免
 
-> 原文:[https://machinelearning master . com/最大错误-我在启动机器时犯的错误-学习和如何避免它/](https://machinelearningmastery.com/biggest-mistake-i-made-when-starting-machine-learning-and-how-to-avoid-it/)
+> 原文：<https://machinelearningmastery.com/biggest-mistake-i-made-when-starting-machine-learning-and-how-to-avoid-it/>
 
 最后更新于 2019 年 8 月 22 日
 

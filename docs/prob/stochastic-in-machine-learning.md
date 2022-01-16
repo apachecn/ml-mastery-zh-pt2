@@ -1,6 +1,6 @@
 # 随机在机器学习中意味着什么？
 
-> 原文:[https://machinelearning master . com/随机机器学习/](https://machinelearningmastery.com/stochastic-in-machine-learning/)
+> 原文：<https://machinelearningmastery.com/stochastic-in-machine-learning/>
 
 最后更新于 2020 年 7 月 24 日
 

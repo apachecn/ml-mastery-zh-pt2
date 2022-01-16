@@ -1,6 +1,6 @@
 # 使用 Scikit-Learn、XGBoost、LightGBM 和 CatBoost 进行梯度增强
 
-> 原文:[https://machinelearning master . com/gradient-boosting-with-sci kit-learn-xboost-light GBM-and-catboost/](https://machinelearningmastery.com/gradient-boosting-with-scikit-learn-xgboost-lightgbm-and-catboost/)
+> 原文：<https://machinelearningmastery.com/gradient-boosting-with-scikit-learn-xgboost-lightgbm-and-catboost/>
 
 最后更新于 2021 年 4 月 27 日
 

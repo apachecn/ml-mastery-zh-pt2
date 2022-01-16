@@ -1,6 +1,6 @@
 # 培养对集成学习如何工作的直觉
 
-> 原文:[https://machinelearning master . com/how-ensemble-learning-works/](https://machinelearningmastery.com/how-ensemble-learning-works/)
+> 原文：<https://machinelearningmastery.com/how-ensemble-learning-works/>
 
 最后更新于 2021 年 4 月 27 日
 

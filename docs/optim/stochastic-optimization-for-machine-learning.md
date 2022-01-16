@@ -1,6 +1,6 @@
 # 随机优化算法的简单介绍
 
-> 原文:[https://machinelearning master . com/随机-机器学习优化/](https://machinelearningmastery.com/stochastic-optimization-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/stochastic-optimization-for-machine-learning/>
 
 最后更新于 2021 年 10 月 12 日
 

@@ -1,6 +1,6 @@
 # 如何在 Keras 从头开发 VGG、盗梦空间和 ResNet 模块
 
-> 原文:[https://machinelearning master . com/如何实施主要架构-卷积神经网络创新/](https://machinelearningmastery.com/how-to-implement-major-architecture-innovations-for-convolutional-neural-networks/)
+> 原文：<https://machinelearningmastery.com/how-to-implement-major-architecture-innovations-for-convolutional-neural-networks/>
 
 最后更新于 2019 年 7 月 5 日
 

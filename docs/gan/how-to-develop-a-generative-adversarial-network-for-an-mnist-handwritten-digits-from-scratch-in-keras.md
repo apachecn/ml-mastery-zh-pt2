@@ -1,6 +1,6 @@
 # 如何开发生成 MNIST 手写数字的 GAN
 
-> 原文:[https://machinelearningmastery . com/how-development-a-generated-对抗性-network-for-an-mnist-手写数字-从零开始-in-keras/](https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-an-mnist-handwritten-digits-from-scratch-in-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-an-mnist-handwritten-digits-from-scratch-in-keras/>
 
 最后更新于 2020 年 9 月 1 日
 

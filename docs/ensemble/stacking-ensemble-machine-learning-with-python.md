@@ -1,6 +1,6 @@
 # 用 Python 堆叠集成机器学习
 
-> 原文:[https://machinelearning master . com/stacking-integration-machine-learning-with-python/](https://machinelearningmastery.com/stacking-ensemble-machine-learning-with-python/)
+> 原文：<https://machinelearningmastery.com/stacking-ensemble-machine-learning-with-python/>
 
 最后更新于 2021 年 4 月 27 日
 

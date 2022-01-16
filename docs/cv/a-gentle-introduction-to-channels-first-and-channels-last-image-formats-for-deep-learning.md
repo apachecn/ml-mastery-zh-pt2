@@ -1,6 +1,6 @@
 # 对通道-第一个和通道-最后一个图像格式的温和介绍
 
-> 原文:[https://machinelearning master . com/a-温柔-介绍-通道-第一个和最后一个通道-图像-格式-用于深度学习/](https://machinelearningmastery.com/a-gentle-introduction-to-channels-first-and-channels-last-image-formats-for-deep-learning/)
+> 原文：<https://machinelearningmastery.com/a-gentle-introduction-to-channels-first-and-channels-last-image-formats-for-deep-learning/>
 
 最后更新于 2019 年 9 月 12 日
 

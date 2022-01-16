@@ -1,6 +1,6 @@
 # 如何在喀拉斯从头开始发展 1D 生成性对抗网络
 
-> 原文:[https://machinelearning master . com/how-to-development-a-generated-对抗性-network-for-a-dimensional-function-从头开始-in-keras/](https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-a-1-dimensional-function-from-scratch-in-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-a-1-dimensional-function-from-scratch-in-keras/>
 
 最后更新于 2020 年 9 月 1 日
 

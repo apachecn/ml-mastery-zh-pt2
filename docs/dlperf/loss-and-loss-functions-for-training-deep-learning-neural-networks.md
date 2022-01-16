@@ -1,6 +1,6 @@
 # 用于训练深度学习神经网络的损失和损失函数
 
-> 原文:[https://machinelearning master . com/loss-and-loss-functions-for-training-deep-learning-neural-networks/](https://machinelearningmastery.com/loss-and-loss-functions-for-training-deep-learning-neural-networks/)
+> 原文：<https://machinelearningmastery.com/loss-and-loss-functions-for-training-deep-learning-neural-networks/>
 
 最后更新于 2019 年 10 月 23 日
 

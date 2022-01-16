@@ -1,6 +1,6 @@
 # 更好的深度学习框架
 
-> 原文:[https://machinelearning master . com/framework-for-better-deep-learning/](https://machinelearningmastery.com/framework-for-better-deep-learning/)
+> 原文：<https://machinelearningmastery.com/framework-for-better-deep-learning/>
 
 最后更新于 2019 年 8 月 6 日
 

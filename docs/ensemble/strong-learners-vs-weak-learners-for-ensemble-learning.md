@@ -1,6 +1,6 @@
 # 集成学习中强学习者对弱学习者
 
-> 原文:[https://machinelearning master . com/strong-leaders-vs-weak-leaders-for-collection-leaders-learning/](https://machinelearningmastery.com/strong-learners-vs-weak-learners-for-ensemble-learning/)
+> 原文：<https://machinelearningmastery.com/strong-learners-vs-weak-learners-for-ensemble-learning/>
 
 常用**弱学习者和强学习者**来描述集成学习技术。
 

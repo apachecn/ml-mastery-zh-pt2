@@ -1,6 +1,6 @@
 # 不平衡分类的最佳资源
 
-> 原文:[https://machinelearning master . com/resources-for-不平衡分类/](https://machinelearningmastery.com/resources-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/resources-for-imbalanced-classification/>
 
 最后更新于 2021 年 1 月 5 日
 

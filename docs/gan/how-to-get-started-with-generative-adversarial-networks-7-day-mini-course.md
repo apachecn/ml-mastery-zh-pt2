@@ -1,6 +1,6 @@
 # 如何开始学习生成性对抗网络(7 天小型课程)
 
-> 原文:[https://machinelearning master . com/如何开始-生成-对抗-网络-7 天迷你课程/](https://machinelearningmastery.com/how-to-get-started-with-generative-adversarial-networks-7-day-mini-course/)
+> 原文：<https://machinelearningmastery.com/how-to-get-started-with-generative-adversarial-networks-7-day-mini-course/>
 
 最后更新于 2019 年 7 月 12 日
 

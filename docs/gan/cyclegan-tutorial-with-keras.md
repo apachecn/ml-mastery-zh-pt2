@@ -1,6 +1,6 @@
 # 如何用 Keras 开发图像到图像翻译的 CycleGAN】
 
-> 原文:[https://machinelearning master . com/cycle gan-tutorial-wit-keras/](https://machinelearningmastery.com/cyclegan-tutorial-with-keras/)
+> 原文：<https://machinelearningmastery.com/cyclegan-tutorial-with-keras/>
 
 最后更新于 2020 年 9 月 1 日
 

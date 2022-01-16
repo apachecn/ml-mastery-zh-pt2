@@ -1,6 +1,6 @@
 # 如何避免深度学习神经网络中的过拟合
 
-> 原文:[https://machinelearning master . com/介绍-正则化-减少-过拟合-改善-泛化-错误/](https://machinelearningmastery.com/introduction-to-regularization-to-reduce-overfitting-and-improve-generalization-error/)
+> 原文：<https://machinelearningmastery.com/introduction-to-regularization-to-reduce-overfitting-and-improve-generalization-error/>
 
 最后更新于 2019 年 8 月 6 日
 

@@ -1,6 +1,6 @@
 # 神经网络:贸易评论的诀窍
 
-> 原文:[https://machinelearning master . com/神经网络-交易技巧-回顾/](https://machinelearningmastery.com/neural-networks-tricks-of-the-trade-review/)
+> 原文：<https://machinelearningmastery.com/neural-networks-tricks-of-the-trade-review/>
 
 最后更新于 2019 年 8 月 6 日
 

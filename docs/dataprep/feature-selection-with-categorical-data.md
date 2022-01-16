@@ -1,6 +1,6 @@
 # 如何用分类数据进行特征选择
 
-> 原文:[https://machinelearning master . com/特征选择-带分类数据/](https://machinelearningmastery.com/feature-selection-with-categorical-data/)
+> 原文：<https://machinelearningmastery.com/feature-selection-with-categorical-data/>
 
 最后更新于 2020 年 8 月 18 日
 

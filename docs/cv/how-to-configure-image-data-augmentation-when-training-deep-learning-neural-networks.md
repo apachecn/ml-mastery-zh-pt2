@@ -1,6 +1,6 @@
 # 如何在 Keras 中配置图像数据增强
 
-> 原文:[https://machinelearning master . com/如何配置-图像-数据-增强-训练时-深度学习-神经网络/](https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/)
+> 原文：<https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/>
 
 最后更新于 2019 年 7 月 5 日
 

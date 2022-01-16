@@ -1,6 +1,6 @@
 # 如何用 Python 开发投票套装
 
-> 原文:[https://machinelearning master . com/voting-ensembles-with-python/](https://machinelearningmastery.com/voting-ensembles-with-python/)
+> 原文：<https://machinelearningmastery.com/voting-ensembles-with-python/>
 
 最后更新于 2021 年 4 月 27 日
 

@@ -1,6 +1,6 @@
 # 如何用 Python 开发多输出回归模型
 
-> 原文:[https://machinelearning master . com/多输出-回归-模型-带-python/](https://machinelearningmastery.com/multi-output-regression-models-with-python/)
+> 原文：<https://machinelearningmastery.com/multi-output-regression-models-with-python/>
 
 最后更新于 2021 年 4 月 27 日
 

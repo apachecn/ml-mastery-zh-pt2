@@ -1,6 +1,6 @@
 # 时尚深度学习 CNN-MNIST 服装分类
 
-> 原文:[https://machinelearning master . com/how-development-a-CNN-从头开始-时尚-mnist-服装-分类/](https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-fashion-mnist-clothing-classification/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-fashion-mnist-clothing-classification/>
 
 最后更新于 2020 年 8 月 28 日
 

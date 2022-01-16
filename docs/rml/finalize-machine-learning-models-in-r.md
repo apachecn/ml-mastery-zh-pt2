@@ -2,7 +2,7 @@
 
 中保存并最终确定您的机器学习模型
 
-> 原文:[https://machinelearning master . com/finalize-machinelearning-models-in-r/](https://machinelearningmastery.com/finalize-machine-learning-models-in-r/)
+> 原文：<https://machinelearningmastery.com/finalize-machine-learning-models-in-r/>
 
 最后更新于 2019 年 8 月 22 日
 

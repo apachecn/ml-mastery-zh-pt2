@@ -1,6 +1,6 @@
 # 温和介绍计算机视觉深度学习的前景
 
-> 原文:[https://machinelearning master . com/计算机视觉深度学习承诺/](https://machinelearningmastery.com/promise-of-deep-learning-for-computer-vision/)
+> 原文：<https://machinelearningmastery.com/promise-of-deep-learning-for-computer-vision/>
 
 最后更新于 2019 年 7 月 5 日
 

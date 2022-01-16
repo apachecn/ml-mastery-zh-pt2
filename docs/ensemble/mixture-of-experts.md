@@ -1,6 +1,6 @@
 # 混合专家套装的温和介绍
 
-> 原文:[https://machinelearningmastery.com/mixture-of-experts/](https://machinelearningmastery.com/mixture-of-experts/)
+> 原文：<https://machinelearningmastery.com/mixture-of-experts/>
 
 最后更新于 2021 年 11 月 7 日
 

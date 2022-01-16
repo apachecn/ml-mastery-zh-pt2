@@ -1,6 +1,6 @@
 # 多类不平衡分类
 
-> 原文:[https://machinelearning master . com/多类-不平衡-分类/](https://machinelearningmastery.com/multi-class-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/multi-class-imbalanced-classification/>
 
 最后更新于 2021 年 1 月 5 日
 

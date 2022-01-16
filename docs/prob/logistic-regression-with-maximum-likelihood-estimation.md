@@ -1,6 +1,6 @@
 # 带最大似然估计的逻辑回归入门
 
-> 原文:[https://machinelearning master . com/logistic-回归-最大似然估计/](https://machinelearningmastery.com/logistic-regression-with-maximum-likelihood-estimation/)
+> 原文：<https://machinelearningmastery.com/logistic-regression-with-maximum-likelihood-estimation/>
 
 最后更新于 2019 年 10 月 28 日
 

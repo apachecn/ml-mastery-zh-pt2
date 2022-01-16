@@ -1,6 +1,6 @@
 # 如何在 Weka 逐步完成二元分类项目
 
-> 原文:[https://machinelearning master . com/binary-classing-tutorial-WEKA/](https://machinelearningmastery.com/binary-classification-tutorial-weka/)
+> 原文：<https://machinelearningmastery.com/binary-classification-tutorial-weka/>
 
 最后更新于 2019 年 12 月 11 日
 

@@ -1,6 +1,6 @@
 # 用 R 回顾机器学习
 
-> 原文:[https://machinelearning master . com/review-of-machinelearning-with-r/](https://machinelearningmastery.com/review-of-machine-learning-with-r/)
+> 原文：<https://machinelearningmastery.com/review-of-machine-learning-with-r/>
 
 最后更新于 2020 年 8 月 16 日
 

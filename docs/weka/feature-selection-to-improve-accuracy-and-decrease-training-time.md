@@ -1,6 +1,6 @@
 # 特征选择，提高精度，减少训练时间
 
-> 原文:[https://machinelearning master . com/特征选择-提高准确率-减少训练时间/](https://machinelearningmastery.com/feature-selection-to-improve-accuracy-and-decrease-training-time/)
+> 原文：<https://machinelearningmastery.com/feature-selection-to-improve-accuracy-and-decrease-training-time/>
 
 最后更新于 2020 年 8 月 16 日
 

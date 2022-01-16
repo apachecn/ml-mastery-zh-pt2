@@ -1,6 +1,6 @@
 # 如何在 Python 中从头实现贝叶斯优化
 
-> 原文:[https://machinelearning master . com/什么是贝叶斯优化/](https://machinelearningmastery.com/what-is-bayesian-optimization/)
+> 原文：<https://machinelearningmastery.com/what-is-bayesian-optimization/>
 
 最后更新于 2020 年 8 月 22 日
 

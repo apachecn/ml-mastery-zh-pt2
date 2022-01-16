@@ -1,6 +1,6 @@
 # 深度学习神经网络从业者推荐
 
-> 原文:[https://machinelearning master . com/针对深度学习神经网络从业者的建议/](https://machinelearningmastery.com/recommendations-for-deep-learning-neural-network-practitioners/)
+> 原文：<https://machinelearningmastery.com/recommendations-for-deep-learning-neural-network-practitioners/>
 
 最后更新于 2019 年 8 月 6 日
 

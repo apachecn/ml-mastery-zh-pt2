@@ -1,6 +1,6 @@
 # 如何用 Keras 从头开始实现 Pix2Pix GAN 模型
 
-> 原文:[https://machinelearning master . com/如何实现-pix2pix-gan-models-从零开始使用-keras/](https://machinelearningmastery.com/how-to-implement-pix2pix-gan-models-from-scratch-with-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-implement-pix2pix-gan-models-from-scratch-with-keras/>
 
 最后更新于 2021 年 4 月 30 日
 

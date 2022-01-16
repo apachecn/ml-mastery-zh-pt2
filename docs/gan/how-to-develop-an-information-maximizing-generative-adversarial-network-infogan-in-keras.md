@@ -1,6 +1,6 @@
 # 如何在 Keras 开发信息最大化 GAN(InfoGAN)
 
-> 原文:[https://machinelearning master . com/如何开发一个信息最大化-生成-对抗-网络-infogan-in-keras/](https://machinelearningmastery.com/how-to-develop-an-information-maximizing-generative-adversarial-network-infogan-in-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-an-information-maximizing-generative-adversarial-network-infogan-in-keras/>
 
 最后更新于 2021 年 1 月 18 日
 

@@ -1,6 +1,6 @@
 # 案例研究:预测五年内糖尿病的发作(第 2 部分，共 3 部分)
 
-> 原文:[https://machinelearning master . com/case-study-预测五年内糖尿病发作-三分之二/](https://machinelearningmastery.com/case-study-predicting-the-onset-of-diabetes-within-five-years-part-2-of-3/)
+> 原文：<https://machinelearningmastery.com/case-study-predicting-the-onset-of-diabetes-within-five-years-part-2-of-3/>
 
 最后更新于 2019 年 8 月 22 日
 

@@ -1,6 +1,6 @@
 # Python 中的 4 种自动离群点检测算法
 
-> 原文:[https://machinelearning master . com/基于模型的异常值检测和移除 python/](https://machinelearningmastery.com/model-based-outlier-detection-and-removal-in-python/)
+> 原文：<https://machinelearningmastery.com/model-based-outlier-detection-and-removal-in-python/>
 
 最后更新于 2020 年 8 月 17 日
 

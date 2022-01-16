@@ -1,6 +1,6 @@
 # Python 中从零开始的进化策略
 
-> 原文:[https://machinelearning master . com/evolution-python 中从头开始的策略/](https://machinelearningmastery.com/evolution-strategies-from-scratch-in-python/)
+> 原文：<https://machinelearningmastery.com/evolution-strategies-from-scratch-in-python/>
 
 最后更新于 2021 年 10 月 12 日
 

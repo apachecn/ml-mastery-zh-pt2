@@ -1,6 +1,6 @@
 # 如何用 Python 开发加权平均集成
 
-> 原文:[https://machinelearning master . com/加权平均-与 python 集成/](https://machinelearningmastery.com/weighted-average-ensemble-with-python/)
+> 原文：<https://machinelearningmastery.com/weighted-average-ensemble-with-python/>
 
 最后更新于 2021 年 5 月 8 日
 

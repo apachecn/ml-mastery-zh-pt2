@@ -1,6 +1,6 @@
 # 如何在 Keras 开发深度学习模型集成
 
-> 原文:[https://machinelearning master . com/model-average-integration-for-deep-learning-neural-networks/](https://machinelearningmastery.com/model-averaging-ensemble-for-deep-learning-neural-networks/)
+> 原文：<https://machinelearningmastery.com/model-averaging-ensemble-for-deep-learning-neural-networks/>
 
 最后更新于 2020 年 8 月 28 日
 

@@ -1,6 +1,6 @@
 # 多类分类一对一休息一对一
 
-> 原文:[https://machinelearning master . com/一对多休息一对多分类/](https://machinelearningmastery.com/one-vs-rest-and-one-vs-one-for-multi-class-classification/)
+> 原文：<https://machinelearningmastery.com/one-vs-rest-and-one-vs-one-for-multi-class-classification/>
 
 最后更新于 2021 年 4 月 27 日
 

@@ -1,6 +1,6 @@
 # 如何用 Python 开发额外的树集合
 
-> 原文:[https://machinelearning master . com/extra-trees-ensemble-with-python/](https://machinelearningmastery.com/extra-trees-ensemble-with-python/)
+> 原文：<https://machinelearningmastery.com/extra-trees-ensemble-with-python/>
 
 最后更新于 2021 年 4 月 27 日
 

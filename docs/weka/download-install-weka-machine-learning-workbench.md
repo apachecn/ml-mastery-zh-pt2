@@ -1,6 +1,6 @@
 # 如何下载安装 Weka 机器学习工作台
 
-> 原文:[https://machinelearning master . com/下载-安装-WEKA-机器学习-工作台/](https://machinelearningmastery.com/download-install-weka-machine-learning-workbench/)
+> 原文：<https://machinelearningmastery.com/download-install-weka-machine-learning-workbench/>
 
 最后更新于 2020 年 12 月 10 日
 

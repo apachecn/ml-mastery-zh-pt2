@@ -1,6 +1,6 @@
 # 如何开发光梯度增强机(LightGBM)集合
 
-> 原文:[https://machinelearning master . com/light-gradient-boosted-machine-light GBM-ensemble/](https://machinelearningmastery.com/light-gradient-boosted-machine-lightgbm-ensemble/)
+> 原文：<https://machinelearningmastery.com/light-gradient-boosted-machine-lightgbm-ensemble/>
 
 最后更新于 2021 年 4 月 27 日
 

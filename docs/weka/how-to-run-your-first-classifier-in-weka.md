@@ -1,6 +1,6 @@
 # 如何在 Weka 运行你的第一个分类器
 
-> 原文:[https://machinelearning master . com/如何在 weka 中运行您的第一个分类器/](https://machinelearningmastery.com/how-to-run-your-first-classifier-in-weka/)
+> 原文：<https://machinelearningmastery.com/how-to-run-your-first-classifier-in-weka/>
 
 最后更新于 2020 年 12 月 10 日
 

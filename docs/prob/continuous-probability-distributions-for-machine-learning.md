@@ -1,6 +1,6 @@
 # 机器学习的连续概率分布
 
-> 原文:[https://machinelearning master . com/机器学习的连续概率分布/](https://machinelearningmastery.com/continuous-probability-distributions-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/continuous-probability-distributions-for-machine-learning/>
 
 最后更新于 2019 年 9 月 25 日
 

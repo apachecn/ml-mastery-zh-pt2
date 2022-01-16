@@ -1,6 +1,6 @@
 # 用 Python 进行曲线拟合
 
-> 原文:[https://machinelearning master . com/用 python 进行曲线拟合/](https://machinelearningmastery.com/curve-fitting-with-python/)
+> 原文：<https://machinelearningmastery.com/curve-fitting-with-python/>
 
 最后更新于 2021 年 11 月 14 日
 

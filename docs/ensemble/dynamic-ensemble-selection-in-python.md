@@ -1,6 +1,6 @@
 # Python 中分类的动态集成选择(DES)
 
-> 原文:[https://machinelearning master . com/dynamic-integration-selection-in-python/](https://machinelearningmastery.com/dynamic-ensemble-selection-in-python/)
+> 原文：<https://machinelearningmastery.com/dynamic-ensemble-selection-in-python/>
 
 最后更新于 2021 年 4 月 27 日
 

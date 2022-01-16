@@ -1,6 +1,6 @@
 # 不平衡分类的成本敏感学习
 
-> 原文:[https://machinelearning master . com/成本敏感-不平衡分类学习/](https://machinelearningmastery.com/cost-sensitive-learning-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/cost-sensitive-learning-for-imbalanced-classification/>
 
 大多数机器学习算法都假设模型产生的所有错误分类错误都是相等的。
 

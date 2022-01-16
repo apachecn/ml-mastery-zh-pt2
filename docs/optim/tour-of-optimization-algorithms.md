@@ -1,6 +1,6 @@
 # 如何选择优化算法
 
-> 原文:[https://machinelearning master . com/优化算法之旅/](https://machinelearningmastery.com/tour-of-optimization-algorithms/)
+> 原文：<https://machinelearningmastery.com/tour-of-optimization-algorithms/>
 
 最后更新于 2021 年 10 月 12 日
 

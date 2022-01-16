@@ -1,6 +1,6 @@
 # 如何配置神经网络的层数和节点数
 
-> 原文:[https://machinelearning master . com/如何配置神经网络中的层数和节点数/](https://machinelearningmastery.com/how-to-configure-the-number-of-layers-and-nodes-in-a-neural-network/)
+> 原文：<https://machinelearningmastery.com/how-to-configure-the-number-of-layers-and-nodes-in-a-neural-network/>
 
 最后更新于 2019 年 8 月 6 日
 

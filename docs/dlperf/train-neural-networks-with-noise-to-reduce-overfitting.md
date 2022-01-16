@@ -1,6 +1,6 @@
 # 用噪声训练神经网络以减少过拟合
 
-> 原文:[https://machinelearning master . com/train-neural-networks-with-noise-reduce-overfitting/](https://machinelearningmastery.com/train-neural-networks-with-noise-to-reduce-overfitting/)
+> 原文：<https://machinelearningmastery.com/train-neural-networks-with-noise-to-reduce-overfitting/>
 
 最后更新于 2019 年 8 月 6 日
 

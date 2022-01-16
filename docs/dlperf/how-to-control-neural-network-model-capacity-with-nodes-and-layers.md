@@ -1,6 +1,6 @@
 # 如何用节点和层控制神经网络模型容量
 
-> 原文:[https://machinelearning master . com/如何控制-神经网络-模型-带节点和层的容量/](https://machinelearningmastery.com/how-to-control-neural-network-model-capacity-with-nodes-and-layers/)
+> 原文：<https://machinelearningmastery.com/how-to-control-neural-network-model-capacity-with-nodes-and-layers/>
 
 最后更新于 2020 年 8 月 25 日
 

@@ -1,6 +1,6 @@
 # 如何固定不平衡分类的 k 重交叉验证
 
-> 原文:[https://machinelearning master . com/交叉验证-针对不平衡分类/](https://machinelearningmastery.com/cross-validation-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/cross-validation-for-imbalanced-classification/>
 
 最后更新于 2020 年 7 月 31 日
 

@@ -1,6 +1,6 @@
 # 适时使用提前停止停止神经网络的训练
 
-> 原文:[https://machinelearning master . com/如何停止训练-深度神经网络-在正确的时间使用-提前停止/](https://machinelearningmastery.com/how-to-stop-training-deep-neural-networks-at-the-right-time-using-early-stopping/)
+> 原文：<https://machinelearningmastery.com/how-to-stop-training-deep-neural-networks-at-the-right-time-using-early-stopping/>
 
 最后更新于 2020 年 8 月 25 日
 

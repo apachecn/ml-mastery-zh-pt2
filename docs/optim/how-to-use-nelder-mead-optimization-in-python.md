@@ -1,6 +1,6 @@
 # 如何在 Python 中使用内尔德-米德优化
 
-> 原文:[https://machinelearningmaster . com/how-to-use-nelder-mead-optimization-in-python/](https://machinelearningmastery.com/how-to-use-nelder-mead-optimization-in-python/)
+> 原文：<https://machinelearningmastery.com/how-to-use-nelder-mead-optimization-in-python/>
 
 最后更新于 2021 年 10 月 12 日
 

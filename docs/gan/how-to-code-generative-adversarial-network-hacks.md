@@ -1,6 +1,6 @@
 # 如何在 Keras 中实现 GAN Hacks 来训练稳定模型
 
-> 原文:[https://machinelearning master . com/如何编码-生成-对抗-网络-黑客/](https://machinelearningmastery.com/how-to-code-generative-adversarial-network-hacks/)
+> 原文：<https://machinelearningmastery.com/how-to-code-generative-adversarial-network-hacks/>
 
 最后更新于 2019 年 7 月 12 日
 

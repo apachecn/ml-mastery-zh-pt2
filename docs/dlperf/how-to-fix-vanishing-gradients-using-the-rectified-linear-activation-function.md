@@ -2,7 +2,7 @@
 
 修复渐变消失问题
 
-> 原文:[https://machinelearning master . com/如何使用校正线性激活函数修复消失梯度/](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/)
+> 原文：<https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/>
 
 最后更新于 2020 年 8 月 25 日
 

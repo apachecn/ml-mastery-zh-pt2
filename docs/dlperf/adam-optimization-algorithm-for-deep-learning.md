@@ -1,6 +1,6 @@
 # 深度学习 Adam 优化算法的温和介绍
 
-> 原文:[https://machinelearning master . com/Adam-optimization-algorithm-for-deep-learning/](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)
+> 原文：<https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/>
 
 最后更新于 2021 年 1 月 13 日
 

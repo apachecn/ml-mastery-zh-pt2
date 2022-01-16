@@ -1,6 +1,6 @@
 # 分类数据的顺序编码和单热编码
 
-> 原文:[https://machinelearning master . com/one-hot-encoding-for-category-data/](https://machinelearningmastery.com/one-hot-encoding-for-categorical-data/)
+> 原文：<https://machinelearningmastery.com/one-hot-encoding-for-categorical-data/>
 
 最后更新于 2020 年 8 月 17 日
 

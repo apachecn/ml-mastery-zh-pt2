@@ -1,6 +1,6 @@
 # Python 中降维的线性判别分析
 
-> 原文:[https://machinelearning master . com/python 中的线性判别分析降维/](https://machinelearningmastery.com/linear-discriminant-analysis-for-dimensionality-reduction-in-python/)
+> 原文：<https://machinelearningmastery.com/linear-discriminant-analysis-for-dimensionality-reduction-in-python/>
 
 最后更新于 2020 年 8 月 18 日
 

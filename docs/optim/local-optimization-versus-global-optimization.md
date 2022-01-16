@@ -1,6 +1,6 @@
 # 局部优化对比全局优化
 
-> 原文:[https://machinelearning master . com/局部优化对全局优化/](https://machinelearningmastery.com/local-optimization-versus-global-optimization/)
+> 原文：<https://machinelearningmastery.com/local-optimization-versus-global-optimization/>
 
 最后更新于 2021 年 10 月 12 日
 

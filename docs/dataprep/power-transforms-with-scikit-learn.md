@@ -1,6 +1,6 @@
 # 如何使用幂变换进行机器学习
 
-> 原文:[https://machinelearning master . com/power-transforms-with-sci kit-learn/](https://machinelearningmastery.com/power-transforms-with-scikit-learn/)
+> 原文：<https://machinelearningmastery.com/power-transforms-with-scikit-learn/>
 
 最后更新于 2020 年 8 月 28 日
 

@@ -1,6 +1,6 @@
 # 如何开始计算机视觉深度学习(7 天迷你课程)
 
-> 原文:[https://machinelearning master . com/计算机视觉深度学习入门 7 天小课程/](https://machinelearningmastery.com/how-to-get-started-with-deep-learning-for-computer-vision-7-day-mini-course/)
+> 原文：<https://machinelearningmastery.com/how-to-get-started-with-deep-learning-for-computer-vision-7-day-mini-course/>
 
 最后更新于 2020 年 4 月 2 日
 

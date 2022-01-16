@@ -1,6 +1,6 @@
 # Python 中的单变量函数优化
 
-> 原文:[https://machinelearning master . com/python 中的单变量函数优化/](https://machinelearningmastery.com/univariate-function-optimization-in-python/)
+> 原文：<https://machinelearningmastery.com/univariate-function-optimization-in-python/>
 
 最后更新于 2021 年 10 月 12 日
 

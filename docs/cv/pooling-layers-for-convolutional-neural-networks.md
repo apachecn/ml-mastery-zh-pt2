@@ -1,6 +1,6 @@
 # 卷积神经网络汇集层的简单介绍
 
-> 原文:[https://machinelearning master . com/pooling-layers-for-volcular-neural-networks/](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)
+> 原文：<https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/>
 
 最后更新于 2019 年 7 月 5 日
 

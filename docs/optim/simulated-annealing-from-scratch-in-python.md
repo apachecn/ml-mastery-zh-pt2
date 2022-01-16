@@ -1,6 +1,6 @@
 # Python 中从头开始的模拟退火
 
-> 原文:[https://machinelearning master . com/python 中的模拟退火从头开始/](https://machinelearningmastery.com/simulated-annealing-from-scratch-in-python/)
+> 原文：<https://machinelearningmastery.com/simulated-annealing-from-scratch-in-python/>
 
 最后更新于 2021 年 10 月 12 日
 

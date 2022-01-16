@@ -1,6 +1,6 @@
 # R 中的凸优化
 
-> 原文:[https://machinelearning master . com/凸优化 in-r/](https://machinelearningmastery.com/convex-optimization-in-r/)
+> 原文：<https://machinelearningmastery.com/convex-optimization-in-r/>
 
 最后更新于 2019 年 8 月 22 日
 

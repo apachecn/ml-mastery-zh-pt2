@@ -1,6 +1,6 @@
 # 为什么训练神经网络很难
 
-> 原文:[https://machinelearning master . com/why-training-a-neural-network-hard/](https://machinelearningmastery.com/why-training-a-neural-network-is-hard/)
+> 原文：<https://machinelearningmastery.com/why-training-a-neural-network-is-hard/>
 
 最后更新于 2019 年 8 月 6 日
 

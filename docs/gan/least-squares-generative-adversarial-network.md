@@ -1,6 +1,6 @@
 # 如何在 Keras 开发最小二乘生成对抗网络
 
-> 原文:[https://machinelearning master . com/最小二乘-生成-对抗-网络/](https://machinelearningmastery.com/least-squares-generative-adversarial-network/)
+> 原文：<https://machinelearningmastery.com/least-squares-generative-adversarial-network/>
 
 最后更新于 2021 年 1 月 18 日
 

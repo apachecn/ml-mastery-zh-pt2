@@ -1,6 +1,6 @@
 # 成本敏感的不平衡分类 SVM
 
-> 原文:[https://machinelearning master . com/成本敏感-SVM-针对不平衡分类/](https://machinelearningmastery.com/cost-sensitive-svm-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/cost-sensitive-svm-for-imbalanced-classification/>
 
 最后更新于 2020 年 8 月 21 日
 

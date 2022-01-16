@@ -1,6 +1,6 @@
 # 如何通过添加噪声来提高深度学习模型的鲁棒性
 
-> 原文:[https://machinelearning master . com/如何通过添加噪声来提高深度学习模型的鲁棒性/](https://machinelearningmastery.com/how-to-improve-deep-learning-model-robustness-by-adding-noise/)
+> 原文：<https://machinelearningmastery.com/how-to-improve-deep-learning-model-robustness-by-adding-noise/>
 
 最后更新于 2020 年 8 月 28 日
 

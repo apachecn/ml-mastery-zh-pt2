@@ -1,6 +1,6 @@
 # Python 中的跳盆优化
 
-> 原文:[https://machinelearning master . com/盆地跳跃-python 中的优化/](https://machinelearningmastery.com/basin-hopping-optimization-in-python/)
+> 原文：<https://machinelearningmastery.com/basin-hopping-optimization-in-python/>
 
 最后更新于 2021 年 10 月 12 日
 

@@ -1,6 +1,6 @@
 # 如何用 CNNs 评价图像分类的像素缩放方法
 
-> 原文:[https://machinelearning master . com/如何评估-像素缩放-图像分类方法/](https://machinelearningmastery.com/how-to-evaluate-pixel-scaling-methods-for-image-classification/)
+> 原文：<https://machinelearningmastery.com/how-to-evaluate-pixel-scaling-methods-for-image-classification/>
 
 最后更新于 2020 年 8 月 28 日
 

@@ -1,6 +1,6 @@
 # 如何开发不平衡分类模型来检测溢油
 
-> 原文:[https://machinelearning master . com/不平衡-分类-模型-检测-漏油/](https://machinelearningmastery.com/imbalanced-classification-model-to-detect-oil-spills/)
+> 原文：<https://machinelearningmastery.com/imbalanced-classification-model-to-detect-oil-spills/>
 
 最后更新于 2021 年 1 月 5 日
 

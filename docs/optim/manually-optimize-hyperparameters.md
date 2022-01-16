@@ -1,6 +1,6 @@
 # 如何手动优化机器学习模型超参数
 
-> 原文:[https://machinelearning master . com/manual-optimize-hyperparameters/](https://machinelearningmastery.com/manually-optimize-hyperparameters/)
+> 原文：<https://machinelearningmastery.com/manually-optimize-hyperparameters/>
 
 最后更新于 2021 年 10 月 12 日
 

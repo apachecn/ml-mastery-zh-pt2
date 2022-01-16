@@ -1,6 +1,6 @@
 # 如何校准不平衡分类的概率
 
-> 原文:[https://machinelearning master . com/概率-不平衡分类校准/](https://machinelearningmastery.com/probability-calibration-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/probability-calibration-for-imbalanced-classification/>
 
 最后更新于 2020 年 8 月 21 日
 

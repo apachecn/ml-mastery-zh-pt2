@@ -1,6 +1,6 @@
 # 如何在 R 中开始机器学习(一个周末获得结果)
 
-> 原文:[https://machinelearning master . com/start-in-machine-learning-with-r/](https://machinelearningmastery.com/get-started-in-machine-learning-with-r/)
+> 原文：<https://machinelearningmastery.com/get-started-in-machine-learning-with-r/>
 
 最后更新于 2019 年 12 月 13 日
 

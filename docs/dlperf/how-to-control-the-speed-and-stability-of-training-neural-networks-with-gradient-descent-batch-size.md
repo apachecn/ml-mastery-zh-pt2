@@ -1,6 +1,6 @@
 # 如何控制批量训练神经网络的稳定性
 
-> 原文:[https://machinelearning master . com/如何控制带梯度下降的训练神经网络的速度和稳定性批量/](https://machinelearningmastery.com/how-to-control-the-speed-and-stability-of-training-neural-networks-with-gradient-descent-batch-size/)
+> 原文：<https://machinelearningmastery.com/how-to-control-the-speed-and-stability-of-training-neural-networks-with-gradient-descent-batch-size/>
 
 最后更新于 2020 年 8 月 28 日
 

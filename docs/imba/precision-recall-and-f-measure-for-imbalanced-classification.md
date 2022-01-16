@@ -1,6 +1,6 @@
 # 如何计算不平衡分类的精度、召回率和 F-Measure
 
-> 原文:[https://machinelearning master . com/precision-recall-and-f-measure-for-不平衡分类/](https://machinelearningmastery.com/precision-recall-and-f-measure-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/precision-recall-and-f-measure-for-imbalanced-classification/>
 
 最后更新于 2020 年 8 月 2 日
 

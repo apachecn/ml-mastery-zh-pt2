@@ -1,6 +1,6 @@
 # Python 中基于直方图的梯度增强集成
 
-> 原文:[https://machinelearning master . com/基于直方图的梯度增强集成/](https://machinelearningmastery.com/histogram-based-gradient-boosting-ensembles/)
+> 原文：<https://machinelearningmastery.com/histogram-based-gradient-boosting-ensembles/>
 
 最后更新于 2021 年 4 月 27 日
 

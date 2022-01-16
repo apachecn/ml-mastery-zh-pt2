@@ -1,6 +1,6 @@
 # 用 Python 进行双重退火优化
 
-> 原文:[https://machinelearning master . com/双重退火-使用 python 进行优化/](https://machinelearningmastery.com/dual-annealing-optimization-with-python/)
+> 原文：<https://machinelearningmastery.com/dual-annealing-optimization-with-python/>
 
 最后更新于 2021 年 10 月 12 日
 

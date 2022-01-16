@@ -1,6 +1,6 @@
 # 信息熵的温和介绍
 
-> 原文:[https://machinelearning master . com/什么是信息熵/](https://machinelearningmastery.com/what-is-information-entropy/)
+> 原文：<https://machinelearningmastery.com/what-is-information-entropy/>
 
 最后更新于 2020 年 7 月 13 日
 

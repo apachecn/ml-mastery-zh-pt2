@@ -1,6 +1,6 @@
 # 如何在机器学习中使用折叠外预测
 
-> 原文:[https://machinelearning master . com/机器学习中的超常规预测/](https://machinelearningmastery.com/out-of-fold-predictions-in-machine-learning/)
+> 原文：<https://machinelearningmastery.com/out-of-fold-predictions-in-machine-learning/>
 
 最后更新于 2021 年 4 月 27 日
 

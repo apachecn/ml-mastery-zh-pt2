@@ -1,6 +1,6 @@
 # 机器学习速成班优化
 
-> 原文:[https://machinelearning master . com/机器学习优化-速成课程/](https://machinelearningmastery.com/optimization-for-machine-learning-crash-course/)
+> 原文：<https://machinelearningmastery.com/optimization-for-machine-learning-crash-course/>
 
 最后更新于 2021 年 10 月 30 日
 

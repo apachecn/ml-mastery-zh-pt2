@@ -1,6 +1,6 @@
 # 玻璃识别数据集的不平衡多类分类
 
-> 原文:[https://machinelearning master . com/不平衡-多类-分类-带玻璃-识别-数据集/](https://machinelearningmastery.com/imbalanced-multiclass-classification-with-the-glass-identification-dataset/)
+> 原文：<https://machinelearningmastery.com/imbalanced-multiclass-classification-with-the-glass-identification-dataset/>
 
 最后更新于 2020 年 8 月 21 日
 

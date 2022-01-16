@@ -1,6 +1,6 @@
 # 如何在卷积神经网络中可视化过滤器和特征图
 
-> 原文:[https://machinelearning master . com/如何可视化卷积神经网络中的过滤器和特征图/](https://machinelearningmastery.com/how-to-visualize-filters-and-feature-maps-in-convolutional-neural-networks/)
+> 原文：<https://machinelearningmastery.com/how-to-visualize-filters-and-feature-maps-in-convolutional-neural-networks/>
 
 最后更新于 2019 年 7 月 5 日
 

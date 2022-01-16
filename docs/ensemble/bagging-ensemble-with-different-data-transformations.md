@@ -1,6 +1,6 @@
 # 开发具有不同数据转换的打包集成
 
-> 原文:[https://machinelearning master . com/bagging-integration-with-differential-data-transformations/](https://machinelearningmastery.com/bagging-ensemble-with-different-data-transformations/)
+> 原文：<https://machinelearningmastery.com/bagging-ensemble-with-different-data-transformations/>
 
 最后更新于 2021 年 4 月 27 日
 

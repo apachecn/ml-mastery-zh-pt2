@@ -1,6 +1,6 @@
 # 不平衡分类的 ROC 曲线和精度-召回曲线
 
-> 原文:[https://machinelearning master . com/roc-curves-and-precision-recall-curves-for-不平衡分类/](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-imbalanced-classification/>
 
 最后更新于 2020 年 9 月 16 日
 

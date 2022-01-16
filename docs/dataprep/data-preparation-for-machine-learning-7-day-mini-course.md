@@ -1,6 +1,6 @@
 # 机器学习的数据准备(7 天迷你课程)
 
-> 原文:[https://machinelearning master . com/data-机器学习准备-7 天迷你课程/](https://machinelearningmastery.com/data-preparation-for-machine-learning-7-day-mini-course/)
+> 原文：<https://machinelearningmastery.com/data-preparation-for-machine-learning-7-day-mini-course/>
 
 最后更新于 2020 年 6 月 30 日
 

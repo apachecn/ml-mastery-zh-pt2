@@ -1,6 +1,6 @@
 # 从零开始的 Adadelta 梯度下降
 
-> 原文:[https://machinelearning master . com/gradient-down-with-adadelta-从头开始/](https://machinelearningmastery.com/gradient-descent-with-adadelta-from-scratch/)
+> 原文：<https://machinelearningmastery.com/gradient-descent-with-adadelta-from-scratch/>
 
 最后更新于 2021 年 10 月 12 日
 

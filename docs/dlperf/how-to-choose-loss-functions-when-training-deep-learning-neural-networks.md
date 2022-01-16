@@ -1,6 +1,6 @@
 # 训练深度学习神经网络时如何选择损失函数
 
-> 原文:[https://machinelearning master . com/如何选择-训练时丢失功能-深度学习-神经网络/](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)
+> 原文：<https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/>
 
 最后更新于 2020 年 8 月 25 日
 

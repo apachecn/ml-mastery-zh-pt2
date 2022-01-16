@@ -1,6 +1,6 @@
 # 使用 Python 进行不平衡分类的 SMOTE】
 
-> 原文:[https://machinelearning master . com/smote-过采样-针对不平衡分类/](https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/>
 
 最后更新于 2021 年 3 月 17 日
 

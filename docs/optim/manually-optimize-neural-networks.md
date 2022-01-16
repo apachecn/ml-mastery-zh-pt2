@@ -1,6 +1,6 @@
 # 如何手动优化神经网络模型
 
-> 原文:[https://machinelearning master . com/manual-optimize-neural-networks/](https://machinelearningmastery.com/manually-optimize-neural-networks/)
+> 原文：<https://machinelearningmastery.com/manually-optimize-neural-networks/>
 
 最后更新于 2021 年 10 月 12 日
 

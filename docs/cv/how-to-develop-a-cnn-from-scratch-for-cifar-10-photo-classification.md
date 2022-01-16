@@ -1,6 +1,6 @@
 # 如何从零开始为 CIFAR-10 照片分类开发 CNN
 
-> 原文:[https://machinelearning master . com/如何开发-a-CNN-从头开始-for-cifar-10-photo-classification/](https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/>
 
 最后更新于 2020 年 8 月 28 日
 

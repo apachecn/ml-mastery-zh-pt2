@@ -1,6 +1,6 @@
 # 如何在 Weka 中评估机器学习模型的基线性能
 
-> 原文:[https://machinelearning master . com/estimate-baseline-performance-machine-learning-models-WEKA/](https://machinelearningmastery.com/estimate-baseline-performance-machine-learning-models-weka/)
+> 原文：<https://machinelearningmastery.com/estimate-baseline-performance-machine-learning-models-weka/>
 
 最后更新于 2020 年 12 月 10 日
 

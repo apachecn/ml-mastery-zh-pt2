@@ -1,6 +1,6 @@
 # 机器学习最大后验概率的温和介绍
 
-> 原文:[https://machinelearning master . com/最大后验估计/](https://machinelearningmastery.com/maximum-a-posteriori-estimation/)
+> 原文：<https://machinelearningmastery.com/maximum-a-posteriori-estimation/>
 
 密度估计是估计来自问题域的观测样本的概率分布的问题。
 

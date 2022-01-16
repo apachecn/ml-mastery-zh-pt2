@@ -1,6 +1,6 @@
 # Python 中从头开始的简单遗传算法
 
-> 原文:[https://machinelearning master . com/simple-genetic-algorithm-从头开始用 python/](https://machinelearningmastery.com/simple-genetic-algorithm-from-scratch-in-python/)
+> 原文：<https://machinelearningmastery.com/simple-genetic-algorithm-from-scratch-in-python/>
 
 最后更新于 2021 年 10 月 12 日
 

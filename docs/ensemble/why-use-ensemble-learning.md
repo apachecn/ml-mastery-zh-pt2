@@ -1,6 +1,6 @@
 # 为什么使用集成学习？
 
-> 原文:[https://machinelearning master . com/why-use-ensemble-learning/](https://machinelearningmastery.com/why-use-ensemble-learning/)
+> 原文：<https://machinelearningmastery.com/why-use-ensemble-learning/>
 
 最后更新于 2021 年 4 月 27 日
 

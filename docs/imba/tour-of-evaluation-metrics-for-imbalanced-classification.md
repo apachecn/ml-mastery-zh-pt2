@@ -1,6 +1,6 @@
 # 不平衡分类评估指标之旅
 
-> 原文:[https://machinelearning master . com/评估之旅-衡量不平衡分类/](https://machinelearningmastery.com/tour-of-evaluation-metrics-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/tour-of-evaluation-metrics-for-imbalanced-classification/>
 
 最后更新于 2021 年 5 月 1 日
 

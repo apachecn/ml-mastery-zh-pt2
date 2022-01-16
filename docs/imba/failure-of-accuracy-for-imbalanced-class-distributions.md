@@ -1,6 +1,6 @@
 # 不平衡类别分布的分类精度失败
 
-> 原文:[https://machinelearning master . com/不平衡类分布的精度失败/](https://machinelearningmastery.com/failure-of-accuracy-for-imbalanced-class-distributions/)
+> 原文：<https://machinelearningmastery.com/failure-of-accuracy-for-imbalanced-class-distributions/>
 
 最后更新于 2021 年 1 月 22 日
 

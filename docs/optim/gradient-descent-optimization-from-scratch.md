@@ -1,6 +1,6 @@
 # 如何从头开始实施梯度下降优化
 
-> 原文:[https://machinelearning master . com/渐变-下降-优化-从头开始/](https://machinelearningmastery.com/gradient-descent-optimization-from-scratch/)
+> 原文：<https://machinelearningmastery.com/gradient-descent-optimization-from-scratch/>
 
 最后更新于 2021 年 10 月 12 日
 

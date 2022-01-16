@@ -1,6 +1,6 @@
 # 用于应用预测建模的脱字符号包
 
-> 原文:[https://machinelearning master . com/caret-r-package-for-applied-predictive-modeling/](https://machinelearningmastery.com/caret-r-package-for-applied-predictive-modeling/)
+> 原文：<https://machinelearningmastery.com/caret-r-package-for-applied-predictive-modeling/>
 
 最后更新于 2019 年 8 月 22 日
 

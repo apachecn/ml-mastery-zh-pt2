@@ -1,6 +1,6 @@
 # 风格的温和介绍——风格生成对抗网络
 
-> 原文:[https://machinelearning master . com/introduction-to-style-generated-对抗性-network-stylegan/](https://machinelearningmastery.com/introduction-to-style-generative-adversarial-network-stylegan/)
+> 原文：<https://machinelearningmastery.com/introduction-to-style-generative-adversarial-network-stylegan/>
 
 最后更新于 2020 年 5 月 10 日
 

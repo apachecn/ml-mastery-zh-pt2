@@ -1,6 +1,6 @@
 # 机器学习数据准备技术之旅
 
-> 原文:[https://machinelearning master . com/数据-准备-机器学习技术/](https://machinelearningmastery.com/data-preparation-techniques-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/data-preparation-techniques-for-machine-learning/>
 
 最后更新于 2020 年 6 月 30 日
 

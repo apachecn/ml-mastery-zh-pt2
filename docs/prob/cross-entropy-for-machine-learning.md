@@ -1,6 +1,6 @@
 # 机器学习交叉熵的温和介绍
 
-> 原文:[https://machinelearning master . com/机器学习交叉熵/](https://machinelearningmastery.com/cross-entropy-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/cross-entropy-for-machine-learning/>
 
 最后更新于 2020 年 12 月 22 日
 

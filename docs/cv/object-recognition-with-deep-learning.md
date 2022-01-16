@@ -1,6 +1,6 @@
 # 深度学习物体识别入门
 
-> 原文:[https://machinelearning master . com/object-recognition-with-deep-learning/](https://machinelearningmastery.com/object-recognition-with-deep-learning/)
+> 原文：<https://machinelearningmastery.com/object-recognition-with-deep-learning/>
 
 最后更新于 2021 年 1 月 27 日
 

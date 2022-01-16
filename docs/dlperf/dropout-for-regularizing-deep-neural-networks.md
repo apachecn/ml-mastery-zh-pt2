@@ -1,6 +1,6 @@
 # 轻度介绍用于调节深层神经网络的缺失
 
-> 原文:[https://machinelearning master . com/drop-for-regulating-deep-neural-networks/](https://machinelearningmastery.com/dropout-for-regularizing-deep-neural-networks/)
+> 原文：<https://machinelearningmastery.com/dropout-for-regularizing-deep-neural-networks/>
 
 最后更新于 2019 年 8 月 6 日
 

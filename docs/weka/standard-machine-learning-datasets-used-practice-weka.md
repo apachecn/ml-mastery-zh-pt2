@@ -1,6 +1,6 @@
 # 在 Weka 练习的标准机器学习数据集
 
-> 原文:[https://machinelearning master . com/standard-machine-learning-datasets-used-practice-WEKA/](https://machinelearningmastery.com/standard-machine-learning-datasets-used-practice-weka/)
+> 原文：<https://machinelearningmastery.com/standard-machine-learning-datasets-used-practice-weka/>
 
 最后更新于 2020 年 12 月 10 日
 

@@ -1,6 +1,6 @@
 # 用于图像分类的卷积神经网络模型创新
 
-> 原文:[https://machinelearning master . com/review-of-architecture-innovations-for-卷积-neural-networks-for-image-class/](https://machinelearningmastery.com/review-of-architectural-innovations-for-convolutional-neural-networks-for-image-classification/)
+> 原文：<https://machinelearningmastery.com/review-of-architectural-innovations-for-convolutional-neural-networks-for-image-classification/>
 
 最后更新于 2019 年 7 月 5 日
 

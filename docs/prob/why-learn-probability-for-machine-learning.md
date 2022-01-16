@@ -1,6 +1,6 @@
 # 机器学习学习概率的 5 个理由
 
-> 原文:[https://machinelearning master . com/why-learn-probability-for-machine-learning/](https://machinelearningmastery.com/why-learn-probability-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/why-learn-probability-for-machine-learning/>
 
 最后更新于 2019 年 11 月 8 日
 

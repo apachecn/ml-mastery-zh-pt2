@@ -1,6 +1,6 @@
 # 卷积神经网络填充和步长的温和介绍
 
-> 原文:[https://machinelearning master . com/卷积神经网络填充和步长/](https://machinelearningmastery.com/padding-and-stride-for-convolutional-neural-networks/)
+> 原文：<https://machinelearningmastery.com/padding-and-stride-for-convolutional-neural-networks/>
 
 最后更新于 2019 年 8 月 16 日
 

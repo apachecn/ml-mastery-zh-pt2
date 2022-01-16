@@ -1,6 +1,6 @@
 # 数据集大小对深度学习模型技能和性能评估的影响
 
-> 原文:[https://machinelearning master . com/数据集大小对深度学习模型技能和绩效评估的影响/](https://machinelearningmastery.com/impact-of-dataset-size-on-deep-learning-model-skill-and-performance-estimates/)
+> 原文：<https://machinelearningmastery.com/impact-of-dataset-size-on-deep-learning-model-skill-and-performance-estimates/>
 
 最后更新于 2020 年 8 月 25 日
 

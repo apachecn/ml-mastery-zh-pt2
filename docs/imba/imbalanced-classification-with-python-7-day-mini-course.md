@@ -1,6 +1,6 @@
 # Python 不平衡分类(7 天迷你课程)
 
-> 原文:[https://machinelearning master . com/不平衡-用 python 分类-7 天-迷你课程/](https://machinelearningmastery.com/imbalanced-classification-with-python-7-day-mini-course/)
+> 原文：<https://machinelearningmastery.com/imbalanced-classification-with-python-7-day-mini-course/>
 
 最后更新于 2021 年 1 月 5 日
 

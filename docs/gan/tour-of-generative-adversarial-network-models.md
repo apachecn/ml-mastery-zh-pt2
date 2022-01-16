@@ -1,6 +1,6 @@
 # 生成性对抗网络模型之旅
 
-> 原文:[https://machinelearning master . com/生成-对抗-网络模型之旅/](https://machinelearningmastery.com/tour-of-generative-adversarial-network-models/)
+> 原文：<https://machinelearningmastery.com/tour-of-generative-adversarial-network-models/>
 
 最后更新于 2019 年 7 月 12 日
 

@@ -2,7 +2,7 @@
 
 中使用助推、装袋和混合套装进行更好的预测
 
-> 原文:[https://machinelearning master . com/improve-machine-learning-results-with-boosting-bagging-and-mixing-integration-methods-in-WEKA/](https://machinelearningmastery.com/improve-machine-learning-results-with-boosting-bagging-and-blending-ensemble-methods-in-weka/)
+> 原文：<https://machinelearningmastery.com/improve-machine-learning-results-with-boosting-bagging-and-blending-ensemble-methods-in-weka/>
 
 最后更新于 2020 年 12 月 10 日
 

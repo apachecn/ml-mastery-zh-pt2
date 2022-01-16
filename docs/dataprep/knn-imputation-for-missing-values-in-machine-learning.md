@@ -1,6 +1,6 @@
 # 机器学习中缺失值的 kNN 插补
 
-> 原文:[https://machinelearning master . com/KNN-机器学习中缺失值的插补/](https://machinelearningmastery.com/knn-imputation-for-missing-values-in-machine-learning/)
+> 原文：<https://machinelearningmastery.com/knn-imputation-for-missing-values-in-machine-learning/>
 
 最后更新于 2020 年 8 月 17 日
 

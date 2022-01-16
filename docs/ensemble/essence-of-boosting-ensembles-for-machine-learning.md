@@ -1,6 +1,6 @@
 # 机器学习增强集成的本质
 
-> 原文:[https://machinelearning master . com/机器学习集成精华/](https://machinelearningmastery.com/essence-of-boosting-ensembles-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/essence-of-boosting-ensembles-for-machine-learning/>
 
 Boosting 是一类强大而流行的集成学习技术。
 

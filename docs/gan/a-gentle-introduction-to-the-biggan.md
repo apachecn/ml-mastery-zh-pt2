@@ -1,6 +1,6 @@
 # 温和介绍大生成对抗网络 BigGAN
 
-> 原文:[https://machinelearning master . com/a-温柔-入门-biggan/](https://machinelearningmastery.com/a-gentle-introduction-to-the-biggan/)
+> 原文：<https://machinelearningmastery.com/a-gentle-introduction-to-the-biggan/>
 
 生成性对抗网络，或 GANs ，可能是最有效的图像合成生成模型。
 

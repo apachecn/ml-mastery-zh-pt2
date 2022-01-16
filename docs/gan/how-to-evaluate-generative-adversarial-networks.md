@@ -1,6 +1,6 @@
 # 如何评价生成性对抗网络
 
-> 原文:[https://machinelearning master . com/如何评估-生成-对抗-网络/](https://machinelearningmastery.com/how-to-evaluate-generative-adversarial-networks/)
+> 原文：<https://machinelearningmastery.com/how-to-evaluate-generative-adversarial-networks/>
 
 [生成性对抗网络](https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/)，简称 GANs，是开发生成模型的有效深度学习方法。
 

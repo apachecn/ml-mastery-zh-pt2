@@ -1,6 +1,6 @@
 # 3 本深度学习实践者必备书籍
 
-> 原文:[https://machinelearning master . com/books-for-deep-learning-practices/](https://machinelearningmastery.com/books-for-deep-learning-practitioners/)
+> 原文：<https://machinelearningmastery.com/books-for-deep-learning-practitioners/>
 
 最后更新于 2019 年 8 月 6 日
 

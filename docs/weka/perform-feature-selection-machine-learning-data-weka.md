@@ -2,7 +2,7 @@
 
 中用机器学习数据进行特征选择
 
-> 原文:[https://machinelearning master . com/perform-feature-selection-machinelearning-data-WEKA/](https://machinelearningmastery.com/perform-feature-selection-machine-learning-data-weka/)
+> 原文：<https://machinelearningmastery.com/perform-feature-selection-machine-learning-data-weka/>
 
 最后更新于 2019 年 12 月 13 日
 

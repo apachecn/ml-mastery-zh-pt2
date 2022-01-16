@@ -1,6 +1,6 @@
 # Python 集成机器学习(7 天迷你课程)
 
-> 原文:[https://machinelearning master . com/ensemble-机器学习-python-7 天-迷你课程/](https://machinelearningmastery.com/ensemble-machine-learning-with-python-7-day-mini-course/)
+> 原文：<https://machinelearningmastery.com/ensemble-machine-learning-with-python-7-day-mini-course/>
 
 #### Python 速成班的集成学习算法。
 用 Python 在 7 天内掌握集成学习。

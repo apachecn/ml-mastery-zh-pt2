@@ -1,6 +1,6 @@
 # 如何用 Python 开发随机森林集成
 
-> 原文:[https://machinelearning master . com/random-forest-ensemble-in-python/](https://machinelearningmastery.com/random-forest-ensemble-in-python/)
+> 原文：<https://machinelearningmastery.com/random-forest-ensemble-in-python/>
 
 最后更新于 2021 年 4 月 27 日
 

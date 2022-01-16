@@ -1,6 +1,6 @@
 # 粒子群优化的温和介绍
 
-> 原文:[https://machinelearning master . com/a-温柔-粒子群优化入门/](https://machinelearningmastery.com/a-gentle-introduction-to-particle-swarm-optimization/)
+> 原文：<https://machinelearningmastery.com/a-gentle-introduction-to-particle-swarm-optimization/>
 
 最后更新于 2021 年 10 月 12 日
 

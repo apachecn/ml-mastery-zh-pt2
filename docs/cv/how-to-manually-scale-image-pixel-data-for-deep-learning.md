@@ -1,6 +1,6 @@
 # 如何手动缩放图像像素数据进行深度学习
 
-> 原文:[https://machinelearning master . com/如何手动缩放图像像素数据进行深度学习/](https://machinelearningmastery.com/how-to-manually-scale-image-pixel-data-for-deep-learning/)
+> 原文：<https://machinelearningmastery.com/how-to-manually-scale-image-pixel-data-for-deep-learning/>
 
 最后更新于 2019 年 7 月 5 日
 

@@ -1,6 +1,6 @@
 # 生成性对抗性网络损失函数的温和介绍
 
-> 原文:[https://machinelearning master . com/创成-对抗-网络-丢失-函数/](https://machinelearningmastery.com/generative-adversarial-network-loss-functions/)
+> 原文：<https://machinelearningmastery.com/generative-adversarial-network-loss-functions/>
 
 [生成对抗网络](https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/)，简称 GAN，是一种深度学习架构，用于训练图像合成的生成模型。
 

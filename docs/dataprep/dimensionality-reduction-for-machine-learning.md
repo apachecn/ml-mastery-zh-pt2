@@ -1,6 +1,6 @@
 # 机器学习降维介绍
 
-> 原文:[https://machinelearning master . com/机器学习降维/](https://machinelearningmastery.com/dimensionality-reduction-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/dimensionality-reduction-for-machine-learning/>
 
 最后更新于 2020 年 6 月 30 日
 

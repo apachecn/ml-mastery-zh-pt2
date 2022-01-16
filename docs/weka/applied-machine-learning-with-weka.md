@@ -2,7 +2,7 @@
 
 快速加快应用机器学习的进度
 
-> 原文:[https://machinelearning master . com/applied-machine-learning-with-WEKA/](https://machinelearningmastery.com/applied-machine-learning-with-weka/)
+> 原文：<https://machinelearningmastery.com/applied-machine-learning-with-weka/>
 
 最后更新于 2019 年 8 月 22 日
 

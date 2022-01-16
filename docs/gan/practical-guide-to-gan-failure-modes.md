@@ -1,6 +1,6 @@
 # 如何识别和诊断 GAN 故障模式
 
-> 原文:[https://machinelearning master . com/实用-gan 指南-故障模式/](https://machinelearningmastery.com/practical-guide-to-gan-failure-modes/)
+> 原文：<https://machinelearningmastery.com/practical-guide-to-gan-failure-modes/>
 
 最后更新于 2021 年 1 月 21 日
 

@@ -1,6 +1,6 @@
 # 9 本关于生成对抗网络的书
 
-> 原文:[https://machinelearning master . com/books-on-generative-对抗性-networks-gans/](https://machinelearningmastery.com/books-on-generative-adversarial-networks-gans/)
+> 原文：<https://machinelearningmastery.com/books-on-generative-adversarial-networks-gans/>
 
 最后更新于 2019 年 8 月 21 日
 

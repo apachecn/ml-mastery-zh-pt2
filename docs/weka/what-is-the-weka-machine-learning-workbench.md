@@ -1,6 +1,6 @@
 # 什么是韦卡机器学习工作台
 
-> 原文:[https://machinelearning master . com/what-the-WEKA-machine-learning-work bench/](https://machinelearningmastery.com/what-is-the-weka-machine-learning-workbench/)
+> 原文：<https://machinelearningmastery.com/what-is-the-weka-machine-learning-workbench/>
 
 最后更新于 2020 年 12 月 10 日
 

@@ -1,6 +1,6 @@
 # R 中的非线性回归
 
-> 原文:[https://machinelearning master . com/非线性回归 in-r/](https://machinelearningmastery.com/non-linear-regression-in-r/)
+> 原文：<https://machinelearningmastery.com/non-linear-regression-in-r/>
 
 最后更新于 2020 年 8 月 15 日
 

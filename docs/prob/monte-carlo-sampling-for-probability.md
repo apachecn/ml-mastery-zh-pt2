@@ -1,6 +1,6 @@
 # 概率蒙特卡罗抽样的温和介绍
 
-> 原文:[https://machinelearning master . com/Monte-Carlo-概率抽样/](https://machinelearningmastery.com/monte-carlo-sampling-for-probability/)
+> 原文：<https://machinelearningmastery.com/monte-carlo-sampling-for-probability/>
 
 蒙特卡罗方法是随机抽样概率分布的一类技术。
 

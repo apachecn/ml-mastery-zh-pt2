@@ -1,6 +1,6 @@
 # 内斯特罗夫动量梯度下降从头开始
 
-> 原文:[https://machinelearningmaster . com/gradient-down-with-nesterov-动量-从头开始/](https://machinelearningmastery.com/gradient-descent-with-nesterov-momentum-from-scratch/)
+> 原文：<https://machinelearningmastery.com/gradient-descent-with-nesterov-momentum-from-scratch/>
 
 最后更新于 2021 年 10 月 12 日
 

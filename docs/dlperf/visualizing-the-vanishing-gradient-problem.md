@@ -1,6 +1,6 @@
 # 可视化消失梯度问题
 
-> 原文:[https://machinelearning master . com/可视化-消失-渐变-问题/](https://machinelearningmastery.com/visualizing-the-vanishing-gradient-problem/)
+> 原文：<https://machinelearningmastery.com/visualizing-the-vanishing-gradient-problem/>
 
 最后更新于 2021 年 11 月 26 日
 

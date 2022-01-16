@@ -1,6 +1,6 @@
 # 如何在 Keras 中从头实现半监督 GAN(SGAN)
 
-> 原文:[https://machinelearning master . com/半监督-生成-对抗-网络/](https://machinelearningmastery.com/semi-supervised-generative-adversarial-network/)
+> 原文：<https://machinelearningmastery.com/semi-supervised-generative-adversarial-network/>
 
 最后更新于 2020 年 9 月 1 日
 

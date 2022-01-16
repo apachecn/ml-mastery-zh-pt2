@@ -1,6 +1,6 @@
 # R 区超快速成班(针对开发者)
 
-> 原文:[https://machinelearning master . com/r-速成课程-面向开发人员/](https://machinelearningmastery.com/r-crash-course-for-developers/)
+> 原文：<https://machinelearningmastery.com/r-crash-course-for-developers/>
 
 最后更新于 2020 年 8 月 15 日
 

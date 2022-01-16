@@ -1,6 +1,6 @@
 # Python 差分进化全局优化
 
-> 原文:[https://machinelearning master . com/差分-进化-全局-优化-带-python/](https://machinelearningmastery.com/differential-evolution-global-optimization-with-python/)
+> 原文：<https://machinelearningmastery.com/differential-evolution-global-optimization-with-python/>
 
 最后更新于 2021 年 10 月 12 日
 

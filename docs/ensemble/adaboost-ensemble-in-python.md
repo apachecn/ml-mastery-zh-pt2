@@ -1,6 +1,6 @@
 # 如何用 Python 开发 AdaBoost 集成
 
-> 原文:[https://machinelearning master . com/AdaBoost-集成在 python 中/](https://machinelearningmastery.com/adaboost-ensemble-in-python/)
+> 原文：<https://machinelearningmastery.com/adaboost-ensemble-in-python/>
 
 最后更新于 2021 年 4 月 27 日
 

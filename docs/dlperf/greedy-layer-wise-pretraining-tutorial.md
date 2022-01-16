@@ -1,6 +1,6 @@
 # 如何在深度学习神经网络中使用贪婪分层预训练
 
-> 原文:[https://machinelearning master . com/greedy-layer-wise-pretaining-tutorial/](https://machinelearningmastery.com/greedy-layer-wise-pretraining-tutorial/)
+> 原文：<https://machinelearningmastery.com/greedy-layer-wise-pretraining-tutorial/>
 
 最后更新于 2020 年 8 月 25 日
 

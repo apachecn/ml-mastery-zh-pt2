@@ -1,6 +1,6 @@
 # 动量从零开始的梯度下降
 
-> 原文:[https://machinelearning master . com/从零开始带动量梯度下降/](https://machinelearningmastery.com/gradient-descent-with-momentum-from-scratch/)
+> 原文：<https://machinelearningmastery.com/gradient-descent-with-momentum-from-scratch/>
 
 最后更新于 2021 年 10 月 12 日
 

@@ -1,6 +1,6 @@
 # 机器学习中数据准备技术的框架
 
-> 原文:[https://machinelearning master . com/数据准备机器学习框架/](https://machinelearningmastery.com/framework-for-data-preparation-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/framework-for-data-preparation-for-machine-learning/>
 
 最后更新于 2020 年 7 月 17 日
 

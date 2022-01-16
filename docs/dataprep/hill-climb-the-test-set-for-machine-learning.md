@@ -1,6 +1,6 @@
 # 如何爬坡机器学习测试集
 
-> 原文:[https://machinelearning master . com/爬山-机器学习测试集/](https://machinelearningmastery.com/hill-climb-the-test-set-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/hill-climb-the-test-set-for-machine-learning/>
 
 最后更新于 2020 年 9 月 27 日
 

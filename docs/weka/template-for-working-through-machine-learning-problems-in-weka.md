@@ -1,6 +1,6 @@
 # Weka 中解决机器学习问题的模板
 
-> 原文:[https://machinelearning master . com/template-for-work-through-machinelearning-in-WEKA/](https://machinelearningmastery.com/template-for-working-through-machine-learning-problems-in-weka/)
+> 原文：<https://machinelearningmastery.com/template-for-working-through-machine-learning-problems-in-weka/>
 
 最后更新于 2019 年 8 月 22 日
 

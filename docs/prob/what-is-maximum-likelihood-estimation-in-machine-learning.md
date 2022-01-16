@@ -1,6 +1,6 @@
 # 机器学习最大似然估计的温和介绍
 
-> 原文:[https://machinelearning master . com/什么是机器学习中的最大似然估计/](https://machinelearningmastery.com/what-is-maximum-likelihood-estimation-in-machine-learning/)
+> 原文：<https://machinelearningmastery.com/what-is-maximum-likelihood-estimation-in-machine-learning/>
 
 最后更新于 2019 年 11 月 5 日
 

@@ -1,6 +1,6 @@
 # 如何用 Python 计算特征重要性
 
-> 原文:[https://machinelearning master . com/compute-feature-重要性-with-python/](https://machinelearningmastery.com/calculate-feature-importance-with-python/)
+> 原文：<https://machinelearningmastery.com/calculate-feature-importance-with-python/>
 
 最后更新于 2020 年 8 月 20 日
 

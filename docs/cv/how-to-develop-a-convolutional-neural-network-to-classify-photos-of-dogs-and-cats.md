@@ -1,6 +1,6 @@
 # 如何对猫狗照片进行分类(准确率 97%)
 
-> 原文:[https://machinelearning master . com/如何开发一个卷积神经网络来对狗和猫的照片进行分类/](https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-to-classify-photos-of-dogs-and-cats/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-to-classify-photos-of-dogs-and-cats/>
 
 最后更新于 2021 年 12 月 8 日
 

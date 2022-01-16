@@ -1,6 +1,6 @@
 # 如何在 Keras 创建深度学习模型的打包集成
 
-> 原文:[https://machinelearning master . com/how-create-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/>
 
 最后更新于 2020 年 8 月 25 日
 

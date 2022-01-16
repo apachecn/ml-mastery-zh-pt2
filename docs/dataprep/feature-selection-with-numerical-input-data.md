@@ -1,6 +1,6 @@
 # 如何用数值输入数据进行特征选择
 
-> 原文:[https://machinelearning master . com/feature-selection-with-numeric-input-data/](https://machinelearningmastery.com/feature-selection-with-numerical-input-data/)
+> 原文：<https://machinelearningmastery.com/feature-selection-with-numerical-input-data/>
 
 最后更新于 2020 年 8 月 18 日
 

@@ -1,6 +1,6 @@
 # 如何发展联合概率、边际概率和条件概率的直觉
 
-> 原文:[https://machinelearning master . com/如何计算联合边际和条件概率/](https://machinelearningmastery.com/how-to-calculate-joint-marginal-and-conditional-probability/)
+> 原文：<https://machinelearningmastery.com/how-to-calculate-joint-marginal-and-conditional-probability/>
 
 最后更新于 2019 年 12 月 6 日
 

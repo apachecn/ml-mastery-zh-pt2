@@ -1,6 +1,6 @@
 # 生成人脸时如何探索 GAN 潜在空间
 
-> 原文:[https://machinelearning master . com/如何使用生成对抗网络插值和执行人脸向量算术/](https://machinelearningmastery.com/how-to-interpolate-and-perform-vector-arithmetic-with-faces-using-a-generative-adversarial-network/)
+> 原文：<https://machinelearningmastery.com/how-to-interpolate-and-perform-vector-arithmetic-with-faces-using-a-generative-adversarial-network/>
 
 最后更新于 2020 年 9 月 1 日
 

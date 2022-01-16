@@ -1,6 +1,6 @@
 # 如何使用多项式特征变换进行机器学习
 
-> 原文:[https://machinelearning master . com/多项式-特征-变换-机器学习/](https://machinelearningmastery.com/polynomial-features-transforms-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/polynomial-features-transforms-for-machine-learning/>
 
 最后更新于 2020 年 8 月 28 日
 

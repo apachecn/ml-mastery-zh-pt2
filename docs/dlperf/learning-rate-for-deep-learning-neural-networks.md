@@ -1,6 +1,6 @@
 # 训练深度学习神经网络时如何配置学习速率
 
-> 原文:[https://machinelearning master . com/learning-rate for-deep-learning-neural-networks/](https://machinelearningmastery.com/learning-rate-for-deep-learning-neural-networks/)
+> 原文：<https://machinelearningmastery.com/learning-rate-for-deep-learning-neural-networks/>
 
 最后更新于 2019 年 8 月 6 日
 

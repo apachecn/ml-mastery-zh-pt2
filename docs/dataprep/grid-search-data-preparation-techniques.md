@@ -1,6 +1,6 @@
 # 如何网格搜索数据准备技术
 
-> 原文:[https://machinelearning master . com/grid-search-data-preparing-technologies/](https://machinelearningmastery.com/grid-search-data-preparation-techniques/)
+> 原文：<https://machinelearningmastery.com/grid-search-data-preparation-techniques/>
 
 最后更新于 2020 年 8 月 17 日
 

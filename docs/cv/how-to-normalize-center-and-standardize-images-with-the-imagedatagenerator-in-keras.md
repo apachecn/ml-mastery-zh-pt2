@@ -1,6 +1,6 @@
 # 如何对 Keras 中的图像像素进行归一化、居中和标准化
 
-> 原文:[https://machinelearningmaster . com/如何使用 keras 中的 imagedatagenerator 对图像进行中心标准化和标准化/](https://machinelearningmastery.com/how-to-normalize-center-and-standardize-images-with-the-imagedatagenerator-in-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-normalize-center-and-standardize-images-with-the-imagedatagenerator-in-keras/>
 
 最后更新于 2019 年 7 月 5 日
 

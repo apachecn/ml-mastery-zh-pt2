@@ -1,6 +1,6 @@
 # 开发一个信用好坏不平衡分类模型
 
-> 原文:[https://machinelearning master . com/不平衡-信用好坏分类/](https://machinelearningmastery.com/imbalanced-classification-of-good-and-bad-credit/)
+> 原文：<https://machinelearningmastery.com/imbalanced-classification-of-good-and-bad-credit/>
 
 最后更新于 2021 年 1 月 5 日
 

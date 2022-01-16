@@ -1,6 +1,6 @@
 # 如何用 Keras 从零开始开发辅助分类器 GAN(AC-GAN)
 
-> 原文:[https://machinelearning master . com/如何用 keras 从头开始开发辅助分类器-gan-AC-gan/](https://machinelearningmastery.com/how-to-develop-an-auxiliary-classifier-gan-ac-gan-from-scratch-with-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-an-auxiliary-classifier-gan-ac-gan-from-scratch-with-keras/>
 
 最后更新于 2021 年 1 月 18 日
 

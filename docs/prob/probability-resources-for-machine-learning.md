@@ -1,6 +1,6 @@
 # 机器学习中概率入门资源
 
-> 原文:[https://machinelearning master . com/概率-资源-机器学习/](https://machinelearningmastery.com/probability-resources-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/probability-resources-for-machine-learning/>
 
 最后更新于 2019 年 9 月 25 日
 

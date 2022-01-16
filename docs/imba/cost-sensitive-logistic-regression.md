@@ -1,6 +1,6 @@
 # 不平衡分类的成本敏感逻辑回归
 
-> 原文:[https://machinelearning master . com/成本敏感-逻辑回归/](https://machinelearningmastery.com/cost-sensitive-logistic-regression/)
+> 原文：<https://machinelearningmastery.com/cost-sensitive-logistic-regression/>
 
 最后更新于 2020 年 10 月 26 日
 

@@ -1,6 +1,6 @@
 # 如何通过工作实例培养对概率的直觉
 
-> 原文:[https://machinelearning master . com/如何通过工作示例开发概率直觉/](https://machinelearningmastery.com/how-to-develop-an-intuition-for-probability-with-worked-examples/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-an-intuition-for-probability-with-worked-examples/>
 
 最后更新于 2020 年 12 月 21 日
 

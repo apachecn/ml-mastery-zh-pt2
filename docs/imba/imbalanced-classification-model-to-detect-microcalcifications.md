@@ -1,6 +1,6 @@
 # 检测乳腺摄影微钙化的不平衡分类模型
 
-> 原文:[https://machinelearning master . com/不平衡-分类-待检测模型-微钙化/](https://machinelearningmastery.com/imbalanced-classification-model-to-detect-microcalcifications/)
+> 原文：<https://machinelearningmastery.com/imbalanced-classification-model-to-detect-microcalcifications/>
 
 最后更新于 2020 年 8 月 21 日
 

@@ -1,6 +1,6 @@
 # 成人收入数据集不平衡分类
 
-> 原文:[https://machinelearning master . com/不平衡-与成人收入分类-数据集/](https://machinelearningmastery.com/imbalanced-classification-with-the-adult-income-dataset/)
+> 原文：<https://machinelearningmastery.com/imbalanced-classification-with-the-adult-income-dataset/>
 
 最后更新于 2020 年 10 月 27 日
 

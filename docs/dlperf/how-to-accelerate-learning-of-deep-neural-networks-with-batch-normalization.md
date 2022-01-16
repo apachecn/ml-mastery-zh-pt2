@@ -1,6 +1,6 @@
 # 如何利用批量归一化加速深度神经网络的学习
 
-> 原文:[https://machinelearning master . com/如何通过批处理标准化来加速深度神经网络的学习/](https://machinelearningmastery.com/how-to-accelerate-learning-of-deep-neural-networks-with-batch-normalization/)
+> 原文：<https://machinelearningmastery.com/how-to-accelerate-learning-of-deep-neural-networks-with-batch-normalization/>
 
 最后更新于 2020 年 8 月 25 日
 

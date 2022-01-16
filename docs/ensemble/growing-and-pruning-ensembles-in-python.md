@@ -1,6 +1,6 @@
 # Python 中的生长和修剪集合
 
-> 原文:[https://machinelearning master . com/python 中的生长和修剪集成/](https://machinelearningmastery.com/growing-and-pruning-ensembles-in-python/)
+> 原文：<https://machinelearningmastery.com/growing-and-pruning-ensembles-in-python/>
 
 集成成员选择是指优化集成组成的算法。
 

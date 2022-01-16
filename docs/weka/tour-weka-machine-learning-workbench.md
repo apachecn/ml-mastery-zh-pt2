@@ -1,6 +1,6 @@
 # 韦卡机器学习工作台之旅
 
-> 原文:[https://machinelearning master . com/tour-WEKA-machinelearning-work bench/](https://machinelearningmastery.com/tour-weka-machine-learning-workbench/)
+> 原文：<https://machinelearningmastery.com/tour-weka-machine-learning-workbench/>
 
 最后更新于 2019 年 8 月 22 日
 

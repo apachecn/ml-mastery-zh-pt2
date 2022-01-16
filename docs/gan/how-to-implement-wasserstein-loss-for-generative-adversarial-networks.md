@@ -1,6 +1,6 @@
 # 如何实现生成性对抗网络的瓦瑟斯坦损失
 
-> 原文:[https://machinelearning master . com/如何实现-Wasserstein-lost-for-generated-对抗性网络/](https://machinelearningmastery.com/how-to-implement-wasserstein-loss-for-generative-adversarial-networks/)
+> 原文：<https://machinelearningmastery.com/how-to-implement-wasserstein-loss-for-generative-adversarial-networks/>
 
 瓦瑟斯坦生成对抗网络是生成对抗网络的扩展，既提高了训练模型时的稳定性，又提供了与生成图像质量相关的损失函数。
 

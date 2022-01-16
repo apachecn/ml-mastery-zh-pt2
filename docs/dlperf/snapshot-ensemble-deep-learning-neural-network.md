@@ -1,6 +1,6 @@
 # Python 中的快照集成深度学习神经网络
 
-> 原文:[https://machinelearning master . com/snapshot-integration-deep-learning-neural-network/](https://machinelearningmastery.com/snapshot-ensemble-deep-learning-neural-network/)
+> 原文：<https://machinelearningmastery.com/snapshot-ensemble-deep-learning-neural-network/>
 
 最后更新于 2020 年 8 月 28 日
 

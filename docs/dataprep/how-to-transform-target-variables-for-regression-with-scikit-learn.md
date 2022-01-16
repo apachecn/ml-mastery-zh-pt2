@@ -1,6 +1,6 @@
 # 如何在 Python 中转换回归的目标变量
 
-> 原文:[https://machinelearning master . com/如何用 scikit-learn 转换目标变量进行回归/](https://machinelearningmastery.com/how-to-transform-target-variables-for-regression-with-scikit-learn/)
+> 原文：<https://machinelearningmastery.com/how-to-transform-target-variables-for-regression-with-scikit-learn/>
 
 最后更新于 2020 年 10 月 1 日
 

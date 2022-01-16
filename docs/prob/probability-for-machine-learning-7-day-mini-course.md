@@ -1,6 +1,6 @@
 # 机器学习概率(7 天迷你课程)
 
-> 原文:[https://machinelearning master . com/概率换机器学习-7 天迷你课程/](https://machinelearningmastery.com/probability-for-machine-learning-7-day-mini-course/)
+> 原文：<https://machinelearningmastery.com/probability-for-machine-learning-7-day-mini-course/>
 
 最后更新于 2020 年 1 月 10 日
 

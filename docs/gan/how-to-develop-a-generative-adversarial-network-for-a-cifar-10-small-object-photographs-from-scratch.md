@@ -1,6 +1,6 @@
 # 如何开发 GAN 以生成 CIFAR10 小型彩色照片
 
-> 原文:[https://machinelearning master . com/how-development-a-generated-对抗性-network-for-a-cifar-10-小物件-照片-从零开始/](https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-a-cifar-10-small-object-photographs-from-scratch/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-a-cifar-10-small-object-photographs-from-scratch/>
 
 最后更新于 2020 年 9 月 1 日
 

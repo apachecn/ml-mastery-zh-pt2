@@ -1,6 +1,6 @@
 # 6 种 Python 降维算法
 
-> 原文:[https://machinelearning master . com/降维-算法-带-python/](https://machinelearningmastery.com/dimensionality-reduction-algorithms-with-python/)
+> 原文：<https://machinelearningmastery.com/dimensionality-reduction-algorithms-with-python/>
 
 最后更新于 2020 年 8 月 17 日
 

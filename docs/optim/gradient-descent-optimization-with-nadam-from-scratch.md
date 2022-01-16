@@ -1,6 +1,6 @@
 # 从零开始用那达慕进行梯度下降优化
 
-> 原文:[https://machinelearning master . com/gradient-down-optimization-with-nadam-从头开始/](https://machinelearningmastery.com/gradient-descent-optimization-with-nadam-from-scratch/)
+> 原文：<https://machinelearningmastery.com/gradient-descent-optimization-with-nadam-from-scratch/>
 
 最后更新于 2021 年 10 月 12 日
 

@@ -1,6 +1,6 @@
 # 特色工程与选择(书评)
 
-> 原文:[https://machinelearning master . com/feature-engineering-and-selection-book-review/](https://machinelearningmastery.com/feature-engineering-and-selection-book-review/)
+> 原文：<https://machinelearningmastery.com/feature-engineering-and-selection-book-review/>
 
 最后更新于 2020 年 6 月 30 日
 

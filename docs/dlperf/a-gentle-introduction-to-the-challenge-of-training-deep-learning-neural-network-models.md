@@ -1,6 +1,6 @@
 # 温和介绍训练深度学习神经网络模型的挑战
 
-> 原文:[https://machinelearning master . com/a-温柔-训练挑战入门-深度学习-神经网络-模型/](https://machinelearningmastery.com/a-gentle-introduction-to-the-challenge-of-training-deep-learning-neural-network-models/)
+> 原文：<https://machinelearningmastery.com/a-gentle-introduction-to-the-challenge-of-training-deep-learning-neural-network-models/>
 
 最后更新于 2021 年 1 月 18 日
 

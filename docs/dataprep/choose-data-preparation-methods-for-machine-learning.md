@@ -1,6 +1,6 @@
 # 如何选择机器学习的数据准备方式
 
-> 原文:[https://machinelearning master . com/choose-data-prepare-methods-for-machine-learning/](https://machinelearningmastery.com/choose-data-preparation-methods-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/choose-data-preparation-methods-for-machine-learning/>
 
 最后更新于 2020 年 7 月 15 日
 

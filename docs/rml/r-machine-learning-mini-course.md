@@ -1,6 +1,6 @@
 # R 机器学习迷你课程
 
-> 原文:[https://machinelearning master . com/r-machinelearning-mini-course/](https://machinelearningmastery.com/r-machine-learning-mini-course/)
+> 原文：<https://machinelearningmastery.com/r-machine-learning-mini-course/>
 
 最后更新于 2019 年 8 月 22 日
 

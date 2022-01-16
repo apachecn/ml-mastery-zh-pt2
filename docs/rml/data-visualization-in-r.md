@@ -1,6 +1,6 @@
 # 使用可视化更好地理解你在 R 中的数据(今天你可以使用的 10 个食谱)
 
-> 原文:[https://machinelearningmastery.com/data-visualization-in-r/](https://machinelearningmastery.com/data-visualization-in-r/)
+> 原文：<https://machinelearningmastery.com/data-visualization-in-r/>
 
 最后更新于 2019 年 8 月 22 日
 

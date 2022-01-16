@@ -1,6 +1,6 @@
 # 8 本计算机视觉入门书籍
 
-> 原文:[https://machinelearningmastery.com/computer-vision-books/](https://machinelearningmastery.com/computer-vision-books/)
+> 原文：<https://machinelearningmastery.com/computer-vision-books/>
 
 最后更新于 2020 年 6 月 12 日
 

@@ -1,6 +1,6 @@
 # 进行数据准备时如何避免数据泄露
 
-> 原文:[https://machinelearning master . com/数据-准备-无数据-泄露/](https://machinelearningmastery.com/data-preparation-without-data-leakage/)
+> 原文：<https://machinelearningmastery.com/data-preparation-without-data-leakage/>
 
 最后更新于 2020 年 8 月 17 日
 

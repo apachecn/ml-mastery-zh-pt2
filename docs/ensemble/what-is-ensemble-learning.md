@@ -1,6 +1,6 @@
 # 合奏学习入门
 
-> 原文:[https://machinelearning master . com/什么是集成学习/](https://machinelearningmastery.com/what-is-ensemble-learning/)
+> 原文：<https://machinelearningmastery.com/what-is-ensemble-learning/>
 
 最后更新于 2021 年 4 月 27 日
 

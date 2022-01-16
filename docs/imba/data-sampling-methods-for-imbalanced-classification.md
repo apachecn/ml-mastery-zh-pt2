@@ -1,6 +1,6 @@
 # 不平衡分类数据采样方法之旅
 
-> 原文:[https://machinelearning master . com/data-sampling-methods-for-不平衡-分类/](https://machinelearningmastery.com/data-sampling-methods-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/data-sampling-methods-for-imbalanced-classification/>
 
 机器学习技术在具有不平衡类分布的分类数据集上经常失败或给出令人误解的乐观性能。
 

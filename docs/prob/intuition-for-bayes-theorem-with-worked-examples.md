@@ -1,6 +1,6 @@
 # 用工作实例发展贝叶斯定理的直觉
 
-> 原文:[https://machinelearning master . com/直觉换贝叶斯定理-已用实例/](https://machinelearningmastery.com/intuition-for-bayes-theorem-with-worked-examples/)
+> 原文：<https://machinelearningmastery.com/intuition-for-bayes-theorem-with-worked-examples/>
 
 最后更新于 2020 年 8 月 19 日
 

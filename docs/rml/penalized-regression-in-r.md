@@ -1,6 +1,6 @@
 # R 中的惩罚回归
 
-> 原文:[https://machinelearning master . com/computed-revolution-in-r/](https://machinelearningmastery.com/penalized-regression-in-r/)
+> 原文：<https://machinelearningmastery.com/penalized-regression-in-r/>
 
 最后更新于 2020 年 8 月 15 日
 

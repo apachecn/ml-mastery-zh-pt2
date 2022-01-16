@@ -1,6 +1,6 @@
 # 深度神经网络批量归一化简介
 
-> 原文:[https://machinelearning master . com/batch-normalization-for-training-of-deep-neural-networks/](https://machinelearningmastery.com/batch-normalization-for-training-of-deep-neural-networks/)
+> 原文：<https://machinelearningmastery.com/batch-normalization-for-training-of-deep-neural-networks/>
 
 最后更新于 2019 年 12 月 4 日
 

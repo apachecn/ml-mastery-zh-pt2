@@ -1,6 +1,6 @@
 # 6 本集成学习书籍
 
-> 原文:[https://machinelearningmastery.com/ensemble-learning-books/](https://machinelearningmastery.com/ensemble-learning-books/)
+> 原文：<https://machinelearningmastery.com/ensemble-learning-books/>
 
 最后更新于 2021 年 4 月 27 日
 

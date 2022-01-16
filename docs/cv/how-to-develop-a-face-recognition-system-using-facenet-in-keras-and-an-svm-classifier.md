@@ -1,6 +1,6 @@
 # 如何在 Keras 开发一个使用 FaceNet 的人脸识别系统
 
-> 原文:[https://machinelearning master . com/如何开发人脸识别系统-使用-facenet-in-keras-and-an-SVM-分类器/](https://machinelearningmastery.com/how-to-develop-a-face-recognition-system-using-facenet-in-keras-and-an-svm-classifier/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-a-face-recognition-system-using-facenet-in-keras-and-an-svm-classifier/>
 
 最后更新于 2020 年 8 月 24 日
 

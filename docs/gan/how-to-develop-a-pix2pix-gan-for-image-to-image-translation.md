@@ -1,6 +1,6 @@
 # 如何开发用于图像到图像转换的 Pix2Pix GAN
 
-> 原文:[https://machinelearning master . com/如何开发-a-pix2pix-gan-for-image-to-image-translation/](https://machinelearningmastery.com/how-to-develop-a-pix2pix-gan-for-image-to-image-translation/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-a-pix2pix-gan-for-image-to-image-translation/>
 
 最后更新于 2021 年 1 月 18 日
 

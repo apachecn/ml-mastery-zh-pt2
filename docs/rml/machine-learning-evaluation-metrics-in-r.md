@@ -1,6 +1,6 @@
 # R 中的机器学习评价指标
 
-> 原文:[https://machinelearning master . com/machine-learning-evaluation-metrics-in-r/](https://machinelearningmastery.com/machine-learning-evaluation-metrics-in-r/)
+> 原文：<https://machinelearningmastery.com/machine-learning-evaluation-metrics-in-r/>
 
 最后更新于 2019 年 8 月 22 日
 

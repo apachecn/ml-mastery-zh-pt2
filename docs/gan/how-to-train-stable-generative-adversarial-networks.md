@@ -1,6 +1,6 @@
 # 训练稳定生成性对抗网络的技巧
 
-> 原文:[https://machinelearning master . com/如何训练-稳定-生成-对抗-网络/](https://machinelearningmastery.com/how-to-train-stable-generative-adversarial-networks/)
+> 原文：<https://machinelearningmastery.com/how-to-train-stable-generative-adversarial-networks/>
 
 最后更新于 2019 年 9 月 12 日
 

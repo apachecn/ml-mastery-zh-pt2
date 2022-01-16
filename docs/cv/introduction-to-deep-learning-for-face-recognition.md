@@ -1,6 +1,6 @@
 # 人脸识别深度学习入门
 
-> 原文:[https://machinelearning master . com/人脸识别深度学习入门/](https://machinelearningmastery.com/introduction-to-deep-learning-for-face-recognition/)
+> 原文：<https://machinelearningmastery.com/introduction-to-deep-learning-for-face-recognition/>
 
 最后更新于 2019 年 7 月 5 日
 

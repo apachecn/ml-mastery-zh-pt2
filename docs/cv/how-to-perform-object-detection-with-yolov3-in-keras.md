@@ -1,6 +1,6 @@
 # 如何在 Keras 中使用 YOLOv3 进行物体检测
 
-> 原文:[https://machinelearningmaster . com/如何使用 yolo v3 in-keras 执行对象检测/](https://machinelearningmastery.com/how-to-perform-object-detection-with-yolov3-in-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-perform-object-detection-with-yolov3-in-keras/>
 
 最后更新于 2019 年 10 月 8 日
 

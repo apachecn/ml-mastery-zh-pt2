@@ -1,6 +1,6 @@
 # 如何计算机器学习的 KL 散度
 
-> 原文:[https://machinelearning master . com/概率分布之间的差异/](https://machinelearningmastery.com/divergence-between-probability-distributions/)
+> 原文：<https://machinelearningmastery.com/divergence-between-probability-distributions/>
 
 最后更新于 2019 年 11 月 1 日
 

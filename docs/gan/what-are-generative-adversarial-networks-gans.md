@@ -1,6 +1,6 @@
 # 温和介绍生成性对抗网络(GANs)
 
-> 原文:[https://machinelearning master . com/什么是生成-对抗-网络-gans/](https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/)
+> 原文：<https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/>
 
 最后更新于 2019 年 7 月 19 日
 

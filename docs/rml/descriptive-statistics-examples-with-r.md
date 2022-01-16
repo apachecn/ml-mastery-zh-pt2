@@ -1,6 +1,6 @@
 # 使用描述性统计更好地理解你的 R 数据
 
-> 原文:[https://machinelearning master . com/descriptive-statistics-examples-with-r/](https://machinelearningmastery.com/descriptive-statistics-examples-with-r/)
+> 原文：<https://machinelearningmastery.com/descriptive-statistics-examples-with-r/>
 
 最后更新于 2019 年 8 月 22 日
 

@@ -1,6 +1,6 @@
 # 欺诈性信用卡交易数据集的不平衡分类
 
-> 原文:[https://machinelearningmaster . com/不平衡-分类-欺诈-信用卡-交易-数据集/](https://machinelearningmastery.com/imbalanced-classification-with-the-fraudulent-credit-card-transactions-dataset/)
+> 原文：<https://machinelearningmastery.com/imbalanced-classification-with-the-fraudulent-credit-card-transactions-dataset/>
 
 最后更新于 2020 年 8 月 21 日
 

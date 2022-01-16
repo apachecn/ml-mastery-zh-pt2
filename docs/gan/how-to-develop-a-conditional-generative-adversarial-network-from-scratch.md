@@ -1,6 +1,6 @@
 # 如何从头开发一个条件性 GAN(cGAN)
 
-> 原文:[https://machinelearning master . com/如何从头开始开发一个条件生成对抗网络/](https://machinelearningmastery.com/how-to-develop-a-conditional-generative-adversarial-network-from-scratch/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-a-conditional-generative-adversarial-network-from-scratch/>
 
 最后更新于 2020 年 9 月 1 日
 

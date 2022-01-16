@@ -1,6 +1,6 @@
 # 如何将机器学习数据加载到 R 中
 
-> 原文:[https://machinelearning master . com/如何将您的机器学习数据加载到 r 中/](https://machinelearningmastery.com/how-to-load-your-machine-learning-data-into-r/)
+> 原文：<https://machinelearningmastery.com/how-to-load-your-machine-learning-data-into-r/>
 
 最后更新于 2019 年 8 月 22 日
 

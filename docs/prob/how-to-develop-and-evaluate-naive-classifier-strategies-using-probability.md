@@ -1,6 +1,6 @@
 # 如何利用概率开发和评估朴素分类器策略
 
-> 原文:[https://machinelearning master . com/如何开发和评估幼稚分类器-策略-使用概率/](https://machinelearningmastery.com/how-to-develop-and-evaluate-naive-classifier-strategies-using-probability/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-and-evaluate-naive-classifier-strategies-using-probability/>
 
 最后更新于 2019 年 9 月 25 日
 

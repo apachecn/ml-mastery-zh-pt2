@@ -1,6 +1,6 @@
 # 如何用 Keras 训练目标检测模型
 
-> 原文:[https://machinelearning master . com/如何使用 keras 训练物体检测模型/](https://machinelearningmastery.com/how-to-train-an-object-detection-model-with-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-train-an-object-detection-model-with-keras/>
 
 最后更新于 2020 年 9 月 2 日
 

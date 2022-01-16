@@ -1,6 +1,6 @@
 # 机器学习没有免费午餐定理
 
-> 原文:[https://machinelearning master . com/无免费午餐-机器学习定理/](https://machinelearningmastery.com/no-free-lunch-theorem-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/no-free-lunch-theorem-for-machine-learning/>
 
 最后更新于 2021 年 10 月 12 日
 

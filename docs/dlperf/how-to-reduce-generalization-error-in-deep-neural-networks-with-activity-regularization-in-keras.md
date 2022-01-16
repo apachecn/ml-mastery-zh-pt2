@@ -1,6 +1,6 @@
 # 如何利用 Keras 中的活动正则化减少泛化误差
 
-> 原文:[https://machinelearning master . com/如何减少深度神经网络中的泛化错误-活动-正则化-in-keras/](https://machinelearningmastery.com/how-to-reduce-generalization-error-in-deep-neural-networks-with-activity-regularization-in-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-reduce-generalization-error-in-deep-neural-networks-with-activity-regularization-in-keras/>
 
 最后更新于 2020 年 8 月 25 日
 

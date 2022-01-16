@@ -1,6 +1,6 @@
 # 如何利用权重衰减减少 Keras 中神经网络的过拟合
 
-> 原文:[https://machinelearning master . com/如何通过权重正则化减少深度学习中的过度匹配/](https://machinelearningmastery.com/how-to-reduce-overfitting-in-deep-learning-with-weight-regularization/)
+> 原文：<https://machinelearningmastery.com/how-to-reduce-overfitting-in-deep-learning-with-weight-regularization/>
 
 最后更新于 2020 年 8 月 25 日
 

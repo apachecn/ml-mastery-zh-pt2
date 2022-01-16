@@ -1,6 +1,6 @@
 # R 中的线性分类
 
-> 原文:[https://machinelearning master . com/linear-classing-in-r/](https://machinelearningmastery.com/linear-classification-in-r/)
+> 原文：<https://machinelearningmastery.com/linear-classification-in-r/>
 
 最后更新于 2019 年 8 月 22 日
 

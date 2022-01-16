@@ -1,6 +1,6 @@
 # 什么是概率？
 
-> 原文:[https://machinelearningmastery.com/what-is-probability/](https://machinelearningmastery.com/what-is-probability/)
+> 原文：<https://machinelearningmastery.com/what-is-probability/>
 
 最后更新于 2019 年 11 月 29 日
 

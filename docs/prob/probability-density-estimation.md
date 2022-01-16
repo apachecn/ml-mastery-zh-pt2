@@ -1,6 +1,6 @@
 # 概率密度估计的简单介绍
 
-> 原文:[https://machinelearning master . com/概率-密度-估计/](https://machinelearningmastery.com/probability-density-estimation/)
+> 原文：<https://machinelearningmastery.com/probability-density-estimation/>
 
 最后更新于 2020 年 7 月 24 日
 

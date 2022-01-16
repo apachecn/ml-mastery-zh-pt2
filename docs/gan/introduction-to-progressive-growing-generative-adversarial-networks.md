@@ -1,6 +1,6 @@
 # 渐进生长 GAN 的温和介绍
 
-> 原文:[https://machinelearning master . com/入门-渐进-成长-生成-对抗-网络/](https://machinelearningmastery.com/introduction-to-progressive-growing-generative-adversarial-networks/)
+> 原文：<https://machinelearningmastery.com/introduction-to-progressive-growing-generative-adversarial-networks/>
 
 渐进生长氮化镓是氮化镓训练过程的扩展，允许稳定训练发电机模型，可以输出大的高质量图像。
 

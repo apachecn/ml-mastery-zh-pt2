@@ -1,6 +1,6 @@
 # 生成对抗网络的 18 个令人印象深刻的应用
 
-> 原文:[https://machinelearning master . com/令人印象深刻的生成对抗网络应用/](https://machinelearningmastery.com/impressive-applications-of-generative-adversarial-networks/)
+> 原文：<https://machinelearningmastery.com/impressive-applications-of-generative-adversarial-networks/>
 
 最后更新于 2019 年 7 月 12 日
 

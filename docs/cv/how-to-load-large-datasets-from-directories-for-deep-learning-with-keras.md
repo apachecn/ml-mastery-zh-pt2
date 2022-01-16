@@ -1,6 +1,6 @@
 # 如何从目录加载大数据集用于 Keras 的深度学习
 
-> 原文:[https://machinelearning master . com/如何从目录中加载大数据集以便通过 keras 进行深度学习/](https://machinelearningmastery.com/how-to-load-large-datasets-from-directories-for-deep-learning-with-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-load-large-datasets-from-directories-for-deep-learning-with-keras/>
 
 最后更新于 2019 年 7 月 5 日
 

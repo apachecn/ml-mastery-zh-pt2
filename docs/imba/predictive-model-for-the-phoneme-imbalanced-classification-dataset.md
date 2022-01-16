@@ -1,6 +1,6 @@
 # 音素不平衡分类数据集的预测模型
 
-> 原文:[https://machinelearning master . com/预测-音素模型-不平衡-分类-数据集/](https://machinelearningmastery.com/predictive-model-for-the-phoneme-imbalanced-classification-dataset/)
+> 原文：<https://machinelearningmastery.com/predictive-model-for-the-phoneme-imbalanced-classification-dataset/>
 
 最后更新于 2021 年 1 月 5 日
 

@@ -1,6 +1,6 @@
 # 如何保存你的机器学习模型并在 Weka 中进行预测
 
-> 原文:[https://machinelearning master . com/save-machine-learning-model-make-predictions-WEKA/](https://machinelearningmastery.com/save-machine-learning-model-make-predictions-weka/)
+> 原文：<https://machinelearningmastery.com/save-machine-learning-model-make-predictions-weka/>
 
 最后更新于 2020 年 12 月 10 日
 

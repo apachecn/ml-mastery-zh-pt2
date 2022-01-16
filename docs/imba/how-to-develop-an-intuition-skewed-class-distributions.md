@@ -1,6 +1,6 @@
 # 为严重扭曲的类分布开发直觉
 
-> 原文:[https://machinelearning master . com/如何开发直觉偏差类分布/](https://machinelearningmastery.com/how-to-develop-an-intuition-skewed-class-distributions/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-an-intuition-skewed-class-distributions/>
 
 最后更新于 2020 年 1 月 14 日
 

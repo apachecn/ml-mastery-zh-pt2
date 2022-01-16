@@ -1,6 +1,6 @@
 # 设计并运行你在 Weka 的第一个实验
 
-> 原文:[https://machinelearningmaster . com/设计并运行您的第一个 weka 实验/](https://machinelearningmastery.com/design-and-run-your-first-experiment-in-weka/)
+> 原文：<https://machinelearningmastery.com/design-and-run-your-first-experiment-in-weka/>
 
 最后更新于 2020 年 12 月 10 日
 

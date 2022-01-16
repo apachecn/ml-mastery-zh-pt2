@@ -1,6 +1,6 @@
 # 如何实施评估 GANs 的弗雷切特起始距离
 
-> 原文:[https://machinelearning master . com/如何实现-frechet-initiation-distance-FID-从头开始/](https://machinelearningmastery.com/how-to-implement-the-frechet-inception-distance-fid-from-scratch/)
+> 原文：<https://machinelearningmastery.com/how-to-implement-the-frechet-inception-distance-fid-from-scratch/>
 
 最后更新于 2019 年 10 月 11 日
 

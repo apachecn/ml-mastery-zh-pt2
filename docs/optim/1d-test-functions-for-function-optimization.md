@@ -1,6 +1,6 @@
 # 用于功能优化的一维(1D)测试函数
 
-> 原文:[https://machinelearning master . com/1d-test-functions-for-function-optimization/](https://machinelearningmastery.com/1d-test-functions-for-function-optimization/)
+> 原文：<https://machinelearningmastery.com/1d-test-functions-for-function-optimization/>
 
 最后更新于 2021 年 9 月 25 日
 

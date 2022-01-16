@@ -1,6 +1,6 @@
 # R 中的机器学习数据集(你现在可以使用的 10 个数据集)
 
-> 原文:[https://machinelearning master . com/machine-learning-datasets-in-r/](https://machinelearningmastery.com/machine-learning-datasets-in-r/)
+> 原文：<https://machinelearningmastery.com/machine-learning-datasets-in-r/>
 
 最后更新于 2020 年 8 月 15 日
 

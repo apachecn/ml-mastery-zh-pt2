@@ -1,6 +1,6 @@
 # 深度学习迁移学习入门
 
-> 原文:[https://machinelearning master . com/transfer-learning-for-deep-learning/](https://machinelearningmastery.com/transfer-learning-for-deep-learning/)
+> 原文：<https://machinelearningmastery.com/transfer-learning-for-deep-learning/>
 
 最后更新于 2019 年 9 月 16 日
 

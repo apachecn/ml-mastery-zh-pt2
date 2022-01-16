@@ -1,6 +1,6 @@
 # Python 中的极限梯度增强(XGBoost)集成
 
-> 原文:[https://machinelearning master . com/extreme-gradient-boosting-integration-in-python/](https://machinelearningmastery.com/extreme-gradient-boosting-ensemble-in-python/)
+> 原文：<https://machinelearningmastery.com/extreme-gradient-boosting-ensemble-in-python/>
 
 最后更新于 2021 年 4 月 27 日
 

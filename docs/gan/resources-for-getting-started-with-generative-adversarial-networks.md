@@ -1,6 +1,6 @@
 # 开始使用 GANs 的最佳资源
 
-> 原文:[https://machinelearning master . com/resources-for-入门-生成-对抗-网络/](https://machinelearningmastery.com/resources-for-getting-started-with-generative-adversarial-networks/)
+> 原文：<https://machinelearningmastery.com/resources-for-getting-started-with-generative-adversarial-networks/>
 
 最后更新于 2019 年 7 月 12 日
 

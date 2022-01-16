@@ -1,6 +1,6 @@
 # 如何为 Scikit 创建自定义数据转换-学习
 
-> 原文:[https://machinelearning master . com/create-custom-data-transforms-for-sci kit-learn/](https://machinelearningmastery.com/create-custom-data-transforms-for-scikit-learn/)
+> 原文：<https://machinelearningmastery.com/create-custom-data-transforms-for-scikit-learn/>
 
 最后更新于 2020 年 7 月 19 日
 

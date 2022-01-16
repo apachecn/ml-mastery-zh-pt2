@@ -1,6 +1,6 @@
 # Pix2Pix 生成性对抗网络的温和介绍
 
-> 原文:[https://machinelearning master . com/a-温柔-简介-pix2pix-生成-对抗-网络/](https://machinelearningmastery.com/a-gentle-introduction-to-pix2pix-generative-adversarial-network/)
+> 原文：<https://machinelearningmastery.com/a-gentle-introduction-to-pix2pix-generative-adversarial-network/>
 
 最后更新于 2019 年 12 月 6 日
 

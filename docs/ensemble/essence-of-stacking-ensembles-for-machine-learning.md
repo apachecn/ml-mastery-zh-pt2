@@ -1,6 +1,6 @@
 # 机器学习堆叠集成的本质
 
-> 原文:[https://machinelearning master . com/堆叠本质-机器学习集成/](https://machinelearningmastery.com/essence-of-stacking-ensembles-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/essence-of-stacking-ensembles-for-machine-learning/>
 
 最后更新于 2021 年 4 月 27 日
 

@@ -1,6 +1,6 @@
 # 抽查 R 中的机器学习算法(下一个项目要尝试的算法)
 
-> 原文:[https://machinelearning master . com/抽查-机器学习-算法-in-r/](https://machinelearningmastery.com/spot-check-machine-learning-algorithms-in-r/)
+> 原文：<https://machinelearningmastery.com/spot-check-machine-learning-algorithms-in-r/>
 
 最后更新于 2019 年 8 月 22 日
 

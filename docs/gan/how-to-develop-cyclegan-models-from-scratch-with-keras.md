@@ -1,6 +1,6 @@
 # 如何用 Keras 从头开始实现 CycleGAN 模型
 
-> 原文:[https://machinelearning master . com/如何用 keras 从头开始开发 cyclegan 模型/](https://machinelearningmastery.com/how-to-develop-cyclegan-models-from-scratch-with-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-cyclegan-models-from-scratch-with-keras/>
 
 循环生成对抗网络，简称 CycleGAN，是一个用于将图像从一个域转换到另一个域的生成器模型。
 

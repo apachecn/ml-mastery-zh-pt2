@@ -1,6 +1,6 @@
 # AIC、BIC 和 MDL 的概率模型选择
 
-> 原文:[https://machinelearning master . com/概率-模型-选择-度量/](https://machinelearningmastery.com/probabilistic-model-selection-measures/)
+> 原文：<https://machinelearningmastery.com/probabilistic-model-selection-measures/>
 
 最后更新于 2020 年 8 月 28 日
 

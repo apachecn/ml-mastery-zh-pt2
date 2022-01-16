@@ -1,6 +1,6 @@
 # 如何为机器学习缩放有异常值的数据
 
-> 原文:[https://machinelearning master . com/robust-scaler-transforms-for-machine-learning/](https://machinelearningmastery.com/robust-scaler-transforms-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/robust-scaler-transforms-for-machine-learning/>
 
 最后更新于 2020 年 8 月 28 日
 

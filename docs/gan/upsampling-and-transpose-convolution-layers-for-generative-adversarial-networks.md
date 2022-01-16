@@ -1,6 +1,6 @@
 # 如何在 Keras 中使用 UpSampling2D 和 conv2d 转置图层
 
-> 原文:[https://machinelearningmaster . com/上采样转置卷积生成层对抗网络/](https://machinelearningmastery.com/upsampling-and-transpose-convolution-layers-for-generative-adversarial-networks/)
+> 原文：<https://machinelearningmastery.com/upsampling-and-transpose-convolution-layers-for-generative-adversarial-networks/>
 
 最后更新于 2019 年 7 月 12 日
 

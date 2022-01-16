@@ -1,6 +1,6 @@
 # Python 中深度学习神经网络的堆叠集成
 
-> 原文:[https://machinelearning master . com/stacking-integration-for-deep-learning-neural-networks/](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)
+> 原文：<https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/>
 
 最后更新于 2020 年 8 月 28 日
 

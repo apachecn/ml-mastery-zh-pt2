@@ -1,6 +1,6 @@
 # 贝叶斯信念网络的温和介绍
 
-> 原文:[https://machinelearning master . com/贝叶斯信念网络入门/](https://machinelearningmastery.com/introduction-to-bayesian-belief-networks/)
+> 原文：<https://machinelearningmastery.com/introduction-to-bayesian-belief-networks/>
 
 概率模型可以定义变量之间的关系，并用于计算概率。
 

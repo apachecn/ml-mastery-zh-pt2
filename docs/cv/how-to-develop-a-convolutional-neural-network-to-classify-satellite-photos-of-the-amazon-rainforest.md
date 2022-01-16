@@ -1,6 +1,6 @@
 # 亚马逊雨林卫星照片多标签分类
 
-> 原文:[https://machinelearning master . com/如何开发一个卷积神经网络来分类亚马逊雨林的卫星照片/](https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-to-classify-satellite-photos-of-the-amazon-rainforest/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-to-classify-satellite-photos-of-the-amazon-rainforest/>
 
 最后更新于 2020 年 8 月 24 日
 

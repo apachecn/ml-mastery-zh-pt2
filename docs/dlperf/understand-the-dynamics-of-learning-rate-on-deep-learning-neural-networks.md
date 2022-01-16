@@ -1,6 +1,6 @@
 # 了解学习率对神经网络性能的影响
 
-> 原文:[https://machinelearning master . com/了解深度学习神经网络的学习速率动态/](https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/)
+> 原文：<https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/>
 
 最后更新于 2020 年 9 月 12 日
 

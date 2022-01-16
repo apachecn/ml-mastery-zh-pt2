@@ -1,6 +1,6 @@
 # 如何实施评估 GANs 的初始分数
 
-> 原文:[https://machinelearning master . com/如何从零开始实施评估生成图像评分/](https://machinelearningmastery.com/how-to-implement-the-inception-score-from-scratch-for-evaluating-generated-images/)
+> 原文：<https://machinelearningmastery.com/how-to-implement-the-inception-score-from-scratch-for-evaluating-generated-images/>
 
 最后更新于 2019 年 10 月 11 日
 

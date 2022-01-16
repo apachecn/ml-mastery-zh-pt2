@@ -1,6 +1,6 @@
 # 如何从头开始开发瓦瑟斯坦生成对抗网络
 
-> 原文:[https://machinelearning master . com/how-code-a-Wasserstein-generated-对抗性-network-wgan-从头开始/](https://machinelearningmastery.com/how-to-code-a-wasserstein-generative-adversarial-network-wgan-from-scratch/)
+> 原文：<https://machinelearningmastery.com/how-to-code-a-wasserstein-generative-adversarial-network-wgan-from-scratch/>
 
 最后更新于 2021 年 1 月 18 日
 

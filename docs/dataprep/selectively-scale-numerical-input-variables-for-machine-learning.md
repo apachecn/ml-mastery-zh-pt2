@@ -1,6 +1,6 @@
 # 如何有选择地缩放机器学习的数值输入变量
 
-> 原文:[https://machinelearning master . com/选择性缩放-数字输入-机器学习变量/](https://machinelearningmastery.com/selectively-scale-numerical-input-variables-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/selectively-scale-numerical-input-variables-for-machine-learning/>
 
 最后更新于 2020 年 8 月 17 日
 

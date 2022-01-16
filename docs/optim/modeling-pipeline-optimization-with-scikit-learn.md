@@ -1,6 +1,6 @@
 # 使用 scikit 建模管道优化-学习
 
-> 原文:[https://machinelearning master . com/modeling-pipeline-optimization-with-scikit-learn/](https://machinelearningmastery.com/modeling-pipeline-optimization-with-scikit-learn/)
+> 原文：<https://machinelearningmastery.com/modeling-pipeline-optimization-with-scikit-learn/>
 
 最后更新于 2021 年 10 月 22 日
 

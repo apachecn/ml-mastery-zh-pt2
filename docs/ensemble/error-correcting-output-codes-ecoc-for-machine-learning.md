@@ -1,6 +1,6 @@
 # 机器学习的纠错输出码(ECOC)
 
-> 原文:[https://machinelearning master . com/纠错-输出-代码-ecoc-for-machine-learning/](https://machinelearningmastery.com/error-correcting-output-codes-ecoc-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/error-correcting-output-codes-ecoc-for-machine-learning/>
 
 最后更新于 2021 年 4 月 27 日
 

@@ -1,6 +1,6 @@
 # 使用权重正则化减少深度学习模型的过拟合
 
-> 原文:[https://machinelearning master . com/weight-regulation-to-reduce-overfitting-of-deep-learning-models/](https://machinelearningmastery.com/weight-regularization-to-reduce-overfitting-of-deep-learning-models/)
+> 原文：<https://machinelearningmastery.com/weight-regularization-to-reduce-overfitting-of-deep-learning-models/>
 
 最后更新于 2019 年 8 月 6 日
 

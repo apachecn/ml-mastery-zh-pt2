@@ -1,6 +1,6 @@
 # 柔和介绍 CycleGAN 进行图像翻译
 
-> 原文:[https://machinelearningmastery.com/what-is-cyclegan/](https://machinelearningmastery.com/what-is-cyclegan/)
+> 原文：<https://machinelearningmastery.com/what-is-cyclegan/>
 
 最后更新于 2019 年 8 月 17 日
 

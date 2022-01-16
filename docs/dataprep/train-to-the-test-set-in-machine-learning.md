@@ -1,6 +1,6 @@
 # 如何训练到机器学习中的测试集
 
-> 原文:[https://machinelearning master . com/机器学习中的训练到测试集/](https://machinelearningmastery.com/train-to-the-test-set-in-machine-learning/)
+> 原文：<https://machinelearningmastery.com/train-to-the-test-set-in-machine-learning/>
 
 对测试集的训练是一种过度拟合，即准备一个模型，以增加泛化误差为代价，有意在给定的测试集上获得良好的性能。
 

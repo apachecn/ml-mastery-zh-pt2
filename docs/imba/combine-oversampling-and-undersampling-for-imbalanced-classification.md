@@ -1,6 +1,6 @@
 # 如何结合过采样和欠采样进行不平衡分类
 
-> 原文:[https://machinelearningmaster . com/combine-过采样和欠采样-不平衡分类/](https://machinelearningmastery.com/combine-oversampling-and-undersampling-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/combine-oversampling-and-undersampling-for-imbalanced-classification/>
 
 最后更新于 2021 年 5 月 11 日
 

@@ -1,6 +1,6 @@
 # 期望最大化算法的温和介绍
 
-> 原文:[https://machinelearning master . com/期望-最大化-em-algorithm/](https://machinelearningmastery.com/expectation-maximization-em-algorithm/)
+> 原文：<https://machinelearningmastery.com/expectation-maximization-em-algorithm/>
 
 最后更新于 2020 年 8 月 28 日
 

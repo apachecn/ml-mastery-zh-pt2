@@ -1,6 +1,6 @@
 # 如何对 GAN 训练算法和损失函数进行编码
 
-> 原文:[https://machinelearning master . com/如何对生成-对抗-网络-训练-算法和损失-函数进行编码/](https://machinelearningmastery.com/how-to-code-the-generative-adversarial-network-training-algorithm-and-loss-functions/)
+> 原文：<https://machinelearningmastery.com/how-to-code-the-generative-adversarial-network-training-algorithm-and-loss-functions/>
 
 最后更新于 2020 年 1 月 10 日
 

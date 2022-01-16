@@ -1,6 +1,6 @@
 # 用于人脸识别的一次性学习
 
-> 原文:[https://machinelearning master . com/一次学习与暹罗网络-对比和三重损失人脸识别/](https://machinelearningmastery.com/one-shot-learning-with-siamese-networks-contrastive-and-triplet-loss-for-face-recognition/)
+> 原文：<https://machinelearningmastery.com/one-shot-learning-with-siamese-networks-contrastive-and-triplet-loss-for-face-recognition/>
 
 最后更新于 2020 年 6 月 11 日
 

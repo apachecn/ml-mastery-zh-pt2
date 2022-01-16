@@ -1,6 +1,6 @@
 # AdaMax 从头开始的梯度下降优化
 
-> 原文:[https://machinelearning master . com/gradient-down-optimization-with-adamax-从头开始/](https://machinelearningmastery.com/gradient-descent-optimization-with-adamax-from-scratch/)
+> 原文：<https://machinelearningmastery.com/gradient-descent-optimization-with-adamax-from-scratch/>
 
 最后更新于 2021 年 9 月 25 日
 

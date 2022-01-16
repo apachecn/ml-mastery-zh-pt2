@@ -2,7 +2,7 @@
 
 中规范和标准化你的机器学习数据
 
-> 原文:[https://machinelearning master . com/normalize-标准化-机器学习-数据-weka/](https://machinelearningmastery.com/normalize-standardize-machine-learning-data-weka/)
+> 原文：<https://machinelearningmastery.com/normalize-standardize-machine-learning-data-weka/>
 
 最后更新于 2019 年 12 月 11 日
 

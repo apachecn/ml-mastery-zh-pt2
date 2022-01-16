@@ -1,6 +1,6 @@
 # 如何用 XGBoost 开发随机森林系综
 
-> 原文:[https://machinelearningmaster . com/random-forest-ensembles-with-xboost/](https://machinelearningmastery.com/random-forest-ensembles-with-xgboost/)
+> 原文：<https://machinelearningmastery.com/random-forest-ensembles-with-xgboost/>
 
 最后更新于 2021 年 4 月 27 日
 

@@ -1,6 +1,6 @@
 # 如何使用分位数变换进行机器学习
 
-> 原文:[https://machinelearning master . com/分位数-机器学习转换/](https://machinelearningmastery.com/quantile-transforms-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/quantile-transforms-for-machine-learning/>
 
 最后更新于 2020 年 8 月 28 日
 

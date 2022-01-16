@@ -1,6 +1,6 @@
 # 大肠杆菌数据集的不平衡多类分类
 
-> 原文:[https://machinelearningmaster . com/不平衡-多类-分类-带大肠杆菌-数据集/](https://machinelearningmastery.com/imbalanced-multiclass-classification-with-the-e-coli-dataset/)
+> 原文：<https://machinelearningmastery.com/imbalanced-multiclass-classification-with-the-e-coli-dataset/>
 
 最后更新于 2021 年 1 月 5 日
 

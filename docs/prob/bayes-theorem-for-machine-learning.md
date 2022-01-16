@@ -1,6 +1,6 @@
 # 机器学习贝叶斯定理的温和介绍
 
-> 原文:[https://machinelearning master . com/Bayes-定理机器学习/](https://machinelearningmastery.com/bayes-theorem-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/bayes-theorem-for-machine-learning/>
 
 最后更新于 2019 年 12 月 4 日
 

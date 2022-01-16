@@ -1,6 +1,6 @@
 # 计算机视觉入门
 
-> 原文:[https://machinelearningmastery.com/what-is-computer-vision/](https://machinelearningmastery.com/what-is-computer-vision/)
+> 原文：<https://machinelearningmastery.com/what-is-computer-vision/>
 
 最后更新于 2019 年 7 月 5 日
 

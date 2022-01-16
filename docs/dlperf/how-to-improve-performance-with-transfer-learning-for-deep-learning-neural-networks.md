@@ -1,6 +1,6 @@
 # 如何利用深度学习神经网络的迁移学习提高性能
 
-> 原文:[https://machinelearning master . com/如何通过深度学习神经网络转移学习来提高性能/](https://machinelearningmastery.com/how-to-improve-performance-with-transfer-learning-for-deep-learning-neural-networks/)
+> 原文：<https://machinelearningmastery.com/how-to-improve-performance-with-transfer-learning-for-deep-learning-neural-networks/>
 
 最后更新于 2020 年 8 月 25 日
 

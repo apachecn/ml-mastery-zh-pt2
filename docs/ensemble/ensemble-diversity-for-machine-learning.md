@@ -1,6 +1,6 @@
 # 机器学习集成多样性的温和介绍
 
-> 原文:[https://machinelearning master . com/ensemble-diversity-for-machine-learning/](https://machinelearningmastery.com/ensemble-diversity-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/ensemble-diversity-for-machine-learning/>
 
 集成学习将来自机器学习模型的预测结合起来用于分类和回归。
 

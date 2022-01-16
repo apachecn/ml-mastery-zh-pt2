@@ -1,6 +1,6 @@
 # Python 中特征选择的递归特征消除(RFE)
 
-> 原文:[https://machinelearning master . com/rfe-python 中的功能选择/](https://machinelearningmastery.com/rfe-feature-selection-in-python/)
+> 原文：<https://machinelearningmastery.com/rfe-feature-selection-in-python/>
 
 最后更新于 2020 年 8 月 28 日
 

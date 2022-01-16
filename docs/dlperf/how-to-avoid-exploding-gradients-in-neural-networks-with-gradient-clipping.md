@@ -1,6 +1,6 @@
 # 如何避免渐变裁剪带来的渐变爆炸
 
-> 原文:[https://machinelearning master . com/如何避免神经网络中的梯度爆炸-梯度削波/](https://machinelearningmastery.com/how-to-avoid-exploding-gradients-in-neural-networks-with-gradient-clipping/)
+> 原文：<https://machinelearningmastery.com/how-to-avoid-exploding-gradients-in-neural-networks-with-gradient-clipping/>
 
 最后更新于 2020 年 8 月 28 日
 

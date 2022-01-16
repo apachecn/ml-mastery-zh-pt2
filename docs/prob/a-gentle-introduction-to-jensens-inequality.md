@@ -1,6 +1,6 @@
 # 简评詹森不等式
 
-> 原文:[https://machinelearning master . com/a-温柔-入门-jensens-不等式/](https://machinelearningmastery.com/a-gentle-introduction-to-jensens-inequality/)
+> 原文：<https://machinelearningmastery.com/a-gentle-introduction-to-jensens-inequality/>
 
 最后更新于 2020 年 7 月 31 日
 

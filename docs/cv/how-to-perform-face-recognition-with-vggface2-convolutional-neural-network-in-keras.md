@@ -1,6 +1,6 @@
 # 如何在 Keras 用 VGGFace2 进行人脸识别
 
-> 原文:[https://machinelearning master . com/如何使用-vggface 2-卷积-神经网络-in-keras 执行人脸识别/](https://machinelearningmastery.com/how-to-perform-face-recognition-with-vggface2-convolutional-neural-network-in-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-perform-face-recognition-with-vggface2-convolutional-neural-network-in-keras/>
 
 最后更新于 2020 年 8 月 24 日
 

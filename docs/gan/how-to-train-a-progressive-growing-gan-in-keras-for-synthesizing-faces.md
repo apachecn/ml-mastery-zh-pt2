@@ -1,6 +1,6 @@
 # 如何在 Keras 训练一个渐进生长的 GAN 来合成人脸
 
-> 原文:[https://machinelearning master . com/如何训练一个用于合成面部的渐进生长 gan-in-keras/](https://machinelearningmastery.com/how-to-train-a-progressive-growing-gan-in-keras-for-synthesizing-faces/)
+> 原文：<https://machinelearningmastery.com/how-to-train-a-progressive-growing-gan-in-keras-for-synthesizing-faces/>
 
 最后更新于 2020 年 9 月 1 日
 

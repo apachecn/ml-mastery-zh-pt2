@@ -1,6 +1,6 @@
 # 集成学习算法的温和介绍
 
-> 原文:[https://machinelearning master . com/集合学习算法之旅/](https://machinelearningmastery.com/tour-of-ensemble-learning-algorithms/)
+> 原文：<https://machinelearningmastery.com/tour-of-ensemble-learning-algorithms/>
 
 最后更新于 2021 年 4 月 27 日
 

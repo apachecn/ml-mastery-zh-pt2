@@ -1,6 +1,6 @@
 # 如何配置不平衡分类的 xboost
 
-> 原文:[https://machinelearningmaster . com/xboost-for-不平衡分类/](https://machinelearningmastery.com/xgboost-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/xgboost-for-imbalanced-classification/>
 
 最后更新于 2020 年 8 月 21 日
 

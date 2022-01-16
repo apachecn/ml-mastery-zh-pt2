@@ -1,6 +1,6 @@
 # 用计算机视觉模型在 Keras 中进行迁移学习
 
-> 原文:[https://machinelearning master . com/使用方法-开发时转移-学习-卷积-神经网络-模型/](https://machinelearningmastery.com/how-to-use-transfer-learning-when-developing-convolutional-neural-network-models/)
+> 原文：<https://machinelearningmastery.com/how-to-use-transfer-learning-when-developing-convolutional-neural-network-models/>
 
 最后更新于 2020 年 8 月 18 日
 

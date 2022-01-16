@@ -1,6 +1,6 @@
 # 深度学习。人工智能卷积神经网络课程(复习)
 
-> 原文:[https://machinelearning master . com/deep learning-ai-卷积-神经网络-deep-learning-specification-review/](https://machinelearningmastery.com/deeplearning-ai-convolutional-neural-networks-deep-learning-specialization-review/)
+> 原文：<https://machinelearningmastery.com/deeplearning-ai-convolutional-neural-networks-deep-learning-specialization-review/>
 
 最后更新于 2019 年 7 月 5 日
 

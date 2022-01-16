@@ -1,6 +1,6 @@
 # 卷积层在深度学习神经网络中是如何工作的？
 
-> 原文:[https://machinelearning master . com/卷积-layers-for-deep-learning-neural-networks/](https://machinelearningmastery.com/convolutional-layers-for-deep-learning-neural-networks/)
+> 原文：<https://machinelearningmastery.com/convolutional-layers-for-deep-learning-neural-networks/>
 
 最后更新于 2020 年 4 月 17 日
 

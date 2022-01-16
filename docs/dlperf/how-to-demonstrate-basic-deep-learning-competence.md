@@ -1,6 +1,6 @@
 # 如何通过深度学习展示自己的基本功
 
-> 原文:[https://machinelearning master . com/如何展示-基础-深度学习-能力/](https://machinelearningmastery.com/how-to-demonstrate-basic-deep-learning-competence/)
+> 原文：<https://machinelearningmastery.com/how-to-demonstrate-basic-deep-learning-competence/>
 
 最后更新于 2019 年 8 月 6 日
 

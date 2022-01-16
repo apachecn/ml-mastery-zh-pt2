@@ -1,6 +1,6 @@
 # 遗传编程书籍
 
-> 原文:[https://machinelearning master . com/books-on-genetic-programming/](https://machinelearningmastery.com/books-on-genetic-programming/)
+> 原文：<https://machinelearningmastery.com/books-on-genetic-programming/>
 
 最后更新于 2021 年 10 月 12 日
 

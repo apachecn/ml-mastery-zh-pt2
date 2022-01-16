@@ -1,6 +1,6 @@
 # 不平衡分类的欠采样算法
 
-> 原文:[https://machinelearning master . com/欠采样-不平衡分类算法/](https://machinelearningmastery.com/undersampling-algorithms-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/undersampling-algorithms-for-imbalanced-classification/>
 
 最后更新于 2021 年 1 月 27 日
 

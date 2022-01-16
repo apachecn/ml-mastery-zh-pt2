@@ -1,6 +1,6 @@
 # 为中枢神经系统准备和增加图像数据的最佳实践
 
-> 原文:[https://machinelearning master . com/准备和增强卷积神经网络图像数据的最佳实践/](https://machinelearningmastery.com/best-practices-for-preparing-and-augmenting-image-data-for-convolutional-neural-networks/)
+> 原文：<https://machinelearningmastery.com/best-practices-for-preparing-and-augmenting-image-data-for-convolutional-neural-networks/>
 
 最后更新于 2019 年 7 月 5 日
 

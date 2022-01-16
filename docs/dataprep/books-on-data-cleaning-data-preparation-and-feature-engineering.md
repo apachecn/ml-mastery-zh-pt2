@@ -1,6 +1,6 @@
 # 8 本关于数据清理和特征工程的顶级书籍
 
-> 原文:[https://machinelearning master . com/books-on-data-cleaning-data-preference-and-feature-engineering/](https://machinelearningmastery.com/books-on-data-cleaning-data-preparation-and-feature-engineering/)
+> 原文：<https://machinelearningmastery.com/books-on-data-cleaning-data-preparation-and-feature-engineering/>
 
 数据准备是将原始数据转换成更适合建模的形式。
 

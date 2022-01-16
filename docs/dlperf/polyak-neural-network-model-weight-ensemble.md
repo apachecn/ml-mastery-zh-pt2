@@ -1,6 +1,6 @@
 # Keras 中的集成神经网络模型权重(Polyak 平均)
 
-> 原文:[https://machinelearning master . com/polyak-神经网络-模型-权重-集成/](https://machinelearningmastery.com/polyak-neural-network-model-weight-ensemble/)
+> 原文：<https://machinelearningmastery.com/polyak-neural-network-model-weight-ensemble/>
 
 最后更新于 2020 年 8 月 28 日
 

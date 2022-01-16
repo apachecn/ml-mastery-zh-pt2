@@ -1,6 +1,6 @@
 # 用 Scikit-Learn 增加表格数据的测试时间
 
-> 原文:[https://machinelearning master . com/test-time-enhancement-with-sci kit-learn/](https://machinelearningmastery.com/test-time-augmentation-with-scikit-learn/)
+> 原文：<https://machinelearningmastery.com/test-time-augmentation-with-scikit-learn/>
 
 最后更新于 2020 年 8 月 18 日
 

@@ -1,6 +1,6 @@
 # 功能优化的随机搜索和网格搜索
 
-> 原文:[https://machinelearning master . com/random-search-and-grid-search-for-function-optimization/](https://machinelearningmastery.com/random-search-and-grid-search-for-function-optimization/)
+> 原文：<https://machinelearningmastery.com/random-search-and-grid-search-for-function-optimization/>
 
 最后更新于 2021 年 10 月 12 日
 

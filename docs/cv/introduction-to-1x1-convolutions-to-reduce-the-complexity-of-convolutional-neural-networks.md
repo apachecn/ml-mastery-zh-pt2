@@ -1,6 +1,6 @@
 # 温和介绍 1×1 卷积来管理模型复杂性
 
-> 原文:[https://machinelearning master . com/介绍-1x 1-卷积降低卷积神经网络的复杂性/](https://machinelearningmastery.com/introduction-to-1x1-convolutions-to-reduce-the-complexity-of-convolutional-neural-networks/)
+> 原文：<https://machinelearningmastery.com/introduction-to-1x1-convolutions-to-reduce-the-complexity-of-convolutional-neural-networks/>
 
 最后更新于 2019 年 7 月 5 日
 

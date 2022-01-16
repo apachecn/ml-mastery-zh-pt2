@@ -1,6 +1,6 @@
 # Python 中的多元自适应回归样条(MARS)
 
-> 原文:[https://machinelearning master . com/多元-自适应-回归-样条-python 中的火星/](https://machinelearningmastery.com/multivariate-adaptive-regression-splines-mars-in-python/)
+> 原文：<https://machinelearningmastery.com/multivariate-adaptive-regression-splines-mars-in-python/>
 
 最后更新于 2021 年 4 月 27 日
 

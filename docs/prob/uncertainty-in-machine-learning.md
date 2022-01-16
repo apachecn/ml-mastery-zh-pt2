@@ -1,6 +1,6 @@
 # 机器学习中不确定性的温和介绍
 
-> 原文:[https://machinelearning master . com/机器学习中的不确定性/](https://machinelearningmastery.com/uncertainty-in-machine-learning/)
+> 原文：<https://machinelearningmastery.com/uncertainty-in-machine-learning/>
 
 最后更新于 2019 年 9 月 25 日
 

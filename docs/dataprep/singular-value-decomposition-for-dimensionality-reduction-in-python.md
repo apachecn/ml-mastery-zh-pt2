@@ -1,6 +1,6 @@
 # Python 中降维的奇异值分解
 
-> 原文:[https://machinelearning master . com/python 中降维奇异值分解/](https://machinelearningmastery.com/singular-value-decomposition-for-dimensionality-reduction-in-python/)
+> 原文：<https://machinelearningmastery.com/singular-value-decomposition-for-dimensionality-reduction-in-python/>
 
 最后更新于 2020 年 8 月 18 日
 

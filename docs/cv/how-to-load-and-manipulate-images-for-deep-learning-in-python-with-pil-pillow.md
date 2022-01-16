@@ -2,7 +2,7 @@
 
 加载和操作 Python 深度学习的图像
 
-> 原文:[https://machinelearning master . com/pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-pil-](https://machinelearningmastery.com/how-to-load-and-manipulate-images-for-deep-learning-in-python-with-pil-pillow/)
+> 原文：<https://machinelearningmastery.com/how-to-load-and-manipulate-images-for-deep-learning-in-python-with-pil-pillow/>
 
 最后更新于 2019 年 9 月 12 日
 

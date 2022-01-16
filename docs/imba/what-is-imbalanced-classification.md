@@ -1,6 +1,6 @@
 # 不平衡分类的温和介绍
 
-> 原文:[https://machinelearning master . com/什么是不平衡分类/](https://machinelearningmastery.com/what-is-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/what-is-imbalanced-classification/>
 
 最后更新于 2020 年 1 月 14 日
 

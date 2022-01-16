@@ -1,6 +1,6 @@
 # 深度学习神经网络的集成学习方法
 
-> 原文:[https://machinelearning master . com/ensemble-methods-for-deep-learning-neural-networks/](https://machinelearningmastery.com/ensemble-methods-for-deep-learning-neural-networks/)
+> 原文：<https://machinelearningmastery.com/ensemble-methods-for-deep-learning-neural-networks/>
 
 最后更新于 2019 年 8 月 6 日
 

@@ -1,6 +1,6 @@
 # 如何在 Weka 完成多类分类项目
 
-> 原文:[https://machinelearning master . com/多类-分类-教程-weka/](https://machinelearningmastery.com/multi-class-classification-tutorial-weka/)
+> 原文：<https://machinelearningmastery.com/multi-class-classification-tutorial-weka/>
 
 最后更新于 2019 年 8 月 22 日
 

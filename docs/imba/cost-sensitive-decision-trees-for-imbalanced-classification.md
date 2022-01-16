@@ -1,6 +1,6 @@
 # 用于不平衡分类的成本敏感决策树
 
-> 原文:[https://machinelearning master . com/成本敏感-决策树-用于不平衡分类/](https://machinelearningmastery.com/cost-sensitive-decision-trees-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/cost-sensitive-decision-trees-for-imbalanced-classification/>
 
 最后更新于 2020 年 8 月 21 日
 

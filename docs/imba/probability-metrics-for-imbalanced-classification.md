@@ -1,6 +1,6 @@
 # 不平衡分类概率度量的温和介绍
 
-> 原文:[https://machinelearning master . com/probability-metrics-for-不平衡分类/](https://machinelearningmastery.com/probability-metrics-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/probability-metrics-for-imbalanced-classification/>
 
 最后更新于 2020 年 1 月 14 日
 

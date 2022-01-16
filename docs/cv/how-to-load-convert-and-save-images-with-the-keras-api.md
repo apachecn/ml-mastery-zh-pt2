@@ -1,6 +1,6 @@
 # 如何使用 Keras API 加载、转换和保存图像
 
-> 原文:[https://machinelearningmaster . com/如何使用 keras-api 加载、转换和保存图像/](https://machinelearningmastery.com/how-to-load-convert-and-save-images-with-the-keras-api/)
+> 原文：<https://machinelearningmastery.com/how-to-load-convert-and-save-images-with-the-keras-api/>
 
 最后更新于 2019 年 7 月 5 日
 

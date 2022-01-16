@@ -1,6 +1,6 @@
 # 如何利用 Keras 中的下降正则化减少过拟合
 
-> 原文:[https://machinelearning master . com/如何减少辍学过度适应-keras 中的正规化/](https://machinelearningmastery.com/how-to-reduce-overfitting-with-dropout-regularization-in-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-reduce-overfitting-with-dropout-regularization-in-keras/>
 
 最后更新于 2020 年 8 月 25 日
 

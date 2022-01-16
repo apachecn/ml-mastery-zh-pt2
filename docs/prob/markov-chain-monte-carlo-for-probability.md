@@ -1,6 +1,6 @@
 # 概率马尔可夫链蒙特卡罗的温和介绍
 
-> 原文:[https://machinelearning master . com/Markov-chain-Monte-Carlo-for-probability/](https://machinelearningmastery.com/markov-chain-monte-carlo-for-probability/)
+> 原文：<https://machinelearningmastery.com/markov-chain-monte-carlo-for-probability/>
 
 概率推断包括使用概率模型估计期望值或密度。
 

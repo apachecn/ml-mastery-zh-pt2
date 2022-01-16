@@ -1,6 +1,6 @@
 # 配置反向传播以训练更好的神经网络的 8 个技巧
 
-> 原文:[https://machinelearning master . com/最佳配置建议-反向传播-深度学习-神经网络/](https://machinelearningmastery.com/best-advice-for-configuring-backpropagation-for-deep-learning-neural-networks/)
+> 原文：<https://machinelearningmastery.com/best-advice-for-configuring-backpropagation-for-deep-learning-neural-networks/>
 
 最后更新于 2019 年 8 月 6 日
 

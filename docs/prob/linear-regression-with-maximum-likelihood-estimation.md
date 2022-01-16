@@ -1,6 +1,6 @@
 # 最大似然估计线性回归的简单介绍
 
-> 原文:[https://machinelearning master . com/最大似然估计线性回归/](https://machinelearningmastery.com/linear-regression-with-maximum-likelihood-estimation/)
+> 原文：<https://machinelearningmastery.com/linear-regression-with-maximum-likelihood-estimation/>
 
 最后更新于 2019 年 11 月 1 日
 

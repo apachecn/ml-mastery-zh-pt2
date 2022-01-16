@@ -1,6 +1,6 @@
 # 如何用 Keras 加载和可视化标准计算机视觉数据集
 
-> 原文:[https://machinelearning master . com/如何加载和可视化标准计算机视觉数据集-带-keras/](https://machinelearningmastery.com/how-to-load-and-visualize-standard-computer-vision-datasets-with-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-load-and-visualize-standard-computer-vision-datasets-with-keras/>
 
 最后更新于 2019 年 7 月 5 日
 

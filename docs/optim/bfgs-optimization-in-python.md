@@ -1,6 +1,6 @@
 # 温和介绍 BFGS 优化算法
 
-> 原文:[https://machinelearning master . com/bfgs-python 中的优化/](https://machinelearningmastery.com/bfgs-optimization-in-python/)
+> 原文：<https://machinelearningmastery.com/bfgs-optimization-in-python/>
 
 最后更新于 2021 年 10 月 12 日
 

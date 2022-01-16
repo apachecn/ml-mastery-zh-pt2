@@ -1,6 +1,6 @@
 # 斯坦福卷积神经网络视觉识别课程(复习)
 
-> 原文:[https://machinelearning master . com/斯坦福-卷积-神经网络-视觉识别-课程-复习/](https://machinelearningmastery.com/stanford-convolutional-neural-networks-for-visual-recognition-course-review/)
+> 原文：<https://machinelearningmastery.com/stanford-convolutional-neural-networks-for-visual-recognition-course-review/>
 
 最后更新于 2019 年 7 月 5 日
 

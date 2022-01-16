@@ -1,6 +1,6 @@
 # 如何在 Python 中从头开始开发朴素贝叶斯分类器
 
-> 原文:[https://machinelearning master . com/分类为条件概率和朴素贝叶斯算法/](https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm/)
+> 原文：<https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm/>
 
 最后更新于 2020 年 1 月 10 日
 

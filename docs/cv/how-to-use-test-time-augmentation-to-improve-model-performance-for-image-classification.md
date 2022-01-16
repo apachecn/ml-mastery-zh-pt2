@@ -1,6 +1,6 @@
 # 如何使用测试时间增加进行更好的预测
 
-> 原文:[https://machinelearning master . com/如何使用-测试-时间-增加-改进-模型-性能-图像-分类/](https://machinelearningmastery.com/how-to-use-test-time-augmentation-to-improve-model-performance-for-image-classification/)
+> 原文：<https://machinelearningmastery.com/how-to-use-test-time-augmentation-to-improve-model-performance-for-image-classification/>
 
 最后更新于 2020 年 4 月 3 日
 

@@ -1,6 +1,6 @@
 # 计算学习理论的温和介绍
 
-> 原文:[https://machinelearning master . com/计算学习理论入门/](https://machinelearningmastery.com/introduction-to-computational-learning-theory/)
+> 原文：<https://machinelearningmastery.com/introduction-to-computational-learning-theory/>
 
 最后更新于 2020 年 9 月 7 日
 

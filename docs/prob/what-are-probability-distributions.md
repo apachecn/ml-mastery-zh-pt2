@@ -1,6 +1,6 @@
 # 概率分布的简单介绍
 
-> 原文:[https://machinelearning master . com/什么是概率分布/](https://machinelearningmastery.com/what-are-probability-distributions/)
+> 原文：<https://machinelearningmastery.com/what-are-probability-distributions/>
 
 最后更新于 2019 年 11 月 14 日
 

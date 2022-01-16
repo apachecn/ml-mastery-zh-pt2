@@ -1,6 +1,6 @@
 # 贝叶斯最优分类器的简单介绍
 
-> 原文:[https://machinelearning master . com/Bayes-optimal-classifier/](https://machinelearningmastery.com/bayes-optimal-classifier/)
+> 原文：<https://machinelearningmastery.com/bayes-optimal-classifier/>
 
 最后更新于 2020 年 8 月 19 日
 

@@ -1,6 +1,6 @@
 # 机器学习的离散概率分布
 
-> 原文:[https://machinelearning master . com/离散概率分布用于机器学习/](https://machinelearningmastery.com/discrete-probability-distributions-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/discrete-probability-distributions-for-machine-learning/>
 
 最后更新于 2020 年 10 月 6 日
 

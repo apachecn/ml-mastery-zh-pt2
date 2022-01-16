@@ -1,6 +1,6 @@
 # 过早收敛的温和介绍
 
-> 原文:[https://machinelearningmastery.com/premature-convergence/](https://machinelearningmastery.com/premature-convergence/)
+> 原文：<https://machinelearningmastery.com/premature-convergence/>
 
 最后更新于 2021 年 10 月 12 日
 

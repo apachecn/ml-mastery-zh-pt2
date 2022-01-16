@@ -1,6 +1,6 @@
 # 3 本机器学习优化书籍
 
-> 原文:[https://machinelearning master . com/机器学习优化书籍/](https://machinelearningmastery.com/books-on-optimization-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/books-on-optimization-for-machine-learning/>
 
 最后更新于 2021 年 10 月 12 日
 

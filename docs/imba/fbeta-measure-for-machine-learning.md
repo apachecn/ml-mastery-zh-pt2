@@ -1,6 +1,6 @@
 # 机器学习的 Fbeta 测量的温和介绍
 
-> 原文:[https://machinelearning master . com/fbeta-机器学习测量/](https://machinelearningmastery.com/fbeta-measure-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/fbeta-measure-for-machine-learning/>
 
 Fbeta-measure 是一个可配置的单一评分指标，用于基于对正类的预测来评估二进制分类模型。
 

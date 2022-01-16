@@ -1,6 +1,6 @@
 # 深度学习中体重限制的温和介绍
 
-> 原文:[https://machinelearning master . com/引入-权重-约束-减少-泛化-深度学习中的错误/](https://machinelearningmastery.com/introduction-to-weight-constraints-to-reduce-generalization-error-in-deep-learning/)
+> 原文：<https://machinelearningmastery.com/introduction-to-weight-constraints-to-reduce-generalization-error-in-deep-learning/>
 
 最后更新于 2019 年 8 月 6 日
 

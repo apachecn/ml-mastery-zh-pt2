@@ -2,7 +2,7 @@
 
 评价机器学习算法
 
-> 原文:[https://machinelearning master . com/evaluate-machine-learning-algorithms-with-r/](https://machinelearningmastery.com/evaluate-machine-learning-algorithms-with-r/)
+> 原文：<https://machinelearningmastery.com/evaluate-machine-learning-algorithms-with-r/>
 
 最后更新于 2019 年 12 月 13 日
 

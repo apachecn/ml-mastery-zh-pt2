@@ -1,6 +1,6 @@
 # 如何使用列转换器进行数据准备
 
-> 原文:[https://machinelearningmaster . com/column transformer-for-numeric-and-category-data/](https://machinelearningmastery.com/columntransformer-for-numerical-and-categorical-data/)
+> 原文：<https://machinelearningmastery.com/columntransformer-for-numerical-and-categorical-data/>
 
 最后更新于 2020 年 12 月 31 日
 

@@ -1,6 +1,6 @@
 # 使用 R 进行机器学习
 
-> 原文:[https://machinelearning master . com/use-r-for-machine-learning/](https://machinelearningmastery.com/use-r-for-machine-learning/)
+> 原文：<https://machinelearningmastery.com/use-r-for-machine-learning/>
 
 最后更新于 2019 年 8 月 22 日
 

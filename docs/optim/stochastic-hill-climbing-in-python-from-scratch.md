@@ -1,6 +1,6 @@
 # 蟒蛇从零开始的随机爬山
 
-> 原文:[https://machinelearning master . com/随机-从零开始用 python 爬山/](https://machinelearningmastery.com/stochastic-hill-climbing-in-python-from-scratch/)
+> 原文：<https://machinelearningmastery.com/stochastic-hill-climbing-in-python-from-scratch/>
 
 最后更新于 2021 年 10 月 12 日
 

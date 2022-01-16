@@ -1,6 +1,6 @@
 # 威卡机器学习迷你课程
 
-> 原文:[https://machinelearning master . com/applied-machinelearning-WEKA-mini-course/](https://machinelearningmastery.com/applied-machine-learning-weka-mini-course/)
+> 原文：<https://machinelearningmastery.com/applied-machine-learning-weka-mini-course/>
 
 最后更新于 2021 年 2 月 2 日
 

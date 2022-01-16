@@ -1,6 +1,6 @@
 # 如何在 Scikit 中保存和重用数据准备对象-学习
 
-> 原文:[https://machinelearning master . com/如何保存和加载模型和数据-在 scikit 中准备-学习以备后用/](https://machinelearningmastery.com/how-to-save-and-load-models-and-data-preparation-in-scikit-learn-for-later-use/)
+> 原文：<https://machinelearningmastery.com/how-to-save-and-load-models-and-data-preparation-in-scikit-learn-for-later-use/>
 
 最后更新于 2020 年 6 月 30 日
 

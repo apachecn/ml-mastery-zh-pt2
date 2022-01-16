@@ -1,6 +1,6 @@
 # 每个不平衡分类度量的朴素分类器是什么？
 
-> 原文:[https://machinelearning master . com/幼稚-分类器-不平衡-分类-度量/](https://machinelearningmastery.com/naive-classifiers-imbalanced-classification-metrics/)
+> 原文：<https://machinelearningmastery.com/naive-classifiers-imbalanced-classification-metrics/>
 
 最后更新于 2020 年 8 月 27 日
 

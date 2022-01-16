@@ -1,6 +1,6 @@
 # 如何利用学习曲线诊断机器学习模型性能
 
-> 原文:[https://machinelearning master . com/learning-curves-for-diagnostic-machine-learning-model-performance/](https://machinelearningmastery.com/learning-curves-for-diagnosing-machine-learning-model-performance/)
+> 原文：<https://machinelearningmastery.com/learning-curves-for-diagnosing-machine-learning-model-performance/>
 
 最后更新于 2019 年 8 月 6 日
 

@@ -1,6 +1,6 @@
 # 集成学习算法复杂度和奥卡姆剃刀
 
-> 原文:[https://machinelearning master . com/ensemble-learning-and-occam-razor/](https://machinelearningmastery.com/ensemble-learning-and-occams-razor/)
+> 原文：<https://machinelearningmastery.com/ensemble-learning-and-occams-razor/>
 
 最后更新于 2021 年 4 月 27 日
 

@@ -1,6 +1,6 @@
 # 9 深度学习在计算机视觉中的应用
 
-> 原文:[https://machinelearning master . com/计算机视觉深度学习应用/](https://machinelearningmastery.com/applications-of-deep-learning-for-computer-vision/)
+> 原文：<https://machinelearningmastery.com/applications-of-deep-learning-for-computer-vision/>
 
 最后更新于 2019 年 7 月 5 日
 

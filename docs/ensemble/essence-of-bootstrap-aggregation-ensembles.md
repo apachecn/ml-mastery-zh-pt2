@@ -1,6 +1,6 @@
 # 自举聚合集成的本质
 
-> 原文:[https://machinelearning master . com/引导本质-聚合-集成/](https://machinelearningmastery.com/essence-of-bootstrap-aggregation-ensembles/)
+> 原文：<https://machinelearningmastery.com/essence-of-bootstrap-aggregation-ensembles/>
 
 最后更新于 2021 年 10 月 22 日
 

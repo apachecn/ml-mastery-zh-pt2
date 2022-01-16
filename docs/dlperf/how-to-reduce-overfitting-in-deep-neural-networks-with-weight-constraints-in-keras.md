@@ -1,6 +1,6 @@
 # 如何利用 Keras 中的权重约束减少过拟合
 
-> 原文:[https://machinelearning master . com/如何减少深度神经网络中的过度拟合-权重受限-in-keras/](https://machinelearningmastery.com/how-to-reduce-overfitting-in-deep-neural-networks-with-weight-constraints-in-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-reduce-overfitting-in-deep-neural-networks-with-weight-constraints-in-keras/>
 
 最后更新于 2020 年 8 月 25 日
 

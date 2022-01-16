@@ -1,6 +1,6 @@
 # 机器学习的信息增益和互信息
 
-> 原文:[https://machinelearning master . com/information-gain-and-mutual-information/](https://machinelearningmastery.com/information-gain-and-mutual-information/)
+> 原文：<https://machinelearningmastery.com/information-gain-and-mutual-information/>
 
 最后更新于 2020 年 12 月 10 日
 

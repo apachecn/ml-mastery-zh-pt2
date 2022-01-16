@@ -1,6 +1,6 @@
 # 如何使用数据缩放提高深度学习模型的稳定性和性能
 
-> 原文:[https://machinelearning master . com/如何通过数据扩展来提高神经网络的稳定性和建模性能/](https://machinelearningmastery.com/how-to-improve-neural-network-stability-and-modeling-performance-with-data-scaling/)
+> 原文：<https://machinelearningmastery.com/how-to-improve-neural-network-stability-and-modeling-performance-with-data-scaling/>
 
 最后更新于 2020 年 8 月 25 日
 

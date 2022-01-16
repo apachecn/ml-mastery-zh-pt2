@@ -1,6 +1,6 @@
 # 如何建立乳腺癌患者生存概率模型
 
-> 原文:[https://machinelearningmaster . com/如何开发乳腺癌患者生存概率模型/](https://machinelearningmastery.com/how-to-develop-a-probabilistic-model-of-breast-cancer-patient-survival/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-a-probabilistic-model-of-breast-cancer-patient-survival/>
 
 最后更新于 2020 年 8 月 21 日
 

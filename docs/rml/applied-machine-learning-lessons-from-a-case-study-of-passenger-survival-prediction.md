@@ -1,6 +1,6 @@
 # 从乘客生存预测案例研究中获得的应用机器学习经验
 
-> 原文:[https://machinelearning master . com/applied-machine-learning-教训-案例研究-乘客-生存-预测/](https://machinelearningmastery.com/applied-machine-learning-lessons-from-a-case-study-of-passenger-survival-prediction/)
+> 原文：<https://machinelearningmastery.com/applied-machine-learning-lessons-from-a-case-study-of-passenger-survival-prediction/>
 
 最后更新于 2019 年 8 月 22 日
 

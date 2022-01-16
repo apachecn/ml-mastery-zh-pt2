@@ -1,6 +1,6 @@
 # 如何在 Python 中使用经验分布函数
 
-> 原文:[https://machinelearning master . com/experimental-distribution-function-in-python/](https://machinelearningmastery.com/empirical-distribution-function-in-python/)
+> 原文：<https://machinelearningmastery.com/empirical-distribution-function-in-python/>
 
 最后更新于 2020 年 8 月 28 日
 

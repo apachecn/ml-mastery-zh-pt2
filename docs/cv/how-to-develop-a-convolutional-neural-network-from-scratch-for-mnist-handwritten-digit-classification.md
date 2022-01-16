@@ -1,6 +1,6 @@
 # 如何开发 MNIST 手写数字分类 CNN
 
-> 原文:[https://machinelearning master . com/如何从零开始开发卷积神经网络用于手写数字分类/](https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-from-scratch-for-mnist-handwritten-digit-classification/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-from-scratch-for-mnist-handwritten-digit-classification/>
 
 最后更新于 2021 年 11 月 14 日
 

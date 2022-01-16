@@ -2,7 +2,7 @@
 
 估算 R 中的模型精度
 
-> 原文:[https://machinelearning master . com/如何使用插入符号包估计模型精度/](https://machinelearningmastery.com/how-to-estimate-model-accuracy-in-r-using-the-caret-package/)
+> 原文：<https://machinelearningmastery.com/how-to-estimate-model-accuracy-in-r-using-the-caret-package/>
 
 最后更新于 2020 年 8 月 15 日
 

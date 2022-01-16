@@ -1,6 +1,6 @@
 # R 中的线性回归
 
-> 原文:[https://machinelearningmastery.com/linear-regression-in-r/](https://machinelearningmastery.com/linear-regression-in-r/)
+> 原文：<https://machinelearningmastery.com/linear-regression-in-r/>
 
 最后更新于 2020 年 8 月 15 日
 

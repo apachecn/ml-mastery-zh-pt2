@@ -1,6 +1,6 @@
 # 不平衡数据集的一类分类算法
 
-> 原文:[https://machinelearning master . com/一类-分类-算法/](https://machinelearningmastery.com/one-class-classification-algorithms/)
+> 原文：<https://machinelearningmastery.com/one-class-classification-algorithms/>
 
 最后更新于 2020 年 8 月 21 日
 

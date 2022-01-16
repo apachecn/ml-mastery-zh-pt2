@@ -1,6 +1,6 @@
 # 不平衡分类项目分步框架
 
-> 原文:[https://machinelearning master . com/framework-for-不平衡-分类-项目/](https://machinelearningmastery.com/framework-for-imbalanced-classification-projects/)
+> 原文：<https://machinelearningmastery.com/framework-for-imbalanced-classification-projects/>
 
 最后更新于 2020 年 3 月 19 日
 

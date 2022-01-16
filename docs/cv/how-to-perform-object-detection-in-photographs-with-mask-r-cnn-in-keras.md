@@ -1,6 +1,6 @@
 # 如何使用 Keras 中的蒙版 R-CNN 进行照片中的物体检测
 
-> 原文:[https://machinelearning master . com/如何执行带遮罩照片中的对象检测-r-cnn-in-keras/](https://machinelearningmastery.com/how-to-perform-object-detection-in-photographs-with-mask-r-cnn-in-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-perform-object-detection-in-photographs-with-mask-r-cnn-in-keras/>
 
 最后更新于 2020 年 9 月 2 日
 

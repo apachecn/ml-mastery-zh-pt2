@@ -1,6 +1,6 @@
 # 什么是 R
 
-> 原文:[https://machinelearningmastery.com/what-is-r/](https://machinelearningmastery.com/what-is-r/)
+> 原文：<https://machinelearningmastery.com/what-is-r/>
 
 最后更新于 2019 年 8 月 22 日
 

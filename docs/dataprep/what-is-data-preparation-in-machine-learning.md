@@ -1,6 +1,6 @@
 # 什么是机器学习项目中的数据准备
 
-> 原文:[https://machinelearning master . com/什么是机器学习中的数据准备/](https://machinelearningmastery.com/what-is-data-preparation-in-machine-learning/)
+> 原文：<https://machinelearningmastery.com/what-is-data-preparation-in-machine-learning/>
 
 最后更新于 2020 年 6 月 30 日
 

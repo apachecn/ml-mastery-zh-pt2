@@ -1,6 +1,6 @@
 # 如何利用表格数据的特征提取进行机器学习
 
-> 原文:[https://machinelearning master . com/feature-extraction-on-table-data/](https://machinelearningmastery.com/feature-extraction-on-tabular-data/)
+> 原文：<https://machinelearningmastery.com/feature-extraction-on-tabular-data/>
 
 最后更新于 2020 年 8 月 17 日
 

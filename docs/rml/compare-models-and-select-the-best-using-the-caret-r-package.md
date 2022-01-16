@@ -1,6 +1,6 @@
 # 使用插入符号 R 包比较模型并选择最佳方案
 
-> 原文:[https://machinelearning master . com/compare-models-and-select-best-use-caret-r-package/](https://machinelearningmastery.com/compare-models-and-select-the-best-using-the-caret-r-package/)
+> 原文：<https://machinelearningmastery.com/compare-models-and-select-the-best-using-the-caret-r-package/>
 
 最后更新于 2019 年 12 月 13 日
 

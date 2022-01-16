@@ -1,6 +1,6 @@
 # 如何通过深度学习培养计算机视觉能力
 
-> 原文:[https://machinelearning master . com/如何通过计算机视觉深度学习来培养和展示能力/](https://machinelearningmastery.com/how-to-develop-and-demonstrate-competence-with-deep-learning-for-computer-vision/)
+> 原文：<https://machinelearningmastery.com/how-to-develop-and-demonstrate-competence-with-deep-learning-for-computer-vision/>
 
 最后更新于 2019 年 7 月 5 日
 

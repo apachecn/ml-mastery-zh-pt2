@@ -1,6 +1,6 @@
 # 如何开发水平投票深度学习集成来减少差异
 
-> 原文:[https://machinelearning master . com/水平-投票-合奏/](https://machinelearningmastery.com/horizontal-voting-ensemble/)
+> 原文：<https://machinelearningmastery.com/horizontal-voting-ensemble/>
 
 最后更新于 2020 年 8 月 25 日
 

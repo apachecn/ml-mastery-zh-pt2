@@ -1,6 +1,6 @@
 # 如何获得更好的深度学习效果(7 天迷你课程)
 
-> 原文:[https://machinelearning master . com/better-deep-learning-neural networks-crash-course/](https://machinelearningmastery.com/better-deep-learning-neural-networks-crash-course/)
+> 原文：<https://machinelearningmastery.com/better-deep-learning-neural-networks-crash-course/>
 
 最后更新于 2020 年 1 月 8 日
 

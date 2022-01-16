@@ -1,6 +1,6 @@
 # 轻松介绍 ImageNet 挑战赛(ILSVRC)
 
-> 原文:[https://machinelearning master . com/introduction-to-imagenet-大规模-视觉-识别-挑战-ilsvrc/](https://machinelearningmastery.com/introduction-to-the-imagenet-large-scale-visual-recognition-challenge-ilsvrc/)
+> 原文：<https://machinelearningmastery.com/introduction-to-the-imagenet-large-scale-visual-recognition-challenge-ilsvrc/>
 
 最后更新于 2019 年 7 月 5 日
 

@@ -1,6 +1,6 @@
 # 不平衡分类阈值移动的温和介绍
 
-> 原文:[https://machinelearning master . com/threshold-针对不平衡分类进行移动/](https://machinelearningmastery.com/threshold-moving-for-imbalanced-classification/)
+> 原文：<https://machinelearningmastery.com/threshold-moving-for-imbalanced-classification/>
 
 最后更新于 2021 年 1 月 5 日
 

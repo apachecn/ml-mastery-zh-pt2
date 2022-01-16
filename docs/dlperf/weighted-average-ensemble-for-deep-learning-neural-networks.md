@@ -1,6 +1,6 @@
 # 如何为深度学习神经网络开发加权平均集成
 
-> 原文:[https://machinelearning master . com/加权平均集成深度学习神经网络/](https://machinelearningmastery.com/weighted-average-ensemble-for-deep-learning-neural-networks/)
+> 原文：<https://machinelearningmastery.com/weighted-average-ensemble-for-deep-learning-neural-networks/>
 
 最后更新于 2020 年 8 月 25 日
 

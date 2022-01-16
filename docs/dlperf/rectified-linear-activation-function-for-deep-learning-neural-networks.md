@@ -1,6 +1,6 @@
 # 整流线性单元的温和介绍
 
-> 原文:[https://machinelearning master . com/整流-线性-激活-深度学习功能-神经网络/](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)
+> 原文：<https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/>
 
 最后更新于 2020 年 8 月 20 日
 

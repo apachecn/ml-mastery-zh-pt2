@@ -1,6 +1,6 @@
 # 如何提高深度学习成绩
 
-> 原文:[https://machinelearning master . com/improve-deep-learning-performance/](https://machinelearningmastery.com/improve-deep-learning-performance/)
+> 原文：<https://machinelearningmastery.com/improve-deep-learning-performance/>
 
 最后更新于 2019 年 8 月 6 日
 

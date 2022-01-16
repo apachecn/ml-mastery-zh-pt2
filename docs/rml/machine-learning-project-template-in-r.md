@@ -1,6 +1,6 @@
 # R 中的机器学习项目模板
 
-> 原文:[https://machinelearning master . com/machine-learning-project-template-in-r/](https://machinelearningmastery.com/machine-learning-project-template-in-r/)
+> 原文：<https://machinelearningmastery.com/machine-learning-project-template-in-r/>
 
 最后更新于 2019 年 8 月 22 日
 

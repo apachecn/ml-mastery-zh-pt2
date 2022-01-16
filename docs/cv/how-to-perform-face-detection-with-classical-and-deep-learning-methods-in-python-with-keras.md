@@ -1,6 +1,6 @@
 # 如何利用深度学习进行人脸检测
 
-> 原文:[https://machinelearning master . com/如何使用经典和深度学习方法进行人脸检测-python-with-keras/](https://machinelearningmastery.com/how-to-perform-face-detection-with-classical-and-deep-learning-methods-in-python-with-keras/)
+> 原文：<https://machinelearningmastery.com/how-to-perform-face-detection-with-classical-and-deep-learning-methods-in-python-with-keras/>
 
 最后更新于 2020 年 8 月 24 日
 

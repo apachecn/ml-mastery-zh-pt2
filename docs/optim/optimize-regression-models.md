@@ -1,6 +1,6 @@
 # 如何使用优化算法手动拟合回归模型
 
-> 原文:[https://machinelearning master . com/optimize-回归-models/](https://machinelearningmastery.com/optimize-regression-models/)
+> 原文：<https://machinelearningmastery.com/optimize-regression-models/>
 
 最后更新于 2021 年 10 月 12 日
 

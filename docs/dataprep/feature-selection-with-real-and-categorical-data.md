@@ -1,6 +1,6 @@
 # 如何选择机器学习的特征选择方法
 
-> 原文:[https://machinelearning master . com/特征选择-带有真实和分类数据/](https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/)
+> 原文：<https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/>
 
 最后更新于 2020 年 8 月 20 日
 

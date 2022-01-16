@@ -1,6 +1,6 @@
 # 不平衡分类为什么难？
 
-> 原文:[https://machinelearning master . com/不平衡-分类-很难/](https://machinelearningmastery.com/imbalanced-classification-is-hard/)
+> 原文：<https://machinelearningmastery.com/imbalanced-classification-is-hard/>
 
 不平衡分类作为一项预测性建模任务，主要是具有挑战性的，因为类别分布严重倾斜。
 

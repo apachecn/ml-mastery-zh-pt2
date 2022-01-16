@@ -1,6 +1,6 @@
 # 提前停车避免过度训练神经网络的温和介绍
 
-> 原文:[https://machinelearning master . com/早停-避免过度训练-神经网络-模型/](https://machinelearningmastery.com/early-stopping-to-avoid-overtraining-neural-network-models/)
+> 原文：<https://machinelearningmastery.com/early-stopping-to-avoid-overtraining-neural-network-models/>
 
 最后更新于 2019 年 8 月 6 日
 

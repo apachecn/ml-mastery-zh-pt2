@@ -1,6 +1,6 @@
 # 如何对回归数据进行特征选择
 
-> 原文:[https://machinelearning master . com/feature-selection-for-revolution-data/](https://machinelearningmastery.com/feature-selection-for-regression-data/)
+> 原文：<https://machinelearningmastery.com/feature-selection-for-regression-data/>
 
 最后更新于 2020 年 8 月 18 日
 
