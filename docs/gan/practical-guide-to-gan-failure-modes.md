@@ -31,7 +31,7 @@
 我们开始吧。
 
 *   **2020 年 8 月更新**:在线图上修正标签。
-*   **2021 年 1 月更新**:更新所以图层冻结用批量定额。
+*   **2021 年 1 月更新**:更新所以层冻结用批量定额。
 *   **2021 年 1 月更新**:简化模型架构，确保我们看到故障。
 
 ![A Practical Guide to Generative Adversarial Network Failure Modes](img/9ca30b39a04ac7ab4979e5937665b5c1.png)

@@ -13,7 +13,7 @@
 完成本教程后，您将知道:
 
 *   如何使用 Keras API 创建向量范数正则化。
-*   如何使用 Keras API 为 MLP、CNN 和 RNN 图层添加活动正则化。
+*   如何使用 Keras API 为 MLP、CNN 和 RNN 层添加活动正则化。
 *   如何通过向现有模型添加活动正则化来减少过拟合？
 
 **用我的新书[更好的深度学习](https://machinelearningmastery.com/better-deep-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -30,11 +30,11 @@
 
 本教程分为三个部分；它们是:
 
-1.  喀拉斯的活动正则化
+1.  Keras的活动正则化
 2.  层上的活动正则化
 3.  活动正规化案例研究
 
-## 喀拉斯的活动正则化
+## Keras的活动正则化
 
 Keras 支持活动正规化。
 
@@ -57,13 +57,13 @@ reg = l1(0.001)
 
 ## 层上的活动正则化
 
-活动正则化是在 Keras 中的一个图层上指定的。
+活动正则化是在 Keras 中的一个层上指定的。
 
-这可以通过将图层上的*activity _ regulator*参数设置为实例化和配置的正则化类来实现。
+这可以通过将层上的*activity _ regulator*参数设置为实例化和配置的正则化类来实现。
 
-正则化应用于图层的输出，但是您可以控制图层的“*输出*”的实际含义。具体来说，您可以灵活选择图层输出是指在激活*功能之前还是之后应用正则化。*
+正则化应用于层的输出，但是您可以控制层的“*输出*”的实际含义。具体来说，您可以灵活选择层输出是指在激活*功能之前还是之后应用正则化。*
 
-例如，可以在图层上指定函数和正则化，在这种情况下，激活正则化应用于激活函数的输出，在这种情况下，[校正线性激活函数或 ReLU](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/) 。
+例如，可以在层上指定函数和正则化，在这种情况下，激活正则化应用于激活函数的输出，在这种情况下，[校正线性激活函数或 ReLU](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/) 。
 
 ```py
 ...
@@ -82,7 +82,7 @@ model.add(Activation('relu'))
 
 后者可能是激活正则化的首选用法，如“[深度稀疏整流神经网络](http://proceedings.mlr.press/v15/glorot11a.html)”中所述，以便允许模型结合整流线性激活函数学习将激活取为真零值。然而，激活正则化的两种可能的用途可能会被探索，以便发现什么最适合您的特定模型和数据集。
 
-让我们来看看活动正则化如何与一些常见的图层类型一起使用。
+让我们来看看活动正则化如何与一些常见的层类型一起使用。
 
 ### MLP 活动正规化
 
@@ -304,7 +304,7 @@ Train: 1.000, Test: 0.786
 
 我们可以通过使用 keras 中的 *keras .正则化子. l1* 类来做到这一点。
 
-我们将配置图层使用线性激活函数，以便我们可以正则化原始输出，然后在图层的正则化输出后添加 relu 激活图层。我们将正则化超参数设置为 1E-4 或 0.0001，稍微试错一下就发现了。
+我们将配置层使用线性激活函数，以便我们可以正则化原始输出，然后在层的正则化输出后添加 relu 激活层。我们将正则化超参数设置为 1E-4 或 0.0001，稍微试错一下就发现了。
 
 ```py
 model.add(Dense(500, input_dim=2, activation='linear', activity_regularizer=l1(0.0001)))
@@ -439,14 +439,14 @@ Train: 1.000, Test: 0.743
 ### 邮件
 
 *   [机器学习中向量规范的温和介绍](https://machinelearningmastery.com/vector-norms-machine-learning/)
-*   [在喀拉斯建立自动编码器](https://blog.keras.io/building-autoencoders-in-keras.html)
+*   [在Keras建立自动编码器](https://blog.keras.io/building-autoencoders-in-keras.html)
 
 ### 应用程序接口
 
 *   [硬正则器 API](https://keras.io/regularizers/)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [喀拉斯循环层原料药](https://keras.io/layers/recurrent/)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras循环层原料药](https://keras.io/layers/recurrent/)
 *   [sklearn . dataset . make _ circles](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)
 
 ## 摘要
@@ -456,7 +456,7 @@ Train: 1.000, Test: 0.743
 具体来说，您了解到:
 
 *   如何使用 Keras API 创建向量范数正则化。
-*   如何使用 Keras API 为 MLP、CNN 和 RNN 图层添加活动正则化。
+*   如何使用 Keras API 为 MLP、CNN 和 RNN 层添加活动正则化。
 *   如何通过向现有模型添加活动正则化来减少过拟合？
 
 你有什么问题吗？

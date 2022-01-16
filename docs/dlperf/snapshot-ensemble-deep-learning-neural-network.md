@@ -240,7 +240,7 @@ Train: 0.840, Test: 0.796
 
 每个训练时期训练和测试数据集上模型精度的线图学习曲线
 
-接下来，我们可以看看如何实施积极的学习进度计划。
+接下来，我们可以看看如何实现积极的学习进度计划。
 
 ## 余弦退火学习率
 
@@ -850,7 +850,7 @@ Accuracy 0.809 (0.008)
 
 *   [开始使用 Keras 顺序模型](https://keras.io/getting-started/sequential-model-guide/)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [喀拉斯随机梯度下降 API](https://keras.io/optimizers/#sgd)
+*   [Keras随机梯度下降 API](https://keras.io/optimizers/#sgd)
 *   [硬回调接口](https://keras.io/callbacks/)
 *   num py . argmax API
 *   [sklearn . dataset . make _ blobs API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)

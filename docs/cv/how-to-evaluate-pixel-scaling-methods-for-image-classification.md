@@ -348,7 +348,7 @@ print('Test', testX.min(), testX.max(), testX.mean(), testX.std())
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-然后，针对定心和标准化数据准备方案重复这一过程。结果提供了缩放程序确实被正确实施的证据。
+然后，针对定心和标准化数据准备方案重复这一过程。结果提供了缩放程序确实被正确实现的证据。
 
 ```py
 normalization

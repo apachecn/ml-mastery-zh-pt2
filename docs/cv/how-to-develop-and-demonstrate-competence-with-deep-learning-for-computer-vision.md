@@ -121,11 +121,11 @@ Python 中你最喜欢的图像处理 API 有哪些？
 *   卷积神经网络。
 *   递归神经网络，如长短期记忆网络，或 LSTM。
 
-更具体地说，这需要展示如何配置和充分利用 CNN 中使用的图层的强大技能，例如:
+更具体地说，这需要展示如何配置和充分利用 CNN 中使用的层的强大技能，例如:
 
 *   [卷积层](https://keras.io/layers/convolutional/)。
-*   [池化图层](https://keras.io/layers/pooling/)。
-*   使用图层的模式。
+*   [池化层](https://keras.io/layers/pooling/)。
+*   使用层的模式。
 
 这也可能包括一些有效模型的一般类别的技能，例如:
 

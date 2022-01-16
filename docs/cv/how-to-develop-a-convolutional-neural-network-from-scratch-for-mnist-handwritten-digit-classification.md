@@ -223,7 +223,7 @@ def prep_pixels(train, test):
 
 假设问题是一个多类分类任务，我们知道我们将需要一个具有 10 个节点的输出层，以便预测属于 10 个类中每一个的图像的概率分布。这也需要使用 softmax 激活功能。在特征提取器和输出层之间，我们可以添加一个密集层来解释特征，在本例中有 100 个节点。
 
-所有图层将使用 [ReLU 激活功能](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)和 he 权重初始化方案，两者都是最佳实践。
+所有层将使用 [ReLU 激活功能](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)和 he 权重初始化方案，两者都是最佳实践。
 
 我们将对随机梯度下降优化器使用保守配置，其[学习率](https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/)为 0.01，动量为 0.9。[分类交叉熵](https://machinelearningmastery.com/cross-entropy-for-machine-learning/)损失函数将被优化，适用于多类分类，我们将监控分类精度度量，这是适当的，因为我们在 10 类中的每一类都有相同数量的例子。
 
@@ -661,7 +661,7 @@ run_test_harness()
 
 创建学习曲线的图，在这种情况下显示学习速度(相对于时代的改进)似乎与基线模型没有不同。
 
-这些图表明，批量标准化，至少在这种情况下实施，不会带来任何好处。
+这些图表明，批量标准化，至少在这种情况下实现，不会带来任何好处。
 
 ![Loss and Accuracy Learning Curves for the BatchNormalization Model During k-Fold Cross-Validation](img/75857e8c73822f4e6cf4b8d74e102333.png)
 
@@ -1120,7 +1120,7 @@ run_example()
 ### 蜜蜂
 
 *   [硬数据集 API](https://keras.io/datasets/)
-*   [喀拉斯数据集代码](https://github.com/keras-team/keras/tree/master/keras/datasets)
+*   [Keras数据集代码](https://github.com/keras-team/keras/tree/master/keras/datasets)
 *   [sklearn.model_selection。KFold 原料药](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html)
 
 ### 文章

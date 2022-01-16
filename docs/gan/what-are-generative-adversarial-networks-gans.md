@@ -1,4 +1,4 @@
-# 温和介绍生成对抗网络(GANs)
+# 生成对抗网络（GANs）的温和介绍
 
 > 原文：<https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/>
 

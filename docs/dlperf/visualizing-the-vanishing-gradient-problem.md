@@ -636,7 +636,7 @@ plot_gradient(gradhistory, losshistory)
 您可能还会发现以下文档有助于解释我们上面使用的一些语法:
 
 *   Keras 中从零开始的训练循环:https://Keras . io/guides/writing _ a _ training _ loop _ from _ scratch/
-*   在喀拉斯写自己的回调:[https://keras.io/guides/writing_your_own_callbacks/](https://keras.io/guides/writing_your_own_callbacks/)
+*   在Keras写自己的回调:[https://keras.io/guides/writing_your_own_callbacks/](https://keras.io/guides/writing_your_own_callbacks/)
 
 ## 摘要
 

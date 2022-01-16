@@ -329,7 +329,7 @@ Test: X=(10000, 32, 32, 3), y=(10000, 20)
 ### 蜜蜂
 
 *   [硬数据集 API](https://keras.io/datasets/)
-*   [喀拉斯数据集代码](https://github.com/keras-team/keras/tree/master/keras/datasets)
+*   [Keras数据集代码](https://github.com/keras-team/keras/tree/master/keras/datasets)
 
 ### 文章
 

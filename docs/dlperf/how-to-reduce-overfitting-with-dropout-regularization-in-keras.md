@@ -13,7 +13,7 @@ Dropout 的工作原理是从概率上删除或“退出”一个层的输入，
 完成本教程后，您将知道:
 
 *   如何使用 Keras API 创建一个脱落层。
-*   如何使用 Keras API 为 MLP、CNN 和 RNN 图层添加丢弃正则化。
+*   如何使用 Keras API 为 MLP、CNN 和 RNN 层添加丢弃正则化。
 *   如何通过在现有模型中增加一个丢失正则化来减少过拟合？
 
 **用我的新书[更好的深度学习](https://machinelearningmastery.com/better-deep-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -24,24 +24,24 @@ Dropout 的工作原理是从概率上删除或“退出”一个层的输入，
 
 ![How to Reduce Overfitting With Dropout Regularization in Keras](img/755febfb982a694fa9e38536ce065eee.png)
 
-如何减少过拟合与丢弃正规化在喀拉斯
+如何减少过拟合与丢弃正规化在Keras
 图片由[项目拉刀疤](https://www.flickr.com/photos/jlascar/19198105290)，一些权利保留。
 
 ## 教程概述
 
 本教程分为三个部分；它们是:
 
-1.  喀拉斯的丢弃正规化
-2.  图层上的缺失正则化
+1.  Keras的丢弃正规化
+2.  层上的缺失正则化
 3.  丢弃正规化案例研究
 
-## 喀拉斯的丢弃正规化
+## Keras的丢弃正规化
 
 Keras 支持丢弃正规化。
 
 Keras 中最简单的丢弃形式是由丢弃核心层提供的。
 
-创建后，可以将图层的丢弃率指定为将图层的每个输入设置为零的概率。这与论文中丢弃率的定义不同，丢弃率指的是保留输入的概率。
+创建后，可以将层的丢弃率指定为将层的每个输入设置为零的概率。这与论文中丢弃率的定义不同，丢弃率指的是保留输入的概率。
 
 因此，当论文中建议丢弃率为 0.8(保留 80%)时，实际上丢弃率为 0.2(将 20%的输入设置为零)。
 
@@ -51,7 +51,7 @@ Keras 中最简单的丢弃形式是由丢弃核心层提供的。
 layer = Dropout(0.5)
 ```
 
-## 图层上的缺失正则化
+## 层上的缺失正则化
 
 丢弃层被添加到现有层之间的模型中，并应用于前一层的输出，该输出被馈送到后一层。
 
@@ -78,7 +78,7 @@ model.append(Dense(32))
 
 丢失也可以应用于可见层，例如网络的输入。
 
-这要求您将 Dropout 图层定义为第一个图层，并将 *input_shape* 参数添加到该图层，以指定输入样本的预期形状。
+这要求您将 Dropout 层定义为第一个层，并将 *input_shape* 参数添加到该层，以指定输入样本的预期形状。
 
 ```py
 ...
@@ -107,7 +107,7 @@ model.add(Dense(1))
 
 丢弃可以在卷积层(如 Conv2D)之后和池化层(如 MaxPooling2D)之后使用。
 
-通常，仅在[池化图层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)后才使用退出，但这只是一个粗略的启发。
+通常，仅在[池化层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)后才使用退出，但这只是一个粗略的启发。
 
 ```py
 # example of dropout for a CNN
@@ -132,7 +132,7 @@ model.add(Dense(1))
 
 ——[使用卷积网络的高效目标定位](https://arxiv.org/abs/1411.4280)，2015。
 
-空间丢失在喀拉斯通过空间丢失 2D 层(以及 1D 和 3D 版本)提供。
+空间丢失在Keras通过空间丢失 2D 层(以及 1D 和 3D 版本)提供。
 
 ```py
 # example of spatial dropout for a CNN
@@ -459,8 +459,8 @@ Train: 0.967, Test: 0.814
 
 *   [硬正则器 API](https://keras.io/regularizers/)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [喀拉斯循环层原料药](https://keras.io/layers/recurrent/)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras循环层原料药](https://keras.io/layers/recurrent/)
 *   [sklearn . dataset . make _ circles API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)
 
 ## 摘要
@@ -470,7 +470,7 @@ Train: 0.967, Test: 0.814
 具体来说，您了解到:
 
 *   如何使用 Keras API 创建一个脱落层。
-*   如何使用 Keras API 为 MLP、CNN 和 RNN 图层添加丢弃正则化。
+*   如何使用 Keras API 为 MLP、CNN 和 RNN 层添加丢弃正则化。
 *   如何通过在现有模型中增加一个丢失正则化来减少过拟合？
 
 你有什么问题吗？

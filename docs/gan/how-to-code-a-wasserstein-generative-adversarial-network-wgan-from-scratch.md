@@ -20,7 +20,7 @@ WGAN 的发展有一个密集的数学动机，尽管在实践中只需要对已
 
 我们开始吧。
 
-*   **2021 年 1 月更新**:更新所以图层冻结用批量定额。
+*   **2021 年 1 月更新**:更新所以层冻结用批量定额。
 
 ![How to Code a Wasserstein Generative Adversarial Network (WGAN) From Scratch](img/c776794619091d3445fad36ab3c28ac0.png)
 
@@ -58,7 +58,7 @@ WGAN 的好处是训练过程更稳定，对模型架构和超参数配置的选
 Wasserstein生成对抗网络的算法。
 取自:Wasserstein GAN。
 
-工作组的实施差异如下:
+工作组的实现差异如下:
 
 1.  在批评模型的输出层使用线性激活函数(而不是 sigmoid)。
 2.  对真实图像使用-1 标签，对假图像使用 1 标签(而不是 1 和 0)。
@@ -83,7 +83,7 @@ DCGAN 使用鉴别器输出层的 sigmoid 激活函数来预测给定图像真�
 model.add(Dense(1, activation='linear'))
 ```
 
-线性激活是图层的默认激活，因此我们可以不指定激活来获得相同的结果。
+线性激活是层的默认激活，因此我们可以不指定激活来获得相同的结果。
 
 ```py
 # define output layer of the critic model
@@ -174,7 +174,7 @@ class ClipConstraint(Constraint):
 		return {'clip_value': self.clip_value}
 ```
 
-要使用约束，可以构造类，然后通过设置 *kernel_constraint* 参数在图层中使用；例如:
+要使用约束，可以构造类，然后通过设置 *kernel_constraint* 参数在层中使用；例如:
 
 ```py
 ...
@@ -866,8 +866,8 @@ Wasserstein生成对抗网络的损失和精度线图
 
 *   [硬数据集 API](https://keras.io/datasets/) .
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [MatplotLib API](https://matplotlib.org/api/)
 *   [NumPy 随机采样(numpy.random) API](https://docs.scipy.org/doc/numpy/reference/routines.random.html)
 *   [NumPy 数组操作例程](https://docs.scipy.org/doc/numpy/reference/routines.array-manipulation.html)

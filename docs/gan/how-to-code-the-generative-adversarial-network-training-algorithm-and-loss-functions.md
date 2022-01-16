@@ -1,4 +1,4 @@
-# 如何对 GAN 训练算法和损失函数进行编码
+# 如何编写 GAN 训练算法和损失函数
 
 > 原文：<https://machinelearningmastery.com/how-to-code-the-generative-adversarial-network-training-algorithm-and-loss-functions/>
 

@@ -6,7 +6,7 @@
 
 用小的训练数据集向约束不足的神经网络模型添加噪声可以产生正则化效果并减少过拟合。
 
-Keras 支持通过称为高斯噪声层的单独层添加高斯噪声。此图层可用于向现有模型添加噪波。
+Keras 支持通过称为高斯噪声层的单独层添加高斯噪声。此层可用于向现有模型添加噪波。
 
 在本教程中，您将发现如何在 Keras 中向深度学习模型添加噪声，以便[减少过拟合并提高模型泛化](https://machinelearningmastery.com/introduction-to-regularization-to-reduce-overfitting-and-improve-generalization-error/)。
 
@@ -30,11 +30,11 @@ Keras 支持通过称为高斯噪声层的单独层添加高斯噪声。此图�
 
 本教程分为三个部分；它们是:
 
-1.  喀拉斯噪声正则化
+1.  Keras噪声正则化
 2.  模型中的噪声正则化
 3.  噪声正则化案例研究
 
-## 喀拉斯噪声正则化
+## Keras噪声正则化
 
 Keras 支持通过 GaussianNoise 层向模型添加噪声。
 
@@ -47,7 +47,7 @@ from keras.layers import GaussianNoise
 layer = GaussianNoise(0.1)
 ```
 
-图层的输出将具有与输入相同的形状，唯一的修改是将噪声添加到值中。
+层的输出将具有与输入相同的形状，唯一的修改是将噪声添加到值中。
 
 ## 模型中的噪声正则化
 
@@ -55,7 +55,7 @@ layer = GaussianNoise(0.1)
 
 首先，它可以用作输入层，直接向输入变量添加噪声。这是神经网络中传统的使用噪声作为正则化方法。
 
-下面是一个将高斯图层定义为采用两个输入变量的模型的输入图层的示例。
+下面是一个将高斯层定义为采用两个输入变量的模型的输入层的示例。
 
 ```py
 ...
@@ -309,7 +309,7 @@ Train: 1.000, Test: 0.757
 
 然而，由于数据集很小，我们可以给输入值添加更多的噪声。这将产生创建更多样本或对域进行重采样的效果，使输入空间的结构人为地更加平滑。这可能会使问题更容易学习，并提高泛化表现。
 
-我们可以添加一个高斯图层作为输入图层。噪音必须很小。假设输入值在范围[0，1]内，我们将添加平均值为 0.0、标准偏差为 0.01 的高斯噪声，这是任意选择的。
+我们可以添加一个高斯层作为输入层。噪音必须很小。假设输入值在范围[0，1]内，我们将添加平均值为 0.0、标准偏差为 0.01 的高斯噪声，这是任意选择的。
 
 ```py
 # define model
@@ -519,8 +519,8 @@ Train: 0.967, Test: 0.814
 
 *   [硬正则器 API](https://keras.io/regularizers/)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [喀拉斯循环层原料药](https://keras.io/layers/recurrent/)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras循环层原料药](https://keras.io/layers/recurrent/)
 *   [高噪声 API](https://keras.io/layers/noise/)
 *   [sklearn . dataset . make _ circles API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)
 

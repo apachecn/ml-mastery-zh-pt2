@@ -934,7 +934,7 @@ pyplot.show()
 
 *   [keras 模型中的平均权重，StackOverflow。](https://stackoverflow.com/questions/48212110/average-weights-in-keras-models)
 *   [用于视觉识别的模型集成，CS231n 卷积神经网络](https://cs231n.github.io/neural-networks-3/#ensemble)
-*   [指数移动平均线，喀拉斯发行。](https://github.com/keras-team/keras/issues/3696)
+*   [指数移动平均线，Keras发行。](https://github.com/keras-team/keras/issues/3696)
 *   [指数移动平均实现](https://gist.github.com/soheilb/c5bf0ba7197caa095acfcb69744df756)
 
 ## 摘要

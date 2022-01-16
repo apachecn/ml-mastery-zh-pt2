@@ -1,4 +1,4 @@
-# 如何用 Keras 开发用于图像到图像翻译的 CycleGAN
+# 如何用 Keras 开发用于图像到图像转换的 CycleGAN
 
 > 原文：<https://machinelearningmastery.com/cyclegan-tutorial-with-keras/>
 
@@ -22,7 +22,7 @@
 
 ![How to Develop a CycleGAN for Image-to-Image Translation with Keras](img/84ddbc97805e8ec99fc9fa9896c8ec65.png)
 
-如何使用 Keras 开发用于图像到图像翻译的 cycle gan[a . Munar](https://www.flickr.com/photos/tzirma/4346635061/)摄，保留部分权利。
+如何使用 Keras 开发用于图像到图像转换的 cycle gan[a . Munar](https://www.flickr.com/photos/tzirma/4346635061/)摄，保留部分权利。
 
 ## 教程概述
 
@@ -31,7 +31,7 @@
 1.  什么是循环干？
 2.  如何为斑马数据集准备马
 3.  如何开发将马翻译成斑马的自行车
-4.  如何使用循环生成器执行图像翻译
+4.  如何使用循环生成器执行图像转换
 
 ## 什么是循环干？
 
@@ -70,7 +70,7 @@ CycleGAN 模型的好处是可以在没有成对例子的情况下进行训练�
 
 既然我们已经熟悉了模型架构，我们就可以依次仔细看看每个模型，以及它们是如何实现的。
 
-[论文](https://arxiv.org/abs/1703.10593)很好地描述了模型和训练过程，尽管[官方火炬实施](https://github.com/junyanz/CycleGAN)被用作每个模型和训练过程的最终描述，并为下面描述的模型实施提供了基础。
+[论文](https://arxiv.org/abs/1703.10593)很好地描述了模型和训练过程，尽管[官方火炬实现](https://github.com/junyanz/CycleGAN)被用作每个模型和训练过程的最终描述，并为下面描述的模型实现提供了基础。
 
 ## 如何为斑马数据集准备马
 
@@ -963,9 +963,9 @@ g_model_BtoA_059350.h5
 
 既然我们已经安装了 CycleGAN 生成器，我们就可以使用它们来临时翻译照片。
 
-## 如何使用循环生成器执行图像翻译
+## 如何使用循环生成器执行图像转换
 
-保存的生成器模型可以被加载并用于特定的图像翻译。
+保存的生成器模型可以被加载并用于特定的图像转换。
 
 第一步是加载数据集。我们可以使用与上一节中开发的相同的 *load_real_samples()* 函数。
 
@@ -978,7 +978,7 @@ print('Loaded', A_data.shape, B_data.shape)
 
 查看生成的图像图，选择一对可用于图像生成的模型。在这种情况下，我们将使用在纪元 89(训练迭代 89，025)前后保存的模型。我们的生成器模型使用了来自 *keras_contrib* 库的定制层，特别是*实例化*层。因此，我们需要指定在加载每个生成器模型时如何加载该层。
 
-这可以通过指定图层名称到对象的字典映射并将其作为参数传递给 *load_model()* keras 函数来实现。
+这可以通过指定层名称到对象的字典映射并将其作为参数传递给 *load_model()* keras 函数来实现。
 
 ```py
 ...
@@ -1245,7 +1245,7 @@ pyplot.show()
 
 ### 报纸
 
-*   [使用循环一致对抗网络的不成对图像到图像翻译](https://arxiv.org/abs/1703.10593)，2017。
+*   [使用循环一致对抗网络的不成对图像到图像转换](https://arxiv.org/abs/1703.10593)，2017。
 
 ### 项目
 
@@ -1257,8 +1257,8 @@ pyplot.show()
 
 *   [硬数据集 API](https://keras.io/datasets/) .
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [硬贡献项目](https://github.com/keras-team/keras-contrib)
 
 ### 文章

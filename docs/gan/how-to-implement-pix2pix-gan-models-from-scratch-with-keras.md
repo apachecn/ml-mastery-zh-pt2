@@ -8,7 +8,7 @@ Pix2Pix GAN 是一个生成器模型，用于执行在成对示例上训练的�
 
 例如，该模型可用于将白天的图像转换为夜间的图像，或者从产品草图(如鞋子)转换为产品照片。
 
-Pix2Pix 模型的好处是，与其他用于条件图像生成的 GANs 相比，它相对简单，能够跨各种图像翻译任务生成大型高质量图像。
+Pix2Pix 模型的好处是，与其他用于条件图像生成的 GANs 相比，它相对简单，能够跨各种图像转换任务生成大型高质量图像。
 
 这个模型给人留下了深刻的印象，但是对于初学者来说，它的架构看起来有些复杂。
 
@@ -24,7 +24,7 @@ Pix2Pix 模型的好处是，与其他用于条件图像生成的 GANs 相比，
 
 我们开始吧。
 
-*   **2021 年 1 月更新**:更新所以图层冻结用批量定额。
+*   **2021 年 1 月更新**:更新所以层冻结用批量定额。
 
 ![How to Implement Pix2Pix GAN Models From Scratch With Keras](img/2a0fed184d6dfc63477ee4c85063dcdc.png)
 
@@ -38,14 +38,14 @@ Pix2Pix 模型的好处是，与其他用于条件图像生成的 GANs 相比，
 1.  什么是 Pix2Pix GAN？
 2.  如何实现 PatchGAN 鉴别器模型
 3.  如何实现 U 网生成器模型
-4.  如何实施对抗性和 L1 损失
+4.  如何实现对抗性和 L1 损失
 5.  如何更新模型权重
 
 ## 什么是 Pix2Pix GAN？
 
-Pix2Pix 是一个为通用图像到图像翻译而设计的生成对抗网络模型。
+Pix2Pix 是一个为通用图像到图像转换而设计的生成对抗网络模型。
 
-该方法由菲利普·伊索拉(Phillip Isola)等人在 2016 年发表的论文《条件对抗网络下的 T2 图像到图像翻译》(T3)中提出，并于 2017 年在 CVPR 的 T4 会议上提出。
+该方法由菲利普·伊索拉(Phillip Isola)等人在 2016 年发表的论文《条件对抗网络下的 T2 图像到图像转换》(T3)中提出，并于 2017 年在 CVPR 的 T4 会议上提出。
 
 GAN 架构由一个用于输出新的似是而非的合成图像的生成器模型和一个将图像分类为真实(来自数据集)或虚假(生成)的鉴别器模型组成。鉴别器模型直接更新，而生成器模型通过鉴别器模型更新。这样，两个模型在对抗过程中被同时训练，其中生成器试图更好地欺骗鉴别器，鉴别器试图更好地识别伪造图像。
 
@@ -67,7 +67,7 @@ PatchGAN 是根据感受野的大小设计的，有时也称为有效感受野�
 
 > ……我们设计了一个鉴别器架构——我们称之为 PatchGAN——它只在补丁的规模上惩罚结构。这个鉴别器试图分类图像中的每个 NxN 补丁是真的还是假的。我们在图像上运行这个鉴别器卷积，平均所有响应，以提供 d 的最终输出。
 
-——[条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2016。
+——[条件对抗网络下的图像到图像转换](https://arxiv.org/abs/1611.07004)，2016。
 
 在我们深入了解 PatchGAN 的配置细节之前，掌握感受野的计算非常重要。
 
@@ -125,27 +125,27 @@ Pix2Pix 论文的作者探索了不同的 PatchGAN 配置，包括一个称为 P
 
 > 70×70 的 PatchGAN […]表现稍好。超出此范围，扩展到完整的 286×286 ImageGAN，似乎不会提高结果的视觉质量。
 
-——[条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2016。
+——[条件对抗网络下的图像到图像转换](https://arxiv.org/abs/1611.07004)，2016。
 
-PatchGAN 的配置在论文的[附录中提供，可以通过查看官方火炬实施中的](https://arxiv.org/abs/1611.07004) [defineD_n_layers()功能](https://github.com/phillipi/pix2pix/blob/master/models.lua#L180)来确认。
+PatchGAN 的配置在论文的[附录中提供，可以通过查看官方火炬实现中的](https://arxiv.org/abs/1611.07004) [defineD_n_layers()功能](https://github.com/phillipi/pix2pix/blob/master/models.lua#L180)来确认。
 
 该模型将两幅图像作为输入，具体为一幅源图像和一幅目标图像。这些图像在通道级被连接在一起，例如每个图像的 3 个彩色通道变成输入的 6 个通道。
 
 > 让 Ck 表示一个带有 k 个过滤器的卷积-batch ORM-ReLu 层。[……]所有卷积都是 4× 4 空间滤波器，应用于跨距 2。[……]70×70 鉴频器架构为:C64-C128-C256-C512。在最后一层之后，应用卷积来映射到一维输出，随后是 Sigmoid 函数。作为上述表示法的一个例外，BatchNorm 不适用于第一个 C64 层。所有 ReLUs 都有泄漏，斜率为 0.2。
 
-——[条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2016。
+——[条件对抗网络下的图像到图像转换](https://arxiv.org/abs/1611.07004)，2016。
 
 PatchGAN 配置使用简写符号定义为:C64-C128-C256-C512，其中 C 表示卷积-batchorm-LeakyReLU 层的块，数字表示过滤器的数量。[第一层不使用批量归一化](https://machinelearningmastery.com/how-to-accelerate-learning-of-deep-neural-networks-with-batch-normalization/)。如前所述，内核大小固定为 4×4，除了模型的最后两层之外，所有层都使用 2×2 的[步长。LeakyReLU 的斜率设置为 0.2，输出层使用 sigmoid 激活函数。](https://machinelearningmastery.com/padding-and-stride-for-convolutional-neural-networks/)
 
 > 随机抖动是通过将 256 × 256 输入图像的大小调整为 286 × 286，然后随机裁剪回 256×256 的大小来应用的。权重从均值为 0、标准差为 0.02 的高斯分布中初始化。
 
-——[条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2016。
+——[条件对抗网络下的图像到图像转换](https://arxiv.org/abs/1611.07004)，2016。
 
 模型权重通过[随机高斯](https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/)初始化，平均值为 0.0，标准偏差为 0.02。输入模型的图像为 256×256。
 
 > ……我们在优化 D 的同时将目标除以 2，这样会减慢 D 相对于 g 的学习速度，我们使用 minibatch SGD 并应用 Adam 求解器，学习速度为 0.0002，动量参数β1 = 0.5，β2 = 0.999。
 
-——[条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2016。
+——[条件对抗网络下的图像到图像转换](https://arxiv.org/abs/1611.07004)，2016。
 
 模型以一幅图像的批量大小进行训练，随机梯度下降的 [Adam 版本](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)以较小的学习范围和适度的动量使用。每次模型更新，鉴别器的损失加权 50%。
 
@@ -292,18 +292,18 @@ U-Net 模型是用于图像转换的编码器-解码器模型，其中跳跃连�
 
 > ……输入通过一系列逐渐下采样的层，直到瓶颈层，此时过程反转。
 
-——[条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2016。
+——[条件对抗网络下的图像到图像转换](https://arxiv.org/abs/1611.07004)，2016。
 
 ![Architecture of the U-Net Generator Model](img/a35bb71716d70cbc406b771a0f44534f.png)
 
 U-Net 生成器模型的体系结构
-取自带有条件对抗网络的图像到图像翻译。
+取自带有条件对抗网络的图像到图像转换。
 
-在具有相同大小的特征映射的层之间添加跳过连接，使得第一下采样层与最后一个上采样层连接，第二下采样层与第二最后一个上采样层连接，以此类推。这些连接将下采样图层中的要素图通道与上采样图层中的要素图通道连接起来。
+在具有相同大小的特征映射的层之间添加跳过连接，使得第一下采样层与最后一个上采样层连接，第二下采样层与第二最后一个上采样层连接，以此类推。这些连接将下采样层中的要素图通道与上采样层中的要素图通道连接起来。
 
 > 具体来说，我们在 I 层和 n-I 层之间添加跳跃连接，其中 n 是总层数。每个跳跃连接只是将 I 层的所有通道与 n-I 层的通道连接起来。
 
-——[条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2016。
+——[条件对抗网络下的图像到图像转换](https://arxiv.org/abs/1611.07004)，2016。
 
 与 GAN 架构中的传统生成器模型不同，U-Net 生成器不从潜在空间中取一点作为输入。取而代之的是，[缺失层](https://machinelearningmastery.com/how-to-reduce-overfitting-with-dropout-regularization-in-keras/)在训练期间和当模型用于进行预测时都被用作随机性的来源，例如在推断时生成图像。
 
@@ -311,11 +311,11 @@ U-Net 生成器模型的体系结构
 
 > 在推理时，我们以与训练阶段完全相同的方式运行生成器网络。这与通常的协议不同，因为我们在测试时应用丢弃，并且我们使用测试批次的统计数据应用批次标准化，而不是训练批次的聚合统计数据。
 
-——[条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2016。
+——[条件对抗网络下的图像到图像转换](https://arxiv.org/abs/1611.07004)，2016。
 
 在 Keras 中，像 [Dropout](https://machinelearningmastery.com/how-to-reduce-overfitting-with-dropout-regularization-in-keras/) 和 [BatchNormalization](https://machinelearningmastery.com/batch-normalization-for-training-of-deep-neural-networks/) 这样的层在训练和推理模型中的操作是不同的。当调用这些层为“真”时，我们可以设置“*训练*”参数，以确保它们始终在训练模型中运行，即使在推理过程中使用。
 
-例如，在推理和训练过程中会退出的 Dropout 图层可以添加到模型中，如下所示:
+例如，在推理和训练过程中会退出的 Dropout 层可以添加到模型中，如下所示:
 
 ```py
 ...
@@ -328,7 +328,7 @@ g = Dropout(0.5)(g, training=True)
 
 > 让 Ck 表示一个带有 k 个过滤器的卷积-batch ORM-ReLu 层。CDk 表示丢弃率为 50%的卷积-batchnomdrop-ReLU 层。所有卷积都是 4× 4 空间滤波器，应用于步长 2。
 
-——[条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2016。
+——[条件对抗网络下的图像到图像转换](https://arxiv.org/abs/1611.07004)，2016。
 
 U-Net 模型的体系结构使用简写符号定义如下:
 
@@ -339,7 +339,7 @@ U-Net 模型的体系结构使用简写符号定义如下:
 
 > …瓶颈层的激活被 batchnorm 操作归零，有效地跳过了最内层。这个问题可以通过从这个层中移除 batchnorm 来解决，就像在公共代码中所做的那样
 
-——[条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2016。
+——[条件对抗网络下的图像到图像转换](https://arxiv.org/abs/1611.07004)，2016。
 
 U-Net 解码器中的滤波器数量有点误导，因为它是与编码器中的等效层串联后的层的滤波器数量。当我们创建模型的图时，这可能会变得更加清楚。
 
@@ -347,7 +347,7 @@ U-Net 解码器中的滤波器数量有点误导，因为它是与编码器中�
 
 > 在解码器中的最后一层之后，应用卷积来映射到输出通道的数量(一般为 3 个[…])，随后是 Tanh 函数[…]。batch ORM 不应用于编码器中的第一个 C64 层。编码器中的所有 relu 都是泄漏的，斜率为 0.2，而解码器中的 relu 是不泄漏的。
 
-——[条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2016。
+——[条件对抗网络下的图像到图像转换](https://arxiv.org/abs/1611.07004)，2016。
 
 将这些联系在一起，我们可以定义一个名为 *define_generator()* 的函数，该函数定义了 U-Net 编码器-解码器生成器模型。还提供了两个辅助函数来定义层的编码器块和层的解码器块。
 
@@ -591,7 +591,7 @@ Pix2Pix GAN 架构中使用的 U-Net 编解码模型图
 
 既然我们已经定义了这两个模型，我们可以看看生成器模型是如何通过鉴别器模型进行更新的。
 
-## 如何实施对抗性和 L1 损失
+## 如何实现对抗性和 L1 损失
 
 鉴别器模型可以直接更新，而生成器模型必须通过鉴别器模型更新。
 
@@ -875,7 +875,7 @@ d_loss1 = d_model.train_on_batch([X_realA, X_realB], y_real)
 d_loss2 = d_model.train_on_batch([X_realA, X_fakeB], y_fake)
 ```
 
-到目前为止，这对于在喀拉斯更新一个 GAN 是正常的。
+到目前为止，这对于在Keras更新一个 GAN 是正常的。
 
 接下来，我们可以通过对抗性损失和 L1 损失来更新发电机模型。回想一下，复合 GAN 模型以一批源图像作为输入，首先预测真假分类，其次预测生成的目标。这里，我们向合成模型的鉴别器输出提供一个目标来指示生成的图像是“*真实的*”(class = 1)。提供真实目标图像用于计算它们和生成的目标图像之间的 L1 损失。
 
@@ -932,9 +932,9 @@ train(d_model, g_model, gan_model, dataset)
 
 ### 正式的
 
-*   [条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2016。
-*   [带条件对抗网的图像到图像翻译，主页](https://phillipi.github.io/pix2pix/)。
-*   [带条件对抗网的图像到图像翻译，GitHub](https://github.com/phillipi/pix2pix) 。
+*   [条件对抗网络下的图像到图像转换](https://arxiv.org/abs/1611.07004)，2016。
+*   [带条件对抗网的图像到图像转换，主页](https://phillipi.github.io/pix2pix/)。
+*   [带条件对抗网的图像到图像转换，GitHub](https://github.com/phillipi/pix2pix) 。
 *   [pytorch-cyclelegan-and-pix 2 pix，GitHub](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix) 。
 *   [互动影像转影像演示](https://affinelayer.com/pixsrv/)，2017 年。
 *   [Pix2Pix 数据集](http://efrosgans.eecs.berkeley.edu/pix2pix/datasets/)
@@ -943,8 +943,8 @@ train(d_model, g_model, gan_model, dataset)
 
 *   [硬数据集 API](https://keras.io/datasets/) .
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 
 ### 文章
 

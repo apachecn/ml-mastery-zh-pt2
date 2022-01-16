@@ -278,7 +278,7 @@ channels_last
 *   num py . reshape API
 *   num py . move axis API
 *   [硬后端接口](https://keras.io/backend/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
 
 ## 摘要
 

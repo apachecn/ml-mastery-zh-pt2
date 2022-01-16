@@ -1,4 +1,4 @@
-# 如何开始学习生成对抗网络(7 天小型课程)
+# 如何入门生成对抗网络（7 天小型课程）
 
 > 原文：<https://machinelearningmastery.com/how-to-get-started-with-generative-adversarial-networks-7-day-mini-course/>
 
@@ -17,7 +17,7 @@ GANs 的研究和应用只有几年的历史，但所取得的成果却令人瞩
 
 我们开始吧。
 
-*   **更新 2019 年 7 月**:更改了 LeakyReLU 和 BatchNorm 图层的顺序(谢谢 Chee)。
+*   **更新 2019 年 7 月**:更改了 LeakyReLU 和 BatchNorm 层的顺序(谢谢 Chee)。
 
 ![How to Get Started With Generative Adversarial Networks (7-Day Mini-Course)](img/9df8871f61f4008c9606af1d46da6767.png)
 
@@ -61,7 +61,7 @@ GANs 的研究和应用只有几年的历史，但所取得的成果却令人瞩
 *   **第 03 课**:鉴别器和发电机模型
 *   **第 04 课** : GAN 损耗函数
 *   **第 05 课** : GAN 训练算法
-*   **第 06 课**:图像翻译的 GANs
+*   **第 06 课**:图像转换的 GANs
 *   **第 07 课**:高级 GANs
 
 每节课可能花费你 60 秒到 30 分钟。慢慢来，按照自己的节奏完成课程。提问，甚至在下面的评论中发布结果。
@@ -137,12 +137,12 @@ GANs 是一种训练生成模型的聪明方法，它通过两个子模型将问
 
 在稳定 GAN 模型的设计和训练中，最重要的一步可能是被称为[深度卷积 GAN](https://arxiv.org/abs/1511.06434) 或 DCGAN 的方法。
 
-在实施您的 GAN 模型时，此体系结构涉及到七个要考虑的最佳实践:
+在实现您的 GAN 模型时，此体系结构涉及到七个要考虑的最佳实践:
 
-1.  使用条纹卷积进行下采样(例如，不要使用[池化图层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/))。
+1.  使用条纹卷积进行下采样(例如，不要使用[池化层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/))。
 2.  使用交错卷积进行上采样(例如，使用转置卷积层)。
 3.  使用 LeakyReLU(例如不要使用[标准 ReLU](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/) )。
-4.  使用[批量标准化](https://machinelearningmastery.com/how-to-accelerate-learning-of-deep-neural-networks-with-batch-normalization/)(例如激活后标准化图层输出)。
+4.  使用[批量标准化](https://machinelearningmastery.com/how-to-accelerate-learning-of-deep-neural-networks-with-batch-normalization/)(例如激活后标准化层输出)。
 5.  使用高斯权重初始化(例如，平均值为 0.0，标准偏差为 0.02)。
 6.  使用[亚当随机梯度下降](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)(例如学习率 0.0002，beta 1 0.5)。
 7.  [将图像](https://machinelearningmastery.com/how-to-manually-scale-image-pixel-data-for-deep-learning/)缩放至范围[-1，1](例如，在发生器的输出中使用 tanh)。
@@ -337,11 +337,11 @@ for i in range(10000)
 
 在下面的评论中发表你的发现。我很想看看你的发现。
 
-在下一课中，您将发现 GANs 在图像翻译中的应用。
+在下一课中，您将发现 GANs 在图像转换中的应用。
 
-## 第六课:图像翻译的甘斯
+## 第六课:图像转换的甘斯
 
-在本课中，您将发现用于图像翻译的 GANs。
+在本课中，您将发现用于图像转换的 GANs。
 
 图像到图像的转换是给定源图像到目标图像的受控转换。一个例子可能是黑白照片到彩色照片的转换。
 
@@ -351,7 +351,7 @@ GANs 可以被训练来执行图像到图像的转换，两个例子包括 Pix2P
 
 ### Pix2Pix
 
-Pix2Pix GAN 是一种通用的图像到图像翻译方法。
+Pix2Pix GAN 是一种通用的图像到图像转换方法。
 
 该模型是在成对示例的数据集上训练的，其中每对示例都涉及所需翻译前后的图像示例。
 
@@ -369,9 +369,9 @@ Pix2Pix 中使用了更复杂的深度卷积神经网络模型。具体来说，
 
 Pix2Pix 模型的一个限制是，它需要所需翻译前后成对示例的数据集。
 
-有许多图像到图像的翻译任务，我们可能没有翻译的例子，比如把斑马的照片翻译成马。还有其他不存在这种成对例子的图像翻译任务，例如将风景艺术翻译成照片。
+有许多图像到图像的翻译任务，我们可能没有翻译的例子，比如把斑马的照片翻译成马。还有其他不存在这种成对例子的图像转换任务，例如将风景艺术翻译成照片。
 
-CycleGAN 是一种在没有成对例子的情况下自动训练图像到图像翻译模型的技术。使用来自源域和目标域的不需要以任何方式相关的图像集合，以无监督的方式训练模型。
+CycleGAN 是一种在没有成对例子的情况下自动训练图像到图像转换模型的技术。使用来自源域和目标域的不需要以任何方式相关的图像集合，以无监督的方式训练模型。
 
 CycleGAN 是 GAN 架构的扩展，它涉及两个生成器模型和两个鉴别器模型的同时训练。
 
@@ -381,7 +381,7 @@ CycleGAN 对称为周期一致性的体系结构进行了额外的扩展。这�
 
 ### 你的任务
 
-在本课中，您的任务是列出五个图像到图像翻译的示例，您可能希望使用 GAN 模型进行探索。
+在本课中，您的任务是列出五个图像到图像转换的示例，您可能希望使用 GAN 模型进行探索。
 
 在下面的评论中发表你的发现。我很想看看你的发现。
 
@@ -403,13 +403,13 @@ BigGAN 是一种将一套最近的最佳实践整合在一起的方法，用于�
 
 由此产生的 BigGAN 生成器模型能够在广泛的图像类别中生成高质量的 256×256 和 512×512 图像。
 
-### 渐进生长GAN
+### 渐进式增长GAN
 
-渐进生长GAN是GAN训练过程的扩展，允许稳定训练发电机模型，可以输出大的高质量图像。
+渐进式增长GAN是GAN训练过程的扩展，允许稳定训练发电机模型，可以输出大的高质量图像。
 
-它包括从一个非常小的图像开始，逐步增加图层块，增加生成器模型的输出大小和鉴别器模型的输入大小，直到达到所需的图像大小。
+它包括从一个非常小的图像开始，逐步增加层块，增加生成器模型的输出大小和鉴别器模型的输入大小，直到达到所需的图像大小。
 
-渐进式生长 GAN 最令人印象深刻的成就可能是生成了大的 1024×1024 像素的真实感生成人脸。
+渐进式增长 GAN 最令人印象深刻的成就可能是生成了大的 1024×1024 像素的真实感生成人脸。
 
 ### stylenan
 
@@ -419,7 +419,7 @@ BigGAN 是一种将一套最近的最佳实践整合在一起的方法，用于�
 
 生成的模型不仅能够生成令人印象深刻的照片级高质量人脸照片，还可以通过改变样式向量和噪声来控制生成的图像在不同细节级别的样式。
 
-例如，合成网络中较低分辨率的图层块控制高级风格，如姿势和发型，较高分辨率的图层块控制配色方案和非常精细的细节，如雀斑和发束的位置。
+例如，合成网络中较低分辨率的层块控制高级风格，如姿势和发型，较高分辨率的层块控制配色方案和非常精细的细节，如雀斑和发束的位置。
 
 ### 你的任务
 

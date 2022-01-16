@@ -109,7 +109,7 @@
 
 讲座的必看清单如下:
 
-*   **第五讲:卷积神经网络**。本次讲座将让您了解 CNN 图层及其工作原理。
+*   **第五讲:卷积神经网络**。本次讲座将让您了解 CNN 层及其工作原理。
     *   [视频](https://www.youtube.com/watch?v=bNb2fEVKeEo&list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv&index=6&t=0s)
     *   [PDF 幻灯片](http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf)
     *   [HTML ConvNet 笔记](https://cs231n.github.io/convolutional-networks/)

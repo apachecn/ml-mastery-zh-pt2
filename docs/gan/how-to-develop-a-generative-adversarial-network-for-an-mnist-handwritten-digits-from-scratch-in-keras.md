@@ -1,4 +1,4 @@
-# 如何开发生成 MNIST 手写数字的 GAN
+# 如何开发 GAN 来生成 MNIST 手写数字
 
 > 原文：<https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-an-mnist-handwritten-digits-from-scratch-in-keras/>
 
@@ -492,7 +492,7 @@ model.add(Reshape((7, 7, 128)))
 
 一种方法是使用一个*upsmampling 2d*层(像一个反向池化层)，然后是一个正常的 *Conv2D* 层。另一种或许更现代的方式是将这两种操作组合成一个单一的层，称为*conv2d 转置*。我们将把后一种方法用于我们的生成器。
 
-*conv2d 转置*图层可以配置为(2×2)的步幅，这将使输入要素地图的面积增加四倍(宽度和高度尺寸增加一倍)。使用作为步长因子的内核大小(例如双倍)来避免上采样时可能观察到的棋盘图案也是一种良好的做法。
+*conv2d 转置*层可以配置为(2×2)的步幅，这将使输入要素地图的面积增加四倍(宽度和高度尺寸增加一倍)。使用作为步长因子的内核大小(例如双倍)来避免上采样时可能观察到的棋盘图案也是一种良好的做法。
 
 ```py
 # upsample to 14x14
@@ -781,7 +781,7 @@ def define_gan(g_model, d_model):
 
 这里的 Keras API 文档中描述了这种行为:
 
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 
 下面列出了创建鉴别器、生成器和复合模型的完整示例。
 
@@ -1425,8 +1425,8 @@ pyplot.show()
 
 *   [硬数据集 API](https://keras.io/datasets/)
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [MatplotLib API](https://matplotlib.org/api/)
 *   [NumPy 随机采样(numpy.random) API](https://docs.scipy.org/doc/numpy/reference/routines.random.html)
 *   [NumPy 数组操作例程](https://docs.scipy.org/doc/numpy/reference/routines.array-manipulation.html)

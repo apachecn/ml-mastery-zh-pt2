@@ -84,11 +84,11 @@
 
 ## 在 Keras 中配置节点和层
 
-Keras 允许您轻松地将节点和图层添加到模型中。
+Keras 允许您轻松地将节点和层添加到模型中。
 
 ### 配置模型节点
 
-图层的第一个参数指定图层中使用的节点数。
+层的第一个参数指定层中使用的节点数。
 
 多层感知器或 MLP 模型的完全连接层是通过密集层添加的。
 
@@ -101,14 +101,14 @@ layer = Dense(32)
 
 类似地，可以以相同的方式为递归神经网络层指定节点的数量。
 
-例如，我们可以创建一个具有 32 个节点(或单元)的 LSTM 图层，如下所示:
+例如，我们可以创建一个具有 32 个节点(或单元)的 LSTM 层，如下所示:
 
 ```py
 ...
 layer = LSTM(32)
 ```
 
-卷积神经网络，或 CNN，没有节点，而是指定过滤器映射的数量和它们的形状。过滤图的数量和大小决定了图层的容量。
+卷积神经网络，或 CNN，没有节点，而是指定过滤器映射的数量和它们的形状。过滤图的数量和大小决定了层的容量。
 
 我们可以用 32 个过滤图定义一个二维 CNN，每个过滤图的大小为 3 乘 3，如下所示:
 
@@ -592,8 +592,8 @@ layers=5: 0.794
 ### 应用程序接口
 
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [喀拉斯循环层原料药](https://keras.io/layers/recurrent/)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras循环层原料药](https://keras.io/layers/recurrent/)
 *   [Keras 实用功能](https://keras.io/utils/)
 *   [sklearn . dataset . make _ blobs API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)
 

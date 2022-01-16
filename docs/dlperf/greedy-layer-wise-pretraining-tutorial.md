@@ -41,7 +41,7 @@
 
 传统上，训练多层深度神经网络具有挑战性。
 
-随着隐藏图层数量的增加，传播回更早图层的错误信息量会显著减少。这意味着靠近输出层的隐藏层中的权重被正常更新，而靠近输入层的隐藏层中的权重被最低限度地更新或者根本不更新。一般来说，这个问题阻碍了非常深的神经网络的训练，被称为 [*梯度消失问题*](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/) 。
+随着隐藏层数量的增加，传播回更早层的错误信息量会显著减少。这意味着靠近输出层的隐藏层中的权重被正常更新，而靠近输入层的隐藏层中的权重被最低限度地更新或者根本不更新。一般来说，这个问题阻碍了非常深的神经网络的训练，被称为 [*梯度消失问题*](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/) 。
 
 神经网络复兴的一个重要里程碑，最初允许开发更深层次的神经网络模型，是贪婪的逐层预训练技术，通常简称为“*预训练*”
 
@@ -286,7 +286,7 @@ for layer in model.layers:
 model.add(Dense(10, activation='relu', kernel_initializer='he_uniform'))
 ```
 
-最后，可以将输出图层添加回来，并在训练数据集上重新调整模型。
+最后，可以将输出层添加回来，并在训练数据集上重新调整模型。
 
 ```py
 # re-add the output layer
@@ -434,7 +434,7 @@ pyplot.show()
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到基线模型在这个问题上做得相当好。随着图层的增加，我们可以大致看到模型在训练数据集上的准确性有所提高，这可能是因为它开始过度填充数据。我们在测试数据集上看到分类精度的粗略下降，可能是因为过拟合。
+在这种情况下，我们可以看到基线模型在这个问题上做得相当好。随着层的增加，我们可以大致看到模型在训练数据集上的准确性有所提高，这可能是因为它开始过度填充数据。我们在测试数据集上看到分类精度的粗略下降，可能是因为过拟合。
 
 ```py
 > layers=2, train=0.816, test=0.830
@@ -588,7 +588,7 @@ scores[len(model.layers)] = (train_acc, test_acc)
 
 我们现在准备定义向模型添加和预处理层的过程。
 
-添加图层的过程与上一节中的监督情况非常相似，只是我们优化的是重建损失，而不是新图层的分类精度。
+添加层的过程与上一节中的监督情况非常相似，只是我们优化的是重建损失，而不是新层的分类精度。
 
 下面的*add _ layer _ to _ autoencoder()*函数向 auto encoder 模型中添加一个新的隐藏层，更新新层和隐藏层的权重，然后报告列车上的重建错误并测试输入数据的集合。该函数确实将所有先前的层重新标记为不可训练的，这是多余的，因为我们已经在*evaluate _ auto encoder _ as _ classifier()*函数中这样做了，但我将其留在了中，以防您决定在自己的项目中重用该函数。
 

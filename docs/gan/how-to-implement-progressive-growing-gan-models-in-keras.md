@@ -1,4 +1,4 @@
-# 如何在 Keras 中实现渐进式生长 GAN 模型
+# 如何在 Keras 中实现渐进式增长 GAN 模型
 
 > 原文：<https://machinelearningmastery.com/how-to-implement-progressive-growing-gan-models-in-keras/>
 
@@ -20,7 +20,7 @@
 
 ![How to Implement Progressive Growing GAN Models in Keras](img/d8acfb006fe95f44fe93fd68f4fda872.png)
 
-如何在喀拉斯实施渐进式生长 GAN 模型
+如何在Keras实现渐进式增长 GAN 模型
 图片由[迪奥戈·桑多斯·席尔瓦](https://www.flickr.com/photos/dsantoss/32782524633/)提供，保留部分权利。
 
 ## 教程概述
@@ -29,7 +29,7 @@
 
 1.  什么是渐进式增长的 GAN 架构？
 2.  如何实现渐进增长的GAN鉴别器模型
-3.  如何实现渐进式生长GAN发生器模型
+3.  如何实现渐进式增长GAN发生器模型
 4.  如何实现用于更新生成器的复合模型
 5.  如何训练鉴别器和生成器模型
 
@@ -37,38 +37,38 @@
 
 GANs 在生成清晰的合成图像方面很有效，尽管通常受限于可以生成的图像的大小。
 
-渐进式生长 GAN 是 GAN 的扩展，它允许训练能够输出大的高质量图像的生成器模型，例如大小为 1024×1024 像素的真实感人脸。英伟达的 [Tero Karras](https://research.nvidia.com/person/tero-karras) 等人在 2017 年的论文中描述了这一点，论文标题为“[为提高质量、稳定性和变化性而对 GANs 进行渐进生长](https://arxiv.org/abs/1710.10196)”
+渐进式增长 GAN 是 GAN 的扩展，它允许训练能够输出大的高质量图像的生成器模型，例如大小为 1024×1024 像素的真实感人脸。英伟达的 [Tero Karras](https://research.nvidia.com/person/tero-karras) 等人在 2017 年的论文中描述了这一点，论文标题为“[为提高质量、稳定性和变化性而对 GANs 进行渐进式增长](https://arxiv.org/abs/1710.10196)”
 
-渐进式生长 GAN 的关键创新是发生器输出图像尺寸的递增，从 4×4 像素图像开始，加倍到 8×8、16×16 等，直至达到所需的输出分辨率。
+渐进式增长 GAN 的关键创新是发生器输出图像尺寸的递增，从 4×4 像素图像开始，加倍到 8×8、16×16 等，直至达到所需的输出分辨率。
 
-> 我们的主要贡献是 GANs 的培训方法，从低分辨率图像开始，然后通过向网络添加图层来逐步提高分辨率。
+> 我们的主要贡献是 GANs 的培训方法，从低分辨率图像开始，然后通过向网络添加层来逐步提高分辨率。
 
-——[为提高质量、稳定性和变化性而进行的肝的渐进生长](https://arxiv.org/abs/1710.10196)，2017 年。
+——[为提高质量、稳定性和变化性而进行的肝的渐进式增长](https://arxiv.org/abs/1710.10196)，2017 年。
 
 这是通过一个训练过程来实现的，该过程包括用给定的输出分辨率对模型进行微调的阶段，以及用更大的分辨率缓慢地逐步引入新模型的阶段。
 
 > 当发生器(G)和鉴别器(D)的分辨率加倍时，我们平滑地淡入新的层
 
-——[为提高质量、稳定性和变化性而进行的肝的渐进生长](https://arxiv.org/abs/1710.10196)，2017 年。
+——[为提高质量、稳定性和变化性而进行的肝的渐进式增长](https://arxiv.org/abs/1710.10196)，2017 年。
 
-在训练过程中，所有图层都保持可训练状态，包括添加新图层时的现有图层。
+在训练过程中，所有层都保持可训练状态，包括添加新层时的现有层。
 
 > 两个网络中的所有现有层在整个训练过程中都是可训练的。
 
-——[为提高质量、稳定性和变化性而进行的肝的渐进生长](https://arxiv.org/abs/1710.10196)，2017 年。
+——[为提高质量、稳定性和变化性而进行的肝的渐进式增长](https://arxiv.org/abs/1710.10196)，2017 年。
 
-渐进式生长 GAN 涉及使用具有相同一般结构的生成器和鉴别器模型，并从非常小的图像开始。在训练期间，新的卷积层块被系统地添加到生成器模型和鉴别器模型中。
+渐进式增长 GAN 涉及使用具有相同一般结构的生成器和鉴别器模型，并从非常小的图像开始。在训练期间，新的卷积层块被系统地添加到生成器模型和鉴别器模型中。
 
 ![Example of Progressively Adding Layers to Generator and Discriminator Models.](img/267d9c2f8897a3affcb125f043ae1f27.png)
 
-向生成器和鉴别器模型逐步添加图层的示例。
-取自:为提高质量、稳定性和变异而进行的肝的渐进生长。
+向生成器和鉴别器模型逐步添加层的示例。
+取自:为提高质量、稳定性和变异而进行的肝的渐进式增长。
 
 层的增量添加允许模型有效地学习粗略级别的细节，并且稍后学习更精细的细节，在生成器和鉴别器侧都是如此。
 
 > 这种增量性质允许训练首先发现图像分布的大尺度结构，然后将注意力转移到越来越精细的细节上，而不是必须同时学习所有尺度。
 
-——[为提高质量、稳定性和变化性而进行的肝的渐进生长](https://arxiv.org/abs/1710.10196)，2017 年。
+——[为提高质量、稳定性和变化性而进行的肝的渐进式增长](https://arxiv.org/abs/1710.10196)，2017 年。
 
 模型架构复杂，不能直接实现。
 
@@ -76,7 +76,7 @@ GANs 在生成清晰的合成图像方面很有效，尽管通常受限于可以
 
 我们将逐步了解如何定义每个鉴别器和生成器模型，如何通过鉴别器模型训练生成器，以及如何在训练过程中更新每个模型。
 
-这些实施细节将为您开发适合自己应用的渐进增长的 GAN 提供基础。
+这些实现细节将为您开发适合自己应用的渐进增长的 GAN 提供基础。
 
 ## 如何实现渐进增长的GAN鉴别器模型
 
@@ -104,7 +104,7 @@ GANs 在生成清晰的合成图像方面很有效，尽管通常受限于可以
 ![Figure Showing the Growing of the Discriminator Model, Before (a) During (b) and After (c) the Phase-In of a High Resolution](img/4992dde2db292b2bb8517b84077512ac.png)
 
 图中显示了高分辨率相位输入之前(a)、期间(b)和之后(c)鉴频器模型的发展。
-取自:为提高质量、稳定性和变异而进行的肝的渐进生长。
+取自:为提高质量、稳定性和变异而进行的肝的渐进式增长。
 
 来自 RGB 层的*被实现为一个 [1×1 卷积层](https://machinelearningmastery.com/convolutional-layers-for-deep-learning-neural-networks/)。一个块由两个具有 3×3 大小的滤波器的卷积层和斜率为 0.2 的泄漏 ReLU 激活函数组成，随后是下采样层。平均池用于下采样，这与大多数其他使用转置卷积层的 GAN 模型不同。*
 
@@ -116,9 +116,9 @@ GANs 在生成清晰的合成图像方面很有效，尽管通常受限于可以
 
 我相信后一种方法可能更容易，也是我们将在本教程中使用的方法。
 
-首先，我们必须定义一个自定义图层，以便在新的更高分辨率的输入图像和块中淡入淡出时使用。这个新图层必须采用两组具有相同维度(宽度、高度、通道)的激活图，并使用加权和将它们相加。
+首先，我们必须定义一个自定义层，以便在新的更高分辨率的输入图像和块中淡入淡出时使用。这个新层必须采用两组具有相同维度(宽度、高度、通道)的激活图，并使用加权和将它们相加。
 
-我们可以将其实现为一个名为*加权求和*的新图层，该图层扩展了*添加*合并图层，并使用超参数“ *alpha* ”来控制每个输入的贡献。下面定义了这个新类。该图层仅假设两个输入:第一个用于旧图层或现有图层的输出，第二个用于新添加的图层。新的超参数被定义为后端变量，这意味着我们可以通过改变变量的值随时改变它。
+我们可以将其实现为一个名为*加权求和*的新层，该层扩展了*添加*合并层，并使用超参数“ *alpha* ”来控制每个输入的贡献。下面定义了这个新类。该层仅假设两个输入:第一个用于旧层或现有层的输出，第二个用于新添加的层。新的超参数被定义为后端变量，这意味着我们可以通过改变变量的值随时改变它。
 
 ```py
 # weighted sum output
@@ -212,7 +212,7 @@ model.compile(loss='mse', optimizer=Adam(lr=0.001, beta_1=0, beta_2=0.99, epsilo
 
 在我们淡入下一个加倍的输入图像尺寸之前，需要这个直通版本来进行训练。
 
-我们可以更新上面的例子来创建模型的两个版本。首先是简单的直通版本，然后是用于淡入的版本，该版本重用了新块的图层和旧模型的输出图层。
+我们可以更新上面的例子来创建模型的两个版本。首先是简单的直通版本，然后是用于淡入的版本，该版本重用了新块的层和旧模型的输出层。
 
 下面的*add _ discriminator _ block()*函数实现了这一点，返回两个已定义模型(直通和淡入)的列表，并将旧模型作为参数，并将输入层数定义为默认参数(3)。
 
@@ -505,13 +505,13 @@ ________________________________________________________________________________
 
 ![Plot of the Fade-In Discriminator Model For the Progressive Growing GAN Transitioning From 8x8 to 16x16 Input Images](img/74138ea3745326208c45ae3ba0879b37.png)
 
-渐进生长GAN从 8×8 到 16×16 输入图像过渡的淡入鉴别器模型图
+渐进式增长GAN从 8×8 到 16×16 输入图像过渡的淡入鉴别器模型图
 
 既然我们已经看到了如何定义鉴别器模型，那么让我们看看如何定义生成器模型。
 
-## 如何实现渐进式生长GAN发生器模型
+## 如何实现渐进式增长GAN发生器模型
 
-渐进生长 GAN 的生成器模型比鉴别器模型更容易在 Keras 中实现。
+渐进式增长 GAN 的生成器模型比鉴别器模型更容易在 Keras 中实现。
 
 这样做的原因是因为每次淡入都需要对模型的输出进行微小的更改。
 
@@ -524,7 +524,7 @@ ________________________________________________________________________________
 ![Figure Showing the Growing of the Generator Model, Before (a) During (b) and After (c) the Phase-In of a High Resolution](img/dae47d8e31bb82227d2d894aac852a11.png)
 
 图中显示了发电机模型在(a)之前、期间(b)和之后(c)高分辨率相位输入的增长情况。
-取自:为提高质量、稳定性和变异而进行的肝的渐进生长。
+取自:为提高质量、稳定性和变异而进行的肝的渐进式增长。
 
 toRGB 层是具有 3 个 1×1 滤波器的卷积层，足以输出彩色图像。
 
@@ -769,7 +769,7 @@ plot_model(m, to_file='generator_plot.png', show_shapes=True, show_layer_names=T
 
 该示例选择最后一个模型的淡入模型进行总结。
 
-运行该示例首先总结了模型中图层的线性列表。我们可以看到，最后一个模型从潜在空间中取一个点，输出一个 16×16 的图像。
+运行该示例首先总结了模型中层的线性列表。我们可以看到，最后一个模型从潜在空间中取一个点，输出一个 16×16 的图像。
 
 这与我们的预期相匹配，因为基线模型输出 4×4 的图像，添加一个块会将其增加到 8×8，再添加一个块会将其增加到 16×16。
 
@@ -844,7 +844,7 @@ ________________________________________________________________________________
 
 ![Plot of the Fade-In Generator Model For the Progressive Growing GAN Transitioning From 8x8 to 16x16 Output Images](img/145c99b20fb46c2e9f7f1e7f6c4ea69a.png)
 
-渐进生长GAN从 8×8 到 16×16 输出图像过渡的淡入发生器模型图
+渐进式增长GAN从 8×8 到 16×16 输出图像过渡的淡入发生器模型图
 
 既然我们已经看到了如何定义生成器模型，我们可以回顾一下如何通过鉴别器模型更新生成器模型。
 
@@ -1221,7 +1221,7 @@ for i in range(1, len(g_models)):
 	train_epochs(g_normal, d_normal, gan_normal, scaled_data, e_norm, n_batch)
 ```
 
-我们可以把这个联系在一起，定义一个叫做 *train()* 的函数来训练渐进式生长 GAN 函数。
+我们可以把这个联系在一起，定义一个叫做 *train()* 的函数来训练渐进式增长 GAN 函数。
 
 ```py
 # train the generator and discriminator
@@ -1256,7 +1256,7 @@ def train(g_models, d_models, gan_models, dataset, latent_dim, e_norm, e_fadein,
 
 > 我们从 4×4 分辨率开始，训练网络，直到我们总共显示出鉴别器 800k 的真实图像。然后，我们在两个阶段之间交替:在接下来的 800k 图像期间淡入第一个 3 层块，为 800k 图像稳定网络，在 800k 图像期间淡入下一个 3 层块，等等。
 
-——[为提高质量、稳定性和变化性而进行的肝的渐进生长](https://arxiv.org/abs/1710.10196)，2017 年。
+——[为提高质量、稳定性和变化性而进行的肝的渐进式增长](https://arxiv.org/abs/1710.10196)，2017 年。
 
 然后我们可以像上一节一样定义我们的模型，然后调用训练函数。
 
@@ -1283,19 +1283,19 @@ train(g_models, d_models, gan_models, dataset, latent_dim, 100, 100, 16)
 
 ### 正式的
 
-*   [为改善质量、稳定性和变异而进行的肝的渐进生长](https://arxiv.org/abs/1710.10196)，2017 年。
+*   [为改善质量、稳定性和变异而进行的肝的渐进式增长](https://arxiv.org/abs/1710.10196)，2017 年。
 *   [为提高质量、稳定性和变异性而逐渐生长的肝，官方](https://research.nvidia.com/publication/2017-10_Progressive-Growing-of)。
 *   [GitHub](https://github.com/tkarras/progressive_growing_of_gans)gans 项目(官方)的递进生长。
 *   [为了提高品质、稳定性和变异，进行性生长肝。开启审核](https://openreview.net/forum?id=Hk99zCeAb&noteId=Hk99zCeAb)。
-*   [为提高质量、稳定性和变化性而进行的肝的渐进生长，YouTube](https://www.youtube.com/watch?v=G06dEcZ-QTg) 。
+*   [为提高质量、稳定性和变化性而进行的肝的渐进式增长，YouTube](https://www.youtube.com/watch?v=G06dEcZ-QTg) 。
 *   [为提高质量、稳定性和变化性而逐渐生长的肝。](https://www.youtube.com/watch?v=ReZiqCybQPA)
 
 ### 应用程序接口
 
 *   [硬数据集 API](https://keras.io/datasets/) .
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [硬贡献项目](https://github.com/keras-team/keras-contrib)
 *   [浏览.转换.调整应用编程接口](https://scikit-image.org/docs/dev/api/skimage.transform.html#skimage.transform.resize)
 

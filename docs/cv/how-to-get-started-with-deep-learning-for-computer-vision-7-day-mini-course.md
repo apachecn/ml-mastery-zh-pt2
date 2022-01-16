@@ -180,7 +180,7 @@ print('Min: %.3f, Max: %.3f' % (pixels.min(), pixels.max()))
 
 ### 池化层
 
-[池化图层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)通过总结要素图的面片中存在的要素，提供了一种对要素图进行下采样的方法。
+[池化层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)通过总结要素图的面片中存在的要素，提供了一种对要素图进行下采样的方法。
 
 最大池化或最大池化是一种池化操作，用于计算每个要素地图的每个面片中的最大值。
 
@@ -188,7 +188,7 @@ print('Min: %.3f, Max: %.3f' % (pixels.min(), pixels.max()))
 
 一旦特征被提取出来，它们就可以被解释并用于进行预测，例如对照片中的对象类型进行分类。
 
-这可以通过首先展平二维要素图，然后添加完全连接的输出图层来实现。对于二进制分类问题，输出层将有一个节点来预测两个类的值在 0 和 1 之间。
+这可以通过首先展平二维要素图，然后添加完全连接的输出层来实现。对于二进制分类问题，输出层将有一个节点来预测两个类的值在 0 和 1 之间。
 
 ### 卷积神经网络
 

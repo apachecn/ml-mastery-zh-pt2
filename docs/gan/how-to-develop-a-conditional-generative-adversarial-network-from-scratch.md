@@ -1,4 +1,4 @@
-# 如何从头开发一个条件性 GAN(cGAN)
+# 如何从头开发一个条件 GAN（CGAN）
 
 > 原文：<https://machinelearningmastery.com/how-to-develop-a-conditional-generative-adversarial-network-from-scratch/>
 
@@ -91,7 +91,7 @@ GAN 模型的一个限制是它可能从域中生成随机图像。潜在空间�
 
 该建议的一个版本在 2015 年的论文《使用对抗性网络的拉普拉斯金字塔的深度生成图像模型》中进行了描述
 
-> …我们还探索了模型的类条件版本，其中向量 c 编码标签。它通过一个线性图层集成到 Gk & Dk 中，该图层的输出被重新整形为单个平面要素图，然后与第一个图层图连接。
+> …我们还探索了模型的类条件版本，其中向量 c 编码标签。它通过一个线性层集成到 Gk & Dk 中，该层的输出被重新整形为单个平面要素图，然后与第一个层图连接。
 
 ——[使用对抗性网络拉普拉斯金字塔的深度生成图像模型](https://arxiv.org/abs/1506.05751)，2015 年。
 
@@ -104,7 +104,7 @@ GAN 模型的一个限制是它可能从域中生成随机图像。潜在空间�
 
 — [GAN 黑客](https://github.com/soumith/ganhacks)
 
-虽然 GANs 可以以类标签为条件，即所谓的类条件 GANs，但在 GAN 用于图像到图像翻译任务的情况下，它们也可以以其他输入为条件，如图像。
+虽然 GANs 可以以类标签为条件，即所谓的类条件 GANs，但在 GAN 用于图像到图像转换任务的情况下，它们也可以以其他输入为条件，如图像。
 
 在本教程中，我们将开发一个 GAN，特别是 DCGAN，然后更新它以在 CGAN，特别是 cDCGAN 模型架构中使用类标签。
 
@@ -672,7 +672,7 @@ def define_discriminator(in_shape=(28,28,1), n_classes=10):
 
 接下来，必须更新生成器模型以采用类标签。这具有使潜在空间中的点以提供的类标签为条件的效果。
 
-像在鉴别器中一样，类标签通过一个嵌入层映射到一个唯一的 50 元素向量，然后在调整大小之前通过一个具有线性激活的完全连接层。在这种情况下，完全连接的图层的激活将被调整到一个 7×7 的要素图中。这是为了匹配无条件生成器模型的 7×7 特征图激活。新的 7×7 要素图作为一个通道添加到现有的 128 个要素图中，产生 129 个要素图，然后像之前的模型一样进行上采样。
+像在鉴别器中一样，类标签通过一个嵌入层映射到一个唯一的 50 元素向量，然后在调整大小之前通过一个具有线性激活的完全连接层。在这种情况下，完全连接的层的激活将被调整到一个 7×7 的要素图中。这是为了匹配无条件生成器模型的 7×7 特征图激活。新的 7×7 要素图作为一个通道添加到现有的 128 个要素图中，产生 129 个要素图，然后像之前的模型一样进行上采样。
 
 下面的 *define_generator()* 函数实现了这一点，再次参数化了类的数量，就像我们对鉴别器模型所做的那样。
 
@@ -712,7 +712,7 @@ def define_generator(latent_dim, n_classes=10):
 
 为了帮助理解新的模型架构，下图提供了新的条件生成器模型。
 
-在这种情况下，您可以看到潜在空间中的 100 元素点作为输入和随后的大小调整(左)以及新的类标签输入和嵌入图层(右)，然后是两组要素图的串联(中心)。模型的其余部分与无条件情况相同。
+在这种情况下，您可以看到潜在空间中的 100 元素点作为输入和随后的大小调整(左)以及新的类标签输入和嵌入层(右)，然后是两组要素图的串联(中心)。模型的其余部分与无条件情况相同。
 
 ![Plot of the Generator Model in the Conditional Generative Adversarial Network](img/aaae78790cfe0a7ea15f44c1ff134d41.png)
 
@@ -1127,15 +1127,15 @@ save_plot(X, 10)
 *   [教程:生成对抗网络，NIPS](https://arxiv.org/abs/1701.00160) ，2016。
 *   [深度卷积生成对抗网络的无监督表示学习](https://arxiv.org/abs/1511.06434)，2015
 *   [条件生成对抗网](https://arxiv.org/abs/1411.1784)，2014。
-*   [条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2017。
+*   [条件对抗网络下的图像到图像转换](https://arxiv.org/abs/1611.07004)，2017。
 *   [卷积人脸生成的条件生成对抗网](https://www.foldl.me/uploads/2015/conditional-gans-face-generation/paper.pdf)，2015。
 
 ### 应用程序接口
 
 *   [硬数据集接口。](https://keras.io/datasets/)
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [MatplotLib API](https://matplotlib.org/api/)
 *   [NumPy 随机采样(numpy.random) API](https://docs.scipy.org/doc/numpy/reference/routines.random.html)
 *   [NumPy 数组操作例程](https://docs.scipy.org/doc/numpy/reference/routines.array-manipulation.html)
@@ -1146,7 +1146,7 @@ save_plot(X, 10)
 *   [时尚-MNIST 项目，GitHub](https://github.com/zalandoresearch/fashion-mnist) 。
 *   [在 CIFAR-10](https://medium.com/@utk.is.here/training-a-conditional-dc-gan-on-cifar-10-fce88395d610) ( [代码](https://github.com/utkd/gans/blob/master/cifar10cgan.ipynb))上训练有条件的 DC-GAN，2018。
 *   [GAN:从零到英雄第二部分 GAN 的条件生成](http://cican17.com/gan-from-zero-to-hero-part-2-conditional-generation-by-gan/)，2018。
-*   [喀拉斯-甘项目。生成对抗网络的 Keras 实现。](https://github.com/eriklindernoren/Keras-GAN)
+*   [Keras-甘项目。生成对抗网络的 Keras 实现。](https://github.com/eriklindernoren/Keras-GAN)
 *   [条件深度卷积 GAN(CDCGAN)–Keras 实现，GitHub](https://github.com/gaborvecsei/CDCGAN-Keras) 。
 
 ## 摘要

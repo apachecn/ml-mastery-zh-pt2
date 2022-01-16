@@ -20,11 +20,11 @@ Pix2Pix 生成对抗网络是一种训练深度卷积神经网络的方法，用
 
 我们开始吧。
 
-*   **2021 年 1 月更新**:更新所以图层冻结用批量定额。
+*   **2021 年 1 月更新**:更新所以层冻结用批量定额。
 
 ![How to Develop a Pix2Pix Generative Adversarial Network for Image-to-Image Translation](img/22fb0b70d8a4db603fb7c390ddf3838d.png)
 
-如何开发用于图像到图像翻译的 Pix2Pix 生成对抗网络
+如何开发用于图像到图像转换的 Pix2Pix 生成对抗网络
 图片由[欧洲南方天文台](https://www.flickr.com/photos/esoastronomy/35523808512/)提供，保留部分权利。
 
 ## 教程概述
@@ -39,9 +39,9 @@ Pix2Pix 生成对抗网络是一种训练深度卷积神经网络的方法，用
 
 ## 什么是 Pix2Pix GAN？
 
-Pix2Pix 是一个为通用图像到图像翻译而设计的生成对抗网络模型。
+Pix2Pix 是一个为通用图像到图像转换而设计的生成对抗网络模型。
 
-这种方法是由菲利普·伊索拉等人在 2016 年发表的论文《条件对抗网络下的 T2 图像到图像翻译》和 2017 年在 CVPR 发表的《T4》中提出的。
+这种方法是由菲利普·伊索拉等人在 2016 年发表的论文《条件对抗网络下的 T2 图像到图像转换》和 2017 年在 CVPR 发表的《T4》中提出的。
 
 GAN 架构由一个用于输出新的似是而非的合成图像的生成器模型和一个将图像分类为真实(来自数据集)或虚假(生成)的鉴别器模型组成。鉴别器模型直接更新，而生成器模型通过鉴别器模型更新。这样，两个模型在对抗过程中被同时训练，其中生成器试图更好地欺骗鉴别器，鉴别器试图更好地识别伪造图像。
 
@@ -57,7 +57,7 @@ Pix2Pix GAN 已经在一系列图像到图像的转换任务中进行了演示�
 
 在本教程中，我们将使用 Pix2Pix 论文中使用的所谓的“*地图*”数据集。
 
-这是一个由纽约卫星图像和相应的谷歌地图页面组成的数据集。图像翻译问题涉及将卫星照片转换为谷歌地图格式，或者相反，将谷歌地图图像转换为卫星照片。
+这是一个由纽约卫星图像和相应的谷歌地图页面组成的数据集。图像转换问题涉及将卫星照片转换为谷歌地图格式，或者相反，将谷歌地图图像转换为卫星照片。
 
 该数据集在 pix2pix 网站上提供，可以作为 255 兆字节的 zip 文件下载。
 
@@ -79,7 +79,7 @@ train 文件夹包含 1，097 个图像，而验证数据集包含 1，099 个�
 
 地图数据集中的样本图像，包括卫星和谷歌地图图像。
 
-我们可以准备这个数据集，在喀拉斯训练一个 Pix2Pix GAN 模型。我们将只处理训练数据集中的图像。每张图片都将被加载、重新缩放，并分割成卫星和谷歌地图元素。结果将是 1097 个彩色图像对，宽度和高度为 256×256 像素。
+我们可以准备这个数据集，在Keras训练一个 Pix2Pix GAN 模型。我们将只处理训练数据集中的图像。每张图片都将被加载、重新缩放，并分割成卫星和谷歌地图元素。结果将是 1097 个彩色图像对，宽度和高度为 256×256 像素。
 
 下面的 *load_images()* 函数实现了这一点。它枚举给定目录中的图像列表，加载每个目标大小为 256×512 像素的图像，将每个图像拆分为卫星和地图元素，并返回每个元素的数组。
 
@@ -186,13 +186,13 @@ Loaded: (1096, 256, 256, 3) (1096, 256, 256, 3)
 
 显示卫星图像(上)和谷歌地图图像(下)的三对图像图。
 
-现在我们已经为图像翻译准备了数据集，我们可以开发我们的 Pix2Pix GAN 模型了。
+现在我们已经为图像转换准备了数据集，我们可以开发我们的 Pix2Pix GAN 模型了。
 
 ## 如何开发和训练 Pix2Pix 模型
 
 在本节中，我们将开发 Pix2Pix 模型，用于将卫星照片翻译成谷歌地图图像。
 
-论文中描述的相同模型架构和配置被用于一系列图像翻译任务。该架构在论文正文中有所描述，在论文附录中有更多的细节，并且提供了一个[完全工作的实现](https://github.com/phillipi/pix2pix)作为 Torch 深度学习框架的开源。
+论文中描述的相同模型架构和配置被用于一系列图像转换任务。该架构在论文正文中有所描述，在论文附录中有更多的细节，并且提供了一个[完全工作的实现](https://github.com/phillipi/pix2pix)作为 Torch 深度学习框架的开源。
 
 本节中的实现将使用 Keras 深度学习框架，该框架直接基于本文中描述的模型，并在作者的代码库中实现，旨在拍摄和生成大小为 256×256 像素的彩色图像。
 
@@ -255,7 +255,7 @@ def define_discriminator(image_shape):
 
 ![Architecture of the U-Net Generator Model](img/b244291152d5ebcd6891cff5d625b7f5.png)
 
-基于条件对抗网络的图像到图像翻译的 U-Net 生成器模型架构
+基于条件对抗网络的图像到图像转换的 U-Net 生成器模型架构
 
 生成器的编码器和解码器由卷积的标准化块、[批处理标准化](https://machinelearningmastery.com/how-to-accelerate-learning-of-deep-neural-networks-with-batch-normalization/)、[丢弃](https://machinelearningmastery.com/how-to-reduce-overfitting-with-dropout-regularization-in-keras/)和激活层组成。这种标准化意味着我们可以开发助手函数来创建每个层块，并重复调用它来构建模型的编码器和解码器部分。
 
@@ -878,7 +878,7 @@ def plot_images(src_img, gen_img, tar_img):
 plot_images(src_image, gen_image, tar_image)
 ```
 
-将所有这些结合在一起，下面列出了使用训练数据集中的一个示例执行特定图像到图像翻译的完整示例。
+将所有这些结合在一起，下面列出了使用训练数据集中的一个示例执行特定图像到图像转换的完整示例。
 
 ```py
 # example of loading a pix2pix model and using it for image to image translation
@@ -1006,7 +1006,7 @@ pyplot.axis('off')
 pyplot.show()
 ```
 
-将所有这些结合在一起，下面列出了使用单个图像文件执行临时图像翻译的完整示例。
+将所有这些结合在一起，下面列出了使用单个图像文件执行临时图像转换的完整示例。
 
 ```py
 # example of loading a pix2pix model and using it for one-off image translation
@@ -1056,9 +1056,9 @@ pyplot.show()
 
 ## 如何将谷歌地图翻译成卫星图像
 
-既然我们已经熟悉了如何开发和使用 Pix2Pix 模型将卫星图像翻译成谷歌地图，我们也可以探索相反的情况。
+既然我们已经熟悉了如何开发和使用 Pix2Pix 模型将卫星图像转换成谷歌地图，我们也可以探索相反的情况。
 
-也就是说，我们可以开发一个 Pix2Pix 模型，将谷歌地图图像翻译成可信的卫星图像。这需要模型发明或产生似是而非的建筑、道路、公园等等。
+也就是说，我们可以开发一个 Pix2Pix 模型，将谷歌地图图像转换成可信的卫星图像。这需要模型发明或产生似是而非的建筑、道路、公园等等。
 
 我们可以使用相同的代码来训练模型，只有一点点不同。我们可以改变 *load_real_samples()* 函数返回的数据集的顺序；例如:
 
@@ -1133,9 +1133,9 @@ def load_real_samples(filename):
 
 ### 正式的
 
-*   [条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2016。
-*   [带条件对抗网的图像到图像翻译，主页](https://phillipi.github.io/pix2pix/)。
-*   [带条件对抗网的图像到图像翻译，GitHub](https://github.com/phillipi/pix2pix) 。
+*   [条件对抗网络下的图像到图像转换](https://arxiv.org/abs/1611.07004)，2016。
+*   [带条件对抗网的图像到图像转换，主页](https://phillipi.github.io/pix2pix/)。
+*   [带条件对抗网的图像到图像转换，GitHub](https://github.com/phillipi/pix2pix) 。
 *   [pytorch-cyclelegan-and-pix 2 pix，GitHub](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix) 。
 *   [互动影像转影像演示](https://affinelayer.com/pixsrv/)，2017 年。
 *   [Pix2Pix 数据集](http://efrosgans.eecs.berkeley.edu/pix2pix/datasets/)
@@ -1144,8 +1144,8 @@ def load_real_samples(filename):
 
 *   [硬数据集接口。](https://keras.io/datasets/)
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 
 ## 摘要
 

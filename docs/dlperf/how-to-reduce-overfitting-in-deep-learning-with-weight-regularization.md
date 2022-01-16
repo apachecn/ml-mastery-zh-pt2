@@ -560,8 +560,8 @@ Param: 0.000001, Train: 1.000, Test: 0.914
 
 *   [Keras 正则化 API](https://keras.io/regularizers/)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [喀拉斯循环层原料药](https://keras.io/layers/recurrent/)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras循环层原料药](https://keras.io/layers/recurrent/)
 *   [sklearn . dataset . make _ moons API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_moons.html)
 *   [matplot lib . pyplot . semilogx API](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.semilogx.html)
 

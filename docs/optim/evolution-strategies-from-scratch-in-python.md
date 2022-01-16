@@ -35,7 +35,7 @@ Let’s get started.![Evolution Strategies From Scratch in Python](img/ebbd2ddcd
 
 [进化策略](https://en.wikipedia.org/wiki/Evolution_strategy)，有时也称为进化策略(单数)或 es，是一种随机全局优化算法。
 
-这项技术是在 20 世纪 60 年代开发的，由工程师手动实施，用于风洞中的最小阻力设计。
+这项技术是在 20 世纪 60 年代开发的，由工程师手动实现，用于风洞中的最小阻力设计。
 
 > 被称为进化策略(es)的算法家族是由英戈·雷亨伯格和汉斯-保罗·施韦费尔于 20 世纪 60 年代中期在柏林技术大学开发的。
 

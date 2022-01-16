@@ -56,7 +56,7 @@
 
 将滤波器与输入数组相乘一次得到的输出是单个值。当过滤器多次应用于输入数组时，结果是一个二维的输出值数组，表示对输入的过滤。因此，来自该操作的二维输出阵列被称为“*特征图*”。
 
-一旦创建了要素图，我们就可以通过非线性传递要素图中的每个值，例如 ReLU，就像我们对完全连接的图层的输出所做的那样。
+一旦创建了要素图，我们就可以通过非线性传递要素图中的每个值，例如 ReLU，就像我们对完全连接的层的输出所做的那样。
 
 ![Example of a Filter Applied to a Two-Dimensional Input to Create a Filter Map](img/8baa5476210e37181192a8952af8022d.png)
 
@@ -321,7 +321,7 @@ print(asarray([0, 1, 0]).dot(asarray([0, 0, 0])))
 [0, 0, 0, 1, 1, 0, 0, 0]
 ```
 
-Conv2D 图层的输入必须是四维的。
+Conv2D 层的输入必须是四维的。
 
 第一维定义了样本；在这种情况下，只有一个样本。第二维度定义行数；在这种情况下，八个。第三维度定义了列的数量，在这种情况下也是八列，最后是通道的数量，在这种情况下是一个。
 
@@ -517,7 +517,7 @@ print(tensordot(m1, m2))
 
 ### 应用程序接口
 
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
 *   num py . asar ray API
 
 ## 摘要

@@ -1,4 +1,4 @@
-# 如何开发 GAN 以生成 CIFAR10 小型彩色照片
+# 如何开发 GAN 来生成 CIFAR10 小型彩色照片
 
 > 原文：<https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-a-cifar-10-small-object-photographs-from-scratch/>
 
@@ -521,7 +521,7 @@ model.add(Reshape((4, 4, 256)))
 
 一种方法是使用一个*upsmampling 2d*层(像一个反向的[池化层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/))后跟一个普通的 *Conv2D* 层。另一种或许更现代的方式是将这两种操作组合成一个单一的层，称为*conv2d 转置*。我们将把后一种方法用于我们的生成器。
 
-*conv2d 转置*图层可以配置为(2×2) 的[步幅，这将使输入要素地图的面积增加四倍(宽度和高度尺寸增加一倍)。使用作为步长因子的内核大小(例如双倍)来](https://machinelearningmastery.com/padding-and-stride-for-convolutional-neural-networks/)[也是一个很好的做法，以避免在向上采样时有时会观察到的棋盘图案](https://distill.pub/2016/deconv-checkerboard/)。
+*conv2d 转置*层可以配置为(2×2) 的[步幅，这将使输入要素地图的面积增加四倍(宽度和高度尺寸增加一倍)。使用作为步长因子的内核大小(例如双倍)来](https://machinelearningmastery.com/padding-and-stride-for-convolutional-neural-networks/)[也是一个很好的做法，以避免在向上采样时有时会观察到的棋盘图案](https://distill.pub/2016/deconv-checkerboard/)。
 
 ```py
 # upsample to 8x8
@@ -829,7 +829,7 @@ def define_gan(g_model, d_model):
 
 这里的 Keras API 文档中描述了这种行为:
 
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 
 下面列出了创建鉴别器、生成器和复合模型的完整示例。
 
@@ -1511,8 +1511,8 @@ pyplot.show()
 
 *   [硬数据集接口。](https://keras.io/datasets/)
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [MatplotLib API](https://matplotlib.org/api/)
 *   [NumPy 随机采样(numpy.random) API](https://docs.scipy.org/doc/numpy/reference/routines.random.html)
 *   [NumPy 数组操作例程](https://docs.scipy.org/doc/numpy/reference/routines.array-manipulation.html)

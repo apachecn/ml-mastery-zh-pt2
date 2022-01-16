@@ -1,4 +1,4 @@
-# 如何在 Keras 开发信息最大化 GAN(InfoGAN)
+# 如何在 Keras 开发信息最大化 GAN（InfoGAN）
 
 > 原文：<https://machinelearningmastery.com/how-to-develop-an-information-maximizing-generative-adversarial-network-infogan-in-keras/>
 
@@ -8,7 +8,7 @@
 
 尽管非常有效，但默认的 GAN 无法控制生成的图像类型。信息最大化 GAN，简称 InfoGAN，是 GAN 架构的扩展，它引入了由架构自动学习的控制变量，并允许对生成的图像进行控制，例如在生成手写数字图像的情况下的样式、厚度和类型。
 
-在本教程中，您将发现如何从零开始实施信息最大化生成对抗网络模型。
+在本教程中，您将发现如何从零开始实现信息最大化生成对抗网络模型。
 
 完成本教程后，您将知道:
 
@@ -21,11 +21,11 @@
 我们开始吧。
 
 *   **2019 年 10 月更新**:修正了相互信息丢失解释中的错别字。
-*   **2021 年 1 月更新**:更新了所以图层冻结用批量定额工作。
+*   **2021 年 1 月更新**:更新了所以层冻结用批量定额工作。
 
 ![How to Develop an Information Maximizing Generative Adversarial Network (InfoGAN) in Keras](img/58898237331903c73fe013a94c748efd.png)
 
-如何在喀拉斯开发一个信息最大化的生成对抗网络(InfoGAN)图片由[伊罗尔·特拉蒙特](https://www.flickr.com/photos/iroltrasmonte/7351467350)提供，版权所有。
+如何在Keras开发一个信息最大化的生成对抗网络(InfoGAN)图片由[伊罗尔·特拉蒙特](https://www.flickr.com/photos/iroltrasmonte/7351467350)提供，版权所有。
 
 ## 教程概述
 
@@ -195,7 +195,7 @@ MNIST 训练信息网的发生器、鉴别器和辅助模型配置总结。
 
 下面的 *define_generator()* 函数定义了生成器模型，并将输入向量的大小作为参数。
 
-一个完全连通的图层获取输入向量，并产生足够数量的激活，以创建 512 个 7×7 的特征图，从这些特征图中激活被重塑。然后，这些通过具有 1×1 步距的正常卷积层，然后两个后续的上放大以 [2×2 步距](https://machinelearningmastery.com/padding-and-stride-for-convolutional-neural-networks/)将卷积层首先转置到 14×14 特征映射，然后通过 tanh 激活函数转置到像素值在[-1，-1]范围内的期望 1 通道 28×28 特征映射输出。
+一个完全连通的层获取输入向量，并产生足够数量的激活，以创建 512 个 7×7 的特征图，从这些特征图中激活被重塑。然后，这些通过具有 1×1 步距的正常卷积层，然后两个后续的上放大以 [2×2 步距](https://machinelearningmastery.com/padding-and-stride-for-convolutional-neural-networks/)将卷积层首先转置到 14×14 特征映射，然后通过 tanh 激活函数转置到像素值在[-1，-1]范围内的期望 1 通道 28×28 特征映射输出。
 
 好的生成器配置试探法如下，包括随机高斯权重初始化、[隐藏层中的 ReLU 激活](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)，以及使用批量归一化。
 
@@ -1066,8 +1066,8 @@ save_plot(X, n_samples)
 
 *   [硬数据集 API](https://keras.io/datasets/) .
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [MatplotLib API](https://matplotlib.org/api/)
 *   [NumPy 随机采样(numpy.random) API](https://docs.scipy.org/doc/numpy/reference/routines.random.html)
 *   [NumPy 数组操作例程](https://docs.scipy.org/doc/numpy/reference/routines.array-manipulation.html)
@@ -1078,7 +1078,7 @@ save_plot(X, n_samples)
 *   [一次性插入:一次性执行插入，GitHub](https://github.com/EmilienDupont/infogan) 。
 *   [Keras-GAN:生成对抗网络的 Keras 实现，GitHub](https://github.com/eriklindernoren/Keras-GAN) 。
 *   [高级-深度-与-Keras 学习，PacktPublishing，GitHub](https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras) 。
-*   [深度学习实施:实施最近的深度学习论文，GitHub](https://github.com/tdeboissiere/DeepLearningImplementations) 。
+*   [深度学习实现:实现最近的深度学习论文，GitHub](https://github.com/tdeboissiere/DeepLearningImplementations) 。
 
 ### 文章
 
@@ -1087,7 +1087,7 @@ save_plot(X, n_samples)
 *   [InfoGAN:利用互信息上的变分界(两次)](https://www.inference.vc/infogan-variational-bound-on-mutual-information-twice/)，2016。
 *   [GANs，互信息，可能还有算法选择？](http://www.yingzhenli.net/home/blog/?p=421)，2016 年。
 *   [实现 InfoGAN:比看起来容易？](http://aiden.nibali.org/blog/2016-12-01-implementing-infogan/)，2016 年。
-*   [成本函数问题，深度学习实施项目，GitHub](https://github.com/tdeboissiere/DeepLearningImplementations/issues/47) 。
+*   [成本函数问题，深度学习实现项目，GitHub](https://github.com/tdeboissiere/DeepLearningImplementations/issues/47) 。
 
 ## 摘要
 

@@ -13,7 +13,7 @@
 完成本教程后，您将知道:
 
 *   如何使用 Keras API 创建向量范数约束。
-*   如何使用 Keras API 为 MLP、CNN 和 RNN 图层添加权重约束。
+*   如何使用 Keras API 为 MLP、CNN 和 RNN 层添加权重约束。
 *   如何通过向现有模型添加权重约束来减少过拟合？
 
 **用我的新书[更好的深度学习](https://machinelearningmastery.com/better-deep-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -32,17 +32,17 @@
 
 本教程分为三个部分；它们是:
 
-1.  喀拉斯的权重限制
+1.  Keras的权重限制
 2.  层的权重约束
 3.  权重约束案例研究
 
-## 喀拉斯的权重限制
+## Keras的权重限制
 
 Keras API 支持重量限制。
 
-约束是按层指定的，但在层中按节点应用和实施。
+约束是按层指定的，但在层中按节点应用和实现。
 
-使用约束通常包括为输入权重在图层上设置*内核约束*参数，为偏置权重设置*偏置约束*。
+使用约束通常包括为输入权重在层上设置*内核约束*参数，为偏置权重设置*偏置约束*。
 
 通常，权重约束不用于偏置权重。
 
@@ -64,13 +64,13 @@ norm = max_norm(3.0)
 
 ## 层的权重约束
 
-重量标准可以用于喀拉斯的大多数图层。
+重量标准可以用于Keras的大多数层。
 
 在本节中，我们将看一些常见的例子。
 
 ### MLP 权重约束
 
-以下示例在密集完全连接图层上设置最大范数权重约束。
+以下示例在密集完全连接层上设置最大范数权重约束。
 
 ```py
 # example of max norm on a dense layer
@@ -98,9 +98,9 @@ model.add(Conv2D(32, (3,3), kernel_constraint=max_norm(3), bias_constraint=max_n
 
 与其他层类型不同，递归神经网络允许您对输入权重和偏差以及递归输入权重设置权重约束。
 
-循环权重的约束是通过图层的*循环约束*参数设置的。
+循环权重的约束是通过层的*循环约束*参数设置的。
 
-以下示例在 LSTM 图层上设置了最大标准权重约束。
+以下示例在 LSTM 层上设置了最大标准权重约束。
 
 ```py
 # example of max norm on an lstm layer
@@ -358,7 +358,7 @@ Train: 1.000, Test: 0.943
 本节列出了一些您可能希望探索的扩展教程的想法。
 
 *   **报告权重定额**。更新示例以计算网络权重的大小，并演示约束确实使大小变小了。
-*   **约束输出图层**。更新示例，将约束添加到模型的输出层，并比较结果。
+*   **约束输出层**。更新示例，将约束添加到模型的输出层，并比较结果。
 *   **约束偏差**。更新示例，为偏差权重添加约束，并比较结果。
 *   **重复评估**。更新示例以多次拟合和评估模型，并报告模型表现的平均值和标准差。
 
@@ -374,11 +374,11 @@ Train: 1.000, Test: 0.943
 
 ### 应用程序接口
 
-*   [喀拉斯约束应用编程接口](https://keras.io/constraints/)
-*   [喀拉斯约束. py](https://github.com/keras-team/keras/blob/master/keras/constraints.py)
+*   [Keras约束应用编程接口](https://keras.io/constraints/)
+*   [Keras约束. py](https://github.com/keras-team/keras/blob/master/keras/constraints.py)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [喀拉斯循环层原料药](https://keras.io/layers/recurrent/)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras循环层原料药](https://keras.io/layers/recurrent/)
 *   [sklearn . dataset . make _ moons API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_moons.html)
 
 ## 摘要
@@ -388,7 +388,7 @@ Train: 1.000, Test: 0.943
 具体来说，您了解到:
 
 *   如何使用 Keras API 创建向量范数约束。
-*   如何使用 Keras API 为 MLP、CNN 和 RNN 图层添加权重约束。
+*   如何使用 Keras API 为 MLP、CNN 和 RNN 层添加权重约束。
 *   如何通过向现有模型添加权重约束来减少过拟合？
 
 你有什么问题吗？

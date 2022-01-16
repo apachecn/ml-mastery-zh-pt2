@@ -223,7 +223,7 @@ def prep_pixels(train, test):
 
 假设问题是一个多类分类，我们知道我们将需要一个具有 10 个节点的输出层，以便预测属于 10 个类中每一个的图像的概率分布。这也需要使用 softmax 激活功能。在特征提取器和输出层之间，我们可以添加一个密集层来解释特征，在本例中有 100 个节点。
 
-所有图层将使用 [ReLU 激活](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)功能和 he 权重初始化方案，两者都是最佳实践。
+所有层将使用 [ReLU 激活](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)功能和 he 权重初始化方案，两者都是最佳实践。
 
 对于学习率为 0.01、动量为 0.9 的随机梯度下降优化器，我们将使用保守配置。[分类交叉熵损失函数](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)将被优化，适用于多类分类，我们将监控分类精度度量，这是合适的，因为我们在 10 类中的每一类都有相同数量的例子。
 
@@ -1075,7 +1075,7 @@ run_example()
 ### 蜜蜂
 
 *   [硬数据集 API](https://keras.io/datasets/)
-*   [喀拉斯数据集代码](https://github.com/keras-team/keras/tree/master/keras/datasets)
+*   [Keras数据集代码](https://github.com/keras-team/keras/tree/master/keras/datasets)
 *   [sklearn.model_selection。KFold 原料药](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html)
 
 ### 文章

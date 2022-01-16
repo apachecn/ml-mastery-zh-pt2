@@ -1,4 +1,4 @@
-# 如何在 Keras 中从头实现半监督 GAN(SGAN)
+# 如何在 Keras 中从头实现半监督 GAN（SGAN）
 
 > 原文：<https://machinelearningmastery.com/semi-supervised-generative-adversarial-network/>
 
@@ -152,9 +152,9 @@ plot_model(model, to_file='discriminator_plot.png', show_shapes=True, show_layer
 *   **二元分类器模型**。预测图像是真的还是假的，输出层中的 sigmoid 激活函数，并使用[二进制交叉熵损失函数](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)进行优化。
 *   **多类分类器模型**。预测图像的类别，输出层中的 softmax 激活函数，并使用[分类交叉熵损失函数](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)进行优化。
 
-两种模型具有不同的输出图层，但共享所有的要素提取图层。这意味着对其中一个分类器模型的更新将影响两个模型。
+两种模型具有不同的输出层，但共享所有的要素提取层。这意味着对其中一个分类器模型的更新将影响两个模型。
 
-下面的示例首先创建具有二进制输出的传统鉴别器模型，然后重新使用特征提取图层，并创建一个新的多类预测模型，在本例中有 10 个类。
+下面的示例首先创建具有二进制输出的传统鉴别器模型，然后重新使用特征提取层，并创建一个新的多类预测模型，在本例中有 10 个类。
 
 ```py
 # example of defining semi-supervised discriminator model
@@ -280,7 +280,7 @@ plot_model(model, to_file='multioutput_discriminator_plot.png', show_shapes=True
 
 运行该示例会创建并绘制单个多输出模型。
 
-该图清楚地显示了共享图层以及单独的无监督和有监督输出图层。
+该图清楚地显示了共享层以及单独的无监督和有监督输出层。
 
 ![Plot of a Semi-Supervised GAN Discriminator Model With Unsupervised and Supervised Output Layers](img/0aa6f654fc9361b2de180435f32ae717.png)
 
@@ -1041,8 +1041,8 @@ Test Accuracy: 95.920%
 
 *   [硬数据集接口。](https://keras.io/datasets/)
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [MatplotLib API](https://matplotlib.org/api/)
 *   [NumPy 随机采样(numpy.random) API](https://docs.scipy.org/doc/numpy/reference/routines.random.html)
 *   [NumPy 数组操作例程](https://docs.scipy.org/doc/numpy/reference/routines.array-manipulation.html)

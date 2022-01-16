@@ -1049,8 +1049,8 @@ Train: 0.822, Test: 0.822
 
 ### 应用程序接口
 
-*   [喀拉斯损失函数应用编程接口](https://keras.io/losses/)
-*   [喀拉斯激活功能应用编程接口](https://keras.io/activations/)
+*   [Keras损失函数应用编程接口](https://keras.io/losses/)
+*   [Keras激活功能应用编程接口](https://keras.io/activations/)
 *   [硬化。预处理。标准锅炉 API](http://Sklearn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)
 *   [sklearn . dataset . make _ revolution API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)
 *   [sklearn . dataset . make _ circles API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)

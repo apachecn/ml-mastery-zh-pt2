@@ -22,7 +22,7 @@
 
 我们开始吧。
 
-*   **2021 年 1 月更新**:更新所以图层冻结用批量定额。
+*   **2021 年 1 月更新**:更新所以层冻结用批量定额。
 
 ![How to Develop an Auxiliary Classifier GAN (AC-GAN) From Scratch with Keras](img/5c4eba9e0dbc834381f51a1b15c92a0b.png)
 
@@ -76,7 +76,7 @@
 *   **输入**:图像。
 *   **输出**:提供的图像真实的概率，图像属于每个已知类别的概率。
 
-下图总结了一系列条件性 GAN 的输入和输出，包括交流 GAN，提供了一些差异的背景。
+下图总结了一系列条件 GAN 的输入和输出，包括交流 GAN，提供了一些差异的背景。
 
 ![Summary of the Differences Between the Conditional GAN, Semi-Supervised GAN, InfoGAN and AC-GAN](img/8514057b9d92c7ffdb11de0e67dcda41.png)
 
@@ -200,7 +200,7 @@ pyplot.show()
 
 输入图像的形状为 28x28x1，在时尚 MNIST 数据集中有 10 个服装类别。
 
-该模型可以按照 DCGAN 架构进行定义。也就是说，使用高斯权重初始化、批处理归一化、LeakyReLU、Dropout 和 2×2 步长进行下采样，而不是合并图层。
+该模型可以按照 DCGAN 架构进行定义。也就是说，使用高斯权重初始化、批处理归一化、LeakyReLU、Dropout 和 2×2 步长进行下采样，而不是合并层。
 
 例如，下面是使用 [Keras 函数 API](https://machinelearningmastery.com/keras-functional-api-deep-learning/) 定义的鉴别器模型的主体。
 
@@ -489,7 +489,7 @@ merge = Concatenate()([gen, li])
 
 然后，这些特征图可以经历两个转置卷积层的过程，以将 7×7 特征图首先上采样到 14×14 像素，然后最后上采样到 28×28 特征，随着每个上缩放步骤，特征图的面积翻了两番。
 
-发生器的输出是一个单一的特征图或灰度图像，形状为 28×28，像素值在范围[-1，1]内，给定 tanh 激活函数的选择。我们使用 [ReLU 激活](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)来升级图层，而不是 AC-GAN 论文中给出的 LeakyReLU。
+发生器的输出是一个单一的特征图或灰度图像，形状为 28×28，像素值在范围[-1，1]内，给定 tanh 激活函数的选择。我们使用 [ReLU 激活](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)来升级层，而不是 AC-GAN 论文中给出的 LeakyReLU。
 
 ```py
 # upsample to 14x14
@@ -601,7 +601,7 @@ model.summary()
 plot_model(model, to_file='generator_plot.png', show_shapes=True, show_layer_names=True)
 ```
 
-运行该示例首先打印模型中图层及其输出形状的摘要。
+运行该示例首先打印模型中层及其输出形状的摘要。
 
 我们可以确认潜在维度输入是 100 个维度，类标签输入是单个整数。我们还可以确认嵌入类标签的[的输出被正确连接为附加通道，从而在转置卷积层之前产生 385 个 7×7 特征映射。](https://machinelearningmastery.com/what-are-word-embeddings/)
 
@@ -1208,8 +1208,8 @@ save_plot(X, n_examples)
 
 *   [硬数据集接口。](https://keras.io/datasets/)
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [MatplotLib API](https://matplotlib.org/api/)
 *   [NumPy 随机采样(numpy.random) API](https://docs.scipy.org/doc/numpy/reference/routines.random.html)
 *   [NumPy 数组操作例程](https://docs.scipy.org/doc/numpy/reference/routines.array-manipulation.html)

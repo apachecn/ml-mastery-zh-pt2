@@ -341,7 +341,7 @@ pyplot.show()
 
 一种方法是改变网络优化中使用的损耗计算，同时考虑权重的大小。这被称为权重正则化或权重衰减。
 
-Keras 通过图层上的*核正则化器*参数支持权重正则化，可以配置为使用 [L1 或 L2 向量范数](https://machinelearningmastery.com/vector-norms-machine-learning/)，例如:
+Keras 通过层上的*核正则化器*参数支持权重正则化，可以配置为使用 [L1 或 L2 向量范数](https://machinelearningmastery.com/vector-norms-machine-learning/)，例如:
 
 ```py
 model.add(Dense(500, input_dim=2, activation='relu', kernel_regularizer=l2(0.01)))

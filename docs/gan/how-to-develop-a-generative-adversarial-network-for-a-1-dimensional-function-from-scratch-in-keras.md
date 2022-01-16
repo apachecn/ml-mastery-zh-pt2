@@ -1,4 +1,4 @@
-# 如何在喀拉斯从零开始发展 1D 生成对抗网络
+# 如何在Keras从零开始开发 1D 生成对抗网络
 
 > 原文：<https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-a-1-dimensional-function-from-scratch-in-keras/>
 
@@ -30,7 +30,7 @@ GANs 由生成器和鉴别器模型组成。生成器负责从域中生成新的
 
 ![What Is the Naive Classifier for Each Imbalanced Classification Metric?](img/357e106ebb21de9cf6c2bdbff40aee24.png)
 
-如何在喀拉斯从零开始发展 1D 生成对抗网络
+如何在Keras从零开始发展 1D 生成对抗网络
 图片由[土地管理局](https://flickr.com/photos/blmoregon/9680424451/)提供，保留部分权利。
 
 ## 教程概述
@@ -616,7 +616,7 @@ def define_gan(generator, discriminator):
 
 这里的 Keras API 文档中描述了这种行为:
 
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 
 下面列出了创建鉴别器、生成器和复合模型的完整示例。
 
@@ -1053,7 +1053,7 @@ train(generator, discriminator, gan_model, latent_dim)
 ### 应用程序接口
 
 *   [大声 API](https://keras.io/)
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [MatplotLib API](https://matplotlib.org/api/)
 *   num py . random . rand API
 *   num py . random . rann API

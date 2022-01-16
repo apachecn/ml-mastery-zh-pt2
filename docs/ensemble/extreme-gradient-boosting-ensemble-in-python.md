@@ -74,7 +74,7 @@
 
 > 我还尝试了 xgboost，这是一个流行的增强库，它也能构建随机森林。它速度快，内存效率高，精度高
 
-——[基准测试随机森林实施，Szilard Pafka](http://datascience.la/benchmarking-random-forest-implementations/) ，2015 年。
+——[基准测试随机森林实现，Szilard Pafka](http://datascience.la/benchmarking-random-forest-implementations/) ，2015 年。
 
 XGBoost 在分类和回归预测建模问题上主导结构化或表格数据集。证据是，它是 Kaggle 竞争数据科学平台上竞争赢家的 go-to 算法。
 

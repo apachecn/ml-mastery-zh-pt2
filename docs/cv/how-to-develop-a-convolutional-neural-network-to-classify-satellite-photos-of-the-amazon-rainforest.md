@@ -2041,7 +2041,7 @@ run_example(inv_mapping)
 *   [硬化. metrics.fbeta_score.html API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)
 *   [sklearn . model _ selection . train _ test _ split API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
 *   [旧版本的 Keras 指标源代码(带 fbeta_score)。](https://github.com/keras-team/keras/blob/4fa7e5d454dd4f3f33f1d756a2a8659f2e789141/keras/metrics.py#L134)
-*   [喀拉斯、卡格尔内核的 F-beta 评分。](https://www.kaggle.com/arsenyinfo/f-beta-score-for-keras)
+*   [Keras、卡格尔内核的 F-beta 评分。](https://www.kaggle.com/arsenyinfo/f-beta-score-for-keras)
 
 ### 文章
 

@@ -31,11 +31,11 @@
 
 本教程分为三个部分；它们是:
 
-1.  喀拉斯的 BatchNormalization
+1.  Keras的 BatchNormalization
 2.  模型中的批处理规范化
 3.  批量化案例研究
 
-## 喀拉斯的 BatchNormalization
+## Keras的 BatchNormalization
 
 Keras 通过 batch normalization 层提供对批处理规范化的支持。
 
@@ -73,7 +73,7 @@ BatchNormalization 层可以添加到您的模型中，以标准化原始输入�
 
 不建议将批处理规范化作为模型适当数据准备的替代方法。
 
-然而，当用于标准化原始输入变量时，图层必须指定 *input_shape* 参数；例如:
+然而，当用于标准化原始输入变量时，层必须指定 *input_shape* 参数；例如:
 
 ```py
 ...
@@ -232,7 +232,7 @@ trainX, testX = X[:n_train, :], X[n_train:, :]
 trainy, testy = y[:n_train], y[n_train:]
 ```
 
-我们将定义一个简单的 MLP 模型。对于数据集中的两个变量，网络在可见图层中必须有两个输入。
+我们将定义一个简单的 MLP 模型。对于数据集中的两个变量，网络在可见层中必须有两个输入。
 
 该模型将有 50 个节点的单个隐藏层，任意选择，并使用[校正线性激活函数(ReLU)](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/) 和 he 随机权重初始化方法。输出层将是具有 sigmoid 激活函数的单个节点，能够预测问题的外圈为 0，内圈为 1。
 
@@ -482,7 +482,7 @@ Train: 0.826, Test: 0.830
 
 *   **无β和γ**。更新示例，使其不使用批处理标准化层中的 beta 和 gamma 参数，并比较结果。
 *   **无动量**。更新示例，以便在训练和比较结果期间不在批处理规范化层中使用动量。
-*   **输入图层**。更新示例，以便在模型输入后使用批处理规范化并比较结果。
+*   **输入层**。更新示例，以便在模型输入后使用批处理规范化并比较结果。
 
 如果你探索这些扩展，我很想知道。
 
@@ -498,8 +498,8 @@ Train: 0.826, Test: 0.830
 
 *   [硬正则器 API](https://keras.io/regularizers/)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [喀拉斯循环层原料药](https://keras.io/layers/recurrent/)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras循环层原料药](https://keras.io/layers/recurrent/)
 *   [批量精化硬质原料药](https://keras.io/layers/normalization/)
 *   [sklearn . dataset . make _ circles](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)
 

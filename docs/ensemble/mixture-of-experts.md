@@ -120,7 +120,7 @@
 
 —第 16 页，[集成机器学习](https://amzn.to/2C7syo5)，2012。
 
-当使用神经网络模型时，门控网络和专家一起被训练，使得门控网络学习何时信任每个专家来做出预测。该培训程序传统上使用[期望最大化](https://machinelearningmastery.com/expectation-maximization-em-algorithm/) (EM)来实施。选通网络可能有一个软最大值输出，为每个专家给出类似概率的置信度得分。
+当使用神经网络模型时，门控网络和专家一起被训练，使得门控网络学习何时信任每个专家来做出预测。该培训程序传统上使用[期望最大化](https://machinelearningmastery.com/expectation-maximization-em-algorithm/) (EM)来实现。选通网络可能有一个软最大值输出，为每个专家给出类似概率的置信度得分。
 
 > 一般来说，训练过程试图实现两个目标:对于给定的专家，找到最优的选通函数；对于给定的选通函数，就选通函数指定的分布对专家进行培训。
 

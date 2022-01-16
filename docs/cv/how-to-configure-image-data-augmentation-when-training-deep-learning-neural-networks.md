@@ -424,7 +424,7 @@ pyplot.show()
 
 ![Plot of Images Generated With a Random Zoom Augmentation](img/33e932cc3d058d2a19374a8049827081.png)
 
-随机放大生成的图像图
+随机放大型生成的图像图
 
 ## 进一步阅读
 
@@ -437,7 +437,7 @@ pyplot.show()
 ### 应用程序接口
 
 *   [图像预处理 Keras API](https://keras.io/preprocessing/image/)
-*   [喀拉斯图像预处理代码](https://github.com/keras-team/keras-preprocessing/blob/master/keras_preprocessing/image/affine_transformations.py)
+*   [Keras图像预处理代码](https://github.com/keras-team/keras-preprocessing/blob/master/keras_preprocessing/image/affine_transformations.py)
 *   [顺序模型应用编程接口](https://keras.io/models/sequential/)
 
 ### 文章

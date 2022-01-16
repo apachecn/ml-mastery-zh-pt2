@@ -1,4 +1,4 @@
-# 如何从零开始实施梯度下降优化
+# 如何从零开始实现梯度下降优化
 
 > 原文：<https://machinelearningmastery.com/gradient-descent-optimization-from-scratch/>
 

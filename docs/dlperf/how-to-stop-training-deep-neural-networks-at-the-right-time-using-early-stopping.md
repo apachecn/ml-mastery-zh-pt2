@@ -34,8 +34,8 @@
 1.  在 Keras 中使用回调
 2.  评估验证数据集
 3.  监控模型表现
-4.  在喀拉斯的早期停留
-5.  喀拉斯的检查点
+4.  在Keras的早期停留
+5.  Keras的检查点
 6.  早期停止案例研究
 
 ## 在 Keras 中使用回调
@@ -110,7 +110,7 @@ model.compile(..., metrics=['accuracy'])
 
 如果在训练过程中监控了额外的指标，它们也可以通过相同的名称用于回调，例如训练数据集中的精度为“*精度*”，验证数据集中的精度为“ *val_accuracy* ”。或者，训练数据集中的均方误差为“ *mse* ”，验证数据集中的 val_mse 。
 
-## 在喀拉斯的早期停留
+## 在Keras的早期停留
 
 Keras 支持通过名为*提前停止*的回调提前停止训练。
 
@@ -164,7 +164,7 @@ es = EarlyStopping(monitor='val_accuracy', mode='max', min_delta=1)
 es = EarlyStopping(monitor='val_loss', mode='min', baseline=0.4)
 ```
 
-## 喀拉斯的检查点
+## Keras的检查点
 
 *预警*回调一旦触发将停止训练，但训练结束时的模型可能不是验证数据集上表现最好的模型。
 
@@ -639,8 +639,8 @@ Train: 1.000, Test: 0.943
 *   [H5Py 安装文件](http://docs.h5py.org/en/latest/build.html)
 *   [硬正则器 API](https://keras.io/regularizers/)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [喀拉斯循环层原料药](https://keras.io/layers/recurrent/)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras循环层原料药](https://keras.io/layers/recurrent/)
 *   [硬回调接口](https://keras.io/callbacks/)
 *   [sklearn . dataset . make _ moons API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_moons.html)
 

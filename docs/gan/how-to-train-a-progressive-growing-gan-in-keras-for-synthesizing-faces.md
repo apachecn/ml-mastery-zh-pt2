@@ -1,4 +1,4 @@
-# 如何在 Keras 训练一个渐进生长的 GAN 来合成人脸
+# 如何在 Keras 训练一个渐进式增长的 GAN 来合成人脸
 
 > 原文：<https://machinelearningmastery.com/how-to-train-a-progressive-growing-gan-in-keras-for-synthesizing-faces/>
 
@@ -8,16 +8,16 @@
 
 GANs 的一个限制是只能生成相对较小的图像，例如 64×64 像素。
 
-渐进生长GAN是GAN训练程序的扩展，包括训练GAN生成非常小的图像，如 4×4，并将生成的图像大小逐渐增加到 8×8、16×16，直到达到所需的输出大小。这使得渐进式 GAN 能够生成 1024×1024 像素分辨率的真实感合成人脸。
+渐进式增长GAN是GAN训练程序的扩展，包括训练GAN生成非常小的图像，如 4×4，并将生成的图像大小逐渐增加到 8×8、16×16，直到达到所需的输出大小。这使得渐进式 GAN 能够生成 1024×1024 像素分辨率的真实感合成人脸。
 
-渐进式生长GAN的关键创新是两阶段训练过程，包括新块的淡入，以支持更高分辨率的图像，然后进行微调。
+渐进式增长GAN的关键创新是两阶段训练过程，包括新块的淡入，以支持更高分辨率的图像，然后进行微调。
 
 在本教程中，你将发现如何实现和训练一个渐进增长的生成对抗网络来生成名人面孔。
 
 完成本教程后，您将知道:
 
 *   如何准备名人脸数据集来训练一个渐进增长的 GAN 模型。
-*   如何在名人脸数据集上定义和训练渐进式生长 GAN？
+*   如何在名人脸数据集上定义和训练渐进式增长 GAN？
 *   如何加载保存的生成器模型，并使用它们来生成特别的合成名人脸。
 
 **用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -28,36 +28,36 @@ GANs 的一个限制是只能生成相对较小的图像，例如 64×64 像素�
 
 ![How to Train a Progressive Growing GAN in Keras for Synthesizing Faces](img/01422cd29888030892565c48955f87f1.png)
 
-如何在 Keras 训练一个渐进生长的 GAN 来合成人脸？
+如何在 Keras 训练一个渐进式增长的 GAN 来合成人脸？
 图片由[亚历山德罗·卡普尼](https://www.flickr.com/photos/weyes/14273137213/)提供，版权所有。
 
 ## 教程概述
 
 本教程分为五个部分；它们是:
 
-1.  什么是渐进式生长GAN
+1.  什么是渐进式增长GAN
 2.  如何准备名人脸数据集
-3.  如何开发渐进式生长GAN模型
-4.  如何训练渐进式生长GAN模型
-5.  如何用渐进生长的GAN模型合成图像
+3.  如何开发渐进式增长GAN模型
+4.  如何训练渐进式增长GAN模型
+5.  如何用渐进式增长的GAN模型合成图像
 
-## 什么是渐进式生长GAN
+## 什么是渐进式增长GAN
 
 GANs 在生成清晰的合成图像方面很有效，尽管通常受限于可以生成的图像的大小。
 
-渐进式生长 GAN 是 GAN 的扩展，它允许训练生成器模型能够生成大的高质量图像，例如大小为 1024×1024 像素的真实感人脸。英伟达的 [Tero Karras](https://research.nvidia.com/person/tero-karras) 等人在 2017 年的论文中描述了这一点，论文标题为“[为提高质量、稳定性和变化性而对 GANs 进行渐进生长](https://arxiv.org/abs/1710.10196)”
+渐进式增长 GAN 是 GAN 的扩展，它允许训练生成器模型能够生成大的高质量图像，例如大小为 1024×1024 像素的真实感人脸。英伟达的 [Tero Karras](https://research.nvidia.com/person/tero-karras) 等人在 2017 年的论文中描述了这一点，论文标题为“[为提高质量、稳定性和变化性而对 GANs 进行渐进式增长](https://arxiv.org/abs/1710.10196)”
 
-渐进式生长 GAN 的关键创新是发生器输出图像尺寸的递增，从 4×4 像素图像开始，加倍到 8×8、16×16，以此类推，直至达到所需的输出分辨率。
+渐进式增长 GAN 的关键创新是发生器输出图像尺寸的递增，从 4×4 像素图像开始，加倍到 8×8、16×16，以此类推，直至达到所需的输出分辨率。
 
-这是通过一个训练过程来实现的，该过程包括用给定的输出分辨率对模型进行微调的阶段，以及用更大的分辨率缓慢地逐步引入新模型的阶段。在训练过程中，所有图层都保持可训练状态，包括添加新图层时的现有图层。
+这是通过一个训练过程来实现的，该过程包括用给定的输出分辨率对模型进行微调的阶段，以及用更大的分辨率缓慢地逐步引入新模型的阶段。在训练过程中，所有层都保持可训练状态，包括添加新层时的现有层。
 
-渐进式生长 GAN 涉及使用具有相同一般结构的生成器和鉴别器模型，并从非常小的图像开始。在训练期间，新的卷积层块被系统地添加到生成器模型和鉴别器模型中。
+渐进式增长 GAN 涉及使用具有相同一般结构的生成器和鉴别器模型，并从非常小的图像开始。在训练期间，新的卷积层块被系统地添加到生成器模型和鉴别器模型中。
 
 层的增量添加允许模型有效地学习粗略层次的细节，并在以后学习更精细的细节，包括生成器和鉴别器。
 
 这种增量性质允许训练首先发现图像分布的大尺度结构，然后将注意力转移到越来越精细的细节上，而不是必须同时学习所有尺度。
 
-下一步是选择一个数据集，用于开发渐进式生长GAN。
+下一步是选择一个数据集，用于开发渐进式增长GAN。
 
 ## 如何准备名人脸数据集
 
@@ -324,7 +324,7 @@ plot_faces(faces, 10)
 
 我们现在准备开发一个 GAN 模型来使用这个数据集生成人脸。
 
-## 如何开发渐进式生长GAN模型
+## 如何开发渐进式增长GAN模型
 
 有许多方法可以实现渐进增长的GAN模型。
 
@@ -334,7 +334,7 @@ plot_faces(faces, 10)
 
 首先，我们将定义生成器和鉴别器模型定义中所需的一些自定义层，然后继续定义函数来创建和扩展鉴别器和生成器模型本身。
 
-### 渐进增长的自定义图层
+### 渐进增长的自定义层
 
 实现渐进增长的生成对抗网络需要三个定制层。
 
@@ -352,7 +352,7 @@ plot_faces(faces, 10)
 
 当模型从一个图像尺寸过渡到具有两倍宽度和高度(四倍面积)的新图像尺寸时，例如从 4×4 到 8×8 像素，在训练的增长阶段使用它。
 
-在生长阶段，alpha 参数从开始时的 0.0 线性缩放到结束时的 1.0，允许图层的输出从对旧图层赋予全部权重过渡到对新图层赋予全部权重(第二次输入)。
+在生长阶段，alpha 参数从开始时的 0.0 线性缩放到结束时的 1.0，允许层的输出从对旧层赋予全部权重过渡到对新层赋予全部权重(第二次输入)。
 
 *   加权和=((1.0–α)*输入 1)+(α*输入 2)
 
@@ -469,7 +469,7 @@ class PixelNormalization(Layer):
 
 该模型按正常间隔进行训练，然后经历一个 8×8 的增长阶段。这包括添加两个 3×3 卷积层的块和一个[平均池化下采样层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)。输入图像通过具有新的 [1×1 卷积隐藏层](https://machinelearningmastery.com/introduction-to-1x1-convolutions-to-reduce-the-complexity-of-convolutional-neural-networks/)的新块。输入图像也通过下采样层和旧的 1×1 卷积隐藏层。旧的 1×1 卷积层和新块的输出然后通过*加权求和*层组合。
 
-经过一段时间的训练，将*加权 Sum 的*α参数从 0.0(全部旧)转换为 1.0(全部新)，然后运行另一个训练阶段，在移除旧图层和路径的情况下调整新模型。
+经过一段时间的训练，将*加权 Sum 的*α参数从 0.0(全部旧)转换为 1.0(全部新)，然后运行另一个训练阶段，在移除旧层和路径的情况下调整新模型。
 
 重复这个过程，直到达到所需的图像尺寸，在我们的例子中，128×128 像素的图像。
 
@@ -593,11 +593,11 @@ def define_discriminator(n_blocks, input_shape=(4,4,3)):
 
 主要区别是在生长阶段，模型的输出是 *WeightedSum* 层的输出。模型的生长阶段版本包括首先添加最近邻上采样层；然后，它连接到带有新输出层的新块和旧的旧输出层。旧的和新的输出层然后通过*加权求和*输出层组合。
 
-基本模型有一个输入块，该输入块定义有一个完全连接的图层，该图层具有足够数量的激活，可以创建给定数量的 4×4 要素图。接下来是 [4×4 和 3×3 卷积层](https://machinelearningmastery.com/convolutional-layers-for-deep-learning-neural-networks/)和生成彩色图像的 [1×1 输出层](https://machinelearningmastery.com/introduction-to-1x1-convolutions-to-reduce-the-complexity-of-convolutional-neural-networks/)。新的块增加了一个上采样层和两个 3×3 卷积层。
+基本模型有一个输入块，该输入块定义有一个完全连接的层，该层具有足够数量的激活，可以创建给定数量的 4×4 要素图。接下来是 [4×4 和 3×3 卷积层](https://machinelearningmastery.com/convolutional-layers-for-deep-learning-neural-networks/)和生成彩色图像的 [1×1 输出层](https://machinelearningmastery.com/introduction-to-1x1-convolutions-to-reduce-the-complexity-of-convolutional-neural-networks/)。新的块增加了一个上采样层和两个 3×3 卷积层。
 
 在每个卷积层之后，使用 *LeakyReLU* 激活功能和*像素归一化*层。在输出层使用线性激活函数，而不是更常见的 tanh 函数，然而真实图像仍然被缩放到[-1，1]的范围，这对于大多数 GAN 模型是常见的。
 
-本文定义了随着模型深度的增加，特征图的数量从 512 个减少到 16 个。与鉴别器一样，跨块的特征图数量的差异给*加权求和*带来了挑战，因此为了简单起见，我们将所有图层固定为具有相同数量的过滤器。
+本文定义了随着模型深度的增加，特征图的数量从 512 个减少到 16 个。与鉴别器一样，跨块的特征图数量的差异给*加权求和*带来了挑战，因此为了简单起见，我们将所有层固定为具有相同数量的过滤器。
 
 同样像鉴别器模型一样，权重用标准偏差为 0.02 的[高斯随机数](https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/)初始化，并且使用值为 1.0 的[最大范数权重约束](https://machinelearningmastery.com/introduction-to-weight-constraints-to-reduce-generalization-error-in-deep-learning/)，而不是本文中使用的均衡学习率权重约束。
 
@@ -719,7 +719,7 @@ def define_composite(discriminators, generators):
 
 既然我们已经看到了如何定义生成器和鉴别器模型，让我们看看如何在名人脸数据集上拟合这些模型。
 
-## 如何训练渐进式生长GAN模型
+## 如何训练渐进式增长GAN模型
 
 首先，我们需要定义一些方便的函数来处理数据样本。
 
@@ -1440,13 +1440,13 @@ Scaled Data (50000, 4, 4, 3)
 
 ![Synthetic Celebrity Faces at 4x4 Resolution Generated by the Progressive Growing GAN](img/801b5eeaf15f8e65a0047e59e88b411b.png)
 
-渐进生长GAN生成的 4×4 分辨率合成名人脸
+渐进式增长GAN生成的 4×4 分辨率合成名人脸
 
 查看 8×8 图像的淡入训练阶段后生成的图像会显示更多的结构(*plot _ 008 x008-淡出. png* )。图像是块状的，但我们可以看到人脸。
 
 ![Synthetic Celebrity Faces at 8x8 Resolution After Fade-In Generated by the Progressive Growing GAN](img/9510f4b0120fc6c9a1026a3f573c7f54.png)
 
-渐进生长GAN生成淡入后 8×8 分辨率的合成名人脸
+渐进式增长GAN生成淡入后 8×8 分辨率的合成名人脸
 
 接下来，我们可以对比淡入训练阶段(*plot _ 016 x 016-淡出. png* )和调谐训练阶段(*plot _ 016 x 016-调谐. png* )后生成的 16×16 的图像。
 
@@ -1454,37 +1454,37 @@ Scaled Data (50000, 4, 4, 3)
 
 ![Synthetic Celebrity Faces at 16x16 Resolution After Fade-In Generated by the Progressive Growing GAN](img/4c51dc6e679697bbff48353eeec15899.png)
 
-渐进生长 GAN 生成淡入后 16×16 分辨率的合成名人脸
+渐进式增长 GAN 生成淡入后 16×16 分辨率的合成名人脸
 
 ![Synthetic Celebrity Faces at 16x16 Resolution After Tuning Generated by the Progressive Growing GAN](img/ed552d8408438131e8781e310ca0d94e.png)
 
-渐进生长GAN调谐后 16×16 分辨率合成名人脸
+渐进式增长GAN调谐后 16×16 分辨率合成名人脸
 
 最后，我们可以在调整剩余的 32×32、64×64 和 128×128 分辨率后查看生成的人脸。我们可以看到，分辨率的每一步，图像质量都有所提高，允许模型填充更多的结构和细节。
 
-虽然不完美，但生成的图像显示，渐进生长的GAN不仅能够以不同的分辨率生成可信的人脸，而且能够在较低分辨率下学习的基础上进行扩展，以生成较高分辨率下的可信人脸。
+虽然不完美，但生成的图像显示，渐进式增长的GAN不仅能够以不同的分辨率生成可信的人脸，而且能够在较低分辨率下学习的基础上进行扩展，以生成较高分辨率下的可信人脸。
 
 ![Synthetic Celebrity Faces at 32x32 Resolution After Tuning Generated by the Progressive Growing GAN](img/29390ef515d93da33b4826124a8ecc14.png)
 
-渐进生长GAN调谐后 32×32 分辨率合成名人脸
+渐进式增长GAN调谐后 32×32 分辨率合成名人脸
 
 ![Synthetic Celebrity Faces at 64x64 Resolution After Tuning Generated by the Progressive Growing GAN](img/7dcdd0ac726f308f7020b7f7f3ec9ad8.png)
 
-渐进生长GAN调谐后的 64×64 分辨率合成名人脸
+渐进式增长GAN调谐后的 64×64 分辨率合成名人脸
 
 ![Synthetic Celebrity Faces at 128x128 Resolution After Tuning Generated by the Progressive Growing GAN](img/dd65c3beb94fb43b7f76e6a02a21f69f.png)
 
-渐进生长GAN调谐后 128×128 分辨率合成名人脸
+渐进式增长GAN调谐后 128×128 分辨率合成名人脸
 
 既然我们已经了解了如何适应发电机模型，接下来我们可以了解如何加载和使用保存的发电机模型。
 
-## 如何用渐进生长的GAN模型合成图像
+## 如何用渐进式增长的GAN模型合成图像
 
 在本节中，我们将探讨如何加载一个生成器模型，并根据需要使用它来生成合成图像。
 
 通过*加载 _ 模型()*功能可以加载[保存的 Keras 模型](https://machinelearningmastery.com/save-load-keras-deep-learning-models/)。
 
-因为生成器模型使用自定义图层，所以我们必须指定如何加载自定义图层。这是通过向 load_model()函数提供 dict 来实现的，该函数将每个自定义图层名称映射到适当的类。
+因为生成器模型使用自定义层，所以我们必须指定如何加载自定义层。这是通过向 load_model()函数提供 dict 来实现的，该函数将每个自定义层名称映射到适当的类。
 
 ```py
 ...
@@ -1526,7 +1526,7 @@ def plot_generated(images, n_images):
 	pyplot.show()
 ```
 
-将这些联系在一起，下面列出了加载保存的渐进生长 GAN 生成器模型并使用它生成新面孔的完整示例。
+将这些联系在一起，下面列出了加载保存的渐进式增长 GAN 生成器模型并使用它生成新面孔的完整示例。
 
 在这种情况下，我们演示加载调谐模型以生成 16×16 个面。
 
@@ -1661,7 +1661,7 @@ plot_generated(X, n_images)
 
 ![Plot of 25 Synthetic Faces with 16x16 Resolution Generated With a Final Progressive Growing GAN Model](img/76049c3aa0dfaa57086ef59603cbe94f.png)
 
-最终渐进生长 GAN 模型生成的 25 个分辨率为 16×16 的合成面图
+最终渐进式增长 GAN 模型生成的 25 个分辨率为 16×16 的合成面图
 
 然后，我们可以将文件名更改为不同的模型，例如用于生成 128×128 个面的调整模型。
 
@@ -1674,13 +1674,13 @@ model = load_model('model_128x128-tuned.h5', cust)
 
 ![Plot of 25 Synthetic Faces With 128x128 Resolution Generated With a Final Progressive Growing GAN Model](img/26383f630fdc66b2207d29c751ebd971.png)
 
-最终渐进生长 GAN 模型生成的 25 个 128×128 分辨率合成面图
+最终渐进式增长 GAN 模型生成的 25 个 128×128 分辨率合成面图
 
 ## 扩展ˌ扩张
 
 本节列出了一些您可能希望探索的扩展教程的想法。
 
-*   **通过回调**改变阿尔法。更新该示例，以便在淡入训练期间使用 Keras 回调来更新加权合成图层的 alpha 值。
+*   **通过回调**改变阿尔法。更新该示例，以便在淡入训练期间使用 Keras 回调来更新加权合成层的 alpha 值。
 *   **预缩放数据集**。更新示例以预缩放每个数据集，并将每个版本保存到文件中，以便在培训期间需要时加载。
 *   **均衡学习率**。更新示例以实现本文中描述的均衡学习率权重缩放方法。
 *   **过滤器数量的增加**。更新示例以减少生成器中具有深度的过滤器的数量，并增加鉴别器中具有深度的过滤器的数量，以匹配本文中的配置。
@@ -1695,19 +1695,19 @@ model = load_model('model_128x128-tuned.h5', cust)
 
 ### 正式的
 
-*   [为改善质量、稳定性和变异而进行的肝的渐进生长](https://arxiv.org/abs/1710.10196)，2017 年。
+*   [为改善质量、稳定性和变异而进行的肝的渐进式增长](https://arxiv.org/abs/1710.10196)，2017 年。
 *   [为提高质量、稳定性和变异性而逐渐生长的肝，官方](https://research.nvidia.com/publication/2017-10_Progressive-Growing-of)。
 *   [GitHub](https://github.com/tkarras/progressive_growing_of_gans)gans 项目(官方)的递进生长。
 *   [为了提高品质、稳定性和变异，进行性生长肝。开启审核](https://openreview.net/forum?id=Hk99zCeAb&noteId=Hk99zCeAb)。
-*   [为提高质量、稳定性和变化性而进行的肝的渐进生长，YouTube](https://www.youtube.com/watch?v=G06dEcZ-QTg) 。
+*   [为提高质量、稳定性和变化性而进行的肝的渐进式增长，YouTube](https://www.youtube.com/watch?v=G06dEcZ-QTg) 。
 *   [为提高质量、稳定性和变化性而逐渐生长的肝。](https://www.youtube.com/watch?v=ReZiqCybQPA)
 
 ### 应用程序接口
 
 *   [硬数据集 API](https://keras.io/datasets/) .
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [如何“冻结”Keras 图层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
+*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [硬贡献项目](https://github.com/keras-team/keras-contrib)
 *   [浏览.转换.调整应用编程接口](https://scikit-image.org/docs/dev/api/skimage.transform.html#skimage.transform.resize)
 
@@ -1723,7 +1723,7 @@ model = load_model('model_128x128-tuned.h5', cust)
 具体来说，您了解到:
 
 *   如何准备名人脸数据集来训练一个渐进增长的 GAN 模型。
-*   如何在名人脸数据集上定义和训练渐进式生长 GAN？
+*   如何在名人脸数据集上定义和训练渐进式增长 GAN？
 *   如何加载保存的生成器模型，并使用它们来生成特别的合成名人脸。
 
 你有什么问题吗？
