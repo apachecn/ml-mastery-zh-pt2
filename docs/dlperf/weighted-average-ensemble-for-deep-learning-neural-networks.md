@@ -57,7 +57,7 @@
 
 权重的统一值(例如 1/k，其中 k 是系综成员的数量)意味着加权系综充当简单的平均系综。没有找到权重的解析解(我们无法计算)；相反，可以使用训练数据集或保持验证数据集来估计权重值。
 
-使用用于拟合集合成员的相同训练集来找到权重将可能导致过度拟合模型。更稳健的方法是使用集合成员在训练期间看不到的保持验证数据集。
+使用用于拟合集合成员的相同训练集来找到权重将可能导致过拟合模型。更稳健的方法是使用集合成员在训练期间看不到的保持验证数据集。
 
 最简单，也许是最详尽的方法是网格搜索每个集成成员的 0 到 1 之间的权重值。或者，诸如线性解算器或梯度下降优化的优化过程可用于使用单位范数权重约束来估计权重，以确保权重向量和为 1。
 
@@ -899,7 +899,7 @@ Optimized Weights Score: 0.824
 
 *   [当网络不一致时:混合神经网络的集成方法](https://www.worldscientific.com/doi/pdf/10.1142/9789812795885_0025)，1995。
 *   [神经网络集成、交叉验证和主动学习](https://papers.nips.cc/paper/1001-neural-network-ensembles-cross-validation-and-active-learning.pdf)，1995。
-*   [用合奏学习:过度拟合有多有用](http://papers.nips.cc/paper/1044-learning-with-ensembles-how-overfitting-can-be-useful.pdf)，1996。
+*   [用合奏学习:过拟合有多有用](http://papers.nips.cc/paper/1044-learning-with-ensembles-how-overfitting-can-be-useful.pdf)，1996。
 
 ### 应用程序接口
 

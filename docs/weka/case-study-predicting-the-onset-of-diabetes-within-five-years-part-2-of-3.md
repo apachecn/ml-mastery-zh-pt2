@@ -58,7 +58,7 @@ C4.5(在 Weka 中也称为“J48”)是一种用于生成分类决策树的算�
 
 在这种情况下，[信息增益](https://en.wikipedia.org/wiki/Information_gain_ratio)是两个概率分布两个属性之差的度量。让这个算法对我们有帮助的是，它解决了[昆兰早期算法 ID3 可能遗漏的几个问题](http://www2.cs.uregina.ca/~dbd/cs831/notes/ml/dtrees/c4.5/tutorial.html)。根据昆兰的说法，这些包括但不限于:
 
-*   避免数据过度拟合(决定决策树的深度)。
+*   避免数据过拟合(决定决策树的深度)。
 *   减少错误修剪。
 *   规则后修剪。
 *   处理连续属性(例如，温度)

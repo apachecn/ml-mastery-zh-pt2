@@ -411,7 +411,7 @@ plt.show()
 
 ### 教程
 
-*   [关于加文·考利和尼古拉·塔尔博特在绩效评估中模型选择的过度拟合和随后的选择偏差](https://www.jmlr.org/papers/volume11/cawley10a/cawley10a.pdf)
+*   [关于加文·考利和尼古拉·塔尔博特在绩效评估中模型选择的过拟合和随后的选择偏差](https://www.jmlr.org/papers/volume11/cawley10a/cawley10a.pdf)
 *   [k 倍交叉验证的温和介绍](https://machinelearningmastery.com/k-fold-cross-validation/)
 *   [型号选择](https://machinelearningmastery.com/a-gentle-introduction-to-model-selection-for-machine-learning/)
 *   [k 近邻算法](https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/)

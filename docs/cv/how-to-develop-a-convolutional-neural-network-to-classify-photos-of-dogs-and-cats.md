@@ -558,7 +558,7 @@ Found 6303 images belonging to 2 classes.
 
 还创建了一个图形，显示了列车(蓝色)和测试(橙色)数据集上的损耗线图和另一个模型精度图。
 
-回顾这个图，我们可以看到模型在大约 12 个时期对训练数据集进行了过度拟合。
+回顾这个图，我们可以看到模型在大约 12 个时期对训练数据集进行了过拟合。
 
 ![Line Plots of Loss and Accuracy Learning Curves for the Baseline Model With One VGG Block on the Dogs and Cats Dataset](img/b7dd2d91600a99c0e43bb07fe2743169.png)
 
@@ -603,7 +603,7 @@ Found 6303 images belonging to 2 classes.
 
 回顾学习曲线的曲线，我们可以再次看到，模型似乎过度填充了训练数据集，也许更快，在这种情况下，大约在八个训练时期。
 
-这可能是模型容量增加的结果，我们可能预计这种更快过度拟合的趋势会在下一个模型中继续。
+这可能是模型容量增加的结果，我们可能预计这种更快过拟合的趋势会在下一个模型中继续。
 
 ![Line Plots of Loss and Accuracy Learning Curves for the Baseline Model With Two VGG Block on the Dogs and Cats Dataset](img/15a8bc387211bde876ec7dcc6ebd6831.png)
 
@@ -648,7 +648,7 @@ Found 6303 images belonging to 2 classes.
 
 在这种情况下，我们可以看到，我们实现了表现的进一步提升，从两个模块的 76%左右提升到三个模块的 80%左右。这个结果是好的，因为它接近于该论文中使用 SVM 以大约 82%的准确度报道的现有技术水平。
 
-回顾学习曲线的曲线，我们可以看到类似的过度拟合的趋势，在这种情况下，也许可以追溯到五六世纪。
+回顾学习曲线的曲线，我们可以看到类似的过拟合的趋势，在这种情况下，也许可以追溯到五六世纪。
 
 ![Line Plots of Loss and Accuracy Learning Curves for the Baseline Model With Three VGG Block on the Dogs and Cats Dataset](img/8d7be869e337b38adf26a9c58b7c63bb.png)
 
@@ -664,7 +664,7 @@ Found 6303 images belonging to 2 classes.
 *   **vgg 2**:76 646%
 *   **VGG 3** : 80，184%
 
-随着容量的增加，我们看到了表现提高的趋势，但在运行中也出现了越来越早的过度拟合的类似情况。
+随着容量的增加，我们看到了表现提高的趋势，但在运行中也出现了越来越早的过拟合的类似情况。
 
 结果表明，该模型将可能受益于正则化技术。这可能包括技术，如辍学，体重下降，和数据增加。后者还可以通过扩展训练数据集来鼓励模型学习位置不变的特征，从而提高表现。
 
@@ -674,7 +674,7 @@ Found 6303 images belonging to 2 classes.
 
 在本节中，我们将从具有三个 VGG 区块(即 VGG 3)的基线模型开始，并探索模型的一些简单改进。
 
-从训练期间查看模型的学习曲线来看，模型显示出强烈的过度拟合迹象。我们可以探索两种方法来尝试解决这种过度拟合的问题:[辍学正规化](https://machinelearningmastery.com/how-to-reduce-overfitting-with-dropout-regularization-in-keras/)和[数据增加](https://machinelearningmastery.com/image-augmentation-deep-learning-keras/)。
+从训练期间查看模型的学习曲线来看，模型显示出强烈的过拟合迹象。我们可以探索两种方法来尝试解决这种过拟合的问题:[辍学正规化](https://machinelearningmastery.com/how-to-reduce-overfitting-with-dropout-regularization-in-keras/)和[数据增加](https://machinelearningmastery.com/image-augmentation-deep-learning-keras/)。
 
 这两种方法都有望减缓训练过程中的改进速度，并有望对抗训练数据集的[过拟合。因此，我们将训练阶段的数量从 20 个增加到 50 个，以给模型更多的细化空间。](https://machinelearningmastery.com/introduction-to-regularization-to-reduce-overfitting-and-improve-generalization-error/)
 
@@ -807,7 +807,7 @@ Found 6303 images belonging to 2 classes.
 
 回顾学习曲线，我们可以看到辍学对模型在训练集和测试集上的改进速度都有影响。
 
-过度拟合已经减少或延迟，尽管表现可能在接近运行结束时开始停滞。
+过拟合已经减少或延迟，尽管表现可能在接近运行结束时开始停滞。
 
 结果表明，进一步的训练阶段可能导致模型的进一步改进。除了训练时期的增加之外，探索 VGG 街区之后稍高的辍学率也可能是有趣的。
 

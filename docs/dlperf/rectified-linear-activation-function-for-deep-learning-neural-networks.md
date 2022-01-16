@@ -12,8 +12,8 @@
 
 完成本教程后，您将知道:
 
-*   由于消失梯度问题，sigmoid 和双曲正切激活函数不能用于具有许多层的网络。
-*   修正后的线性激活函数克服了消失梯度问题，使模型学习更快，表现更好。
+*   由于梯度消失问题，sigmoid 和双曲正切激活函数不能用于具有许多层的网络。
+*   修正后的线性激活函数克服了梯度消失问题，使模型学习更快，表现更好。
 *   修正后的线性激活是开发多层感知器和卷积神经网络时的默认激活。
 
 **用我的新书[更好的深度学习](https://machinelearningmastery.com/better-deep-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -66,15 +66,15 @@ sigmoid 和 tanh 函数的一个普遍问题是它们饱和。这意味着，对
 
 最后，随着硬件能力的提高，使用 sigmoid 和 tanh 激活函数的 GPU 深度神经网络不容易训练。
 
-使用这些非线性激活函数的大型网络中的深层无法接收有用的梯度信息。误差通过网络反向传播，并用于更新权重。给定所选激活函数的导数，误差量随着传播通过的每个附加层而显著减少。这被称为[消失梯度问题](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/)，阻碍了深层(多层)网络的有效学习。
+使用这些非线性激活函数的大型网络中的深层无法接收有用的梯度信息。误差通过网络反向传播，并用于更新权重。给定所选激活函数的导数，误差量随着传播通过的每个附加层而显著减少。这被称为[梯度消失问题](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/)，阻碍了深层(多层)网络的有效学习。
 
-> 消失梯度使得很难知道参数应该向哪个方向移动来改善成本函数
+> 梯度消失使得很难知道参数应该向哪个方向移动来改善成本函数
 
 —第 290 页，[深度学习](https://amzn.to/2QHVWmW)，2016。
 
 有关 ReLU 如何修复渐变消失问题的示例，请参见教程:
 
-*   [如何使用校正后的线性激活函数](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/)固定消失梯度
+*   [如何使用校正后的线性激活函数](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/)固定梯度消失
 
 虽然非线性激活函数的使用允许神经网络学习复杂的映射函数，但它们有效地阻止了学习算法与深度网络一起工作。
 
@@ -394,7 +394,7 @@ ReLU 的局限性之一是，大权重更新可能意味着激活函数的总输
 
 这意味着有此问题的节点将永远输出 0.0 的激活值。这被称为一个“*垂死的 ReLU* ”。
 
-> 每当设备不活动时，梯度为 0。这可能导致单元从不激活的情况，因为基于梯度的优化算法不会调整最初从不激活的单元的权重。此外，就像消失梯度问题一样，当训练具有恒定 0 梯度的 ReL 网络时，我们可能期望学习是缓慢的。
+> 每当设备不活动时，梯度为 0。这可能导致单元从不激活的情况，因为基于梯度的优化算法不会调整最初从不激活的单元的权重。此外，就像梯度消失问题一样，当训练具有恒定 0 梯度的 ReL 网络时，我们可能期望学习是缓慢的。
 
 ——[整流器非线性改善神经网络声学模型](http://ai.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final.pdf)，2013 年。
 
@@ -430,7 +430,7 @@ Maxout 是一种可选的分段线性函数，返回输入的最大值，设计�
 
 ### 邮件
 
-*   [如何使用校正后的线性激活函数](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/)固定消失梯度
+*   [如何使用校正后的线性激活函数](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/)固定梯度消失
 
 ### 书
 
@@ -464,8 +464,8 @@ Maxout 是一种可选的分段线性函数，返回输入的最大值，设计�
 
 具体来说，您了解到:
 
-*   由于消失梯度问题，sigmoid 和双曲正切激活函数不能用于具有许多层的网络。
-*   修正后的线性激活函数克服了消失梯度问题，使模型学习更快，表现更好。
+*   由于梯度消失问题，sigmoid 和双曲正切激活函数不能用于具有许多层的网络。
+*   修正后的线性激活函数克服了梯度消失问题，使模型学习更快，表现更好。
 *   修正后的线性激活是开发多层感知器和卷积神经网络时的默认激活。
 
 **你有什么问题吗？**

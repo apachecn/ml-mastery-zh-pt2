@@ -1,4 +1,4 @@
-# Python 中的快照集成深度学习神经网络
+# Python 中深度学习神经网络的快照集成
 
 > 原文：<https://machinelearningmastery.com/snapshot-ensemble-deep-learning-neural-network/>
 

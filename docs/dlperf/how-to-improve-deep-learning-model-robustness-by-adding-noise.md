@@ -289,7 +289,7 @@ pyplot.show()
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-我们可以看到，该模型在训练数据集上的表现优于测试数据集，这可能是过度拟合的一个迹象。
+我们可以看到，该模型在训练数据集上的表现优于测试数据集，这可能是过拟合的一个迹象。
 
 ```py
 Train: 1.000, Test: 0.757
@@ -301,7 +301,7 @@ Train: 1.000, Test: 0.757
 
 ![Line Plots of Accuracy on Train and Test Datasets While Training Showing an Overfit](img/c2807e186a057795104e7b89c285cb94.png)
 
-训练时训练和测试数据集上的精度线图显示出过度拟合
+训练时训练和测试数据集上的精度线图显示出过拟合
 
 ## 具有输入层噪声的 MLP
 
@@ -378,7 +378,7 @@ Train: 1.000, Test: 0.771
 
 向输入值添加噪声的另一种方法是在隐藏层之间添加噪声。
 
-这可以通过在应用激活函数之前向层的线性输出(加权和)添加噪声来实现，在这种情况下是整流的线性激活函数。我们还可以对噪声使用较大的标准偏差，因为在这个水平上，模型对噪声不太敏感，因为过度拟合可能会导致较大的权重。我们将使用 0.1 的标准偏差，同样是任意选择的。
+这可以通过在应用激活函数之前向层的线性输出(加权和)添加噪声来实现，在这种情况下是整流的线性激活函数。我们还可以对噪声使用较大的标准偏差，因为在这个水平上，模型对噪声不太敏感，因为过拟合可能会导致较大的权重。我们将使用 0.1 的标准偏差，同样是任意选择的。
 
 ```py
 # define model
@@ -436,7 +436,7 @@ pyplot.show()
 # Train: 0.967, Test: 0.814
 ```
 
-我们还可以从训练时期的精度线图中看到，模型似乎不再显示过度拟合的特性。
+我们还可以从训练时期的精度线图中看到，模型似乎不再显示过拟合的特性。
 
 ![Line Plot of Train and Test Accuracy With Hidden Layer Noise](img/cc89ef643c716422c9c594041477b7d5.png)
 
@@ -497,7 +497,7 @@ pyplot.show()
 Train: 0.967, Test: 0.814
 ```
 
-同样，我们可以从训练时期的精度线图中看到，模型不再显示过度拟合的迹象。
+同样，我们可以从训练时期的精度线图中看到，模型不再显示过拟合的迹象。
 
 ![Line Plot of Train and Test Accuracy With Hidden Layer Noise (alternate)](img/89d1458b91e3743fab9c01789faea0f8.png)
 

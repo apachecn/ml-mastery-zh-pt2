@@ -836,7 +836,7 @@ run_test_harness()
 > 99.133
 ```
 
-创建了一个学习曲线图，在这种情况下显示模型仍然很好地适合问题，没有明显的过度拟合迹象。这些情节甚至表明，进一步的训练时期可能会有所帮助。
+创建了一个学习曲线图，在这种情况下显示模型仍然很好地适合问题，没有明显的过拟合迹象。这些情节甚至表明，进一步的训练时期可能会有所帮助。
 
 ![Loss and Accuracy Learning Curves for the Deeper Model During k-Fold Cross-Validation](img/9b8e9e3ca6080806b4bb8d5d994f7421.png)
 

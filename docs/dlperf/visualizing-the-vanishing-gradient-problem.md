@@ -1,17 +1,17 @@
-# 可视化消失梯度问题
+# 可视化梯度消失问题
 
 > 原文：<https://machinelearningmastery.com/visualizing-the-vanishing-gradient-problem/>
 
 最后更新于 2021 年 11 月 26 日
 
-深度学习是最近的发明。部分原因是由于计算能力的提高，允许我们在神经网络中使用更多层的感知器。但与此同时，只有在我们知道如何解决消失梯度问题后，我们才能训练一个深度网络。
+深度学习是最近的发明。部分原因是由于计算能力的提高，允许我们在神经网络中使用更多层的感知器。但与此同时，只有在我们知道如何解决梯度消失问题后，我们才能训练一个深度网络。
 
 在本教程中，我们直观地考察了消失渐变问题存在的原因。
 
 完成本教程后，您将知道
 
 *   什么是消失的渐变
-*   神经网络的哪种配置容易受到消失梯度的影响
+*   神经网络的哪种配置容易受到梯度消失的影响
 *   如何在 Keras 中运行手动训练循环
 *   如何从 Keras 模型中提取权重和梯度
 
@@ -27,7 +27,7 @@
 本教程分为 5 个部分；它们是:
 
 1.  多层感知器模型的配置
-2.  消失梯度问题示例
+2.  梯度消失问题示例
 3.  看每一层的重量
 4.  观察每一层的梯度
 5.  格洛特初始化
@@ -42,7 +42,7 @@ $
 $
 如果我们需要在输出端激活 sigmoid，那么在神经网络的所有层中使用它是很自然的。此外，神经网络中的每一层都有一个权重参数。最初，权重必须是随机的，自然我们会使用一些简单的方法来实现，比如使用均匀随机或正态分布。
 
-## 消失梯度问题示例
+## 梯度消失问题示例
 
 为了说明渐变消失的问题，我们来举个例子试试。神经网络是一种非线性函数。因此它最适合非线性数据集的分类。我们利用 Sklearn 的`make_circle()`函数生成一些数据:
 
@@ -614,7 +614,7 @@ plot_gradient(gradhistory, losshistory)
 
 ——《理解深度前馈神经网络训练的难点》(2010)
 
-这源于线性激活，条件是梯度的标准偏差在各层之间保持一致。在 sigmoid 和 tanh 激活中，线性区域较窄。因此，我们可以理解为什么 ReLU 是解决消失梯度问题的关键。与替换激活函数相比，改变权重初始化在帮助解决消失梯度问题方面不太明显。但这可以是一个让你探索的练习，看看这如何有助于改善结果。
+这源于线性激活，条件是梯度的标准偏差在各层之间保持一致。在 sigmoid 和 tanh 激活中，线性区域较窄。因此，我们可以理解为什么 ReLU 是解决梯度消失问题的关键。与替换激活函数相比，改变权重初始化在帮助解决梯度消失问题方面不太明显。但这可以是一个让你探索的练习，看看这如何有助于改善结果。
 
 ## 进一步阅读
 
@@ -623,15 +623,15 @@ plot_gradient(gradhistory, losshistory)
 *   “理解训练深度前馈神经网络的难度”，Xavier Glorot 和 Yoshua Bengio 著，2010 年。
     ([https://proceedings.mlr.press/v9/glorot10a/glorot10a.pdf](https://proceedings.mlr.press/v9/glorot10a/glorot10a.pdf))
 
-消失梯度问题在机器学习中是众所周知的，许多书都涉及到了它。例如，
+梯度消失问题在机器学习中是众所周知的，许多书都涉及到了它。例如，
 
 *   *深度学习*，作者:伊恩·古德费勒，约斯华·本吉奥，亚伦·库维尔，2016。
     ([https://www.amazon.com/dp/0262035618](https://www.amazon.com/dp/0262035618))
 
 之前我们有关于渐变消失和爆炸的帖子:
 
-*   [如何使用校正后的线性激活函数](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/)固定消失梯度
-*   [神经网络中的爆炸梯度](https://machinelearningmastery.com/exploding-gradients-in-neural-networks/)
+*   [如何使用校正后的线性激活函数](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/)固定梯度消失
+*   [神经网络中的梯度爆炸](https://machinelearningmastery.com/exploding-gradients-in-neural-networks/)
 
 您可能还会发现以下文档有助于解释我们上面使用的一些语法:
 
@@ -645,7 +645,7 @@ plot_gradient(gradhistory, losshistory)
 具体来说，您了解到:
 
 *   梯度消失问题如何影响神经网络的表现
-*   为什么 ReLU 激活是消失梯度问题的解决方案
+*   为什么 ReLU 激活是梯度消失问题的解决方案
 *   如何在 Keras 中使用自定义回调在训练循环中间提取数据
 *   如何编写自定义训练循环
 *   如何从神经网络的一个层读取权重和梯度

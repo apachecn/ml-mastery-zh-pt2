@@ -24,7 +24,7 @@ Dropout 的工作原理是从概率上删除或“退出”一个层的输入，
 
 ![How to Reduce Overfitting With Dropout Regularization in Keras](img/755febfb982a694fa9e38536ce065eee.png)
 
-如何减少过度拟合与辍学正规化在喀拉斯
+如何减少过拟合与辍学正规化在喀拉斯
 图片由[项目拉刀疤](https://www.flickr.com/photos/jlascar/19198105290)，一些权利保留。
 
 ## 教程概述
@@ -345,11 +345,11 @@ pyplot.show()
 
 运行该示例会报告列车和测试数据集上的模型表现。
 
-我们可以看到，该模型在训练数据集上的表现优于测试数据集，这可能是过度拟合的一个迹象。
+我们可以看到，该模型在训练数据集上的表现优于测试数据集，这可能是过拟合的一个迹象。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-因为模型被严重过度拟合，我们通常不会期望模型在同一数据集上重复运行时的精度有太大差异。
+因为模型被严重过拟合，我们通常不会期望模型在同一数据集上重复运行时的精度有太大差异。
 
 ```py
 Train: 1.000, Test: 0.757
@@ -361,7 +361,7 @@ Train: 1.000, Test: 0.757
 
 ![Line Plots of Accuracy on Train and Test Datasets While Training Showing an Overfit](img/bf866f862de113d84a64b96a004cf05d.png)
 
-训练时训练和测试数据集上的精度线图显示出过度拟合
+训练时训练和测试数据集上的精度线图显示出过拟合
 
 ### 辍学正规化的过度 MLP
 

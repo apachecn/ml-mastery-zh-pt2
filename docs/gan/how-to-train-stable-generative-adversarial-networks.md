@@ -155,7 +155,7 @@ DCGAN 的生成器模型架构示例。
 
 ### 4.使用继电器，leaky relu，和 Tanh
 
-激活函数如 [ReLU](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/) 用于解决深度卷积神经网络中的消失梯度问题，并促进稀疏激活(如大量零值)。
+激活函数如 [ReLU](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/) 用于解决深度卷积神经网络中的梯度消失问题，并促进稀疏激活(如大量零值)。
 
 建议生成器使用 ReLU，但鉴别器模型不建议使用。相反，允许小于零的值的 ReLU 的变体，称为泄漏 ReLU，在鉴别器中是优选的。
 

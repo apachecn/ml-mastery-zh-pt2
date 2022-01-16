@@ -558,7 +558,7 @@ layers=5: 0.794
 
 我们可以看到，1、2 和 3 个模型(蓝色、橙色和绿色)的模型动力学非常相似，学习问题很快。
 
-令人惊讶的是，四层和五层的训练损失显示出最初表现良好的迹象，然后跳跃上升，这表明模型可能停留在次优的权重集，而不是过度拟合训练数据集。
+令人惊讶的是，四层和五层的训练损失显示出最初表现良好的迹象，然后跳跃上升，这表明模型可能停留在次优的权重集，而不是过拟合训练数据集。
 
 ![Line Plot of Cross Entropy Loss Over Training Epochs for an MLP on the Training Dataset for the Blobs Multi-Class Classification Problem When Varying Model Layers](img/a192a6d68423cb2e7698d1583be5d510.png)
 

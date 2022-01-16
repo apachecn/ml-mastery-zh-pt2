@@ -471,7 +471,7 @@ run_test_harness()
 
 接下来，显示了一个诊断图，提供了对模型在每个折叠中的学习行为的洞察。
 
-在这种情况下，我们可以看到该模型通常实现了良好的拟合，训练和测试学习曲线收敛。可能有一些轻微过度拟合的迹象。
+在这种情况下，我们可以看到该模型通常实现了良好的拟合，训练和测试学习曲线收敛。可能有一些轻微过拟合的迹象。
 
 ![Loss-and-Accuracy-Learning-Curves-for-the-Baseline-Model-on-the-Fashion-MNIST-Dataset-During-k-Fold-Cross-Validation](img/520eab5055f0e2fa8b0633737504dcf2.png)
 
@@ -638,7 +638,7 @@ run_test_harness()
 > 91.450
 ```
 
-创建学习曲线的图。与基线模型一样，我们可能会看到一些轻微的过度拟合。或许可以通过使用正规化或针对较少时期的培训来解决这一问题。
+创建学习曲线的图。与基线模型一样，我们可能会看到一些轻微的过拟合。或许可以通过使用正规化或针对较少时期的培训来解决这一问题。
 
 ![Loss-and-Accuracy-Learning-Curves-for-the-Same-Padding-on-the-Fashion-MNIST-Dataset-During-k-Fold-Cross-Validation](img/141ecee2189830e3af55d71e1019446c.png)
 
@@ -797,7 +797,7 @@ run_test_harness()
 > 91.408
 ```
 
-创建了一个学习曲线的图，在这种情况下显示模型仍然对问题有合理的拟合，有一些运行过度拟合的小迹象。
+创建了一个学习曲线的图，在这种情况下显示模型仍然对问题有合理的拟合，有一些运行过拟合的小迹象。
 
 ![Loss-and-Accuracy-Learning-Curves-for-the-More-Filters-and-Padding-on-the-Fashion-MNIST-Dataset-During-k-Fold-Cross-Validation](img/240e3210be5fdfd794625ad68538fdef.png)
 

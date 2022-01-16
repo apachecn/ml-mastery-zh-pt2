@@ -258,7 +258,7 @@ pyplot.show()
 
 运行该示例会报告列车和测试数据集上的模型表现。
 
-我们可以看到，该模型在训练数据集上的表现优于测试数据集，这可能是过度拟合的一个迹象。
+我们可以看到，该模型在训练数据集上的表现优于测试数据集，这可能是过拟合的一个迹象。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -274,7 +274,7 @@ Train: 1.000, Test: 0.914
 
 ![Line Plots of Accuracy on Train and Test Datasets While Training Showing an Overfit](img/d52df1ae787be4b54279937916b59883.png)
 
-训练时训练和测试数据集上的精度线图显示出过度拟合
+训练时训练和测试数据集上的精度线图显示出过拟合
 
 ### 重量受限的 MLP 过度捕捞
 
@@ -345,7 +345,7 @@ pyplot.show()
 Train: 1.000, Test: 0.943
 ```
 
-回顾训练和测试精度的线图，我们可以看到模型似乎不再过度拟合训练数据集。
+回顾训练和测试精度的线图，我们可以看到模型似乎不再过拟合训练数据集。
 
 列车和测试集上的模型精度继续增加到平稳状态。
 

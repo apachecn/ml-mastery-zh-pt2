@@ -6,7 +6,7 @@
 
 当训练神经网络以鼓励网络使用小权重时，权重正则化方法(如权重衰减)会对损失函数引入惩罚。
 
-神经网络中较小的权重可以导致模型更加稳定，并且不太可能[过度拟合训练数据集](https://machinelearningmastery.com/introduction-to-regularization-to-reduce-overfitting-and-improve-generalization-error/)，从而在对新数据进行预测时具有更好的表现。
+神经网络中较小的权重可以导致模型更加稳定，并且不太可能[过拟合训练数据集](https://machinelearningmastery.com/introduction-to-regularization-to-reduce-overfitting-and-improve-generalization-error/)，从而在对新数据进行预测时具有更好的表现。
 
 与权重正则化不同，权重约束是一个触发器，它检查权重的大小或大小，并对它们进行缩放，使它们都低于预定义的阈值。该约束迫使权重变小，可以代替权重衰减，并与更积极的网络配置结合使用，例如[非常大的学习速率](https://machinelearningmastery.com/learning-rate-for-deep-learning-neural-networks/)。
 
@@ -37,7 +37,7 @@
 
 ## 大重量处罚的替代方案
 
-神经网络中的大权重是过度拟合的标志。
+神经网络中的大权重是过拟合的标志。
 
 具有大权重的网络很可能已经学会了训练数据中的统计噪声。这导致模型不稳定，并且对输入变量的变化非常敏感。反过来，当对新的未知数据进行预测时，overfit 网络的表现很差。
 
@@ -109,7 +109,7 @@ Geoffrey Hinton 等人在他们 2012 年发表的题为“[通过防止特征检
 
 > 所有层对每个隐藏单元的输入权重都有 L2 权重约束。
 
-Nitish Srivastava 等人在 2014 年发表的题为“T0 辍学:防止神经网络过度拟合的简单方法”的论文中，在 MNIST 手写数字分类任务中使用了带有 MLP 的 maxnorm 约束，在街景门牌号数据集上使用了 CNNs，该数据集的参数是通过保持验证集配置的。
+Nitish Srivastava 等人在 2014 年发表的题为“T0 辍学:防止神经网络过拟合的简单方法”的论文中，在 MNIST 手写数字分类任务中使用了带有 MLP 的 maxnorm 约束，在街景门牌号数据集上使用了 CNNs，该数据集的参数是通过保持验证集配置的。
 
 > 最大范数正则化用于卷积层和全连接层的权重。
 

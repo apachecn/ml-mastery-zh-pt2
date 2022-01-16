@@ -1,10 +1,10 @@
-# 用噪声训练神经网络以减少过拟合
+# 使用噪声训练神经网络来减少过拟合
 
 > 原文：<https://machinelearningmastery.com/train-neural-networks-with-noise-to-reduce-overfitting/>
 
 最后更新于 2019 年 8 月 6 日
 
-用小数据集训练神经网络会导致网络记住所有的训练示例，进而导致[过度拟合](https://machinelearningmastery.com/introduction-to-regularization-to-reduce-overfitting-and-improve-generalization-error/)，在保持数据集上表现不佳。
+用小数据集训练神经网络会导致网络记住所有的训练示例，进而导致[过拟合](https://machinelearningmastery.com/introduction-to-regularization-to-reduce-overfitting-and-improve-generalization-error/)，在保持数据集上表现不佳。
 
 给定高维输入空间中点的不完整或稀疏采样，小数据集也可能代表神经网络更难学习的映射问题。
 
@@ -56,7 +56,7 @@
 
 起初，这听起来像是让学习更具挑战性的方法。这是一个提高表现的反直觉建议，因为在训练过程中，人们会期望噪声会降低模型的表现。
 
-> 试探性地，我们可能预期噪声将“涂抹”每个数据点，并使网络难以精确拟合单个数据点，因此将减少过度拟合。在实践中，已经证明用噪声进行训练确实可以提高网络的泛化能力。
+> 试探性地，我们可能预期噪声将“涂抹”每个数据点，并使网络难以精确拟合单个数据点，因此将减少过拟合。在实践中，已经证明用噪声进行训练确实可以提高网络的泛化能力。
 
 —第 347 页，[用于模式识别的神经网络](https://amzn.to/2I9gNMP)，1995。
 

@@ -309,7 +309,7 @@ Prediction: -134
 
 Bagging 算法的一个重要超参数是集成中使用的决策树的数量。
 
-通常，树的数量会增加，直到模型表现稳定下来。直觉可能暗示更多的树会导致过度拟合，尽管事实并非如此。给定学习算法的随机性质，装袋和决策树算法的相关集成(如[随机森林](https://machinelearningmastery.com/implement-random-forest-scratch-python/))似乎在某种程度上不会过度拟合训练数据集。
+通常，树的数量会增加，直到模型表现稳定下来。直觉可能暗示更多的树会导致过拟合，尽管事实并非如此。给定学习算法的随机性质，装袋和决策树算法的相关集成(如[随机森林](https://machinelearningmastery.com/implement-random-forest-scratch-python/))似乎在某种程度上不会过拟合训练数据集。
 
 树的数量可以通过“*n _ estimates*”参数设置，默认为 100。
 
