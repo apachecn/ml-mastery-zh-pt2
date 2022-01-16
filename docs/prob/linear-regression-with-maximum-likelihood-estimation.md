@@ -209,8 +209,8 @@
 ### 教程
 
 *   [如何用线性代数求解线性回归](https://machinelearningmastery.com/solve-linear-regression-using-linear-algebra/)
-*   [如何在 Python 中从头开始实现线性回归](https://machinelearningmastery.com/implement-linear-regression-stochastic-gradient-descent-scratch-python/)
-*   [如何用 Python 从头开始实现简单线性回归](https://machinelearningmastery.com/implement-simple-linear-regression-scratch-python/)
+*   [如何在 Python 中从零开始实现线性回归](https://machinelearningmastery.com/implement-linear-regression-stochastic-gradient-descent-scratch-python/)
+*   [如何用 Python 从零开始实现简单线性回归](https://machinelearningmastery.com/implement-simple-linear-regression-scratch-python/)
 *   [使用梯度下降进行机器学习的线性回归教程](https://machinelearningmastery.com/linear-regression-tutorial-using-gradient-descent-for-machine-learning/)
 *   [机器学习简单线性回归教程](https://machinelearningmastery.com/simple-linear-regression-tutorial-for-machine-learning/)
 *   [机器学习的线性回归](https://machinelearningmastery.com/linear-regression-for-machine-learning/)

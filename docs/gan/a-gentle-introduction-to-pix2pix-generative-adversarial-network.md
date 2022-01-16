@@ -1,4 +1,4 @@
-# Pix2Pix 生成性对抗网络的温和介绍
+# Pix2Pix 生成对抗网络的温和介绍
 
 > 原文：<https://machinelearningmastery.com/a-gentle-introduction-to-pix2pix-generative-adversarial-network/>
 
@@ -20,7 +20,7 @@ Pix2Pix GAN 是一种通用的图像到图像翻译方法。它基于条件生�
 *   Pix2Pix GAN 为图像到图像的翻译提供了通用模型和损失函数。
 *   Pix2Pix GAN 在各种各样的图像生成任务中进行了演示，包括将照片从白天翻译成黑夜，将产品草图翻译成照片。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
@@ -31,7 +31,7 @@ Pix2Pix GAN 是一种通用的图像到图像翻译方法。它基于条件生�
 1.  图像到图像的翻译问题
 2.  用于图像到图像翻译的 Pix2Pix GAN
 3.  Pix2Pix 建筑细节
-4.  Pix2Pix 氮化镓的应用
+4.  Pix2Pix GAN的应用
 5.  对 Pix2Pix 架构选择的洞察
 
 ## 图像到图像的翻译问题
@@ -56,7 +56,7 @@ Pix2Pix GAN 是一种通用的图像到图像翻译方法。它基于条件生�
 
 ## 用于图像到图像翻译的 Pix2Pix GAN
 
-Pix2Pix 是一个为通用图像到图像翻译而设计的生成性对抗网络模型。
+Pix2Pix 是一个为通用图像到图像翻译而设计的生成对抗网络模型。
 
 该方法由菲利普·伊索拉(Phillip Isola)等人在 2016 年发表的论文《条件对抗网络下的 T2 图像到图像翻译》(T3)中提出，并于 2017 年在 CVPR 的 T4 会议上提出。
 
@@ -155,7 +155,7 @@ PatchGAN 鉴别器模型被实现为深度卷积神经网络，但是层数被�
 
 *   发电机损耗=对抗性损耗+λ* L1 损耗
 
-## Pix2Pix 氮化镓的应用
+## Pix2Pix GAN的应用
 
 Pix2Pix GAN 在一系列有趣的图像到图像翻译任务中进行了演示。
 

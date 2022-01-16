@@ -8,15 +8,15 @@
 
 尽管非常有效，但默认的 GAN 无法控制生成的图像类型。信息最大化 GAN，简称 InfoGAN，是 GAN 架构的扩展，它引入了由架构自动学习的控制变量，并允许对生成的图像进行控制，例如在生成手写数字图像的情况下的样式、厚度和类型。
 
-在本教程中，您将发现如何从头开始实施信息最大化生成性对抗网络模型。
+在本教程中，您将发现如何从零开始实施信息最大化生成对抗网络模型。
 
 完成本教程后，您将知道:
 
 *   InfoGAN 的动机是希望解开和控制生成图像中的属性。
 *   InfoGAN 包括添加控制变量，以生成预测控制变量的辅助模型，该模型通过相互信息损失函数进行训练。
-*   如何从头开始开发和训练一个 InfoGAN 模型，并使用控制变量来控制模型生成哪个数字。
+*   如何从零开始开发和训练一个 InfoGAN 模型，并使用控制变量来控制模型生成哪个数字。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
@@ -25,7 +25,7 @@
 
 ![How to Develop an Information Maximizing Generative Adversarial Network (InfoGAN) in Keras](img/58898237331903c73fe013a94c748efd.png)
 
-如何在喀拉斯开发一个信息最大化的生成性对抗网络(InfoGAN)图片由[伊罗尔·特拉蒙特](https://www.flickr.com/photos/iroltrasmonte/7351467350)提供，版权所有。
+如何在喀拉斯开发一个信息最大化的生成对抗网络(InfoGAN)图片由[伊罗尔·特拉蒙特](https://www.flickr.com/photos/iroltrasmonte/7351467350)提供，版权所有。
 
 ## 教程概述
 
@@ -52,7 +52,7 @@
 
 另一种方法是提供控制变量作为发生器的输入，以及潜在空间中的点(噪声)。可以训练生成器使用控制变量来影响生成图像的特定属性。这是信息最大化生成对抗网络(简称 InfoGAN)采用的方法。
 
-> InfoGAN，生成性对抗网络的信息论扩展，能够以完全无监督的方式学习不纠缠的表示。
+> InfoGAN，生成对抗网络的信息论扩展，能够以完全无监督的方式学习不纠缠的表示。
 
 ——[InfoGAN:通过信息最大化生成对抗网进行可解释表征学习](https://arxiv.org/abs/1606.03657)，2016。
 
@@ -66,7 +66,7 @@
 
 控制变量与噪声一起作为输入提供给发生器，模型通过互信息损失函数进行训练。
 
-> ……我们对生成性对抗网络目标提出了一个简单的修改，鼓励它学习可解释和有意义的表示。我们通过最大化 GAN 噪声变量的固定小子集和观测值之间的互信息来做到这一点，这被证明是相对简单的。
+> ……我们对生成对抗网络目标提出了一个简单的修改，鼓励它学习可解释和有意义的表示。我们通过最大化 GAN 噪声变量的固定小子集和观测值之间的互信息来做到这一点，这被证明是相对简单的。
 
 ——[InfoGAN:通过信息最大化生成对抗网进行可解释表征学习](https://arxiv.org/abs/1606.03657)，2016。
 
@@ -1076,7 +1076,7 @@ save_plot(X, n_samples)
 
 *   [InfoGAN(官方)，OpenAI，GitHub](https://github.com/openai/InfoGAN) 。
 *   [一次性插入:一次性执行插入，GitHub](https://github.com/EmilienDupont/infogan) 。
-*   [Keras-GAN:生成性对抗网络的 Keras 实现，GitHub](https://github.com/eriklindernoren/Keras-GAN) 。
+*   [Keras-GAN:生成对抗网络的 Keras 实现，GitHub](https://github.com/eriklindernoren/Keras-GAN) 。
 *   [高级-深度-与-Keras 学习，PacktPublishing，GitHub](https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras) 。
 *   [深度学习实施:实施最近的深度学习论文，GitHub](https://github.com/tdeboissiere/DeepLearningImplementations) 。
 
@@ -1091,13 +1091,13 @@ save_plot(X, n_samples)
 
 ## 摘要
 
-在本教程中，您发现了如何从头开始实现信息最大化生成性对抗网络模型。
+在本教程中，您发现了如何从零开始实现信息最大化生成对抗网络模型。
 
 具体来说，您了解到:
 
 *   InfoGAN 的动机是希望解开和控制生成图像中的属性。
 *   InfoGAN 包括添加控制变量，以生成预测控制变量的辅助模型，该模型通过相互信息损失函数进行训练。
-*   如何从头开始开发和训练一个 InfoGAN 模型，并使用控制变量来控制模型生成哪个数字。
+*   如何从零开始开发和训练一个 InfoGAN 模型，并使用控制变量来控制模型生成哪个数字。
 
 你有什么问题吗？
 在下面的评论中提问，我会尽力回答。

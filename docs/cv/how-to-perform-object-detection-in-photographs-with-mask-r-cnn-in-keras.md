@@ -79,7 +79,7 @@ R-CNN 模型的每个版本都有源代码，在独立的 GitHub 存储库中提
 *   [更快的 R-CNN Python 代码，GitHub](https://github.com/rbgirshick/py-faster-rcnn) 。
 *   [探测器，Facebook AI，GitHub](https://github.com/facebookresearch/Detectron) 。
 
-我们可以使用建立在 Keras 深度学习框架之上的可靠的第三方实现，而不是从头开始开发 R-CNN 或 Mask R-CNN 模型的实现。
+我们可以使用建立在 Keras 深度学习框架之上的可靠的第三方实现，而不是从零开始开发 R-CNN 或 Mask R-CNN 模型的实现。
 
 口罩 R-CNN 最好的第三方实现是由[马特波特](https://matterport.com/)开发的[口罩 R-CNN 项目](https://github.com/matterport/Mask_RCNN)。该项目是在许可许可(即麻省理工学院许可)下发布的开源项目，该代码已被广泛用于各种项目和卡格尔竞赛。
 
@@ -94,7 +94,7 @@ R-CNN 模型的每个版本都有源代码，在独立的 GitHub 存储库中提
 
 *   **对象检测应用**:使用预先训练好的模型对新图像进行对象检测。
 *   **通过迁移学习的新模型**:在为新的对象检测数据集开发模型时，使用预先训练的模型作为起点。
-*   **从头开始新模型**:为对象检测数据集从头开始开发新模型。
+*   **从零开始新模型**:为对象检测数据集从零开始开发新模型。
 
 为了熟悉模型和库，我们将在下一节中查看第一个示例。
 

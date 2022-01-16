@@ -51,7 +51,7 @@
 
 发散分数是[信息论](https://machinelearningmastery.com/what-is-information-entropy/)以及更一般的机器学习中许多不同计算的重要基础。例如，它们提供了计算分数的快捷方式，如[互信息](https://machinelearningmastery.com/information-gain-and-mutual-information)(信息增益)和交叉熵，用作分类模型的损失函数。
 
-发散分数也直接用作理解复杂建模问题的工具，例如在优化[生成性对抗网络(GAN)模型](https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/)时近似目标概率分布。
+发散分数也直接用作理解复杂建模问题的工具，例如在优化[生成对抗网络(GAN)模型](https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/)时近似目标概率分布。
 
 信息论中两个常用的散度得分是库尔巴克-莱布勒散度和詹森-香农散度。
 

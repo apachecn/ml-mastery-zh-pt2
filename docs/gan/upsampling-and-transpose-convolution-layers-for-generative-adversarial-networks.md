@@ -18,13 +18,13 @@ GAN 架构由一个生成器和一个鉴别器模型组成。生成器负责创�
 *   上采样层是一个没有权重的简单层，它将使输入的维度加倍，并且可以在传统卷积层之后的生成模型中使用。
 *   转置卷积层是一个反向卷积层，它将对输入进行上采样，并学习如何在模型训练过程中填充细节。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
 ![A Gentle Introduction to Upsampling and Transpose Convolution Layers for Generative Adversarial Networks](img/e76581acd96e98162b209ad97d06218e.png)
 
-生成性对抗网络的上采样和转置卷积层简介
+生成对抗网络的上采样和转置卷积层简介
 图片由 [BLM 内华达](https://www.flickr.com/photos/blmnevada/29182914095/)提供，保留部分权利。
 
 ## 教程概述
@@ -35,7 +35,7 @@ GAN 架构由一个生成器和一个鉴别器模型组成。生成器负责创�
 *   如何使用上采样层
 *   如何使用转置卷积层
 
-## 生成性对抗网络中的上采样需求
+## 生成对抗网络中的上采样需求
 
 生成对抗网络是一种用于训练生成模型的神经网络体系结构。
 

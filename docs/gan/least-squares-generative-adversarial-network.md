@@ -10,7 +10,7 @@
 
 LSGAN 可以通过对鉴别器层的输出层的微小改变和采用最小二乘或 L2 损失函数来实现。
 
-在本教程中，您将发现如何开发一个最小二乘生成性对抗网络。
+在本教程中，您将发现如何开发一个最小二乘生成对抗网络。
 
 完成本教程后，您将知道:
 
@@ -18,7 +18,7 @@ LSGAN 可以通过对鉴别器层的输出层的微小改变和采用最小二�
 *   LSGAN 可以通过鉴别器模型的均方误差或 L2 损失函数来实现。
 *   如何实现为 MNIST 数据集生成手写数字的 LSGAN 模型。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
@@ -649,7 +649,7 @@ plot_generated(X, 10)
 
 ## 摘要
 
-在本教程中，您发现了如何开发最小二乘生成性对抗网络。
+在本教程中，您发现了如何开发最小二乘生成对抗网络。
 
 具体来说，您了解到:
 

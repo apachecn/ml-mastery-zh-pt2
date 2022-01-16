@@ -333,7 +333,7 @@ y=0.0, yhat=0.9, likelihood: 0.100
 ### 邮件
 
 *   [机器学习最大似然估计的温和介绍](https://machinelearningmastery.com/what-is-maximum-likelihood-estimation-in-machine-learning/)
-*   [如何在 Python 中从头开始实现逻辑回归](https://machinelearningmastery.com/implement-logistic-regression-stochastic-gradient-descent-scratch-python/)
+*   [如何在 Python 中从零开始实现逻辑回归](https://machinelearningmastery.com/implement-logistic-regression-stochastic-gradient-descent-scratch-python/)
 *   [机器学习逻辑回归教程](https://machinelearningmastery.com/logistic-regression-tutorial-for-machine-learning/)
 *   [机器学习的逻辑回归](https://machinelearningmastery.com/logistic-regression-for-machine-learning/)
 

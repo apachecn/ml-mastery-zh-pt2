@@ -14,7 +14,7 @@
 
 完成本教程后，您将知道:
 
-*   如何从头开始开发回归的推理模型？
+*   如何从零开始开发回归的推理模型？
 *   如何优化预测数值的线性回归模型的系数？
 *   如何用随机爬山法优化逻辑回归模型的系数？
 
@@ -722,8 +722,8 @@ Test Accuracy: 0.839394
 如果您想更深入地了解这个主题，本节将提供更多资源。
 
 *   [用于评估机器学习算法的训练-测试分割](https://machinelearningmastery.com/train-test-split-for-evaluating-machine-learning-algorithms/)
-*   [如何在 Python 中从头开始实现线性回归](https://machinelearningmastery.com/implement-linear-regression-stochastic-gradient-descent-scratch-python/)
-*   [如何在 Python 中从头开始实现逻辑回归](https://machinelearningmastery.com/implement-logistic-regression-stochastic-gradient-descent-scratch-python/)
+*   [如何在 Python 中从零开始实现线性回归](https://machinelearningmastery.com/implement-linear-regression-stochastic-gradient-descent-scratch-python/)
+*   [如何在 Python 中从零开始实现逻辑回归](https://machinelearningmastery.com/implement-logistic-regression-stochastic-gradient-descent-scratch-python/)
 
 ### 蜜蜂
 
@@ -743,7 +743,7 @@ Test Accuracy: 0.839394
 
 具体来说，您了解到:
 
-*   如何从头开始开发回归的推理模型？
+*   如何从零开始开发回归的推理模型？
 *   如何优化预测数值的线性回归模型的系数？
 *   如何用随机爬山法优化逻辑回归模型的系数？
 

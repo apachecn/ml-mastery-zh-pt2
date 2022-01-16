@@ -1,4 +1,4 @@
-# 如何在 Python 中从头开始开发朴素贝叶斯分类器
+# 如何在 Python 中从零开始开发朴素贝叶斯分类器
 
 > 原文：<https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm/>
 
@@ -27,7 +27,7 @@
 
 ![How to Develop a Naive Bayes Classifier from Scratch in Python](img/6aa80275375e2571b7e3fb503b63f08f.png)
 
-如何在 Python 中从头开始开发朴素贝叶斯分类器
+如何在 Python 中从零开始开发朴素贝叶斯分类器
 图片由 [Ryan Dickey](https://www.flickr.com/photos/meesterdickey/43549200532/) 提供，保留部分权利。
 
 ## 教程概述

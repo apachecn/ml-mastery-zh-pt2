@@ -8,17 +8,17 @@
 
 分数总结了两组在使用用于图像分类的初始 v3 模型计算的原始图像的计算机视觉特征的统计方面有多相似。较低的分数表示两组图像更相似，或具有更相似的统计数据，满分为 0.0 表示两组图像相同。
 
-FID 分数用于评估生成性对抗网络生成的图像质量，较低的分数已被证明与较高质量的图像有很好的相关性。
+FID 分数用于评估生成对抗网络生成的图像质量，较低的分数已被证明与较高质量的图像有很好的相关性。
 
 在本教程中，您将发现如何实现弗雷切特初始距离来评估生成的图像。
 
 完成本教程后，您将知道:
 
 *   弗雷切特初始距离汇总了同一域中真实图像和生成图像的初始特征向量之间的距离。
-*   如何在 NumPy 中计算 FID 分数并从头开始实现计算？
+*   如何在 NumPy 中计算 FID 分数并从零开始实现计算？
 *   如何利用 Keras 深度学习库实现 FID 评分，并用真实图像计算。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
@@ -41,7 +41,7 @@ FID 分数用于评估生成性对抗网络生成的图像质量，较低的分�
 
 ## 什么是弗雷切特Inception距离？
 
-弗雷切特初始距离，简称 FID，是一种评估生成图像质量的指标，专门用于评估生成性对抗网络的表现。
+弗雷切特初始距离，简称 FID，是一种评估生成图像质量的指标，专门用于评估生成对抗网络的表现。
 
 FID 分数是由[Martin heussel](https://www.linkedin.com/in/mheusel/)等人在他们 2017 年的论文中提出并使用的，该论文的标题为“[通过两时间尺度更新规则训练的 GANs 收敛到局部纳什均衡](https://arxiv.org/abs/1706.08500017)
 
@@ -63,9 +63,9 @@ FID 分数是由[Martin heussel](https://www.linkedin.com/in/mheusel/)等人在�
 
 通过计算图像的[平均值和协方差](https://machinelearningmastery.com/introduction-to-expected-value-variance-and-covariance/)，激活被总结为多元高斯。然后计算真实和生成图像集合中激活的统计数据。
 
-然后使用[弗雷切特距离](https://en.wikipedia.org/wiki/Fr%C3%A9chet_distance)计算这两个分布之间的距离，也称为瓦瑟斯坦-2 距离。
+然后使用[弗雷切特距离](https://en.wikipedia.org/wiki/Fr%C3%A9chet_distance)计算这两个分布之间的距离，也称为Wasserstein-2 距离。
 
-> 两个高斯图像(合成图像和真实图像)的差异是通过弗雷切特距离(也称为瓦瑟斯坦-2 距离)来测量的。
+> 两个高斯图像(合成图像和真实图像)的差异是通过弗雷切特距离(也称为Wasserstein-2 距离)来测量的。
 
 ——[通过两时间尺度更新规则训练的 GANs 收敛到局部纳什均衡](https://arxiv.org/abs/1706.08500)，2017。
 
@@ -557,7 +557,7 @@ FID: 5.492
 具体来说，您了解到:
 
 *   弗雷切特初始距离汇总了同一域中真实图像和生成图像的初始特征向量之间的距离。
-*   如何在 NumPy 中计算 FID 分数并从头开始实现计算？
+*   如何在 NumPy 中计算 FID 分数并从零开始实现计算？
 *   如何利用 Keras 深度学习库实现 FID 评分，并用真实图像计算。
 
 你有什么问题吗？

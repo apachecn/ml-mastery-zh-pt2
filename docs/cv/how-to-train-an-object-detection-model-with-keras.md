@@ -52,7 +52,7 @@ sudo pip install --no-deps keras==2.2.4
 
 基于区域的卷积神经网络，或称 R-CNN，是一个为对象检测而设计的卷积神经网络模型家族，由 [Ross Girshick](http://www.rossgirshick.info/) 等人开发。该方法可能有四种主要变体，导致了目前被称为 Mask R-CNN 的顶峰。在 2018 年发表的题为“ [Mask R-CNN](https://arxiv.org/abs/1703.06870) ”的论文中介绍的 Mask R-CNN 是该系列模型的最新变体，同时支持对象检测和对象分割。对象分割不仅包括定位图像中的对象，还为图像指定一个遮罩，精确指示图像中哪些像素属于该对象。
 
-Mask R-CNN 是一个需要实现的复杂模型，尤其是与简单甚至最先进的深度卷积神经网络模型相比。我们可以使用建立在 Keras 深度学习框架之上的可靠的第三方实现，而不是从头开始开发 R-CNN 或 Mask R-CNN 模型的实现。
+Mask R-CNN 是一个需要实现的复杂模型，尤其是与简单甚至最先进的深度卷积神经网络模型相比。我们可以使用建立在 Keras 深度学习框架之上的可靠的第三方实现，而不是从零开始开发 R-CNN 或 Mask R-CNN 模型的实现。
 
 Mask R-CNN 最好的第三方实现是由[马特波特](https://matterport.com/)开发的 [Mask R-CNN 项目](https://github.com/matterport/Mask_RCNN)。该项目是在许可许可(例如麻省理工学院许可)下发布的开源项目，该代码已被广泛用于各种项目和卡格尔竞赛。
 
@@ -977,7 +977,7 @@ display_instances(image, bbox, mask, class_ids, train_set.class_names)
 
 ## 如何训练用于袋鼠检测的掩码 R-CNN 模型
 
-Mask R-CNN 模型可以从头开始拟合，尽管像其他计算机视觉应用程序一样，使用迁移学习可以节省时间并提高表现。
+Mask R-CNN 模型可以从零开始拟合，尽管像其他计算机视觉应用程序一样，使用迁移学习可以节省时间并提高表现。
 
 预拟合在 MS COCO 对象检测数据集上的 Mask R-CNN 模型可以用作起点，然后根据特定数据集进行定制，在这种情况下是袋鼠数据集。
 

@@ -169,7 +169,7 @@
 
 有关朴素贝叶斯主题的更多信息，请参见帖子:
 
-*   [如何在 Python 中从头开始开发朴素贝叶斯分类器](https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm)
+*   [如何在 Python 中从零开始开发朴素贝叶斯分类器](https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm)
 
 然而，许多非线性机器学习算法能够做出的预测实际上是贝叶斯分类器的近似。
 
@@ -185,7 +185,7 @@
 
 *   [机器学习最大后验概率的温和介绍](https://machinelearningmastery.com/maximum-a-posteriori-estimation)
 *   [机器学习贝叶斯定理的温和介绍](https://machinelearningmastery.com/bayes-theorem-for-machine-learning)
-*   [如何在 Python 中从头开始开发朴素贝叶斯分类器](https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm)
+*   [如何在 Python 中从零开始开发朴素贝叶斯分类器](https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm)
 
 ### 书
 

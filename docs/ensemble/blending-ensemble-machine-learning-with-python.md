@@ -970,7 +970,7 @@ Predicted: 359.986
 ### 相关教程
 
 *   [用 Python 堆叠集成机器学习](https://machinelearningmastery.com/stacking-ensemble-machine-learning-with-python/)
-*   [如何用 Python 从头开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
+*   [如何用 Python 从零开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
 
 ### 报纸
 

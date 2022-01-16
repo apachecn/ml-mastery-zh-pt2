@@ -1,4 +1,4 @@
-# AdaMax 从头开始的梯度下降优化
+# AdaMax 从零开始的梯度下降优化
 
 > 原文：<https://machinelearningmastery.com/gradient-descent-optimization-with-adamax-from-scratch/>
 
@@ -10,19 +10,19 @@
 
 **AdaMax** 是梯度下降的 Adam 版本的扩展，它将方法推广到无限范数(Max)，并可能导致对某些问题的更有效的优化。
 
-在本教程中，您将发现如何使用 AdaMax 从头开始开发梯度下降优化。
+在本教程中，您将发现如何使用 AdaMax 从零开始开发梯度下降优化。
 
 完成本教程后，您将知道:
 
 *   梯度下降是一种优化算法，它使用目标函数的梯度来导航搜索空间。
 *   AdaMax 是 Adam 版本梯度下降的扩展，旨在加速优化过程。
-*   如何从头开始实现 AdaMax 优化算法，并将其应用于目标函数并评估结果。
+*   如何从零开始实现 AdaMax 优化算法，并将其应用于目标函数并评估结果。
 
 **用我的新书[机器学习优化](https://machinelearningmastery.com/optimization-for-machine-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 Let’s get started.![Gradient Descent Optimization With AdaMax From Scratch](img/1d75b50ef26cfc3304b4c38f24f46f0d.png)
 
-梯度下降优化与 AdaMax 从头开始
+梯度下降优化与 AdaMax 从零开始
 图片由[唐格雷厄姆](https://www.flickr.com/photos/23155134@N06/25264818302/)，一些权利保留。
 
 ## 教程概述
@@ -149,7 +149,7 @@ Adam 可以理解为更新与过去梯度的比例 L2 范数(平方)成反比的
 
 *   [亚当:一种随机优化的方法](https://arxiv.org/abs/1412.6980)，2014。
 
-接下来，让我们看看如何在 Python 中从头开始实现该算法。
+接下来，让我们看看如何在 Python 中从零开始实现该算法。
 
 ## 带 AdaMax 的梯度下降
 
@@ -729,13 +729,13 @@ pyplot.show()
 
 ## 摘要
 
-在本教程中，您发现了如何使用 AdaMax 从头开始开发梯度下降优化。
+在本教程中，您发现了如何使用 AdaMax 从零开始开发梯度下降优化。
 
 具体来说，您了解到:
 
 *   梯度下降是一种优化算法，它使用目标函数的梯度来导航搜索空间。
 *   AdaMax 是 Adam 版本梯度下降的扩展，旨在加速优化过程。
-*   如何从头开始实现 AdaMax 优化算法，并将其应用于目标函数并评估结果。
+*   如何从零开始实现 AdaMax 优化算法，并将其应用于目标函数并评估结果。
 
 **你有什么问题吗？**
 在下面的评论中提问，我会尽力回答。

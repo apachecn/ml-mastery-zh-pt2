@@ -746,7 +746,7 @@ Standardized: 0.008 (0.004)
 ### 邮件
 
 *   [如何在 Python 中扩展长短期记忆网络的数据](https://machinelearningmastery.com/how-to-scale-data-for-long-short-term-memory-networks-in-python/)
-*   [如何用 Python 从头开始扩展机器学习数据](https://machinelearningmastery.com/scale-machine-learning-data-scratch-python/)
+*   [如何用 Python 从零开始扩展机器学习数据](https://machinelearningmastery.com/scale-machine-learning-data-scratch-python/)
 *   [如何在 Python 中对时间序列数据进行规范化和标准化](https://machinelearningmastery.com/normalize-standardize-time-series-data-python/)
 *   [如何用 Sklearn 为 Python 机器学习准备数据](https://machinelearningmastery.com/prepare-data-machine-learning-python-Sklearn/)
 

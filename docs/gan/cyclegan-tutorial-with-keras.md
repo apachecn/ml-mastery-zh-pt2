@@ -1,4 +1,4 @@
-# 如何用 Keras 开发图像到图像翻译的 CycleGAN】
+# 如何用 Keras 开发用于图像到图像翻译的 CycleGAN
 
 > 原文：<https://machinelearningmastery.com/cyclegan-tutorial-with-keras/>
 
@@ -16,7 +16,7 @@
 *   如何训练一对 CycleGAN 发电机模型，将马翻译成斑马，斑马翻译成马。
 *   如何加载保存的 CycleGAN 模型，并使用它们来翻译照片。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
@@ -78,7 +78,7 @@ CycleGAN 模型的好处是可以在没有成对例子的情况下进行训练�
 
 该论文的作者称之为“*对象变形*的问题，苹果和橘子的照片也证明了这一点。
 
-在本教程中，我们将从头开始开发一个 CycleGAN，用于从马到斑马的图像到图像的转换(或对象变形)，反之亦然。
+在本教程中，我们将从零开始开发一个 CycleGAN，用于从马到斑马的图像到图像的转换(或对象变形)，反之亦然。
 
 我们将这个数据集称为“*马 2 斑马*”。该数据集的 zip 文件约为 111 兆字节，可从 CycleGAN 网页下载:
 
@@ -304,7 +304,7 @@ def resnet_block(n_filters, input_layer):
 
 接下来，我们可以定义一个函数，为 256×256 个输入图像创建 9-resnet 块版本。通过将 *image_shape* 设置为(128 x128 x3)*n _ resnet*函数参数设置为 6，可以轻松将其更改为 6-resnet 块版本。
 
-重要的是，该模型输出的像素值与输入的形状相同，并且像素值在[-1，1]的范围内，这是氮化镓发生器模型的典型情况。
+重要的是，该模型输出的像素值与输入的形状相同，并且像素值在[-1，1]的范围内，这是GAN发生器模型的典型情况。
 
 ```py
 # define the standalone generator model

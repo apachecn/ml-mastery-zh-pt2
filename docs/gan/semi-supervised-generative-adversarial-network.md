@@ -6,25 +6,25 @@
 
 半监督学习是在包含少量已标记示例和大量未标记示例的数据集中训练分类器的挑战性问题。
 
-生成性对抗网络(GAN)是一种有效利用大型未标记数据集，通过图像鉴别器模型训练图像生成器模型的体系结构。在某些情况下，鉴别器模型可以用作开发分类器模型的起点。
+生成对抗网络(GAN)是一种有效利用大型未标记数据集，通过图像鉴别器模型训练图像生成器模型的体系结构。在某些情况下，鉴别器模型可以用作开发分类器模型的起点。
 
 半监督的 GAN，或 SGAN，模型是 GAN 体系结构的扩展，包括同时训练监督鉴别器、非监督鉴别器和生成器模型。结果是一个监督分类模型和一个生成器模型，前者能很好地概括出看不见的例子，后者能从该领域输出看似合理的图像例子。
 
-在本教程中，您将发现如何从头开始开发一个半监督生成式对抗网络。
+在本教程中，您将发现如何从零开始开发一个半监督生成式对抗网络。
 
 完成本教程后，您将知道:
 
 *   半监督遗传神经网络是遗传神经网络体系结构的扩展，用于训练分类器模型，同时利用标记和未标记的数据。
 *   在用于半监督 GAN 的 Keras 中，至少有三种方法来实现监督和非监督鉴别器模型。
-*   如何在 MNIST 上从头开始训练半监督的 GAN，并加载和使用训练好的分类器进行预测。
+*   如何在 MNIST 上从零开始训练半监督的 GAN，并加载和使用训练好的分类器进行预测。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
 ![How to Implement a Semi-Supervised Generative Adversarial Network From Scratch](img/d333ed593ac8f6d7cc973c0bcc71e49b.png)
 
-如何从头开始实现半监督生成对抗网络？
+如何从零开始实现半监督生成对抗网络？
 卡洛斯·约翰逊摄影，版权所有。
 
 ## 教程概述
@@ -33,7 +33,7 @@
 
 1.  什么是半监督 GAN？
 2.  如何实现半监督鉴别器模型
-3.  如何为 MNIST 开发半监督式氮化镓
+3.  如何为 MNIST 开发半监督式GAN
 4.  如何加载和使用最终的 SGAN 分类器模型
 
 ## 什么是半监督 GAN？
@@ -141,7 +141,7 @@ plot_model(model, to_file='discriminator_plot.png', show_shapes=True, show_layer
 
 ![Plot of a Standard GAN Discriminator Model](img/68948dbfadc7396d70a4ff9fd59bfcb2.png)
 
-标准氮化镓鉴别器模型图
+标准GAN鉴别器模型图
 
 ### 具有共享权重的独立鉴别器模型
 
@@ -284,7 +284,7 @@ plot_model(model, to_file='multioutput_discriminator_plot.png', show_shapes=True
 
 ![Plot of a Semi-Supervised GAN Discriminator Model With Unsupervised and Supervised Output Layers](img/0aa6f654fc9361b2de180435f32ae717.png)
 
-具有无监督和有监督输出层的半监督氮化镓鉴别器模型图
+具有无监督和有监督输出层的半监督GAN鉴别器模型图
 
 ### 具有共享权重的堆叠鉴别器模型
 
@@ -417,17 +417,17 @@ plot_model(c_model, to_file='stacked_discriminator2_plot.png', show_shapes=True,
 
 ![Plot of the Stacked Version of the Unsupervised Discriminator Model of the Semi-Supervised GAN](img/9fe7fd416ec628dad2c5fa7afd25adef.png)
 
-半监督氮化镓无监督鉴别器模型的堆叠图
+半监督GAN无监督鉴别器模型的堆叠图
 
 监督鉴别器模型的堆叠版本:
 
 ![Plot of the Stacked Version of the Supervised Discriminator Model of the Semi-Supervised GAN](img/f49a75be1f1b61a18ed2bca47a9fa813.png)
 
-半监督氮化镓监督鉴别器模型的堆叠图
+半监督GAN监督鉴别器模型的堆叠图
 
 现在我们已经看到了如何在半监督 GAN 中实现鉴别器模型，我们可以为图像生成和半监督分类开发一个完整的例子。
 
-## 如何为 MNIST 开发半监督式氮化镓
+## 如何为 MNIST 开发半监督式GAN
 
 在本节中，我们将为 [MNIST 手写数字数据集](https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-from-scratch-for-mnist-handwritten-digit-classification/)开发半监督 GAN 模型。
 
@@ -1060,13 +1060,13 @@ Test Accuracy: 95.920%
 
 ## 摘要
 
-在本教程中，您发现了如何从头开始开发半监督生成式对抗网络。
+在本教程中，您发现了如何从零开始开发半监督生成式对抗网络。
 
 具体来说，您了解到:
 
 *   半监督遗传神经网络是遗传神经网络体系结构的扩展，用于训练分类器模型，同时利用标记和未标记的数据。
 *   在用于半监督 GAN 的 Keras 中，至少有三种方法来实现监督和非监督鉴别器模型。
-*   如何在 MNIST 上从头开始训练半监督的 GAN，并加载和使用训练好的分类器进行预测。
+*   如何在 MNIST 上从零开始训练半监督的 GAN，并加载和使用训练好的分类器进行预测。
 
 你有什么问题吗？
 在下面的评论中提问，我会尽力回答。**

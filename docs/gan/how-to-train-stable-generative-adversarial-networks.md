@@ -1,12 +1,12 @@
-# 训练稳定生成性对抗网络的技巧
+# 训练稳定生成对抗网络的技巧
 
 > 原文：<https://machinelearningmastery.com/how-to-train-stable-generative-adversarial-networks/>
 
 最后更新于 2019 年 9 月 12 日
 
-#### 训练稳定的生成性对抗网络需要了解的经验启发、技巧和诀窍。
+#### 训练稳定的生成对抗网络需要了解的经验启发、技巧和诀窍。
 
-[生成性对抗网络](https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/)，简称 GANs，是一种使用深度学习方法(如深度卷积神经网络)进行生成性建模的方法。
+[生成对抗网络](https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/)，简称 GANs，是一种使用深度学习方法(如深度卷积神经网络)进行生成性建模的方法。
 
 虽然 GANs 产生的结果可能是显著的，但是训练一个稳定的模型可能是具有挑战性的。原因是训练过程本身就不稳定，导致两个竞品模型同时动态训练。
 
@@ -17,16 +17,16 @@
 看完这篇文章，你会知道:
 
 *   GANs 中生成器和鉴别器模型的同时训练本质上是不稳定的。
-*   来之不易的经验发现的配置为大多数氮化镓应用提供了一个坚实的起点。
+*   来之不易的经验发现的配置为大多数GAN应用提供了一个坚实的起点。
 *   GANs 的稳定训练仍然是一个悬而未决的问题，已经提出了许多其他经验发现的技巧和诀窍，可以立即采用。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
 ![How to Train Stable Generative Adversarial Networks](img/5c91ed6f26d591bbe06fd79568f2547f.png)
 
-如何训练稳定的生成性对抗网络
+如何训练稳定的生成对抗网络
 [克里斯·斯特恩-约翰逊](https://www.flickr.com/photos/ceejayoz/22181933/)摄，版权所有。
 
 ## 概观
@@ -34,10 +34,10 @@
 本教程分为三个部分；它们是:
 
 1.  培训 GANs 的挑战
-2.  深度卷积氮化镓
+2.  深度卷积GAN
 3.  其他提示和技巧
 
-## 生成性对抗网络训练的挑战
+## 生成对抗网络训练的挑战
 
 GANs 很难训练。
 
@@ -61,7 +61,7 @@ GANs 很难训练。
 
 > 研究人员应该努力解决的 GANs 面临的最大问题是不收敛问题。
 
-——[NIPS 2016 教程:生成性对抗网络](https://arxiv.org/abs/1701.00160)，2016。
+——[NIPS 2016 教程:生成对抗网络](https://arxiv.org/abs/1701.00160)，2016。
 
 GANs 可能会遭受少量故障模式中的一种，而不是收敛。
 
@@ -69,7 +69,7 @@ GANs 可能会遭受少量故障模式中的一种，而不是收敛。
 
 > 在实践中，GANs 似乎经常振荡，这意味着它们从产生一种样本发展到产生另一种样本，但最终没有达到平衡。
 
-——[NIPS 2016 教程:生成性对抗网络](https://arxiv.org/abs/1701.00160)，2016。
+——[NIPS 2016 教程:生成对抗网络](https://arxiv.org/abs/1701.00160)，2016。
 
 也许最具挑战性的模型故障是发电机的多个输入导致产生相同输出的情况。
 
@@ -77,13 +77,13 @@ GANs 可能会遭受少量故障模式中的一种，而不是收敛。
 
 > 模式崩溃，也称为场景，是发生在生成器学习将几个不同的输入 z 值映射到同一个输出点时的问题。
 
-——[NIPS 2016 教程:生成性对抗网络](https://arxiv.org/abs/1701.00160)，2016。
+——[NIPS 2016 教程:生成对抗网络](https://arxiv.org/abs/1701.00160)，2016。
 
 最后，没有好的客观标准来评估一个 GAN 在训练中是否表现良好。审查损失是不够的。
 
 相反，最好的方法是直观地检查生成的示例，并使用主观评估。
 
-> 生成性对抗网络缺乏目标函数，使得不同模型的表现难以比较。一个直观的表现度量可以通过让人类注释者判断样本的视觉质量来获得。
+> 生成对抗网络缺乏目标函数，使得不同模型的表现难以比较。一个直观的表现度量可以通过让人类注释者判断样本的视觉质量来获得。
 
 ——[训练 GANs 的改进技术](https://arxiv.org/abs/1606.03498)，2016 年。
 
@@ -95,7 +95,7 @@ GANs 可能会遭受少量故障模式中的一种，而不是收敛。
 
 在论文中，他们描述了深度卷积 GAN，或 DCGAN，这种 GAN 开发方法已经成为事实上的标准。
 
-> GAN 学习的稳定性仍然是一个开放的问题。幸运的是，当仔细选择模型架构和超参数时，GAN 学习表现良好。拉德福德等人(2015 年)精心制作了一个深度卷积氮化镓(DCGAN)，表现非常好的图像合成任务…
+> GAN 学习的稳定性仍然是一个开放的问题。幸运的是，当仔细选择模型架构和超参数时，GAN 学习表现良好。拉德福德等人(2015 年)精心制作了一个深度卷积GAN(DCGAN)，表现非常好的图像合成任务…
 
 —第 701 页，[深度学习](https://amzn.to/2YuwVjL)，2016。
 
@@ -207,7 +207,7 @@ DCGAN 论文为配置和训练生成器和鉴别器模型提供了一个很好�
 *   **单面标签平滑**。将鉴别器的目标值从 1.0 缩小。
 *   **虚拟批量归一化**。使用真实图像的参考批次计算批次定额统计。
 
-在 2016 年 NIPS 会议上关于 GANs 的教程中，伊恩·古德费勒详细阐述了其中一些更成功的建议，这些建议写在随附的题为《[教程:生成性对抗网络](https://arxiv.org/abs/1701.00160)》的论文中具体来说，第 4 节标题为“*提示和技巧*”，其中描述了四种技巧。
+在 2016 年 NIPS 会议上关于 GANs 的教程中，伊恩·古德费勒详细阐述了其中一些更成功的建议，这些建议写在随附的题为《[教程:生成对抗网络](https://arxiv.org/abs/1701.00160)》的论文中具体来说，第 4 节标题为“*提示和技巧*”，其中描述了四种技巧。
 
 它们是:
 
@@ -215,25 +215,25 @@ DCGAN 论文为配置和训练生成器和鉴别器模型提供了一个很好�
 
 > 以任何方式、形状或形式使用标签几乎总是会显著提高模型生成的样本的主观质量。
 
-——[NIPS 2016 教程:生成性对抗网络](https://arxiv.org/abs/1701.00160)，2016。
+——[NIPS 2016 教程:生成对抗网络](https://arxiv.org/abs/1701.00160)，2016。
 
 **2。单面标签平滑**。在鉴别器中使用真实例子的目标值为 0.9 或随机范围的目标会产生更好的结果。
 
 > 单侧标签平滑的思想是将真实示例的目标替换为略小于 1 的值，例如. 9【…】。这防止了鉴别器中的极端外推行为…
 
-——[NIPS 2016 教程:生成性对抗网络](https://arxiv.org/abs/1701.00160)，2016。
+——[NIPS 2016 教程:生成对抗网络](https://arxiv.org/abs/1701.00160)，2016。
 
 **3。虚拟批量归一化**。对真实图像或具有一个生成图像的真实图像计算批量统计更好。
 
 > ……可以改为使用虚拟批处理规范化，其中每个示例的规范化统计数据是使用该示例和参考批处理的并集来计算的
 
-——[NIPS 2016 教程:生成性对抗网络](https://arxiv.org/abs/1701.00160)，2016。
+——[NIPS 2016 教程:生成对抗网络](https://arxiv.org/abs/1701.00160)，2016。
 
 **4。一个人能平衡 G 和 D 吗？**基于损耗的相对变化在发生器或鉴别器中安排或多或少的训练是直观的，但不可靠。
 
 > 实际上，鉴别器通常更深，有时每层比发生器有更多的过滤器。
 
-——[NIPS 2016 教程:生成性对抗网络](https://arxiv.org/abs/1701.00160)，2016。
+——[NIPS 2016 教程:生成对抗网络](https://arxiv.org/abs/1701.00160)，2016。
 
 [DCGAN 论文的合著者之一 sousmith Chintala](https://www.linkedin.com/in/soumith/)在 NIPS 2016 上做了题为“如何训练 GAN？”总结了许多技巧和诀窍。
 
@@ -241,4 +241,4 @@ DCGAN 论文为配置和训练生成器和鉴别器模型提供了一个很好�
 
 *   [苏史密斯·钦塔拉，如何训练一个 GAN，NIPS 2016 对抗训练研讨会](https://www.youtube.com/watch?v=X1mUN6dD8uE)。
 
-<iframe loading="lazy" title="NIPS 2016 Workshop on Adversarial Training - Soumith Chintala - How to train a GAN" width="500" height="281" src="about:blank" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-rocket-lazyload="fitvidscompatible" data-lazy-src="https://www.youtube.com/embed/X1mUN6dD8uE?feature=oembed"><iframe title="NIPS 2016 Workshop on Adversarial Training - Soumith Chintala - How to train a GAN" width="500" height="281" src="https://www.youtube.com/embed/X1mUN6dD8uE?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""/></div> <p/> <p>这些提示借鉴了 DCGAN 论文以及其他地方的建议。</p> <p>下面提供了一些更可行的提示的摘要。</p> <ul> <li>将输入标准化至范围[-1，1]，并在发电机输出中使用 tanh。</li> <li>训练发电机时，翻转标签和损耗函数。</li> <li>采样高斯随机数作为生成器的输入。</li> <li>使用全真或全假的小批量来计算批量定额统计。</li> <li>在发生器和鉴别器中使用泄漏 ReLU。</li> <li>使用平均池和步长进行下采样；使用转换 2D 和步幅进行上采样。</li> <li>在鉴别器中使用标签平滑，随机噪声小。</li> <li>向鉴别器中的标签添加随机噪声。</li> <li>使用 DCGAN 架构，除非你有很好的理由不这样做。</li> <li>鉴别器损失 0.0 是一种故障模式。</li> <li>如果发生器的损耗稳步下降，很可能会用垃圾图像欺骗鉴别器。</li> <li>使用标签，如果你有。</li> <li>向鉴频器的输入添加噪声，并随时间衰减噪声。</li> <li>在培训和生成期间使用 50%的丢弃率。</li> </ul> <p>最后，关于 Keras 的《Python 深度学习》一书提供了许多实用技巧，供您在培训 GANs 时参考，主要基于 DCAN 论文中的建议。</p> <p>一个额外的提示建议在生成器模型中使用可被步长整除的内核大小，以避免所谓的“<em>棋盘</em>”假象(<a href="https://en.wikipedia.org/wiki/Artifact_(error)">错误</a>)。</p> <blockquote><p>…通常会看到由生成器中像素空间的不均匀覆盖引起的棋盘状伪像。为了解决这个问题，每当我们在生成器和鉴别器中使用跨步的 Conv2DTranpose 或 Conv2D 时，我们都使用一个可被跨步大小整除的内核大小。</p></blockquote> <p>—第 308 页，<a href="https://amzn.to/2U2bHuP">Python 深度学习</a>，2017。</p> <p>这与 2016 年关于蒸馏的文章<a href="https://distill.pub/2016/deconv-checkerboard/">反卷积和棋盘伪影</a>中提供的建议相同</p> <h2>进一步阅读</h2> <p>如果您想更深入地了解这个主题，本节将提供更多资源。</p> <h3>书</h3> <ul> <li>第二十章。深度生成模型，<a href="https://amzn.to/2YuwVjL">深度学习</a>，2016。</li> <li>第八章。生成式深度学习，<a href="https://amzn.to/2U2bHuP">Python 深度学习</a>，2017。</li> </ul> <h3>报纸</h3> <ul> <li><a href="https://arxiv.org/abs/1406.2661">生成性对抗网络</a>，2014。</li> <li><a href="https://arxiv.org/abs/1701.00160">教程:生成性对抗网络，NIPS </a>，2016。</li> <li><a href="https://arxiv.org/abs/1511.06434">深度卷积生成对抗网络的无监督表示学习</a>，2015</li> <li><a href="https://arxiv.org/abs/1606.03498">训练 GANs 的改进技术</a>，2016。</li> </ul> <h3>文章</h3> <ul> <li><a href="https://github.com/soumith/ganhacks">如何训练一个 GAN？让 GANs 发挥作用的提示和技巧</a></li> <li><a href="https://distill.pub/2016/deconv-checkerboard/">反卷积和棋盘格伪影</a>，2016。</li> </ul> <h3>录像</h3> <ul> <li><a href="https://www.youtube.com/watch?v=9JpdAg6uMXs"> Ian Goodfellow，GANs 入门，NIPS 2016 </a>。</li> <li><a href="https://www.youtube.com/watch?v=X1mUN6dD8uE">苏史密斯·钦塔拉，如何训练一个 GAN，NIPS 2016 对抗训练研讨会</a>。</li> </ul> <h2>摘要</h2> <p>在这篇文章中，你发现了配置和训练稳定的一般对抗性网络模型的经验启发法。</p> <p>具体来说，您了解到:</p> <ul> <li>GANs 中生成器和鉴别器模型的同时训练本质上是不稳定的。</li> <li>来之不易的经验发现的配置为大多数氮化镓应用提供了一个坚实的起点。</li> <li>GANs 的稳定训练仍然是一个悬而未决的问题，已经提出了许多其他经验发现的技巧和诀窍，可以立即采用。</li> </ul> <p>你有什么问题吗？<br/>在下面的评论中提问，我会尽力回答。</p> <p/> </body></html></iframe>
+<iframe loading="lazy" title="NIPS 2016 Workshop on Adversarial Training - Soumith Chintala - How to train a GAN" width="500" height="281" src="about:blank" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-rocket-lazyload="fitvidscompatible" data-lazy-src="https://www.youtube.com/embed/X1mUN6dD8uE?feature=oembed"><iframe title="NIPS 2016 Workshop on Adversarial Training - Soumith Chintala - How to train a GAN" width="500" height="281" src="https://www.youtube.com/embed/X1mUN6dD8uE?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""/></div> <p/> <p>这些提示借鉴了 DCGAN 论文以及其他地方的建议。</p> <p>下面提供了一些更可行的提示的摘要。</p> <ul> <li>将输入标准化至范围[-1，1]，并在发电机输出中使用 tanh。</li> <li>训练发电机时，翻转标签和损耗函数。</li> <li>采样高斯随机数作为生成器的输入。</li> <li>使用全真或全假的小批量来计算批量定额统计。</li> <li>在发生器和鉴别器中使用泄漏 ReLU。</li> <li>使用平均池和步长进行下采样；使用转换 2D 和步幅进行上采样。</li> <li>在鉴别器中使用标签平滑，随机噪声小。</li> <li>向鉴别器中的标签添加随机噪声。</li> <li>使用 DCGAN 架构，除非你有很好的理由不这样做。</li> <li>鉴别器损失 0.0 是一种故障模式。</li> <li>如果发生器的损耗稳步下降，很可能会用垃圾图像欺骗鉴别器。</li> <li>使用标签，如果你有。</li> <li>向鉴频器的输入添加噪声，并随时间衰减噪声。</li> <li>在培训和生成期间使用 50%的丢弃率。</li> </ul> <p>最后，关于 Keras 的《Python 深度学习》一书提供了许多实用技巧，供您在培训 GANs 时参考，主要基于 DCAN 论文中的建议。</p> <p>一个额外的提示建议在生成器模型中使用可被步长整除的内核大小，以避免所谓的“<em>棋盘</em>”假象(<a href="https://en.wikipedia.org/wiki/Artifact_(error)">错误</a>)。</p> <blockquote><p>…通常会看到由生成器中像素空间的不均匀覆盖引起的棋盘状伪像。为了解决这个问题，每当我们在生成器和鉴别器中使用跨步的 Conv2DTranpose 或 Conv2D 时，我们都使用一个可被跨步大小整除的内核大小。</p></blockquote> <p>—第 308 页，<a href="https://amzn.to/2U2bHuP">Python 深度学习</a>，2017。</p> <p>这与 2016 年关于蒸馏的文章<a href="https://distill.pub/2016/deconv-checkerboard/">反卷积和棋盘伪影</a>中提供的建议相同</p> <h2>进一步阅读</h2> <p>如果您想更深入地了解这个主题，本节将提供更多资源。</p> <h3>书</h3> <ul> <li>第二十章。深度生成模型，<a href="https://amzn.to/2YuwVjL">深度学习</a>，2016。</li> <li>第八章。生成式深度学习，<a href="https://amzn.to/2U2bHuP">Python 深度学习</a>，2017。</li> </ul> <h3>报纸</h3> <ul> <li><a href="https://arxiv.org/abs/1406.2661">生成对抗网络</a>，2014。</li> <li><a href="https://arxiv.org/abs/1701.00160">教程:生成对抗网络，NIPS </a>，2016。</li> <li><a href="https://arxiv.org/abs/1511.06434">深度卷积生成对抗网络的无监督表示学习</a>，2015</li> <li><a href="https://arxiv.org/abs/1606.03498">训练 GANs 的改进技术</a>，2016。</li> </ul> <h3>文章</h3> <ul> <li><a href="https://github.com/soumith/ganhacks">如何训练一个 GAN？让 GANs 发挥作用的提示和技巧</a></li> <li><a href="https://distill.pub/2016/deconv-checkerboard/">反卷积和棋盘格伪影</a>，2016。</li> </ul> <h3>录像</h3> <ul> <li><a href="https://www.youtube.com/watch?v=9JpdAg6uMXs"> Ian Goodfellow，GANs 入门，NIPS 2016 </a>。</li> <li><a href="https://www.youtube.com/watch?v=X1mUN6dD8uE">苏史密斯·钦塔拉，如何训练一个 GAN，NIPS 2016 对抗训练研讨会</a>。</li> </ul> <h2>摘要</h2> <p>在这篇文章中，你发现了配置和训练稳定的一般对抗性网络模型的经验启发法。</p> <p>具体来说，您了解到:</p> <ul> <li>GANs 中生成器和鉴别器模型的同时训练本质上是不稳定的。</li> <li>来之不易的经验发现的配置为大多数GAN应用提供了一个坚实的起点。</li> <li>GANs 的稳定训练仍然是一个悬而未决的问题，已经提出了许多其他经验发现的技巧和诀窍，可以立即采用。</li> </ul> <p>你有什么问题吗？<br/>在下面的评论中提问，我会尽力回答。</p> <p/> </body></html></iframe>

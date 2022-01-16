@@ -1,4 +1,4 @@
-# 利用 AMSGrad 从头开始进行梯度下降优化
+# 利用 AMSGrad 从零开始进行梯度下降优化
 
 > 原文：<https://machinelearningmastery.com/gradient-descent-optimization-with-amsgrad-from-scratch/>
 
@@ -10,7 +10,7 @@
 
 **AMSGrad** 是 Adam 版本梯度下降的扩展，试图改善算法的收敛特性，避免每个输入变量的学习率发生较大的突变。
 
-在本教程中，您将发现如何使用 AMSGrad 从头开始开发梯度下降优化。
+在本教程中，您将发现如何使用 AMSGrad 从零开始开发梯度下降优化。
 
 完成本教程后，您将知道:
 
@@ -22,7 +22,7 @@
 
 Let’s get started.![Gradient Descent Optimization With AMSGrad From Scratch](img/797e7b13080cc58bd9581fbbeab9107c.png)
 
-使用 AMSGrad 从头开始进行梯度下降优化
+使用 AMSGrad 从零开始进行梯度下降优化
 图片由[史蒂夫·朱尔维森](https://www.flickr.com/photos/jurvetson/14922114136/)提供，保留部分权利。
 
 ## 教程概述
@@ -156,7 +156,7 @@ AdaGrad 是 Adam 的扩展，它保持第二个矩向量的最大值，并使用
 
 *   [论亚当与超越的交汇](https://openreview.net/forum?id=ryQu7f-RZ)，2018。
 
-接下来，让我们看看如何在 Python 中从头开始实现该算法。
+接下来，让我们看看如何在 Python 中从零开始实现该算法。
 
 ## amstrad 梯度下降
 
@@ -730,7 +730,7 @@ pyplot.show()
 
 ## 摘要
 
-在本教程中，您发现了如何使用 AMSGrad 从头开始开发梯度下降优化。
+在本教程中，您发现了如何使用 AMSGrad 从零开始开发梯度下降优化。
 
 具体来说，您了解到:
 

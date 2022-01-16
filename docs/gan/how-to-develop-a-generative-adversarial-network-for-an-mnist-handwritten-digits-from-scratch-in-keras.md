@@ -4,13 +4,13 @@
 
 最后更新于 2020 年 9 月 1 日
 
-[生成性对抗网络](https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/)，或 GANs，是一种用于训练生成模型的架构，例如用于生成图像的深度卷积神经网络。
+[生成对抗网络](https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/)，或 GANs，是一种用于训练生成模型的架构，例如用于生成图像的深度卷积神经网络。
 
 开发用于生成图像的 GAN 需要用于分类给定图像是真实的还是生成的鉴别器卷积神经网络模型，以及使用逆卷积层将输入转换为像素值的完整二维图像的生成器模型。
 
 理解 GAN 如何工作以及如何在 GAN 架构中训练深度卷积神经网络模型来生成图像可能是一项挑战。对于初学者来说，一个很好的起点是在计算机视觉领域使用的标准图像数据集上练习开发和使用 GANs，例如 MNIST 手写数字数据集。使用小型且易于理解的数据集意味着可以快速开发和训练更小的模型，从而将重点放在模型架构和图像生成过程本身。
 
-在本教程中，您将发现如何开发一个带有深度卷积网络的生成性对抗网络来生成手写数字。
+在本教程中，您将发现如何开发一个带有深度卷积网络的生成对抗网络来生成手写数字。
 
 完成本教程后，您将知道:
 
@@ -18,13 +18,13 @@
 *   如何定义独立生成器模型和训练复合生成器和鉴别器模型。
 *   如何评估 GAN 的表现并使用最终的独立生成器模型生成新图像。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
 ![How to Develop a Generative Adversarial Network for an MNIST Handwritten Digits From Scratch in Keras](img/1f988534718c62f371060bcb175f9a6c.png)
 
-如何为 MNIST 手写数字从零开始开发一个生成性对抗网络。
+如何为 MNIST 手写数字从零开始开发一个生成对抗网络。
 
 ## 教程概述
 
@@ -35,7 +35,7 @@
 3.  如何定义和使用生成器模型
 4.  如何训练发电机模型
 5.  如何评估 GAN 模型的表现
-6.  MNIST 氮化镓完整范例
+6.  MNIST GAN完整范例
 7.  如何使用最终生成器模型生成图像
 
 ## MNIST 手写数字数据集
@@ -114,7 +114,7 @@ pyplot.show()
 
 MNIST 数据集中前 25 个手写数字的绘图。
 
-我们将使用训练数据集中的图像作为训练生成性对抗网络的基础。
+我们将使用训练数据集中的图像作为训练生成对抗网络的基础。
 
 具体来说，生成器模型将学习如何使用鉴别器生成 0 到 9 之间的新的似是而非的手写数字，该鉴别器将尝试区分来自 MNIST 训练数据集的真实图像和生成器模型输出的新图像。
 
@@ -605,7 +605,7 @@ _________________________________________________________________
 
 ![Plot of the Generator Model in the MNIST GAN](img/6f6fc424348268418741a598dcc7418e.png)
 
-MNIST 氮化镓发电机模型图
+MNIST GAN发电机模型图
 
 这种模式目前做不了什么。
 
@@ -1054,7 +1054,7 @@ def summarize_performance(epoch, g_model, d_model, dataset, latent_dim, n_sample
 	g_model.save(filename)
 ```
 
-## MNIST 氮化镓完整范例
+## MNIST GAN完整范例
 
 我们现在拥有了在 MNIST 手写数字数据集上训练和评估 GAN 所需的一切。
 
@@ -1276,7 +1276,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 在这种情况下，我们可以看到精度随着训练而波动。当查看鉴别器模型的准确度分数与生成的图像一致时，我们可以看到假例子的准确度与图像的主观质量没有很好的关联，但是真实例子的准确度可能有关联。
 
-这是一个粗略的、可能不可靠的氮化镓表现指标，还有损耗。
+这是一个粗略的、可能不可靠的GAN表现指标，还有损耗。
 
 ```py
 >Accuracy real: 51%, fake: 78%
@@ -1297,13 +1297,13 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 ![Plot of 100 GAN Generated MNIST Figures After 10 Epochs](img/dc5299e186ddf116fcbbf44190fa9e2c.png)
 
-10 个时代后 100 个氮化镓生成的 MNIST 图形图
+10 个时代后 100 个GAN生成的 MNIST 图形图
 
 在 20 或 30 个以上的时代之后，模型开始生成非常可信的 MNIST 数字，这表明所选模型配置可能不需要 100 个时代。
 
 ![Plot of 100 GAN Generated MNIST Figures After 40 Epochs](img/d25d929fa04e000f7ff5151096729740.png)
 
-40 年代后 100 个氮化镓生成的 MNIST 图形图
+40 年代后 100 个GAN生成的 MNIST 图形图
 
 100 个纪元后生成的图像差别不大，但我相信我可以在曲线中检测到较少的块状。
 
@@ -1417,8 +1417,8 @@ pyplot.show()
 
 ### 报纸
 
-*   [生成性对抗网络](https://arxiv.org/abs/1406.2661)，2014。
-*   [教程:生成性对抗网络，NIPS](https://arxiv.org/abs/1701.00160) ，2016。
+*   [生成对抗网络](https://arxiv.org/abs/1406.2661)，2014。
+*   [教程:生成对抗网络，NIPS](https://arxiv.org/abs/1701.00160) ，2016。
 *   [深度卷积生成对抗网络的无监督表示学习](https://arxiv.org/abs/1511.06434)，2015
 
 ### 应用程序接口
@@ -1444,7 +1444,7 @@ pyplot.show()
 
 ## 摘要
 
-在本教程中，您发现了如何开发一个带有深度卷积网络的生成性对抗网络来生成手写数字。
+在本教程中，您发现了如何开发一个带有深度卷积网络的生成对抗网络来生成手写数字。
 
 具体来说，您了解到:
 

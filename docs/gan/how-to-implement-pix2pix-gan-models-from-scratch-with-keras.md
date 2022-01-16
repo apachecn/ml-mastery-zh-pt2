@@ -1,4 +1,4 @@
-# 如何用 Keras 从头开始实现 Pix2Pix GAN 模型
+# 如何用 Keras 从零开始实现 Pix2Pix GAN 模型
 
 > 原文：<https://machinelearningmastery.com/how-to-implement-pix2pix-gan-models-from-scratch-with-keras/>
 
@@ -12,7 +12,7 @@ Pix2Pix 模型的好处是，与其他用于条件图像生成的 GANs 相比，
 
 这个模型给人留下了深刻的印象，但是对于初学者来说，它的架构看起来有些复杂。
 
-在本教程中，您将发现如何使用 Keras 深度学习框架从头开始实现 Pix2Pix GAN 架构。
+在本教程中，您将发现如何使用 Keras 深度学习框架从零开始实现 Pix2Pix GAN 架构。
 
 完成本教程后，您将知道:
 
@@ -20,7 +20,7 @@ Pix2Pix 模型的好处是，与其他用于条件图像生成的 GANs 相比，
 *   如何为 Pix2Pix GAN 开发 U-Net 编解码生成器模型。
 *   如何实现用于更新生成器的复合模型，以及如何训练两个模型。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
@@ -43,7 +43,7 @@ Pix2Pix 模型的好处是，与其他用于条件图像生成的 GANs 相比，
 
 ## 什么是 Pix2Pix GAN？
 
-Pix2Pix 是一个为通用图像到图像翻译而设计的生成性对抗网络模型。
+Pix2Pix 是一个为通用图像到图像翻译而设计的生成对抗网络模型。
 
 该方法由菲利普·伊索拉(Phillip Isola)等人在 2016 年发表的论文《条件对抗网络下的 T2 图像到图像翻译》(T3)中提出，并于 2017 年在 CVPR 的 T4 会议上提出。
 
@@ -59,7 +59,7 @@ Pix2Pix GAN 已经在一系列图像到图像的转换任务中进行了演示�
 
 ## 如何实现 PatchGAN 鉴别器模型
 
-Pix2Pix 氮化镓中的鉴别器模型被实现为一个补丁氮化镓。
+Pix2Pix GAN中的鉴别器模型被实现为一个补丁GAN。
 
 PatchGAN 是根据感受野的大小设计的，有时也称为有效感受野。感受野是模型的一次输出激活与输入图像上的一个区域之间的关系(实际上是在输入通道中的音量)。
 
@@ -278,7 +278,7 @@ ________________________________________________________________________________
 
 ![Plot of the PatchGAN Model Used in the Pix2Pix GAN Architecture](img/e829a25b21edc1aeb5f2f6a7be74431b.png)
 
-Pix2Pix 氮化镓架构中使用的贴片氮化镓模型图
+Pix2Pix GAN架构中使用的贴片GAN模型图
 
 现在我们知道了如何实现 PatchGAN 鉴别器模型，我们现在可以考虑实现 U-Net 生成器模型。
 
@@ -811,7 +811,7 @@ ________________________________________________________________________________
 
 ![Plot of the Composite GAN Model Used to Train the Generator in the Pix2Pix GAN Architecture](img/c90ae689b1a6658ad345f64b893f7fa1.png)
 
-用于训练 Pix2Pix 氮化镓架构中发生器的复合氮化镓模型图
+用于训练 Pix2Pix GAN架构中发生器的复合GAN模型图
 
 ## 如何更新模型权重
 
@@ -954,7 +954,7 @@ train(d_model, g_model, gan_model, dataset)
 
 ## 摘要
 
-在本教程中，您发现了如何使用 Keras 深度学习框架从头开始实现 Pix2Pix GAN 架构。
+在本教程中，您发现了如何使用 Keras 深度学习框架从零开始实现 Pix2Pix GAN 架构。
 
 具体来说，您了解到:
 

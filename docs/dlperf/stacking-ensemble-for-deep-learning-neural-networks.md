@@ -863,7 +863,7 @@ Stacked Test Accuracy: 0.833
 
 ### 邮件
 
-*   [如何用 Python 从头开始实现堆叠泛化](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
+*   [如何用 Python 从零开始实现堆叠泛化](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
 
 ## 摘要
 

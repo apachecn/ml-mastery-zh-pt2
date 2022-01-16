@@ -42,15 +42,15 @@ GANs 有非常具体的用例，开始时可能很难理解这些用例。
 我错过了 GANs 的一个有趣的应用还是一篇关于特定 GAN 应用的优秀论文？
 请在评论中告知。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 ## 为图像数据集生成示例
 
-生成新的似是而非的样本是伊恩·古德费勒等人在 2014 年的论文“[生成性对抗网络](https://arxiv.org/abs/1406.2661)”中描述的应用，其中 GANs 用于为 MNIST 手写数字数据集、CIFAR-10 小对象照片数据集和多伦多人脸数据库生成新的似是而非的示例。
+生成新的似是而非的样本是伊恩·古德费勒等人在 2014 年的论文“[生成对抗网络](https://arxiv.org/abs/1406.2661)”中描述的应用，其中 GANs 用于为 MNIST 手写数字数据集、CIFAR-10 小对象照片数据集和多伦多人脸数据库生成新的似是而非的示例。
 
 ![Examples of GANs used to Generate New Plausible Examples for Image Datasets](img/2bb7473e2aaf399081ce6ddb9603eef1.png)
 
-用于为图像数据集生成新的可信示例的 GANs 示例。摘自《生成性对抗网络》，2014 年。
+用于为图像数据集生成新的可信示例的 GANs 示例。摘自《生成对抗网络》，2014 年。
 
 这也是亚历克·拉德福德等人在 2015 年发表的题为“深度卷积生成对抗网络的无监督表示学习”的重要论文中使用的演示，该论文名为 DCGAN，演示了如何大规模训练稳定的 GANs。他们演示了生成新卧室示例的模型。
 
@@ -62,7 +62,7 @@ GAN 生成的卧室照片示例。摘自《深度卷积生成对抗网络的无�
 
 ![Example of Vector Arithmetic for GAN Generated Faces](img/b4890846db713f9ae0038bdd22e89b3a.png)
 
-氮化镓生成人脸的矢量算法示例。摘自《深度卷积生成对抗网络的无监督表示学习》，2015 年。
+GAN生成人脸的矢量算法示例。摘自《深度卷积生成对抗网络的无监督表示学习》，2015 年。
 
 ## 生成人脸照片
 
@@ -70,7 +70,7 @@ Tero Karras 等人在他们 2017 年发表的题为“为提高质量、稳定�
 
 ![Examples of Photorealistic GAN Generated Faces](img/37af429d7d2fbad9c1ccdfe12b6f4e8c.png)
 
-照片真实感氮化镓生成的脸的例子。摘自 2017 年《为提高质量、稳定性和变化性而逐步发展的 GANs》。
+照片真实感GAN生成的脸的例子。摘自 2017 年《为提高质量、稳定性和变化性而逐步发展的 GANs》。
 
 他们的方法也被用来演示对象和场景的生成。
 
@@ -160,11 +160,11 @@ Phillip Isola 等人在他们 2016 年发表的题为“利用条件对抗网络
 
 来自 StackGAN 的文本描述和 GAN 生成的鸟瞰照片示例:使用堆叠生成对抗网络的文本到照片真实感图像合成，2016。
 
-斯科特·里德(Scott Reed)等人在 2016 年发表的论文《生成性对抗性文本到图像合成》中，也提供了一个早期的例子，说明文本到图像生成小对象和场景，包括鸟、花等等。
+斯科特·里德(Scott Reed)等人在 2016 年发表的论文《生成对抗性文本到图像合成》中，也提供了一个早期的例子，说明文本到图像生成小对象和场景，包括鸟、花等等。
 
 ![Example of Textual Descriptions and GAN Generated Photographs if Birds and Flowers](img/21eb93d404afab92473a2c606f42de89.png)
 
-鸟类和花卉的文本描述和 GAN 生成的照片示例。从生成性对抗文本到图像合成。
+鸟类和花卉的文本描述和 GAN 生成的照片示例。从生成对抗文本到图像合成。
 
 Ayushman Dash 等人在他们 2017 年发表的题为“[TAC-GAN–文本条件辅助分类器生成对抗网络](https://arxiv.org/abs/1703.06412)”的论文中提供了更多关于看似相同数据集的例子。
 
@@ -180,7 +180,7 @@ ting-王春等人在他们 2017 年发表的题为“H [高分辨率图像合成
 
 ![Example of Semantic Image and GAN Generated Cityscape Photograph](img/178dd04a8e4cbd61072903479cf92075.png)
 
-语义图像和氮化镓生成的城市景观照片的例子。摘自 2017 年高分辨率图像合成和条件 GANs 语义处理。
+语义图像和GAN生成的城市景观照片的例子。摘自 2017 年高分辨率图像合成和条件 GANs 语义处理。
 
 具体例子包括:
 
@@ -227,7 +227,7 @@ IcGAN 人脸照片编辑示例。摘自《图像编辑用可逆条件遗传》�
 
 ![Example of GANs used to Generate Faces with and Without Blond Hair](img/b0e5210e8e310a7885b3fc51603c0a40.png)
 
-用于生成有和没有金发的人脸的 GANs 示例。摘自《耦合生成性对抗网络》，2016 年。
+用于生成有和没有金发的人脸的 GANs 示例。摘自《耦合生成对抗网络》，2016 年。
 
 Andrew Brock 等人在他们 2016 年发表的题为“用内省对抗网络进行神经照片编辑”的论文中提出了一种使用可变自动编码器和 GANs 混合的人脸照片编辑器。编辑器允许快速逼真地修改人脸，包括改变头发颜色、发型、面部表情、姿势和添加面部毛发。
 
@@ -243,11 +243,11 @@ Andrew Brock 等人在他们 2016 年发表的题为“用内省对抗网络进�
 
 ## 面部衰老
 
-Grigory Antipov 等人在他们 2017 年发表的题为“利用条件生成性对抗网络进行面部衰老”的论文中，使用 GANs 生成了不同表观年龄(从年轻到年老)的面部照片。
+Grigory Antipov 等人在他们 2017 年发表的题为“利用条件生成对抗网络进行面部衰老”的论文中，使用 GANs 生成了不同表观年龄(从年轻到年老)的面部照片。
 
 ![Example of Photographs of Faces Generated with a GAN with Different Apparent Ages](img/0bfb7e23ecca44e30896e54923dd6766.png)
 
-用不同表观年龄的氮化镓生成的人脸照片示例。摘自《条件生成对抗网络下的面部衰老》，2017 年。
+用不同表观年龄的GAN生成的人脸照片示例。摘自《条件生成对抗网络下的面部衰老》，2017 年。
 
 张，在他们 2017 年的论文《条件对抗自动编码器的年龄进展/回归》中使用了一种基于 GAN 的人脸照片去老化方法。
 
@@ -261,7 +261,7 @@ Grigory Antipov 等人在他们 2017 年发表的题为“利用条件生成性�
 
 ![Example of GAN-based Photograph Blending](img/8a8a08f0be55e743c106abb6403789ee.png)
 
-基于氮化镓的照片混合示例。摘自 GP-GAN:走向逼真的高分辨率图像混合，2017 年。
+基于GAN的照片混合示例。摘自 GP-GAN:走向逼真的高分辨率图像混合，2017 年。
 
 ## 超分辨率
 
@@ -281,7 +281,7 @@ Subeesh 瓦苏等人在他们 2018 年的论文中倾斜了“[使用增强感�
 
 ![Example of High Resolution GAN-Generated Photographs of Buildings](img/40dd4ef7d91527d51d15aa217d5f2c2d.png)
 
-高分辨率氮化镓生成的建筑物照片示例。摘自《使用增强感知超分辨率网络分析感知-失真权衡》，2018 年。
+高分辨率GAN生成的建筑物照片示例。摘自《使用增强感知超分辨率网络分析感知-失真权衡》，2018 年。
 
 ## 照片修复
 
@@ -317,7 +317,7 @@ Carl Vondrick 等人在 2016 年发表的论文《利用场景动力学生成视
 
 ![Example of Video Frames Generated with a GAN](img/058a3c64a67bd4d6cc65caf061e8c8fb.png)
 
-用氮化镓生成的视频帧示例。摘自《用场景动态生成视频》，2016 年。
+用GAN生成的视频帧示例。摘自《用场景动态生成视频》，2016 年。
 
 ## 三维对象生成
 
@@ -325,7 +325,7 @@ Carl Vondrick 等人在 2016 年发表的论文《利用场景动力学生成视
 
 ![Example of GAN Generated Three Dimensional Objects](img/fa3f87d8b9cd4becc6fd00b8a6c0f04e.png)
 
-氮化镓生成的三维对象的例子。取自通过三维生成对抗建模学习对象形状的概率潜在空间
+GAN生成的三维对象的例子。取自通过三维生成对抗建模学习对象形状的概率潜在空间
 
 Matheus Gadelha 等人在 2016 年发表的题为“从多个对象的 2D 视图中进行三维形状归纳”的论文中使用 GANs 从多个视角生成给定对象二维图片的三维模型。
 
@@ -335,7 +335,7 @@ Matheus Gadelha 等人在 2016 年发表的题为“从多个对象的 2D 视图
 
 ## 进一步阅读
 
-本节提供了更多的氮化镓应用程序列表来补充这个列表。
+本节提供了更多的GAN应用程序列表来补充这个列表。
 
 *   [gans-awesome-applications:精选的 awesome GAN 应用和演示列表](https://github.com/nashory/gans-awesome-applications)。
 *   [GANs 的一些很酷的应用](https://medium.com/@jonathan_hui/gan-some-cool-applications-of-gans-4c9ecca35900)，2018。

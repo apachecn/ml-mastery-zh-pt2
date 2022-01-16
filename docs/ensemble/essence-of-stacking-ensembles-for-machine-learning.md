@@ -244,7 +244,7 @@
 
 *   [用 Python 堆叠集成机器学习](https://machinelearningmastery.com/stacking-ensemble-machine-learning-with-python/)
 *   [如何用 Keras 开发 Python 深度学习神经网络的堆叠集成](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)
-*   [如何用 Python 从头开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
+*   [如何用 Python 从零开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
 *   [如何用 Python 开发投票集成](https://machinelearningmastery.com/voting-ensembles-with-python/)
 *   [如何在 Python 中开发超级学习器集成](https://machinelearningmastery.com/super-learner-ensemble-in-python/)
 

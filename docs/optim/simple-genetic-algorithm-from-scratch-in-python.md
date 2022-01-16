@@ -1,4 +1,4 @@
-# Python 中从头开始的简单遗传算法
+# Python 中从零开始的简单遗传算法
 
 > 原文：<https://machinelearningmastery.com/simple-genetic-algorithm-from-scratch-in-python/>
 
@@ -22,7 +22,7 @@
 
 Let’s get started.![Simple Genetic Algorithm From Scratch in Python](img/46ebae089519dd220fe7482698436211.png)
 
-Python 中从头开始的简单遗传算法
+Python 中从零开始的简单遗传算法
 图片由 [Magharebia](https://www.flickr.com/photos/magharebia/5323128313/) 提供，保留部分权利。
 
 ## 教程概述
@@ -30,7 +30,7 @@ Python 中从头开始的简单遗传算法
 本教程分为四个部分；它们是:
 
 1.  遗传算法
-2.  从头开始的遗传算法
+2.  从零开始的遗传算法
 3.  OneMax 的遗传算法
 4.  连续函数优化的遗传算法
 
@@ -90,9 +90,9 @@ Python 中从头开始的简单遗传算法
 
 这定义了简单的遗传算法程序。这是一个很大的研究领域，算法有很多扩展。
 
-现在我们已经熟悉了简单的遗传算法过程，让我们看看如何从头开始实现它。
+现在我们已经熟悉了简单的遗传算法过程，让我们看看如何从零开始实现它。
 
-## 从头开始的遗传算法
+## 从零开始的遗传算法
 
 在这一部分，我们将开发一个遗传算法的实现。
 

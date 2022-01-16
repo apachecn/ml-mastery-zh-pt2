@@ -4,7 +4,7 @@
 
 最后更新于 2019 年 10 月 11 日
 
-[生成性对抗网络](https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/)，简称 GANs，是一种深度学习神经网络架构，用于训练生成合成图像的生成器模型。
+[生成对抗网络](https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/)，简称 GANs，是一种深度学习神经网络架构，用于训练生成合成图像的生成器模型。
 
 生成模型的一个问题是没有客观的方法来评估生成图像的质量。
 
@@ -20,7 +20,7 @@
 *   如何用 NumPy 和 Keras 深度学习库在 Python 中实现初始分数。
 *   如何计算小型图像的初始分数，例如 CIFAR-10 数据集中的图像。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
@@ -43,7 +43,7 @@
 
 ## 《Inception》的评分是多少？
 
-初始分数，简称 IS，是一个客观的度量标准，用于评估生成图像的质量，特别是由生成性对抗网络模型输出的合成图像。
+初始分数，简称 IS，是一个客观的度量标准，用于评估生成图像的质量，特别是由生成对抗网络模型输出的合成图像。
 
 初始分数是由蒂姆·萨利曼(Tim Salimans)等人在 2016 年发表的题为“T2 训练 GANs 的改进技术”的论文中提出的
 

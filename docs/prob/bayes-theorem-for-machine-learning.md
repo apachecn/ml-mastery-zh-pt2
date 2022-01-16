@@ -539,8 +539,8 @@ Negative Prediction | False Negative (FN) | True Negative (TN)
 
 有关如何在 Python 中从头实现朴素贝叶斯的教程，请参见:
 
-*   [如何在 Python 中从头开始开发朴素贝叶斯分类器](https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm/)
-*   [Python 中从头开始的朴素贝叶斯分类器](https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/)
+*   [如何在 Python 中从零开始开发朴素贝叶斯分类器](https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm/)
+*   [Python 中从零开始的朴素贝叶斯分类器](https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/)
 
 ### 贝叶斯最优分类器
 
@@ -596,7 +596,7 @@ Negative Prediction | False Negative (FN) | True Negative (TN)
 
 贝叶斯优化通常用于应用机器学习，以在验证数据集上调整给定的表现良好的模型的超参数。
 
-有关贝叶斯优化的更多信息，包括如何从头开始实现它，请参见教程:
+有关贝叶斯优化的更多信息，包括如何从零开始实现它，请参见教程:
 
 *   [如何在 Python 中从头实现贝叶斯优化](https://machinelearningmastery.com/what-is-bayesian-optimization/)
 
@@ -624,8 +624,8 @@ Negative Prediction | False Negative (FN) | True Negative (TN)
 
 *   [对联合概率、边际概率和条件概率的温和介绍](https://machinelearningmastery.com/joint-marginal-and-conditional-probability-for-machine-learning/)
 *   [什么是机器学习中的假设？](https://machinelearningmastery.com/what-is-a-hypothesis-in-machine-learning/)
-*   [如何在 Python 中从头开始开发朴素贝叶斯分类器](https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm/)
-*   [Python 中从头开始的朴素贝叶斯分类器](https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/)
+*   [如何在 Python 中从零开始开发朴素贝叶斯分类器](https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm/)
+*   [Python 中从零开始的朴素贝叶斯分类器](https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/)
 *   [如何在 Python 中从头实现贝叶斯优化](https://machinelearningmastery.com/what-is-bayesian-optimization/)
 *   [贝叶斯信念网络的温和介绍](https://machinelearningmastery.com/introduction-to-bayesian-belief-networks/)
 

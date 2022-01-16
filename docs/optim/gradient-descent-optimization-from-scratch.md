@@ -1,4 +1,4 @@
-# 如何从头开始实施梯度下降优化
+# 如何从零开始实施梯度下降优化
 
 > 原文：<https://machinelearningmastery.com/gradient-descent-optimization-from-scratch/>
 
@@ -8,7 +8,7 @@
 
 这是一种简单有效的技术，只需几行代码就可以实现。它还为许多可以带来更好表现的扩展和修改提供了基础。该算法还为广泛使用的称为随机梯度下降的扩展提供了基础，用于训练深度学习神经网络。
 
-在本教程中，您将发现如何从头开始实现梯度下降优化。
+在本教程中，您将发现如何从零开始实现梯度下降优化。
 
 完成本教程后，您将知道:
 
@@ -20,7 +20,7 @@
 
 Let’s get started.![How to Implement Gradient Descent Optimization from Scratch](img/21788f07ccba9d993b40751ea2828262.png)
 
-如何从头开始实现梯度下降优化
+如何从零开始实现梯度下降优化
 图片由 [Bernd Thaller](https://www.flickr.com/photos/bernd_thaller/44802793745/) 提供，保留部分权利。
 
 ## 教程概述
@@ -586,7 +586,7 @@ pyplot.show()
 
 ## 摘要
 
-在本教程中，您发现了如何从头开始实现梯度下降优化。
+在本教程中，您发现了如何从零开始实现梯度下降优化。
 
 具体来说，您了解到:
 

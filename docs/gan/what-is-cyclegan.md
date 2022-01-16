@@ -1,4 +1,4 @@
-# 柔和介绍 CycleGAN 进行图像翻译
+# CycleGAN 图像翻译的温和介绍
 
 > 原文：<https://machinelearningmastery.com/what-is-cyclegan/>
 
@@ -20,7 +20,7 @@ CycleGAN 是一种在没有成对例子的情况下自动训练图像到图像�
 *   CycleGAN 是一种通过 GAN 架构使用来自两个不同领域的不成对图像集合来训练无监督图像翻译模型的技术。
 *   CycleGAN 已经在一系列应用中进行了演示，包括季节转换、对象变形、风格转换以及从绘画中生成照片。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
@@ -255,7 +255,7 @@ CycleGAN 论文提供了许多关于如何在实践中实现该技术的技术�
 
 > [……]我们提出了最小二乘生成对抗网络，它采用最小二乘损失函数作为鉴别器。这个想法简单而强大:最小二乘损失函数能够将假样本移向决策边界，因为最小二乘损失函数惩罚了位于决策边界正确一侧很远的样本。
 
-——[最小二乘生成性对抗网络](https://arxiv.org/abs/1611.04076)，2016。
+——[最小二乘生成对抗网络](https://arxiv.org/abs/1611.04076)，2016。
 
 此外，50 个生成图像的缓冲区用于更新鉴别器模型，而不是新生成的图像，如 [Ashish Shrivastava 的](https://www.linkedin.com/in/ashish-shrivastava-3499127/) 2016 年论文《通过对抗性训练从模拟和无监督图像中学习》中所述
 

@@ -78,7 +78,7 @@
 有关主题堆叠的更多信息，请参见帖子:
 
 *   [如何用 Keras 开发 Python 深度学习神经网络的堆叠集成](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)
-*   [如何用 Python 从头开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
+*   [如何用 Python 从零开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
 
 我们可以把“*超级学习器*”想象成一种专门针对 k-fold 交叉验证的堆叠的具体配置。
 
@@ -896,7 +896,7 @@ Super Learner: 97.400
 ### 教程
 
 *   [如何用 Keras 开发 Python 深度学习神经网络的堆叠集成](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)
-*   [如何用 Python 从头开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
+*   [如何用 Python 从零开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
 *   [如何在 Keras 创建深度学习模型的装袋集成](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/)
 *   [如何在机器学习中使用折外预测](https://machinelearningmastery.com/out-of-fold-predictions-in-machine-learning)
 

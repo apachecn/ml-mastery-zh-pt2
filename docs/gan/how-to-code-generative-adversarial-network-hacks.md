@@ -4,7 +4,7 @@
 
 最后更新于 2019 年 7 月 12 日
 
-[生成性对抗网络](https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/)，或称 GANs，训练起来很有挑战性。
+[生成对抗网络](https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/)，或称 GANs，训练起来很有挑战性。
 
 这是因为该架构同时涉及一个生成器和一个鉴别器模型，它们在零和游戏中竞争。这意味着一个模型的改进是以另一个模型的表现下降为代价的。结果是一个非常不稳定的训练过程，经常会导致失败，例如，一个生成器总是生成相同的图像或生成无意义的图像。
 
@@ -14,21 +14,21 @@
 
 此外，它们中的一些或全部对于给定的项目可能是必需的，尽管可能不清楚应该采用哪一子集的试探法，这需要实验。这意味着一个实践者必须准备好实现一个给定的启发，而不需要太多的注意。
 
-在本教程中，您将发现如何实现一套最佳实践或氮化镓黑客，您可以直接复制并粘贴到您的氮化镓项目。
+在本教程中，您将发现如何实现一套最佳实践或GAN黑客，您可以直接复制并粘贴到您的GAN项目。
 
 阅读本教程后，您将知道:
 
-*   开发生成性对抗网络时实用启发式或黑客攻击的最佳来源。
-*   如何从头开始实现深度卷积 GAN 模型架构的七个最佳实践？
+*   开发生成对抗网络时实用启发式或黑客攻击的最佳来源。
+*   如何从零开始实现深度卷积 GAN 模型架构的七个最佳实践？
 *   如何实施 Soumith Chintala 的 GAN Hacks 演示文稿和列表中的四个附加最佳实践。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
 ![How to Implement Hacks to Train Stable Generative Adversarial Networks](img/3f25bd34a780b484ed3b7021f4fe0954.png)
 
-如何实现黑客训练稳定的生成性对抗网络
+如何实现黑客训练稳定的生成对抗网络
 图片由 [BLM 内华达](https://www.flickr.com/photos/blmnevada/29076765722/)提供，保留部分权利。
 
 ## 教程概述
@@ -491,7 +491,7 @@ print(y.sum())
 ### 报纸
 
 *   [深度卷积生成对抗网络的无监督表示学习](https://arxiv.org/abs/1511.06434)，2015。
-*   [教程:生成性对抗网络，NIPS](https://arxiv.org/abs/1701.00160) ，2016。
+*   [教程:生成对抗网络，NIPS](https://arxiv.org/abs/1701.00160) ，2016。
 *   [训练 GANs 的改进技术](https://arxiv.org/abs/1606.03498)，2016。
 
 ### 应用程序接口
@@ -508,12 +508,12 @@ print(y.sum())
 
 ## 摘要
 
-在本教程中，您发现了如何实现一套最佳实践或氮化镓黑客，您可以直接复制并粘贴到您的氮化镓项目。
+在本教程中，您发现了如何实现一套最佳实践或GAN黑客，您可以直接复制并粘贴到您的GAN项目。
 
 具体来说，您了解到:
 
-*   开发生成性对抗网络时实用启发式或黑客攻击的最佳来源。
-*   如何从头开始实现深度卷积 GAN 模型架构的七个最佳实践？
+*   开发生成对抗网络时实用启发式或黑客攻击的最佳来源。
+*   如何从零开始实现深度卷积 GAN 模型架构的七个最佳实践？
 *   如何实施 Soumith Chintala 的 GAN Hacks 演示文稿和列表中的四个附加最佳实践。
 
 你有什么问题吗？

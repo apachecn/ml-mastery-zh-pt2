@@ -16,7 +16,7 @@ Pix2Pix 生成对抗网络是一种训练深度卷积神经网络的方法，用
 *   如何开发一个 Pix2Pix 模型，用于将卫星照片翻译成谷歌地图图像。
 *   如何使用最终的 Pix2Pix 生成器模型来翻译临时卫星图像。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
@@ -39,7 +39,7 @@ Pix2Pix 生成对抗网络是一种训练深度卷积神经网络的方法，用
 
 ## 什么是 Pix2Pix GAN？
 
-Pix2Pix 是一个为通用图像到图像翻译而设计的生成性对抗网络模型。
+Pix2Pix 是一个为通用图像到图像翻译而设计的生成对抗网络模型。
 
 这种方法是由菲利普·伊索拉等人在 2016 年发表的论文《条件对抗网络下的 T2 图像到图像翻译》和 2017 年在 CVPR 发表的《T4》中提出的。
 

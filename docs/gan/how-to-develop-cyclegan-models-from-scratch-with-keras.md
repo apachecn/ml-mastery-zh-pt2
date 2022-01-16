@@ -1,4 +1,4 @@
-# 如何用 Keras 从头开始实现 CycleGAN 模型
+# 如何用 Keras 从零开始实现 CycleGAN 模型
 
 > 原文：<https://machinelearningmastery.com/how-to-develop-cyclegan-models-from-scratch-with-keras/>
 
@@ -10,7 +10,7 @@ CycleGAN 模型的好处是可以在没有成对例子的情况下进行训练�
 
 这个模型给人留下了深刻的印象，但是对于初学者来说，它的架构看起来相当复杂。
 
-在本教程中，您将发现如何使用 Keras 深度学习框架从头开始实现 CycleGAN 架构。
+在本教程中，您将发现如何使用 Keras 深度学习框架从零开始实现 CycleGAN 架构。
 
 完成本教程后，您将知道:
 
@@ -18,7 +18,7 @@ CycleGAN 模型的好处是可以在没有成对例子的情况下进行训练�
 *   如何定义复合模型，通过对抗损失和周期损失来训练发电机模型？
 *   如何实现每次训练迭代更新模型权重的训练过程？
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
@@ -332,7 +332,7 @@ def resnet_block(n_filters, input_layer):
 
 接下来，我们可以定义一个函数，为 256×256 个输入图像创建 9-resnet 块版本。通过将 *image_shape* 设置为(128 x128 x3)*n _ resnet*函数参数设置为 6，可以轻松将其更改为 6-resnet 块版本。
 
-重要的是，该模型输出的像素值与输入的形状相同，并且像素值在[-1，1]的范围内，这是氮化镓发生器模型的典型情况。
+重要的是，该模型输出的像素值与输入的形状相同，并且像素值在[-1，1]的范围内，这是GAN发生器模型的典型情况。
 
 ```py
 # define the standalone generator model
@@ -1152,7 +1152,7 @@ train(d_model_A, d_model_B, g_model_AtoB, g_model_BtoA, c_model_AtoB, c_model_Bt
 *   [吉通网 CycleGAN 项目(官方)](https://github.com/junyanz/CycleGAN/)
 *   [py torch-cycle gan-and-pix2pix(官方)，GitHub](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix) 。
 *   [循环干项目页面(官方)](https://junyanz.github.io/CycleGAN/)
-*   [Keras-GAN:生成性对抗网络的 Keras 实现](https://github.com/eriklindernoren/Keras-GAN)。
+*   [Keras-GAN:生成对抗网络的 Keras 实现](https://github.com/eriklindernoren/Keras-GAN)。
 *   [CycleGAN-Keras:使用 tensorflow 后端](https://github.com/simontomaskarlsson/CycleGAN-Keras)实现 CycleGAN 的 Keras。
 *   [cyclegan-keras: keras 实现 cycle gan](https://github.com/MingwangLin/cyclegan-keras)
 
@@ -1163,7 +1163,7 @@ train(d_model_A, d_model_B, g_model_AtoB, g_model_BtoA, c_model_AtoB, c_model_Bt
 
 ## 摘要
 
-在本教程中，您发现了如何使用 Keras 深度学习框架从头开始实现 CycleGAN 架构。
+在本教程中，您发现了如何使用 Keras 深度学习框架从零开始实现 CycleGAN 架构。
 
 具体来说，您了解到:
 

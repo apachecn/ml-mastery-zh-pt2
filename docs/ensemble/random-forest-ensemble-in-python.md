@@ -103,7 +103,7 @@ Bagging 是一种有效的集成算法，因为每个决策树都适合于稍微
 
 ## 随机森林科学工具包-学习应用编程接口
 
-随机森林集成可以从头开始实现，尽管这对初学者来说很有挑战性。
+随机森林集成可以从零开始实现，尽管这对初学者来说很有挑战性。
 
 Sklearn Python 机器学习库为机器学习提供了一个随机森林的实现。
 
@@ -715,7 +715,7 @@ pyplot.show()
 
 ### 教程
 
-*   [如何在 Python 中从头开始实现随机森林](https://machinelearningmastery.com/implement-random-forest-scratch-python/)
+*   [如何在 Python 中从零开始实现随机森林](https://machinelearningmastery.com/implement-random-forest-scratch-python/)
 
 ### 报纸
 

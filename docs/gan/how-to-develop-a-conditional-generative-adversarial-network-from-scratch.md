@@ -10,7 +10,7 @@
 
 条件生成对抗网络，简称 cGAN，是一种 GAN，涉及到通过生成器模型有条件地生成图像。图像生成可以以类标签为条件(如果可用)，允许有针对性地生成给定类型的图像。
 
-在本教程中，您将发现如何开发一个有条件的生成性对抗网络，用于有针对性地生成衣物。
+在本教程中，您将发现如何开发一个有条件的生成对抗网络，用于有针对性地生成衣物。
 
 完成本教程后，您将知道:
 
@@ -18,13 +18,13 @@
 *   如何开发和评估一个无条件生成的敌对网络，用于生成衣服的照片。
 *   如何开发和评估生成服装照片的条件生成对抗网络？
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
 ![How to Develop a Conditional Generative Adversarial Network for Clothing Photographs From Scratch](img/36ddc75e1ccd19f5da939875d20888a5.png)
 
-如何从头开始开发条件生成对抗网络
+如何从零开始开发条件生成对抗网络
 图片由[大柏树国家保护区](https://www.flickr.com/photos/72362382@N04/33129838416)提供，版权所有
 
 ## 教程概述
@@ -39,7 +39,7 @@
 
 ## 条件生成对抗网络
 
-生成性对抗网络，简称 GAN，是一种用于训练基于深度学习的生成模型的架构。
+生成对抗网络，简称 GAN，是一种用于训练基于深度学习的生成模型的架构。
 
 该架构由一个生成器和一个鉴别器模型组成。生成器模型负责生成新的似是而非的示例，这些示例在理想情况下无法与数据集中的真实示例区分开来。鉴别器模型负责将给定图像分类为真实图像(从数据集绘制)或伪造图像(生成)。
 
@@ -182,7 +182,7 @@ pyplot.show()
 
 时尚 MNIST 数据集中前 100 件服装的图表。
 
-我们将使用训练数据集中的图像作为训练生成性对抗网络的基础。
+我们将使用训练数据集中的图像作为训练生成对抗网络的基础。
 
 具体来说，生成器模型将学习如何使用鉴别器生成新的似是而非的服装项目，该鉴别器将尝试区分来自时尚 MNIST 训练数据集的真实图像和生成器模型输出的新图像。
 
@@ -331,7 +331,7 @@ def generate_fake_samples(generator, latent_dim, n_samples):
 	return X, y
 ```
 
-我们现在准备安装氮化镓模型。
+我们现在准备安装GAN模型。
 
 该模型适合 100 个训练时期，这是任意的，因为该模型在大约 20 个时期后开始生成看似合理的服装项目。使用 128 个样本的批次大小，并且每个训练时期涉及 60，000/128，或者大约 468 批次的真实和虚假样本以及对模型的更新。
 
@@ -745,7 +745,7 @@ def define_gan(g_model, d_model):
 	return model
 ```
 
-下图总结了复合氮化镓模型。
+下图总结了复合GAN模型。
 
 重要的是，它完整地显示了以潜在空间中的点和类标签作为输入的生成器模型，以及生成器的输出和作为输入的同一个类标签到鉴别器模型(图底部的最后一个框)的连接，以及真实或虚假的单个类标签分类的输出。
 
@@ -1123,8 +1123,8 @@ save_plot(X, 10)
 
 ### 报纸
 
-*   [生成性对抗网络](https://arxiv.org/abs/1406.2661)，2014。
-*   [教程:生成性对抗网络，NIPS](https://arxiv.org/abs/1701.00160) ，2016。
+*   [生成对抗网络](https://arxiv.org/abs/1406.2661)，2014。
+*   [教程:生成对抗网络，NIPS](https://arxiv.org/abs/1701.00160) ，2016。
 *   [深度卷积生成对抗网络的无监督表示学习](https://arxiv.org/abs/1511.06434)，2015
 *   [条件生成对抗网](https://arxiv.org/abs/1411.1784)，2014。
 *   [条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2017。
@@ -1146,12 +1146,12 @@ save_plot(X, 10)
 *   [时尚-MNIST 项目，GitHub](https://github.com/zalandoresearch/fashion-mnist) 。
 *   [在 CIFAR-10](https://medium.com/@utk.is.here/training-a-conditional-dc-gan-on-cifar-10-fce88395d610) ( [代码](https://github.com/utkd/gans/blob/master/cifar10cgan.ipynb))上训练有条件的 DC-GAN，2018。
 *   [GAN:从零到英雄第二部分 GAN 的条件生成](http://cican17.com/gan-from-zero-to-hero-part-2-conditional-generation-by-gan/)，2018。
-*   [喀拉斯-甘项目。生成性对抗网络的 Keras 实现。](https://github.com/eriklindernoren/Keras-GAN)
+*   [喀拉斯-甘项目。生成对抗网络的 Keras 实现。](https://github.com/eriklindernoren/Keras-GAN)
 *   [条件深度卷积 GAN(CDCGAN)–Keras 实现，GitHub](https://github.com/gaborvecsei/CDCGAN-Keras) 。
 
 ## 摘要
 
-在本教程中，您发现了如何开发一个有条件的生成性对抗网络，用于有针对性地生成衣物。
+在本教程中，您发现了如何开发一个有条件的生成对抗网络，用于有针对性地生成衣物。
 
 具体来说，您了解到:
 

@@ -657,7 +657,7 @@ cfg=[[0.020224220443108752, 52, 0.5088096815056933, 53]]: Mean Accuracy: 0.87366
 
 *   [随机搜索和网格搜索的超参数优化](https://machinelearningmastery.com/hyperparameter-optimization-with-random-search-and-grid-search/)
 *   [如何配置梯度提升算法](https://machinelearningmastery.com/configure-gradient-boosting-algorithm/)
-*   [如何在 Python 中从头开始实现感知器算法](https://machinelearningmastery.com/implement-perceptron-algorithm-scratch-python/)
+*   [如何在 Python 中从零开始实现感知器算法](https://machinelearningmastery.com/implement-perceptron-algorithm-scratch-python/)
 
 ### 蜜蜂
 

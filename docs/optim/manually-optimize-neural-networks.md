@@ -14,7 +14,7 @@
 
 完成本教程后，您将知道:
 
-*   如何从头开始开发神经网络模型的正向推理通路？
+*   如何从零开始开发神经网络模型的正向推理通路？
 *   如何为二进制分类优化感知器模型的权重。
 *   如何使用随机爬山优化多层感知器模型的权重。
 
@@ -843,8 +843,8 @@ Test Accuracy: 85.15152
 ### 教程
 
 *   [用于评估机器学习算法的训练-测试分割](https://machinelearningmastery.com/train-test-split-for-evaluating-machine-learning-algorithms/)
-*   [如何在 Python 中从头开始实现感知器算法](https://machinelearningmastery.com/implement-perceptron-algorithm-scratch-python/)
-*   [如何用 Python 反向传播来编码神经网络(从头开始)](https://machinelearningmastery.com/implement-backpropagation-algorithm-scratch-python/)
+*   [如何在 Python 中从零开始实现感知器算法](https://machinelearningmastery.com/implement-perceptron-algorithm-scratch-python/)
+*   [如何用 Python 反向传播来编码神经网络(从零开始)](https://machinelearningmastery.com/implement-backpropagation-algorithm-scratch-python/)
 
 ### 蜜蜂
 
@@ -858,7 +858,7 @@ Test Accuracy: 85.15152
 
 具体来说，您了解到:
 
-*   如何从头开始开发神经网络模型的正向推理通路？
+*   如何从零开始开发神经网络模型的正向推理通路？
 *   如何为二进制分类优化感知器模型的权重。
 *   如何使用随机爬山优化多层感知器模型的权重。
 

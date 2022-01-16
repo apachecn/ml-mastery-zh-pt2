@@ -91,13 +91,13 @@
 
 ## 堆叠科学工具包-学习应用编程接口
 
-堆叠可以从头开始实现，尽管这对初学者来说很有挑战性。
+堆叠可以从零开始实现，尽管这对初学者来说很有挑战性。
 
-有关在 Python 中从头开始实现堆栈的示例，请参见教程:
+有关在 Python 中从零开始实现堆栈的示例，请参见教程:
 
-*   [如何用 Python 从头开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
+*   [如何用 Python 从零开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
 
-有关为深度学习从头开始实现堆叠的示例，请参见教程:
+有关为深度学习从零开始实现堆叠的示例，请参见教程:
 
 *   [如何在 Python 中开发深度学习神经网络的堆叠集成](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)
 
@@ -760,7 +760,7 @@ Predicted Value: 556.264
 
 ### 相关教程
 
-*   [如何用 Python 从头开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
+*   [如何用 Python 从零开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
 *   [如何用 Keras 开发 Python 深度学习神经网络的堆叠集成](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)
 *   [如何在 Python 中开发超级学习器集成](https://machinelearningmastery.com/super-learner-ensemble-in-python/)
 *   [如何在机器学习中使用折外预测](https://machinelearningmastery.com/out-of-fold-predictions-in-machine-learning/)

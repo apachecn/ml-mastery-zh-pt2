@@ -203,7 +203,7 @@ Automl 可能不被称为元学习，但是 automl 算法可以利用跨学习�
 
 *   [用 Python 堆叠集成机器学习](https://machinelearningmastery.com/stacking-ensemble-machine-learning-with-python/)
 *   [如何用 Keras 开发 Python 深度学习神经网络的堆叠集成](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)
-*   [如何用 Python 从头开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
+*   [如何用 Python 从零开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
 *   [用计算机视觉模型在 Keras 中进行迁移学习](https://machinelearningmastery.com/how-to-use-transfer-learning-when-developing-convolutional-neural-network-models/)
 *   [深度学习迁移学习入门](https://machinelearningmastery.com/transfer-learning-for-deep-learning/)
 

@@ -66,9 +66,9 @@ Adam 意识到了 AdaGrad 和 RMSProp 的好处。
 
 这篇论文可读性很强，如果您对具体的实现细节感兴趣，我鼓励您阅读它。
 
-如果您想学习如何在 Python 中从头开始编写 Adam 代码，请参见教程:
+如果您想学习如何在 Python 中从零开始编写 Adam 代码，请参见教程:
 
-*   [从头开始编码亚当梯度下降优化](https://machinelearningmastery.com/adam-optimization-from-scratch/)
+*   [从零开始编码亚当梯度下降优化](https://machinelearningmastery.com/adam-optimization-from-scratch/)
 
 ## 亚当是有效的
 
@@ -144,7 +144,7 @@ Adam 正被改编成深度学习论文中的基准。
 *   [ADAM:一种随机优化的方法](https://theberkeleyview.wordpress.com/2015/11/19/berkeleyview-for-adam-a-method-for-stochastic-optimization/)(综述)
 *   [深度网络优化](https://www.cs.cmu.edu/~imisra/data/Optimization_2015_11_11.pdf)(幻灯片)
 *   [亚当:一种随机优化的方法](https://moodle2.cs.huji.ac.il/nu15/pluginfile.php/316969/mod_resource/content/1/adam_pres.pdf)(幻灯片)。
-*   [从头开始编码亚当梯度下降优化](https://machinelearningmastery.com/adam-optimization-from-scratch/)
+*   [从零开始编码亚当梯度下降优化](https://machinelearningmastery.com/adam-optimization-from-scratch/)
 
 你知道亚当还有什么好的资源吗？评论里告诉我。
 

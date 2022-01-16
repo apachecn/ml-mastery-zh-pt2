@@ -2,7 +2,7 @@
 
 > 原文：<https://machinelearningmastery.com/a-gentle-introduction-to-the-biggan/>
 
-生成性对抗网络，或 GANs ，可能是最有效的图像合成生成模型。
+生成对抗网络，或 GANs ，可能是最有效的图像合成生成模型。
 
 然而，它们通常局限于生成小图像，并且训练过程仍然脆弱，依赖于特定的增强和超参数以获得良好的结果。
 
@@ -16,7 +16,7 @@ BigGAN 是一种方法，它池化了一套最近在训练类条件图像和按�
 *   放大模型尺寸和批次尺寸可以产生更大更高质量的图像。
 *   扩大 GANs 规模所需的特定模型架构和培训配置。
 
-**用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
+**用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
@@ -28,14 +28,14 @@ BigGAN 是一种方法，它池化了一套最近在训练类条件图像和按�
 
 本教程分为四个部分；它们是:
 
-1.  氮化镓训练的脆性
+1.  GAN训练的脆性
 2.  通过扩大规模开发更好的 GANs
 3.  如何使用 BigGAN 扩展 GANs
 4.  BigGAN 生成的图像示例
 
-## 氮化镓训练的脆性
+## GAN训练的脆性
 
-生成性对抗网络，简称 GANs，能够生成高质量的合成图像。
+生成对抗网络，简称 GANs，能够生成高质量的合成图像。
 
 然而，生成的图像的尺寸保持相对较小，例如 64×64 或 128×128 像素。
 
@@ -51,7 +51,7 @@ BigGAN 是一种方法，它池化了一套最近在训练类条件图像和按�
 
 ——[高保真自然图像合成的大规模 GAN 训练](https://arxiv.org/abs/1809.11096)，2018。
 
-最近，工作集中在有效应用氮化镓生成高质量和更大的图像。
+最近，工作集中在有效应用GAN生成高质量和更大的图像。
 
 一种方法是尝试扩大已经运行良好的 GAN 模型。
 
@@ -65,7 +65,7 @@ BigGAN 是 GAN 架构的一个实现，旨在利用已报道的更普遍的最�
 
 顾名思义，BigGAN 专注于放大 GAN 模型。
 
-这包括具有以下特点的氮化镓型号:
+这包括具有以下特点的GAN型号:
 
 *   更多模型参数(例如，更多要素图)。
 *   更大的批量
@@ -102,13 +102,13 @@ BigGAN 模型的重点是增加模型参数的数量和批量，然后配置模�
 ![Summary of the Self-Attention Module Used in the Self-Attention GAN](img/3efc14c96a4f6842f7080a6c81b4d692.png)
 
 自我关注 GAN 中使用的自我关注模块概述。
-摘自:自我注意生成性对抗网络。
+摘自:自我注意生成对抗网络。
 
 此外，模型通过[铰链损失](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)进行训练，常用于训练支持向量机。
 
 > 在 SAGAN 中，所提出的注意模块被应用于发生器和鉴别器，它们通过最小化对抗性损失的铰链版本以交替的方式被训练
 
-——[自我注意生成性对抗网络](https://arxiv.org/abs/1805.08318)，2018。
+——[自我注意生成对抗网络](https://arxiv.org/abs/1805.08318)，2018。
 
 BigGAN 使用的模型架构带有来自 SAGAN 的注意力模块，并通过铰链损失进行训练。
 
@@ -126,7 +126,7 @@ BigGAN 使用的模型架构带有来自 SAGAN 的注意力模块，并通过铰
 
 类别信息通过投影提供给鉴别器。
 
-这是由[takentu Miyato](https://twitter.com/takeru_miyato?lang=en)等人在他们 2018 年的论文《生成性对抗网络的[谱归一化](https://arxiv.org/abs/1802.05957)中描述的这包括使用类值的整数嵌入，该类值被连接到网络的中间层。
+这是由[takentu Miyato](https://twitter.com/takeru_miyato?lang=en)等人在他们 2018 年的论文《生成对抗网络的[谱归一化](https://arxiv.org/abs/1802.05957)中描述的这包括使用类值的整数嵌入，该类值被连接到网络的中间层。
 
 > 条件 GANs 的鉴别器。为了便于计算，我们将整数标签 y 嵌入到{0，.。。，1000)转换为 128 维，然后将向量连接到中间层的输出。
 
@@ -306,7 +306,7 @@ BigGAN 生成的大型高质量 512×512 类条件图像示例。
 
 *   [高保真自然图像合成的大规模 GAN 训练](https://arxiv.org/abs/1809.11096)，2018。
 *   [用于高保真自然图像合成的大规模 GAN 训练，ICLR 2019](https://openreview.net/forum?id=B1xsqj09Fm) 。
-*   [自我注意生成性对抗网络](https://arxiv.org/abs/1805.08318)，2018。
+*   [自我注意生成对抗网络](https://arxiv.org/abs/1805.08318)，2018。
 *   [艺术风格的学术表达](https://arxiv.org/abs/1610.07629)，2016 年。
 *   [生成对抗网络的谱归一化](https://arxiv.org/abs/1802.05957)，2018。
 *   [为改善质量、稳定性和变异而进行的肝的渐进生长](https://arxiv.org/abs/1710.10196)，2017 年。
@@ -320,7 +320,7 @@ BigGAN 生成的大型高质量 512×512 类条件图像示例。
 
 ### 文章
 
-*   [减少生成性对抗网络中对标签数据的需求，谷歌 AI 博客](https://ai.googleblog.com/2019/03/reducing-need-for-labeled-data-in.html)。
+*   [减少生成对抗网络中对标签数据的需求，谷歌 AI 博客](https://ai.googleblog.com/2019/03/reducing-need-for-labeled-data-in.html)。
 
 ## 摘要
 
