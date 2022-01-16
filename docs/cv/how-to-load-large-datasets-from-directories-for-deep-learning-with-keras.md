@@ -192,7 +192,7 @@ data
 
 让我们仔细看看每一步。
 
-*图像数据生成器*的构造函数包含许多参数来指定如何在加载图像数据后对其进行操作，包括像素缩放和[数据增强](https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/)。我们在这个阶段不需要这些特性，所以配置*图像数据生成器*很容易。
+*图像数据生成器*的构造函数包含许多参数来指定如何在加载图像数据后对其进行操作，包括像素缩放和[数据扩充](https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/)。我们在这个阶段不需要这些特性，所以配置*图像数据生成器*很容易。
 
 ```py
 ...

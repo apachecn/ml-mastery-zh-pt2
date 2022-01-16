@@ -121,7 +121,7 @@
 
 相关:
 
-*   [利用 Keras 进行深度学习的图像增强](https://machinelearningmastery.com/image-augmentation-deep-learning-keras/)
+*   [利用 Keras 进行深度学习的图像扩充](https://machinelearningmastery.com/image-augmentation-deep-learning-keras/)
 *   [什么是抖动？(带噪音训练)](ftp://ftp.sas.com/pub/neural/FAQ3.html#A_jitter)
 
 ### 3)重新缩放您的数据
@@ -514,7 +514,7 @@
 
 考虑几乎无限数量的时期和设置检查点，以获取迄今为止性能最好的模型，请进一步查看。
 
-一些网络体系结构比其他网络体系结构对批量更敏感。我认为多层感知器通常对批量很敏感，而 LSTM 和中枢神经系统相当敏感，但这只是传闻。
+一些网络体系结构比其他网络体系结构对批量更敏感。我认为多层感知器通常对批量很敏感，而 LSTM 和CNN相当敏感，但这只是传闻。
 
 有关系的
 

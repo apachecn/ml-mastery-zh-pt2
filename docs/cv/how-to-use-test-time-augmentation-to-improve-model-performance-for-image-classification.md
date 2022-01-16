@@ -6,7 +6,7 @@
 
 [数据增广](https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/)是一种在为计算机视觉问题训练神经网络模型时，经常用来提高性能和减少泛化误差的技术。
 
-当用拟合模型进行预测时，也可以应用图像数据增强技术，以便允许模型对测试数据集中每个图像的多个不同版本进行预测。可以对增强图像上的预测进行平均，这可以导致更好的预测性能。
+当用拟合模型进行预测时，也可以应用图像数据扩充技术，以便允许模型对测试数据集中每个图像的多个不同版本进行预测。可以对增强图像上的预测进行平均，这可以导致更好的预测性能。
 
 在本教程中，您将发现用于提高图像分类任务模型性能的测试时间扩展。
 
@@ -37,7 +37,7 @@
 
 ## 测试时间增加
 
-数据增强是一种通常在模型训练期间使用的方法，它使用来自训练数据集的样本的修改副本来扩展训练集。
+数据扩充是一种通常在模型训练期间使用的方法，它使用来自训练数据集的样本的修改副本来扩展训练集。
 
 数据扩充通常使用图像数据来执行，其中训练数据集中的图像副本是通过执行一些图像操作技术来创建的，例如缩放、翻转、移位等等。
 
@@ -61,7 +61,7 @@
 
 Keras 深度学习库中并没有提供测试时增强，但是可以轻松实现。
 
-[ImageDataGenerator 类](https://keras.io/preprocessing/image/)可用于配置测试时间增加的选择。例如，下面的数据生成器被配置用于水平翻转图像数据增强。
+[ImageDataGenerator 类](https://keras.io/preprocessing/image/)可用于配置测试时间增加的选择。例如，下面的数据生成器被配置用于水平翻转图像数据扩充。
 
 ```py
 # configure image data augmentation
@@ -459,7 +459,7 @@ def tta_prediction(datagen, model, image, n_examples):
 
 我们可以通过定义 *ImageDataGenerator* 配置来开发一个驱动测试时间增加的函数，并为测试数据集中的每个图像调用 *tta_prediction()* 。
 
-重要的是，要考虑可能有利于模型适合 CIFAR-10 数据集的图像增强类型。对照片进行细微修改的增强可能是有用的。这可能包括放大，如缩放、移动和水平翻转。
+重要的是，要考虑可能有利于模型适合 CIFAR-10 数据集的图像扩充类型。对照片进行细微修改的增强可能是有用的。这可能包括放大，如缩放、移动和水平翻转。
 
 在这个例子中，我们将只使用水平翻转。
 
@@ -662,7 +662,7 @@ datagen = ImageDataGenerator(...)
 
 我使用这种方法来选择上一节中的测试时间增加，发现七个例子比三个或五个更好，随机缩放和随机移动似乎降低了模型的准确性。
 
-请记住，如果您也对训练数据集使用图像数据增强，并且该增强使用一种涉及计算数据集统计数据的像素缩放类型(例如，您称之为 *datagen.fit()* )，那么在测试时增强期间也必须使用相同的统计数据和像素缩放技术。
+请记住，如果您也对训练数据集使用图像数据扩充，并且该增强使用一种涉及计算数据集统计数据的像素缩放类型(例如，您称之为 *datagen.fit()* )，那么在测试时增强期间也必须使用相同的统计数据和像素缩放技术。
 
 ## 进一步阅读
 
@@ -678,7 +678,7 @@ datagen = ImageDataGenerator(...)
 
 *   [用 Keras 增加测试时间的图像分割](https://www.depends-on-the-definition.com/test-time-augmentation-keras/)
 *   [keras_tta，keras python 库的简单测试时间增加(TTA)](https://github.com/tsterbak/keras_tta)。
-*   [tta_wrapper，用于 Keras 模型的测试时间图像增强(TTA)wrapper](https://github.com/qubvel/tta_wrapper)。
+*   [tta_wrapper，用于 Keras 模型的测试时间图像扩充(TTA)wrapper](https://github.com/qubvel/tta_wrapper)。
 
 ## 摘要
 

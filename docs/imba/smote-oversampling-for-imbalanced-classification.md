@@ -8,7 +8,7 @@
 
 使用不平衡数据集的挑战在于，大多数机器学习技术会忽略少数类，从而导致少数类的性能不佳，尽管少数类的性能通常是最重要的。
 
-解决不平衡数据集的一种方法是对少数类进行过采样。最简单的方法是在少数类中复制例子，尽管这些例子没有给模型添加任何新的信息。相反，可以从现有的例子中合成新的例子。这是一种针对少数民族的[数据增强](https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/)，被称为**合成少数民族过采样技术**，简称为 **SMOTE** 。
+解决不平衡数据集的一种方法是对少数类进行过采样。最简单的方法是在少数类中复制例子，尽管这些例子没有给模型添加任何新的信息。相反，可以从现有的例子中合成新的例子。这是一种针对少数民族的[数据扩充](https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/)，被称为**合成少数民族过采样技术**，简称为 **SMOTE** 。
 
 在本教程中，您将发现针对过采样不平衡分类数据集的 SMOTE。
 

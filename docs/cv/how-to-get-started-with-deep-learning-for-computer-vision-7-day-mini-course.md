@@ -331,23 +331,23 @@ print(loss, acc)
 
 在下面的评论中发表你的发现。我很想看看你的发现。
 
-在下一课中，您将发现如何在训练数据上使用图像增强。
+在下一课中，您将发现如何在训练数据上使用图像扩充。
 
 ## 第 6 课:图像放大
 
-在本课中，您将发现如何使用图像增强。
+在本课中，您将发现如何使用图像扩充。
 
-[图像数据增强](https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/)是一种可以通过在数据集中创建图像的修改版本来人工扩展训练数据集大小的技术。
+[图像数据扩充](https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/)是一种可以通过在数据集中创建图像的修改版本来人工扩展训练数据集大小的技术。
 
 在更多的数据上训练深度学习神经网络模型可以产生更熟练的模型，并且增强技术可以创建图像的变化，这可以提高拟合模型将他们所学知识推广到新图像的能力。
 
-Keras 深度学习神经网络库通过 [ImageDataGenerator 类](https://keras.io/preprocessing/image/)提供了使用图像数据增强来拟合模型的能力。
+Keras 深度学习神经网络库通过 [ImageDataGenerator 类](https://keras.io/preprocessing/image/)提供了使用图像数据扩充来拟合模型的能力。
 
 下载一张由[和 YaDontStop](https://www.flickr.com/photos/thenovys/3854468621/) 拍摄的鸟的照片，在许可的许可下发布。将其保存到您当前的工作目录中，名称为“*bird.jpg*”。
 
 *   [下载一只鸟的照片(bird.jpg)](https://machinelearningmastery.com/wp-content/uploads/2019/01/bird.jpg)
 
-下面的示例将照片加载为数据集，并使用图像增强来创建图像的翻转和旋转版本，该版本可用于训练卷积神经网络模型。
+下面的示例将照片加载为数据集，并使用图像扩充来创建图像的翻转和旋转版本，该版本可用于训练卷积神经网络模型。
 
 ```py
 # example using image augmentation
@@ -382,9 +382,9 @@ pyplot.show()
 
 ### 你的任务
 
-在本课中，您的任务是运行示例并报告图像增强对原始图像的影响。
+在本课中，您的任务是运行示例并报告图像扩充对原始图像的影响。
 
-要获得加分，请尝试 ImageDataGenerator 类支持的其他类型的图像增强。
+要获得加分，请尝试 ImageDataGenerator 类支持的其他类型的图像扩充。
 
 在下面的评论中发表你的发现。我很想看看你发现了什么。
 
@@ -457,7 +457,7 @@ pyplot.show()
 *   如何从头开发一个卷积神经网络模型？
 *   如何使用预先训练好的模型对物体的照片进行分类。
 *   如何从零开始训练模特对服装照片进行分类？
-*   如何使用图像增强在训练数据集中创建照片的修改副本。
+*   如何使用图像扩充在训练数据集中创建照片的修改副本。
 *   如何使用预先训练的深度学习模型来检测照片中的人脸。
 
 这只是你深入学习计算机视觉旅程的开始。不断练习和发展你的技能。

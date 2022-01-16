@@ -98,7 +98,7 @@ ImageDataGenerator 类的用法如下。
 *   4.使用生成器来拟合模型(例如，将实例传递给 *fit_generator()* 函数)。
 *   5.使用生成器评估模型(例如，将实例传递给 *evaluate_generator()* 函数)。
 
-ImageDataGenerator 类支持多种像素缩放方法，以及一系列[数据增强技术](https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/)。我们将集中讨论像素缩放技术，并将数据增强方法留给后面的讨论。
+ImageDataGenerator 类支持多种像素缩放方法，以及一系列[数据扩充技术](https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/)。我们将集中讨论像素缩放技术，并将数据扩充方法留给后面的讨论。
 
 ImageDataGenerator 类支持的三种主要像素缩放技术如下:
 

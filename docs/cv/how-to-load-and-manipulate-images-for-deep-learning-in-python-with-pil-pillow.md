@@ -335,9 +335,9 @@ print(img_resized.size)
 
 简单的图像操作可用于创建新版本的图像，进而在建模时提供更丰富的训练数据集。
 
-通常，这被称为[数据增强](https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/)，并且可能涉及创建原始图像的翻转、旋转、裁剪或其他修改版本，希望算法将学会从图像数据中提取相同的特征，而不管它们可能出现在哪里。
+通常，这被称为[数据扩充](https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/)，并且可能涉及创建原始图像的翻转、旋转、裁剪或其他修改版本，希望算法将学会从图像数据中提取相同的特征，而不管它们可能出现在哪里。
 
-您可能想要实现自己的数据增强方案，在这种情况下，您需要知道如何执行图像数据的基本操作。
+您可能想要实现自己的数据扩充方案，在这种情况下，您需要知道如何执行图像数据的基本操作。
 
 ### 翻转图像
 
