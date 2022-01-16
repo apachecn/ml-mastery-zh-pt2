@@ -138,7 +138,7 @@ MLP 的结构可以用一个简单的符号来概括。
 
 您必须使用强大的测试工具和受控实验来发现答案。例如，查看帖子:
 
-*   [如何评价深度学习模型的技能](https://machinelearningmastery.com/evaluate-skill-deep-learning-models/)
+*   [如何评估深度学习模型的技能](https://machinelearningmastery.com/evaluate-skill-deep-learning-models/)
 
 不管你可能会遇到什么样的试探法，所有的答案都会回到仔细实验的需要，看看什么最适合你的特定数据集。
 

@@ -169,7 +169,7 @@ Lisa Torrey 和 Jude Shavlik 在[他们关于迁移学习的章节](https://amzn
 ### 教程
 
 *   [开发卷积神经网络模型时如何使用迁移学习](https://machinelearningmastery.com/how-to-use-transfer-learning-when-developing-convolutional-neural-network-models/)
-*   [如何使用预先训练好的 VGG 模型对照片中的物体进行分类](https://machinelearningmastery.com/use-pre-trained-vgg-model-classify-objects-photographs/)
+*   [如何使用预先训练好的 VGG 模型对照片中的对象进行分类](https://machinelearningmastery.com/use-pre-trained-vgg-model-classify-objects-photographs/)
 *   [如何利用深度学习神经网络的迁移学习提高性能](https://machinelearningmastery.com/how-to-improve-performance-with-transfer-learning-for-deep-learning-neural-networks/)
 
 ### 书

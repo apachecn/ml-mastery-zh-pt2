@@ -1,4 +1,4 @@
-# 如何开发 MNIST 手写数字分类 CNN
+# 如何为 MNIST 手写数字分类开发 CNN
 
 > 原文：<https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-from-scratch-for-mnist-handwritten-digit-classification/>
 

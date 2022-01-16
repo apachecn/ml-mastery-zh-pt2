@@ -1,4 +1,4 @@
-# 如何利用深度学习进行人脸检测
+# 如何将深度学习用于人脸检测
 
 > 原文：<https://machinelearningmastery.com/how-to-perform-face-detection-with-classical-and-deep-learning-methods-in-python-with-keras/>
 
@@ -48,7 +48,7 @@
 
 检测照片中的人脸很容易被人类解决，尽管考虑到人脸的动态特性，这对计算机来说一直是一个挑战。例如，无论人脸面对的方向或角度、光线水平、服装、配饰、头发颜色、面部毛发、妆容、年龄等，都必须检测人脸。
 
-> 人脸是一个动态的物体，其外观具有高度的可变性，这使得人脸检测成为计算机视觉中的一个难题。
+> 人脸是一个动态的对象，其外观具有高度的可变性，这使得人脸检测成为计算机视觉中的一个难题。
 
 ——[人脸检测:一项调查](https://www.sciencedirect.com/science/article/pii/S107731420190921X)，2001。
 
@@ -100,7 +100,7 @@
 
 > ……特征选择是通过对 AdaBoost 过程的简单修改来实现的:弱学习器受到约束，因此返回的每个弱分类器只能依赖于单个特征。结果，选择新的弱分类器的增强过程的每个阶段可以被视为特征选择过程。
 
-——[使用简单特征的增强级联快速物体检测](https://ieeexplore.ieee.org/document/990517)，2001 年。
+——[使用简单特征的增强级联快速对象检测](https://ieeexplore.ieee.org/document/990517)，2001 年。
 
 然后，这些模型被组织成一个越来越复杂的层次结构，称为“*级联*”。
 
@@ -108,7 +108,7 @@
 
 > …一种在级联结构中连续组合更复杂的分类器的方法，通过将注意力集中在图像中有希望的区域，显著提高了检测器的速度。
 
-——[使用简单特征的增强级联快速物体检测](https://ieeexplore.ieee.org/document/990517)，2001 年。
+——[使用简单特征的增强级联快速对象检测](https://ieeexplore.ieee.org/document/990517)，2001 年。
 
 其结果是非常快速和有效的人脸检测算法，该算法已经成为消费产品(如相机)中人脸检测的基础。
 
@@ -663,7 +663,7 @@ draw_faces(filename, faces)
 ### 报纸
 
 *   [人脸检测:一项调查](https://www.sciencedirect.com/science/article/pii/S107731420190921X)，2001。
-*   [使用简单特征的增强级联的快速物体检测](https://ieeexplore.ieee.org/document/990517)，2001。
+*   [使用简单特征的增强级联的快速对象检测](https://ieeexplore.ieee.org/document/990517)，2001。
 *   [使用深度卷积神经网络的多视角人脸检测](https://arxiv.org/abs/1502.02766)，2015。
 *   [使用多任务级联卷积网络的联合人脸检测和对准](https://arxiv.org/abs/1604.02878)，2016。
 

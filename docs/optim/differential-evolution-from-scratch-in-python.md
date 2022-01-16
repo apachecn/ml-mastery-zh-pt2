@@ -596,7 +596,7 @@ pyplot.show()
 
 ![Line Plot of Objective Function Evaluation for Each Improvement During the Differential Evolution Search](img/f445d1e5d981075d0949c9cc6518f3b0.png)
 
-差分进化搜索中每次改进的目标函数评价线图
+差分进化搜索中每次改进的目标函数评估线图
 
 ## 进一步阅读
 

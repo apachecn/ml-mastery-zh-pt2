@@ -1,4 +1,4 @@
-# 如何在 Keras 用 VGGFace2 进行人脸识别
+# 如何在 Keras 中将 VGGFace2 用于人脸识别
 
 > 原文：<https://machinelearningmastery.com/how-to-perform-face-recognition-with-vggface2-convolutional-neural-network-in-keras/>
 

@@ -1,4 +1,4 @@
-# 如何通过深度学习培养计算机视觉能力
+# 如何通过深度学习开发计算机视觉能力
 
 > 原文：<https://machinelearningmastery.com/how-to-develop-and-demonstrate-competence-with-deep-learning-for-computer-vision/>
 
@@ -41,7 +41,7 @@
 
 [计算机视觉](https://machinelearningmastery.com/what-is-computer-vision/)是人工智能的一个子领域，关注理解图像中的数据，如照片和视频。
 
-计算机视觉任务，如识别照片中的手写数字和物体，是一些早期的案例研究，展示了现代深度学习技术获得最先进结果的能力。
+计算机视觉任务，如识别照片中的手写数字和对象，是一些早期的案例研究，展示了现代深度学习技术获得最先进结果的能力。
 
 作为一名从业者，你可能希望通过深入学习计算机视觉来发展和展示你的技能。
 
@@ -100,7 +100,7 @@
 
 *   [SciPy/NumPy](https://docs.scipy.org/doc/scipy/reference/ndimage.html) .
 *   [scikit 影像](https://scikit-image.org/)。
-*   [Python 影像库(枕头)](https://python-pillow.org/)
+*   [Python 影像库(Pillow)](https://python-pillow.org/)
 *   [OpenCV](https://opencv.org/) 。
 
 它可能包括机器学习和深度学习库的基本数据处理能力，例如:
@@ -129,7 +129,7 @@ Python 中你最喜欢的图像处理 API 有哪些？
 
 这也可能包括一些有效模型的一般类别的技能，例如:
 
-*   ImageNet CNNs 如 AlexNet、VGG、ResNet、盗梦空间等。
+*   ImageNet CNNs 如 AlexNet、VGG、ResNet、Inception等。
 *   CNN-lsms、LSM-CNNs 等。
 *   R-CNNs、YOLO 等。
 
@@ -160,12 +160,12 @@ Python 中你最喜欢的图像处理 API 有哪些？
 这种类型的两个标准计算机视觉数据集包括:
 
 *   对手写数字进行分类(例如 [MNIST](http://yann.lecun.com/exdb/mnist/) 和 [SVHN](http://ufldl.stanford.edu/housenumbers/) )。
-*   对物体的照片进行分类(例如 [CIFAR-10](https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/) 和 CIFAR-100)。
+*   对对象的照片进行分类(例如 [CIFAR-10](https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/) 和 CIFAR-100)。
 *   人脸照片分类(如 [VGGFace2](http://www.robots.ox.ac.uk/~vgg/data/vgg_face2/) )
 
 相关的计算机视觉任务是识别照片中一个或多个对象的位置，也称为对象识别或对象定位或分割。
 
-*   物体识别和定位(例如 [COCO](http://cocodataset.org) )
+*   对象识别和定位(例如 [COCO](http://cocodataset.org) )
 
 还有一些任务涉及计算机视觉和自然语言处理的混合，例如:
 
@@ -190,7 +190,7 @@ Python 中你最喜欢的图像处理 API 有哪些？
 *   [多维图像处理(scipy . ndi image)API](https://docs.scipy.org/doc/scipy/reference/ndimage.html)
 *   [多维图像处理教程](https://docs.scipy.org/doc/scipy/reference/tutorial/ndimage.html)
 *   [scikit 影像](https://scikit-image.org/)
-*   [枕头](https://python-pillow.org/)
+*   [Pillow](https://python-pillow.org/)
 *   [OpenCV](https://opencv.org/)
 *   [OpenCV Python 教程](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html)
 *   [sklearn.feature_extraction:特征提取 API](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_extraction)

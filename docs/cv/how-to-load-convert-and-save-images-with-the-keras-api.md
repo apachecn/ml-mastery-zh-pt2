@@ -192,7 +192,7 @@ RGB
 
 ### 邮件
 
-*   [如何使用预先训练好的 VGG 模型对照片中的物体进行分类](https://machinelearningmastery.com/use-pre-trained-vgg-model-classify-objects-photographs/)
+*   [如何使用预先训练好的 VGG 模型对照片中的对象进行分类](https://machinelearningmastery.com/use-pre-trained-vgg-model-classify-objects-photographs/)
 
 ### 应用程序接口
 

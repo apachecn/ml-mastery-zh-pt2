@@ -14,7 +14,7 @@
 
 *   迁移学习包括使用在一个问题上训练的模型作为相关问题的起点。
 *   迁移学习是灵活的，允许直接使用预先训练好的模型，作为特征提取预处理，并集成到全新的模型中。
-*   Keras 可以方便地访问 ImageNet 图像识别任务中的许多顶级模型，如 VGG、盗梦空间和 ResNet。
+*   Keras 可以方便地访问 ImageNet 图像识别任务中的许多顶级模型，如 VGG、Inception和 ResNet。
 
 **用我的新书[计算机视觉深度学习](https://machinelearningmastery.com/deep-learning-for-computer-vision/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
@@ -581,7 +581,7 @@ model.get_layer('block2_conv2').trainable = False
 
 *   [如何利用深度学习神经网络的迁移学习提高性能](https://machinelearningmastery.com/how-to-improve-performance-with-transfer-learning-for-deep-learning-neural-networks/)
 *   [深度学习迁移学习入门](https://machinelearningmastery.com/transfer-learning-for-deep-learning/)
-*   [如何使用预先训练好的 VGG 模型对照片中的物体进行分类](https://machinelearningmastery.com/use-pre-trained-vgg-model-classify-objects-photographs/)
+*   [如何使用预先训练好的 VGG 模型对照片中的对象进行分类](https://machinelearningmastery.com/use-pre-trained-vgg-model-classify-objects-photographs/)
 
 ### 书
 
@@ -610,7 +610,7 @@ model.get_layer('block2_conv2').trainable = False
 
 *   迁移学习包括使用在一个问题上训练的模型作为相关问题的起点。
 *   迁移学习是灵活的，允许使用预先训练的模型直接作为特征提取预处理，并集成到全新的模型中。
-*   Keras 可以方便地访问 ImageNet 图像识别任务中的许多顶级模型，如 VGG、盗梦空间和 ResNet。
+*   Keras 可以方便地访问 ImageNet 图像识别任务中的许多顶级模型，如 VGG、Inception和 ResNet。
 
 你有什么问题吗？
 在下面的评论中提问，我会尽力回答。

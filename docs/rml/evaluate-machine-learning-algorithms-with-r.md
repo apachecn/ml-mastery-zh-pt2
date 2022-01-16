@@ -1,6 +1,6 @@
 # 如何用 R
 
-评价机器学习算法
+评估机器学习算法
 
 > 原文：<https://machinelearningmastery.com/evaluate-machine-learning-algorithms-with-r/>
 
@@ -21,7 +21,7 @@
 ![Evaluate Machine Learning Algorithms with R](img/b09f7608d637ff38530580f8cf4dd578.png)
 
 布莱恩·汤斯利用 R
-评价机器学习算法，保留部分权利。
+评估机器学习算法，保留部分权利。
 
 ## 一个问题的最佳算法
 

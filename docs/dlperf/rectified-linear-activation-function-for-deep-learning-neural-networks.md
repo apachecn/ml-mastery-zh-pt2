@@ -306,7 +306,7 @@ ReLU 可以用于大多数类型的神经网络。
 
 > ……滤波器组之后的非线性如何影响识别精度。令人惊讶的答案是，使用校正非线性是提高识别系统性能的最重要因素。
 
-——[物体识别的最佳多级架构是什么？](https://ieeexplore.ieee.org/document/5459469)，2009 年
+——[对象识别的最佳多级架构是什么？](https://ieeexplore.ieee.org/document/5459469)，2009 年
 
 用氯化萘调查 ReLU 的工作引发了它们在其他网络类型中的使用。
 
@@ -438,7 +438,7 @@ Maxout 是一种可选的分段线性函数，返回输入的最大值，设计�
 
 ### 报纸
 
-*   [物体识别的最佳多级架构是什么？](https://ieeexplore.ieee.org/document/5459469)，2009 年
+*   [对象识别的最佳多级架构是什么？](https://ieeexplore.ieee.org/document/5459469)，2009 年
 *   [整流线性单元改善受限玻尔兹曼机器](https://dl.acm.org/citation.cfm?id=3104425)，2010。
 *   [深度稀疏整流神经网络](http://proceedings.mlr.press/v15/glorot11a)，2011。
 *   [整流器非线性改善神经网络声学模型](http://ai.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final.pdf)，2013。

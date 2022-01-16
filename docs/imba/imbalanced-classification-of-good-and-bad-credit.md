@@ -861,7 +861,7 @@ pyplot.show()
 
 为每种评估的欠采样技术创建方框图和触须图，显示它们通常具有相同的扩展。
 
-令人鼓舞的是，对于表现良好的方法，方框分布在 0.8 左右，所有三种方法的平均值和中值都在 0.7 左右。这强调了分布是偏高的，有时会因为一些不好的评价而降低。
+令人鼓舞的是，对于表现良好的方法，方框分布在 0.8 左右，所有三种方法的平均值和中值都在 0.7 左右。这强调了分布是偏高的，有时会因为一些不好的评估而降低。
 
 ![Box and Whisker Plot of Logistic Regression With Undersampling on the Imbalanced German Credit Dataset](img/7f51f5fcf4df389db28cd4099e43a7bb.png)
 

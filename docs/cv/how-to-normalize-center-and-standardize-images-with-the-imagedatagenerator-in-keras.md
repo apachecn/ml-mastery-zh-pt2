@@ -1,4 +1,4 @@
-# 如何对 Keras 中的图像像素进行归一化、居中和标准化
+# 如何在 Keras 中对图像像素归一化、居中和标准化
 
 > 原文：<https://machinelearningmastery.com/how-to-normalize-center-and-standardize-images-with-the-imagedatagenerator-in-keras/>
 

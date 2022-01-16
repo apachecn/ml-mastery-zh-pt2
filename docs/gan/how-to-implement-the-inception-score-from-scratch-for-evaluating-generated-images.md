@@ -35,21 +35,21 @@
 
 本教程分为五个部分；它们是:
 
-1.  《盗梦空间》的评分是多少？
+1.  《Inception》的评分是多少？
 2.  如何计算初始分数
 3.  如何用 NumPy 实现初始评分
 4.  如何用 Keras 实现初始评分
-5.  《盗梦空间》评分的问题
+5.  《Inception》评分的问题
 
-## 《盗梦空间》的评分是多少？
+## 《Inception》的评分是多少？
 
 初始分数，简称 IS，是一个客观的度量标准，用于评估生成图像的质量，特别是由生成性对抗网络模型输出的合成图像。
 
 初始分数是由蒂姆·萨利曼(Tim Salimans)等人在 2016 年发表的题为“T2 训练 GANs 的改进技术”的论文中提出的
 
-在论文中，作者使用了一个众包平台( [Amazon Mechanical Turk](https://www.mturk.com/) )来评估大量 GAN 生成的图像。他们开发了初始分数，试图消除人类对图像的主观评价。
+在论文中，作者使用了一个众包平台( [Amazon Mechanical Turk](https://www.mturk.com/) )来评估大量 GAN 生成的图像。他们开发了初始分数，试图消除人类对图像的主观评估。
 
-作者发现他们的分数与主观评价有很好的相关性。
+作者发现他们的分数与主观评估有很好的相关性。
 
 > 作为人类注释器的替代，我们提出了一种自动评估样本的方法，我们发现该方法与人类评估有很好的相关性。
 
@@ -61,10 +61,10 @@
 
 该评分旨在捕捉生成的图像集合的两个属性:
 
-*   **图像质量**。图像看起来像特定的物体吗？
+*   **图像质量**。图像看起来像特定的对象吗？
 *   **图像多样性**。是否生成了广泛的对象？
 
-初始分数的最低值为 1.0，最高值为分类模型支持的类别数；在这种情况下，盗梦空间 v3 模型支持 [ILSVRC 2012 数据集](https://machinelearningmastery.com/introduction-to-the-imagenet-large-scale-visual-recognition-challenge-ilsvrc/)的 1000 个类，因此，该数据集上的最高盗梦空间分数为 1000。
+初始分数的最低值为 1.0，最高值为分类模型支持的类别数；在这种情况下，Inception v3 模型支持 [ILSVRC 2012 数据集](https://machinelearningmastery.com/introduction-to-the-imagenet-large-scale-visual-recognition-challenge-ilsvrc/)的 1000 个类，因此，该数据集上的最高Inception分数为 1000。
 
 [CIFAR-10 数据集](https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/)是分为 10 类对象的 50，000 幅图像的集合。介绍初始阶段的原始论文在真实的 CIFAR-10 训练数据集上计算了分数，获得了 11.24 +/- 0.12 的结果。
 
@@ -248,9 +248,9 @@ print(score)
 
 现在我们知道如何计算初始分数并在 Python 中实现它，我们可以在 Keras 中开发一个实现。
 
-这包括使用真实的盗梦空间 v3 模型对图像进行分类，并在图像集合的多个分割中平均计算得分。
+这包括使用真实的Inception v3 模型对图像进行分类，并在图像集合的多个分割中平均计算得分。
 
-首先，我们可以直接在 Keras 中加载盗梦空间 v3 模型。
+首先，我们可以直接在 Keras 中加载Inception v3 模型。
 
 ```py
 ...
@@ -563,7 +563,7 @@ loaded (50000, 32, 32, 3)
 score 11.317895 0.14821531
 ```
 
-## 《盗梦空间》评分的问题
+## 《Inception》评分的问题
 
 初始分数是有效的，但并不完美。
 
@@ -579,7 +579,7 @@ score 11.317895 0.14821531
 
 一个好的分数还需要生成的图像在模型支持的可能对象中有一个好的分布，并且每个类有接近偶数个例子。对于许多不能控制生成对象类型的 GAN 模型来说，这是很难控制的。
 
-[Shane Barratt](http://web.stanford.edu/~sbarratt/) 和 Rishi Sharma 在他们 2018 年发表的题为“[关于《盗梦空间》评分的注释](https://arxiv.org/abs/1801.01973)的论文中，仔细查看了《盗梦空间》评分，并列出了一些技术问题和边缘案例如果你想潜得更深，这是一个很好的参考。
+[Shane Barratt](http://web.stanford.edu/~sbarratt/) 和 Rishi Sharma 在他们 2018 年发表的题为“[关于《Inception》评分的注释](https://arxiv.org/abs/1801.01973)的论文中，仔细查看了《Inception》评分，并列出了一些技术问题和边缘案例如果你想潜得更深，这是一个很好的参考。
 
 ## 进一步阅读
 
@@ -588,7 +588,7 @@ score 11.317895 0.14821531
 ### 报纸
 
 *   [训练 GANs 的改进技术](https://arxiv.org/abs/1606.03498)，2016。
-*   [关于《盗梦空间》评分的一个注记](https://arxiv.org/abs/1801.01973)，2018。
+*   [关于《Inception》评分的一个注记](https://arxiv.org/abs/1801.01973)，2018。
 *   [重新思考计算机视觉的初始架构](https://arxiv.org/abs/1512.00567)，2015 年。
 
 ### 项目
@@ -598,7 +598,7 @@ score 11.317895 0.14821531
 
 ### 应用程序接口
 
-*   [Keras 盗梦空间 v3 模型](https://keras.io/applications/#inceptionv3)
+*   [Keras Inception v3 模型](https://keras.io/applications/#inceptionv3)
 *   [sci kit-图像库](https://scikit-image.org/)
 
 ### 文章
@@ -606,7 +606,7 @@ score 11.317895 0.14821531
 *   [在 CIFAR-10 上生成图像](https://paperswithcode.com/sota/image-generation-on-cifar-10)
 *   [初始分数计算](https://github.com/openai/improved-gan/issues/29)，2017 年。
 *   [初始分数的简单解释](https://medium.com/octavian-ai/a-simple-explanation-of-the-inception-score-372dff6a8c7a)
-*   [盗梦空间评分——评价你 GAN](https://sudomake.ai/inception-score-explained/) 的真实感，2018。
+*   [Inception评分——评估你 GAN](https://sudomake.ai/inception-score-explained/) 的真实感，2018。
 *   [kul LBA-leilbler 分歧，维基百科。](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence)
 *   [熵(信息论)，维基百科。](https://en.wikipedia.org/wiki/Entropy_(information_theory))
 

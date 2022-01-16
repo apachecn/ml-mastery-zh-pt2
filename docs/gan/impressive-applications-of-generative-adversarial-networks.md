@@ -46,7 +46,7 @@ GANs 有非常具体的用例，开始时可能很难理解这些用例。
 
 ## 为图像数据集生成示例
 
-生成新的似是而非的样本是伊恩·古德费勒等人在 2014 年的论文“[生成性对抗网络](https://arxiv.org/abs/1406.2661)”中描述的应用，其中 GANs 用于为 MNIST 手写数字数据集、CIFAR-10 小物体照片数据集和多伦多人脸数据库生成新的似是而非的示例。
+生成新的似是而非的样本是伊恩·古德费勒等人在 2014 年的论文“[生成性对抗网络](https://arxiv.org/abs/1406.2661)”中描述的应用，其中 GANs 用于为 MNIST 手写数字数据集、CIFAR-10 小对象照片数据集和多伦多人脸数据库生成新的似是而非的示例。
 
 ![Examples of GANs used to Generate New Plausible Examples for Image Datasets](img/2bb7473e2aaf399081ce6ddb9603eef1.png)
 
@@ -72,7 +72,7 @@ Tero Karras 等人在他们 2017 年发表的题为“为提高质量、稳定�
 
 照片真实感氮化镓生成的脸的例子。摘自 2017 年《为提高质量、稳定性和变化性而逐步发展的 GANs》。
 
-他们的方法也被用来演示物体和场景的生成。
+他们的方法也被用来演示对象和场景的生成。
 
 ![Example of Photorealistic GAN Generated Objects and Scenes](img/28c245d0bc977ee0162df5d272da5067.png)
 
@@ -160,7 +160,7 @@ Phillip Isola 等人在他们 2016 年发表的题为“利用条件对抗网络
 
 来自 StackGAN 的文本描述和 GAN 生成的鸟瞰照片示例:使用堆叠生成对抗网络的文本到照片真实感图像合成，2016。
 
-斯科特·里德(Scott Reed)等人在 2016 年发表的论文《生成性对抗性文本到图像合成》中，也提供了一个早期的例子，说明文本到图像生成小物体和场景，包括鸟、花等等。
+斯科特·里德(Scott Reed)等人在 2016 年发表的论文《生成性对抗性文本到图像合成》中，也提供了一个早期的例子，说明文本到图像生成小对象和场景，包括鸟、花等等。
 
 ![Example of Textual Descriptions and GAN Generated Photographs if Birds and Flowers](img/21eb93d404afab92473a2c606f42de89.png)
 
@@ -321,17 +321,17 @@ Carl Vondrick 等人在 2016 年发表的论文《利用场景动力学生成视
 
 ## 三维对象生成
 
-吴家军等人在他们 2016 年的论文《通过 3D 生成-对抗建模学习物体形状的概率潜在空间》中演示了一种用于生成新的三维物体(例如 3D 模型)的 GAN，例如椅子、汽车、沙发和桌子。
+吴家军等人在他们 2016 年的论文《通过 3D 生成-对抗建模学习对象形状的概率潜在空间》中演示了一种用于生成新的三维对象(例如 3D 模型)的 GAN，例如椅子、汽车、沙发和桌子。
 
 ![Example of GAN Generated Three Dimensional Objects](img/fa3f87d8b9cd4becc6fd00b8a6c0f04e.png)
 
-氮化镓生成的三维物体的例子。取自通过三维生成对抗建模学习物体形状的概率潜在空间
+氮化镓生成的三维对象的例子。取自通过三维生成对抗建模学习对象形状的概率潜在空间
 
-Matheus Gadelha 等人在 2016 年发表的题为“从多个物体的 2D 视图中进行三维形状归纳”的论文中使用 GANs 从多个视角生成给定物体二维图片的三维模型。
+Matheus Gadelha 等人在 2016 年发表的题为“从多个对象的 2D 视图中进行三维形状归纳”的论文中使用 GANs 从多个视角生成给定对象二维图片的三维模型。
 
 ![Example of Three-Dimensional Reconstructions of a Chair from Two-Dimensional Images](img/962c89aa34e9e2bb20c6a4648226b14c.png)
 
-从二维图像对椅子进行三维重建的示例。摘自 2016 年 2D 多物体视图中的三维形状归纳。
+从二维图像对椅子进行三维重建的示例。摘自 2016 年 2D 多对象视图中的三维形状归纳。
 
 ## 进一步阅读
 

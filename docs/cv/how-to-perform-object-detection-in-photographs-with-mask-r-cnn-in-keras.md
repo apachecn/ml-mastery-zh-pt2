@@ -1,4 +1,4 @@
-# 如何使用 Keras 中的蒙版 R-CNN 进行照片中的物体检测
+# 如何在Keras 中将 Mask RCNN 用于照片中的对象检测
 
 > 原文：<https://machinelearningmastery.com/how-to-perform-object-detection-in-photographs-with-mask-r-cnn-in-keras/>
 
@@ -16,7 +16,7 @@
 
 *   用于目标检测的基于区域的卷积神经网络系列模型，以及最近的一个变种，称为掩蔽神经网络。
 *   Keras 深度学习库的 Mask R-CNN 的最佳开源库实现。
-*   如何使用预先训练好的 Mask R-CNN 对新照片进行物体定位和检测。
+*   如何使用预先训练好的 Mask R-CNN 对新照片进行对象定位和检测。
 
 **用我的新书[计算机视觉深度学习](https://machinelearningmastery.com/deep-learning-for-computer-vision/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
@@ -24,7 +24,7 @@
 
 ![How to Perform Object Detection in Photographs With Mask R-CNN in Keras](img/95b9917aca0504f0922852098b23e9d3.png)
 
-如何在带有遮罩的照片中进行物体检测，版权所有。
+如何在带有遮罩的照片中进行对象检测，版权所有。
 
 ## 教程概述
 
@@ -58,7 +58,7 @@ sudo pip install --no-deps keras==2.2.4
 *   **R-CNN** :包围盒由“*选择性搜索*算法提出，在用线性支持向量机进行最后一组对象分类之前，每个包围盒被拉伸，并通过深度卷积神经网络提取特征，例如 [AlexNet](https://en.wikipedia.org/wiki/AlexNet) 。
 *   **快速 R-CNN** :单一模型的简化设计，仍然指定边界框作为输入，但是在深度 CNN 之后使用感兴趣区域池层来合并区域，模型直接预测类标签和感兴趣区域。
 *   **更快的 R-CNN** :增加了区域提议网络，解释从深层 CNN 提取的特征，学习直接提议感兴趣的区域。
-*   **蒙版 R-CNN**:fast R-CNN 的扩展，增加了一个输出模型，用于预测每个检测对象的蒙版。
+*   **Mask RCNN**:fast R-CNN 的扩展，增加了一个输出模型，用于预测每个检测对象的蒙版。
 
 在 2018 年发表的题为“ [Mask R-CNN](https://arxiv.org/abs/1703.06870) ”的论文中介绍的 Mask R-CNN 模型是该系列模型的最新变体，同时支持对象检测和对象分割。这篇论文很好地总结了这方面的模型:
 
@@ -102,7 +102,7 @@ R-CNN 模型的每个版本都有源代码，在独立的 GitHub 存储库中提
 
 在本节中，我们将使用 Matterport Mask R-CNN 库对任意照片执行对象检测。
 
-很像使用预先训练的深度 CNN 进行图像分类，例如在 ImageNet 数据集上训练的 [VGG-16，我们可以使用预先训练的 Mask R-CNN 模型来检测新照片中的对象。在这种情况下，我们将使用蒙版 R-CNN 上训练的](https://machinelearningmastery.com/use-pre-trained-vgg-model-classify-objects-photographs/) [MS COCO 物体检测问题](http://cocodataset.org/)。
+很像使用预先训练的深度 CNN 进行图像分类，例如在 ImageNet 数据集上训练的 [VGG-16，我们可以使用预先训练的 Mask R-CNN 模型来检测新照片中的对象。在这种情况下，我们将使用Mask RCNN 上训练的](https://machinelearningmastery.com/use-pre-trained-vgg-model-classify-objects-photographs/) [MS COCO 对象检测问题](http://cocodataset.org/)。
 
 ### 面罩安装
 
@@ -203,7 +203,7 @@ Required-by:
 
 ### 对象定位示例
 
-我们将使用预先训练好的蒙版 R-CNN 模型来检测新照片上的物体。
+我们将使用预先训练好的Mask RCNN 模型来检测新照片上的对象。
 
 #### 第一步。下载模型权重
 
@@ -215,7 +215,7 @@ Required-by:
 
 #### 第二步。下载照片样本
 
-我们还需要一张照片来探测物体。
+我们还需要一张照片来探测对象。
 
 我们将使用 Flickr 在许可许可下发布的照片，特别是曼迪·戈德堡拍摄的大象照片。
 
@@ -399,7 +399,7 @@ draw_image_with_boxes('elephant.jpg', results[0]['rois'])
 
 ![Photograph of an Elephant With All Objects Localized With a Bounding Box](img/02aa2f6cdd7d92fef639c40cfe3c4e05.png)
 
-一只大象的照片，所有物体都用边界框定位
+一只大象的照片，所有对象都用边界框定位
 
 ### 对象检测示例
 
@@ -502,7 +502,7 @@ display_instances(img, r['rois'], r['masks'], r['class_ids'], class_names, r['sc
 
 ![Photograph of an Elephant With All Objects Detected With a Bounding Box and Mask](img/95e7b03850d4308ba7b0e8462bdef984.png)
 
-用边界框和遮罩检测到所有物体的大象照片
+用边界框和遮罩检测到所有对象的大象照片
 
 ## 进一步阅读
 
@@ -541,7 +541,7 @@ display_instances(img, r['rois'], r['masks'], r['class_ids'], class_names, r['sc
 
 *   用于目标检测的基于区域的卷积神经网络系列模型，以及最近的一个变种，称为掩蔽神经网络。
 *   Keras 深度学习库的 Mask R-CNN 的最佳开源库实现。
-*   如何使用预先训练好的 Mask R-CNN 对新照片进行物体定位和检测。
+*   如何使用预先训练好的 Mask R-CNN 对新照片进行对象定位和检测。
 
 你有什么问题吗？
 在下面的评论中提问，我会尽力回答。

@@ -1,4 +1,4 @@
-# 时尚深度学习 CNN-MNIST 服装分类
+# 用于Fashion-MNIST 服装分类的深度学习 CNN
 
 > 原文：<https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-fashion-mnist-clothing-classification/>
 

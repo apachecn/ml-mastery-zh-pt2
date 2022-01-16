@@ -22,7 +22,7 @@
 
 ![How to Train an Object Detection Model to Find Kangaroos in Photographs (R-CNN with Keras)](img/1e3037f10d198223c1e36ba805e6b9e9.png)
 
-如何训练物体检测模型在照片中找到袋鼠(R-CNN with Keras)
+如何训练对象检测模型在照片中找到袋鼠(R-CNN with Keras)
 图片作者:[罗尼·罗伯逊](https://www.flickr.com/photos/16633132@N04/16146584567/)，版权所有。
 
 ## 教程概述
@@ -32,7 +32,7 @@
 1.  如何为喀拉斯安装口罩
 2.  如何准备用于对象检测的数据集
 3.  如何训练一个用于袋鼠检测的掩蔽模型
-4.  如何评价一个面具
+4.  如何评估一个面具
 5.  如何在新照片中检测袋鼠
 
 **注**:本教程需要 TensorFlow 1 . 15 . 3 版和 Keras 2.2.4 版。它不适用于 TensorFlow 2.0+或 Keras 2.2.5+，因为在编写本文时，第三方库尚未更新。
@@ -800,7 +800,7 @@ pyplot.show()
 
 ![Photograph of Kangaroo With Object Detection Mask Overlaid](img/dbf9250c8e345a66e22fbd71d99cbe95.png)
 
-覆盖物体检测面具的袋鼠照片
+覆盖对象检测面具的袋鼠照片
 
 我们可以对数据集中的前九张照片重复这一过程，将一幅图中的每张照片绘制为一个子图，并为每张照片绘制所有遮罩。
 
@@ -1191,7 +1191,7 @@ Epoch 5/5
 
 接下来，让我们看看如何评估这个模型的性能。
 
-## 如何评价一个面具
+## 如何评估一个面具
 
 对象识别任务的模型性能通常使用平均绝对精度(mAP)来评估。
 
@@ -1797,10 +1797,10 @@ plot_actual_vs_predicted(test_set, model, cfg)
 
 ### 文章
 
-*   [色彩喷溅:用蒙版 R-CNN 和 TensorFlow 进行实例分割，2018](https://engineering.matterport.com/splash-of-color-instance-segmentation-with-mask-r-cnn-and-tensorflow-7c761e238b46) 。
+*   [色彩喷溅:用Mask RCNN 和 TensorFlow 进行实例分割，2018](https://engineering.matterport.com/splash-of-color-instance-segmentation-with-mask-r-cnn-and-tensorflow-7c761e238b46) 。
 *   [口罩 R-CNN–检查气球训练模型，笔记本](https://github.com/matterport/Mask_RCNN/blob/master/samples/balloon/inspect_balloon_model.ipynb)。
-*   [蒙版 R-CNN–在形状数据集上训练，笔记本](https://github.com/matterport/Mask_RCNN/blob/master/samples/shapes/train_shapes.ipynb)。
-*   [物体检测平均精度图，2018](https://medium.com/@jonathan_hui/map-mean-average-precision-for-object-detection-45c121a31173) 。
+*   [Mask RCNN–在形状数据集上训练，笔记本](https://github.com/matterport/Mask_RCNN/blob/master/samples/shapes/train_shapes.ipynb)。
+*   [对象检测平均精度图，2018](https://medium.com/@jonathan_hui/map-mean-average-precision-for-object-detection-45c121a31173) 。
 
 ## 摘要
 

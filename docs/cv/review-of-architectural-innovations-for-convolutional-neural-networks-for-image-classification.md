@@ -4,7 +4,7 @@
 
 最后更新于 2019 年 7 月 5 日
 
-#### 温和地介绍了 LeNet，AlexNet，VGG，盗梦空间和 ResNet 卷积神经网络的创新。
+#### 温和地介绍了 LeNet，AlexNet，VGG，Inception和 ResNet 卷积神经网络的创新。
 
 卷积神经网络由两个非常简单的元素组成，即[卷积层](https://machinelearningmastery.com/convolutional-layers-for-deep-learning-neural-networks/)和[汇聚层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)。
 
@@ -34,7 +34,7 @@
 2.  莱内-5
 3.  阿勒克斯网
 4.  VGG
-5.  盗梦空间和谷歌网
+5.  Inception和谷歌网
 6.  剩余网络或资源网
 
 ## CNN的建筑设计
@@ -45,7 +45,7 @@
 
 学习如何设计有效的卷积神经网络体系结构的一个有用方法是研究成功的应用。这一点特别容易做到，因为在 2012 年至 2016 年期间，针对 ImageNet 大规模视觉识别挑战(ILSVRC)对CNN进行了大量研究和应用。这一挑战导致了非常困难的计算机视觉任务在技术水平上的快速进步，以及卷积神经网络模型体系结构的一般创新的发展。
 
-我们将从 LeNet-5 开始，它通常被描述为在 ILSVRC 之前 CNNs 的第一个成功和重要的应用，然后看看为 ILSVRC 开发的卷积神经网络的四个不同的获奖架构创新，即 AlexNet、VGG、盗梦空间和 ResNet。
+我们将从 LeNet-5 开始，它通常被描述为在 ILSVRC 之前 CNNs 的第一个成功和重要的应用，然后看看为 ILSVRC 开发的卷积神经网络的四个不同的获奖架构创新，即 AlexNet、VGG、Inception和 ResNet。
 
 通过从高层次理解这些里程碑模型及其架构或架构创新，您将对这些架构元素在 CNN 在计算机视觉中的现代应用中的使用形成欣赏，并能够识别和选择可能对您自己的模型设计有用的架构元素。
 
@@ -83,7 +83,7 @@
 
 这项工作也许可以被认为激发了人们对神经网络的新兴趣，并开始了深度学习在许多计算机视觉应用中的主导地位，这是亚历克斯·克里哲夫斯基等人在 2012 年发表的题为“用深度卷积神经网络进行图像网络分类”的论文
 
-该论文描述了一个后来被称为“阿列克谢网”的模型，旨在解决“T2”图像网大规模视觉识别挑战“T3”或“T4”ILSVRC-2010“T5”竞赛，将物体照片分类为 1000 个不同类别之一。
+该论文描述了一个后来被称为“阿列克谢网”的模型，旨在解决“T2”图像网大规模视觉识别挑战“T3”或“T4”ILSVRC-2010“T5”竞赛，将对象照片分类为 1000 个不同类别之一。
 
 ILSVRC 是 2011 年至 2016 年举办的竞赛，旨在激励计算机视觉领域的创新。在 AlexNet 开发之前，这项任务被认为非常困难，远远超出了现代计算机视觉方法的能力。AlexNet 成功地展示了卷积神经网络模型在该领域的能力，并点燃了一把火，带来了更多的改进和创新，在随后的几年中，许多人在同一个 ILSVRC 任务上进行了演示。更广泛地说，该论文表明，在不使用当时流行的无监督预处理技术的情况下，为一个具有挑战性的问题开发深度和有效的端到端模型是可能的。
 
@@ -149,7 +149,7 @@ AlexNet 的体系结构是深入的，并且扩展了 LeNet-5 建立的一些模
 *   卷积池块模式的戏剧性重复。
 *   开发非常深的(16 层和 19 层)模型。
 
-## 盗梦空间和谷歌网
+## Inception和谷歌网
 
 克里斯蒂安·塞格迪(Christian Szegedy)等人在 2015 年的论文中提出了卷积层使用方面的重要创新，该论文的标题为“利用卷积进行更深入的研究”
 
@@ -171,7 +171,7 @@ AlexNet 的体系结构是深入的，并且扩展了 LeNet-5 建立的一些模
 
 初始模型中第二个重要的设计决策是连接模型中不同点的输出。这是通过从主网络创建小的离拍输出网络来实现的，这些网络被训练来进行预测。目的是在深度模型的不同点提供来自分类任务的额外误差信号，以便解决消失梯度问题。这些小的输出网络在训练后被移除。
 
-下图显示了 GoogLeNet 模型架构的旋转版本(从左到右为输入到输出)，该模型取自论文，使用了从左侧输入到右侧输出分类的盗梦空间模块以及仅在培训期间使用的两个额外的输出网络。
+下图显示了 GoogLeNet 模型架构的旋转版本(从左到右为输入到输出)，该模型取自论文，使用了从左侧输入到右侧输出分类的Inception模块以及仅在培训期间使用的两个额外的输出网络。
 
 ![Architecture of the GoogLeNet Model Used During Training for Object Photo Classification](img/7cc55a9b4cf26bc216641e212cf278ef.png)
 
@@ -205,7 +205,7 @@ AlexNet 的体系结构是深入的，并且扩展了 LeNet-5 建立的一些模
 
 ![Architecture of the Residual Network for Object Photo Classification](img/ccdd1b2aa612a0da78bd698278fa9c2b.png)
 
-物体照片分类剩余网络的结构(取自 2016 年论文)。
+对象照片分类剩余网络的结构(取自 2016 年论文)。
 
 我们可以将与现代模型相关的架构的关键方面总结如下:
 
@@ -232,7 +232,7 @@ AlexNet 的体系结构是深入的，并且扩展了 LeNet-5 建立的一些模
 ### 文章
 
 *   [你需要了解的 9 篇深度学习论文](https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html)
-*   [盗梦空间网络版本简单指南](https://towardsdatascience.com/a-simple-guide-to-the-versions-of-the-inception-network-7fc52b863202)，2018 年。
+*   [Inception网络版本简单指南](https://towardsdatascience.com/a-simple-guide-to-the-versions-of-the-inception-network-7fc52b863202)，2018 年。
 *   [CNN 架构:LeNet、AlexNet、VGG、GoogLeNet、ResNet 等。](https://medium.com/@sidereal/cnns-architectures-lenet-alexnet-vgg-googlenet-resnet-and-more-666091488df5)，2017 年。
 
 ### 摘要

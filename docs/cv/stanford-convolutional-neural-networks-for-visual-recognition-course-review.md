@@ -116,7 +116,7 @@
 *   **第九讲:CNN 架构**。本讲座将帮助您了解流行的图像分类网络体系结构。
     *   [视频](https://www.youtube.com/watch?v=DAOcjicFr1Y&list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv&index=10&t=0s)
     *   [PDF 幻灯片](http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture9.pdf)
-*   **第十一讲:检测与分割**。本讲座将帮助您了解图像分类和物体识别任务。
+*   **第十一讲:检测与分割**。本讲座将帮助您了解图像分类和对象识别任务。
     *   [视频](https://www.youtube.com/watch?v=nDPWywWRIRo&list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv&index=12&t=0s)
     *   [PDF 幻灯片](http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture11.pdf)
 

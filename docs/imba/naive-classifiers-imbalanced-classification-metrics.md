@@ -394,7 +394,7 @@ UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 due to no pr
 
 ![Box and Whisker Plot for Naive Classifier Strategies Evaluated Using F-Measure](img/59823e6e90339e05ab4daa94fbc27f6f.png)
 
-用 F-测度评价朴素分类器策略的盒须图
+用 F-测度评估朴素分类器策略的盒须图
 
 当使用 F0.5 和 F2 度量时，这种预测少数类的相同的朴素分类器策略也是合适的。
 

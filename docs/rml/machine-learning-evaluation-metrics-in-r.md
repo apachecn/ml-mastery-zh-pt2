@@ -1,4 +1,4 @@
-# R 中的机器学习评价指标
+# R 中的机器学习评估指标
 
 > 原文：<https://machinelearningmastery.com/machine-learning-evaluation-metrics-in-r/>
 

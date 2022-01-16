@@ -1,4 +1,4 @@
-# 如何使用 PIL/枕头
+# 如何使用 PIL/Pillow
 
 加载和操作 Python 深度学习的图像
 
@@ -8,13 +8,13 @@
 
 在开发图像数据的预测模型之前，您必须学习如何加载和操作图像和照片。
 
-Python 中用于加载和处理图像数据的最流行和事实上的标准库是枕头。枕头是 Python 图像库或 PIL 的更新版本，支持一系列简单而复杂的图像处理功能。它也是其他 Python 库(如 SciPy 和 Matplotlib)中简单图像支持的基础。
+Python 中用于加载和处理图像数据的最流行和事实上的标准库是Pillow。Pillow是 Python 图像库或 PIL 的更新版本，支持一系列简单而复杂的图像处理功能。它也是其他 Python 库(如 SciPy 和 Matplotlib)中简单图像支持的基础。
 
-在本教程中，您将了解如何使用枕头 Python 库加载和操作图像数据。
+在本教程中，您将了解如何使用Pillow Python 库加载和操作图像数据。
 
 完成本教程后，您将知道:
 
-*   如何安装枕头库并确认其工作正常。
+*   如何安装Pillow库并确认其工作正常。
 *   如何从文件中加载图像，将加载的图像转换为 NumPy 数组，以及以新格式保存图像。
 *   如何对图像数据执行基本转换，如调整大小、翻转、旋转和裁剪。
 
@@ -22,28 +22,28 @@ Python 中用于加载和处理图像数据的最流行和事实上的标准库�
 
 我们开始吧。
 
-*   **2019 年 9 月更新**:更新以反映枕头 API 的微小变化。
+*   **2019 年 9 月更新**:更新以反映Pillow API 的微小变化。
 
 ## 教程概述
 
 本教程分为六个部分；它们是:
 
-1.  如何安装枕头
+1.  如何安装Pillow
 2.  如何加载和显示图像
 3.  如何将图像转换为数字阵列并返回
 4.  如何将图像保存到文件
 5.  如何调整图像大小
 6.  如何翻转、旋转和裁剪图像
 
-## 如何安装枕头
+## 如何安装Pillow
 
 [Python 图像库](http://www.pythonware.com/products/pil/)，简称 PIL，是一个用于加载和操作图像的开源库。
 
 它是在 25 年前开发并提供的，已经成为使用 Python 处理图像的事实上的标准应用编程接口。该库现已失效，不再更新，不支持 Python 3。
 
-[枕头](https://python-pillow.org/)是一个支持 Python 3 的 PIL 库，是 Python 中图像操作的首选现代库。它甚至是其他 Python 科学库(如 SciPy 和 Matplotlib)中简单的图像加载和保存所必需的。
+[Pillow](https://python-pillow.org/)是一个支持 Python 3 的 PIL 库，是 Python 中图像操作的首选现代库。它甚至是其他 Python 科学库(如 SciPy 和 Matplotlib)中简单的图像加载和保存所必需的。
 
-枕头库是作为大多数 SciPy 安装的一部分安装的；例如，如果您正在使用 Anaconda。
+Pillow库是作为大多数 SciPy 安装的一部分安装的；例如，如果您正在使用 Anaconda。
 
 有关设置 SciPy 环境的帮助，请参见分步教程:
 
@@ -55,11 +55,11 @@ Python 中用于加载和处理图像数据的最流行和事实上的标准库�
 sudo pip install Pillow
 ```
 
-有关手动安装枕头的更多帮助，请参见:
+有关手动安装Pillow的更多帮助，请参见:
 
-*   [枕头安装说明](https://pillow.readthedocs.io/en/stable/installation.html)
+*   [Pillow安装说明](https://pillow.readthedocs.io/en/stable/installation.html)
 
-枕头是建立在旧的 PIL 之上的，你可以通过打印版本号来确认图书馆安装正确；例如:
+Pillow是建立在旧的 PIL 之上的，你可以通过打印版本号来确认图书馆安装正确；例如:
 
 ```py
 # check Pillow version number
@@ -67,7 +67,7 @@ import PIL
 print('Pillow Version:', PIL.__version__)
 ```
 
-运行该示例将打印枕头的版本号；您的版本号应该相同或更高。
+运行该示例将打印Pillow的版本号；您的版本号应该相同或更高。
 
 ```py
 Pillow Version: 6.1.0
@@ -77,7 +77,7 @@ Pillow Version: 6.1.0
 
 ## 如何加载和显示图像
 
-我们需要一个测试图像来演示使用枕头库的一些重要功能。
+我们需要一个测试图像来演示使用Pillow库的一些重要功能。
 
 在本教程中，我们将使用一张悉尼歌剧院的照片，该照片由埃德·邓恩斯拍摄，并根据知识共享许可在 Flickr 上提供，保留部分权利。
 
@@ -89,13 +89,13 @@ Pillow Version: 6.1.0
 
 下载照片，保存在当前工作目录下，文件名为“ *opera_house.jpg* ”。
 
-图像通常为 PNG 或 JPEG 格式，可以使用 Image 类上的 [open()函数](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image)直接加载。这将返回一个 Image 对象，该对象包含图像的像素数据以及图像的详细信息。图像类是枕头库的主要工具，它提供了大量关于图像的属性以及允许您操作图像的像素和格式的函数。
+图像通常为 PNG 或 JPEG 格式，可以使用 Image 类上的 [open()函数](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image)直接加载。这将返回一个 Image 对象，该对象包含图像的像素数据以及图像的详细信息。图像类是Pillow库的主要工具，它提供了大量关于图像的属性以及允许您操作图像的像素和格式的函数。
 
 图像上的“*格式*”属性将报告图像格式(例如 JPEG)，“*模式*将报告像素通道格式(例如 RGB 或 CMYK)，“*尺寸*将以像素为单位报告图像尺寸(例如 640×480)。
 
 *show()* 功能将使用您的操作系统默认应用程序显示图像。
 
-下面的示例演示了如何使用枕头库中的 image 类加载和显示图像。
+下面的示例演示了如何使用Pillow库中的 image 类加载和显示图像。
 
 ```py
 # load and show an image with Pillow
@@ -130,11 +130,11 @@ RGB
 
 通常在机器学习中，我们希望将图像作为像素数据的 [NumPy 数组](https://machinelearningmastery.com/index-slice-reshape-numpy-arrays-machine-learning-python/)来处理。
 
-安装枕头后，您还可以使用 Matplotlib 库加载图像，并在 Matplotlib 框架内显示它。
+安装Pillow后，您还可以使用 Matplotlib 库加载图像，并在 Matplotlib 框架内显示它。
 
 这可以通过使用 [imread()函数](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.imread.html)和 [imshow()函数](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.imshow.html)来实现，前者直接将图像加载为像素阵列，后者将像素阵列显示为图像。
 
-下面的示例使用 Matplotlib 加载和显示相同的图像，而 Matplotlib 又会在封面下使用枕头。
+下面的示例使用 Matplotlib 加载和显示相同的图像，而 Matplotlib 又会在封面下使用Pillow。
 
 ```py
 # load and display an image with Matplotlib
@@ -163,9 +163,9 @@ uint8
 
 用 Matplotlib 展示悉尼歌剧院
 
-Matplotlib 包装函数可以比直接使用枕头更有效。
+Matplotlib 包装函数可以比直接使用Pillow更有效。
 
-不过，您可以从枕头图像中访问像素数据。也许最简单的方法是构造一个 NumPy 数组并传入 Image 对象。使用 *Image.fromarray()* 函数将给定的像素数据数组转换为枕形图像对象的过程可以颠倒过来。如果将图像数据作为 NumPy 数组进行处理，然后希望以后将其保存为 PNG 或 JPEG 文件，这将非常有用。
+不过，您可以从Pillow图像中访问像素数据。也许最简单的方法是构造一个 NumPy 数组并传入 Image 对象。使用 *Image.fromarray()* 函数将给定的像素数据数组转换为枕形图像对象的过程可以颠倒过来。如果将图像数据作为 NumPy 数组进行处理，然后希望以后将其保存为 PNG 或 JPEG 文件，这将非常有用。
 
 下面的示例将照片加载为枕形图像对象，并将其转换为 NumPy 数组，然后再次将其转换回图像对象。
 
@@ -187,7 +187,7 @@ print(image2.mode)
 print(image2.size)
 ```
 
-运行该示例首先将照片加载为枕头图像，然后将其转换为 NumPy 数组并报告数组的形状。最后，阵列被转换回枕头图像，并报告细节。
+运行该示例首先将照片加载为Pillow图像，然后将其转换为 NumPy 数组并报告数组的形状。最后，阵列被转换回Pillow图像，并报告细节。
 
 ```py
 (360, 640, 3)
@@ -196,7 +196,7 @@ RGB
 (640, 360)
 ```
 
-这两种方法对于将图像数据加载到 NumPy 数组中都是有效的，尽管 Matplotlib *imread()* 函数使用的代码行比加载和转换枕头图像对象少，并且可能是首选的。
+这两种方法对于将图像数据加载到 NumPy 数组中都是有效的，尽管 Matplotlib *imread()* 函数使用的代码行比加载和转换Pillow图像对象少，并且可能是首选的。
 
 例如，您可以轻松地将目录中的所有图像加载为列表，如下所示:
 
@@ -271,7 +271,7 @@ image2.show()
 
 能够在建模之前调整图像大小非常重要。
 
-有时希望缩略图所有图像具有相同的宽度或高度。这可以通过枕头使用*缩略图()*功能来实现。该函数采用一个具有宽度和高度的元组，并且将调整图像的大小，以使图像的宽度和高度等于或小于指定的形状。
+有时希望缩略图所有图像具有相同的宽度或高度。这可以通过Pillow使用*缩略图()*功能来实现。该函数采用一个具有宽度和高度的元组，并且将调整图像的大小，以使图像的宽度和高度等于或小于指定的形状。
 
 例如，我们正在处理的测试照片的宽度和高度为(640，360)。我们可以将它的大小调整为(100，100)，在这种情况下，最大的尺寸，在这种情况下，宽度，将减少到 100，高度将被缩放，以保持图像的纵横比。
 
@@ -436,8 +436,8 @@ cropped.show()
 
 本节列出了一些您可能希望探索的扩展教程的想法。
 
-*   **自己的影像**。尝试枕头功能，用自己的图像数据读取和处理图像。
-*   **更多变换**。查看枕头应用编程接口文档，并尝试其他图像处理功能。
+*   **自己的影像**。尝试Pillow功能，用自己的图像数据读取和处理图像。
+*   **更多变换**。查看Pillow应用编程接口文档，并尝试其他图像处理功能。
 *   **图像预处理**。编写一个函数来创建图像的增强版本，以便与深度学习神经网络一起使用。
 
 如果你探索这些扩展，我很想知道。
@@ -446,22 +446,22 @@ cropped.show()
 
 如果您想更深入地了解这个主题，本节将提供更多资源。
 
-*   [枕头主页](https://python-pillow.org/)
-*   [枕头安装说明](https://pillow.readthedocs.io/en/stable/installation.html)
-*   [枕头(PIL 叉)原料药文件](https://pillow.readthedocs.io/en/stable/)
-*   [枕头手册教程](https://pillow.readthedocs.io/en/stable/handbook/tutorial.html)
-*   [枕头 GitHub 项目](https://github.com/python-pillow/Pillow)
+*   [Pillow主页](https://python-pillow.org/)
+*   [Pillow安装说明](https://pillow.readthedocs.io/en/stable/installation.html)
+*   [Pillow(PIL 叉)原料药文件](https://pillow.readthedocs.io/en/stable/)
+*   [Pillow手册教程](https://pillow.readthedocs.io/en/stable/handbook/tutorial.html)
+*   [Pillow GitHub 项目](https://github.com/python-pillow/Pillow)
 *   [Python 影像库(PIL)主页](http://www.pythonware.com/products/pil/)
 *   [Python 影像库，维基百科。](https://en.wikipedia.org/wiki/Python_Imaging_Library)
 *   [Matplotlib:影像教学](https://matplotlib.org/users/image_tutorial.html)
 
 ## 摘要
 
-在本教程中，您发现了如何使用枕头 Python 库加载和操作图像数据。
+在本教程中，您发现了如何使用Pillow Python 库加载和操作图像数据。
 
 具体来说，您了解到:
 
-*   如何安装枕头库并确认其工作正常。
+*   如何安装Pillow库并确认其工作正常。
 *   如何从文件中加载图像，将加载的图像转换为 NumPy 数组，以及以新格式保存图像。
 *   如何对图像数据执行基本转换，如调整大小、翻转、旋转和裁剪。
 

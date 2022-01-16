@@ -78,7 +78,7 @@ Let’s get started.![Local Optimization Versus Global Optimization](img/4813222
 
 —第 37 页，[计算智能:导论](https://amzn.to/2FUZp1v)，2007。
 
-一个目标函数可能有一个或多个全局最优解，如果有多个全局最优解，则称之为[多模态优化](https://en.wikipedia.org/wiki/Multimodal_distribution)问题，每个最优解将有不同的输入和相同的目标函数评价。
+一个目标函数可能有一个或多个全局最优解，如果有多个全局最优解，则称之为[多模态优化](https://en.wikipedia.org/wiki/Multimodal_distribution)问题，每个最优解将有不同的输入和相同的目标函数评估。
 
 *   **全局优化**:为可能包含局部最优值的目标函数定位最优值。
 

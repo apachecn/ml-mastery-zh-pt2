@@ -33,13 +33,13 @@ FID 分数用于评估生成性对抗网络生成的图像质量，较低的分�
 
 本教程分为五个部分；它们是:
 
-1.  什么是弗雷切特盗梦空间距离？
+1.  什么是弗雷切特Inception距离？
 2.  如何计算弗雷歇起始距离
 3.  如何用 NumPy 实现弗雷切特初始距离
 4.  如何用 Keras 实现弗雷切特初始距离
 5.  如何计算真实图像的弗雷歇起始距离
 
-## 什么是弗雷切特盗梦空间距离？
+## 什么是弗雷切特Inception距离？
 
 弗雷切特初始距离，简称 FID，是一种评估生成图像质量的指标，专门用于评估生成性对抗网络的性能。
 
@@ -69,7 +69,7 @@ FID 分数是由[Martin heussel](https://www.linkedin.com/in/mheusel/)等人在�
 
 ——[通过两时间尺度更新规则训练的 GANs 收敛到局部纳什均衡](https://arxiv.org/abs/1706.08500)，2017。
 
-使用《盗梦空间 v3》模型中的激活来总结每张图像，为该分数命名为“*弗雷切特盗梦空间距离*”
+使用《Inception v3》模型中的激活来总结每张图像，为该分数命名为“*弗雷切特Inception距离*”
 
 较低的 FID 表示图像质量较好；相反，较高的分数表示较低质量的图像，并且该关系可以是线性的。
 
@@ -82,7 +82,7 @@ FID 分数是由[Martin heussel](https://www.linkedin.com/in/mheusel/)等人在�
 
 ## 如何计算弗雷歇起始距离
 
-FID 分数是通过首先加载一个预先训练好的盗梦空间 v3 模型来计算的。
+FID 分数是通过首先加载一个预先训练好的Inception v3 模型来计算的。
 
 移除模型的输出层，并将输出作为来自最后一个汇集层的激活，即[全局空间汇集层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)。
 
@@ -222,7 +222,7 @@ FID (different): 358.927
 
 这包括准备图像数据，并使用预训练的初始 v3 模型来计算每个图像的激活或特征向量。
 
-首先，我们可以直接在 Keras 中加载盗梦空间 v3 模型。
+首先，我们可以直接在 Keras 中加载Inception v3 模型。
 
 ```py
 ...
@@ -314,7 +314,7 @@ images1 = scale_images(images1, (299,299,3))
 images2 = scale_images(images2, (299,299,3))
 ```
 
-然后可以缩放像素值以满足盗梦空间 v3 模型的期望。
+然后可以缩放像素值以满足Inception v3 模型的期望。
 
 ```py
 ...
@@ -527,7 +527,7 @@ FID: 5.492
 
 *   [通过两时间尺度更新规则训练的遗传神经网络收敛到局部纳什均衡](https://arxiv.org/abs/1706.08500)，2017。
 *   【GANs 生来平等吗？一项大型研究，2017 年。
-*   [GAN 评价办法的利弊](https://arxiv.org/abs/1802.03446)，2018 年。
+*   [GAN 评估办法的利弊](https://arxiv.org/abs/1802.03446)，2018 年。
 
 ### 代码项目
 
@@ -539,7 +539,7 @@ FID: 5.492
 *   num py . trace API。
 *   num py . cov API。
 *   [num py . isccomplexibjapi](https://docs.scipy.org/doc/numpy/reference/generated/numpy.iscomplexobj.html)。
-*   [Keras 盗梦空间 v3 模型](https://keras.io/applications/#inceptionv3)
+*   [Keras Inception v3 模型](https://keras.io/applications/#inceptionv3)
 *   [sci kit-图像库](https://scikit-image.org/)
 
 ### 文章
