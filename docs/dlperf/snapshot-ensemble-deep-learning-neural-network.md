@@ -634,7 +634,7 @@ def load_all_models(n_models):
 members = list(reversed(members))
 ```
 
-我们不知道需要多少快照才能对这个问题做出很好的预测。我们可以通过从 499 时期的最终模型开始创建尺寸不断增加的系综，然后添加 449 时期保存的模型，以此类推，直到包括所有 10 个模型，来探索系综成员的数量对测试集准确性的影响。
+我们不知道需要多少快照才能对这个问题做出很好的预测。我们可以通过从 499 时期的最终模型开始创建尺寸不断增加的集成，然后添加 449 时期保存的模型，以此类推，直到包括所有 10 个模型，来探索集成成员的数量对测试集准确性的影响。
 
 首先，我们需要一个函数在给定一系列模型的情况下进行预测。给定每个模型预测每个输出类的概率，我们可以对模型的预测概率求和，并通过 [argmax()函数](https://machinelearningmastery.com/argmax-in-machine-learning/)选择支持度最高的类。下面的*集合 _ 预测()*函数实现了这个功能。
 
@@ -651,7 +651,7 @@ def ensemble_predictions(members, testX):
 	return result
 ```
 
-然后，我们可以通过从模型列表中选择前 n 个成员来评估给定大小的系综，通过调用*系综 _ 预测()*函数进行预测，然后计算并返回预测的精度。下面的 *evaluate_n_members()* 函数实现了这个行为。
+然后，我们可以通过从模型列表中选择前 n 个成员来评估给定大小的集成，通过调用*集成 _ 预测()*函数进行预测，然后计算并返回预测的精度。下面的 *evaluate_n_members()* 函数实现了这个行为。
 
 ```py
 # evaluate a specific number of members in an ensemble
@@ -693,7 +693,7 @@ pyplot.plot(x_axis, ensemble_scores, marker='o')
 pyplot.show()
 ```
 
-下面列出了使用不同大小的系综进行快照系综预测的完整示例。
+下面列出了使用不同大小的集成进行快照集成预测的完整示例。
 
 ```py
 # load models and make a snapshot ensemble prediction

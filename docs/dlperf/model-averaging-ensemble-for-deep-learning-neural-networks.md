@@ -539,7 +539,7 @@ def evaluate_n_members(members, n_members, testX, testy):
 	return accuracy_score(testy, yhat)
 ```
 
-最后，我们可以创建系综成员数量(x 轴)与测试数据集(y 轴)上许多成员的平均预测精度的线图。
+最后，我们可以创建集成成员数量(x 轴)与测试数据集(y 轴)上许多成员的平均预测精度的线图。
 
 ```py
 # plot score vs number of ensemble members
@@ -620,7 +620,7 @@ pyplot.show()
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-然后，从 1 个成员到所有 20 个成员测试不同大小的系综，并打印每个系综大小的测试精度结果。
+然后，从 1 个成员到所有 20 个成员测试不同大小的集成，并打印每个集成大小的测试精度结果。
 
 ```py
 1

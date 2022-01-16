@@ -60,10 +60,10 @@ R 生态系统是巨大的。开源第三方包提供了这种能力，让学者
 *   [线性回归](https://machinelearningmastery.com/linear-regression-in-r/ "Linear Regression in R"):普通最小二乘回归、逐步回归、主成分回归、偏最小二乘回归。
 *   [惩罚线性回归](https://machinelearningmastery.com/penalized-regression-in-r/ "Penalized Regression in R"):岭回归、最小绝对收缩和选择算子(LASSO)和弹性
 *   [非线性回归](https://machinelearningmastery.com/non-linear-regression-in-r/ "Non-Linear Regression in R"):多元自适应回归 spins(MARS)、支持向量机(SVM)、k 近邻(kNN)和神经网络。
-*   [非线性决策树回归](https://machinelearningmastery.com/non-linear-regression-in-r-with-decision-trees/ "Non-Linear Regression in R with Decision Trees"):分类回归树(CART)、条件决策树、模态树、规则系统、装袋 CART、随机森林、梯度增强机(GBM)和立体派。
+*   [非线性决策树回归](https://machinelearningmastery.com/non-linear-regression-in-r-with-decision-trees/ "Non-Linear Regression in R with Decision Trees"):分类回归树(CART)、条件决策树、模态树、规则系统、装袋 CART、随机森林、梯度提升机(GBM)和立体派。
 *   [线性分类](https://machinelearningmastery.com/linear-classification-in-r/ "Linear Classification in R") : Logistic 回归、线性判别分析(LDA)和偏最小二乘判别分析。
 *   [非线性分类](https://machinelearningmastery.com/non-linear-classification-in-r/ "Non-Linear Classification in R"):混合判别分析(MDA)、二次判别分析(QDA)、正则化判别分析(RDA)、神经网络、柔性判别分析(FDA)、支持向量机(SVM)、k 近邻(kNN)和朴素贝叶斯。
-*   [非线性决策树分类](https://machinelearningmastery.com/non-linear-classification-in-r-with-decision-trees/ "Non-Linear Classification in R with Decision Trees"):分类回归树(CART)、C4.5、PART、套袋 CART、随机森林、梯度增强机(GBM)、增强 C5.0
+*   [非线性决策树分类](https://machinelearningmastery.com/non-linear-classification-in-r-with-decision-trees/ "Non-Linear Classification in R with Decision Trees"):分类回归树(CART)、C4.5、PART、套袋 CART、随机森林、梯度提升机(GBM)、增强 C5.0
 
 我认为这些食谱真的符合这个任务的要求。
 

@@ -172,7 +172,7 @@ MLP 的结构可以用一个简单的符号来概括。
 
 我们可以用这个论点来建议，使用深层网络，即具有许多层的网络，可能是一种启发式的方法来配置网络，以应对具有挑战性的预测建模问题。
 
-这类似于从表格数据预测建模问题的[随机森林](https://machinelearningmastery.com/use-random-forest-testing-179-classifiers-121-datasets/)和[随机梯度增强](https://machinelearningmastery.com/start-with-gradient-boosting/)开始的建议，以在测试其他方法之前快速获得模型技能的上限。
+这类似于从表格数据预测建模问题的[随机森林](https://machinelearningmastery.com/use-random-forest-testing-179-classifiers-121-datasets/)和[随机梯度提升](https://machinelearningmastery.com/start-with-gradient-boosting/)开始的建议，以在测试其他方法之前快速获得模型技能的上限。
 
 ### 4)借用想法
 

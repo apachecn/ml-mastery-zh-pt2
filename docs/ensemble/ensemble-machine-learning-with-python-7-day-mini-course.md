@@ -1,4 +1,4 @@
-# Python 集成机器学习(7 天迷你课程)
+# Python 集成机器学习（7 天迷你课程）
 
 > 原文：<https://machinelearningmastery.com/ensemble-machine-learning-with-python-7-day-mini-course/>
 
@@ -59,7 +59,7 @@ Python 集成机器学习(7 天迷你课程)
 *   **第 02 课**:装袋集成
 *   **第 03 课**:随机森林集成
 *   **第 04 课** : AdaBoost 集成
-*   **第 05 课**:梯度增强集成
+*   **第 05 课**:梯度提升集成
 *   **第 06 课**:投票团
 *   **第 07 课**:堆叠集成
 
@@ -160,7 +160,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在本课中，您将发现随机森林集合。
 
-[随机森林](https://machinelearningmastery.com/random-forest-ensemble-in-python/)是套袋系综的延伸。
+[随机森林](https://machinelearningmastery.com/random-forest-ensemble-in-python/)是套袋集成的延伸。
 
 像装袋一样，随机森林集成在训练数据集的不同引导样本上拟合决策树。
 
@@ -246,23 +246,23 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在下面的评论中发表你的答案。我想看看你有什么想法。
 
-在下一课中，您将发现如何开发和评估梯度增强系综。
+在下一课中，您将发现如何开发和评估梯度提升集成。
 
-## 第五课:梯度增强集成
+## 第五课:梯度提升集成
 
-在本课中，您将发现梯度增强系综。
+在本课中，您将发现梯度提升集成。
 
-[梯度增强](https://machinelearningmastery.com/gradient-boosting-machine-ensemble-in-python/)是增强集成算法的框架，是 AdaBoost 的扩展。
+[梯度提升](https://machinelearningmastery.com/gradient-boosting-machine-ensemble-in-python/)是提升集成算法的框架，是 AdaBoost 的扩展。
 
 它将 boosting 重新构建为统计框架下的加法模型，并允许使用任意损失函数使其更加灵活，以及损失惩罚(收缩)以减少过拟合。
 
-梯度增强还向集成成员引入了装袋的思想，例如对训练数据集的行和列进行采样，称为随机梯度增强。
+梯度提升还向集成成员引入了装袋的思想，例如对训练数据集的行和列进行采样，称为随机梯度提升。
 
-对于结构化或表格数据，这是一种非常成功的集成技术，尽管考虑到模型是按顺序添加的，拟合模型可能会很慢。已经开发了更有效的实现，例如流行的极限梯度增强(XGBoost)和光梯度增强机器(LightGBM)。
+对于结构化或表格数据，这是一种非常成功的集成技术，尽管考虑到模型是按顺序添加的，拟合模型可能会很慢。已经开发了更有效的实现，例如流行的极限梯度提升(XGBoost)和光梯度提升机(LightGBM)。
 
-梯度增强在 Sklearn 中通过[梯度增强分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)和[梯度增强回归器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)类提供，默认情况下，它们使用决策树作为基本模型。您可以通过“*n _ estimates*”参数指定要创建的树的数量，并通过默认为 0.1 的“ *learning_rate* ”参数指定控制每个树的贡献的学习率。
+梯度提升在 Sklearn 中通过[梯度提升分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)和[梯度提升回归器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)类提供，默认情况下，它们使用决策树作为基本模型。您可以通过“*n _ estimates*”参数指定要创建的树的数量，并通过默认为 0.1 的“ *learning_rate* ”参数指定控制每个树的贡献的学习率。
 
-下面列出了评估用于分类的梯度增强集成的完整示例。
+下面列出了评估用于分类的梯度提升集成的完整示例。
 
 ```py
 # example of evaluating a gradient boosting ensemble for classification
@@ -408,7 +408,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 *   如何使用引导聚合或装袋集成。
 *   如何使用随机森林集合作为套袋的延伸？
 *   如何使用自适应增强或 adaboost 集成？
-*   如何使用梯度增强系综？
+*   如何使用梯度提升集成？
 *   如何使用投票集合组合模型的预测。
 *   如何学习如何使用叠加集合组合模型的预测。
 

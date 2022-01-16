@@ -147,7 +147,7 @@ R 有超过 6000 个第三方软件包。大量可用的软件包是 R 平台的
 
 #### 模型集合
 
-许多现代预测建模算法提供内置的集成。脱字符号包中提供了一套打包和增强功能。
+许多现代预测建模算法提供内置的集成。脱字符号包中提供了一套装袋和增强功能。
 
 *   混合:来自[carestenmble](https://cran.r-project.org/web/packages/caretEnsemble/index.html)包的 carestenmble。
 *   堆叠:从[carestensemble](https://cran.r-project.org/web/packages/caretEnsemble/index.html)包装中取出。

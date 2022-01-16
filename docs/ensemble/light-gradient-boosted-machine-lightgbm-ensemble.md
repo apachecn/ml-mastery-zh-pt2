@@ -1,20 +1,20 @@
-# 如何开发光梯度增强机(LightGBM)集合
+# 如何开轻量梯度提升机（LightGBM）集合
 
 > 原文：<https://machinelearningmastery.com/light-gradient-boosted-machine-lightgbm-ensemble/>
 
 最后更新于 2021 年 4 月 27 日
 
-Light Gradient Boosted Machine，简称 **LightGBM** ，是一个开源库，提供了一个高效且有效的梯度增强算法的实现。
+Light Gradient Boosted Machine，简称 **LightGBM** ，是一个开源库，提供了一个高效且有效的梯度提升算法的实现。
 
-LightGBM 通过添加一种自动特征选择以及关注具有更大梯度的增强示例来扩展梯度增强算法。这可以大大加快训练速度，提高预测表现。
+LightGBM 通过添加一种自动特征选择以及关注具有更大梯度的增强示例来扩展梯度提升算法。这可以大大加快训练速度，提高预测表现。
 
-因此，当使用表格数据进行回归和分类预测建模任务时，LightGBM 已经成为机器学习竞赛的事实算法。因此，它应该为梯度增强方法以及极限梯度增强(XGBoost)的日益流行和广泛采用承担部分责任。
+因此，当使用表格数据进行回归和分类预测建模任务时，LightGBM 已经成为机器学习竞赛的事实算法。因此，它应该为梯度提升方法以及极限梯度提升(XGBoost)的日益流行和广泛采用承担部分责任。
 
-在本教程中，您将发现如何开发用于分类和回归的光梯度增强机器集成。
+在本教程中，您将发现如何开发用于分类和回归的光梯度提升机集成。
 
 完成本教程后，您将知道:
 
-*   光梯度增强机器(LightGBM)是随机梯度增强集成算法的一个高效开源实现。
+*   光梯度提升机(LightGBM)是随机梯度提升集成算法的一个高效开源实现。
 *   如何用 Sklearn API 开发用于分类和回归的 LightGBM 集成？
 *   如何探索 LightGBM 模型超参数对模型表现的影响？
 
@@ -24,14 +24,14 @@ LightGBM 通过添加一种自动特征选择以及关注具有更大梯度的�
 
 ![How to Develop a Light Gradient Boosted Machine (LightGBM) Ensemble](img/92df7176fd7f14509d3147a875ca0a41.png)
 
-如何通过 [GPA 照片档案](https://www.flickr.com/photos/iip-photo-archive/35938248601/)开发光梯度增强机(LightGBM)集成
+如何通过 [GPA 照片档案](https://www.flickr.com/photos/iip-photo-archive/35938248601/)开轻量梯度提升机(LightGBM)集成
 照片，保留部分权利。
 
 ## 教程概述
 
 本教程分为三个部分；它们是:
 
-1.  光梯度增强机器算法
+1.  光梯度提升机算法
 2.  LightGBM Sklearn API
     1.  用于分类的 LightGBM 集成
     2.  回归的 LightGBM 集成
@@ -41,21 +41,21 @@ LightGBM 通过添加一种自动特征选择以及关注具有更大梯度的�
     3.  探索学习率
     4.  探索助推类型
 
-## 光梯度增强机器算法
+## 光梯度提升机算法
 
 [梯度提升](https://machinelearningmastery.com/gradient-boosting-machine-ensemble-in-python/)是指一类可用于分类或回归预测建模问题的集成机器学习算法。
 
 集成是由决策树模型构建的。树被一次一个地添加到集合中，并且适合于校正由先前模型产生的预测误差。这是一种称为 boosting 的集成机器学习模型。
 
-使用任意可微损失函数和梯度下降优化算法拟合模型。这给这项技术起了一个名字，“梯度增强”，因为随着模型的拟合，损失梯度被最小化，很像一个神经网络。
+使用任意可微损失函数和梯度下降优化算法拟合模型。这给这项技术起了一个名字，“梯度提升”，因为随着模型的拟合，损失梯度被最小化，很像一个神经网络。
 
-有关梯度增强的更多信息，请参见教程:
+有关梯度提升的更多信息，请参见教程:
 
-*   [机器学习梯度增强算法的简单介绍](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
+*   [机器学习梯度提升算法的简单介绍](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
 
-Light Gradient Boosted Machine，简称 LightGBM，是梯度增强的开源实现，旨在比其他实现更高效，甚至更有效。
+Light Gradient Boosted Machine，简称 LightGBM，是梯度提升的开源实现，旨在比其他实现更高效，甚至更有效。
 
-因此， [LightGBM](https://github.com/Microsoft/LightGBM) 指的是开源项目、软件库和机器学习算法。这样，它非常类似于[极限梯度增强或 XGBoost 技术](https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/)。
+因此， [LightGBM](https://github.com/Microsoft/LightGBM) 指的是开源项目、软件库和机器学习算法。这样，它非常类似于[极限梯度提升或 XGBoost 技术](https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/)。
 
 LightGBM 是由柯等人在 2017 年发表的论文中描述的，论文标题为“ [LightGBM:一种高效的梯度提升决策树](https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree)”实现引入了两个关键思想:高斯和 EFB。
 
@@ -71,7 +71,7 @@ LightGBM 是由柯等人在 2017 年发表的论文中描述的，论文标题�
 
 ——[LightGBM:一种高效的梯度提升决策树](https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree)，2017。
 
-这两个变化加起来可以将算法的训练时间加快 20 倍。因此，LightGBM 可以被认为是梯度增强决策树(GBDT)，增加了 GOSS 和 EFB。
+这两个变化加起来可以将算法的训练时间加快 20 倍。因此，LightGBM 可以被认为是梯度提升决策树(GBDT)，增加了 GOSS 和 EFB。
 
 > 我们称我们的新 GBDT 实现为 GOSS 和 EFB LightGBM。我们在多个公共数据集上的实验表明，LightGBM 将传统 GBDT 的训练过程加快了 20 多倍，同时达到了几乎相同的精度
 
@@ -255,7 +255,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到带有默认超参数的 LightGBM 系综实现了大约 60 的 MAE。
+在这种情况下，我们可以看到带有默认超参数的 LightGBM 集成实现了大约 60 的 MAE。
 
 ```py
 MAE: -60.004 (2.887)
@@ -293,7 +293,7 @@ Prediction: 52
 
 ## LightGBM 超参数
 
-在本节中，我们将仔细研究一些您应该考虑为 LightGBM 系综进行调整的超参数，以及它们对模型表现的影响。
+在本节中，我们将仔细研究一些您应该考虑为 LightGBM 集成进行调整的超参数，以及它们对模型表现的影响。
 
 对于 LightGBM，我们可以查看许多超参数，尽管在这种情况下，我们将查看树的数量和树的深度、学习率和提升类型。
 
@@ -381,11 +381,11 @@ LightGBM 集合大小与分类精度的箱线图
 
 ### 探索树的深度
 
-改变加入系综的每棵树的深度是梯度增强的另一个重要超参数。
+改变加入集成的每棵树的深度是梯度提升的另一个重要超参数。
 
 树深度控制每棵树对训练数据集的专门化程度:它可能有多一般或多复杂。优选不太浅和一般的树(如 [AdaBoost](https://machinelearningmastery.com/adaboost-ensemble-in-python/) )和不太深和专门化的树(如 [bootstrap aggregation](https://machinelearningmastery.com/bagging-ensemble-with-python/) )。
 
-梯度增强通常在深度适中的树中表现良好，在技能和通用性之间找到了平衡。
+梯度提升通常在深度适中的树中表现良好，在技能和通用性之间找到了平衡。
 
 树深度通过“ *max_depth* ”参数控制，默认为一个未指定的值，因为控制树有多复杂的默认机制是使用叶节点的数量。
 
@@ -462,7 +462,7 @@ pyplot.show()
 
 ![Box Plots of LightGBM Ensemble Tree Depth vs. Classification Accuracy](img/4f4c14dff94891781e045d809b21cd30.png)
 
-LightGBM 系综树深度与分类精度的箱线图
+LightGBM 集成树深度与分类精度的箱线图
 
 ### 探索学习率
 
@@ -554,7 +554,7 @@ LightGBM 的一个特点是它支持许多不同的提升算法，称为提升�
 
 默认为 GDBT，是经典的梯度提升算法。
 
-DART 在 2015 年的一篇题为《 [DART:丢弃生遇到多重加性回归树](https://arxiv.org/abs/1505.01866)》的论文中有所描述，顾名思义，它将[丢弃生](https://machinelearningmastery.com/dropout-for-regularizing-deep-neural-networks/)的概念从深度学习添加到多重加性回归树(MART)算法中，这是梯度增强决策树的前身。
+DART 在 2015 年的一篇题为《 [DART:丢弃生遇到多重加性回归树](https://arxiv.org/abs/1505.01866)》的论文中有所描述，顾名思义，它将[丢弃生](https://machinelearningmastery.com/dropout-for-regularizing-deep-neural-networks/)的概念从深度学习添加到多重加性回归树(MART)算法中，这是梯度提升决策树的前身。
 
 > 这个算法有很多名字，包括梯度树增强、增强树和多重加性回归树(MART)。我们用后者来指代这个算法。
 
@@ -638,8 +638,8 @@ LightGBM 增强类型与分类精度的箱线图
 
 ### 相关教程
 
-*   [机器学习梯度增强算法的简单介绍](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
-*   [使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度增强](https://machinelearningmastery.com/gradient-boosting-with-Sklearn-xgboost-lightgbm-and-catboost/)
+*   [机器学习梯度提升算法的简单介绍](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
+*   [使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度提升](https://machinelearningmastery.com/gradient-boosting-with-Sklearn-xgboost-lightgbm-and-catboost/)
 
 ### 报纸
 
@@ -661,11 +661,11 @@ LightGBM 增强类型与分类精度的箱线图
 
 ## 摘要
 
-在本教程中，您发现了如何开发用于分类和回归的光梯度增强机器集成。
+在本教程中，您发现了如何开发用于分类和回归的光梯度提升机集成。
 
 具体来说，您了解到:
 
-*   光梯度增强机器(LightGBM)是随机梯度增强集成算法的一个有效的开源实现。
+*   光梯度提升机(LightGBM)是随机梯度提升集成算法的一个有效的开源实现。
 *   如何用 Sklearn API 开发用于分类和回归的 LightGBM 集成？
 *   如何探索 LightGBM 模型超参数对模型表现的影响？
 

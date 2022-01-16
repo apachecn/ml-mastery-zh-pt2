@@ -1,4 +1,4 @@
-# 机器学习的纠错输出码(ECOC)
+# 机器学习的纠错输出码（ECOC）
 
 > 原文：<https://machinelearningmastery.com/error-correcting-output-codes-ecoc-for-machine-learning/>
 

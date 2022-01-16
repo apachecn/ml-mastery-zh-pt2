@@ -152,7 +152,7 @@
 例如，一些机器学习算法甚至在其名称中包含“*随机*”，例如:
 
 *   随机梯度下降(优化算法)。
-*   随机梯度增强(集成算法)。
+*   随机梯度提升(集成算法)。
 
 [随机梯度下降](https://machinelearningmastery.com/gentle-introduction-mini-batch-gradient-descent-configure-batch-size/)优化模型的参数，例如人工神经网络，这包括在每次迭代之前随机洗牌训练数据集，这导致模型参数的不同顺序的更新。此外，神经网络中的模型权重通常被初始化为随机起点。
 
@@ -160,7 +160,7 @@
 
 —第 98 页，[深度学习](https://amzn.to/2lnc3vL)，2016。
 
-[随机梯度增强](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)是决策树算法的集合。随机方面指的是从用于构建树的训练数据集中选择的随机行子集，特别是树的分裂点。
+[随机梯度提升](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)是决策树算法的集合。随机方面指的是从用于构建树的训练数据集中选择的随机行子集，特别是树的分裂点。
 
 ### 随机算法行为
 
@@ -188,7 +188,7 @@
 *   [Python 机器学习随机数生成器介绍](https://machinelearningmastery.com/introduction-to-random-number-generators-for-machine-learning/)
 *   [拥抱机器学习中的随机性](https://machinelearningmastery.com/randomness-in-machine-learning/)
 *   [为什么用随机权重初始化神经网络？](https://machinelearningmastery.com/why-initialize-a-neural-network-with-random-weights/)
-*   [使用 XGBoost 和 scikit-学习 Python 的随机梯度增强](https://machinelearningmastery.com/stochastic-gradient-boosting-xgboost-Sklearn-python/)
+*   [使用 XGBoost 和 scikit-学习 Python 的随机梯度提升](https://machinelearningmastery.com/stochastic-gradient-boosting-xgboost-Sklearn-python/)
 
 ### 文章
 

@@ -368,9 +368,9 @@ cfg=[1.0048613895650054, 0.002162219228449132]: Mean Accuracy: 0.791333
 
 ## 超参数优化
 
-XGBoost 是[极限梯度提升](https://machinelearningmastery.com/extreme-gradient-boosting-ensemble-in-python/)的简称，是随机梯度提升机器学习算法的高效实现。
+XGBoost 是[极限梯度提升](https://machinelearningmastery.com/extreme-gradient-boosting-ensemble-in-python/)的简称，是随机梯度提升机学习算法的高效实现。
 
-随机梯度增强算法，也称为梯度增强机器或树增强，是一种强大的机器学习技术，在一系列具有挑战性的机器学习问题上表现良好，甚至最好。
+随机梯度提升算法，也称为梯度提升机或树增强，是一种强大的机器学习技术，在一系列具有挑战性的机器学习问题上表现良好，甚至最好。
 
 首先，必须安装 XGBoost 库。
 
@@ -448,7 +448,7 @@ Mean Accuracy: 0.849 (0.040)
 
 有关如何调整 XGBoost 模型的概述，请参见教程:
 
-*   [如何配置梯度增强算法](https://machinelearningmastery.com/configure-gradient-boosting-algorithm/)
+*   [如何配置梯度提升算法](https://machinelearningmastery.com/configure-gradient-boosting-algorithm/)
 
 我们将关注四个关键的超参数；它们是:
 
@@ -459,7 +459,7 @@ Mean Accuracy: 0.849 (0.040)
 
 **学习率**控制每棵树对集成的贡献。可感知值小于 1.0，略高于 0.0(例如 1e-8)。
 
-**树的数量**控制着系综的大小，往往越多的树越好到收益递减的地步。可感知值介于 1 棵树和数百或数千棵树之间。
+**树的数量**控制着集成的大小，往往越多的树越好到收益递减的地步。可感知值介于 1 棵树和数百或数千棵树之间。
 
 **子样本**百分比定义了用于训练每棵树的随机样本大小，定义为原始数据集大小的百分比。值介于略高于 0.0 的值(例如 1e-8)和 1.0 之间
 
@@ -656,7 +656,7 @@ cfg=[[0.020224220443108752, 52, 0.5088096815056933, 53]]: Mean Accuracy: 0.87366
 ### 教程
 
 *   [随机搜索和网格搜索的超参数优化](https://machinelearningmastery.com/hyperparameter-optimization-with-random-search-and-grid-search/)
-*   [如何配置梯度增强算法](https://machinelearningmastery.com/configure-gradient-boosting-algorithm/)
+*   [如何配置梯度提升算法](https://machinelearningmastery.com/configure-gradient-boosting-algorithm/)
 *   [如何在 Python 中从头开始实现感知器算法](https://machinelearningmastery.com/implement-perceptron-algorithm-scratch-python/)
 
 ### 蜜蜂

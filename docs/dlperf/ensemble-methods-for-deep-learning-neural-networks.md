@@ -108,7 +108,7 @@
 
 集成学习领域研究得很好，在这个简单的主题上有许多变化。
 
-考虑改变系综方法的三个主要要素可能会有所帮助；例如:
+考虑改变集成方法的三个主要要素可能会有所帮助；例如:
 
 *   **训练数据**:改变用于训练集合中每个模型的数据选择。
 *   **集成模型**:改变集成中所用模型的选择。
@@ -178,7 +178,7 @@
 
 ——[快照合集:1 号列车，免费获得 M](https://arxiv.org/abs/1704.00109)，2017。
 
-快照集成的一个变化是保存一系列时期的模型，可能是通过在训练期间查看模型在训练和验证数据集上的学习曲线来识别的。来自这种连续模型序列的系综被称为水平系综。
+快照集成的一个变化是保存一系列时期的模型，可能是通过在训练期间查看模型在训练和验证数据集上的学习曲线来识别的。来自这种连续模型序列的集成被称为水平集成。
 
 > 首先，选择为相对稳定的历元范围训练的网络。每个标签概率的预测由标准分类器在选定的时期内产生，然后进行平均。
 
@@ -205,7 +205,7 @@
 
 ### 不同的组合
 
-组合预测的最简单方法是计算来自系综成员的预测平均值。
+组合预测的最简单方法是计算来自集成成员的预测平均值。
 
 通过对每个模型的预测进行加权，可以稍微改善这一点，其中权重使用保持验证数据集进行优化。这提供了一种加权平均集成，有时称为模型混合。
 
@@ -213,7 +213,7 @@
 
 —第 367 页，[用于模式识别的神经网络](https://amzn.to/2I9gNMP)，1995。
 
-复杂性的另一步涉及使用新模型来学习如何最好地组合来自每个系综成员的预测。
+复杂性的另一步涉及使用新模型来学习如何最好地组合来自每个集成成员的预测。
 
 该模型可以是简单的线性模型(例如，非常像加权平均)，但也可以是复杂的非线性方法，除了每个成员提供的预测之外，还考虑特定的输入样本。这种学习新模型的一般方法被称为模型[堆叠，或堆叠概括](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)。
 
@@ -244,11 +244,11 @@
 
 *   **变化的训练数据**
     *   [k 倍交叉验证集合](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/)
-    *   [自举聚合(打包)集成](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/)
+    *   [自举聚合(装袋)集成](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/)
     *   [随机训练子集集成](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/)
 *   **不同型号**
     *   多重训练跑集成
-    *   超参数调谐系综
+    *   超参数调谐集成
     *   快照集
     *   [横向时代集成](https://machinelearningmastery.com/horizontal-voting-ensemble/)
     *   垂直表征集合
@@ -256,7 +256,7 @@
     *   [模型平均集合](https://machinelearningmastery.com/model-averaging-ensemble-for-deep-learning-neural-networks/)
     *   [加权平均集合](https://machinelearningmastery.com/weighted-average-ensemble-for-deep-learning-neural-networks/)
     *   [叠加综合(叠加)集合](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)
-    *   助推系综
+    *   助推集成
     *   [模型加权平均集成](https://machinelearningmastery.com/polyak-neural-network-model-weight-ensemble/)
 
 没有单一的最佳集成方法；也许可以尝试一些方法，或者让项目的约束来指导你。
@@ -270,7 +270,7 @@
 *   第 9.6 节网络委员会，[模式识别神经网络](https://amzn.to/2I9gNMP)，1995。
 *   第 7.11 节装袋等集成方法，[深度学习](https://amzn.to/2NJW3gE)，2016。
 *   第 7.3.3 节模型组装，[Python 深度学习](https://amzn.to/2NJq1pf)，2017。
-*   第 8.2 节打包，随机森林，提升，[R](https://amzn.to/2zxHR5E)中应用的统计学习介绍，2013。
+*   第 8.2 节装袋，随机森林，提升，[R](https://amzn.to/2zxHR5E)中应用的统计学习介绍，2013。
 
 ### 报纸
 

@@ -65,7 +65,7 @@ YouTube 可能是第二大搜索引擎，每分钟上传数百个小时的视频
 
 ![Overview of the Relationship of Artificial Intelligence and Computer Vision](img/659134c33c6ebac5a9456de34b7859b1.png)
 
-人工智能与计算机视觉关系综述
+人工智能与计算机视觉关集成述
 
 作为一个多学科的研究领域，它可能看起来很混乱，技术是从一系列不同的工程和计算机科学领域借用和重用的。
 

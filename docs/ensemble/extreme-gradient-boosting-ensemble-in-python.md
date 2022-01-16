@@ -1,20 +1,20 @@
-# Python 中的极限梯度增强(XGBoost)集成
+# Python 中的极限梯度提升（XGBoost）集成
 
 > 原文：<https://machinelearningmastery.com/extreme-gradient-boosting-ensemble-in-python/>
 
 最后更新于 2021 年 4 月 27 日
 
-极限梯度增强(XGBoost)是一个开源库，它提供了梯度增强算法的高效和有效的实现。
+极限梯度提升(XGBoost)是一个开源库，它提供了梯度提升算法的高效和有效的实现。
 
 尽管这种方法的其他开源实现在 XGBoost 之前就已经存在，但 XGBoost 的发布似乎释放了这种技术的力量，并使应用机器学习社区更普遍地注意到梯度提升。
 
 在开发和最初发布后不久，XGBoost 就成为了一种流行的方法，并且经常是在机器学习竞赛中赢得分类和回归问题解决方案的关键组件。
 
-在本教程中，您将发现如何为分类和回归开发极端梯度增强集成。
+在本教程中，您将发现如何为分类和回归开发极端梯度提升集成。
 
 完成本教程后，您将知道:
 
-*   极端梯度增强是随机梯度增强集成算法的一个有效的开源实现。
+*   极端梯度提升是随机梯度提升集成算法的一个有效的开源实现。
 *   如何用 Sklearn API 开发用于分类和回归的 XGBoost 集成？
 *   如何探索 XGBoost 模型超参数对模型表现的影响？
 
@@ -24,14 +24,14 @@
 
 ![Extreme Gradient Boosting (XGBoost) Ensemble in Python](img/e181e0a34947e5d08fd64f43d8523dda.png)
 
-巨蟒极限梯度增强(XGBoost)集成
+巨蟒极限梯度提升(XGBoost)集成
 安德烈斯·涅托·波拉斯摄，版权所有。
 
 ## 教程概述
 
 本教程分为三个部分；它们是:
 
-1.  极端梯度增强算法
+1.  极端梯度提升算法
 2.  xboost Scikit-学习应用编程接口
     1.  用于分类的 XGBoost 集成
     2.  回归的 XGBoost 集成
@@ -42,19 +42,19 @@
     4.  探索样本数量
     5.  探索功能数量
 
-## 极端梯度增强算法
+## 极端梯度提升算法
 
 [梯度提升](https://machinelearningmastery.com/gradient-boosting-machine-ensemble-in-python/)是指一类可用于分类或回归预测建模问题的集成机器学习算法。
 
 集成是由决策树模型构建的。树被一次一个地添加到集合中，并且适合于校正由先前模型产生的预测误差。这是一种称为 boosting 的集成机器学习模型。
 
-使用任意可微损失函数和梯度下降优化算法拟合模型。这给这项技术起了一个名字，“梯度增强”，因为随着模型的拟合，损失梯度被最小化，很像一个神经网络。
+使用任意可微损失函数和梯度下降优化算法拟合模型。这给这项技术起了一个名字，“梯度提升”，因为随着模型的拟合，损失梯度被最小化，很像一个神经网络。
 
-有关梯度增强的更多信息，请参见教程:
+有关梯度提升的更多信息，请参见教程:
 
-*   [机器学习梯度增强算法的简单介绍](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
+*   [机器学习梯度提升算法的简单介绍](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
 
-极限梯度增强(简称 XGBoost)是梯度增强算法的一个高效开源实现。因此，XGBoost 是一个算法、一个开源项目和一个 Python 库。
+极限梯度提升(简称 XGBoost)是梯度提升算法的一个高效开源实现。因此，XGBoost 是一个算法、一个开源项目和一个 Python 库。
 
 它最初是由[陈天棋](https://www.linkedin.com/in/tianqi-chen-679a9856/)开发的，并由陈和在他们 2016 年的论文《XGBoost:一个可扩展的树木提升系统》中进行了描述
 
@@ -66,7 +66,7 @@
 
 使用 XGBoost 的两个主要原因是执行速度和模型表现。
 
-一般来说，与其他梯度增强实现相比，XGBoost 速度更快。Szilard Pafka 执行了一些客观的基准测试，将 XGBoost 的表现与梯度提升和袋装决策树的其他实现进行了比较。2015 年 5 月，他在名为“[基准测试随机森林实现](http://datascience.la/benchmarking-random-forest-implementations/)”的博客文章中写下了自己的结果
+一般来说，与其他梯度提升实现相比，XGBoost 速度更快。Szilard Pafka 执行了一些客观的基准测试，将 XGBoost 的表现与梯度提升和袋装决策树的其他实现进行了比较。2015 年 5 月，他在名为“[基准测试随机森林实现](http://datascience.la/benchmarking-random-forest-implementations/)”的博客文章中写下了自己的结果
 
 他的结果显示，XGBoost 几乎总是比来自 R、Python Spark 和 H2O 的其他基准实现更快。
 
@@ -320,7 +320,7 @@ Prediction: 50
 
 ## XGBoost 超参数
 
-在本节中，我们将仔细研究一些您应该考虑为梯度增强系综进行调整的超参数，以及它们对模型表现的影响。
+在本节中，我们将仔细研究一些您应该考虑为梯度提升集成进行调整的超参数，以及它们对模型表现的影响。
 
 ### 探索树的数量
 
@@ -402,11 +402,11 @@ XGBoost 集合大小与分类精度的箱线图
 
 ### 探索树的深度
 
-改变加入系综的每棵树的深度是梯度增强的另一个重要超参数。
+改变加入集成的每棵树的深度是梯度提升的另一个重要超参数。
 
 树深度控制每棵树对训练数据集的专门化程度:它可能有多一般或多复杂。优选不太浅和一般的树(如 [AdaBoost](https://machinelearningmastery.com/adaboost-ensemble-in-python/) )和不太深和专门化的树(如 [bootstrap aggregation](https://machinelearningmastery.com/bagging-ensemble-with-python/) )。
 
-梯度增强通常在深度适中的树中表现良好，在技能和通用性之间找到了平衡。
+梯度提升通常在深度适中的树中表现良好，在技能和通用性之间找到了平衡。
 
 树深度通过“*最大深度*参数控制，默认为 6。
 
@@ -735,8 +735,8 @@ XGBoost 集合柱比率与分类精度的箱线图
 
 ### 教程
 
-*   [机器学习梯度增强算法简介](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
-*   [使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度增强](https://machinelearningmastery.com/gradient-boosting-with-Sklearn-xgboost-lightgbm-and-catboost/)
+*   [机器学习梯度提升算法简介](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
+*   [使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度提升](https://machinelearningmastery.com/gradient-boosting-with-Sklearn-xgboost-lightgbm-and-catboost/)
 *   [应用机器学习 XGBoost 的温和介绍](https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/)
 
 ### 报纸
@@ -761,11 +761,11 @@ XGBoost 集合柱比率与分类精度的箱线图
 
 ## 摘要
 
-在本教程中，您发现了如何为分类和回归开发极端梯度增强集成。
+在本教程中，您发现了如何为分类和回归开发极端梯度提升集成。
 
 具体来说，您了解到:
 
-*   极端梯度增强是随机梯度增强集成算法的一个有效的开源实现。
+*   极端梯度提升是随机梯度提升集成算法的一个有效的开源实现。
 *   如何用 Sklearn API 开发用于分类和回归的 XGBoost 集成？
 *   如何探索 XGBoost 模型超参数对模型表现的影响？
 

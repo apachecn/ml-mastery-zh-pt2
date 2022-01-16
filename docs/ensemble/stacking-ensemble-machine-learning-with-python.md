@@ -1,4 +1,4 @@
-# 用 Python 堆叠集成机器学习
+# 使用 Python 开发堆叠集成机器学习
 
 > 原文：<https://machinelearningmastery.com/stacking-ensemble-machine-learning-with-python/>
 
@@ -403,7 +403,7 @@ pyplot.show()
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到叠加系综的平均表现似乎比任何单个模型都好，达到了大约 96.4%的准确率。
+在这种情况下，我们可以看到叠加集成的平均表现似乎比任何单个模型都好，达到了大约 96.4%的准确率。
 
 ```py
 >lr 0.866 (0.029)
@@ -700,7 +700,7 @@ pyplot.show()
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到叠加系综的平均表现似乎比任何单个模型都好，平均负 MAE 约为-56。
+在这种情况下，我们可以看到叠加集成的平均表现似乎比任何单个模型都好，平均负 MAE 约为-56。
 
 ```py
 >knn -101.019 (7.161)
@@ -763,7 +763,7 @@ Predicted Value: 556.264
 *   [如何用 Python 从头开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
 *   [如何用 Keras 开发 Python 深度学习神经网络的堆叠集成](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)
 *   [如何在 Python 中开发超级学习器集成](https://machinelearningmastery.com/super-learner-ensemble-in-python/)
-*   [如何在机器学习中使用折叠外预测](https://machinelearningmastery.com/out-of-fold-predictions-in-machine-learning/)
+*   [如何在机器学习中使用折外预测](https://machinelearningmastery.com/out-of-fold-predictions-in-machine-learning/)
 *   [k 倍交叉验证的温和介绍](https://machinelearningmastery.com/k-fold-cross-validation/)
 
 ### 报纸

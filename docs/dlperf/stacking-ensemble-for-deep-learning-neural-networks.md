@@ -267,7 +267,7 @@ Train: 0.850, Test: 0.809
 
 更高级的例子可以使用不同类型的 MLP 模型(更深、更宽等)。)作为子模型，使用 [k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)训练元学习器。
 
-在本节中，我们将训练多个子模型，[将它们保存到文件中，以便以后在我们的堆叠系综中使用](https://machinelearningmastery.com/save-load-keras-deep-learning-models/)。
+在本节中，我们将训练多个子模型，[将它们保存到文件中，以便以后在我们的堆叠集成中使用](https://machinelearningmastery.com/save-load-keras-deep-learning-models/)。
 
 第一步是创建一个函数，该函数将在训练数据集上定义和拟合 MLP 模型。
 

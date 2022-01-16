@@ -771,7 +771,7 @@ pyplot.show()
 > 10: single=0.810, ensemble=0.809
 ```
 
-折线图显示了表现的提升，并显示了与使用平均加权系综相比，在所创建的不同大小的系综上，测试精度方面更稳定的表现。
+折线图显示了表现的提升，并显示了与使用平均加权集成相比，在所创建的不同大小的集成上，测试精度方面更稳定的表现。
 
 ![Line Plot of Single Model Test Performance (blue dots) and Model Weight Ensemble Test Performance (orange line) With a Linear Decay](img/251036c6a9a28770260f0aa3d89dd5d4.png)
 

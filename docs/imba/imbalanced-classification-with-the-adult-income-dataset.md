@@ -568,7 +568,7 @@ pyplot.show()
 
 在本节中，我们可以拟合最终模型，并使用它对单行数据进行预测。
 
-我们将使用[梯度增强分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)模型作为我们的最终模型，该模型实现了大约 86.3%的分类准确率。拟合最终模型包括定义[列转换器](https://Sklearn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html)来编码分类变量和缩放数值变量，然后构建[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)来在拟合模型之前对训练集执行这些转换。
+我们将使用[梯度提升分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)模型作为我们的最终模型，该模型实现了大约 86.3%的分类准确率。拟合最终模型包括定义[列转换器](https://Sklearn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html)来编码分类变量和缩放数值变量，然后构建[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)来在拟合模型之前对训练集执行这些转换。
 
 *管道*然后可以直接用于对新数据进行预测，并将使用与在训练数据集上执行的操作相同的操作来自动编码和缩放新数据。
 

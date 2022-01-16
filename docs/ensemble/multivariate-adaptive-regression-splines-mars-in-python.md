@@ -1,4 +1,4 @@
-# Python 中的多元自适应回归样条(MARS)
+# Python 中的多元自适应回归样条（MARS）
 
 > 原文：<https://machinelearningmastery.com/multivariate-adaptive-regression-splines-mars-in-python/>
 

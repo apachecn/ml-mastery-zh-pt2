@@ -153,7 +153,7 @@
 
 我们可以考虑通过两种方式充分利用我们的预测建模项目:关注模型和关注数据。
 
-我们可以最低限度地准备原始数据并开始建模。这就把梳理数据中的关系和尽最大努力学习从输入到输出的映射函数的全部责任放在了模型上。这可能是一个合理的项目路径，可能需要一个大的数据集和一个灵活强大的机器学习算法，几乎没有期望，例如[随机森林](https://machinelearningmastery.com/random-forest-ensemble-in-python/)或[梯度增强](https://machinelearningmastery.com/gradient-boosting-machine-ensemble-in-python/)。
+我们可以最低限度地准备原始数据并开始建模。这就把梳理数据中的关系和尽最大努力学习从输入到输出的映射函数的全部责任放在了模型上。这可能是一个合理的项目路径，可能需要一个大的数据集和一个灵活强大的机器学习算法，几乎没有期望，例如[随机森林](https://machinelearningmastery.com/random-forest-ensemble-in-python/)或[梯度提升](https://machinelearningmastery.com/gradient-boosting-machine-ensemble-in-python/)。
 
 或者，我们可以将责任推回到数据和数据准备过程上。这要求每一行数据最大或最好地表达建模数据的信息内容。就像将关系数据库中的数据反规范化为行和列一样，数据准备可以反规范化每个单个观察中固有的复杂结构。这也是一条合理的路径。它可能需要比现有数据更多的数据知识，但是几乎不管所使用的机器学习算法如何，都可以实现良好甚至最佳的建模表现。
 

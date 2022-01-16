@@ -262,7 +262,7 @@ Mean Accuracy: 0.838 (0.042)
 
 我们可以通过评估每个单独模型的表现并将结果与整体进行比较来检查这一点。
 
-首先，我们可以更新 *get_ensemble()* 函数，返回一个由单个系综成员以及系综本身组成的待评估模型列表。
+首先，我们可以更新 *get_ensemble()* 函数，返回一个由单个集成成员以及集成本身组成的待评估模型列表。
 
 ```py
 # get a voting ensemble of models
@@ -406,7 +406,7 @@ pyplot.show()
 
 还创建了一个图形，显示了每个单独模型以及数据转换集合的分类精度的方框图和触须图。
 
-我们可以看到系综的分布是向上倾斜的，这是我们可能希望的，并且平均值(绿色三角形)略高于单个系综成员的平均值。
+我们可以看到集成的分布是向上倾斜的，这是我们可能希望的，并且平均值(绿色三角形)略高于单个集成成员的平均值。
 
 ![Box and Whisker Plot of Accuracy Distribution for Individual Models and Data Transform Ensemble](img/9a73e5045ff892d5bfe7911e6f3cb3cb.png)
 
@@ -477,7 +477,7 @@ MAE: -139.817 (12.449)
 
 我们将使用与上一节相同的数据转换。将使用[voting returnalizer](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html)来组合预测，这适用于回归问题。
 
-下面定义的 get_ensemble()函数创建单个模型和系综模型，并将所有模型组合成元组列表进行评估。
+下面定义的 get_ensemble()函数创建单个模型和集成模型，并将所有模型组合成元组列表进行评估。
 
 ```py
 # get a voting ensemble of models

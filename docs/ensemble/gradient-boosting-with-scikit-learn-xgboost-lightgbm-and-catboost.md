@@ -1,24 +1,24 @@
-# 使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度增强
+# 将 Sklearn、XGBoost、LightGBM 和 CatBoost 用于梯度提升
 
 > 原文：<https://machinelearningmastery.com/gradient-boosting-with-Sklearn-xgboost-lightgbm-and-catboost/>
 
 最后更新于 2021 年 4 月 27 日
 
-梯度增强是一种强大的集成机器学习算法。
+梯度提升是一种强大的集成机器学习算法。
 
 它适用于结构化预测建模问题，如表格数据的分类和回归，通常是机器学习竞赛中获胜解决方案的主要算法或主要算法之一，就像 Kaggle 上的算法一样。
 
-有许多可用的梯度增强实现，包括 SciPy 中的标准实现和高效的第三方库。每一个都使用不同的接口，甚至不同的算法名称。
+有许多可用的梯度提升实现，包括 SciPy 中的标准实现和高效的第三方库。每一个都使用不同的接口，甚至不同的算法名称。
 
-在本教程中，您将发现如何在 Python 中使用梯度增强模型进行分类和回归。
+在本教程中，您将发现如何在 Python 中使用梯度提升模型进行分类和回归。
 
-为 Python 中梯度增强的四种主要实现提供了标准化的代码示例，供您复制粘贴并在自己的预测建模项目中使用。
+为 Python 中梯度提升的四种主要实现提供了标准化的代码示例，供您复制粘贴并在自己的预测建模项目中使用。
 
 完成本教程后，您将知道:
 
-*   梯度增强是一种集成算法，通过最小化误差梯度来适应增强的决策树。
-*   如何使用 Sklearn 评估和使用梯度增强，包括梯度增强机器和基于直方图的算法。
-*   如何评估和使用第三方梯度增强算法，包括 XGBoost、LightGBM 和 CatBoost。
+*   梯度提升是一种集成算法，通过最小化误差梯度来适应增强的决策树。
+*   如何使用 Sklearn 评估和使用梯度提升，包括梯度提升机和基于直方图的算法。
+*   如何评估和使用第三方梯度提升算法，包括 XGBoost、LightGBM 和 CatBoost。
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
@@ -26,19 +26,19 @@
 
 ![Gradient Boosting with Sklearn, XGBoost, LightGBM, and CatBoost](img/b874fe3e70b3ccb9ab98de9f992c11c1.png)
 
-使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度增强
+使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度提升
 图片由[约翰](https://flickr.com/photos/shebalso/441861081/)提供，保留部分权利。
 
 ## 教程概述
 
 本教程分为五个部分；它们是:
 
-1.  梯度增强概述
-2.  使用 Scikit 进行梯度增强-学习
+1.  梯度提升概述
+2.  使用 Scikit 进行梯度提升-学习
     1.  库安装
     2.  测试问题
     3.  梯度升压
-    4.  基于直方图的梯度增强
+    4.  基于直方图的梯度提升
 3.  带 XGBoost 的梯度升压
     1.  库安装
     2.  用于分类的扩展包
@@ -52,23 +52,23 @@
     2.  分类的分类增强
     3.  回归的助力
 
-## 梯度增强概述
+## 梯度提升概述
 
-梯度增强是指一类集成机器学习算法，可用于分类或回归预测建模问题。
+梯度提升是指一类集成机器学习算法，可用于分类或回归预测建模问题。
 
-梯度增强也称为梯度树增强、随机梯度增强(扩展)和梯度增强机器，简称 GBM。
+梯度提升也称为梯度树增强、随机梯度提升(扩展)和梯度提升机，简称 GBM。
 
 集成是由决策树模型构建的。树被一次一个地添加到集合中，并且适合于校正由先前模型产生的预测误差。这是一种称为 boosting 的集成机器学习模型。
 
-使用任意可微损失函数和梯度下降优化算法拟合模型。这给这项技术起了一个名字，“梯度增强”，因为随着模型的拟合，损失梯度被最小化，很像一个神经网络。
+使用任意可微损失函数和梯度下降优化算法拟合模型。这给这项技术起了一个名字，“梯度提升”，因为随着模型的拟合，损失梯度被最小化，很像一个神经网络。
 
-梯度增强是一种有效的机器学习算法，并且通常是用于在表格和类似结构化数据集上赢得机器学习竞赛(如 Kaggle)的主要算法或主要算法之一。
+梯度提升是一种有效的机器学习算法，并且通常是用于在表格和类似结构化数据集上赢得机器学习竞赛(如 Kaggle)的主要算法或主要算法之一。
 
-**注**:在本教程中，我们将不讨论梯度增强算法背后的理论。
+**注**:在本教程中，我们将不讨论梯度提升算法背后的理论。
 
-有关梯度增强算法的更多信息，请参见教程:
+有关梯度提升算法的更多信息，请参见教程:
 
-*   [机器学习梯度增强算法的简单介绍](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
+*   [机器学习梯度提升算法的简单介绍](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
 
 该算法提供了超参数，这些超参数应该而且可能必须针对特定数据集进行调整。虽然有许多超参数需要调整，但最重要的可能如下:
 
@@ -79,22 +79,22 @@
 *   最小树重。
 *   正则项α和λ。
 
-**注**:在本教程中，我们将不探讨如何配置或调整梯度增强算法的配置。
+**注**:在本教程中，我们将不探讨如何配置或调整梯度提升算法的配置。
 
-有关调整梯度增强算法的超参数的更多信息，请参见教程:
+有关调整梯度提升算法的超参数的更多信息，请参见教程:
 
-*   [如何配置梯度增强算法](https://machinelearningmastery.com/configure-gradient-boosting-algorithm/)
+*   [如何配置梯度提升算法](https://machinelearningmastery.com/configure-gradient-boosting-algorithm/)
 
-Python 中有许多梯度增强算法的实现。也许最常用的实现是 Sklearn 库提供的版本。
+Python 中有许多梯度提升算法的实现。也许最常用的实现是 Sklearn 库提供的版本。
 
 可以使用额外的第三方库来提供算法的计算高效的替代实现，这些实现通常在实践中获得更好的结果。例子包括 XGBoost 库、LightGBM 库和 CatBoost 库。
 
 **你有不同喜欢的梯度提升实现吗？**
 在下面的评论里告诉我。
 
-在预测建模项目中使用梯度增强时，您可能希望测试算法的每个实现。
+在预测建模项目中使用梯度提升时，您可能希望测试算法的每个实现。
 
-本教程提供了梯度增强算法在分类和回归预测建模问题上的每个实现的示例，您可以将其复制粘贴到项目中。
+本教程提供了梯度提升算法在分类和回归预测建模问题上的每个实现的示例，您可以将其复制粘贴到项目中。
 
 让我们依次看一下每一个。
 
@@ -104,9 +104,9 @@ Python 中有许多梯度增强算法的实现。也许最常用的实现是 Skl
 
 *   [如何用 Anaconda](https://machinelearningmastery.com/setup-python-environment-machine-learning-deep-learning-anaconda/) 设置机器学习的 Python 环境
 
-## 使用 Sklearn 进行梯度增强
+## 使用 Sklearn 进行梯度提升
 
-在本节中，我们将回顾如何在 [Sklearn 库](https://Sklearn.org/)中使用梯度增强算法实现。
+在本节中，我们将回顾如何在 [Sklearn 库](https://Sklearn.org/)中使用梯度提升算法实现。
 
 ### 库安装
 
@@ -142,7 +142,7 @@ print(sklearn.__version__)
 
 ### 测试问题
 
-我们将演示用于分类和回归的梯度增强算法。
+我们将演示用于分类和回归的梯度提升算法。
 
 因此，我们将使用 Sklearn 库中的合成测试问题。
 
@@ -190,7 +190,7 @@ print(X.shape, y.shape)
 (1000, 10) (1000,)
 ```
 
-接下来，让我们看看如何在 Sklearn 中开发梯度增强模型。
+接下来，让我们看看如何在 Sklearn 中开发梯度提升模型。
 
 ### 梯度升压
 
@@ -238,7 +238,7 @@ Accuracy: 0.915 (0.025)
 Prediction: 1
 ```
 
-#### 回归梯度增强机
+#### 回归梯度提升机
 
 下面的示例首先使用重复的 k 重交叉验证对测试问题评估一个[gradientboostingrevoller](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)，并报告平均绝对误差。然后在所有可用数据上拟合单一模型，并进行单一预测。
 
@@ -278,13 +278,13 @@ MAE: -11.854 (1.121)
 Prediction: -80.661
 ```
 
-### 基于直方图的梯度增强
+### 基于直方图的梯度提升
 
-Sklearn 库提供了梯度增强算法的替代实现，称为基于直方图的梯度增强。
+Sklearn 库提供了梯度提升算法的替代实现，称为基于直方图的梯度提升。
 
-这是一种实现梯度树增强的替代方法，灵感来自 LightGBM 库(稍后将详细描述)。这个实现是通过*历史梯度增强分类器*和*历史梯度增强回归器*类提供的。
+这是一种实现梯度树增强的替代方法，灵感来自 LightGBM 库(稍后将详细描述)。这个实现是通过*历史梯度提升分类器*和*历史梯度提升回归器*类提供的。
 
-基于直方图的梯度增强方法的主要优势是速度。这些实现旨在更快地适应训练数据。
+基于直方图的梯度提升方法的主要优势是速度。这些实现旨在更快地适应训练数据。
 
 在编写本文时，这是一个实验性的实现，需要在代码中添加以下代码行，以便能够访问这些类。
 
@@ -306,7 +306,7 @@ ImportError: cannot import name 'HistGradientBoostingRegressor'
 
 让我们仔细看看如何使用这个实现。
 
-#### 基于直方图的梯度增强分类机
+#### 基于直方图的梯度提升分类机
 
 下面的示例首先使用重复的 k 倍交叉验证对测试问题评估一个[HistGradientBoostingCollector](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html)，并报告平均准确度。然后在所有可用数据上拟合单一模型，并进行单一预测。
 
@@ -347,7 +347,7 @@ Accuracy: 0.935 (0.024)
 Prediction: 1
 ```
 
-#### 基于直方图的梯度增强回归机
+#### 基于直方图的梯度提升回归机
 
 下面的示例首先使用重复的 k 重交叉验证对测试问题评估一个[HistGradientBoostingResolver](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html)，并报告平均绝对误差。然后在所有可用数据上拟合单一模型，并进行单一预测。
 
@@ -390,7 +390,7 @@ Prediction: -77.837
 
 ## 带 XGBoost 的梯度升压
 
-[XGBoost](https://xgboost.ai/) ，是“*极限梯度增强*的缩写，是一个提供梯度增强算法高效实现的库。
+[XGBoost](https://xgboost.ai/) ，是“*极限梯度提升*的缩写，是一个提供梯度提升算法高效实现的库。
 
 XGBoost 实现的主要好处是计算效率和更好的模型表现。
 
@@ -516,7 +516,7 @@ Prediction: -93.434
 
 ## 用 LightGBM 进行梯度升压
 
-[LightGBM](https://github.com/microsoft/LightGBM) 是 Light Gradient Boosted Machine 的缩写，是微软开发的一个库，提供了一个高效的梯度增强算法的实现。
+[LightGBM](https://github.com/microsoft/LightGBM) 是 Light Gradient Boosted Machine 的缩写，是微软开发的一个库，提供了一个高效的梯度提升算法的实现。
 
 LightGBM 的主要好处是对训练算法的改变，这使得过程大大加快，并且在许多情况下，产生了更有效的模型。
 
@@ -640,11 +640,11 @@ Prediction: -82.040
 
 [CatBoost](https://catboost.ai/) 是在 [Yandex](https://en.wikipedia.org/wiki/Yandex) 开发的第三方库，提供了梯度 boosting 算法的高效实现。
 
-CatBoost 的主要好处(除了计算速度的提高)是支持分类输入变量。这使库的名称为“类别梯度增强”
+CatBoost 的主要好处(除了计算速度的提高)是支持分类输入变量。这使库的名称为“类别梯度提升”
 
 有关 CatBoost 算法的更多技术细节，请参见论文:
 
-*   [CatBoost:分类特征支持的梯度增强](https://arxiv.org/abs/1810.11363)，2017。
+*   [CatBoost:分类特征支持的梯度提升](https://arxiv.org/abs/1810.11363)，2017。
 
 ### 库安装
 
@@ -765,16 +765,16 @@ Prediction: -74.212
 ### 教程
 
 *   [如何用 Anaconda](https://machinelearningmastery.com/setup-python-environment-machine-learning-deep-learning-anaconda/) 设置机器学习的 Python 环境
-*   [机器学习梯度增强算法的简单介绍](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
-*   [如何配置梯度增强算法](https://machinelearningmastery.com/configure-gradient-boosting-algorithm/)
+*   [机器学习梯度提升算法的简单介绍](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
+*   [如何配置梯度提升算法](https://machinelearningmastery.com/configure-gradient-boosting-algorithm/)
 *   [应用机器学习 XGBoost 的温和介绍](https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/)
 
 ### 报纸
 
-*   [随机梯度增强](https://www.sciencedirect.com/science/article/pii/S0167947301000652)，2002。
+*   [随机梯度提升](https://www.sciencedirect.com/science/article/pii/S0167947301000652)，2002。
 *   [xboost:一种可扩展的树推进系统](https://arxiv.org/abs/1603.02754)，2016。
 *   [LightGBM:一种高效的梯度提升决策树](https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree)，2017。
-*   [CatBoost:分类特征支持的梯度增强](https://arxiv.org/abs/1810.11363)，2017。
+*   [CatBoost:分类特征支持的梯度提升](https://arxiv.org/abs/1810.11363)，2017。
 
 ### 蜜蜂
 
@@ -794,13 +794,13 @@ Prediction: -74.212
 
 ## 摘要
 
-在本教程中，您发现了如何在 Python 中使用梯度增强模型进行分类和回归。
+在本教程中，您发现了如何在 Python 中使用梯度提升模型进行分类和回归。
 
 具体来说，您了解到:
 
-*   梯度增强是一种集成算法，通过最小化误差梯度来适应增强的决策树。
-*   如何使用 Sklearn 评估和使用梯度增强，包括梯度增强机器和基于直方图的算法。
-*   如何评估和使用包括 XGBoost、LightGBM 和 CatBoost 在内的第三方梯度增强算法。
+*   梯度提升是一种集成算法，通过最小化误差梯度来适应增强的决策树。
+*   如何使用 Sklearn 评估和使用梯度提升，包括梯度提升机和基于直方图的算法。
+*   如何评估和使用包括 XGBoost、LightGBM 和 CatBoost 在内的第三方梯度提升算法。
 
 **你有什么问题吗？**
 在下面的评论中提问，我会尽力回答。

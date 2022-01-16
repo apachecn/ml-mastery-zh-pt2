@@ -1,4 +1,4 @@
-# Python 中分类的动态集成选择(DES)
+# Python 中用于分类的动态集成选择(DES)
 
 > 原文：<https://machinelearningmastery.com/dynamic-ensemble-selection-in-python/>
 
@@ -33,7 +33,7 @@ Python 中的动态集成选择
 
 本教程分为三个部分；它们是:
 
-1.  动态系综选择
+1.  动态集成选择
 2.  k-最近邻甲骨文(KNORA)与 Sklearn
     1.  克诺尔-消除(克诺尔-E)
     2.  克诺拉联盟(克诺拉-U)
@@ -41,7 +41,7 @@ Python 中的动态集成选择
     1.  在 k-最近邻中探索 k
     2.  探索分类器池的算法
 
-## 动态系综选择
+## 动态集成选择
 
 多分类器系统是指机器学习算法的一个领域，它使用多个模型来解决分类预测建模问题。
 

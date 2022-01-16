@@ -1,18 +1,18 @@
-# 如何用 XGBoost 开发随机森林系综
+# 如何用 XGBoost 开发随机森林集成
 
 > 原文：<https://machinelearningmastery.com/random-forest-ensembles-with-xgboost/>
 
 最后更新于 2021 年 4 月 27 日
 
-**XGBoost 库**提供了梯度增强的有效实现，可以配置为训练随机森林集合。
+**XGBoost 库**提供了梯度提升的有效实现，可以配置为训练随机森林集合。
 
 **随机森林**是比梯度提升更简单的算法。XGBoost 库允许以一种重新调整用途和利用库中实现的计算效率来训练随机森林模型的方式来训练模型。
 
-在本教程中，您将发现如何使用 XGBoost 库开发随机森林系综。
+在本教程中，您将发现如何使用 XGBoost 库开发随机森林集成。
 
 完成本教程后，您将知道:
 
-*   XGBoost 提供了梯度增强的有效实现，可以配置为训练随机森林系综。
+*   XGBoost 提供了梯度提升的有效实现，可以配置为训练随机森林集成。
 *   如何使用 XGBoost API 训练和评估用于分类和回归的随机森林集成模型。
 *   如何调整 XGBoost 随机森林集合模型的超参数。
 
@@ -37,11 +37,11 @@
 
 ## 带扩展的随机森林
 
-[XGBoost](https://github.com/dmlc/xgboost) 是一个开源库，提供了梯度增强集成算法的高效实现，简称为 Extreme Gradient Boosting 或 XGBoost。
+[XGBoost](https://github.com/dmlc/xgboost) 是一个开源库，提供了梯度提升集成算法的高效实现，简称为 Extreme Gradient Boosting 或 XGBoost。
 
 因此，XGBoost 指的是项目、库和算法本身。
 
-梯度增强是分类和回归预测建模项目的首选算法，因为它通常会获得最佳表现。梯度增强的问题是训练一个模型通常非常慢，并且这个问题被大数据集所加剧。
+梯度提升是分类和回归预测建模项目的首选算法，因为它通常会获得最佳表现。梯度提升的问题是训练一个模型通常非常慢，并且这个问题被大数据集所加剧。
 
 XGBoost 通过引入大量技术来解决梯度提升的速度问题，这些技术可以显著加速模型的训练，并且通常会带来更好的模型整体表现。
 
@@ -61,7 +61,7 @@ XGBoost 通过引入大量技术来解决梯度提升的速度问题，这些技
 
 *   [如何用 Python 开发随机森林集成](https://machinelearningmastery.com/random-forest-ensemble-in-python/)
 
-使用 XGBoost 库训练随机森林系综的主要好处是速度。预计它的使用速度将明显快于其他实现，例如本机 Sklearn 实现。
+使用 XGBoost 库训练随机森林集成的主要好处是速度。预计它的使用速度将明显快于其他实现，例如本机 Sklearn 实现。
 
 现在我们知道了 XGBoost 提供了对随机森林集成的支持，让我们看看具体的 API。
 
@@ -102,7 +102,7 @@ XGBoost 库提供了两个包装类，允许该库提供的随机森林实现与
 model = XGBRFClassifier()
 ```
 
-系综中使用的树的数量可以通过“*n _ estimator*”参数来设置，通常，这是增加的，直到模型没有观察到表现的进一步提高。通常使用成百上千棵树。
+集成中使用的树的数量可以通过“*n _ estimator*”参数来设置，通常，这是增加的，直到模型没有观察到表现的进一步提高。通常使用成百上千棵树。
 
 ```py
 ...
@@ -130,7 +130,7 @@ model = XGBRFClassifier(n_estimators=100, subsample=0.9)
 model = XGBRFClassifier(n_estimators=100, subsample=0.9, colsample_bynode=0.2)
 ```
 
-您可以在这里了解更多关于如何为随机森林系综配置 XGBoost 库的信息:
+您可以在这里了解更多关于如何为随机森林集成配置 XGBoost 库的信息:
 
 *   [XGBoost 中的随机森林](https://xgboost.readthedocs.io/en/latest/tutorials/rf.html)
 
@@ -504,7 +504,7 @@ XGBoost 随机森林特征集大小与分类精度的方框图
 
 *   [应用机器学习 XGBoost 的温和介绍](https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/)
 *   [如何用 Python 开发随机森林集成](https://machinelearningmastery.com/random-forest-ensemble-in-python/)
-*   [使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度增强](https://machinelearningmastery.com/gradient-boosting-with-Sklearn-xgboost-lightgbm-and-catboost/)
+*   [使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度提升](https://machinelearningmastery.com/gradient-boosting-with-Sklearn-xgboost-lightgbm-and-catboost/)
 *   [如何用 scikit 开发你的第一个 Python xboost 模型-学习](https://machinelearningmastery.com/develop-first-xgboost-model-python-Sklearn/)
 
 ### 蜜蜂
@@ -515,11 +515,11 @@ XGBoost 随机森林特征集大小与分类精度的方框图
 
 ## 摘要
 
-在本教程中，您发现了如何使用 XGBoost 库开发随机森林系综。
+在本教程中，您发现了如何使用 XGBoost 库开发随机森林集成。
 
 具体来说，您了解到:
 
-*   XGBoost 提供了梯度增强的有效实现，可以配置为训练随机森林系综。
+*   XGBoost 提供了梯度提升的有效实现，可以配置为训练随机森林集成。
 *   如何使用 XGBoost API 训练和评估用于分类和回归的随机森林集成模型。
 *   如何调整 XGBoost 随机森林集合模型的超参数。
 

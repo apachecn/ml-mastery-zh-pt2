@@ -600,7 +600,7 @@ Class Breakdown:
 ### 报纸
 
 *   [平衡机器学习训练数据的几种方法的行为研究](https://dl.acm.org/citation.cfm?id=1007735)，2004。
-*   [班级不平衡问题的集合研究综述:基于打包、提升和混合的方法](https://ieeexplore.ieee.org/document/5978225)，2011。
+*   [班级不平衡问题的集合研究综述:基于装袋、提升和混合的方法](https://ieeexplore.ieee.org/document/5978225)，2011。
 
 ### 文章
 

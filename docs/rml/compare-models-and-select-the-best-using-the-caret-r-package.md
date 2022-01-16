@@ -27,7 +27,7 @@ Caret R 包允许您轻松构建许多不同的模型类型并调整它们的参
 *   [数据集文件](https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.csv)。
 *   [数据集详细信息](https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.names)
 
-构建和调整的三个模型分别是[学习矢量量化](https://machinelearningmastery.com/learning-vector-quantization-for-machine-learning/) (LVQ)、[随机梯度增强](https://en.wikipedia.org/wiki/Gradient_boosting)(也称为梯度增强机或 GBM)和[支持向量机](https://en.wikipedia.org/wiki/Support_vector_machine) (SVM)。每个模型都是自动调整的，并使用 3 次重复的 10 倍交叉验证进行评估。
+构建和调整的三个模型分别是[学习矢量量化](https://machinelearningmastery.com/learning-vector-quantization-for-machine-learning/) (LVQ)、[随机梯度提升](https://en.wikipedia.org/wiki/Gradient_boosting)(也称为梯度提升机或 GBM)和[支持向量机](https://en.wikipedia.org/wiki/Support_vector_machine) (SVM)。每个模型都是自动调整的，并使用 3 次重复的 10 倍交叉验证进行评估。
 
 随机数种子在每个算法被训练之前被设置，以确保每个算法获得相同的数据分区并重复。这使我们能够在最终结果中比较苹果和苹果。或者，我们可以忽略这个问题，将重复次数增加到 30 或 100 次，利用随机性来控制数据分区的变化。
 

@@ -8,15 +8,15 @@
 
 超级学习器是一种[集成机器学习](https://machinelearningmastery.com/bagging-and-random-forest-ensemble-algorithms-for-machine-learning/)算法，它结合了您可能为预测建模问题调查的所有模型和模型配置，并使用它们来做出与您可能调查的任何单个模型一样好或更好的预测。
 
-超级学习器算法是[堆叠概括](https://machinelearningmastery.com/implementing-stacking-scratch-python/)的应用，称为堆叠或混合，应用于 [k 折叠交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)，其中所有模型使用相同的 k 折叠数据分割，元模型适合每个模型的折叠外预测。
+超级学习器算法是[堆叠概括](https://machinelearningmastery.com/implementing-stacking-scratch-python/)的应用，称为堆叠或混合，应用于 [k 折叠交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)，其中所有模型使用相同的 k 折叠数据分割，元模型适合每个模型的折外预测。
 
 在本教程中，您将发现超级学习器集成机器学习算法。
 
 完成本教程后，您将知道:
 
-*   超级学习器是在 k 倍交叉验证期间使用折叠外预测的堆叠概括的应用。
+*   超级学习器是在 k 倍交叉验证期间使用折外预测的堆叠概括的应用。
 *   超级学习器集成算法使用 Sklearn 模型在 Python 中直接实现。
-*   ML-系综(mlens)库提供了一个方便的实现，允许超级学习器只需几行代码就能适应和使用。
+*   ML-集成(mlens)库提供了一个方便的实现，允许超级学习器只需几行代码就能适应和使用。
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
@@ -201,9 +201,9 @@ def get_models():
 
 接下来，我们将使用 k 倍交叉验证进行超倍预测，这些预测将用作训练元模型或“T0”超级学习器的数据集。
 
-这包括首先将数据分成 k 个折叠；我们将使用 10。对于每个折叠，我们将在分割的训练部分拟合模型，并在分割的测试部分做出折叠外的预测。对每个模型重复这一过程，并存储所有超出范围的预测。
+这包括首先将数据分成 k 个折叠；我们将使用 10。对于每个折叠，我们将在分割的训练部分拟合模型，并在分割的测试部分做出折外的预测。对每个模型重复这一过程，并存储所有超出范围的预测。
 
-每个[折叠外预测](https://machinelearningmastery.com/out-of-fold-predictions-in-machine-learning)将是元模型输入的一列。我们将从每个算法中为一个数据折叠收集列，水平堆叠行。然后，对于我们收集的所有列组，我们将这些行垂直堆叠成一个包含 500 行和 9 列的长数据集。
+每个[折外预测](https://machinelearningmastery.com/out-of-fold-predictions-in-machine-learning)将是元模型输入的一列。我们将从每个算法中为一个数据折叠收集列，水平堆叠行。然后，对于我们收集的所有列组，我们将这些行垂直堆叠成一个包含 500 行和 9 列的长数据集。
 
 下面的*get _ out _ of _ fold _ predictions()*函数对给定的测试数据集和模型列表执行此操作；它将返回训练元模型所需的输入和输出数据集。
 
@@ -804,7 +804,7 @@ Super Learner: RMSE 0.571
 
 ### 基于最大似然集成库的超级分类学习器
 
-ML-系综也很容易用于分类问题，遵循相同的一般模式。
+ML-集成也很容易用于分类问题，遵循相同的一般模式。
 
 在这种情况下，我们将使用分类器模型列表和逻辑回归模型作为元模型。
 
@@ -898,7 +898,7 @@ Super Learner: 97.400
 *   [如何用 Keras 开发 Python 深度学习神经网络的堆叠集成](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)
 *   [如何用 Python 从头开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
 *   [如何在 Keras 创建深度学习模型的装袋集成](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/)
-*   [如何在机器学习中使用折叠外预测](https://machinelearningmastery.com/out-of-fold-predictions-in-machine-learning)
+*   [如何在机器学习中使用折外预测](https://machinelearningmastery.com/out-of-fold-predictions-in-machine-learning)
 
 ### 书
 
@@ -930,9 +930,9 @@ Super Learner: 97.400
 
 具体来说，您了解到:
 
-*   超级学习器是在 k 倍交叉验证期间使用折叠外预测的堆叠概括的应用。
+*   超级学习器是在 k 倍交叉验证期间使用折外预测的堆叠概括的应用。
 *   超级学习器集成算法使用 Sklearn 模型在 Python 中直接实现。
-*   ML-系综(mlens)库提供了一个方便的实现，允许超级学习器只需几行代码就能适应和使用。
+*   ML-集成(mlens)库提供了一个方便的实现，允许超级学习器只需几行代码就能适应和使用。
 
 你有什么问题吗？
 在下面的评论中提问，我会尽力回答。

@@ -378,7 +378,7 @@ pyplot.show()
 
 我们可以通过设置“ *max_features* ”参数来改变随机特征的数量，从而改变集合的多样性。
 
-下面的示例使用系综中固定数量的树将值从 1 更改为 20。
+下面的示例使用集成中固定数量的树将值从 1 更改为 20。
 
 ```py
 # explore random subspace ensemble number of features effect on performance

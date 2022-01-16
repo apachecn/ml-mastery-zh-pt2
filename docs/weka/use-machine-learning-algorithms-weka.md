@@ -108,7 +108,7 @@ Weka 中的一些机器学习算法有非标准名称。你可能已经知道一
 集成方法结合了来自多个模型的预测，以便做出更稳健的预测。
 
 *   随机森林:树木。随机森林
-*   引导聚合(也称为打包):元。制袋材料
+*   引导聚合(也称为装袋):元。制袋材料
 *   堆叠概括(也称为[堆叠](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)或混合):元。堆垛
 
 Weka 有大量的集成方法，可能是所有流行的机器学习框架中最大的一种。

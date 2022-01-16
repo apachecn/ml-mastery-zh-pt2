@@ -1,4 +1,4 @@
-# 多类分类一对一休息一对一
+# 多类分类的一对一和一对剩余
 
 > 原文：<https://machinelearningmastery.com/one-vs-rest-and-one-vs-one-for-multi-class-classification/>
 
