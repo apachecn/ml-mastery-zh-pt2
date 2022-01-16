@@ -1,4 +1,4 @@
-# 利用 AMSGrad 从零开始进行梯度下降优化
+# 从零开始的 AMSGrad 梯度下降优化
 
 > 原文：<https://machinelearningmastery.com/gradient-descent-optimization-with-amsgrad-from-scratch/>
 

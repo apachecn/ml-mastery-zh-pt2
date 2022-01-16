@@ -1,4 +1,4 @@
-# 从零开始用那达慕进行梯度下降优化
+# 从零开始的Nadam梯度下降优化
 
 > 原文：<https://machinelearningmastery.com/gradient-descent-optimization-with-nadam-from-scratch/>
 
@@ -6,18 +6,18 @@
 
 梯度下降是一种优化算法，它遵循目标函数的负梯度来定位函数的最小值。
 
-梯度下降的一个限制是，如果梯度变得平坦或曲率变大，搜索的进度会变慢。动量可以被添加到梯度下降，这结合了一些惯性更新。这可以通过结合预测的新位置而不是当前位置的梯度来进一步改善，称为内斯特罗夫加速梯度(NAG)或内斯特罗夫动量。
+梯度下降的一个限制是，如果梯度变得平坦或曲率变大，搜索的进度会变慢。动量可以被添加到梯度下降，这结合了一些惯性更新。这可以通过结合预测的新位置而不是当前位置的梯度来进一步改善，称为Nesterov加速梯度(NAG)或Nesterov动量。
 
 梯度下降的另一个限制是对所有输入变量使用单一步长(学习率)。对梯度下降的扩展，如[自适应运动估计(Adam)](https://machinelearningmastery.com/adam-optimization-from-scratch/) 算法，该算法对每个输入变量使用单独的步长，但可能导致步长迅速减小到非常小的值。
 
-**内斯特罗夫加速自适应矩估计**，或**纳达姆**，是亚当算法的扩展，结合了内斯特罗夫动量，可以使优化算法表现更好。
+**Nesterov加速自适应矩估计**，或**纳达姆**，是亚当算法的扩展，结合了Nesterov动量，可以使优化算法表现更好。
 
 在本教程中，您将发现如何用 Nadam 从零开始开发梯度下降优化。
 
 完成本教程后，您将知道:
 
 *   梯度下降是一种优化算法，它使用目标函数的梯度来导航搜索空间。
-*   纳达姆是亚当版梯度下降的延伸，结合了内斯特罗夫动量。
+*   纳达姆是亚当版梯度下降的延伸，结合了Nesterov动量。
 *   如何从头实现那达慕优化算法并将其应用于一个目标函数并评估结果。
 
 **用我的新书[机器学习优化](https://machinelearningmastery.com/optimization-for-machine-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -78,11 +78,11 @@ Let’s get started.![Gradient Descent Optimization With Nadam From Scratch](img
 
 ## 纳达姆优化算法
 
-内斯特罗夫加速自适应矩估计，或称**纳达姆**算法，是自适应运动估计(adam)优化算法的扩展，增加了内斯特罗夫加速梯度(NAG)或内斯特罗夫动量，这是一种改进的动量类型。
+Nesterov加速自适应矩估计，或称**纳达姆**算法，是自适应运动估计(adam)优化算法的扩展，增加了Nesterov加速梯度(NAG)或Nesterov动量，这是一种改进的动量类型。
 
 更广泛地说，纳达姆算法是梯度下降优化算法的扩展。
 
-该算法在 2016 年的论文中由[蒂莫西·多扎特](https://www.linkedin.com/in/timothy-dozat-982770198/)描述，标题为“[将内斯特罗夫动量并入亚当](https://openreview.net/forum?id=OM0jvwB8jIp57ZJjtNEZ)”尽管该论文的一个版本在 2015 年被写成了同名的[斯坦福项目报告](http://cs229.stanford.edu/proj2015/054_report.pdf)。
+该算法在 2016 年的论文中由[蒂莫西·多扎特](https://www.linkedin.com/in/timothy-dozat-982770198/)描述，标题为“[将Nesterov动量并入亚当](https://openreview.net/forum?id=OM0jvwB8jIp57ZJjtNEZ)”尽管该论文的一个版本在 2015 年被写成了同名的[斯坦福项目报告](http://cs229.stanford.edu/proj2015/054_report.pdf)。
 
 动量将梯度的指数衰减移动平均值(第一矩)添加到梯度下降算法中。这具有平滑噪声目标函数和改善收敛性的影响。
 
@@ -92,7 +92,7 @@ Let’s get started.![Gradient Descent Optimization With Nadam From Scratch](img
 
 > 我们展示了如何修改亚当的动量分量，以利用来自 NAG 的见解，然后我们提出了初步证据，表明进行这种替代可以提高收敛速度和学习模型的质量。
 
-——[将内斯特罗夫动量融入亚当](https://openreview.net/forum?id=OM0jvwB8jIp57ZJjtNEZ)，2016。
+——[将Nesterov动量融入亚当](https://openreview.net/forum?id=OM0jvwB8jIp57ZJjtNEZ)，2016。
 
 让我们逐步了解算法的每个元素。
 
@@ -119,7 +119,7 @@ Let’s get started.![Gradient Descent Optimization With Nadam From Scratch](img
 
 *   n(t)= nu * n(t-1)+(1–nu)* g(t)^2
 
-接下来，使用内斯特罗夫动量对第一个时刻进行偏差校正。
+接下来，使用Nesterov动量对第一个时刻进行偏差校正。
 
 *   mhat =(μ* m(t)/(1–μ))+((1–μ)* g(t)/(1–μ))
 
@@ -327,7 +327,7 @@ m[i] = mu * m[i] + (1.0 - mu) * g[i]
 n[i] = nu * n[i] + (1.0 - nu) * g[i]**2
 ```
 
-然后是偏差修正的内斯特罗夫动量。
+然后是偏差修正的Nesterov动量。
 
 ```py
 ...
@@ -703,8 +703,8 @@ pyplot.show()
 
 ### 报纸
 
-*   [将内斯特罗夫动量融入亚当](https://openreview.net/forum?id=OM0jvwB8jIp57ZJjtNEZ)，2016。
-*   [将内斯特罗夫动量融入亚当，斯坦福报告](http://cs229.stanford.edu/proj2015/054_report.pdf)，2015。
+*   [将Nesterov动量融入亚当](https://openreview.net/forum?id=OM0jvwB8jIp57ZJjtNEZ)，2016。
+*   [将Nesterov动量融入亚当，斯坦福报告](http://cs229.stanford.edu/proj2015/054_report.pdf)，2015。
 *   [求解收敛速度为 O (1/k^2)](http://mpawankumar.info/teaching/cdt-big-data/nesterov83.pdf) 的凸规划问题的一种方法，1983。
 *   [亚当:一种随机优化的方法](https://arxiv.org/abs/1412.6980)，2014。
 *   [梯度下降优化算法概述](https://arxiv.org/abs/1609.04747)，2016。
@@ -733,7 +733,7 @@ pyplot.show()
 具体来说，您了解到:
 
 *   梯度下降是一种优化算法，它使用目标函数的梯度来导航搜索空间。
-*   纳达姆是亚当版梯度下降的延伸，结合了内斯特罗夫动量。
+*   纳达姆是亚当版梯度下降的延伸，结合了Nesterov动量。
 *   如何从头实现那达慕优化算法并将其应用于一个目标函数并评估结果。
 
 **你有什么问题吗？**

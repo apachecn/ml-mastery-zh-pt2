@@ -1,4 +1,4 @@
-# 动量从零开始的梯度下降
+# 从零开始的动量梯度下降
 
 > 原文：<https://machinelearningmastery.com/gradient-descent-with-momentum-from-scratch/>
 

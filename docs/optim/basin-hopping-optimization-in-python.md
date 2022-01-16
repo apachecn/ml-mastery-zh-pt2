@@ -1,10 +1,10 @@
-# Python 中的跳盆优化
+# Python 中的盆地跳跃优化
 
 > 原文：<https://machinelearningmastery.com/basin-hopping-optimization-in-python/>
 
 最后更新于 2021 年 10 月 12 日
 
-**跳盆**是全局优化算法。
+**盆地跳跃**是全局优化算法。
 
 它是为了解决化学物理中的问题而发展起来的，尽管它是一种适用于非线性多目标函数的有效算法。
 
@@ -13,14 +13,14 @@
 完成本教程后，您将知道:
 
 *   流域跳跃优化是使用随机扰动来跳跃流域的全局优化，以及用于优化每个流域的局部搜索算法。
-*   如何使用 python 中的跳盆优化算法 API？
-*   用跳盆法解决多目标全局优化问题的实例。
+*   如何使用 python 中的盆地跳跃优化算法 API？
+*   用盆地跳跃法解决多目标全局优化问题的实例。
 
 **用我的新书[机器学习优化](https://machinelearningmastery.com/optimization-for-machine-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 Let’s get started.![Basin Hopping Optimization in Python](img/71189fe12ebaa3cd775eebba718674e0.png)
 
-Python 中的跳盆优化
+Python 中的盆地跳跃优化
 图片由[佩德罗·策克利](https://www.flickr.com/photos/pedrosz/33931224155/)提供，保留部分权利。
 
 ## 教程概述
@@ -37,7 +37,7 @@ Python 中的跳盆优化
 
 盆地跳跃是一种全局优化算法，开发用于[化学物理](https://en.wikipedia.org/wiki/Chemical_physics)领域。
 
-> 跳盆(BH)或蒙特卡罗最小化(MCM)是迄今为止化学物理中最可靠的寻找原子团簇和大分子体系最低能量结构的算法。
+> 盆地跳跃(BH)或蒙特卡罗最小化(MCM)是迄今为止化学物理中最可靠的寻找原子团簇和大分子体系最低能量结构的算法。
 
 ——[盆跳偶跳](https://www.sciencedirect.com/science/article/abs/pii/S0009261404016082)，2004。
 
@@ -99,7 +99,7 @@ result = basinhopping(objective, pt, stepsize=10.0)
 
 默认情况下，使用的本地搜索算法是“ *L-BFGS-B* ”算法。
 
-可以通过将“ *minimizer_kwargs* ”参数设置为一个目录，该目录的关键字为“ *method* ，该值作为要使用的本地搜索算法的名称，如“*内尔德-米德*”可以使用 SciPy 库提供的任何本地搜索算法。
+可以通过将“ *minimizer_kwargs* ”参数设置为一个目录，该目录的关键字为“ *method* ，该值作为要使用的本地搜索算法的名称，如“*NelderMead*”可以使用 SciPy 库提供的任何本地搜索算法。
 
 ```py
 ...
@@ -111,7 +111,7 @@ result = basinhopping(objective, pt, minimizer_kwargs={'method':'nelder-mead'})
 
 可通过“ *nfev* 访问功能评估的总数，可通过“ *x* 键访问为搜索找到的最佳输入。
 
-既然我们已经熟悉了 Python 中的跳盆 API，那么让我们来看看一些工作过的例子。
+既然我们已经熟悉了 Python 中的盆地跳跃 API，那么让我们来看看一些工作过的例子。
 
 ## 盆地跳跃示例
 
@@ -168,7 +168,7 @@ pyplot.show()
 
 阿克利多峰函数的三维表面图
 
-我们可以将跳盆算法应用于阿克利目标函数。
+我们可以将盆地跳跃算法应用于阿克利目标函数。
 
 在这种情况下，我们将使用从-5 到 5 之间的输入域中抽取的随机点开始搜索。
 
@@ -348,7 +348,7 @@ Solution: f([-2.80511809 3.13131252]) = 0.00000
 
 ### 报纸
 
-*   [包含多达 110 个原子的 Lennard-Jones 团簇的跳盆和最低能量结构的全局优化](https://pubs.acs.org/doi/abs/10.1021/jp970984n)，1997。
+*   [包含多达 110 个原子的 Lennard-Jones 团簇的盆地跳跃和最低能量结构的全局优化](https://pubs.acs.org/doi/abs/10.1021/jp970984n)，1997。
 *   [盆跳偶跳](https://www.sciencedirect.com/science/article/abs/pii/S0009261404016082)，2004。
 
 ### 书
@@ -363,7 +363,7 @@ Solution: f([-2.80511809 3.13131252]) = 0.00000
 ### 文章
 
 *   [全局优化，维基百科](https://en.wikipedia.org/wiki/Global_optimization)。
-*   [跳盆，维基百科](https://en.wikipedia.org/wiki/Basin-hopping)。
+*   [盆地跳跃，维基百科](https://en.wikipedia.org/wiki/Basin-hopping)。
 
 ## 摘要
 
@@ -372,8 +372,8 @@ Solution: f([-2.80511809 3.13131252]) = 0.00000
 具体来说，您了解到:
 
 *   流域跳跃优化是使用随机扰动来跳跃流域的全局优化，以及用于优化每个流域的局部搜索算法。
-*   如何使用 python 中的跳盆优化算法 API？
-*   用跳盆法解决多目标全局优化问题的实例。
+*   如何使用 python 中的盆地跳跃优化算法 API？
+*   用盆地跳跃法解决多目标全局优化问题的实例。
 
 **你有什么问题吗？**
 在下面的评论中提问，我会尽力回答。

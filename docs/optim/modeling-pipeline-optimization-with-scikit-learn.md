@@ -1,4 +1,4 @@
-# 使用 scikit 建模管道优化-学习
+# 使用 Sklearn 建模管道优化
 
 > 原文：<https://machinelearningmastery.com/modeling-pipeline-optimization-with-Sklearn/>
 

@@ -1,4 +1,4 @@
-# 用 Python 进行双重退火优化
+# Python 双重退火优化
 
 > 原文：<https://machinelearningmastery.com/dual-annealing-optimization-with-python/>
 

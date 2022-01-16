@@ -96,7 +96,7 @@ Let’s get started.![A Gentle Introduction to Stochastic Optimization Algorithm
 *   模拟退火
 *   进化策略
 *   遗传算法
-*   差异进化
+*   差分进化
 *   粒子群优化算法
 
 现在我们已经熟悉了一些随机优化算法的例子，让我们看看使用它们时的一些实际考虑。

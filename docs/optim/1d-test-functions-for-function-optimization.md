@@ -1,4 +1,4 @@
-# 用于功能优化的一维(1D)测试函数
+# 用于函数优化的一维测试函数
 
 > 原文：<https://machinelearningmastery.com/1d-test-functions-for-function-optimization/>
 
@@ -18,7 +18,7 @@
 
 Let’s get started.![One-Dimensional (1D) Test Functions for Function Optimization](img/00273c282bf50440c3de25f4415676b9.png)
 
-功能优化的一维(1D)测试功能
+函数优化的一维(1D)测试功能
 图片由 [Max Benidze](https://www.flickr.com/photos/maxbenidze/43478502114/) 提供，保留部分权利。
 
 ## 教程概述

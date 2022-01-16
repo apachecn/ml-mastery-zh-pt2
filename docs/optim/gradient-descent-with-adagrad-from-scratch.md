@@ -1,4 +1,4 @@
-# 从零开始用 AdaGrad 进行梯度下降
+# 从零开始的 AdaGrad 梯度下降
 
 > 原文：<https://machinelearningmastery.com/gradient-descent-with-adagrad-from-scratch/>
 

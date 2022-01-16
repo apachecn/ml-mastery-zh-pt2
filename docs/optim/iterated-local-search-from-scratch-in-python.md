@@ -1,4 +1,4 @@
-# Python 中从零开始迭代局部搜索
+# Python 中从零开始的迭代式局部搜索
 
 > 原文：<https://machinelearningmastery.com/iterated-local-search-from-scratch-in-python/>
 

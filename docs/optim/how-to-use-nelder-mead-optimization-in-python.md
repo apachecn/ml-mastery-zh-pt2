@@ -1,51 +1,51 @@
-# 如何在 Python 中使用内尔德-米德优化
+# 如何在 Python 中使用NelderMead优化
 
 > 原文：<https://machinelearningmastery.com/how-to-use-nelder-mead-optimization-in-python/>
 
 最后更新于 2021 年 10 月 12 日
 
-内尔德-米德优化算法是一种广泛用于不可微目标函数的方法。
+NelderMead优化算法是一种广泛用于不可微目标函数的方法。
 
 因此，它通常被称为模式搜索算法，并被用作局部或全局搜索过程，挑战非线性和潜在的噪声和多峰函数优化问题。
 
-在本教程中，您将发现内尔德-米德优化算法。
+在本教程中，您将发现NelderMead优化算法。
 
 完成本教程后，您将知道:
 
 *   奈尔德-米德优化算法是一种不使用函数梯度的模式搜索。
-*   如何在 Python 中应用内尔德-米德算法进行函数优化。
-*   如何解释内尔德-米德算法对噪声和多模态目标函数的结果。
+*   如何在 Python 中应用NelderMead算法进行函数优化。
+*   如何解释NelderMead算法对噪声和多模态目标函数的结果。
 
 **用我的新书[机器学习优化](https://machinelearningmastery.com/optimization-for-machine-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 Let’s get started.![How to Use the Nelder-Mead Optimization in Python](img/0e7a5683555d3d26d7c8b75b3f9a4b64.png)
 
-如何使用 Python 中的内尔德-米德优化
+如何使用 Python 中的NelderMead优化
 图片由[唐·格雷厄姆](https://www.flickr.com/photos/23155134@N06/47126513761/)提供，保留部分权利。
 
 ## 教程概述
 
 本教程分为三个部分；它们是:
 
-1.  内尔德-米德算法
-2.  Python 中的内尔德-米德示例
-3.  内尔德-米德挑战函数
+1.  NelderMead算法
+2.  Python 中的NelderMead示例
+3.  NelderMead挑战函数
     1.  噪声优化问题
     2.  多模态优化问题
 
-## 内尔德-米德算法
+## NelderMead算法
 
-[内尔德-米德](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method)是一种优化算法，以该技术的开发者[约翰内尔德](https://en.wikipedia.org/wiki/John_Nelder)和[罗杰米德](https://en.wikipedia.org/wiki/Roger_Mead)的名字命名。
+[NelderMead](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method)是一种优化算法，以该技术的开发者[约翰内尔德](https://en.wikipedia.org/wiki/John_Nelder)和[罗杰米德](https://en.wikipedia.org/wiki/Roger_Mead)的名字命名。
 
 该算法在他们 1965 年发表的题为“函数最小化的单纯形法”的论文中进行了描述，并已成为函数优化的标准和广泛使用的技术。
 
 它适用于具有数字输入的一维或多维函数。
 
-内尔德-米德是一种[模式搜索优化算法](https://en.wikipedia.org/wiki/Pattern_search_(optimization))，这意味着它不需要或使用函数梯度信息，适用于函数梯度未知或无法合理计算的优化问题。
+NelderMead是一种[模式搜索优化算法](https://en.wikipedia.org/wiki/Pattern_search_(optimization))，这意味着它不需要或使用函数梯度信息，适用于函数梯度未知或无法合理计算的优化问题。
 
 它经常被用于多维非线性函数优化问题，尽管它会陷入局部最优。
 
-> 内尔德-米德算法的实际表现通常是合理的，尽管已经观察到停滞出现在非最佳点。当检测到停滞时，可以使用重启。
+> NelderMead算法的实际表现通常是合理的，尽管已经观察到停滞出现在非最佳点。当检测到停滞时，可以使用重启。
 
 —第 239 页，[数值优化](https://amzn.to/3lCRqX9)，2006。
 
@@ -67,7 +67,7 @@ Let’s get started.![How to Use the Nelder-Mead Optimization in Python](img/0e7
 
 评估形状结构的点，并使用简单的规则来决定如何根据它们的相对评估来移动形状的点。这包括诸如目标函数表面上的单纯形形状的“*反射*”、“*扩展*、“*收缩*”和“*收缩*”的操作。
 
-> 在内尔德-米德算法的单次迭代中，我们试图移除函数值最差的顶点，并用另一个具有更好值的点来替换它。通过沿连接最差顶点和其余顶点质心的直线反射、扩展或收缩单形来获得新点。如果我们不能以这种方式找到更好的点，我们只保留具有最佳函数值的顶点，并通过将所有其他顶点移向该值来收缩单纯形。
+> 在NelderMead算法的单次迭代中，我们试图移除函数值最差的顶点，并用另一个具有更好值的点来替换它。通过沿连接最差顶点和其余顶点质心的直线反射、扩展或收缩单形来获得新点。如果我们不能以这种方式找到更好的点，我们只保留具有最佳函数值的顶点，并通过将所有其他顶点移向该值来收缩单纯形。
 
 —第 238 页，[数值优化](https://amzn.to/3lCRqX9)，2006。
 
@@ -75,11 +75,11 @@ Let’s get started.![How to Use the Nelder-Mead Optimization in Python](img/0e7
 
 现在，我们已经对算法的工作原理有了一个高层次的了解，让我们看看如何在实践中使用它。
 
-## Python 中的内尔德-米德示例
+## Python 中的NelderMead示例
 
-内尔德-米德优化算法可以通过[最小化()函数](https://docs.scipy.org/doc/scipy/reference/optimize.minimize-neldermead.html)在 Python 中使用。
+NelderMead优化算法可以通过[最小化()函数](https://docs.scipy.org/doc/scipy/reference/optimize.minimize-neldermead.html)在 Python 中使用。
 
-该函数要求将“*方法*”参数设置为“*内尔德-米德*”以使用内尔德-米德算法。它将目标函数最小化，并作为搜索的起始点。
+该函数要求将“*方法*”参数设置为“*NelderMead*”以使用NelderMead算法。它将目标函数最小化，并作为搜索的起始点。
 
 ```py
 ...
@@ -101,7 +101,7 @@ print('Total Evaluations: %d' % result['nfev'])
 print('Solution: %s' % result['x'])
 ```
 
-我们可以在一个表现良好的函数上演示内尔德-米德优化算法，以表明它可以快速有效地找到最优解，而无需使用函数的任何导数信息。
+我们可以在一个表现良好的函数上演示NelderMead优化算法，以表明它可以快速有效地找到最优解，而无需使用函数的任何导数信息。
 
 在这种情况下，我们将使用二维的 x^2 函数，在-5.0 到 5.0 的范围内定义，已知的 optima 为[0.0，0.0]。
 
@@ -150,7 +150,7 @@ evaluation = objective(solution)
 print('Solution: f(%s) = %.5f' % (solution, evaluation))
 ```
 
-将这些联系在一起，下面列出了在简单凸目标函数上使用内尔德-米德优化算法的完整示例。
+将这些联系在一起，下面列出了在简单凸目标函数上使用NelderMead优化算法的完整示例。
 
 ```py
 # nelder-mead optimization of a convex function
@@ -190,11 +190,11 @@ Total Evaluations: 88
 Solution: f([ 2.25680716e-05 -3.87021351e-05]) = 0.00000
 ```
 
-既然我们已经看到了如何成功地使用内尔德-米德优化算法，让我们看看一些它表现不太好的例子。
+既然我们已经看到了如何成功地使用NelderMead优化算法，让我们看看一些它表现不太好的例子。
 
-## 内尔德-米德挑战函数
+## NelderMead挑战函数
 
-内尔德-米德优化算法适用于一系列具有挑战性的非线性和不可微的目标函数。
+NelderMead优化算法适用于一系列具有挑战性的非线性和不可微的目标函数。
 
 然而，它会陷入多模态优化问题和噪声问题。
 
@@ -216,7 +216,7 @@ def objective(x):
 
 噪声将使函数难以优化算法，并且很可能无法在 x=0.0 时找到最优值。
 
-下面列出了使用内尔德-米德优化噪声目标函数的完整示例。
+下面列出了使用NelderMead优化噪声目标函数的完整示例。
 
 ```py
 # nelder-mead optimization of noisy one-dimensional convex function
@@ -261,7 +261,7 @@ Solution: f([-0.6918238]) = 0.79431
 
 许多非线性目标函数可能有多个最优解，称为多峰问题。
 
-问题的结构可能是，它有多个具有等价函数求值的全局最优解，或者一个全局最优解和多个局部最优解，其中像内尔德-米德这样的算法可能会陷入局部最优解的搜索。
+问题的结构可能是，它有多个具有等价函数求值的全局最优解，或者一个全局最优解和多个局部最优解，其中像NelderMead这样的算法可能会陷入局部最优解的搜索。
 
 [阿克利函数](https://en.wikipedia.org/wiki/Ackley_function)就是后者的一个例子。它是一个二维目标函数，在[0，0]有一个全局最优值，但有许多局部最优值。
 
@@ -310,7 +310,7 @@ pyplot.show()
 
 最初，当单纯形很大时，算法可能会跳过许多局部最优解，但当它收缩时，就会卡住。
 
-我们可以通过下面的例子来探讨这一点，这个例子演示了阿克利函数的内尔德-米德算法。
+我们可以通过下面的例子来探讨这一点，这个例子演示了阿克利函数的NelderMead算法。
 
 ```py
 # nelder-mead for multimodal function optimization
@@ -371,25 +371,25 @@ Solution: f([-4.9831427 -3.98656015]) = 11.90126
 
 ### 蜜蜂
 
-*   [内尔德-米德单纯形算法(方法= '内尔德-米德')](https://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html#nelder-mead-simplex-algorithm-method-nelder-mead)
+*   [NelderMead单纯形算法(方法= 'NelderMead')](https://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html#nelder-mead-simplex-algorithm-method-nelder-mead)
 *   [scipy . optimize . minimum API](https://docs.scipy.org/doc/scipy/reference/optimize.minimize-neldermead.html)。
 *   [scipy . optimize . optimizer result API](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.OptimizeResult.html)。
 *   num py . random . rann API。
 
 ### 文章
 
-*   [内尔德-米德法，维基百科](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method)。
-*   [内尔德-米德算法，维基百科](http://www.scholarpedia.org/article/Nelder-Mead_algorithm)。
+*   [NelderMead法，维基百科](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method)。
+*   [NelderMead算法，维基百科](http://www.scholarpedia.org/article/Nelder-Mead_algorithm)。
 
 ## 摘要
 
-在本教程中，您发现了内尔德-米德优化算法。
+在本教程中，您发现了NelderMead优化算法。
 
 具体来说，您了解到:
 
 *   奈尔德-米德优化算法是一种不使用函数梯度的模式搜索。
-*   如何在 Python 中应用内尔德-米德算法进行函数优化。
-*   如何解释内尔德-米德算法对噪声和多模态目标函数的结果。
+*   如何在 Python 中应用NelderMead算法进行函数优化。
+*   如何解释NelderMead算法对噪声和多模态目标函数的结果。
 
 **你有什么问题吗？**
 在下面的评论中提问，我会尽力回答。

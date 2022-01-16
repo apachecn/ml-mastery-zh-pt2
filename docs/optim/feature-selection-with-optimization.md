@@ -1,4 +1,4 @@
-# 用随机优化算法选择特征
+# 使用随机优化算法的特征选择
 
 > 原文：<https://machinelearningmastery.com/feature-selection-with-optimization/>
 

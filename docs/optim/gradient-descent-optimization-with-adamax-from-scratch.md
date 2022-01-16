@@ -1,4 +1,4 @@
-# AdaMax 从零开始的梯度下降优化
+# 从零开始的 AdaMax 梯度下降优化
 
 > 原文：<https://machinelearningmastery.com/gradient-descent-optimization-with-adamax-from-scratch/>
 

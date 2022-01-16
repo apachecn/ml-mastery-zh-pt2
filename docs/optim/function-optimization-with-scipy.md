@@ -1,4 +1,4 @@
-# 使用 SciPy 进行功能优化
+# 使用 SciPy 的函数优化
 
 > 原文：<https://machinelearningmastery.com/function-optimization-with-scipy/>
 
@@ -22,7 +22,7 @@
 
 Let’s get started.![Function Optimization With SciPy](img/6865a7189337ca1fce2f4e298ac3c5de.png)
 
-功能优化与 SciPy
+函数优化与 SciPy
 照片由[马诺埃尔莱默斯](https://www.flickr.com/photos/mlemos/3125484412/)，保留部分权利。
 
 ## 教程概述
@@ -85,7 +85,7 @@ result = minimize(objective, point)
 
 有一套流行的本地搜索算法，例如:
 
-*   [内尔德-米德算法](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method)(方法= '内尔德-米德')。
+*   [NelderMead算法](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method)(方法= 'NelderMead')。
 *   [牛顿法](https://en.wikipedia.org/wiki/Newton%27s_method)(方法= '牛顿-重心')。
 *   [鲍威尔法](https://en.wikipedia.org/wiki/Powell%27s_method)(法= '鲍威尔')。
 *   [BFGS 算法和扩展](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm)(方法='BFGS ')。
@@ -136,7 +136,7 @@ Solution: f([3.38059583e-07 3.70089258e-07]) = 0.00000
 
 SciPy 库提供了许多随机全局优化算法，每个算法都通过不同的函数实现。它们是:
 
-*   [通过](https://en.wikipedia.org/wiki/Basin-hopping)[跳盆()](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.basinhopping.html)功能进行跳盆优化。
+*   [通过](https://en.wikipedia.org/wiki/Basin-hopping)[盆地跳跃()](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.basinhopping.html)功能进行盆地跳跃优化。
 *   [通过](https://en.wikipedia.org/wiki/Differential_evolution)[差分进化()](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.differential_evolution.html)功能进行差分进化优化。
 *   [通过](https://en.wikipedia.org/wiki/Simulated_annealing)[双重退火()](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.dual_annealing.html)功能模拟退火。
 

@@ -1,4 +1,4 @@
-# 从零开始编码 Adam 优化算法
+# 从零开始编写 Adam 优化算法
 
 > 原文：<https://machinelearningmastery.com/adam-optimization-from-scratch/>
 

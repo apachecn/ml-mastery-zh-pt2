@@ -1,4 +1,4 @@
-# Python 差分进化全局优化
+# Python 差分进化的全局优化
 
 > 原文：<https://machinelearningmastery.com/differential-evolution-global-optimization-with-python/>
 
@@ -29,11 +29,11 @@ Let’s get started.![Differential Evolution Global Optimization With Python](im
 
 本教程分为三个部分；它们是:
 
-1.  差异进化
+1.  差分进化
 2.  差分进化应用编程接口
 3.  差分进化成功的例子
 
-## 差异进化
+## 差分进化
 
 [差分进化](https://en.wikipedia.org/wiki/Differential_evolution)，简称 DE，是一种随机全局搜索优化算法。
 
@@ -41,7 +41,7 @@ Let’s get started.![Differential Evolution Global Optimization With Python](im
 
 > 差分进化算法可以说是目前使用的最强大的随机实参数优化算法之一。
 
-——[差异进化:最先进水平的调查](https://ieeexplore.ieee.org/abstract/document/5601760/)，2011 年。
+——[差分进化:最先进水平的调查](https://ieeexplore.ieee.org/abstract/document/5601760/)，2011 年。
 
 该算法在搜索中不使用梯度信息，因此非常适合于非微分非线性目标函数。
 
@@ -67,17 +67,17 @@ Let’s get started.![Differential Evolution Global Optimization With Python](im
 
 *   DE/x/y/z
 
-其中 DE 代表“*差异进化*”，“ *x* 定义待变异的基础解，如“*兰德*”代表随机或“*最佳*”代表种群中的最佳解。 *y* 代表添加到基础解的差向量的数量，如 1， *z* 定义了确定每个解在群体中是否被保留或替换的概率分布，如二项式的 *bin* 或指数式的 *exp* 。
+其中 DE 代表“*差分进化*”，“ *x* 定义待变异的基础解，如“*兰德*”代表随机或“*最佳*”代表种群中的最佳解。 *y* 代表添加到基础解的差向量的数量，如 1， *z* 定义了确定每个解在群体中是否被保留或替换的概率分布，如二项式的 *bin* 或指数式的 *exp* 。
 
 > 上面使用的一般惯例是 DE/x/y/z，其中 DE 代表“差分进化”，x 代表表示要扰动的基向量的字符串，y 是考虑扰动 x 的差向量的数量，z 代表使用的交叉类型(exp:指数；bin:二项式)。
 
-——[差异进化:最先进水平的调查](https://ieeexplore.ieee.org/abstract/document/5601760/)，2011 年。
+——[差分进化:最先进水平的调查](https://ieeexplore.ieee.org/abstract/document/5601760/)，2011 年。
 
 配置 DE/best/1/bin 和 DE/best/2/bin 是受欢迎的配置，因为它们对许多目标功能表现良好。
 
 > Mezura-Montes 等人进行的实验表明，无论要解决的问题的特征如何，基于结果的最终准确性和鲁棒性，DE/best/1/bin(总是使用最佳解来寻找搜索方向以及二项式交叉)仍然是最具竞争力的方案。
 
-——[差异进化:最先进水平的调查](https://ieeexplore.ieee.org/abstract/document/5601760/)，2011 年。
+——[差分进化:最先进水平的调查](https://ieeexplore.ieee.org/abstract/document/5601760/)，2011 年。
 
 现在我们已经熟悉了差分进化算法，让我们看看如何使用 SciPy API 实现。
 
@@ -246,7 +246,7 @@ Solution: f([0\. 0.]) = 0.00000
 ### 报纸
 
 *   [差分进化——连续空间上全局优化的简单有效的启发式算法](https://link.springer.com/article/10.1023/A:1008202821328)，1997。
-*   [差异进化:最先进水平的调查](https://ieeexplore.ieee.org/abstract/document/5601760/)，2011 年。
+*   [差分进化:最先进水平的调查](https://ieeexplore.ieee.org/abstract/document/5601760/)，2011 年。
 
 ### 书
 
@@ -261,7 +261,7 @@ Solution: f([0\. 0.]) = 0.00000
 
 ### 文章
 
-*   [差异进化，维基百科](https://en.wikipedia.org/wiki/Differential_evolution)。
+*   [差分进化，维基百科](https://en.wikipedia.org/wiki/Differential_evolution)。
 
 ## 摘要
 

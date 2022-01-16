@@ -1,4 +1,4 @@
-# 用于功能优化的二维(2D)测试函数
+# 用于函数优化的二维测试函数
 
 > 原文：<https://machinelearningmastery.com/2d-test-functions-for-function-optimization/>
 
@@ -16,7 +16,7 @@
 
 Let’s get started.![Two-Dimensional (2D) Test Functions for Function Optimization](img/14610dd391c5d74d4181907a4213b749.png)
 
-功能优化的二维(2D)测试功能
+函数优化的二维(2D)测试功能
 摄于[摄于](https://www.flickr.com/photos/dominart/28909893056/)，版权所有。
 
 ## 教程概述

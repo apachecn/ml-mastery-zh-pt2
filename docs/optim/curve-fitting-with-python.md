@@ -1,4 +1,4 @@
-# 用 Python 进行曲线拟合
+# Python 曲线拟合
 
 > 原文：<https://machinelearningmastery.com/curve-fitting-with-python/>
 

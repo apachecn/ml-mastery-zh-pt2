@@ -1,4 +1,4 @@
-# 功能优化的随机搜索和网格搜索
+# 函数优化的随机搜索和网格搜索
 
 > 原文：<https://machinelearningmastery.com/random-search-and-grid-search-for-function-optimization/>
 
@@ -22,7 +22,7 @@
 
 Let’s get started.![Random Search and Grid Search for Function Optimization](img/02a912c5430a6d362cd20ef0f8b98bd2.png)
 
-功能优化的随机搜索和网格搜索
+函数优化的随机搜索和网格搜索
 图片由 [Kosala Bandara](https://www.flickr.com/photos/kosalabandara/13900559649/) 提供，保留部分权利。
 
 ## 教程概述
