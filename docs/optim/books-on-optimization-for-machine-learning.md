@@ -71,7 +71,7 @@ Let’s get started.![Books on Optimization for Machine Learning](img/b164e218e7
 *   第十章:制约因素
 *   第 11 章:线性约束优化
 *   第 12 章:多目标优化
-*   第 13 章:抽样计划
+*   第 13 章:采样计划
 *   第 14 章:代理模型
 *   第 15 章:概率代理模型
 *   第 16 章:代理优化

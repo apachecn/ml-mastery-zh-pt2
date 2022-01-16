@@ -1,4 +1,4 @@
-# AIC、BIC 和 MDL 的概率模型选择
+# 使用 AIC、BIC 和 MDL 的概率模型选择
 
 > 原文：<https://machinelearningmastery.com/probabilistic-model-selection-measures/>
 

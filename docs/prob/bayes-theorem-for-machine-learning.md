@@ -51,11 +51,11 @@
 
 ## 条件概率的贝叶斯定理
 
-在我们深入研究贝叶斯定理之前，让我们回顾一下边际概率、联合概率和条件概率。
+在我们深入研究贝叶斯定理之前，让我们回顾一下边缘概率、联合概率和条件概率。
 
-回想一下，边际概率是一个事件的概率，不考虑其他随机变量。如果随机变量是独立的，那么它直接是事件的概率，否则，如果变量依赖于其他变量，那么边际概率是事件对因变量的所有结果求和的概率，称为求和规则。
+回想一下，边缘概率是一个事件的概率，不考虑其他随机变量。如果随机变量是独立的，那么它直接是事件的概率，否则，如果变量依赖于其他变量，那么边缘概率是事件对因变量的所有结果求和的概率，称为求和规则。
 
-*   **边际概率**:一个事件的概率，与其他随机变量的结果无关，例如 P(A)。
+*   **边缘概率**:一个事件的概率，与其他随机变量的结果无关，例如 P(A)。
 
 联合概率是两个(或多个)同时发生的事件的概率，通常用来自两个相关随机变量(如 X 和 y)的事件 A 和 B 来描述。联合概率通常概括为结果，如 A 和 B
 
@@ -81,9 +81,9 @@
 
 *   P(A | B)！= P(B | A)
 
-我们现在已经掌握了边际概率、联合概率和条件概率。如果您想了解这些基础知识的更多背景知识，请参阅教程:
+我们现在已经掌握了边缘概率、联合概率和条件概率。如果您想了解这些基础知识的更多背景知识，请参阅教程:
 
-*   [对联合概率、边际概率和条件概率的温和介绍](https://machinelearningmastery.com/joint-marginal-and-conditional-probability-for-machine-learning/)
+*   [对联合概率、边缘概率和条件概率的温和介绍](https://machinelearningmastery.com/joint-marginal-and-conditional-probability-for-machine-learning/)
 
 ### 计算条件概率的另一种方法
 
@@ -622,7 +622,7 @@ Negative Prediction | False Negative (FN) | True Negative (TN)
 
 ### 相关教程
 
-*   [对联合概率、边际概率和条件概率的温和介绍](https://machinelearningmastery.com/joint-marginal-and-conditional-probability-for-machine-learning/)
+*   [对联合概率、边缘概率和条件概率的温和介绍](https://machinelearningmastery.com/joint-marginal-and-conditional-probability-for-machine-learning/)
 *   [什么是机器学习中的假设？](https://machinelearningmastery.com/what-is-a-hypothesis-in-machine-learning/)
 *   [如何在 Python 中从零开始开发朴素贝叶斯分类器](https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm/)
 *   [Python 中从零开始的朴素贝叶斯分类器](https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/)

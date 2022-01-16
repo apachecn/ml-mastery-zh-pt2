@@ -1,4 +1,4 @@
-# 带最大似然估计的逻辑回归入门
+# 使用最大似然估计的逻辑回归入门
 
 > 原文：<https://machinelearningmastery.com/logistic-regression-with-maximum-likelihood-estimation/>
 

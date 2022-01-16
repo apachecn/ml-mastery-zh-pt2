@@ -51,7 +51,7 @@ FID 分数是由[Martin heussel](https://www.linkedin.com/in/mheusel/)等人在�
 
 ——[通过两时间尺度更新规则训练的 GANs 收敛到局部纳什均衡，2017](https://arxiv.org/abs/1706.08500) 。
 
-初始得分基于表现最好的图像分类模型[初始 v3](https://machinelearningmastery.com/how-to-implement-major-architecture-innovations-for-convolutional-neural-networks/) 将合成图像分类为 1000 个已知对象之一的程度来估计合成图像集合的质量。分数结合了每个合成图像的条件类别预测的置信度(质量)和预测类别的边际概率的积分(多样性)。
+初始得分基于表现最好的图像分类模型[初始 v3](https://machinelearningmastery.com/how-to-implement-major-architecture-innovations-for-convolutional-neural-networks/) 将合成图像分类为 1000 个已知对象之一的程度来估计合成图像集合的质量。分数结合了每个合成图像的条件类别预测的置信度(质量)和预测类别的边缘概率的积分(多样性)。
 
 初始得分没有记录合成图像与真实图像的对比情况。开发 FID 评分的目标是基于合成图像集合的统计数据与来自目标域的真实图像集合的统计数据进行比较来评估合成图像。
 

@@ -1,4 +1,4 @@
-# 机器学习学习概率的 5 个理由
+# 为机器学习学习概率的 5 个理由
 
 > 原文：<https://machinelearningmastery.com/why-learn-probability-for-machine-learning/>
 
@@ -123,7 +123,7 @@
 
 调整机器学习模型的超参数是很常见的，例如 kNN 的 k 或神经网络中的学习率。
 
-典型的方法包括超参数的网格搜索范围或随机抽样超参数组合。
+典型的方法包括超参数的网格搜索范围或随机采样超参数组合。
 
 贝叶斯优化是一种更有效的超参数优化，它包括基于最有可能产生更好表现的配置对可能配置的空间进行定向搜索。顾名思义，这种方法是在对可能的构型空间进行采样时，根据并利用[贝叶斯定理](https://machinelearningmastery.com/bayes-theorem-for-machine-learning/)设计出来的。
 

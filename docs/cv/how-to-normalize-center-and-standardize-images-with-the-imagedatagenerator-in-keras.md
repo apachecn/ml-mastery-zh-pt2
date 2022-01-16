@@ -475,7 +475,7 @@ datagen = ImageDataGenerator(featurewise_center=True, featurewise_std_normalizat
 datagen.fit(trainX)
 ```
 
-还可以计算统计数据，然后分别用于标准化每个图像，Keras 称之为抽样标准化。
+还可以计算统计数据，然后分别用于标准化每个图像，Keras 称之为采样标准化。
 
 ```py
 # sample-wise standardization
@@ -602,7 +602,7 @@ Test Accuracy: 99.120
 本节列出了一些您可能希望探索的扩展教程的想法。
 
 *   **颜色**。更新一个示例，将图像数据集用于彩色图像，并确认缩放是在整个图像上执行的，而不是按通道执行的。
-*   **抽样**。演示像素图像的样本式居中或标准化示例。
+*   **采样**。演示像素图像的样本式居中或标准化示例。
 *   **ZCA 美白**。演示使用 ZCA 方法准备图像数据的示例。
 
 如果你探索这些扩展，我很想知道。

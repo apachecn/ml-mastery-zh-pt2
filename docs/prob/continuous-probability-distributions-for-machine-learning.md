@@ -15,7 +15,7 @@
 完成本教程后，您将知道:
 
 *   连续随机变量的结果概率可以用连续概率分布来概括。
-*   如何从常见的连续概率分布中参数化、定义和随机抽样。
+*   如何从常见的连续概率分布中参数化、定义和随机采样。
 *   如何为常见的连续概率分布创建概率密度和累积密度图？
 
 **用我的新书[机器学习概率](https://machinelearningmastery.com/probability-for-machine-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -214,7 +214,7 @@ sample = exponential(beta, n)
 print(sample)
 ```
 
-运行该示例将打印从定义的分布中随机抽样的 10 个数字。
+运行该示例将打印从定义的分布中随机采样的 10 个数字。
 
 ```py
 [  3.32742946  39.10165624  41.86856606  85.0030387   28.18425491
@@ -291,7 +291,7 @@ sample = pareto(alpha, n)
 print(sample)
 ```
 
-运行该示例将打印从定义的分布中随机抽样的 10 个数字。
+运行该示例将打印从定义的分布中随机采样的 10 个数字。
 
 ```py
 [0.5049704  0.0140647  2.13105224 3.10991217 2.87575892 1.06602639
@@ -346,7 +346,7 @@ pyplot.show()
 ### 应用程序接口
 
 *   [连续统计分布，SciPy](https://docs.scipy.org/doc/scipy/reference/tutorial/stats/continuous.html) 。
-*   [随机抽样(numpy.random)，NumPy](https://docs.scipy.org/doc/numpy/reference/routines.random.html) 。
+*   [随机采样(numpy.random)，NumPy](https://docs.scipy.org/doc/numpy/reference/routines.random.html) 。
 
 ### 文章
 
@@ -362,7 +362,7 @@ pyplot.show()
 具体来说，您了解到:
 
 *   连续随机变量的结果概率可以用连续概率分布来概括。
-*   如何从常见的连续概率分布中参数化、定义和随机抽样。
+*   如何从常见的连续概率分布中参数化、定义和随机采样。
 *   如何为常见的连续概率分布创建概率密度和累积密度图？
 
 你有什么问题吗？

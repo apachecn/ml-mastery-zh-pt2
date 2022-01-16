@@ -1,4 +1,4 @@
-# 用工作实例发展贝叶斯定理的直觉
+# 使用工作实例开发贝叶斯定理的直觉
 
 > 原文：<https://machinelearningmastery.com/intuition-for-bayes-theorem-with-worked-examples/>
 
