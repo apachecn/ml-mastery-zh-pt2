@@ -578,7 +578,7 @@ scores = evaluate_model(X, y, model)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-运行该示例评估算法并报告平均值和标准偏差准确率。
+运行该示例评估计法并报告平均值和标准偏差准确率。
 
 **注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 

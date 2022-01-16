@@ -32,7 +32,7 @@
 1.  问题定义
 2.  数据分析
 3.  数据准备
-4.  评估算法
+4.  评估计法
 5.  改善结果
 6.  呈现结果
 
@@ -79,9 +79,9 @@
 5.  移除和/或替换缺失的值(如果存在)
 6.  创建数据集的转换，以测试问题定义中提出的假设
 
-## 4.评估算法
+## 4.评估计法
 
-评估算法的目的是开发测试工具和基线准确率，并以此为基础进行改进。
+评估计法的目的是开发测试工具和基线准确率，并以此为基础进行改进。
 
 [![Algorithm ranking when analyzing results in the Weka Experimenter](img/cdab3456f0be64680cff89d02b8213f7.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-25-at-5.30.54-AM.png)
 

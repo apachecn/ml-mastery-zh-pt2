@@ -33,7 +33,7 @@
 
 在数据集中保留不相关的属性会导致过拟合。像 C4.5 这样的决策树算法寻求在属性值上做出最优选择。那些与预测更相关的属性首先被拆分。在树的更深处，不太相关和不相关的属性被用来做出预测决策，这些决策可能只是偶然有益于训练数据集中。训练数据的这种过拟合会对该方法的建模能力产生负面影响，并削弱预测准确率。
 
-在评估算法之前，从数据集中移除冗余和不相关的属性非常重要。这个任务应该在应用机器学习过程的[准备数据](https://machinelearningmastery.com/how-to-prepare-data-for-machine-learning/ "How to Prepare Data For Machine Learning")步骤中处理。
+在评估计法之前，从数据集中移除冗余和不相关的属性非常重要。这个任务应该在应用机器学习过程的[准备数据](https://machinelearningmastery.com/how-to-prepare-data-for-machine-learning/ "How to Prepare Data For Machine Learning")步骤中处理。
 
 ## 特征选择
 

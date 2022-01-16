@@ -31,7 +31,7 @@
 3.  [用 Keras 高级深度学习](https://amzn.to/2Wt1p7G)。
 4.  [学习生成对抗网络](https://amzn.to/2MavhS3)。
 5.  [生成对抗网络项目](https://amzn.to/2YYdBLh)。
-6.  [生成对抗网络食谱](https://amzn.to/2MgzNyJ)。
+6.  [生成对抗网络秘籍](https://amzn.to/2MgzNyJ)。
 7.  [与 Keras 的动手生成对抗网络](https://amzn.to/2VThkrv)。
 
 此外，我们还将复习两本热门深度学习书籍的 GAN 部分。
@@ -193,18 +193,18 @@
 *   第 8 章:条件 GAN——使用条件性对抗网络的图像到图像转换
 *   第 9 章:预测 GANs 的未来
 
-## 6.生成对抗网络食谱
+## 6.生成对抗网络秘籍
 
-**标题**:生成对抗网络食谱:100 多种使用 Python、TensorFlow 和 Keras 构建生成模型的食谱
+**标题**:生成对抗网络秘籍:100 多种使用 Python、TensorFlow 和 Keras 构建生成模型的秘籍
 
 作者[乔希·卡琳](https://www.linkedin.com/in/josh-kalin-96b6152b/)，2018 年出版。
 
 [![Generative Adversarial Networks Cookbook](img/eeea9953d5d5bebec97e0dcf90524c04.png)](https://amzn.to/2MgzNyJ)
 
-生成对抗网络食谱
+生成对抗网络秘籍
 
-*   [生成对抗网络食谱，亚马逊](https://amzn.to/2MgzNyJ)。
-*   [生成对抗网络食谱，Packt](https://www.packtpub.com/big-data-and-business-intelligence/generative-adversarial-networks-cookbook) 。
+*   [生成对抗网络秘籍，亚马逊](https://amzn.to/2MgzNyJ)。
+*   [生成对抗网络秘籍，Packt](https://www.packtpub.com/big-data-and-business-intelligence/generative-adversarial-networks-cookbook) 。
 *   [图书源代码](https://github.com/PacktPublishing/Generative-Adversarial-Networks-Cookbook)。
 
 ### 目录

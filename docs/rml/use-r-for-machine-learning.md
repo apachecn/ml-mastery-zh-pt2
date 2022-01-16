@@ -1,4 +1,4 @@
-# 使用 R 进行机器学习
+# 将 R 用于机器学习
 
 > 原文：<https://machinelearningmastery.com/use-r-for-machine-learning/>
 

@@ -1,4 +1,4 @@
-# 带决策树的 R 中非线性回归
+# R 中的决策树非线性回归
 
 > 原文：<https://machinelearningmastery.com/non-linear-regression-in-r-with-decision-trees/>
 

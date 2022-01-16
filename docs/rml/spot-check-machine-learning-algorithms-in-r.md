@@ -1,4 +1,4 @@
-# 抽查 R 中的机器学习算法(下一个项目要尝试的算法)
+# 抽查 R 中的机器学习算法（下一个项目要尝试的算法）
 
 > 原文：<https://machinelearningmastery.com/spot-check-machine-learning-algorithms-in-r/>
 
@@ -60,14 +60,14 @@ r 中有数百种机器学习算法可用。
 每种算法将从两个角度呈现:
 
 1.  用于训练和预测算法的包和函数。
-2.  算法的插入符号包装。
+2.  算法的Caret包装。
 
 对于给定的算法，您需要知道使用哪个包和函数。在以下情况下需要这样做:
 
 *   您正在研究算法参数以及如何从算法中获得最大收益。
 *   你已经发现了使用的最佳算法，需要准备一个最终模型。
 
-您需要知道如何将每个算法与插入符号一起使用，这样您就可以使用插入符号的预处理、算法评估和调整功能，在看不见的数据上有效地评估算法的准确性。
+您需要知道如何将每个算法与Caret一起使用，这样您就可以使用Caret的预处理、算法评估和调整功能，在看不见的数据上有效地评估计法的准确性。
 
 两个标准数据集用于演示算法:
 
@@ -79,7 +79,7 @@ r 中有数百种机器学习算法可用。
 *   **线性算法**是更简单的方法，具有很强的偏差，但训练速度很快。
 *   **非线性算法**是更复杂的方法，具有较大的方差，但通常更准确。
 
-本节中介绍的每个食谱都是完整的，并将产生一个结果，以便您可以将其复制并粘贴到当前或下一个机器学习项目中。
+本节中介绍的每个秘籍都是完整的，并将产生一个结果，以便您可以将其复制并粘贴到当前或下一个机器学习项目中。
 
 我们开始吧。
 
@@ -109,7 +109,7 @@ mse <- mean((BostonHousing$medv - predictions)^2)
 print(mse)
 ```
 
-lm 实现可以在插入符号中使用，如下所示:
+lm 实现可以在Caret中使用，如下所示:
 
 ```py
 # load libraries
@@ -145,7 +145,7 @@ predictions <- ifelse(probabilities > 0.5,'pos','neg')
 table(predictions, PimaIndiansDiabetes$diabetes)
 ```
 
-glm 算法可用于插入符号，如下所示:
+glm 算法可用于Caret，如下所示:
 
 ```py
 # load libraries
@@ -181,7 +181,7 @@ predictions <- predict(fit, PimaIndiansDiabetes[,1:8])$class
 table(predictions, PimaIndiansDiabetes$diabetes)
 ```
 
-lda 算法可用于插入符号，如下所示:
+lda 算法可用于Caret，如下所示:
 
 ```py
 # load libraries
@@ -245,7 +245,7 @@ print(mse)
 
 它还可以配置为执行三种重要类型的正则化:套索、脊和弹性网，方法是将 alpha 参数分别配置为 1、0 或 in [0，1]。
 
-glmnet 实现可以在插入符号中用于分类，如下所示:
+glmnet 实现可以在Caret中用于分类，如下所示:
 
 ```py
 # load libraries
@@ -262,7 +262,7 @@ fit.glmnet <- train(diabetes~., data=PimaIndiansDiabetes, method="glmnet", metri
 print(fit.glmnet)
 ```
 
-glmnet 实现可以在脱字符号中用于回归，如下所示:
+glmnet 实现可以在caret中用于回归，如下所示:
 
 ```py
 # load libraries
@@ -285,7 +285,7 @@ print(fit.glmnet)
 
 #### 1.k-最近邻
 
-knn3 函数在脱字符号库中，不创建模型，而是直接从训练集中进行预测。它可以用于分类或回归。
+knn3 函数在caret库中，不创建模型，而是直接从训练集中进行预测。它可以用于分类或回归。
 
 分类示例:
 
@@ -381,7 +381,7 @@ predictions <- predict(fit, PimaIndiansDiabetes[,1:8])
 table(predictions, PimaIndiansDiabetes$diabetes)
 ```
 
-一个非常相似的朴素贝叶斯实现(来自 klaR 库的朴素贝叶斯)可以如下使用插入符号:
+一个非常相似的朴素贝叶斯实现(来自 klaR 库的朴素贝叶斯)可以如下使用Caret:
 
 ```py
 # load libraries
@@ -440,7 +440,7 @@ mse <- mean((BostonHousing$medv - predictions)^2)
 print(mse)
 ```
 
-带有径向基核的 SVM 实现可以与插入符号一起使用进行分类，如下所示:
+带有径向基核的 SVM 实现可以与Caret一起使用进行分类，如下所示:
 
 ```py
 # load libraries
@@ -456,7 +456,7 @@ fit.svmRadial <- train(diabetes~., data=PimaIndiansDiabetes, method="svmRadial",
 print(fit.svmRadial)
 ```
 
-带有径向基核的 SVM 实现可以与插入符号一起用于回归，如下所示:
+带有径向基核的 SVM 实现可以与Caret一起用于回归，如下所示:
 
 ```py
 # load libraries
@@ -513,7 +513,7 @@ mse <- mean((BostonHousing$medv - predictions)^2)
 print(mse)
 ```
 
-rpart 实现可以与脱字符号一起使用进行分类，如下所示:
+rpart 实现可以与caret一起使用进行分类，如下所示:
 
 ```py
 # load libraries
@@ -529,7 +529,7 @@ fit.rpart <- train(diabetes~., data=PimaIndiansDiabetes, method="rpart", metric=
 print(fit.rpart)
 ```
 
-rpart 实现可以与插入符号一起用于回归，如下所示:
+rpart 实现可以与Caret一起用于回归，如下所示:
 
 ```py
 # load libraries
@@ -551,13 +551,13 @@ R 提供了许多其他算法，并且在 caret 中可用。
 
 我建议你去探索它们，并在你的下一个机器学习项目中，在你自己的必须尝试算法的简短列表中添加更多的算法。
 
-您可以在本页的插入符号包中找到机器学习函数和包到它们名称的映射:
+您可以在本页的Caret包中找到机器学习函数和包到它们名称的映射:
 
-*   [插入符号模型列表](https://topepo.github.io/caret/modelList.html)
+*   [Caret模型列表](https://topepo.github.io/caret/modelList.html)
 
-如果您在脱字符号中使用一个算法，并且想知道它属于哪个包，以便您可以阅读参数并从中获得更多信息，此页面非常有用。
+如果您在caret中使用一个算法，并且想知道它属于哪个包，以便您可以阅读参数并从中获得更多信息，此页面非常有用。
 
-如果您直接在 R 中使用机器学习算法，并且想知道它如何在插入符号中使用，此页面也很有用。
+如果您直接在 R 中使用机器学习算法，并且想知道它如何在Caret中使用，此页面也很有用。
 
 ## 摘要
 
@@ -572,16 +572,16 @@ R 提供了许多其他算法，并且在 caret 中可用。
 *   支持向量机
 *   分类和回归树
 
-您学习了每个算法使用哪些包和函数。您还学习了如何将每个算法与提供算法评估和调整功能的脱字符号包一起使用。
+您学习了每个算法使用哪些包和函数。您还学习了如何将每个算法与提供算法评估和调整功能的caret包一起使用。
 
 您可以使用这些算法作为模板，对您当前或下一个机器学习项目进行抽查
 
 ## 你的下一步
 
-你试过这些食谱吗？
+你试过这些秘籍吗？
 
 1.  开始你的互动环境。
-2.  键入或复制粘贴上面的食谱并试用。
+2.  键入或复制粘贴上面的秘籍并试用。
 3.  使用 R 中的内置帮助来了解有关所用函数的更多信息。
 
 你有问题吗？在评论里问，我会尽力回答。

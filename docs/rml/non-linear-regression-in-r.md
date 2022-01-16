@@ -85,7 +85,7 @@ mse <- mean((longley$Employed - predictions)^2)
 print(mse)
 ```
 
-了解更多关于 **knnreg** 功能和[脱字符号包](https://cran.r-project.org/web/packages/caret/index.html)的信息。
+了解更多关于 **knnreg** 功能和[caret包](https://cran.r-project.org/web/packages/caret/index.html)的信息。
 
 ## 神经网络
 

@@ -1,4 +1,4 @@
-# 如何使用 R 进行机器学习
+# 如何将 R 用于机器学习
 
 > 原文：<https://machinelearningmastery.com/how-to-use-r-for-machine-learning/>
 
@@ -26,7 +26,7 @@ R 有超过 6000 个第三方软件包。大量可用的软件包是 R 平台的
 
 应该使用哪些软件包？
 
-作为机器学习项目的一部分，您需要执行一些特定的任务。加载数据、评估算法和提高准确性等任务。您可以为每个任务使用多种技术，多个包可以提供这些技术。
+作为机器学习项目的一部分，您需要执行一些特定的任务。加载数据、评估计法和提高准确性等任务。您可以为每个任务使用多种技术，多个包可以提供这些技术。
 
 考虑到有这么多不同的方法来完成一个给定的子任务，你需要发现那些最能满足你需求的函数和包。
 
@@ -101,10 +101,10 @@ R 有超过 6000 个第三方软件包。大量可用的软件包是 R 平台的
 
 选择数据集中与构建预测模型最相关的要素。
 
-*   RFE:来自[插入符号](https://cran.r-project.org/web/packages/caret/index.html)包的 rfe 函数
-*   相关:从[插入符号](https://cran.r-project.org/web/packages/caret/index.html)包中找到相关函数
+*   RFE:来自[Caret](https://cran.r-project.org/web/packages/caret/index.html)包的 rfe 函数
+*   相关:从[Caret](https://cran.r-project.org/web/packages/caret/index.html)包中找到相关函数
 
-插入符号包提供了一套功能选择方法，请参见评估算法任务。
+Caret包提供了一套功能选择方法，请参见评估计法任务。
 
 荣誉提名:
 
@@ -117,25 +117,25 @@ R 有超过 6000 个第三方软件包。大量可用的软件包是 R 平台的
 *   规范化:自定义编写的函数
 *   标准化:从基础包扩展功能。
 
-插入符号包作为测试工具的一部分提供数据转换，请参见下一节。
+Caret包作为测试工具的一部分提供数据转换，请参见下一节。
 
-### 2.评估算法任务
+### 2.评估计法任务
 
-脱字符号包中的函数应该用于评估数据集上的模型。
+caret包中的函数应该用于评估数据集上的模型。
 
-脱字符号包支持各种表现度量和测试选项，如数据拆分和交叉验证。预处理也可以配置为测试线束的一部分。
+caret包支持各种表现度量和测试选项，如数据拆分和交叉验证。预处理也可以配置为测试线束的一部分。
 
 #### 模型评估
 
-*   模型评估:来自[插入符号](https://cran.r-project.org/web/packages/caret/index.html)包的训练功能。
-*   测试选项:来自[插入符号](https://cran.r-project.org/web/packages/caret/index.html)包的列车控制功能。
-*   预处理选项:从[插入符号](https://cran.r-project.org/web/packages/caret/index.html)包中的预处理功能。
+*   模型评估:来自[Caret](https://cran.r-project.org/web/packages/caret/index.html)包的训练功能。
+*   测试选项:来自[Caret](https://cran.r-project.org/web/packages/caret/index.html)包的列车控制功能。
+*   预处理选项:从[Caret](https://cran.r-project.org/web/packages/caret/index.html)包中的预处理功能。
 
 请注意，许多现代预测模型(如高级决策树的风格)提供了某种形式的特征选择、参数调整和内置集成。
 
 #### 预测模型
 
-插入符号包提供了对所有最佳预测建模算法的访问。
+Caret包提供了对所有最佳预测建模算法的访问。
 
 ### 3.改进结果任务
 
@@ -143,11 +143,11 @@ R 有超过 6000 个第三方软件包。大量可用的软件包是 R 平台的
 
 #### 算法调整
 
-脱字符号包提供算法调整，作为测试工具的一部分，并包括随机、网格和自适应搜索等技术。
+caret包提供算法调整，作为测试工具的一部分，并包括随机、网格和自适应搜索等技术。
 
 #### 模型集合
 
-许多现代预测建模算法提供内置的集成。脱字符号包中提供了一套装袋和增强功能。
+许多现代预测建模算法提供内置的集成。caret包中提供了一套装袋和增强功能。
 
 *   混合:来自[carestenmble](https://cran.r-project.org/web/packages/caretEnsemble/index.html)包的 carestenmble。
 *   堆叠:从[carestensemble](https://cran.r-project.org/web/packages/caretEnsemble/index.html)包装中取出。

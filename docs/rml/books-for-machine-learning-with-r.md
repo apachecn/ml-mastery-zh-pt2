@@ -1,4 +1,4 @@
-# 带 R 的机器学习书籍
+# R 机器学习书籍
 
 > 原文：<https://machinelearningmastery.com/books-for-machine-learning-with-r/>
 
@@ -46,7 +46,7 @@ r 是一个强大的数据分析和机器学习平台。
 
 应用预测建模
 
-这本书的作者马克斯·库恩是著名的[脱字符号包](http://caret.r-forge.r-project.org/)的创造者。[应用预测建模](https://amzn.to/3iFPHhq)非常实用，在第一部分首先描述了预测分析流程和案例研究。第 2 部分和第 3 部分研究回归和分类算法，最后一部分涵盖更高级的主题，如特征选择。
+这本书的作者马克斯·库恩是著名的[caret包](http://caret.r-forge.r-project.org/)的创造者。[应用预测建模](https://amzn.to/3iFPHhq)非常实用，在第一部分首先描述了预测分析流程和案例研究。第 2 部分和第 3 部分研究回归和分类算法，最后一部分涵盖更高级的主题，如特征选择。
 
 这是一本厚厚的书，也是一本很好的参考书，我是这本书的粉丝。也可以查看[的配套网站](http://appliedpredictivemodeling.com/)获取相关资源。
 

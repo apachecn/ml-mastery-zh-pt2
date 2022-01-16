@@ -137,7 +137,7 @@ pyplot.show()
 
 原因是我们使用预定义的函数来总结观测值和它们的概率之间的关系，这些概率可以用参数来控制或配置，因此出现了“*参数化*”。
 
-一旦我们估算了密度，我们就可以检查它是否合适。这可以通过多种方式实现，例如:
+一旦我们估计了密度，我们就可以检查它是否合适。这可以通过多种方式实现，例如:
 
 *   绘制密度函数并将形状与直方图进行比较。
 *   对密度函数进行采样，并将生成的样本与真实样本进行比较。
@@ -388,7 +388,7 @@ pyplot.show()
 
 通过双峰数据样本的核密度估计估计的直方图和概率密度函数图
 
-KernelDensity 类功能强大，并支持多维数据的 PDF 估算。
+KernelDensity 类功能强大，并支持多维数据的 PDF 估计。
 
 ## 进一步阅读
 
@@ -405,15 +405,15 @@ KernelDensity 类功能强大，并支持多维数据的 PDF 估算。
 *   [scipy . stats . Gaussian _ kde API](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gaussian_kde.html)。
 *   [非参数方法非参数，Statsmodels API](https://www.statsmodels.org/stable/nonparametric.html) 。
 *   [核密度估计统计模型示例](https://www.statsmodels.org/stable/examples/notebooks/generated/kernel_density.html)。
-*   [密度估算，Sklearn API](https://Sklearn.org/stable/modules/density.html) 。
+*   [密度估计，Sklearn API](https://Sklearn.org/stable/modules/density.html) 。
 
 ### 文章
 
-*   [密度估算，维基百科](https://en.wikipedia.org/wiki/Density_estimation)。
+*   [密度估计，维基百科](https://en.wikipedia.org/wiki/Density_estimation)。
 *   [直方图，维基百科](https://en.wikipedia.org/wiki/Histogram)。
 *   [核密度估计，维基百科](https://en.wikipedia.org/wiki/Kernel_density_estimation)。
 *   [多元核密度估计，维基百科](https://en.wikipedia.org/wiki/Multivariate_kernel_density_estimation)。
-*   [通过帕尔森-罗森布拉特窗口法估算核密度](https://sebastianraschka.com/Articles/2014_kernel_density_est.html)，2014 年。
+*   [通过帕尔森-罗森布拉特窗口法估计核密度](https://sebastianraschka.com/Articles/2014_kernel_density_est.html)，2014 年。
 *   [深度:核密度估计](https://jakevdp.github.io/PythonDataScienceHandbook/05.13-kernel-density-estimation.html)。
 
 ## 摘要

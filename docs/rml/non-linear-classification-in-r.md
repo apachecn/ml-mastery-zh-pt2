@@ -6,7 +6,7 @@
 
 在这篇文章中，你将发现 r 中的 8 种非线性分类方法。每种方法都可以为你自己的问题复制、粘贴和修改。
 
-本文所有食谱均使用[数据集包](http://stat.ethz.ch/R-manual/R-patched/library/datasets/html/00Index.html)中提供的[鸢尾花数据集](http://stat.ethz.ch/R-manual/R-patched/library/datasets/html/iris.html)。该数据集描述了鸢尾花的测量结果，并要求对三种花卉中的一种进行分类。
+本文所有秘籍均使用[数据集包](http://stat.ethz.ch/R-manual/R-patched/library/datasets/html/00Index.html)中提供的[鸢尾花数据集](http://stat.ethz.ch/R-manual/R-patched/library/datasets/html/iris.html)。该数据集描述了鸢尾花的测量结果，并要求对三种花卉中的一种进行分类。
 
 **用我的新书[用 R](https://machinelearningmastery.com/machine-learning-with-r/) 启动你的项目**，包括*一步一步的教程*和所有例子的 *R 源代码*文件。
 
@@ -83,7 +83,7 @@ table(predictions, iris$Species)
 
 神经网络(NN)是一个计算单元的图形，这些计算单元接收输入并将结果转换成输出并传递出去。这些单元被排序成层，以将输入向量的特征连接到输出向量的特征。通过训练，例如反向传播算法，可以设计和训练神经网络来模拟数据中的潜在关系。
 
-这个食谱展示了虹膜数据集上的神经网络。
+这个秘籍展示了虹膜数据集上的神经网络。
 
 ```py
 # load the package
@@ -163,7 +163,7 @@ predictions <- predict(fit, iris[,1:4], type="class")
 table(predictions, iris$Species)
 ```
 
-了解更多关于[脱字符号包](https://cran.r-project.org/web/packages/caret/index.html)中 **knn3** 功能的信息。
+了解更多关于[caret包](https://cran.r-project.org/web/packages/caret/index.html)中 **knn3** 功能的信息。
 
 ## 朴素贝叶斯
 

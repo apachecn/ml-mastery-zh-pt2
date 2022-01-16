@@ -1,6 +1,4 @@
-# 如何用 R
-
-评估机器学习算法
+# 如何用 R 评估机器学习算法
 
 > 原文：<https://machinelearningmastery.com/evaluate-machine-learning-algorithms-with-r/>
 
@@ -72,11 +70,11 @@
 2.  从数据中构建多个预测模型。
 3.  比较模型并选择一个简短的列表。
 
-我们将在 R 中使用插入符号包，因为它提供了一个进入数百种不同机器学习算法的优秀界面，以及评估和比较模型的有用工具。
+我们将在 R 中使用Caret包，因为它提供了一个进入数百种不同机器学习算法的优秀界面，以及评估和比较模型的有用工具。
 
-有关插入符号的更多信息，请参阅文章:
+有关Caret的更多信息，请参阅文章:
 
-*   [用于应用预测建模的脱字符号包](https://machinelearningmastery.com/caret-r-package-for-applied-predictive-modeling/)
+*   [用于应用预测建模的caret包](https://machinelearningmastery.com/caret-r-package-for-applied-predictive-modeling/)
 
 让我们定义测试工具
 
@@ -144,13 +142,13 @@ seed <- 7
 
 *   [评估机器学习算法时如何选择正确的测试选项](https://machinelearningmastery.com/how-to-choose-the-right-test-options-when-evaluating-machine-learning-algorithms/)
 
-有关在脱字符号中使用所有三个推荐测试选项的示例，请参见文章:
+有关在caret中使用所有三个推荐测试选项的示例，请参见文章:
 
-*   [如何使用脱字符号包](https://machinelearningmastery.com/how-to-estimate-model-accuracy-in-r-using-the-caret-package/)估算 R 中的模型准确率
+*   [如何使用caret包](https://machinelearningmastery.com/how-to-estimate-model-accuracy-in-r-using-the-caret-package/)估计 R 中的模型准确率
 
 #### 测试度量
 
-有许多可能的评估指标可供选择。插入符号提供了一个很好的选择，如果需要，您可以使用自己的选择。
+有许多可能的评估指标可供选择。Caret提供了一个很好的选择，如果需要，您可以使用自己的选择。
 
 用于不同问题类型的一些好的测试指标包括:
 
@@ -207,7 +205,7 @@ metric <- "Accuracy"
 
 当我们进行抽查时，我们不想尝试算法参数的许多变化，这些变化会在以后改进结果时出现。我们也想给每个算法一个展示自己的机会。
 
-R 中脱字符号包的一个方面是它有助于调整算法参数。它还可以估计良好的默认值(通过自动调谐功能和*列车()*功能的*调谐长度*参数)。
+R 中caret包的一个方面是它有助于调整算法参数。它还可以估计良好的默认值(通过自动调谐功能和*列车()*功能的*调谐长度*参数)。
 
 我建议在抽查时，如果不是所有算法，也是大多数算法都使用默认值，除非您查找一些合理的默认值，或者对给定的算法有一些经验。
 
@@ -219,7 +217,7 @@ R 中脱字符号包的一个方面是它有助于调整算法参数。它还可
 
 例如，如果所有输入变量具有相同的规模，许多基于实例的算法会工作得更好。
 
-幸运的是，插入符号中的 *train()* 函数允许您指定在训练之前要执行的数据预处理。您需要的转换以列表的形式提供给 preference 参数，并按顺序对数据执行
+幸运的是，Caret中的 *train()* 函数允许您指定在训练之前要执行的数据预处理。您需要的转换以列表的形式提供给 preference 参数，并按顺序对数据执行
 
 最有用的转换是通过以下方式扩展和集中数据。例如:
 
@@ -269,7 +267,7 @@ fit.gbm <- train(diabetes~., data=dataset, method="gbm", metric=metric, trContro
 
 您可以看到算法类型的良好混合。
 
-您可以看到所有算法都使用默认的(自动估计的)算法参数，没有优化网格(插入符号如何优化算法)。
+您可以看到所有算法都使用默认的(自动估计的)算法参数，没有优化网格(Caret如何优化算法)。
 
 您还可以看到，那些从重新缩放的数据中受益的算法都有 PRofile 参数集。
 
@@ -363,7 +361,7 @@ dotplot(results)
 
 您发现抽查是为给定数据集找到好的甚至最好的机器学习算法的最佳方式。
 
-您使用脱字符号包在 R 中完成了一个案例研究，并对一个二进制分类问题评估了 10 多种不同的算法。
+您使用caret包在 R 中完成了一个案例研究，并对一个二进制分类问题评估了 10 多种不同的算法。
 
 您现在有了一个抽查算法的模板，可以在当前或下一个机器学习项目中使用。
 

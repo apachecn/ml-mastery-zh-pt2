@@ -93,7 +93,7 @@ print(X.shape, y.shape)
 
 我们可以使用[simple 插补器类](https://Sklearn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)进行统计插补，并用每一列的平均值替换缺失的值。然后，我们可以在数据集上拟合一个随机森林模型。
 
-有关如何使用简单估算器类的更多信息，请参见教程:
+有关如何使用简单估计器类的更多信息，请参见教程:
 
 *   [机器学习中缺失值的统计插补](https://machinelearningmastery.com/statistical-imputation-for-missing-values-in-machine-learning/)
 
@@ -152,7 +152,7 @@ Mean Accuracy: 0.862 (0.056)
 向模型公开这一知识的一种方法是提供一个额外的列，该列是一个二元标志，指示该行是否有丢失的值。
 
 *   0:行不包含缺失值。
-*   1:行包含一个缺失值(过去/将来会被估算)。
+*   1:行包含一个缺失值(过去/将来会被估计)。
 
 这可以直接在加载的数据集上实现。首先，我们可以对每一行的值求和，以创建一个新的列，其中如果该行至少包含一个 NaN，那么总和将是一个 NaN。
 
@@ -257,9 +257,9 @@ Mean Accuracy: 0.863 (0.055)
 
 在前一节中，我们添加了一个额外的列来指示一行是否包含缺失值。
 
-下一步是指出每个输入值是否缺失和估算。这实际上为每个包含缺失值的输入变量增加了一列，并可能为模型带来好处。
+下一步是指出每个输入值是否缺失和估计。这实际上为每个包含缺失值的输入变量增加了一列，并可能为模型带来好处。
 
-这可以通过在定义[简单估算器实例](https://Sklearn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)时将“ *add_indicator* ”参数设置为 *True* 来实现。
+这可以通过在定义[简单估计器实例](https://Sklearn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)时将“ *add_indicator* ”参数设置为 *True* 来实现。
 
 ```py
 ...
@@ -269,7 +269,7 @@ X = SimpleImputer(add_indicator=True).fit_transform(X)
 
 我们可以用一个成功的例子来证明这一点。
 
-下面的示例像以前一样加载 horse colic 数据集，然后估算整个数据集的缺失值，并为每个缺失值的输入变量添加指示变量
+下面的示例像以前一样加载 horse colic 数据集，然后估计整个数据集的缺失值，并为每个缺失值的输入变量添加指示变量
 
 ```py
 # impute and add indicators for columns with missing values

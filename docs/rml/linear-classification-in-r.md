@@ -6,7 +6,7 @@
 
 在这篇文章中，你将发现 3 种线性分类算法的配方
 
-本文所有食谱均使用[数据集包](http://stat.ethz.ch/R-manual/R-patched/library/datasets/html/00Index.html)中提供的[鸢尾花数据集](http://stat.ethz.ch/R-manual/R-patched/library/datasets/html/iris.html)。该数据集描述了鸢尾花的测量结果，并要求对三种花卉中的一种进行分类。
+本文所有秘籍均使用[数据集包](http://stat.ethz.ch/R-manual/R-patched/library/datasets/html/00Index.html)中提供的[鸢尾花数据集](http://stat.ethz.ch/R-manual/R-patched/library/datasets/html/iris.html)。该数据集描述了鸢尾花的测量结果，并要求对三种花卉中的一种进行分类。
 
 **用我的新书[用 R](https://machinelearningmastery.com/machine-learning-with-r/) 启动你的项目**，包括*一步一步的教程*和所有例子的 *R 源代码*文件。
 
@@ -48,7 +48,7 @@ table(predictions, iris$Species)
 
 LDA 是一种分类方法，它可以找到数据属性的线性组合，从而最好地将数据分成类。
 
-这个食谱演示了虹膜数据集上的线性判别分析方法。
+这个秘籍演示了虹膜数据集上的线性判别分析方法。
 
 ```py
 # load the package
@@ -88,7 +88,7 @@ predictions <- predict(fit, iris[,1:4])
 table(predictions, iris$Species)
 ```
 
-了解更多关于[脱字符号包](https://cran.r-project.org/web/packages/caret/index.html)中 **plsda** 功能的信息。
+了解更多关于[caret包](https://cran.r-project.org/web/packages/caret/index.html)中 **plsda** 功能的信息。
 
 ## 摘要
 

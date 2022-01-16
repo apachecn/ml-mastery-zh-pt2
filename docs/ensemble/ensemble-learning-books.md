@@ -37,7 +37,7 @@
 
 *   [用 R](https://amzn.to/37vLf0i) 进行动手集成学习，2018。
 *   [Python 动手集成学习](https://amzn.to/2YCCi0W)，2019 年。
-*   [集成机器学习食谱](https://amzn.to/3hq3l8t)，2019 年。
+*   [集成机器学习秘籍](https://amzn.to/3hq3l8t)，2019 年。
 
 **是不是错过了一本关于集成学习的书？**
 在下面的评论里告诉我。

@@ -1,4 +1,4 @@
-# R 区超快速成班(针对开发者)
+# R 的超快速成班（面向开发者）
 
 > 原文：<https://machinelearningmastery.com/r-crash-course-for-developers/>
 
@@ -327,7 +327,7 @@ mysum(1,2,3)
 
 您可以通过调用一个函数来安装一个托管在 CRAN 上的包。然后，它会弹出一个对话框，询问您希望从哪个镜像下载软件包。
 
-例如，下面是如何安装在机器学习中非常有用的脱字符号包:
+例如，下面是如何安装在机器学习中非常有用的caret包:
 
 ```py
 # install the caret package

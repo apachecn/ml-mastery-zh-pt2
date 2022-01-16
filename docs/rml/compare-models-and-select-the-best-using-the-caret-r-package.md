@@ -1,4 +1,4 @@
-# 使用插入符号 R 包比较模型并选择最佳方案
+# 使用Caret R 包比较模型并选择最佳方案
 
 > 原文：<https://machinelearningmastery.com/compare-models-and-select-the-best-using-the-caret-r-package/>
 
@@ -8,7 +8,7 @@ Caret R 包允许您轻松构建许多不同的模型类型并调整它们的参
 
 在创建和调整许多模型类型之后，您可能想要知道并选择最佳模型，以便您可以使用它进行预测，也许是在操作环境中。
 
-在这篇文章中，你会发现如何使用插入符号包来比较多个模型的结果。
+在这篇文章中，你会发现如何使用Caret包来比较多个模型的结果。
 
 **用我的新书[用 R](https://machinelearningmastery.com/machine-learning-with-r/) 启动你的项目**，包括*一步一步的教程*和所有例子的 *R 源代码*文件。
 
@@ -83,11 +83,11 @@ SVM 0.21870  0.3889 0.4167 0.4520  0.5003 0.7638    0
 
 [![Box Plot Comparing Model Results](img/0f1c64ed528a7025cc85ef48b2a6aa18.png)](https://machinelearningmastery.com/wp-content/uploads/2014/09/boxplot_compare_models.png)
 
-使用插入符号包比较模型结果的箱线图
+使用Caret包比较模型结果的箱线图
 
 [![Dotplot Comparing Model Results using the Caret R Package](img/26c99859582d27a9cca89ea8f5c43dab.png)](https://machinelearningmastery.com/wp-content/uploads/2014/09/dotplot_compare_models.png)
 
-使用插入符号包比较模型结果的点图
+使用Caret包比较模型结果的点图
 
 如果你需要对哪种算法更好提出有力的主张，你也可以使用统计假设检验来统计显示结果的差异是显著的。
 
@@ -95,6 +95,6 @@ SVM 0.21870  0.3889 0.4167 0.4520  0.5003 0.7638    0
 
 ## 摘要
 
-在这篇文章中，你发现了如何使用插入符号包来比较来自多个不同模型的结果，即使它们的参数已经被优化。你看到了三种比较结果的方法，表格，方框图和点图。
+在这篇文章中，你发现了如何使用Caret包来比较来自多个不同模型的结果，即使它们的参数已经被优化。你看到了三种比较结果的方法，表格，方框图和点图。
 
 本文中的示例是独立的，您可以轻松地将它们复制并粘贴到您自己的项目中，并根据您的问题进行调整。

@@ -215,7 +215,7 @@ XGBoost 被训练成最小化损失函数，梯度提升中的“*梯度*”指�
 model = XGBClassifier(scale_pos_weight=100)
 ```
 
-XGBoost 文档提出了一种快速估算该值的方法，该方法使用训练数据集作为多数类中的示例总数除以少数类中的示例总数。
+XGBoost 文档提出了一种快速估计该值的方法，该方法使用训练数据集作为多数类中的示例总数除以少数类中的示例总数。
 
 *   scale _ pos _ weight = total _ 负值 _ 示例/total _ 正值 _ 示例
 
@@ -230,7 +230,7 @@ estimate = counter[0] / counter[1]
 print('Estimate: %.3f' % estimate)
 ```
 
-下面列出了估算*刻度 _ 位置 _ 重量* XGBoost 超参数值的完整示例。
+下面列出了估计*刻度 _ 位置 _ 重量* XGBoost 超参数值的完整示例。
 
 ```py
 # estimate a value for the scale_pos_weight xgboost hyperparameter

@@ -1,4 +1,4 @@
-# 用决策树进行 R 中的非线性分类
+# R 中的决策树非线性分类
 
 > 原文：<https://machinelearningmastery.com/non-linear-classification-in-r-with-decision-trees/>
 
@@ -6,7 +6,7 @@
 
 在这篇文章中，你将会发现 7 个非线性分类的方法
 
-本文所有食谱均使用[数据集包](http://stat.ethz.ch/R-manual/R-patched/library/datasets/html/00Index.html)中提供的[鸢尾花数据集](http://stat.ethz.ch/R-manual/R-patched/library/datasets/html/iris.html)。该数据集描述了鸢尾花的测量结果，并要求对三种花卉中的一种进行分类。
+本文所有秘籍均使用[数据集包](http://stat.ethz.ch/R-manual/R-patched/library/datasets/html/00Index.html)中提供的[鸢尾花数据集](http://stat.ethz.ch/R-manual/R-patched/library/datasets/html/iris.html)。该数据集描述了鸢尾花的测量结果，并要求对三种花卉中的一种进行分类。
 
 **用我的新书[用 R](https://machinelearningmastery.com/machine-learning-with-r/) 启动你的项目**，包括*一步一步的教程*和所有例子的 *R 源代码*文件。
 
