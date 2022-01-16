@@ -1,4 +1,4 @@
-# 神经网络:贸易评论的诀窍
+# 神经网络诀窍（书评）
 
 > 原文：<https://machinelearningmastery.com/neural-networks-tricks-of-the-trade-review/>
 
