@@ -55,13 +55,13 @@ Python 集成机器学习(7 天迷你课程)
 
 下面是用 Python 进行数据准备的七个经验教训:
 
-*   **第 01 课**:什么是合奏学习？
-*   **第 02 课**:打包套装
-*   **第 03 课**:随机森林合奏
-*   **第 04 课** : AdaBoost 合奏
-*   **第 05 课**:梯度增强合奏
+*   **第 01 课**:什么是集成学习？
+*   **第 02 课**:装袋集成
+*   **第 03 课**:随机森林集成
+*   **第 04 课** : AdaBoost 集成
+*   **第 05 课**:梯度增强集成
 *   **第 06 课**:投票团
-*   **第 07 课**:堆叠合奏
+*   **第 07 课**:堆叠集成
 
 每节课可能需要你 60 秒或 30 分钟。慢慢来，按照自己的节奏完成课程。提问，甚至在下面的评论中发布结果。
 
@@ -71,7 +71,7 @@ Python 集成机器学习(7 天迷你课程)
 
 坚持住。不要放弃。
 
-## 第一课:什么是合奏学习？
+## 第一课:什么是集成学习？
 
 在本课中，您将发现什么是集成学习，以及为什么它很重要。
 
@@ -96,7 +96,7 @@ Python 集成机器学习(7 天迷你课程)
 在单个模型上使用集合有两个主要原因，它们是相关的；它们是:
 
 *   **可靠性**:集成可以减少预测的方差。
-*   **技能**:合奏可以达到比单一模式更好的表现。
+*   **技能**:集成可以达到比单一模式更好的表现。
 
 这些都是机器学习项目的重要关注点，有时我们可能更喜欢模型的一个或两个属性。
 
@@ -108,11 +108,11 @@ Python 集成机器学习(7 天迷你课程)
 
 在下面的评论中发表你的答案。我想看看你有什么想法。
 
-在下一课中，您将发现如何开发和评估 bagging 合奏。
+在下一课中，您将发现如何开发和评估 bagging 集成。
 
-## 第二课:打包套装
+## 第二课:装袋集成
 
-在本课中，您将发现**引导聚合**，或打包，集成。
+在本课中，您将发现**引导聚合**，或装袋，集成。
 
 [装袋](https://machinelearningmastery.com/bagging-ensemble-with-python/)通过创建训练数据集的样本并在每个样本上拟合决策树来工作。
 
@@ -122,9 +122,9 @@ Python 集成机器学习(7 天迷你课程)
 
 这被称为[引导样本](https://machinelearningmastery.com/a-gentle-introduction-to-the-bootstrap-method/)，给这项技术命名。
 
-打包在 Sklearn 中通过[打包分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html)和[打包分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.BaggingRegressor.html)类提供，默认情况下，它们使用决策树作为基本模型，您可以通过“*n _ estimates*”参数指定要创建的树的数量。
+装袋在 Sklearn 中通过[装袋分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html)和[装袋分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.BaggingRegressor.html)类提供，默认情况下，它们使用决策树作为基本模型，您可以通过“*n _ estimates*”参数指定要创建的树的数量。
 
-下面列出了评估打包集合进行分类的完整示例。
+下面列出了评估装袋集合进行分类的完整示例。
 
 ```py
 # example of evaluating a bagging ensemble for classification
@@ -150,7 +150,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在本课中，您必须运行示例并查看评估模型的结果。
 
-对于加分，评估在集合中使用更多决策树的效果，甚至改变使用的基础学习者。
+对于加分，评估在集合中使用更多决策树的效果，甚至改变使用的基础学习器。
 
 在下面的评论中发表你的答案。我想看看你有什么想法。
 
@@ -164,7 +164,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 像装袋一样，随机森林集成在训练数据集的不同引导样本上拟合决策树。
 
-与打包不同，随机森林还将对每个数据集的要素(列)进行采样。
+与装袋不同，随机森林还将对每个数据集的要素(列)进行采样。
 
 具体来说，在构建每个决策树时，在数据中选择分割点。随机森林不会在选择分割点时考虑所有要素，而是将要素限制为要素的随机子集，例如，如果有 10 个要素，则为 3 个。
 
@@ -202,7 +202,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在下一课中，您将发现如何开发和评估 AdaBoost 集成。
 
-## 第 04 课:AdaBoost 合奏
+## 第 04 课:AdaBoost 集成
 
 在本课中，您将发现自适应增强或 AdaBoost 集成。
 
@@ -242,13 +242,13 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在本课中，您必须运行示例并查看评估模型的结果。
 
-对于加分，评估在集合中使用更多决策树的效果，甚至改变使用的基础学习者(注意，它必须支持加权训练数据)。
+对于加分，评估在集合中使用更多决策树的效果，甚至改变使用的基础学习器(注意，它必须支持加权训练数据)。
 
 在下面的评论中发表你的答案。我想看看你有什么想法。
 
 在下一课中，您将发现如何开发和评估梯度增强系综。
 
-## 第五课:梯度增强合奏
+## 第五课:梯度增强集成
 
 在本课中，您将发现梯度增强系综。
 
@@ -256,7 +256,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 它将 boosting 重新构建为统计框架下的加法模型，并允许使用任意损失函数使其更加灵活，以及损失惩罚(收缩)以减少过拟合。
 
-梯度增强还向集成成员引入了打包的思想，例如对训练数据集的行和列进行采样，称为随机梯度增强。
+梯度增强还向集成成员引入了装袋的思想，例如对训练数据集的行和列进行采样，称为随机梯度增强。
 
 对于结构化或表格数据，这是一种非常成功的集成技术，尽管考虑到模型是按顺序添加的，拟合模型可能会很慢。已经开发了更有效的实现，例如流行的极限梯度增强(XGBoost)和光梯度增强机器(LightGBM)。
 
@@ -336,13 +336,13 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在本课中，您必须运行示例并查看评估模型的结果。
 
-对于加分，评估在合奏中尝试不同类型模型的效果，甚至将投票类型从软投票改为硬投票。
+对于加分，评估在集成中尝试不同类型模型的效果，甚至将投票类型从软投票改为硬投票。
 
 在下面的评论中发表你的答案。我想看看你有什么想法。
 
 在下一课中，您将发现如何开发和评估堆叠集合。
 
-## 第 07 课:堆叠合奏
+## 第 07 课:堆叠集成
 
 在本课中，您将发现堆叠概括或堆叠集合。
 
@@ -356,7 +356,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 虽然内部堆叠使用 k-fold 交叉验证来训练元模型，但是您可以以任何您喜欢的方式评估堆叠模型，例如通过 train-test 拆分或 k-fold 交叉验证。模型的评估与内部的重采样训练过程是分开的。
 
-堆叠套装在 Sklearn 中通过[堆叠分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html)和[堆叠回归器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.StackingRegressor.html)课程提供。基本模型的列表可以作为模型的参数提供，列表中的每个模型必须是一个带有名称和模型的元组，例如*(“lr”，logisticreduce())*。元学习器可以通过“ *final_estimator* 参数指定，重采样策略可以通过“ *cv* 参数指定，并且可以简单地设置为指示交叉验证折叠次数的整数。
+堆叠集成在 Sklearn 中通过[堆叠分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html)和[堆叠回归器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.StackingRegressor.html)课程提供。基本模型的列表可以作为模型的参数提供，列表中的每个模型必须是一个带有名称和模型的元组，例如*(“lr”，logisticreduce())*。元学习器可以通过“ *final_estimator* 参数指定，重采样策略可以通过“ *cv* 参数指定，并且可以简单地设置为指示交叉验证折叠次数的整数。
 
 下面列出了评估堆叠集合进行分类的完整示例。
 

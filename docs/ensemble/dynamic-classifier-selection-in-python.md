@@ -63,7 +63,7 @@
 
 动态分类器选择算法通常涉及以某种方式划分输入特征空间，并分配特定的模型来负责为每个划分做出预测。有各种不同的分布式控制系统算法，研究工作主要集中在如何评估和分配分类器到输入空间的特定区域。
 
-> 在训练多个个体学习者之后，分布式控制系统为每个测试实例动态选择一个学习者。[……]分布式控制系统通过使用单个学习者进行预测。
+> 在训练多个个体学习器之后，分布式控制系统为每个测试实例动态选择一个学习器。[……]分布式控制系统通过使用单个学习器进行预测。
 
 —第 93 页，[集成方法:基础和算法](https://amzn.to/32L1yWD)，2012。
 
@@ -132,7 +132,7 @@ DESlib 分别通过 [OLA](https://deslib.readthedocs.io/en/latest/modules/dcs/ol
 
 这两个类都使用 k 最近邻算法来选择默认值为 *k=7* 的邻居。
 
-决策树的[自举聚合](https://machinelearningmastery.com/bagging-ensemble-with-python/)(打包)集成被用作为默认进行的每个分类考虑的分类器模型池，尽管这可以通过将“ *pool_classifiers* ”设置为模型列表来改变。
+决策树的[自举聚合](https://machinelearningmastery.com/bagging-ensemble-with-python/)(装袋)集成被用作为默认进行的每个分类考虑的分类器模型池，尽管这可以通过将“ *pool_classifiers* ”设置为模型列表来改变。
 
 我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例和 20 个输入特征的合成二进制分类问题。
 

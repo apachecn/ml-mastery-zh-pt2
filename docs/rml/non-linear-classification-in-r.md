@@ -185,7 +185,7 @@ predictions <- predict(fit, iris[,1:4])
 table(predictions, iris$Species)
 ```
 
-了解更多关于 [e1071 套装](https://cran.r-project.org/web/packages/e1071/index.html)中**天真贝氏**功能的信息。
+了解更多关于 [e1071 集成](https://cran.r-project.org/web/packages/e1071/index.html)中**天真贝氏**功能的信息。
 
 ## 摘要
 

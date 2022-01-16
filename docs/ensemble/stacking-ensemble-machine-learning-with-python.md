@@ -42,7 +42,7 @@
 
 堆叠泛化或简称“T0”堆叠是一种集成机器学习算法。
 
-它包括在同一数据集上组合来自多个机器学习模型的预测，如打包和提升。
+它包括在同一数据集上组合来自多个机器学习模型的预测，如装袋和提升。
 
 堆叠解决了这个问题:
 
@@ -50,7 +50,7 @@
 
 解决这个问题的方法是使用另一个机器学习模型，该模型学习何时使用或信任集成中的每个模型。
 
-*   与打包不同，在堆叠中，模型通常是不同的(例如，不是所有的决策树)，并且适合同一数据集(例如，代替训练数据集的样本)。
+*   与装袋不同，在堆叠中，模型通常是不同的(例如，不是所有的决策树)，并且适合同一数据集(例如，代替训练数据集的样本)。
 *   与增强不同，在堆叠中，使用单个模型来学习如何最好地组合来自贡献模型的预测(例如，代替校正先前模型的预测的模型序列)。
 
 堆叠模型的体系结构包括两个或多个基础模型，通常称为 0 级模型，以及一个组合基础模型预测的元模型，称为 1 级模型。
@@ -81,7 +81,7 @@
 
 使用一个简单的线性模型作为元模型通常会给出堆叠的通俗名称“*混合*”与预测一样，是基本模型所做预测的加权平均或混合。
 
-[超级学习者](https://machinelearningmastery.com/super-learner-ensemble-in-python/)可以被认为是一种特殊类型的堆叠。
+[超级学习器](https://machinelearningmastery.com/super-learner-ensemble-in-python/)可以被认为是一种特殊类型的堆叠。
 
 堆叠旨在提高建模表现，尽管不能保证在所有情况下都能带来改进。
 
@@ -762,7 +762,7 @@ Predicted Value: 556.264
 
 *   [如何用 Python 从头开始实现堆叠泛化(堆叠)](https://machinelearningmastery.com/implementing-stacking-scratch-python/)
 *   [如何用 Keras 开发 Python 深度学习神经网络的堆叠集成](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)
-*   [如何在 Python 中开发超级学习者套装](https://machinelearningmastery.com/super-learner-ensemble-in-python/)
+*   [如何在 Python 中开发超级学习器集成](https://machinelearningmastery.com/super-learner-ensemble-in-python/)
 *   [如何在机器学习中使用折叠外预测](https://machinelearningmastery.com/out-of-fold-predictions-in-machine-learning/)
 *   [k 倍交叉验证的温和介绍](https://machinelearningmastery.com/k-fold-cross-validation/)
 

@@ -1,6 +1,6 @@
 # 在 Weka
 
-中使用助推、装袋和混合套装进行更好的预测
+中使用助推、装袋和混合集成进行更好的预测
 
 > 原文：<https://machinelearningmastery.com/improve-machine-learning-results-with-boosting-bagging-and-blending-ensemble-methods-in-weka/>
 
@@ -59,7 +59,7 @@ Weka Experimenter 允许您设计自己的在数据集上运行算法的实验�
 
 ### 集成方法
 
-J48 ( [C4.8](https://en.wikipedia.org/wiki/C4.5) )是一种强大的决策树方法，在电离层数据集上表现良好。在本实验中，我们将研究是否可以使用[集成方法](https://en.wikipedia.org/wiki/Ensemble_learning)来改进 J48 算法的结果。我们将尝试三种流行的合奏方法:助推、装袋和混合。
+J48 ( [C4.8](https://en.wikipedia.org/wiki/C4.5) )是一种强大的决策树方法，在电离层数据集上表现良好。在本实验中，我们将研究是否可以使用[集成方法](https://en.wikipedia.org/wiki/Ensemble_learning)来改进 J48 算法的结果。我们将尝试三种流行的集成方法:助推、装袋和混合。
 
 让我们从将 J48 算法添加到实验开始，这样我们就可以将其结果与该算法的集成版本进行比较。
 

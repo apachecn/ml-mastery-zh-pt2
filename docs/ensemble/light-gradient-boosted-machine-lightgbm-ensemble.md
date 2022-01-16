@@ -24,7 +24,7 @@ LightGBM 通过添加一种自动特征选择以及关注具有更大梯度的�
 
 ![How to Develop a Light Gradient Boosted Machine (LightGBM) Ensemble](img/92df7176fd7f14509d3147a875ca0a41.png)
 
-如何通过 [GPA 照片档案](https://www.flickr.com/photos/iip-photo-archive/35938248601/)开发光梯度增强机(LightGBM)套装
+如何通过 [GPA 照片档案](https://www.flickr.com/photos/iip-photo-archive/35938248601/)开发光梯度增强机(LightGBM)集成
 照片，保留部分权利。
 
 ## 教程概述

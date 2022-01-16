@@ -22,7 +22,7 @@
 
 ![How to Develop Random Forest Ensembles With XGBoost](img/6b0fe1bf7e05c236ec06ab720fc92f54.png)
 
-如何用 XGBoost 开发随机森林套装
+如何用 XGBoost 开发随机森林集成
 摄影:简·莫西曼，版权所有。
 
 ## 教程概述

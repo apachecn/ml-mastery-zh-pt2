@@ -111,7 +111,7 @@
 考虑改变系综方法的三个主要要素可能会有所帮助；例如:
 
 *   **训练数据**:改变用于训练集合中每个模型的数据选择。
-*   **合奏模型**:改变合奏中所用模型的选择。
+*   **集成模型**:改变集成中所用模型的选择。
 *   **组合**:改变组合成员结果的方式选择。
 
 让我们依次仔细看看每个元素。
@@ -140,7 +140,7 @@
 
 其他方法可以包括选择输入空间的随机子空间来分配给每个模型，例如输入空间中超体积的子集或输入特征的子集。
 
-#### 合奏教程
+#### 集成教程
 
 有关不同训练数据的深度学习集成的示例，请参见:
 
@@ -190,13 +190,13 @@
 
 ——[SGDR:温重启随机梯度下降](https://arxiv.org/abs/1608.03983)，2016。
 
-深度神经网络的一个好处是，中间隐藏层提供了低分辨率输入数据的学习表示。隐藏层可以直接输出它们的内部表示，来自一个非常深的网络的一个或多个隐藏层的输出可以用作新分类模型的输入。当使用自动编码器模型训练深度模型时，这可能是最有效的。这种类型的合奏称为垂直合奏。
+深度神经网络的一个好处是，中间隐藏层提供了低分辨率输入数据的学习表示。隐藏层可以直接输出它们的内部表示，来自一个非常深的网络的一个或多个隐藏层的输出可以用作新分类模型的输入。当使用自动编码器模型训练深度模型时，这可能是最有效的。这种类型的集成称为垂直集成。
 
 > 该方法集成了一系列输入是中间层表示的分类器。由于这些特性看起来多种多样，因此错误率预计会更低。
 
 ——[深度表示分类的水平和垂直集合](https://arxiv.org/abs/1306.2759)，2013。
 
-#### 合奏教程
+#### 集成教程
 
 有关不同模型的深度学习集成的示例，请参见:
 
@@ -229,7 +229,7 @@
 
 ——[平均权重带来更宽的最优值和更好的泛化](https://arxiv.org/abs/1803.05407)，2018。
 
-#### 合奏教程
+#### 集成教程
 
 有关不同组合的深度学习集成的示例，请参见:
 
@@ -247,10 +247,10 @@
     *   [自举聚合(打包)集成](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/)
     *   [随机训练子集集成](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/)
 *   **不同型号**
-    *   多重训练跑合奏
+    *   多重训练跑集成
     *   超参数调谐系综
     *   快照集
-    *   [横向时代合奏](https://machinelearningmastery.com/horizontal-voting-ensemble/)
+    *   [横向时代集成](https://machinelearningmastery.com/horizontal-voting-ensemble/)
     *   垂直表征集合
 *   **不同组合**
     *   [模型平均集合](https://machinelearningmastery.com/model-averaging-ensemble-for-deep-learning-neural-networks/)

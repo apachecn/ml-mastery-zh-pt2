@@ -24,7 +24,7 @@
 
 ![Extreme Gradient Boosting (XGBoost) Ensemble in Python](img/e181e0a34947e5d08fd64f43d8523dda.png)
 
-巨蟒极限梯度增强(XGBoost)合奏
+巨蟒极限梯度增强(XGBoost)集成
 安德烈斯·涅托·波拉斯摄，版权所有。
 
 ## 教程概述

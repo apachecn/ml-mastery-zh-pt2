@@ -43,7 +43,7 @@
 
 用于训练集合中每个模型的列的选择的差异导致模型及其预测的多样性。每个模型都表现良好，尽管每个模型的表现不同，犯的错误也不同。
 
-> 训练数据通常由一组特征描述。不同的特征子集，或称为子空间，提供不同的数据视图。因此，从不同子空间训练的个体学习者通常是不同的。
+> 训练数据通常由一组特征描述。不同的特征子集，或称为子空间，提供不同的数据视图。因此，从不同子空间训练的个体学习器通常是不同的。
 
 —第 116 页，[集合方法](https://amzn.to/2XZzrjG)，2012。
 
@@ -131,9 +131,9 @@ Mean Accuracy: 0.794 (0.046)
 
 有许多方法可以组合预测，但为了简单起见，我们将使用投票集合，该集合可以配置为使用硬或软投票进行分类，或者使用平均进行回归。为了保持例子简单，我们将集中在分类和使用硬投票，因为决策树不能预测校准概率，使得软投票不太合适。
 
-要了解有关投票套装的更多信息，请参阅教程:
+要了解有关投票集成的更多信息，请参阅教程:
 
-*   [如何用 Python 开发投票套装](https://machinelearningmastery.com/voting-ensembles-with-python/)
+*   [如何用 Python 开发投票集成](https://machinelearningmastery.com/voting-ensembles-with-python/)
 
 投票集成中的每个模型将是[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，其中第一步是特征选择方法，被配置为选择特定数量的特征，随后是决策树分类器模型。
 
@@ -720,7 +720,7 @@ Mean Accuracy: 0.860 (0.036)
 
 ### 教程
 
-*   [如何用 Python 开发投票套装](https://machinelearningmastery.com/voting-ensembles-with-python/)
+*   [如何用 Python 开发投票集成](https://machinelearningmastery.com/voting-ensembles-with-python/)
 *   [Python 中特征选择的递归特征消除(RFE)](https://machinelearningmastery.com/rfe-feature-selection-in-python/)
 *   [如何用数值输入数据进行特征选择](https://machinelearningmastery.com/feature-selection-with-numerical-input-data/)
 

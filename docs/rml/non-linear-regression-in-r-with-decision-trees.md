@@ -89,7 +89,7 @@ mse <- mean((longley$Employed - predictions)^2)
 print(mse)
 ```
 
-了解更多关于 **M5P** 功能和 [RWeka 套装](https://cran.r-project.org/web/packages/RWeka/index.html)的信息。
+了解更多关于 **M5P** 功能和 [RWeka 集成](https://cran.r-project.org/web/packages/RWeka/index.html)的信息。
 
 ## 规则系统
 
@@ -113,7 +113,7 @@ mse <- mean((longley$Employed - predictions)^2)
 print(mse)
 ```
 
-了解更多关于 **M5Rules** 功能和 [RWeka 套装](https://cran.r-project.org/web/packages/RWeka/index.html)的信息。
+了解更多关于 **M5Rules** 功能和 [RWeka 集成](https://cran.r-project.org/web/packages/RWeka/index.html)的信息。
 
 ## 装袋车
 
@@ -159,7 +159,7 @@ mse <- mean((longley$Employed - predictions)^2)
 print(mse)
 ```
 
-了解更多关于**随机森林**功能和[随机森林套装](https://cran.r-project.org/web/packages/randomForest/index.html)的信息。
+了解更多关于**随机森林**功能和[随机森林集成](https://cran.r-project.org/web/packages/randomForest/index.html)的信息。
 
 ## 梯度增压机
 
@@ -203,7 +203,7 @@ mse <- mean((longley$Employed - predictions)^2)
 print(mse)
 ```
 
-了解更多关于**立体书**功能和[立体书套装](https://cran.r-project.org/web/packages/Cubist/index.html)的信息。
+了解更多关于**立体书**功能和[立体书集成](https://cran.r-project.org/web/packages/Cubist/index.html)的信息。
 
 ## 摘要
 

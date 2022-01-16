@@ -45,7 +45,7 @@
 
 在回归的情况下，集合预测被计算为成员预测的平均值。在预测类别标签的情况下，预测被计算为成员预测的模式。在预测类别概率的情况下，预测可以被计算为每个类别标签的总概率的 argmax。
 
-这种方法的一个局限性是，每个模型对集合所做的最终预测有相同的贡献。有一个要求，所有的合奏成员都有技能，而不是随机的机会，尽管一些模型被认为表现得比其他模型好得多或差得多。
+这种方法的一个局限性是，每个模型对集合所做的最终预测有相同的贡献。有一个要求，所有的集成成员都有技能，而不是随机的机会，尽管一些模型被认为表现得比其他模型好得多或差得多。
 
 加权系综是模型平均系综的扩展，其中每个成员对最终预测的贡献由模型的表现加权。
 
@@ -53,7 +53,7 @@
 
 > 我们可以把权重 Wk 看作是对预测因子 k 的信念，因此我们将权重限制为正，并求和为一。
 
-——[用合奏学习:过度适应有多有用](http://papers.nips.cc/paper/1044-learning-with-ensembles-how-overfitting-can-be-useful.pdf)，1996。
+——[用集成学习:过度适应有多有用](http://papers.nips.cc/paper/1044-learning-with-ensembles-how-overfitting-can-be-useful.pdf)，1996。
 
 权重的统一值(例如 1/k，其中 k 是系综成员的数量)意味着加权系综充当简单的平均系综。没有找到权重的解析解(我们无法计算)；相反，可以使用训练数据集或保持验证数据集来估计权重值。
 
@@ -415,7 +415,7 @@ Accuracy 0.804 (0.005)
 
 接下来，创建一个图表，将单个模型(蓝点)的精度与不断增大的模型平均集合(橙色线)进行比较。
 
-在这一轮中，橙色系列的套装明显显示出比单一型号更好或相当的表现(如果隐藏圆点的话)。
+在这一轮中，橙色系列的集成明显显示出比单一型号更好或相当的表现(如果隐藏圆点的话)。
 
 ![Line Plot Showing Single Model Accuracy (blue dots) and Accuracy of Ensembles of Increasing Size (orange line)](img/7ec1c125b7bcf064759f59fa302cf9bf.png)
 
@@ -899,7 +899,7 @@ Optimized Weights Score: 0.824
 
 *   [当网络不一致时:混合神经网络的集成方法](https://www.worldscientific.com/doi/pdf/10.1142/9789812795885_0025)，1995。
 *   [神经网络集成、交叉验证和主动学习](https://papers.nips.cc/paper/1001-neural-network-ensembles-cross-validation-and-active-learning.pdf)，1995。
-*   [用合奏学习:过拟合有多有用](http://papers.nips.cc/paper/1044-learning-with-ensembles-how-overfitting-can-be-useful.pdf)，1996。
+*   [用集成学习:过拟合有多有用](http://papers.nips.cc/paper/1044-learning-with-ensembles-how-overfitting-can-be-useful.pdf)，1996。
 
 ### 应用程序接口
 

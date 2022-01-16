@@ -26,7 +26,7 @@
 
 ![How to Develop a Weighted Average Ensemble With Python](img/1b3c7ee05a4146eb2aabec670b02f56e.png)
 
-如何用 Python 开发加权平均合奏
+如何用 Python 开发加权平均集成
 图片由 [Alaina McDavid](https://www.flickr.com/photos/allie444/7694667194/) 提供，保留部分权利。
 
 ## 教程概述
@@ -46,15 +46,15 @@
 
 [投票集成](https://machinelearningmastery.com/voting-ensembles-with-python/)由多个机器学习模型组成，其中来自每个模型的预测被直接平均。对于回归，这包括计算系综成员所做预测的[算术平均值](https://machinelearningmastery.com/arithmetic-geometric-and-harmonic-means-for-machine-learning/)。对于分类，这可能涉及计算统计模式(最常见的类别标签)或类似的投票方案，或者对每个类别的预测概率进行求和，并选择具有最大求和概率的类别。
 
-有关投票套装的更多信息，请参见教程:
+有关投票集成的更多信息，请参见教程:
 
-*   [如何用 Python 开发投票套装](https://machinelearningmastery.com/voting-ensembles-with-python/)
+*   [如何用 Python 开发投票集成](https://machinelearningmastery.com/voting-ensembles-with-python/)
 
 投票集成技术的一个限制是，它假设集成中的所有模型都同等有效。情况可能并非如此，因为有些模型可能比其他模型更好，尤其是如果使用不同的机器学习算法来训练每个模型集成成员。
 
 投票的另一种选择是假设全体成员的能力并不完全相同，相反，一些模特比其他模特更优秀，在做预测时应该得到更多的选票或更多的席位。这为加权和或加权平均集成方法提供了动机。
 
-在回归中，使用算术平均值计算平均预测，例如预测之和除以总预测。例如，如果一个合奏有三个合奏成员，则缩减可能是:
+在回归中，使用算术平均值计算平均预测，例如预测之和除以总预测。例如，如果一个集成有三个集成成员，则缩减可能是:
 
 *   **型号 1** : 97.2
 *   **型号 2** : 100.0
@@ -170,7 +170,7 @@ def get_models():
 	return models
 ```
 
-接下来，我们需要权衡每个合奏成员。
+接下来，我们需要权衡每个集成成员。
 
 在这种情况下，我们将使用训练数据集上每个集成模型的表现作为模型在进行预测时的相对权重。表现将使用分类精度作为 0 到 1 之间正确预测的百分比来计算，值越大意味着模型越好，进而对预测的贡献越大。
 
@@ -598,7 +598,7 @@ Voting MAE: 102.706
 
 另一种加权策略是使用排名来表示每个集合在加权平均值中的票数。
 
-例如，在三个合奏成员的情况下，表现最差的模型有 1 票，第二差的有 2 票，最佳模型有 3 票。
+例如，在三个集成成员的情况下，表现最差的模型有 1 票，第二差的有 2 票，最佳模型有 3 票。
 
 这可以使用 [argsort() numpy 函数](https://numpy.org/doc/stable/reference/generated/numpy.argsort.html)来实现。
 
@@ -664,7 +664,7 @@ print(argsort(argsort(x)))
 [2 0 1]
 ```
 
-实际上，我们不希望任何一个模特获得零票，因为它会被排除在合奏之外。因此，我们可以给所有排名加 1。
+实际上，我们不希望任何一个模特获得零票，因为它会被排除在集成之外。因此，我们可以给所有排名加 1。
 
 在计算分数之后，我们可以计算模型分数的 argsort 的 argsort 来给出排名。然后使用模型排名作为加权平均集成的模型权重。
 
@@ -774,7 +774,7 @@ Voting MAE: 102.832
 ### 相关教程
 
 *   [如何为深度学习神经网络开发加权平均集成](https://machinelearningmastery.com/weighted-average-ensemble-for-deep-learning-neural-networks/)
-*   [如何用 Python 开发投票套装](https://machinelearningmastery.com/voting-ensembles-with-python/)
+*   [如何用 Python 开发投票集成](https://machinelearningmastery.com/voting-ensembles-with-python/)
 
 ### 蜜蜂
 

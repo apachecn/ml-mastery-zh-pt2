@@ -26,7 +26,7 @@
 
 ![How to Develop a Random Forest Ensemble in Python](img/dfd30ada07dbc41c81044ba21bd7916c.png)
 
-如何用 Python 开发随机森林合奏
+如何用 Python 开发随机森林集成
 图片由[希拉·桑德](https://flickr.com/photos/sheila_sund/30461181307/)提供，保留部分权利。
 
 ## 教程概述
@@ -50,7 +50,7 @@
 
 它是决策树[自举聚合(bagging)](https://machinelearningmastery.com/bagging-ensemble-with-python/) 的扩展，可用于分类和回归问题。
 
-在打包过程中，会创建许多决策树，其中每个树都是从训练数据集的不同引导样本创建的。一个[自举样本](https://machinelearningmastery.com/a-gentle-introduction-to-the-bootstrap-method/)是训练数据集的一个样本，其中一个样本可能在样本中出现不止一次，称为**替换采样**。
+在装袋过程中，会创建许多决策树，其中每个树都是从训练数据集的不同引导样本创建的。一个[自举样本](https://machinelearningmastery.com/a-gentle-introduction-to-the-bootstrap-method/)是训练数据集的一个样本，其中一个样本可能在样本中出现不止一次，称为**替换采样**。
 
 Bagging 是一种有效的集成算法，因为每个决策树都适合于稍微不同的训练数据集，并且反过来具有稍微不同的表现。与普通的决策树模型不同，例如[分类和回归树](https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/) (CART)，集成中使用的树是未标记的，这使得它们对训练数据集略微过度。这是可取的，因为它有助于使每棵树更加不同，并且具有较少的相关预测或预测误差。
 
@@ -71,7 +71,7 @@ Bagging 是一种有效的集成算法，因为每个决策树都适合于稍微
 
 随机森林包括从训练数据集中的自举样本构建大量决策树，如 bagging。
 
-与打包不同，随机森林还包括在构建树的每个分割点选择输入特征(列或变量)的子集。通常，构建决策树包括评估数据中每个输入变量的值，以便选择分割点。通过将特征简化为可以在每个分割点考虑的随机子集，它迫使集合中的每个决策树更加不同。
+与装袋不同，随机森林还包括在构建树的每个分割点选择输入特征(列或变量)的子集。通常，构建决策树包括评估数据中每个输入变量的值，以便选择分割点。通过将特征简化为可以在每个分割点考虑的随机子集，它迫使集合中的每个决策树更加不同。
 
 > 随机森林通过对树木去相关的小调整，提供了对袋装树木的改进。[……]但是当构建这些决策树时，每次考虑树中的分裂时，从 p 个预测器的完整集合中选择 m 个预测器的随机样本作为分裂候选。
 
@@ -666,7 +666,7 @@ pyplot.show()
 
 在这一节中，我们将仔细研究 radom forest 集成过程中的一些常见症结。
 
-**问:合奏应该用什么算法？**
+**问:集成应该用什么算法？**
 
 随机森林被设计成决策树算法的集合。
 

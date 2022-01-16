@@ -1,4 +1,4 @@
-# 如何用 Python 开发打包套装
+# 如何用 Python 开发装袋集成
 
 > 原文：<https://machinelearningmastery.com/bagging-ensemble-with-python/>
 
@@ -26,7 +26,7 @@ Bagging 总体上表现良好，并为决策树算法的整个集成领域提供
 
 ![How to Develop a Bagging Ensemble in Python](img/3ce684f6e7432301a93c8c2a0450a9d8.png)
 
-如何用 Python 开发打包套装
+如何用 Python 开发装袋集成
 图片由[达文宁](https://flickr.com/photos/daveynin/6281580340/)提供，保留部分权利。
 
 ## 教程概述
@@ -41,8 +41,8 @@ Bagging 总体上表现良好，并为决策树算法的整个集成领域提供
     1.  探索树的数量
     2.  探索样本数量
     3.  探索替代算法
-4.  打包扩展
-    1.  粘贴合奏
+4.  装袋扩展
+    1.  粘贴集成
     2.  随机子空间系综
     3.  随机面片集合
 5.  常见问题
@@ -67,7 +67,7 @@ Bootstrap Aggregation，简称 Bagging，是一种集成机器学习算法。
 
 这是通过从训练数据集中抽取多个引导样本并在每个样本上拟合决策树来实现的。来自决策树的预测然后被组合，以提供比单个决策树(典型地，但不总是)更稳健和准确的预测。
 
-> 打包预测器是一种生成预测器的多个版本并使用这些版本获得聚合预测器的方法。[……]多个版本是通过对学习集进行引导复制并将其用作新的学习集而形成的
+> 装袋预测器是一种生成预测器的多个版本并使用这些版本获得聚合预测器的方法。[……]多个版本是通过对学习集进行引导复制并将其用作新的学习集而形成的
 
 ——[套袋预测因子](https://link.springer.com/article/10.1007/BF00058655)，1996。
 
@@ -79,23 +79,23 @@ Bootstrap Aggregation，简称 Bagging，是一种集成机器学习算法。
 
 使用决策树，特别是未运行的决策树，因为它们略微超出了训练数据，并且具有较高的方差。可以使用其他高方差机器学习算法，例如具有低的 *k* 值的 [k 最近邻算法](https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/)，尽管决策树已经被证明是最有效的。
 
-> 如果扰动学习集会导致构建的预测器发生显著变化，那么打包可以提高准确性。
+> 如果扰动学习集会导致构建的预测器发生显著变化，那么装袋可以提高准确性。
 
 ——[套袋预测因子](https://link.springer.com/article/10.1007/BF00058655)，1996。
 
-打包并不总是能带来改善。对于已经表现良好的低方差模型，打包会导致模型表现下降。
+装袋并不总是能带来改善。对于已经表现良好的低方差模型，装袋会导致模型表现下降。
 
-> 实验和理论证据都表明，打包可以将一个好的但不稳定的过程推向最优化的重要一步。另一方面，它会稍微降低稳定程序的表现。
+> 实验和理论证据都表明，装袋可以将一个好的但不稳定的过程推向最优化的重要一步。另一方面，它会稍微降低稳定程序的表现。
 
 ——[套袋预测因子](https://link.springer.com/article/10.1007/BF00058655)，1996。
 
 ## 装袋科学工具包-学习应用编程接口
 
-打包套装可以从头开始实现，尽管这对初学者来说很有挑战性。
+装袋集成可以从头开始实现，尽管这对初学者来说很有挑战性。
 
 有关示例，请参见教程:
 
-*   [如何用 Python 实现从零开始打包](https://machinelearningmastery.com/implement-bagging-scratch-python/)
+*   [如何用 Python 实现从零开始装袋](https://machinelearningmastery.com/implement-bagging-scratch-python/)
 
 Sklearn Python 机器学习库为机器学习提供了 Bagging 集成的实现。
 
@@ -617,21 +617,21 @@ pyplot.show()
 
 装袋 KNN 邻居数量与分类精度的箱线图
 
-## 打包扩展
+## 装袋扩展
 
 为了提高方法的表现，对 bagging 算法进行了许多修改和扩展。
 
 也许最著名的是[随机森林算法](https://machinelearningmastery.com/implement-random-forest-scratch-python/)。
 
-有一些不太出名但仍然有效的打包扩展值得研究。
+有一些不太出名但仍然有效的装袋扩展值得研究。
 
 本节演示了其中的一些方法，例如粘贴集成、随机子空间集成和随机面片集成。
 
 我们不是在数据集上与这些扩展赛跑，而是提供如何使用每种技术的工作示例，您可以复制粘贴这些技术，并尝试使用自己的数据集。
 
-### 粘贴合奏
+### 粘贴集成
 
-粘贴集成是打包的扩展，包括基于训练数据集的随机样本而不是自举样本来拟合集成成员。
+粘贴集成是装袋的扩展，包括基于训练数据集的随机样本而不是自举样本来拟合集成成员。
 
 该方法被设计成在训练数据集不适合存储的情况下使用比训练数据集更小的样本量。
 
@@ -837,9 +837,9 @@ Accuracy: 0.845 (0.036)
 
 ## 常见问题
 
-在这一节中，我们将更仔细地看看你在打包集合过程中可能遇到的一些常见症结。
+在这一节中，我们将更仔细地看看你在装袋集合过程中可能遇到的一些常见症结。
 
-**问:合奏应该用什么算法？**
+**问:集成应该用什么算法？**
 
 该算法应该具有适度的方差，这意味着它适度地依赖于特定的训练数据。
 
@@ -847,7 +847,7 @@ Accuracy: 0.845 (0.036)
 
 选择的算法应该适度稳定，不像决策树桩那样不稳定，也不像修剪的决策树那样非常稳定，通常使用未修剪的决策树。
 
-> ……众所周知，Bagging 应该用于不稳定的学习者，一般来说，越不稳定，表现提升越大。
+> ……众所周知，Bagging 应该用于不稳定的学习器，一般来说，越不稳定，表现提升越大。
 
 —第 52 页，[集合方法](https://amzn.to/2XZzrjG)，2012。
 
@@ -855,7 +855,7 @@ Accuracy: 0.845 (0.036)
 
 模型的表现将随着决策树数量的增加而收敛到一个点，然后保持水平。
 
-> Bagging 的表现随着集成规模(即基础学习者的数量)的增长而收敛…
+> Bagging 的表现随着集成规模(即基础学习器的数量)的增长而收敛…
 
 —第 52 页，[集合方法](https://amzn.to/2XZzrjG)，2012。
 
@@ -863,7 +863,7 @@ Accuracy: 0.845 (0.036)
 
 **问:文工团不会因为树木太多而过度吗？**
 
-不。打包套装一般来说不太可能过量。
+不。装袋集成一般来说不太可能过量。
 
 **问:自举样本应该有多大？**
 
@@ -873,7 +873,7 @@ Accuracy: 0.845 (0.036)
 
 **问:哪些问题很适合装袋？**
 
-一般来说，打包非常适合小规模或中等规模数据集的问题。但这是一个粗略的指南。
+一般来说，装袋非常适合小规模或中等规模数据集的问题。但这是一个粗略的指南。
 
 > Bagging 最适合于可用训练数据集相对较小的问题。
 
@@ -888,7 +888,7 @@ Accuracy: 0.845 (0.036)
 ### 教程
 
 *   [引导法的简单介绍](https://machinelearningmastery.com/a-gentle-introduction-to-the-bootstrap-method/)
-*   [如何用 Python 实现从零开始打包](https://machinelearningmastery.com/implement-bagging-scratch-python/)
+*   [如何用 Python 实现从零开始装袋](https://machinelearningmastery.com/implement-bagging-scratch-python/)
 *   [如何在 Keras 创建深度学习模型的装袋集成](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/)
 *   [机器学习的套袋和随机森林集成算法](https://machinelearningmastery.com/bagging-and-random-forest-ensemble-algorithms-for-machine-learning/)
 

@@ -61,7 +61,7 @@ predictions <- predict(fit, iris[,1:4])
 table(predictions, iris$Species)
 ```
 
-了解更多关于 **J48** 功能和 [RWeka 套装](https://cran.r-project.org/web/packages/RWeka/index.html)的信息。
+了解更多关于 **J48** 功能和 [RWeka 集成](https://cran.r-project.org/web/packages/RWeka/index.html)的信息。
 
 ## 部分
 
@@ -84,7 +84,7 @@ predictions <- predict(fit, iris[,1:4])
 table(predictions, iris$Species)
 ```
 
-了解更多关于**零件**功能和 [RWeka 套装](https://cran.r-project.org/web/packages/RWeka/index.html)的信息。
+了解更多关于**零件**功能和 [RWeka 集成](https://cran.r-project.org/web/packages/RWeka/index.html)的信息。
 
 ## 装袋车
 
@@ -130,7 +130,7 @@ predictions <- predict(fit, iris[,1:4])
 table(predictions, iris$Species)
 ```
 
-了解更多关于**随机森林**功能和[随机森林套装](https://cran.r-project.org/web/packages/randomForest/index.html)的信息。
+了解更多关于**随机森林**功能和[随机森林集成](https://cran.r-project.org/web/packages/randomForest/index.html)的信息。
 
 ## 梯度增压机
 
@@ -176,7 +176,7 @@ predictions <- predict(fit, iris)
 table(predictions, iris$Species)
 ```
 
-了解更多关于 [C50 套装](https://cran.r-project.org/web/packages/C50/index.html)中 **C5.0** 功能的信息。
+了解更多关于 [C50 集成](https://cran.r-project.org/web/packages/C50/index.html)中 **C5.0** 功能的信息。
 
 ## 摘要
 
