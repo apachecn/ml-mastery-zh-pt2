@@ -22,7 +22,7 @@
 
 我们开始吧。
 
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新。
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新。
 
 ![How to Use Out-of-Fold Predictions in Machine Learning](img/a1d63fc885408f6c33dd5db32e9e3454.png)
 
@@ -113,7 +113,7 @@ k 重交叉验证过程包括将训练数据集分成 *k* 组，然后在测试�
 
 我们可以用一个小的工作实例来说明这两种方法之间的差异，这两种方法使用不同的预测来评估模型。
 
-我们将使用 [make_blobs() scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html) 函数创建一个包含 1000 个示例、两个类和 100 个输入特征的测试二进制分类问题。
+我们将使用 [make_blobs() Sklearn](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html) 函数创建一个包含 1000 个示例、两个类和 100 个输入特征的测试二进制分类问题。
 
 下面的示例准备了一个数据示例，并总结了数据集的输入和输出元素的形状。
 
@@ -132,9 +132,9 @@ print(X.shape, y.shape)
 (1000, 100) (1000,)
 ```
 
-接下来，我们可以使用 *k* 折叠交叉验证来评估一个[kneighgborksclassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)模型。
+接下来，我们可以使用 *k* 折叠交叉验证来评估一个[kneighgborksclassifier](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)模型。
 
-我们将使用 *k* =10 作为 [KFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html) 对象，合理的默认值，在每个训练数据集上拟合一个模型，并在每个保持折叠上评估它。
+我们将使用 *k* =10 作为 [KFold](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html) 对象，合理的默认值，在每个训练数据集上拟合一个模型，并在每个保持折叠上评估它。
 
 准确性分数将存储在每个模型评估的列表中，并将报告这些分数的平均值和标准偏差。
 
@@ -292,7 +292,7 @@ Accuracy: 0.930
 X, X_val, y, y_val = train_test_split(X, y, test_size=0.33)
 ```
 
-在这个例子中，我们将使用 k 倍交叉验证来拟合一个[决策树分类器](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)和 [KNeighborsClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html) 模型每个交叉验证折叠，并使用拟合模型来进行超折叠预测。
+在这个例子中，我们将使用 k 倍交叉验证来拟合一个[决策树分类器](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)和 [KNeighborsClassifier](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html) 模型每个交叉验证折叠，并使用拟合模型来进行超折叠预测。
 
 这些模型将预测概率而不是类别标签，试图为元模型提供更有用的输入特征。这是一个很好的做法。
 
@@ -355,7 +355,7 @@ model2 = KNeighborsClassifier()
 model2.fit(X, y)
 ```
 
-然后，我们可以在准备好的数据集上拟合元模型，在这种情况下，是[物流配送](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型。
+然后，我们可以在准备好的数据集上拟合元模型，在这种情况下，是[物流配送](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型。
 
 ```py
 ...
@@ -508,13 +508,13 @@ Meta-Model Accuracy: 0.955
 
 ### 蜜蜂
 
-*   [sklearn . dataset . make _ blobs API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)。
-*   [sklearn.model_selection。KFold API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html) 。
-*   [sklearn . neighborsclassifier API](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)。
-*   [硬化. tree .决策树分类器 API](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html) 。
-*   [sklearn . metrics . accuracy _ score API](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)。
-*   [sklearn.linear_model。物流配送应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)。
-*   [sklearn . model _ selection . train _ test _ split API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)。
+*   [sklearn . dataset . make _ blobs API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)。
+*   [sklearn.model_selection。KFold API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html) 。
+*   [sklearn . neighborsclassifier API](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)。
+*   [硬化. tree .决策树分类器 API](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html) 。
+*   [sklearn . metrics . accuracy _ score API](http://Sklearn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)。
+*   [sklearn.linear_model。物流配送应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)。
+*   [sklearn . model _ selection . train _ test _ split API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)。
 
 ## 摘要
 

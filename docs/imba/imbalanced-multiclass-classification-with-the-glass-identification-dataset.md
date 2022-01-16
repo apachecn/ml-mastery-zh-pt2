@@ -224,7 +224,7 @@ pyplot.show()
 
 这意味着单个模型将被拟合和评估 5 * 3 或 15 次，并且这些运行的平均值和标准偏差将被报告。
 
-这可以使用[repeated stratifiedfold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)scikit-learn 类来实现。
+这可以使用[repeated stratifiedfold](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)Sklearn 类来实现。
 
 所有的课都同等重要。少数类只占数据的 4%或 6%，但没有一个类在数据集中的优势超过 35%。
 
@@ -272,7 +272,7 @@ print(X.shape, y.shape, Counter(y))
 
 在这种情况下，我们将评估在所有情况下预测多数类的基线策略。
 
-这可以通过使用 [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类并将“*策略*”设置为“*最频繁*”来自动实现，这将预测训练数据集中最常见的类(例如，类 2)。
+这可以通过使用 [DummyClassifier](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类并将“*策略*”设置为“*最频繁*”来自动实现，这将预测训练数据集中最常见的类(例如，类 2)。
 
 因此，鉴于这是训练数据集中最常见类别的分布，我们期望该模型达到大约 35%的分类精度。
 
@@ -698,8 +698,8 @@ print('>Predicted=%d (expected 5)' % (model.predict([row])))
 ### 蜜蜂
 
 *   [熊猫. read_csv API](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html) 。
-*   [硬化. dummy . dummy class ification API](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
-*   [硬化。一起。随机应变分类 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) 。
+*   [硬化. dummy . dummy class ification API](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
+*   [硬化。一起。随机应变分类 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) 。
 
 ### 资料组
 

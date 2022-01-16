@@ -76,7 +76,7 @@
 
 ## 不平衡学习库
 
-在这些例子中，我们将使用[不平衡学习 Python 库](https://github.com/scikit-learn-contrib/imbalanced-learn)提供的实现，可以通过 pip 安装如下:
+在这些例子中，我们将使用[不平衡学习 Python 库](https://github.com/Sklearn-contrib/imbalanced-learn)提供的实现，可以通过 pip 安装如下:
 
 ```py
 sudo pip install imbalanced-learn
@@ -142,7 +142,7 @@ oversample = RandomOverSampler(sampling_strategy=0.5)
 
 对于二进制分类问题，这将确保少数类被过采样为多数类的一半数量的例子。这意味着，如果多数类有 1，000 个示例，少数类有 100 个示例，则转换后的数据集将有 500 个少数类示例。
 
-该类类似于 scikit-learn 转换对象，因为它适合数据集，然后用于生成新的或转换的数据集。与 scikit-learn 转换不同，它将改变数据集中的示例数量，而不仅仅是值(如缩放器)或特征数量(如投影)。
+该类类似于 Sklearn 转换对象，因为它适合数据集，然后用于生成新的或转换的数据集。与 Sklearn 转换不同，它将改变数据集中的示例数量，而不仅仅是值(如缩放器)或特征数量(如投影)。
 
 例如，可以通过调用 *fit_sample()* 函数一步拟合应用:
 
@@ -190,7 +190,7 @@ Counter({0: 9900, 1: 9900})
 
 该变换可用作*管道*的一部分，以确保它仅作为 k 倍交叉验证中每个分割的一部分应用于训练数据集。
 
-不能使用传统的 scikit-learn [管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)；相反，可以使用来自不平衡学习库的[管道。例如:](https://imbalanced-learn.org/stable/generated/imblearn.pipeline.Pipeline.html)
+不能使用传统的 Sklearn [管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)；相反，可以使用来自不平衡学习库的[管道。例如:](https://imbalanced-learn.org/stable/generated/imblearn.pipeline.Pipeline.html)
 
 ```py
 ...
@@ -329,7 +329,7 @@ steps = [('under', RandomUnderSampler()), ('model', DecisionTreeClassifier())]
 pipeline = Pipeline(steps=steps)
 ```
 
-我们可以定义一个在不平衡分类数据集上拟合决策树的示例，在重复的 10 倍交叉验证的每个分割上对训练数据集应用欠采样变换。
+我们可以定义一个在不平衡类别数据集上拟合决策树的示例，在重复的 10 倍交叉验证的每个分割上对训练数据集应用欠采样变换。
 
 下面列出了完整的示例。
 
@@ -494,7 +494,7 @@ F1 Score: 0.985
 ### 应用程序接口
 
 *   [不平衡-学习文档](https://imbalanced-learn.org)。
-*   [不平衡学习，GitHub](https://github.com/scikit-learn-contrib/imbalanced-learn) 。
+*   [不平衡学习，GitHub](https://github.com/Sklearn-contrib/imbalanced-learn) 。
 *   [imblearn.over_sampling。randomoversacompler API](https://imbalanced-learn.org/stable/generated/imblearn.over_sampling.RandomOverSampler.html)。
 *   [imb learn . pipeline . pipeline API](https://imbalanced-learn.org/stable/generated/imblearn.pipeline.Pipeline.html)。
 *   [imblearn.under_sampling。随机欠采样应用编程接口](https://imbalanced-learn.org/stable/generated/imblearn.under_sampling.RandomUnderSampler.html)。

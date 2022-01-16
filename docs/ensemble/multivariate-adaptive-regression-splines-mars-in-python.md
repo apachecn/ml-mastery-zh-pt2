@@ -13,7 +13,7 @@
 完成本教程后，您将知道:
 
 *   多元非线性回归预测建模问题的 MARS 算法。
-*   如何使用 py-earth API 开发与 scikit-learn 兼容的 MARS 模型？
+*   如何使用 py-earth API 开发与 Sklearn 兼容的 MARS 模型？
 *   如何用 MARS 模型对回归预测建模问题进行评估和预测。
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -108,13 +108,13 @@ MARS 算法的一个好处是，它只使用提升模型表现的输入变量。
 
 ## 火星 Python API
 
-scikit-learn 库中没有提供 MARS 算法；相反，必须使用第三方库。
+Sklearn 库中没有提供 MARS 算法；相反，必须使用第三方库。
 
-MARS 由 [py-earth Python 库](https://github.com/scikit-learn-contrib/py-earth)提供。
+MARS 由 [py-earth Python 库](https://github.com/Sklearn-contrib/py-earth)提供。
 
 “*地球*”是“*火星*”(行星)上的一个玩法，也是 R 中提供 Mars 算法的[包的名字。](https://cran.r-project.org/web/packages/earth/index.html)
 
-py-earth Python 包是以 R 版本命名的 MARS 的 Python 实现，提供了与 scikit-learn 机器学习库的完全可比性。
+py-earth Python 包是以 R 版本命名的 MARS 的 Python 实现，提供了与 Sklearn 机器学习库的完全可比性。
 
 第一步是安装 py-earth 库。我建议使用 pip 包管理器，从命令行使用以下命令:
 
@@ -139,7 +139,7 @@ print(pyearth.__version__)
 0.1.0
 ```
 
-通过创建[地球类](https://contrib.scikit-learn.org/py-earth/content.html#pyearth.Earth)的实例，可以使用默认模型超参数创建火星模型。
+通过创建[地球类](https://contrib.Sklearn.org/py-earth/content.html#pyearth.Earth)的实例，可以使用默认模型超参数创建火星模型。
 
 ```py
 ...
@@ -220,7 +220,7 @@ MSE: 25.5896, GCV: 25.8266, RSQ: 0.9997, GRSQ: 0.9997
 
 首先，我们必须定义一个回归数据集。
 
-我们将使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 20 个特征(列)和 10，000 个示例(行)的合成回归问题。下面的示例创建并总结了合成数据集的形状。
+我们将使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 20 个特征(列)和 10，000 个示例(行)的合成回归问题。下面的示例创建并总结了合成数据集的形状。
 
 ```py
 # define a synthetic regression dataset
@@ -259,7 +259,7 @@ cv = RepeatedKFold(n_splits=10, n_repeats=3, random_state=1)
 
 我们将使用平均绝对误差(简称 MAE)来评估模型表现。
 
-scikit-learn API 将使 MAE 分数为负，以便将其最大化，这意味着分数范围将从负无穷大(最差)到 0(最佳)。
+Sklearn API 将使 MAE 分数为负，以便将其最大化，这意味着分数范围将从负无穷大(最差)到 0(最佳)。
 
 ```py
 ...
@@ -369,9 +369,9 @@ Prediction: -393
 
 ### 蜜蜂
 
-*   [py-earth 项目，GitHub](https://github.com/scikit-learn-contrib/py-earth) 。
-*   [Py-地球文件](https://contrib.scikit-learn.org/py-earth/)。
-*   [sklearn . datasets . make _ revolution API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)。
+*   [py-earth 项目，GitHub](https://github.com/Sklearn-contrib/py-earth) 。
+*   [Py-地球文件](https://contrib.Sklearn.org/py-earth/)。
+*   [sklearn . datasets . make _ revolution API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)。
 
 ### 文章
 
@@ -385,7 +385,7 @@ Prediction: -393
 具体来说，您了解到:
 
 *   多元非线性回归预测建模问题的 MARS 算法。
-*   如何使用 py-earth API 开发与 scikit-learn 兼容的 MARS 模型？
+*   如何使用 py-earth API 开发与 Sklearn 兼容的 MARS 模型？
 *   如何用 MARS 模型对回归预测建模问题进行评估和预测。
 
 **你有什么问题吗？**

@@ -23,7 +23,7 @@
 我们开始吧。
 
 *   **2019 年 10 月更新**:针对 Keras 2.3 和 TensorFlow 2.0 更新。
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新。
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新。
 
 ![How to Create a Random-Split, Cross-Validation, and Bagging Ensembles for Deep Learning in Keras](img/233c602b870d6b148bcff696ce0e156b.png)
 
@@ -77,7 +77,7 @@
 
 我们将使用一个小的多类分类问题作为基础来演示模型重采样集成。
 
-scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，该函数可用于创建具有规定数量的样本、输入变量、类和类内样本方差的多类分类问题。
+Sklearn 类提供了 [make_blobs()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，该函数可用于创建具有规定数量的样本、输入变量、类和类内样本方差的多类分类问题。
 
 我们用 1000 个例子来说明这个问题，输入变量(代表点的 x 和 y 坐标)和每个组内点的标准偏差为 2.0。我们将使用相同的随机状态(用于[伪随机数发生器](https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/)的种子)来确保我们总是获得相同的 1000 分。
 
@@ -276,7 +276,7 @@ def evaluate_model(trainX, trainy, testX, testy):
 
 接下来，我们可以创建训练数据集的随机分割，并在每个分割上拟合和评估模型。
 
-我们可以使用 scikit-learn 库中的 [train_test_split()函数](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)将数据集随机分割成训练集和测试集。它以 X 和 y 数组作为参数，并且“ *test_size* ”以百分比的形式指定测试数据集的大小。我们将使用 5000 个例子中的 10%作为测试。
+我们可以使用 Sklearn 库中的 [train_test_split()函数](http://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)将数据集随机分割成训练集和测试集。它以 X 和 y 数组作为参数，并且“ *test_size* ”以百分比的形式指定测试数据集的大小。我们将使用 5000 个例子中的 10%作为测试。
 
 然后，我们可以调用 evaluate_model()来拟合和评估模型。然后可以将返回的精度和模型添加到列表中供以后使用。
 
@@ -485,7 +485,7 @@ Accuracy 0.820 (0.000)
 
 或者，来自交叉验证过程的结果模型可以被组合以提供交叉验证集合，该集合可能比给定的单个模型平均具有更好的表现。
 
-我们可以使用 scikit 中的 [KFold 类](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html)-学会将数据集拆分成 k 个折叠。它将拆分的次数、是否对样本进行混洗以及混洗前使用的伪随机数发生器的种子作为参数。
+我们可以使用 scikit 中的 [KFold 类](http://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html)-学会将数据集拆分成 k 个折叠。它将拆分的次数、是否对样本进行混洗以及混洗前使用的伪随机数发生器的种子作为参数。
 
 ```py
 # prepare the k-fold cross-validation configuration
@@ -676,7 +676,7 @@ Accuracy 0.820 (0.001)
 
 通常，在集成学习中使用自举方法被称为[自举聚合或打包](https://machinelearningmastery.com/implement-bagging-scratch-python/)。
 
-我们可以使用 scikit 的[重采样()功能](http://scikit-learn.org/stable/modules/generated/sklearn.utils.resample.html)-学习选择一个有替换的子样本。该函数采用一个数组进行二次采样，再采样的大小作为参数。我们将在行索引中执行选择，我们可以依次使用行索引来选择 *X* 和 *y* 数组中的行。
+我们可以使用 scikit 的[重采样()功能](http://Sklearn.org/stable/modules/generated/sklearn.utils.resample.html)-学习选择一个有替换的子样本。该函数采用一个数组进行二次采样，再采样的大小作为参数。我们将在行索引中执行选择，我们可以依次使用行索引来选择 *X* 和 *y* 数组中的行。
 
 样本的大小将为 4，500，即 90%的数据，尽管在使用重采样的情况下，测试集可能大于 10%，但可能有 500 多个示例未被选择。
 
@@ -873,10 +873,10 @@ Accuracy 0.819 (0.001)
 *   [硬核层 API](https://keras.io/layers/core/)
 *   [scipy . stat . mode API](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mode.html)
 *   num py . argmax API
-*   [sklearn . dataset . make _ blobs API](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)
-*   [sklearn . model _ selection . train _ test _ split API](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
-*   [sklearn.model_selection。KFold 原料药](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html)
-*   [硬化实用程序。重新压缩 API](http://scikit-learn.org/stable/modules/generated/sklearn.utils.resample.html)
+*   [sklearn . dataset . make _ blobs API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)
+*   [sklearn . model _ selection . train _ test _ split API](http://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
+*   [sklearn.model_selection。KFold 原料药](http://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html)
+*   [硬化实用程序。重新压缩 API](http://Sklearn.org/stable/modules/generated/sklearn.utils.resample.html)
 
 ## 摘要
 

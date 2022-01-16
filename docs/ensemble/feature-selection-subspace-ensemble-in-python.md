@@ -66,7 +66,7 @@
 
 让我们定义一个测试问题作为这种探索的基础，并建立一个表现基线，看看它是否比单个模型有好处。
 
-首先，我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题，其中 5 个是冗余的。
+首先，我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题，其中 5 个是冗余的。
 
 下面列出了完整的示例。
 
@@ -135,7 +135,7 @@ Mean Accuracy: 0.794 (0.046)
 
 *   [如何用 Python 开发投票套装](https://machinelearningmastery.com/voting-ensembles-with-python/)
 
-投票集成中的每个模型将是[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，其中第一步是特征选择方法，被配置为选择特定数量的特征，随后是决策树分类器模型。
+投票集成中的每个模型将是[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，其中第一步是特征选择方法，被配置为选择特定数量的特征，随后是决策树分类器模型。
 
 我们将为输入数据集中从 1 到列数的每个列数创建一个特征选择子空间。为了简单起见，这是任意选择的，您可能希望在集合中尝试不同数量的特征，例如奇数个特征，或者更复杂的方法。
 
@@ -161,7 +161,7 @@ def get_ensemble(n_features):
 	return ensemble
 ```
 
-假设我们正在使用分类数据集，我们将探索三种不同的特征选择方法:
+假设我们正在使用类别数据集，我们将探索三种不同的特征选择方法:
 
 *   方差分析 f 统计量。
 *   相互信息。
@@ -175,7 +175,7 @@ ANOVA 是“方差分析”的缩写，是一种参数统计假设检验，用�
 
 f 统计或 f 检验是一类统计检验，用于计算方差值之间的比率，如两个不同样本的方差或通过统计检验解释和解释的方差，如[方差分析](https://machinelearningmastery.com/parametric-statistical-significance-tests-in-python/)。方差分析方法是一种 f 统计，这里称为[方差分析 f 检验](https://machinelearningmastery.com/feature-selection-with-numerical-input-data/)。
 
-scikit-learn 机器库提供了 [f_classif()函数](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_classif.html)中方差分析 F-检验的实现。该功能可用于特征选择策略，例如通过[选择最相关的特征(最大值)选择最相关的 *k* 类](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html)。
+Sklearn 机器库提供了 [f_classif()函数](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.f_classif.html)中方差分析 F-检验的实现。该功能可用于特征选择策略，例如通过[选择最相关的特征(最大值)选择最相关的 *k* 类](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html)。
 
 ```py
 # get a voting ensemble of models
@@ -261,7 +261,7 @@ Mean Accuracy: 0.832 (0.043)
 
 计算两个变量之间的互信息，并在已知另一个变量的值的情况下，测量一个变量不确定性的减少。当考虑两个离散(分类或序数)变量的分布时，例如分类输入和分类输出数据，这很简单。然而，它可以适用于数字输入和分类输出。
 
-scikit-learn 机器学习库通过 [mutual_info_classif()函数](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html)为特征选择提供了数字输入和分类输出变量的互信息实现。和 *f_classif()* 一样，可以在 *SelectKBest* 特征选择策略(和其他策略)中使用。
+Sklearn 机器学习库通过 [mutual_info_classif()函数](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html)为特征选择提供了数字输入和分类输出变量的互信息实现。和 *f_classif()* 一样，可以在 *SelectKBest* 特征选择策略(和其他策略)中使用。
 
 ```py
 # get a voting ensemble of models
@@ -351,7 +351,7 @@ Mean Accuracy: 0.827 (0.048)
 
 *   [Python 中特征选择的递归特征消除(RFE)](https://machinelearningmastery.com/rfe-feature-selection-in-python/)
 
-RFE 方法可通过 scikit-learn 中的 [RFE 类](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html)获得，并可直接用于特征选择。不需要和*选择测试*类结合。
+RFE 方法可通过 Sklearn 中的 [RFE 类](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.RFE.html)获得，并可直接用于特征选择。不需要和*选择测试*类结合。
 
 ```py
 # get a voting ensemble of models
@@ -732,10 +732,10 @@ Mean Accuracy: 0.860 (0.036)
 
 ### 蜜蜂
 
-*   [硬化. feature _ selection . f _ classic API](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_classif.html)。
-*   [sklearn . feature _ selection . mutual _ info _ class if API](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html)。
-*   [硬化. feature_selection。SelectKBest API](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html) 。
-*   [sklearn.feature_selection。RFE 原料药](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html)。
+*   [硬化. feature _ selection . f _ classic API](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.f_classif.html)。
+*   [sklearn . feature _ selection . mutual _ info _ class if API](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html)。
+*   [硬化. feature_selection。SelectKBest API](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html) 。
+*   [sklearn.feature_selection。RFE 原料药](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.RFE.html)。
 
 ### 文章
 

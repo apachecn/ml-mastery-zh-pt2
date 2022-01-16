@@ -31,11 +31,11 @@
 
 本教程分为三个部分；它们是:
 
-1.  玻璃多分类数据集
+1.  玻璃多类别数据集
 2.  多类分类的过采样
 3.  面向多类分类的代价敏感学习
 
-## 玻璃多分类数据集
+## 玻璃多类别数据集
 
 在本教程中，我们将重点讨论标准不平衡多类分类问题，简称为“**玻璃识别**”或简称为“*玻璃*”
 
@@ -113,7 +113,7 @@
 
 *   [玻璃识别数据集的不平衡多类分类](https://machinelearningmastery.com/)
 
-现在我们已经熟悉了玻璃多类分类数据集，让我们探索如何使用标准的不平衡分类工具。
+现在我们已经熟悉了玻璃多类类别数据集，让我们探索如何使用标准的不平衡分类工具。
 
 ## 多类分类的过采样
 
@@ -125,7 +125,7 @@
 
 *   [使用 Python 进行不平衡分类的 SMOTE】](https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/)
 
-[不平衡学习库](https://imbalanced-learn.org/stable/index.html)提供了一个我们可以使用的 [SMOTE](https://imbalanced-learn.org/stable/generated/imblearn.over_sampling.SMOTE.html) 的实现，它与流行的 scikit-learn 库兼容。
+[不平衡学习库](https://imbalanced-learn.org/stable/index.html)提供了一个我们可以使用的 [SMOTE](https://imbalanced-learn.org/stable/generated/imblearn.over_sampling.SMOTE.html) 的实现，它与流行的 Sklearn 库兼容。
 
 首先，必须安装库。我们可以使用 pip 安装它，如下所示:
 
@@ -191,7 +191,7 @@ Class=5, n=29 (13.551%)
 
 ![Histogram of Examples in Each Class in the Glass Multi-Class Classification Dataset](img/8f957dd59f1d50d42411ddab232e01a5.png)
 
-玻璃多类分类数据集中每个类的示例直方图
+玻璃多类类别数据集中每个类的示例直方图
 
 接下来，我们可以应用 SMOTE 对数据集进行过采样。
 
@@ -247,7 +247,7 @@ Class=5, n=76 (16.667%)
 
 ![Histogram of Examples in Each Class in the Glass Multi-Class Classification Dataset After Default SMOTE Oversampling](img/ff858da1404ede60ab77fc6807687f49.png)
 
-默认 SMOTE 过采样后玻璃多类分类数据集中每个类的示例直方图
+默认 SMOTE 过采样后玻璃多类类别数据集中每个类的示例直方图
 
 我们可以指定每个类中要过采样的示例数，而不是使用 SMOTE 的默认策略将所有类过采样为多数类中的示例数。
 
@@ -314,7 +314,7 @@ UserWarning: After over-sampling, the number of samples (200) in class 5 will be
 
 ![Histogram of Examples in Each Class in the Glass Multi-Class Classification Dataset After Custom SMOTE Oversampling](img/bfaf8f58727bb389f2ad59d6c59defd5.png)
 
-定制 SMOTE 过采样后玻璃多类分类数据集中每个类的示例直方图
+定制 SMOTE 过采样后玻璃多类类别数据集中每个类的示例直方图
 
 **注**:使用 SMOTE 这样的数据采样时，必须只应用于训练数据集，不能应用于整个数据集。我建议使用管道来确保在评估模型和使用模型进行预测时正确使用 SMOTE 方法。
 
@@ -332,11 +332,11 @@ UserWarning: After over-sampling, the number of samples (200) in class 5 will be
 
 *   [不平衡分类的成本敏感学习](https://machinelearningmastery.com/cost-sensitive-learning-for-imbalanced-classification/)
 
-scikit-learn 中的 [RandomForestClassifier 类](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)通过“ *class_weight* ”参数支持对成本敏感的学习。
+Sklearn 中的 [RandomForestClassifier 类](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)通过“ *class_weight* ”参数支持对成本敏感的学习。
 
 默认情况下，随机森林类为每个类分配相同的权重。
 
-我们可以在玻璃不平衡多类分类数据集上评估默认随机森林类权重的分类精度。
+我们可以在玻璃不平衡多类类别数据集上评估默认随机森林类权重的分类精度。
 
 下面列出了完整的示例。
 
@@ -536,7 +536,7 @@ Mean Accuracy: 0.808 (0.059)
 ### 蜜蜂
 
 *   [imblearn.over_sampling。SMOTE API](https://imbalanced-learn.org/stable/generated/imblearn.over_sampling.SMOTE.html) 。
-*   [硬化。一起。随机应变分类 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) 。
+*   [硬化。一起。随机应变分类 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) 。
 
 ## 摘要
 

@@ -116,7 +116,7 @@
 
 这类数据准备技术还包括从数据中识别和移除异常值的算法。这些数据行可能远离数据集中的概率质量中心，因此可能不代表域中的数据。
 
-有关离群点检测和移除方法的更多信息，请参见教程:
+有关异常值检测和移除方法的更多信息，请参见教程:
 
 *   [如何去除机器学习的异常值](https://machinelearningmastery.com/how-to-use-statistics-to-identify-outliers-in-data/)
 
@@ -160,7 +160,7 @@
 
 有关这些类型的数据准备技术的更多信息，请参见教程:
 
-*   [分类数据的顺序编码和单热编码](https://machinelearningmastery.com/one-hot-encoding-for-categorical-data/)
+*   [类别数据的顺序编码和单热编码](https://machinelearningmastery.com/one-hot-encoding-for-categorical-data/)
 
 ### 价值观的数据准备
 
@@ -184,7 +184,7 @@
 
 有关此方法的更多信息，请参见教程:
 
-*   [如何使用幂变换进行机器学习](https://machinelearningmastery.com/power-transforms-with-scikit-learn/)
+*   [如何使用幂变换进行机器学习](https://machinelearningmastery.com/power-transforms-with-Sklearn/)
 
 分位数转换是一种灵活的数据准备技术，可以将数字输入变量映射到不同类型的分布，如正态分布或高斯分布。
 

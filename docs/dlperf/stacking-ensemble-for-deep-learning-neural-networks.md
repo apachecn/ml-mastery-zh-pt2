@@ -13,7 +13,7 @@
 完成本教程后，您将知道:
 
 *   堆叠概括是一种集成方法，其中新模型学习如何最好地组合来自多个现有模型的预测。
-*   如何使用神经网络作为子模型和 scikit-learn 分类器作为元学习器开发堆叠模型？
+*   如何使用神经网络作为子模型和 Sklearn 分类器作为元学习器开发堆叠模型？
 *   如何开发一个叠加模型，将神经网络子模型嵌入到更大的叠加集成模型中进行训练和预测。
 
 **用我的新书[更好的深度学习](https://machinelearningmastery.com/better-deep-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -21,7 +21,7 @@
 我们开始吧。
 
 *   **2019 年 10 月更新**:针对 Keras 2.3 和 TensorFlow 2.0 更新。
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新。
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新。
 *   **2020 年 8 月更新**:针对 Keras 2.4.3 和 TensorFlow 2.3 更新
 
 ![How to Develop a Stacking Ensemble for Deep Learning Neural Networks in Python With Keras](img/2bc14d26110bf1ea735bd890898becc9.png)
@@ -100,7 +100,7 @@
 
 我们将使用一个小的多类分类问题作为基础来演示堆叠集成。
 
-scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，该函数可用于创建具有规定数量的样本、输入变量、类和类内样本方差的多类分类问题。
+Sklearn 类提供了 [make_blobs()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，该函数可用于创建具有规定数量的样本、输入变量、类和类内样本方差的多类分类问题。
 
 该问题有两个输入变量(表示点的 *x* 和 *y* 坐标)和每组内点的标准偏差 2.0。我们将使用相同的随机状态(用于[伪随机数发生器](https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/)的种子)来确保我们总是获得相同的数据点。
 
@@ -440,9 +440,9 @@ def stacked_dataset(members, inputX):
 
 一旦准备好了，我们就可以使用这个输入数据集和输出，或者测试集的 *y* 部分，来训练一个新的元学习者。
 
-在这种情况下，我们将从 scikit-learn 库中训练一个简单的逻辑回归算法。
+在这种情况下，我们将从 Sklearn 库中训练一个简单的逻辑回归算法。
 
-[逻辑回归](https://machinelearningmastery.com/logistic-regression-for-machine-learning/)只支持二进制分类，虽然[逻辑回归类](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)在 scikit-learn 中的逻辑回归的实现使用一对多的方案支持多类分类(两类以上)。下面的函数 *fit_stacked_model()* 将通过调用 *stacked_dataset()* 函数为元学习者准备训练数据集，然后拟合逻辑回归模型，然后返回。
+[逻辑回归](https://machinelearningmastery.com/logistic-regression-for-machine-learning/)只支持二进制分类，虽然[逻辑回归类](http://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)在 Sklearn 中的逻辑回归的实现使用一对多的方案支持多类分类(两类以上)。下面的函数 *fit_stacked_model()* 将通过调用 *stacked_dataset()* 函数为元学习者准备训练数据集，然后拟合逻辑回归模型，然后返回。
 
 ```py
 # fit a model based on the outputs from the ensemble members
@@ -852,9 +852,9 @@ Stacked Test Accuracy: 0.833
 *   [开始使用 Keras 顺序模型](https://keras.io/getting-started/sequential-model-guide/)
 *   [硬核层 API](https://keras.io/layers/core/)
 *   num py . argmax API
-*   [sklearn . dataset . make _ blobs API](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)
+*   [sklearn . dataset . make _ blobs API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)
 *   num py . dstack API
-*   [sklearn.linear_model。物流配送应用编程接口](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
+*   [sklearn.linear_model。物流配送应用编程接口](http://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
 
 ### 文章
 
@@ -872,7 +872,7 @@ Stacked Test Accuracy: 0.833
 具体来说，您了解到:
 
 *   堆叠综合是一种集成方法，其中新模型学习如何最好地组合来自多个现有模型的预测。
-*   如何使用神经网络作为子模型和 scikit-learn 分类器作为元学习器开发堆叠模型？
+*   如何使用神经网络作为子模型和 Sklearn 分类器作为元学习器开发堆叠模型？
 *   如何开发一个叠加模型，将神经网络子模型嵌入到更大的叠加集成模型中进行训练和预测。
 
 你有什么问题吗？

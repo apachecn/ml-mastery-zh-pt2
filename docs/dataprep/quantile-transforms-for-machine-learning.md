@@ -1,4 +1,4 @@
-# 如何使用分位数变换进行机器学习
+# 如何为机器学习使用分位数变换
 
 > 原文：<https://machinelearningmastery.com/quantile-transforms-for-machine-learning/>
 
@@ -68,7 +68,7 @@
 
 该变换可以应用于训练数据集中的每个数字输入变量，然后作为输入提供给机器学习模型，以学习预测建模任务。
 
-这个分位数转换可以通过[quantilettransformer 类](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.QuantileTransformer.html)在 scikit-learn Python 机器学习库中获得。
+这个分位数转换可以通过[quantilettransformer 类](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.QuantileTransformer.html)在 Sklearn Python 机器学习库中获得。
 
 该类有一个“ *output_distribution* ”参数，可以设置为“*制服*”或“*普通*”，默认为“*制服*”。
 
@@ -186,7 +186,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 ![Histogram Plots of Input Variables for the Sonar Binary Classification Dataset](img/8f28028eadb100929c55fd48ae1e12b7.png)
 
-声纳二进制分类数据集输入变量的直方图
+声纳二进制类别数据集输入变量的直方图
 
 接下来，让我们在原始数据集上拟合和评估一个机器学习模型。
 
@@ -518,7 +518,7 @@ pyplot.show()
 ### 教程
 
 *   [机器学习的连续概率分布](https://machinelearningmastery.com/continuous-probability-distributions-for-machine-learning/)
-*   [如何用 Scikit 转换回归的目标变量-学习](https://machinelearningmastery.com/how-to-transform-target-variables-for-regression-with-scikit-learn/)
+*   [如何用 Scikit 转换回归的目标变量-学习](https://machinelearningmastery.com/how-to-transform-target-variables-for-regression-with-Sklearn/)
 
 ### 资料组
 
@@ -527,8 +527,8 @@ pyplot.show()
 
 ### 蜜蜂
 
-*   [非线性变换，sci kit-学习指南](https://scikit-learn.org/stable/modules/preprocessing.html#preprocessing-transformer)。
-*   [硬化。预处理。量子转换器 API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.QuantileTransformer.html) 。
+*   [非线性变换，sci kit-学习指南](https://Sklearn.org/stable/modules/preprocessing.html#preprocessing-transformer)。
+*   [硬化。预处理。量子转换器 API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.QuantileTransformer.html) 。
 
 ### 文章
 

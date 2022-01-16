@@ -41,7 +41,7 @@ Keras 深度学习库提供对四个标准计算机视觉数据集的访问。
 
 这特别有用，因为它允许您快速开始测试计算机视觉的模型架构和配置。
 
-提供了四个特定的多类图像分类数据集；它们是:
+提供了四个特定的多类图像类别数据集；它们是:
 
 *   **MNIST** :手写数字照片分类(10 类)。
 *   **时尚-MNIST** :服装单品照片分类(10 类)。
@@ -334,7 +334,7 @@ Test: X=(10000, 32, 32, 3), y=(10000, 20)
 ### 文章
 
 *   [MNIST 数据库，维基百科。](https://en.wikipedia.org/wiki/MNIST_database)
-*   [分类数据集结果，这个图像的类别是什么？](https://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html)
+*   [类别数据集结果，这个图像的类别是什么？](https://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html)
 *   [时尚-MNIST GitHub 资源库](https://github.com/zalandoresearch/fashion-mnist)
 *   [CIFAR-10，维基百科。](https://en.wikipedia.org/wiki/CIFAR-10)
 *   [CIFAR-10 数据集和 CIFAR-100 数据集](https://www.cs.toronto.edu/~kriz/cifar.html)。

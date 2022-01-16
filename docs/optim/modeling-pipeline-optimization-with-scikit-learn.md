@@ -1,6 +1,6 @@
 # 使用 scikit 建模管道优化-学习
 
-> 原文：<https://machinelearningmastery.com/modeling-pipeline-optimization-with-scikit-learn/>
+> 原文：<https://machinelearningmastery.com/modeling-pipeline-optimization-with-Sklearn/>
 
 最后更新于 2021 年 10 月 22 日
 
@@ -419,10 +419,10 @@ plt.show()
 
 ### 蜜蜂
 
-*   [sklearn.model_selection。参数采样器应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.ParameterSampler.html)
-*   [硬化. model_selection。randolmiedsearchv API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html)
-*   [sklearn.model_selection。KFold 原料药](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html#sklearn.model_selection.KFold)
-*   [sklearn.model_selection。参数网格应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.ParameterGrid.html#sklearn.model_selection.ParameterGrid)
+*   [sklearn.model_selection。参数采样器应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.ParameterSampler.html)
+*   [硬化. model_selection。randolmiedsearchv API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html)
+*   [sklearn.model_selection。KFold 原料药](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html#sklearn.model_selection.KFold)
+*   [sklearn.model_selection。参数网格应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.ParameterGrid.html#sklearn.model_selection.ParameterGrid)
 
 ### 数据集
 

@@ -6,7 +6,7 @@
 
 XGBoost 算法对于广泛的回归和分类预测建模问题是有效的。
 
-它是随机梯度增强算法的有效实现，并提供了一系列超参数，可对模型训练过程进行精细控制。尽管该算法总体上表现良好，即使在不平衡分类数据集上也是如此，但它提供了一种调整训练算法的方法，以更加关注具有倾斜类分布的数据集的少数类的误分类。
+它是随机梯度增强算法的有效实现，并提供了一系列超参数，可对模型训练过程进行精细控制。尽管该算法总体上表现良好，即使在不平衡类别数据集上也是如此，但它提供了一种调整训练算法的方法，以更加关注具有倾斜类分布的数据集的少数类的误分类。
 
 XGBoost 的这个修改版本被称为类加权 XGBoost 或成本敏感 XGBoost，并且可以在具有严重类不平衡的二进制分类问题上提供更好的表现。
 
@@ -31,16 +31,16 @@ XGBoost 的这个修改版本被称为类加权 XGBoost 或成本敏感 XGBoost�
 
 本教程分为四个部分；它们是:
 
-1.  不平衡分类数据集
+1.  不平衡类别数据集
 2.  用于分类的 XGBoost 模型
 3.  类别不平衡的加权扩展
 4.  调整类别加权超参数
 
-## 不平衡分类数据集
+## 不平衡类别数据集
 
-在我们深入到不平衡分类的 XGBoost 之前，让我们首先定义一个不平衡分类数据集。
+在我们深入到不平衡分类的 XGBoost 之前，让我们首先定义一个不平衡类别数据集。
 
-我们可以使用[make _ classification()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)sci kit-learn 函数定义一个合成的不平衡两类分类数据集。我们将生成 10，000 个少数与多数类比例大约为 1:100 的示例。
+我们可以使用[make _ classification()](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)sci kit-learn 函数定义一个合成的不平衡两类类别数据集。我们将生成 10，000 个少数与多数类比例大约为 1:100 的示例。
 
 ```py
 ...
@@ -104,7 +104,7 @@ Counter({0: 9900, 1: 100})
 
 ![Scatter Plot of Binary Classification Dataset With 1 to 100 Class Imbalance](img/887db0673d3ed330186d46e0c141ff6e.png)
 
-1 到 100 类不平衡的二进制分类数据集的散点图
+1 到 100 类不平衡的二进制类别数据集的散点图
 
 ## 用于分类的 XGBoost 模型
 
@@ -128,7 +128,7 @@ XGBoost 是一种有效的机器学习模型，即使在类分布有偏差的数
 
 在对不平衡分类的 XGBoost 算法进行任何修改或调整之前，测试默认的 XGBoost 模型并建立表现基线是很重要的。
 
-虽然 XGBoost 库有自己的 Python API，但是我们可以通过 [XGBClassifier 包装类](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier)将 XGBoost 模型与 scikit-learn API 一起使用。模型的一个实例可以像任何其他用于模型评估的 scikit-learn 类一样被实例化和使用。例如:
+虽然 XGBoost 库有自己的 Python API，但是我们可以通过 [XGBClassifier 包装类](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier)将 XGBoost 模型与 Sklearn API 一起使用。模型的一个实例可以像任何其他用于模型评估的 Sklearn 类一样被实例化和使用。例如:
 
 ```py
 ...
@@ -190,7 +190,7 @@ Mean ROC AUC: 0.95724
 
 该实现提供了一个超参数，用于针对不平衡分类问题调整算法的行为；这是**刻度 _ pos _ 重量**超参数。
 
-默认情况下， *scale_pos_weight* 超参数设置为值 1.0，在提升决策树时，相对于负示例，具有权衡正示例的效果。对于不平衡的二进制分类数据集，负类指多数类(类 0)，正类指少数类(类 1)。
+默认情况下， *scale_pos_weight* 超参数设置为值 1.0，在提升决策树时，相对于负示例，具有权衡正示例的效果。对于不平衡的二进制类别数据集，负类指多数类(类 0)，正类指少数类(类 1)。
 
 XGBoost 被训练成最小化损失函数，梯度增强中的“*梯度*”指的是该损失函数的陡度，例如误差量。一个小的梯度意味着一个小的误差，反过来，一个修正误差的模型的小变化。训练期间的大误差梯度反过来导致大的校正。
 
@@ -219,7 +219,7 @@ XGBoost 文档提出了一种快速估算该值的方法，该方法使用训练
 
 *   scale _ pos _ weight = total _ 负值 _ 示例/total _ 正值 _ 示例
 
-例如，我们可以为我们的合成分类数据集计算这个值。考虑到我们用来定义数据集的权重，我们预计该值约为 100，或者更准确地说，99。
+例如，我们可以为我们的合成类别数据集计算这个值。考虑到我们用来定义数据集的权重，我们预计该值约为 100，或者更准确地说，99。
 
 ```py
 ...
@@ -278,7 +278,7 @@ scores = cross_val_score(model, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.5f' % mean(scores))
 ```
 
-运行该示例准备合成不平衡分类数据集，然后使用重复交叉验证评估 XGBoost 训练算法的类加权版本。
+运行该示例准备合成不平衡类别数据集，然后使用重复交叉验证评估 XGBoost 训练算法的类加权版本。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -307,7 +307,7 @@ Mean ROC AUC: 0.95990
 *   One hundred
 *   One thousand
 
-这些可以定义为[网格搜索参数，如下所示:](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
+这些可以定义为[网格搜索参数，如下所示:](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
 
 ```py
 ...
@@ -410,7 +410,7 @@ Best: 0.959901 using {'scale_pos_weight': 99}
 
 ### 蜜蜂
 
-*   [sklearn . datasets . make _ classification API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
+*   [sklearn . datasets . make _ classification API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
 *   [xgboost。xgbcclassifier API](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier)。
 *   [XGBoost 参数，API 文档](https://xgboost.readthedocs.io/en/latest/parameter.html)。
 *   [参数调整注释，应用编程接口文档](https://xgboost.readthedocs.io/en/latest/tutorials/param_tuning.html)。

@@ -44,7 +44,7 @@ $
 
 ## 消失梯度问题示例
 
-为了说明渐变消失的问题，我们来举个例子试试。神经网络是一种非线性函数。因此它最适合非线性数据集的分类。我们利用 scikit-learn 的`make_circle()`函数生成一些数据:
+为了说明渐变消失的问题，我们来举个例子试试。神经网络是一种非线性函数。因此它最适合非线性数据集的分类。我们利用 Sklearn 的`make_circle()`函数生成一些数据:
 
 ```py
 from sklearn.datasets import make_circles

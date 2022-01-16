@@ -204,7 +204,7 @@ for i in range(dataframe.shape[1]):
 
 ## 用简单估算器进行统计估算
 
-scikit-learn 机器学习库提供了支持统计插补的[simple 插补器类](https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)。
+Sklearn 机器学习库提供了支持统计插补的[simple 插补器类](https://Sklearn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)。
 
 在本节中，我们将探索如何有效地使用 simple Current 类。
 
@@ -283,7 +283,7 @@ Missing: 0
 
 —第 42 页，[应用预测建模](https://amzn.to/3b2LHTL)，2013 年。
 
-这可以通过创建建模管道来实现，其中第一步是统计插补，然后第二步是模型。这可以使用[管道类](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)来实现。
+这可以通过创建建模管道来实现，其中第一步是统计插补，然后第二步是模型。这可以使用[管道类](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)来实现。
 
 例如，下面的*管道*使用了一个*简单估算器*，带有一个“*的意思是*策略，后面是一个随机森林模型。
 
@@ -470,8 +470,8 @@ Predicted Class: 2
 
 ### 蜜蜂
 
-*   [缺失值的插补，sci kit-学习文档](https://scikit-learn.org/stable/modules/impute.html)。
-*   [巩理。计费。简单计费 API](https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html) 。
+*   [缺失值的插补，sci kit-学习文档](https://Sklearn.org/stable/modules/impute.html)。
+*   [巩理。计费。简单计费 API](https://Sklearn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html) 。
 
 ### 资料组
 

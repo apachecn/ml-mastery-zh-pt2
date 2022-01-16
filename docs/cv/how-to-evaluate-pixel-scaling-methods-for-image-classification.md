@@ -646,7 +646,7 @@ Standardized: 0.990 (0.001
 如果您想更深入地了解这个主题，本节将提供更多资源。
 
 *   [MNIST 数据库，维基百科。](https://en.wikipedia.org/wiki/MNIST_database)
-*   [MNIST，分类数据集结果。](https://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html#4d4e495354)
+*   [MNIST，类别数据集结果。](https://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html#4d4e495354)
 *   [MNIST 手写数字数据库，Keras API。](https://keras.io/datasets/#mnist-database-of-handwritten-digits)
 
 ## 摘要

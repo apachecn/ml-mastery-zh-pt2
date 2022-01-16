@@ -691,7 +691,7 @@ print('Dataset: train=%d, test=%d' % (trainX.shape[0], testX.shape[0]))
 
 首先，对人脸嵌入向量进行归一化是一种很好的做法。这是一个很好的实践，因为向量经常使用距离度量来相互比较。
 
-在本文中，[向量归一化](https://machinelearningmastery.com/vector-norms-machine-learning/)意味着缩放值，直到向量的长度或大小为 1 或单位长度。这可以使用 scikit-learn 中的[规格化器类来实现。在前一步中创建面嵌入时，执行这一步可能会更方便。](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html)
+在本文中，[向量归一化](https://machinelearningmastery.com/vector-norms-machine-learning/)意味着缩放值，直到向量的长度或大小为 1 或单位长度。这可以使用 Sklearn 中的[规格化器类来实现。在前一步中创建面嵌入时，执行这一步可能会更方便。](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html)
 
 ```py
 # normalize input vectors
@@ -702,7 +702,7 @@ testX = in_encoder.transform(testX)
 
 接下来，每个名人名字的字符串目标变量需要转换成整数。
 
-这可以通过 scikit-learn 中的[标签编码器类来实现。](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html)
+这可以通过 Sklearn 中的[标签编码器类来实现。](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html)
 
 ```py
 # label encode targets
@@ -714,7 +714,7 @@ testy = out_encoder.transform(testy)
 
 接下来，我们可以拟合一个模型。
 
-在处理标准化人脸嵌入输入时，通常使用[线性支持向量机(SVM)](https://machinelearningmastery.com/support-vector-machines-for-machine-learning/) 。这是因为该方法在分离人脸嵌入向量方面非常有效。我们可以使用 scikit-learn 中的 [SVC 类](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)将线性 SVM 拟合到训练数据，并将“*内核*属性设置为“*线性*”。我们以后做预测的时候可能也要概率，可以通过设置“*概率*”为“*真*”来配置。
+在处理标准化人脸嵌入输入时，通常使用[线性支持向量机(SVM)](https://machinelearningmastery.com/support-vector-machines-for-machine-learning/) 。这是因为该方法在分离人脸嵌入向量方面非常有效。我们可以使用 Sklearn 中的 [SVC 类](https://Sklearn.org/stable/modules/generated/sklearn.svm.SVC.html)将线性 SVM 拟合到训练数据，并将“*内核*属性设置为“*线性*”。我们以后做预测的时候可能也要概率，可以通过设置“*概率*”为“*真*”来配置。
 
 ```py
 # fit model
@@ -931,9 +931,9 @@ SVM 分类器正确识别的杰瑞·宋飞人脸
 
 ### 蜜蜂
 
-*   [sklearn . preference . normalizer API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html)
-*   [硬化。预处理。标签编码 API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html)
-*   [硬化. svm.SVC API](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
+*   [sklearn . preference . normalizer API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html)
+*   [硬化。预处理。标签编码 API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html)
+*   [硬化. svm.SVC API](https://Sklearn.org/stable/modules/generated/sklearn.svm.SVC.html)
 
 ## 摘要
 

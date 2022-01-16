@@ -1,6 +1,6 @@
 # 如何在 Python 中转换回归的目标变量
 
-> 原文：<https://machinelearningmastery.com/how-to-transform-target-variables-for-regression-with-scikit-learn/>
+> 原文：<https://machinelearningmastery.com/how-to-transform-target-variables-for-regression-with-Sklearn/>
 
 最后更新于 2020 年 10 月 1 日
 
@@ -8,11 +8,11 @@
 
 正确准备您的训练数据可能意味着平庸和非凡的结果之间的区别，即使使用非常简单的线性算法。
 
-对于输入变量来说，执行数据准备操作(如缩放)相对简单，并且已经通过 Pipeline scikit-learn 类在 Python 中成为常规操作。
+对于输入变量来说，执行数据准备操作(如缩放)相对简单，并且已经通过 Pipeline Sklearn 类在 Python 中成为常规操作。
 
 在必须预测数值的回归预测建模问题上，对目标变量进行缩放和执行其他数据转换也很关键。这可以在 Python 中使用**transformed targetgressor**类来实现。
 
-在本教程中，您将发现如何使用 TransformedTargetRegressor 来使用 scikit-learn Python 机器学习库缩放和转换回归的目标变量。
+在本教程中，您将发现如何使用 TransformedTargetRegressor 来使用 Sklearn Python 机器学习库缩放和转换回归的目标变量。
 
 完成本教程后，您将知道:
 
@@ -24,7 +24,7 @@
 
 我们开始吧。
 
-![How to Transform Target Variables for Regression With Scikit-Learn](img/fd409ff60bfb607708b65a722f09ed46.png)
+![How to Transform Target Variables for Regression With Sklearn](img/fd409ff60bfb607708b65a722f09ed46.png)
 
 如何用 Scikit 转换回归的目标变量-学习
 图片由[唐·海尼斯](https://flickr.com/photos/kiskadee_3/37926034661/)提供，版权所有。
@@ -53,9 +53,9 @@
 
 对于回归问题，通常需要缩放或转换输入和目标变量。
 
-缩放输入变量很简单。在 scikit-learn 中，您可以手动使用缩放对象，或者使用更方便的 Pipeline，它允许您在使用模型之前将一系列数据转换对象链接在一起。
+缩放输入变量很简单。在 Sklearn 中，您可以手动使用缩放对象，或者使用更方便的 Pipeline，它允许您在使用模型之前将一系列数据转换对象链接在一起。
 
-[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)将为您拟合训练数据上的比例对象，并将变换应用于新数据，例如当使用模型进行预测时。
+[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)将为您拟合训练数据上的比例对象，并将变换应用于新数据，例如当使用模型进行预测时。
 
 例如:
 
@@ -69,7 +69,7 @@ pipeline.fit(train_x, train_y)
 yhat = pipeline.predict(test_x)
 ```
 
-挑战在于，scikit-learn 中缩放目标变量的等效机制是什么？
+挑战在于，Sklearn 中缩放目标变量的等效机制是什么？
 
 ## 如何缩放目标变量
 
@@ -91,7 +91,7 @@ yhat = pipeline.predict(test_x)
 3.  将转换应用于训练和测试数据集。
 4.  反转任何预测的变换。
 
-例如，如果我们想要规范化一个目标变量，我们将首先定义并训练一个[最小最大缩放器对象](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html):
+例如，如果我们想要规范化一个目标变量，我们将首先定义并训练一个[最小最大缩放器对象](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html):
 
 ```py
 ...
@@ -120,13 +120,13 @@ yhat = model.predict(test_X)
 yhat = target_scaler.inverse_transform(yhat)
 ```
 
-这是一个痛点，因为这意味着您不能使用 scikit-learn 中的便利功能，如 [cross_val_score()](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html) 来快速评估模型。
+这是一个痛点，因为这意味着您不能使用 Sklearn 中的便利功能，如 [cross_val_score()](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html) 来快速评估模型。
 
 ### 2.目标变量的自动转换
 
 另一种方法是自动管理变换和逆变换。
 
-这可以通过使用包装给定模型和缩放对象的[transformed targetgressior](https://scikit-learn.org/stable/modules/generated/sklearn.compose.TransformedTargetRegressor.html)对象来实现。
+这可以通过使用包装给定模型和缩放对象的[transformed targetgressior](https://Sklearn.org/stable/modules/generated/sklearn.compose.TransformedTargetRegressor.html)对象来实现。
 
 它将使用用于拟合模型的相同训练数据准备目标变量的变换，然后对调用 predict()时提供的任何新数据应用该逆变换，以正确的比例返回预测。
 
@@ -201,9 +201,9 @@ print(X.shape, y.shape)
 
 我们现在可以准备一个使用 TransformedTargetRegressor 的例子。
 
-预测该问题目标平均值的[朴素回归](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyRegressor.html)模型可以达到约 6.659 的[平均绝对误差](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html) (MAE)。我们将力争做得更好。
+预测该问题目标平均值的[朴素回归](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyRegressor.html)模型可以达到约 6.659 的[平均绝对误差](https://Sklearn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html) (MAE)。我们将力争做得更好。
 
-在这个例子中，我们将拟合一个[huberrelater](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.HuberRegressor.html)对象，并使用一个管道来规范化输入变量。
+在这个例子中，我们将拟合一个[huberrelater](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.HuberRegressor.html)对象，并使用一个管道来规范化输入变量。
 
 ```py
 ...
@@ -269,7 +269,7 @@ print('Mean MAE: %.3f' % (s_mean))
 Mean MAE: 3.191
 ```
 
-我们不限于使用缩放对象；例如，我们还可以探索对目标变量使用其他数据变换，如 [PowerTransformer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html) ，可以使每个变量更像高斯(使用 [Yeo-Johnson 变换](https://en.wikipedia.org/wiki/Power_transform))并提高线性模型的表现。
+我们不限于使用缩放对象；例如，我们还可以探索对目标变量使用其他数据变换，如 [PowerTransformer](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html) ，可以使每个变量更像高斯(使用 [Yeo-Johnson 变换](https://en.wikipedia.org/wiki/Power_transform))并提高线性模型的表现。
 
 默认情况下，PowerTransformer 还会在执行转换后对每个变量进行标准化。
 
@@ -320,10 +320,10 @@ Mean MAE: 2.926
 
 ### 应用程序接口
 
-*   [回归 scikit-learn API 中的转化目标。](https://scikit-learn.org/stable/modules/compose.html#transforming-target-in-regression)
-*   [硬化。化合物。转化银螯合物 API。](https://scikit-learn.org/stable/modules/generated/sklearn.compose.TransformedTargetRegressor.html)
-*   [硬化。预处理。MinMaxScaler API。](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)
-*   [硬化。预处理。PowerTransformer API。](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html)
+*   [回归 Sklearn API 中的转化目标。](https://Sklearn.org/stable/modules/compose.html#transforming-target-in-regression)
+*   [硬化。化合物。转化银螯合物 API。](https://Sklearn.org/stable/modules/generated/sklearn.compose.TransformedTargetRegressor.html)
+*   [硬化。预处理。MinMaxScaler API。](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)
+*   [硬化。预处理。PowerTransformer API。](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html)
 
 ### 资料组
 
@@ -332,7 +332,7 @@ Mean MAE: 2.926
 
 ## 摘要
 
-在本教程中，您发现了如何在 scikit-learn 中使用 TransformedTargetRegressor 来缩放和转换回归的目标变量。
+在本教程中，您发现了如何在 Sklearn 中使用 TransformedTargetRegressor 来缩放和转换回归的目标变量。
 
 具体来说，您了解到:
 

@@ -143,7 +143,7 @@ opt = SGD(lr=0.01, momentum=0.9, clipvalue=0.5)
 
 回归预测建模问题涉及预测实值量。
 
-我们可以在[make _ revolution()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)中使用 scikit-learn 库提供的标准回归问题生成器。该函数将从具有给定数量的输入变量、统计噪声和其他属性的简单回归问题中生成示例。
+我们可以在[make _ revolution()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)中使用 Sklearn 库提供的标准回归问题生成器。该函数将从具有给定数量的输入变量、统计噪声和其他属性的简单回归问题中生成示例。
 
 我们将使用这个函数来定义一个有 20 个输入特征的问题；其中 10 个功能将是有意义的，10 个将不相关。总共将随机生成 1000 个示例。[伪随机数发生器](https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/)将被固定，以确保我们每次运行代码时都能得到相同的 1000 个例子。
 

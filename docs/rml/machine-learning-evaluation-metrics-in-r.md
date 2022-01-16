@@ -40,7 +40,7 @@ R
 
 ### 准确度和卡帕值
 
-这些是用于评估脱字符号中二进制和多类分类数据集算法的默认指标。
+这些是用于评估脱字符号中二进制和多类类别数据集算法的默认指标。
 
 **准确度**是所有实例中正确分类实例的百分比。它在二进制分类问题上比多类分类问题更有用，因为它可能不太清楚这些类的精度是如何分解的(例如，您需要使用[混淆矩阵](https://machinelearningmastery.com/confusion-matrix-machine-learning/)进行更深入的研究)。[在此了解更多关于精度的信息](https://en.wikipedia.org/wiki/Accuracy_and_precision)。
 

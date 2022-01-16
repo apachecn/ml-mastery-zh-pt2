@@ -16,7 +16,7 @@
 
 *   降维寻求保留数据中显著关系的数字输入数据的低维表示。
 *   有许多不同的降维算法，没有一种最佳方法适用于所有数据集。
-*   如何使用 scikit-learn 机器学习库在 Python 中实现、拟合和评估顶级降维。
+*   如何使用 Sklearn 机器学习库在 Python 中实现、拟合和评估顶级降维。
 
 **用我的新书[机器学习的数据准备](https://machinelearningmastery.com/data-preparation-for-machine-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
@@ -34,7 +34,7 @@
 2.  降维算法
 3.  降维的例子
     1.  sci kit-学习库安装
-    2.  分类数据集
+    2.  类别数据集
     3.  主成分分析
     4.  奇异值分解
     5.  线性判别分析
@@ -100,26 +100,26 @@
 
 没有最佳的降维算法，也没有简单的方法可以在不使用受控实验的情况下为您的数据找到最佳算法。
 
-在本教程中，我们将回顾如何使用 scikit-learn 库中这些流行的降维算法的每个子集。
+在本教程中，我们将回顾如何使用 Sklearn 库中这些流行的降维算法的每个子集。
 
 这些示例将为您复制粘贴示例和在自己的数据上测试方法提供基础。
 
 我们不会深入研究算法背后的理论，也不会直接比较它们。有关此主题的良好起点，请参见:
 
-*   [分解组件中的信号，scikit-learn API](https://scikit-learn.org/stable/modules/decomposition.html) 。
-*   [歧管学习，sci kit-学习 API](https://scikit-learn.org/stable/modules/manifold.html) 。
+*   [分解组件中的信号，Sklearn API](https://Sklearn.org/stable/modules/decomposition.html) 。
+*   [歧管学习，sci kit-学习 API](https://Sklearn.org/stable/modules/manifold.html) 。
 
 让我们开始吧。
 
 ## 降维的例子
 
-在本节中，我们将回顾如何在 scikit-learn 中使用流行的降维算法。
+在本节中，我们将回顾如何在 Sklearn 中使用流行的降维算法。
 
 这包括使用降维技术作为建模管道中的数据转换并评估数据上的模型拟合的示例。
 
-这些示例旨在让您复制粘贴到自己的项目中，并将这些方法应用到自己的数据中。scikit-learn 库中有一些算法没有演示，因为鉴于算法的性质，它们不能直接用作数据转换。
+这些示例旨在让您复制粘贴到自己的项目中，并将这些方法应用到自己的数据中。Sklearn 库中有一些算法没有演示，因为鉴于算法的性质，它们不能直接用作数据转换。
 
-因此，我们将在每个示例中使用合成分类数据集。
+因此，我们将在每个示例中使用合成类别数据集。
 
 ### sci kit-学习库安装
 
@@ -127,22 +127,22 @@
 
 不要跳过这一步，因为您需要确保安装了最新版本。
 
-您可以使用 pip Python 安装程序安装 scikit-learn 库，如下所示:
+您可以使用 pip Python 安装程序安装 Sklearn 库，如下所示:
 
 ```py
-sudo pip install scikit-learn
+sudo pip install Sklearn
 ```
 
 有关特定于您的平台的其他安装说明，请参见:
 
-*   [安装 scikit-learn](https://scikit-learn.org/stable/install.html)
+*   [安装 Sklearn](https://Sklearn.org/stable/install.html)
 
 接下来，让我们确认库已安装，并且您使用的是现代版本。
 
 运行以下脚本打印库版本号。
 
 ```py
-# check scikit-learn version
+# check Sklearn version
 import sklearn
 print(sklearn.__version__)
 ```
@@ -153,15 +153,15 @@ print(sklearn.__version__)
 0.23.0
 ```
 
-### 分类数据集
+### 类别数据集
 
-我们将使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个测试二进制分类数据集。
+我们将使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个测试二进制类别数据集。
 
 数据集将有 1，000 个包含 20 个输入要素的示例，其中 10 个是信息性的，10 个是冗余的。这为每种技术提供了识别和移除冗余输入特征的机会。
 
 伪随机数发生器的固定随机种子确保我们在每次代码运行时生成相同的合成数据集。
 
-下面列出了创建和汇总综合分类数据集的示例。
+下面列出了创建和汇总综合类别数据集的示例。
 
 ```py
 # synthetic classification dataset
@@ -178,7 +178,7 @@ print(X.shape, y.shape)
 (1000, 20) (1000,)
 ```
 
-这是一个二元分类任务，我们将在每次降维变换后评估一个[物流分类](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型。
+这是一个二元分类任务，我们将在每次降维变换后评估一个[物流分类](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型。
 
 模型将使用[重复分层 10 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)的金标准进行评估。将报告所有折叠和重复的平均和标准偏差分类精度。
 
@@ -217,7 +217,7 @@ Accuracy: 0.824 (0.034)
 
 我已经做了一些最小的尝试来调整每个方法到数据集。每个降维方法将被配置为尽可能将 20 个输入列减少到 10 个。
 
-我们将使用[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)将数据转换和模型组合成一个原子单元，可以使用交叉验证程序进行评估；例如:
+我们将使用[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)将数据转换和模型组合成一个原子单元，可以使用交叉验证程序进行评估；例如:
 
 ```py
 ...
@@ -239,7 +239,7 @@ model = Pipeline(steps=steps)
 
 *   [如何在 Python 中从头计算主成分分析](https://machinelearningmastery.com/calculate-principal-component-analysis-scratch-python/)
 
-scikit-learn 库提供了主成分分析的[主成分分析类](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)实现，可用作降维数据转换。可以设置“ *n_components* ”参数来配置变换输出中所需的维数。
+Sklearn 库提供了主成分分析的[主成分分析类](https://Sklearn.org/stable/modules/generated/sklearn.decomposition.PCA.html)实现，可用作降维数据转换。可以设置“ *n_components* ”参数来配置变换输出中所需的维数。
 
 下面列出了使用主成分分析降维评估模型的完整示例。
 
@@ -283,7 +283,7 @@ Accuracy: 0.824 (0.034)
 
 *   [如何用 Python 从头计算奇异值分解](https://machinelearningmastery.com/singular-value-decomposition-for-machine-learning/)
 
-scikit-learn 库提供了奇异值分解的[截断的 VD 类](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html)实现，可用作降维数据转换。可以设置“ *n_components* ”参数来配置变换输出中所需的维数。
+Sklearn 库提供了奇异值分解的[截断的 VD 类](https://Sklearn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html)实现，可用作降维数据转换。可以设置“ *n_components* ”参数来配置变换输出中所需的维数。
 
 下面列出了使用奇异值分解降维评估模型的完整示例。
 
@@ -329,7 +329,7 @@ Accuracy: 0.824 (0.034)
 
 *   [Python 中降维的线性判别分析](https://machinelearningmastery.com/linear-discriminant-analysis-for-dimensionality-reduction-in-python/)
 
-scikit-learn 库提供了[线性判别分析类](https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html)的线性判别分析实现，可用作降维数据转换。可以设置“ *n_components* ”参数来配置变换输出中所需的维数。
+Sklearn 库提供了[线性判别分析类](https://Sklearn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html)的线性判别分析实现，可用作降维数据转换。可以设置“ *n_components* ”参数来配置变换输出中所需的维数。
 
 下面列出了使用 LDA 降维评估模型的完整示例。
 
@@ -369,7 +369,7 @@ Accuracy: 0.825 (0.034)
 
 Isomap 嵌入(Isomap)创建数据集的嵌入，并尝试保留数据集中的关系。
 
-scikit-learn 库提供了 Isomap 嵌入的 [Isomap 类](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.Isomap.html)实现，可用作降维数据转换。可以设置“ *n_components* ”参数来配置变换输出中所需的维数。
+Sklearn 库提供了 Isomap 嵌入的 [Isomap 类](https://Sklearn.org/stable/modules/generated/sklearn.manifold.Isomap.html)实现，可用作降维数据转换。可以设置“ *n_components* ”参数来配置变换输出中所需的维数。
 
 下面列出了使用奇异值分解降维评估模型的完整示例。
 
@@ -409,7 +409,7 @@ Accuracy: 0.888 (0.029)
 
 局部线性嵌入(LLE)创建数据集的嵌入，并试图保留数据集中邻域之间的关系。
 
-scikit-learn 库提供了局部线性嵌入的[局部线性嵌入类](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.LocallyLinearEmbedding.html)实现，可用作降维数据转换。可以设置“ *n_components* ”参数来配置变换输出中所需的维数
+Sklearn 库提供了局部线性嵌入的[局部线性嵌入类](https://Sklearn.org/stable/modules/generated/sklearn.manifold.LocallyLinearEmbedding.html)实现，可用作降维数据转换。可以设置“ *n_components* ”参数来配置变换输出中所需的维数
 
 下面列出了使用 LLE 降维评估模型的完整示例。
 
@@ -449,7 +449,7 @@ Accuracy: 0.886 (0.028)
 
 修改的局部线性嵌入，或修改的 LLE，是局部线性嵌入的扩展，为每个邻域创建多个加权向量。
 
-scikit-learn 库提供了修改的局部线性嵌入的[局部线性嵌入类](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.LocallyLinearEmbedding.html)实现，可用作降维数据转换。“*方法*”参数必须设置为“已修改”，并且“ *n_components* ”参数可以设置为配置转换输出中所需的维数，该维数必须小于“ *n_neighbors* ”参数。
+Sklearn 库提供了修改的局部线性嵌入的[局部线性嵌入类](https://Sklearn.org/stable/modules/generated/sklearn.manifold.LocallyLinearEmbedding.html)实现，可用作降维数据转换。“*方法*”参数必须设置为“已修改”，并且“ *n_components* ”参数可以设置为配置转换输出中所需的维数，该维数必须小于“ *n_neighbors* ”参数。
 
 下面列出了使用修正 LLE 降维评估模型的完整示例。
 
@@ -498,8 +498,8 @@ Accuracy: 0.846 (0.036)
 
 ### 蜜蜂
 
-*   [分解组件中的信号，scikit-learn API](https://scikit-learn.org/stable/modules/decomposition.html) 。
-*   [歧管学习，sci kit-学习 API](https://scikit-learn.org/stable/modules/manifold.html) 。
+*   [分解组件中的信号，Sklearn API](https://Sklearn.org/stable/modules/decomposition.html) 。
+*   [歧管学习，sci kit-学习 API](https://Sklearn.org/stable/modules/manifold.html) 。
 
 ## 摘要
 
@@ -509,7 +509,7 @@ Accuracy: 0.846 (0.036)
 
 *   降维寻求保留数据中显著关系的数字输入数据的低维表示。
 *   有许多不同的降维算法，没有一种最佳方法适用于所有数据集。
-*   如何使用 scikit-learn 机器学习库在 Python 中实现、拟合和评估顶级降维。
+*   如何使用 Sklearn 机器学习库在 Python 中实现、拟合和评估顶级降维。
 
 **你有什么问题吗？**
 在下面的评论中提问，我会尽力回答。

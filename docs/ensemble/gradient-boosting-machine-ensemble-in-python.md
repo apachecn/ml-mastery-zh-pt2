@@ -17,7 +17,7 @@
 完成本教程后，您将知道:
 
 *   梯度增强集成是由顺序添加到模型中的决策树创建的集成。
-*   如何用 scikit-learn 使用梯度增强集成进行分类和回归。
+*   如何用 Sklearn 使用梯度增强集成进行分类和回归。
 *   如何探索梯度增强模型超参数对模型表现的影响。
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -90,27 +90,27 @@
 
 梯度增强系综可以从头开始实现，尽管对初学者来说很有挑战性。
 
-scikit-learn Python 机器学习库为机器学习提供了梯度增强集成的实现。
+Sklearn Python 机器学习库为机器学习提供了梯度增强集成的实现。
 
 该算法在现代版本的库中可用。
 
 首先，通过运行以下脚本来确认您使用的是现代版本的库:
 
 ```py
-# check scikit-learn version
+# check Sklearn version
 import sklearn
 print(sklearn.__version__)
 ```
 
-运行脚本将打印您的 scikit-learn 版本。
+运行脚本将打印您的 Sklearn 版本。
 
-您的版本应该相同或更高。如果没有，您必须升级 scikit-learn 库的版本。
+您的版本应该相同或更高。如果没有，您必须升级 Sklearn 库的版本。
 
 ```py
 0.22.1
 ```
 
-梯度增强通过[梯度增强回归器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)和[梯度增强分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)类提供。
+梯度增强通过[梯度增强回归器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)和[梯度增强分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)类提供。
 
 这两个模型以相同的方式运行，并采用相同的参数来影响决策树的创建和添加。
 
@@ -124,7 +124,7 @@ print(sklearn.__version__)
 
 在本节中，我们将研究如何使用梯度增强来解决分类问题。
 
-首先，我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
+首先，我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
 
 下面列出了完整的示例。
 
@@ -181,7 +181,7 @@ Mean Accuracy: 0.899 (0.030)
 
 首先，对所有可用数据进行梯度增强集成，然后调用 *predict()* 函数对新数据进行预测。
 
-下面的示例在我们的二进制分类数据集上演示了这一点。
+下面的示例在我们的二进制类别数据集上演示了这一点。
 
 ```py
 # make predictions using gradient boosting for classification
@@ -212,7 +212,7 @@ Predicted Class: 1
 
 在本节中，我们将研究使用梯度增强来解决回归问题。
 
-首先，我们可以使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
+首先，我们可以使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
 
 下面列出了完整的示例。
 
@@ -233,7 +233,7 @@ print(X.shape, y.shape)
 
 接下来，我们可以在这个数据集上评估一个梯度增强算法。
 
-正如我们在上一节中所做的，我们将使用重复的 k-fold 交叉验证来评估模型，重复 3 次，重复 10 次。我们将报告所有重复和折叠模型的平均绝对误差(MAE)。scikit-learn 库使 MAE 为负，因此它被最大化而不是最小化。这意味着负 MAE 越大越好，完美模型的 MAE 为 0。
+正如我们在上一节中所做的，我们将使用重复的 k-fold 交叉验证来评估模型，重复 3 次，重复 10 次。我们将报告所有重复和折叠模型的平均绝对误差(MAE)。Sklearn 库使 MAE 为负，因此它被最大化而不是最小化。这意味着负 MAE 越大越好，完美模型的 MAE 为 0。
 
 下面列出了完整的示例。
 
@@ -296,7 +296,7 @@ print('Prediction: %d' % yhat[0])
 Prediction: 37
 ```
 
-现在我们已经熟悉了使用 scikit-learn API 来评估和使用 Gradient Boosting 集成，接下来让我们看看如何配置模型。
+现在我们已经熟悉了使用 Sklearn API 来评估和使用 Gradient Boosting 集成，接下来让我们看看如何配置模型。
 
 ## 梯度提升超参数
 
@@ -766,7 +766,7 @@ pyplot.show()
 
 每个配置组合将使用重复的 k 倍交叉验证进行评估，配置将使用平均得分进行比较，在这种情况下，使用分类精度。
 
-下面列出了在我们的合成分类数据集上网格搜索梯度增强算法的关键超参数的完整示例。
+下面列出了在我们的合成类别数据集上网格搜索梯度增强算法的关键超参数的完整示例。
 
 ```py
 # example of grid searching key hyperparameters for gradient boosting on a classification dataset
@@ -860,7 +860,7 @@ Best: 0.946667 using {'learning_rate': 0.1, 'max_depth': 7, 'n_estimators': 500,
 
 *   [机器学习梯度增强算法的简单介绍](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
 *   [如何配置梯度增强算法](https://machinelearningmastery.com/configure-gradient-boosting-algorithm/)
-*   [使用 Scikit-Learn、XGBoost、LightGBM 和 CatBoost 进行梯度增强](https://machinelearningmastery.com/gradient-boosting-with-scikit-learn-xgboost-lightgbm-and-catboost/)
+*   [使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度增强](https://machinelearningmastery.com/gradient-boosting-with-Sklearn-xgboost-lightgbm-and-catboost/)
 
 ### 报纸
 
@@ -870,8 +870,8 @@ Best: 0.946667 using {'learning_rate': 0.1, 'max_depth': 7, 'n_estimators': 500,
 
 ### 蜜蜂
 
-*   [硬化。一起。梯度助推器 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) 。
-*   [硬化。集合。梯度助推器 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html) 。
+*   [硬化。一起。梯度助推器 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) 。
+*   [硬化。集合。梯度助推器 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html) 。
 
 ### 文章
 
@@ -884,7 +884,7 @@ Best: 0.946667 using {'learning_rate': 0.1, 'max_depth': 7, 'n_estimators': 500,
 具体来说，您了解到:
 
 *   梯度增强集成是由顺序添加到模型中的决策树创建的集成。
-*   如何用 scikit-learn 使用梯度增强集成进行分类和回归。
+*   如何用 Sklearn 使用梯度增强集成进行分类和回归。
 *   如何探索梯度增强模型超参数对模型表现的影响。
 
 **你有什么问题吗？**

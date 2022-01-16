@@ -22,7 +22,7 @@
 
 我们开始吧。
 
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新。
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新。
 
 ![How to Control Neural Network Model Capacity With Nodes and Layers](img/d3e7c8cbe76694be05016b5d6eb8c453.png)
 
@@ -162,7 +162,7 @@ model.add(MaxPooling2D((2,2)))
 
 我们将使用一个标准的多类分类问题作为基础来演示模型容量对模型表现的影响。
 
-scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，该函数可用于创建具有规定数量的样本、输入变量、类和类内样本方差的多类分类问题。
+Sklearn 类提供了 [make_blobs()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，该函数可用于创建具有规定数量的样本、输入变量、类和类内样本方差的多类分类问题。
 
 我们可以通过“ *n_features* ”参数将问题配置为具有特定数量的输入变量，并通过“ *centers* ”参数配置特定数量的类或中心。“ *random_state* ”可用于给伪随机数发生器播种，以确保每次调用函数时我们总是获得相同的样本。
 
@@ -595,7 +595,7 @@ layers=5: 0.794
 *   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
 *   [喀拉斯循环层原料药](https://keras.io/layers/recurrent/)
 *   [Keras 实用功能](https://keras.io/utils/)
-*   [sklearn . dataset . make _ blobs API](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)
+*   [sklearn . dataset . make _ blobs API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)
 
 ### 文章
 

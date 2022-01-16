@@ -24,7 +24,7 @@
 
 我们开始吧。
 
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新。
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新。
 
 ![A Gentle Introduction to Bayesian Optimization](img/cb771a5a2d543c909404ae403ee4b336.png)
 
@@ -265,7 +265,7 @@ Optima: x=0.900, y=0.810
 
 因此，使用 GP 回归模型通常是首选。
 
-我们可以使用[高斯过程回归器](https://scikit-learn.org/stable/modules/generated/sklearn.gaussian_process.GaussianProcessRegressor.html)scikit-从输入样本( *X* )和来自目标函数( *y* )的噪声评估中学习实现来拟合 GP 回归模型。
+我们可以使用[高斯过程回归器](https://Sklearn.org/stable/modules/generated/sklearn.gaussian_process.GaussianProcessRegressor.html)scikit-从输入样本( *X* )和来自目标函数( *y* )的噪声评估中学习实现来拟合 GP 回归模型。
 
 首先，必须定义模型。定义 GP 模型的一个重要方面是内核。这将根据实际数据观测值之间的距离测量值来控制特定点的函数形状。可以使用许多不同的内核函数，有些可以为特定数据集提供更好的表现。
 
@@ -642,7 +642,7 @@ Best Result: x=0.905, y=1.150
 
 在本节中，我们将简要介绍如何使用 Scikit-Optimize 库为一个简单的测试分类问题优化 k 近邻分类器的超参数。这将提供一个有用的模板，您可以在自己的项目中使用。
 
-[Scikit-Optimize 项目](https://github.com/scikit-optimize/scikit-optimize)旨在为使用 SciPy 和 NumPy 的应用程序或使用 scikit-learn 机器学习算法的应用程序提供贝叶斯优化访问。
+[Scikit-Optimize 项目](https://github.com/scikit-optimize/scikit-optimize)旨在为使用 SciPy 和 NumPy 的应用程序或使用 Sklearn 机器学习算法的应用程序提供贝叶斯优化访问。
 
 首先，必须安装库，这可以使用 pip 轻松实现；例如:
 
@@ -650,13 +650,13 @@ Best Result: x=0.905, y=1.150
 sudo pip install scikit-optimize
 ```
 
-本例还假设您安装了 [scikit-learn](https://scikit-learn.org/stable/index.html) 。
+本例还假设您安装了 [Sklearn](https://Sklearn.org/stable/index.html) 。
 
-一旦安装，scikit-optimize 有两种方法可以用来优化 scikit-learn 算法的超参数。第一种是直接在搜索空间上执行优化，第二种是使用 BayesSearchCV 类，scikit-learn 原生类的同级来进行随机和网格搜索。
+一旦安装，scikit-optimize 有两种方法可以用来优化 Sklearn 算法的超参数。第一种是直接在搜索空间上执行优化，第二种是使用 BayesSearchCV 类，Sklearn 原生类的同级来进行随机和网格搜索。
 
 在本例中，将使用更简单的方法直接优化超参数。
 
-第一步是准备数据和定义模型。我们将通过 [make_blobs()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)使用一个简单的测试分类问题，有 500 个例子，每个例子有两个特征和三个类标签。然后我们将使用一个[kneighgborcsclassifier 算法](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)。
+第一步是准备数据和定义模型。我们将通过 [make_blobs()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)使用一个简单的测试分类问题，有 500 个例子，每个例子有两个特征和三个类标签。然后我们将使用一个[kneighgborcsclassifier 算法](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)。
 
 ```py
 ...
@@ -668,7 +668,7 @@ model = KNeighborsClassifier()
 
 接下来，我们必须定义搜索空间。
 
-在这种情况下，我们将调整邻居的数量( *n_neighbors* )和邻居函数的形状( *p* )。这要求为给定的数据类型定义范围。在这种情况下，它们是整数，用最小、最大和 scikit-learn 模型的参数名称来定义。对于您的算法，您可以同样轻松地优化*真实()*和*分类()*数据类型。
+在这种情况下，我们将调整邻居的数量( *n_neighbors* )和邻居函数的形状( *p* )。这要求为给定的数据类型定义范围。在这种情况下，它们是整数，用最小、最大和 Sklearn 模型的参数名称来定义。对于您的算法，您可以同样轻松地优化*真实()*和*分类()*数据类型。
 
 ```py
 ...
@@ -680,7 +680,7 @@ search_space = [Integer(1, 5, name='n_neighbors'), Integer(1, 2, name='p')]
 
 我们可以在函数定义上使用 scikit-optimize 项目中的*use _ name _ args()*装饰器，它允许使用搜索空间中的一组特定参数直接调用函数。
 
-因此，我们的自定义函数将把超参数值作为参数，这些参数可以直接提供给模型，以便对其进行配置。我们可以在 python 中使用函数的** *参数*参数来定义这些参数，然后通过 [set_params(**)函数](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier.set_params)将它们传递给模型。
+因此，我们的自定义函数将把超参数值作为参数，这些参数可以直接提供给模型，以便对其进行配置。我们可以在 python 中使用函数的** *参数*参数来定义这些参数，然后通过 [set_params(**)函数](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier.set_params)将它们传递给模型。
 
 既然模型已经配置好了，我们就可以进行评估了。在这种情况下，我们将在数据集上使用 5 倍交叉验证，并评估每一倍的准确性。然后，我们可以将模型的表现报告为 1 减去这些折叠的平均精度。这意味着精度为 1.0 的完美模型将返回 0.0 的值(1.0–平均精度)。
 
@@ -788,7 +788,7 @@ Best Parameters: n_neighbors=3, p=2
 
 ### 应用程序接口
 
-*   [高斯过程，Scikit-Learn API](https://scikit-learn.org/stable/modules/gaussian_process.html) 。
+*   [高斯过程，Sklearn API](https://Sklearn.org/stable/modules/gaussian_process.html) 。
 *   [超点:分布式异步超参数优化](https://github.com/hyperopt/hyperopt)
 *   [Scikit-优化项目。](https://github.com/scikit-optimize/scikit-optimize)
 *   [用 skopt](https://github.com/scikit-optimize/scikit-optimize/blob/master/examples/hyperparameter-optimization.ipynb) 调整 scikit 学习估计器

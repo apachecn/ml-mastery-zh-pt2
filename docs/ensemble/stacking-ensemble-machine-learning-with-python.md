@@ -15,7 +15,7 @@
 完成本教程后，您将知道:
 
 *   堆叠是一种集成机器学习算法，它学习如何最好地组合来自多个表现良好的机器学习模型的预测。
-*   scikit-learn 库提供了 Python 中堆叠集成的标准实现。
+*   Sklearn 库提供了 Python 中堆叠集成的标准实现。
 *   如何使用堆叠集成进行回归和分类预测建模？
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -101,27 +101,27 @@
 
 *   [如何在 Python 中开发深度学习神经网络的堆叠集成](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)
 
-scikit-learn Python 机器学习库为机器学习提供了堆栈的实现。
+Sklearn Python 机器学习库为机器学习提供了堆栈的实现。
 
 它在 0.22 版及更高版本的库中可用。
 
 首先，通过运行以下脚本来确认您使用的是现代版本的库:
 
 ```py
-# check scikit-learn version
+# check Sklearn version
 import sklearn
 print(sklearn.__version__)
 ```
 
-运行脚本将打印您的 scikit-learn 版本。
+运行脚本将打印您的 Sklearn 版本。
 
-您的版本应该相同或更高。如果没有，您必须升级 scikit-learn 库的版本。
+您的版本应该相同或更高。如果没有，您必须升级 Sklearn 库的版本。
 
 ```py
 0.22.1
 ```
 
-堆叠通过[堆叠回归器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingRegressor.html)和[堆叠分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html)类提供。
+堆叠通过[堆叠回归器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.StackingRegressor.html)和[堆叠分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html)类提供。
 
 两个模型的操作方式相同，采用的参数也相同。使用模型需要指定一个估计量列表(0 级模型)和一个最终估计量(1 级或元模型)。
 
@@ -135,7 +135,7 @@ models = [('lr',LogisticRegression()),('svm',SVC())
 stacking = StackingClassifier(estimators=models)
 ```
 
-列表中的每个模型也可以是[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，包括模型在训练数据集中拟合模型之前所需的任何数据准备。例如:
+列表中的每个模型也可以是[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，包括模型在训练数据集中拟合模型之前所需的任何数据准备。例如:
 
 ```py
 ...
@@ -149,13 +149,13 @@ stacking = StackingClassifier(estimators=models)
 
 有时，如果为元模型准备的数据集也包括 0 级模型的输入，例如输入训练数据，则可以获得更好的表现。这可以通过将“*通过*”参数设置为真来实现，默认情况下不启用。
 
-现在我们已经熟悉了 scikit-learn 中的堆栈 API，让我们来看看一些工作示例。
+现在我们已经熟悉了 Sklearn 中的堆栈 API，让我们来看看一些工作示例。
 
 ## 分类堆叠
 
 在这一节中，我们将研究使用堆叠来解决分类问题。
 
-首先，我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
+首先，我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
 
 下面列出了完整的示例。
 
@@ -291,7 +291,7 @@ pyplot.show()
 
 我们可以使用逻辑回归模型来学习如何最好地组合来自五个独立模型的预测。
 
-下面的 *get_stacking()* 函数定义了 [StackingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html) 模型，首先定义了五个基本模型的元组列表，然后定义了逻辑回归元模型，使用 5 重交叉验证来组合来自基本模型的预测。
+下面的 *get_stacking()* 函数定义了 [StackingClassifier](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html) 模型，首先定义了五个基本模型的元组列表，然后定义了逻辑回归元模型，使用 5 重交叉验证来组合来自基本模型的预测。
 
 ```py
 # get a stacking ensemble of models
@@ -426,7 +426,7 @@ pyplot.show()
 
 首先对所有可用数据进行叠加集合拟合，然后调用 *predict()* 函数对新数据进行预测。
 
-下面的示例在我们的二进制分类数据集上演示了这一点。
+下面的示例在我们的二进制类别数据集上演示了这一点。
 
 ```py
 # make a prediction with a stacking ensemble
@@ -468,7 +468,7 @@ Predicted Class: 0
 
 在这一节中，我们将研究使用堆叠来解决回归问题。
 
-首先，我们可以使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
+首先，我们可以使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
 
 下面列出了完整的示例。
 
@@ -521,7 +521,7 @@ def evaluate_model(model, X, y):
 
 然后，我们可以报告每种算法的平均表现，并创建一个方框图和触须图来比较每种算法的准确性分数分布。
 
-在这种情况下，将使用平均绝对误差(MAE)报告模型表现。scikit-learn 库反转该错误的符号，使其最大化，从-无穷大到 0，以获得最佳分数。
+在这种情况下，将使用平均绝对误差(MAE)报告模型表现。Sklearn 库反转该错误的符号，使其最大化，从-无穷大到 0，以获得最佳分数。
 
 将这些联系在一起，完整的示例如下所示。
 
@@ -597,7 +597,7 @@ pyplot.show()
 
 我们可以使用线性回归模型来学习如何最好地组合来自三个独立模型的预测。
 
-下面的 *get_stacking()* 函数定义了[stackingreductor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingRegressor.html)模型，首先定义三个基本模型的元组列表，然后定义线性回归元模型，使用 5 重交叉验证来组合来自基本模型的预测。
+下面的 *get_stacking()* 函数定义了[stackingreductor](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.StackingRegressor.html)模型，首先定义三个基本模型的元组列表，然后定义线性回归元模型，使用 5 重交叉验证来组合来自基本模型的预测。
 
 ```py
 # get a stacking ensemble of models
@@ -780,10 +780,10 @@ Predicted Value: 556.264
 
 ### 蜜蜂
 
-*   [硬化。一起。StackingClassifier API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html) 。
-*   [硬化。一起。stack ingresor API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingRegressor.html)。
-*   [sklearn . datasets . make _ classification API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
-*   [sklearn . datasets . make _ revolution API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)。
+*   [硬化。一起。StackingClassifier API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html) 。
+*   [硬化。一起。stack ingresor API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.StackingRegressor.html)。
+*   [sklearn . datasets . make _ classification API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
+*   [sklearn . datasets . make _ revolution API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)。
 
 ### 文章
 
@@ -796,7 +796,7 @@ Predicted Value: 556.264
 具体来说，您了解到:
 
 *   堆叠是一种集成机器学习算法，它学习如何最好地组合来自多个表现良好的机器学习模型的预测。
-*   scikit-learn 库提供了 Python 中堆叠集成的标准实现。
+*   Sklearn 库提供了 Python 中堆叠集成的标准实现。
 *   如何使用堆叠集成进行回归和分类预测建模？
 
 你有什么问题吗？

@@ -31,16 +31,16 @@
 
 本教程分为四个部分；它们是:
 
-1.  不平衡分类数据集
+1.  不平衡类别数据集
 2.  不平衡分类的决策树
-3.  基于 Scikit-Learn 的加权决策树
+3.  基于 Sklearn 的加权决策树
 4.  网格搜索加权决策树
 
-## 不平衡分类数据集
+## 不平衡类别数据集
 
-在我们深入研究不平衡分类的决策修改之前，让我们首先定义一个不平衡分类数据集。
+在我们深入研究不平衡分类的决策修改之前，让我们首先定义一个不平衡类别数据集。
 
-我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个合成的不平衡两类分类数据集。我们将生成 10，000 个少数与多数类比例大约为 1:100 的示例。
+我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个合成的不平衡两类类别数据集。我们将生成 10，000 个少数与多数类比例大约为 1:100 的示例。
 
 ```py
 ...
@@ -104,11 +104,11 @@ Counter({0: 9900, 1: 100})
 
 ![Scatter Plot of Binary Classification Dataset With 1 to 100 Class Imbalance](img/a59f39f6a446bbb19a26425fe58ae2e2.png)
 
-1-100 类不平衡的二进制分类数据集散点图
+1-100 类不平衡的二进制类别数据集散点图
 
 接下来，我们可以在数据集上拟合标准决策树模型。
 
-决策树可以使用 scikit-learn 库中的[决策树分类器](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)类来定义。
+决策树可以使用 Sklearn 库中的[决策树分类器](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)类来定义。
 
 ```py
 ...
@@ -199,11 +199,11 @@ Mean ROC AUC: 0.746
 
 分裂点计算的修改是最常见的，尽管已经对决策树构造算法的一系列其他修改进行了大量研究，以更好地适应类别不平衡。
 
-## 带 Scikit-Learn 的加权决策树
+## 带 Sklearn 的加权决策树
 
-scikit-learn Python 机器学习库提供了支持类加权的决策树算法的实现。
+Sklearn Python 机器学习库提供了支持类加权的决策树算法的实现。
 
-[决策树分类器类](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)提供了可以指定为模型超参数的*类权重*参数。*类别权重*是一个字典，它定义了每个类别标签(例如 0 和 1)以及权重，当拟合模型时，该权重应用于决策树中拆分的组纯度计算。
+[决策树分类器类](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)提供了可以指定为模型超参数的*类权重*参数。*类别权重*是一个字典，它定义了每个类别标签(例如 0 和 1)以及权重，当拟合模型时，该权重应用于决策树中拆分的组纯度计算。
 
 例如，每个类别 0 和 1 的 1 比 1 权重可以定义如下:
 
@@ -280,7 +280,7 @@ scores = cross_val_score(model, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f' % mean(scores))
 ```
 
-运行该示例准备合成不平衡分类数据集，然后使用重复交叉验证评估决策树算法的类加权版本。
+运行该示例准备合成不平衡类别数据集，然后使用重复交叉验证评估决策树算法的类加权版本。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -306,7 +306,7 @@ Mean ROC AUC: 0.759
 *   0:1 班，1:10 班。
 *   0:1 班，1:100 班。
 
-这些可以被定义为[网格搜索参数，如下所示:](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
+这些可以被定义为[网格搜索参数，如下所示:](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
 
 ```py
 ...
@@ -406,9 +406,9 @@ Best: 0.752643 using {'class_weight': {0: 1, 1: 100}}
 
 ### 蜜蜂
 
-*   [sklearn . utils . class _ weight . compute _ class _ weight API](https://scikit-learn.org/stable/modules/generated/sklearn.utils.class_weight.compute_class_weight.html)。
-*   [硬化. tree .决策树分类器 API](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html) 。
-*   [sklearn.model_selection。GridSearchCV API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) 。
+*   [sklearn . utils . class _ weight . compute _ class _ weight API](https://Sklearn.org/stable/modules/generated/sklearn.utils.class_weight.compute_class_weight.html)。
+*   [硬化. tree .决策树分类器 API](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html) 。
+*   [sklearn.model_selection。GridSearchCV API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) 。
 
 ## 摘要
 

@@ -1,4 +1,4 @@
-# 机器学习中缺失值的 kNN 插补
+# 机器学习中缺失值的 KNN 插补
 
 > 原文：<https://machinelearningmastery.com/knn-imputation-for-missing-values-in-machine-learning/>
 
@@ -203,7 +203,7 @@ for i in range(dataframe.shape[1]):
 
 ## 用 KNNImputer 进行最近邻插补
 
-scikit-learn 机器学习库提供了支持最近邻插补的 [KNNImputer 类](https://scikit-learn.org/stable/modules/generated/sklearn.impute.KNNImputer.html)。
+Sklearn 机器学习库提供了支持最近邻插补的 [KNNImputer 类](https://Sklearn.org/stable/modules/generated/sklearn.impute.KNNImputer.html)。
 
 在本节中，我们将探讨如何有效地使用 *KNNImputer* 类。
 
@@ -284,7 +284,7 @@ Missing: 0
 
 为了正确应用最近邻缺失数据插补并避免数据泄漏，要求为每一列计算的模型仅在训练数据集上计算，然后应用于数据集中每个折叠的训练集和测试集。
 
-这可以通过创建建模管道来实现，其中第一步是最近邻插补，然后第二步是模型。这可以使用[管道类](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)来实现。
+这可以通过创建建模管道来实现，其中第一步是最近邻插补，然后第二步是模型。这可以使用[管道类](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)来实现。
 
 例如，下面的管道使用带有默认策略的 *KNNImputer* ，后跟随机森林模型。
 
@@ -481,8 +481,8 @@ Predicted Class: 2
 
 ### 蜜蜂
 
-*   [缺失值的插补，sci kit-学习文档](https://scikit-learn.org/stable/modules/impute.html)。
-*   [巩理。计费。KNNImputer API](https://scikit-learn.org/stable/modules/generated/sklearn.impute.KNNImputer.html) 。
+*   [缺失值的插补，sci kit-学习文档](https://Sklearn.org/stable/modules/impute.html)。
+*   [巩理。计费。KNNImputer API](https://Sklearn.org/stable/modules/generated/sklearn.impute.KNNImputer.html) 。
 
 ### 资料组
 

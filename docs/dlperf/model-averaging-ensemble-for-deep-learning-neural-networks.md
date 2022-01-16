@@ -23,7 +23,7 @@
 我们开始吧。
 
 *   **2019 年 10 月更新**:针对 Keras 2.3 和 TensorFlow 2.0 更新。
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新。
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新。
 
 ![How to Reduce the Variance of Deep Learning Models in Keras With Model Averaging Ensembles](img/97e9d1f98a4fba8714021a22dc16f493.png)
 
@@ -168,7 +168,7 @@ outcomes = argmax(summed, axis=1)
 
 我们将使用一个小的多类分类问题作为基础来演示模型平均集成。
 
-scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，该函数可用于创建具有规定数量的样本、输入变量、类和类内样本方差的多类分类问题。
+Sklearn 类提供了 [make_blobs()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，该函数可用于创建具有规定数量的样本、输入变量、类和类内样本方差的多类分类问题。
 
 我们用 500 个例子来说明这个问题，输入变量(代表点的 x 和 y 坐标)和每个组内点的标准偏差为 2.0。我们将使用相同的随机状态(伪随机数发生器的种子)来确保我们总是获得相同的 500 分。
 
@@ -811,7 +811,7 @@ Scores Mean: 0.768, Standard Deviation: 0.006
 *   [硬核层 API](https://keras.io/layers/core/)
 *   [scipy . stat . mode API](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mode.html)
 *   num py . argmax API
-*   [sklearn . dataset . make _ blobs API](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)
+*   [sklearn . dataset . make _ blobs API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)
 
 ## 摘要
 

@@ -234,7 +234,7 @@ k-fold 交叉验证程序对模型表现提供了一个良好的总体估计，�
 
 这意味着单个模型将被拟合和评估 5 * 3 或 15 次，并且将报告这些运行的平均值和标准偏差。
 
-这可以使用[repeated stratifiedfold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)scikit-learn 类来实现。
+这可以使用[repeated stratifiedfold](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)Sklearn 类来实现。
 
 所有的课都同等重要。因此，在这种情况下，我们将使用分类精度来评估模型。
 
@@ -918,7 +918,7 @@ print('>Predicted=%s (expected pp)' % (label))
 ### 蜜蜂
 
 *   [熊猫. read_csv API](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html) 。
-*   [硬化. dummy . dummy class ification API](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
+*   [硬化. dummy . dummy class ification API](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
 *   [imblearn.over_sampling。SMOTE API](https://imbalanced-learn.org/stable/generated/imblearn.over_sampling.SMOTE.html) 。
 *   [imb learn . pipeline . pipeline API](https://imbalanced-learn.org/stable/generated/imblearn.pipeline.Pipeline.html)。
 

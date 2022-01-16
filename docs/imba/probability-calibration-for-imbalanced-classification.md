@@ -112,7 +112,7 @@
 
 ——[用监督学习预测好概率](https://dl.acm.org/citation.cfm?id=1102430)，2005。
 
-scikit-learn 库通过[校准分类器类](https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html)提供对用于校准概率的普拉特标度和等渗回归方法的访问。
+Sklearn 库通过[校准分类器类](https://Sklearn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html)提供对用于校准概率的普拉特标度和等渗回归方法的访问。
 
 这是一个模型的包装(像 SVM)。首选的缩放技术通过“*方法*参数定义，该参数可以是“*乙状结肠*”(普拉特缩放)或“*等张*”(等张回归)。
 
@@ -127,13 +127,13 @@ model = ...
 calibrated = CalibratedClassifierCV(model, method='sigmoid', cv=3)
 ```
 
-现在我们知道了如何校准概率，让我们来看一些在不平衡分类数据集上校准模型概率的例子。
+现在我们知道了如何校准概率，让我们来看一些在不平衡类别数据集上校准模型概率的例子。
 
 ## 具有校准概率的 SVM
 
-在本节中，我们将回顾如何在不平衡分类数据集上校准 SVM 模型的概率。
+在本节中，我们将回顾如何在不平衡类别数据集上校准 SVM 模型的概率。
 
-首先，让我们使用[make _ classion()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个数据集。我们将生成 10，000 个示例，其中 99%属于负案例(类别 0)，1%属于正案例(类别 1)。
+首先，让我们使用[make _ classion()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个数据集。我们将生成 10，000 个示例，其中 99%属于负案例(类别 0)，1%属于正案例(类别 1)。
 
 ```py
 ...
@@ -186,7 +186,7 @@ scores = cross_val_score(model, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f' % mean(scores))
 ```
 
-运行该示例在不平衡分类数据集上用未校准的概率评估 SVM。
+运行该示例在不平衡类别数据集上用未校准的概率评估 SVM。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -241,7 +241,7 @@ scores = cross_val_score(calibrated, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f' % mean(scores))
 ```
 
-运行该示例在不平衡分类数据集上评估具有校准概率的 SVM。
+运行该示例在不平衡类别数据集上评估具有校准概率的 SVM。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -286,7 +286,7 @@ scores = cross_val_score(calibrated, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f' % mean(scores))
 ```
 
-运行该示例在不平衡分类数据集上评估具有校准概率的类加权 SVM。
+运行该示例在不平衡类别数据集上评估具有校准概率的类加权 SVM。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -302,9 +302,9 @@ Mean ROC AUC: 0.966
 
 相反，直接预测类别标签，并且可以基于落入为新示例预测的树叶中的训练数据集中的示例的分布来估计类似概率的分数。因此，来自决策树的概率分数应该在被评估和用于选择模型之前被校准。
 
-我们可以使用[决策树分类器 scikit-learn 类](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)来定义决策树。
+我们可以使用[决策树分类器 Sklearn 类](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)来定义决策树。
 
-该模型可以在我们的合成不平衡分类数据集上用未校准的概率进行评估。
+该模型可以在我们的合成不平衡类别数据集上用未校准的概率进行评估。
 
 下面列出了完整的示例。
 
@@ -328,7 +328,7 @@ scores = cross_val_score(model, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f' % mean(scores))
 ```
 
-运行该示例在不平衡分类数据集上评估具有未校准概率的决策树。
+运行该示例在不平衡类别数据集上评估具有未校准概率的决策树。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -373,7 +373,7 @@ scores = cross_val_score(calibrated, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f' % mean(scores))
 ```
 
-运行该示例评估不平衡分类数据集上具有校准概率的决策树。
+运行该示例评估不平衡类别数据集上具有校准概率的决策树。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -391,7 +391,7 @@ Mean ROC AUC: 0.859
 
 k-最近邻算法，或称 KNN 算法，是另一种非线性机器学习算法，它直接预测类标签，并且必须被修改以产生类似概率的分数。这通常涉及到在邻域中使用类标签的分布。
 
-我们可以使用默认邻域大小为 5 的 [KNeighborsClassifier 类](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)在合成不平衡分类数据集上评估具有未校准概率的 KNN。
+我们可以使用默认邻域大小为 5 的 [KNeighborsClassifier 类](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)在合成不平衡类别数据集上评估具有未校准概率的 KNN。
 
 下面列出了完整的示例。
 
@@ -415,7 +415,7 @@ scores = cross_val_score(model, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f' % mean(scores))
 ```
 
-运行该示例在不平衡分类数据集上用未校准的概率评估 KNN。
+运行该示例在不平衡类别数据集上用未校准的概率评估 KNN。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -427,7 +427,7 @@ Mean ROC AUC: 0.864
 
 知道概率依赖于邻域大小并且是未校准的，我们期望一些校准将使用 ROC AUC 提高模型的表现。
 
-我们将使用[网格搜索不同的配置，而不是抽查*校准分类器*类的一个配置。](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
+我们将使用[网格搜索不同的配置，而不是抽查*校准分类器*类的一个配置。](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
 
 首先，模型和校准包装器的定义与之前一样。
 
@@ -509,7 +509,7 @@ for mean, stdev, param in zip(means, stds, params):
     print("%f (%f) with: %r" % (mean, stdev, param))
 ```
 
-运行该示例使用不平衡分类数据集上的一组不同类型的校准概率来评估 KNN。
+运行该示例使用不平衡类别数据集上的一组不同类型的校准概率来评估 KNN。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -533,7 +533,7 @@ Best: 0.895120 using {'cv': 2, 'method': 'isotonic'}
 
 ### 教程
 
-*   [如何以及何时使用带有 scikit 的校准分类模型-学习](https://machinelearningmastery.com/calibrated-classification-model-in-scikit-learn/)
+*   [如何以及何时使用带有 scikit 的校准分类模型-学习](https://machinelearningmastery.com/calibrated-classification-model-in-Sklearn/)
 
 ### 报纸
 
@@ -548,11 +548,11 @@ Best: 0.895120 using {'cv': 2, 'method': 'isotonic'}
 
 ### 蜜蜂
 
-*   [硬化。校准。校准后的分类 CVI API](https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html)。
-*   [硬化. svm.SVC API](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html) 。
-*   [硬化. tree .决策树分类器 API](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html) 。
-*   [sklearn . neighborsclassifier API](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)。
-*   [sklearn.model_selection。GridSearchCV API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) 。
+*   [硬化。校准。校准后的分类 CVI API](https://Sklearn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html)。
+*   [硬化. svm.SVC API](https://Sklearn.org/stable/modules/generated/sklearn.svm.SVC.html) 。
+*   [硬化. tree .决策树分类器 API](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html) 。
+*   [sklearn . neighborsclassifier API](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)。
+*   [sklearn.model_selection。GridSearchCV API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) 。
 
 ### 文章
 

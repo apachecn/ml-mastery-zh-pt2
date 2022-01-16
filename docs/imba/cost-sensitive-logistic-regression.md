@@ -34,16 +34,16 @@
 
 本教程分为五个部分；它们是:
 
-1.  不平衡分类数据集
+1.  不平衡类别数据集
 2.  不平衡分类的逻辑回归
-3.  基于 Scikit-Learn 的加权逻辑回归
+3.  基于 Sklearn 的加权逻辑回归
 4.  网格搜索加权逻辑回归
 
-## 不平衡分类数据集
+## 不平衡类别数据集
 
-在我们深入研究不平衡分类的逻辑回归的修改之前，让我们首先定义一个不平衡分类数据集。
+在我们深入研究不平衡分类的逻辑回归的修改之前，让我们首先定义一个不平衡类别数据集。
 
-我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个合成的不平衡两类分类数据集。我们将生成 10，000 个少数与多数类比例大约为 1:100 的示例。
+我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个合成的不平衡两类类别数据集。我们将生成 10，000 个少数与多数类比例大约为 1:100 的示例。
 
 ```py
 ...
@@ -107,7 +107,7 @@ Counter({0: 9900, 1: 100})
 
 ![Scatter Plot of Binary Classification Dataset With 1 to 100 Class Imbalance](img/58c465ce34eb523da84a8ba6613e03a3.png)
 
-1 到 100 类不平衡的二进制分类数据集的散点图
+1 到 100 类不平衡的二进制类别数据集的散点图
 
 接下来，我们可以在数据集上拟合标准逻辑回归模型。
 
@@ -186,11 +186,11 @@ Mean ROC AUC: 0.985
 
 虽然实现起来很简单，但加权逻辑回归的挑战在于为每个类选择权重。
 
-## 基于 Scikit-Learn 的加权逻辑回归
+## 基于 Sklearn 的加权逻辑回归
 
-scikit-learn Python 机器学习库提供了支持类加权的逻辑回归的实现。
+Sklearn Python 机器学习库提供了支持类加权的逻辑回归的实现。
 
-[后勤分类类](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)提供了可以指定为模型超参数的 class_weight 参数。class_weight 是一个字典，它定义了每个类标签(例如 0 和 1)以及在拟合模型时计算负对数似然时应用的权重。
+[后勤分类类](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)提供了可以指定为模型超参数的 class_weight 参数。class_weight 是一个字典，它定义了每个类标签(例如 0 和 1)以及在拟合模型时计算负对数似然时应用的权重。
 
 例如，每个类别 0 和 1 的 1 比 1 权重可以定义如下:
 
@@ -254,7 +254,7 @@ scores = cross_val_score(model, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f' % mean(scores))
 ```
 
-运行该示例准备合成不平衡分类数据集，然后使用重复交叉验证评估逻辑回归的类加权版本。
+运行该示例准备合成不平衡类别数据集，然后使用重复交叉验证评估逻辑回归的类加权版本。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -264,9 +264,9 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 Mean ROC AUC: 0.989
 ```
 
-scikit-learn 库为类加权提供了最佳实践启发式的实现。
+Sklearn 库为类加权提供了最佳实践启发式的实现。
 
-它通过 [compute_class_weight()函数](https://scikit-learn.org/stable/modules/generated/sklearn.utils.class_weight.compute_class_weight.html)实现，计算如下:
+它通过 [compute_class_weight()函数](https://Sklearn.org/stable/modules/generated/sklearn.utils.class_weight.compute_class_weight.html)实现，计算如下:
 
 *   n _ samples/(n _ class * n _ samples _ with _ class)
 
@@ -312,7 +312,7 @@ print(weighting)
 
 *   0.5:50 == 1:100
 
-通过将 *class_weight* 参数设置为“平衡”，我们可以将默认的类平衡直接用于[logisticreduce](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)类例如:
+通过将 *class_weight* 参数设置为“平衡”，我们可以将默认的类平衡直接用于[logisticreduce](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)类例如:
 
 ```py
 ...
@@ -366,7 +366,7 @@ Mean ROC AUC: 0.989
 *   {0:1,1:10}
 *   {0:1,1:100}
 
-这些可以定义为[网格搜索参数，如下所示:](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
+这些可以定义为[网格搜索参数，如下所示:](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
 
 ```py
 ...
@@ -467,9 +467,9 @@ Best: 0.989077 using {'class_weight': {0: 1, 1: 100}}
 
 ### 蜜蜂
 
-*   [sklearn . utils . class _ weight . compute _ class _ weight API](https://scikit-learn.org/stable/modules/generated/sklearn.utils.class_weight.compute_class_weight.html)。
-*   [sklearn.linear_model。物流配送应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)。
-*   [sklearn.model_selection。GridSearchCV API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) 。
+*   [sklearn . utils . class _ weight . compute _ class _ weight API](https://Sklearn.org/stable/modules/generated/sklearn.utils.class_weight.compute_class_weight.html)。
+*   [sklearn.linear_model。物流配送应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)。
+*   [sklearn.model_selection。GridSearchCV API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) 。
 
 ## 摘要
 

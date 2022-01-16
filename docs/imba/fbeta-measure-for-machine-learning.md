@@ -332,7 +332,7 @@ beta 参数的三个常见值如下:
 *   f-测量= 1.0 / 1.5
 *   f-测量= 0.666
 
-我们可以使用 scikit-learn 中的 [fbeta_score()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)来确认这个计算，将“ *beta* 参数设置为 1.0。
+我们可以使用 Sklearn 中的 [fbeta_score()函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)来确认这个计算，将“ *beta* 参数设置为 1.0。
 
 下面列出了完整的示例。
 
@@ -470,7 +470,7 @@ Result: p=0.500, r=1.000, f=0.833
 ### 蜜蜂
 
 *   硬化. metrics.f1_score API 。
-*   [硬化. metrics.fbeta_score API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html) 。
+*   [硬化. metrics.fbeta_score API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html) 。
 
 ### 文章
 

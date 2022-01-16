@@ -1,4 +1,4 @@
-# 如何训练到机器学习中的测试集
+# 如何在机器学习中训练测试集
 
 > 原文：<https://machinelearningmastery.com/train-to-the-test-set-in-machine-learning/>
 
@@ -61,7 +61,7 @@
 
 让我们探索这种方法来训练本教程中的测试集。
 
-我们可以使用 k 近邻模型来选择那些与测试集最相似的训练集实例。[kneighgboresgressor](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html)和[kneighgborsclassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)都提供了[kneighgbors()函数](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier.kneighbors)，该函数会将与给定数据(如测试集)最相似的行的索引返回到训练数据集中。
+我们可以使用 k 近邻模型来选择那些与测试集最相似的训练集实例。[kneighgboresgressor](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html)和[kneighgborsclassifier](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)都提供了[kneighgbors()函数](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier.kneighbors)，该函数会将与给定数据(如测试集)最相似的行的索引返回到训练数据集中。
 
 ```py
 ...
@@ -394,8 +394,8 @@ MAE: 4.433
 
 ### 蜜蜂
 
-*   [sklearn . neighborsrgressor API](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html)。
-*   [sklearn . neighborsclassifier API](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)。
+*   [sklearn . neighborsrgressor API](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html)。
+*   [sklearn . neighborsclassifier API](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)。
 
 ## 摘要
 

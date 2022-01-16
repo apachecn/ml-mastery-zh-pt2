@@ -15,14 +15,14 @@
 完成本教程后，您将知道:
 
 *   如何创建用于二进制分类的合成数据集，并按类绘制示例。
-*   如何创建任何给定类别分布的合成分类数据集？
+*   如何创建任何给定类别分布的合成类别数据集？
 *   不同的倾斜类分布实际上是怎样的。
 
 **用我的新书[Python 不平衡分类](https://machinelearningmastery.com/imbalanced-classification-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新。
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新。
 
 ![How to Develop an Intuition Severely Skewed Class Distributions](img/8490e533b76a7a18147750c929a04257.png)
 
@@ -39,9 +39,9 @@
 
 ## 创建并绘制二元分类问题
 
-scikit-learn Python 机器学习库提供了生成合成数据集的[功能。](https://machinelearningmastery.com/generate-test-datasets-python-scikit-learn/)
+Sklearn Python 机器学习库提供了生成合成数据集的[功能。](https://machinelearningmastery.com/generate-test-datasets-python-Sklearn/)
 
-[make_blobs()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)可用于从具有指定类别数的测试分类问题中生成指定数量的示例。该函数返回准备建模的每个示例的输入和输出部分。
+[make_blobs()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)可用于从具有指定类别数的测试分类问题中生成指定数量的示例。该函数返回准备建模的每个示例的输入和输出部分。
 
 例如，下面的代码片段将为具有两个输入变量的两类(二进制)分类问题生成 1000 个示例。类值的值为 0 和 1。
 
@@ -93,15 +93,15 @@ pyplot.show()
 
 ![Scatter Plot of Binary Classification Dataset](img/9d39366fe61af01a96dca47aa98b6ca6.png)
 
-二元分类数据集的散点图
+二元类别数据集的散点图
 
-既然我们知道了如何创建一个合成的二进制分类数据集并绘制示例，那么让我们来看看示例中的类不平衡示例。
+既然我们知道了如何创建一个合成的二进制类别数据集并绘制示例，那么让我们来看看示例中的类不平衡示例。
 
 ## 创建具有类别分布的合成数据集
 
 *make_blobs()* 函数将始终创建类分布相等的合成数据集。
 
-然而，我们可以使用这个函数来创建具有任意类分布的合成分类数据集，只需要几行额外的代码。
+然而，我们可以使用这个函数来创建具有任意类分布的合成类别数据集，只需要几行额外的代码。
 
 类别分布可以定义为字典，其中关键字是类别值(例如 0 或 1)，值是要包含在数据集中的随机生成的示例数。
 
@@ -242,7 +242,7 @@ plot_dataset(X, y)
 
 ![Scatter Plot of Binary Classification Dataset With Provided Class Distribution](img/a7814e1386a5898253e0ee99fb718856.png)
 
-具有给定类别分布的二元分类数据集的散点图
+具有给定类别分布的二元类别数据集的散点图
 
 现在，我们已经拥有了创建和绘制具有任意倾斜类分布的合成数据集的工具，让我们来看看不同分布的效果。
 
@@ -344,7 +344,7 @@ plot_dataset(X, y)
 
 ![Scatter Plot of Binary Classification Dataset With A 1 to 10 Class Distribution](img/3ad79e727936f448c2c033217c5fc730.png)
 
-具有 1 到 10 类分布的二元分类数据集的散点图
+具有 1 到 10 类分布的二元类别数据集的散点图
 
 ### 1:100 不平衡的阶级分布
 
@@ -411,7 +411,7 @@ plot_dataset(X, y)
 
 ![Scatter Plot of Binary Classification Dataset With A 1 to 100 Class Distribution](img/1d342100c1cd4c96d834e8aa61b2dd70.png)
 
-1 到 100 类分布的二元分类数据集散点图
+1 到 100 类分布的二元类别数据集散点图
 
 ### 1:1000 不平衡的阶级分布
 
@@ -478,7 +478,7 @@ plot_dataset(X, y)
 
 ![Scatter Plot of Binary Classification Dataset With A 1 to 1000 Class Distribution](img/c06f708311000aa8f795707ff8bb65f0.png)
 
-1 到 1000 类分布的二元分类数据集的散点图
+1 到 1000 类分布的二元类别数据集的散点图
 
 ## 进一步阅读
 
@@ -486,7 +486,7 @@ plot_dataset(X, y)
 
 ### 应用程序接口
 
-*   [sklearn . dataset . make _ blobs API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)。
+*   [sklearn . dataset . make _ blobs API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)。
 *   [matplotlib . pyplot . scatter API](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.scatter.html)。
 *   [numpy.where API](https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html) 。
 
@@ -497,7 +497,7 @@ plot_dataset(X, y)
 具体来说，您了解到:
 
 *   如何创建用于二进制分类的合成数据集，并按类绘制示例。
-*   如何创建任何给定类别分布的合成分类数据集？
+*   如何创建任何给定类别分布的合成类别数据集？
 *   不同的倾斜类分布实际上是怎样的。
 
 你有什么问题吗？

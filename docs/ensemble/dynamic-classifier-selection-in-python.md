@@ -17,7 +17,7 @@
 完成本教程后，您将知道:
 
 *   动态分类器选择算法从许多模型中选择一个来为每个新的例子做出预测。
-*   如何使用 scikit-learn API 为分类任务开发和评估动态分类器选择模型。
+*   如何使用 Sklearn API 为分类任务开发和评估动态分类器选择模型。
 *   如何探索动态分类器选择模型超参数对分类精度的影响？
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -34,7 +34,7 @@
 本教程分为三个部分；它们是:
 
 1.  动态分类器选择
-2.  基于 Scikit-Learn 的动态分类器选择
+2.  基于 Sklearn 的动态分类器选择
     1.  具有整体局部精度的集散控制系统
     2.  具有本地等级精度的分布式控制系统
 3.  集散控制系统的超参数整定
@@ -96,13 +96,13 @@
 
 现在我们已经熟悉了 DCS 和 DCS-LA 算法，让我们看看如何在我们自己的分类预测建模项目中使用它。
 
-## 基于 Scikit-Learn 的动态分类器选择
+## 基于 Sklearn 的动态分类器选择
 
 动态集成选择库(简称 DESlib)是一个开源 Python 库，它提供了许多不同的动态分类器选择算法的实现。
 
 DESlib 是一个易于使用的集成学习库，专注于实现动态分类器和集成选择的最新技术。
 
-*   [动态选择库项目，GitHub](https://github.com/scikit-learn-contrib/DESlib) 。
+*   [动态选择库项目，GitHub](https://github.com/Sklearn-contrib/DESlib) 。
 
 首先，我们可以使用 pip 包管理器来安装 DESlib 库。
 
@@ -128,13 +128,13 @@ print(deslib.__version__)
 
 DESlib 分别通过 [OLA](https://deslib.readthedocs.io/en/latest/modules/dcs/ola.html) 和 [LCA](https://deslib.readthedocs.io/en/latest/modules/dcs/lca.html) 类为每个分类器选择技术提供了分布式控制系统-学习算法的实现。
 
-每个类都可以直接用作 scikit-learn 模型，允许直接使用全套 scikit-learn 数据准备、建模管道和模型评估技术。
+每个类都可以直接用作 Sklearn 模型，允许直接使用全套 Sklearn 数据准备、建模管道和模型评估技术。
 
 这两个类都使用 k 最近邻算法来选择默认值为 *k=7* 的邻居。
 
 决策树的[自举聚合](https://machinelearningmastery.com/bagging-ensemble-with-python/)(打包)集成被用作为默认进行的每个分类考虑的分类器模型池，尽管这可以通过将“ *pool_classifiers* ”设置为模型列表来改变。
 
-我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例和 20 个输入特征的合成二进制分类问题。
+我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例和 20 个输入特征的合成二进制分类问题。
 
 ```py
 # synthetic binary classification dataset
@@ -197,7 +197,7 @@ Mean Accuracy: 0.883 (0.012)
 
 首先，模型适合所有可用数据，然后可以调用 *predict()* 函数对新数据进行预测。
 
-下面的示例在我们的二进制分类数据集上演示了这一点。
+下面的示例在我们的二进制类别数据集上演示了这一点。
 
 ```py
 # make a prediction with DCS-LA using overall local accuracy
@@ -267,7 +267,7 @@ Mean Accuracy: 0.922 (0.007)
 
 首先，模型适合所有可用数据，然后可以调用 *predict()* 函数对新数据进行预测。
 
-下面的示例在我们的二进制分类数据集上演示了这一点。
+下面的示例在我们的二进制类别数据集上演示了这一点。
 
 ```py
 # make a prediction with DCS-LA using local class accuracy
@@ -291,7 +291,7 @@ print('Predicted Class: %d' % yhat[0])
 Predicted Class: 0
 ```
 
-现在，我们已经熟悉了使用 scikit-learn API 来评估和使用 DCS-LA 模型，接下来让我们看看如何配置模型。
+现在，我们已经熟悉了使用 Sklearn API 来评估和使用 DCS-LA 模型，接下来让我们看看如何配置模型。
 
 ## 集散控制系统的超参数整定
 
@@ -396,7 +396,7 @@ pyplot.show()
 
 默认情况下，使用袋装决策树，因为它已被证明是一系列分类任务的有效方法。然而，可以考虑定制分类器池。
 
-这需要首先定义一个分类器模型列表，以便在训练数据集中使用和拟合每个分类器模型。不幸的是，这意味着 scikit-learn 中的自动 k-fold 交叉验证模型评估方法不能用于这种情况。相反，我们将使用训练-测试分割，这样我们就可以在训练数据集上手动调整分类器池。
+这需要首先定义一个分类器模型列表，以便在训练数据集中使用和拟合每个分类器模型。不幸的是，这意味着 Sklearn 中的自动 k-fold 交叉验证模型评估方法不能用于这种情况。相反，我们将使用训练-测试分割，这样我们就可以在训练数据集上手动调整分类器池。
 
 然后，可以通过“*池分类器*”参数将拟合分类器列表指定给 OLA(或 LCA)类。在这种情况下，我们将使用包含逻辑回归、决策树和朴素贝叶斯分类器的池。
 
@@ -528,7 +528,7 @@ Accuracy: 0.913
 
 ### 蜜蜂
 
-*   [动态选择库项目，GitHub](https://github.com/scikit-learn-contrib/DESlib) 。
+*   [动态选择库项目，GitHub](https://github.com/Sklearn-contrib/DESlib) 。
 *   [脱 lib API 文件](https://deslib.readthedocs.io/en/latest/api.html)。
 
 ## 摘要
@@ -538,7 +538,7 @@ Accuracy: 0.913
 具体来说，您了解到:
 
 *   动态分类器选择算法从许多模型中选择一个来为每个新的例子做出预测。
-*   如何使用 scikit-learn API 为分类任务开发和评估动态分类器选择模型。
+*   如何使用 Sklearn API 为分类任务开发和评估动态分类器选择模型。
 *   如何探索动态分类器选择模型超参数对分类精度的影响？
 
 **你有什么问题吗？**

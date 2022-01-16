@@ -12,7 +12,7 @@
 
 因此，对于机器学习从业者来说，在执行基于过滤器的特征选择时，为数据集选择适当的统计度量是具有挑战性的。
 
-在这篇文章中，您将发现如何使用数字和分类数据为基于过滤器的特征选择选择统计度量。
+在这篇文章中，您将发现如何使用数字和类别数据为基于过滤器的特征选择选择统计度量。
 
 看完这篇文章，你会知道:
 
@@ -75,7 +75,7 @@
 
 考虑用于选择特征的机制的另一种方式可以分为**包装**和**过滤**方法。这些方法几乎总是受监督的，并且是基于结果模型在等待数据集上的表现来评估的。
 
-包装器特征选择方法创建许多具有不同输入特征子集的模型，并根据表现度量选择那些导致最佳表现模型的特征。这些方法与变量类型无关，尽管它们在计算上很昂贵。 [RFE](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html) 是包装器特征选择方法的一个很好的例子。
+包装器特征选择方法创建许多具有不同输入特征子集的模型，并根据表现度量选择那些导致最佳表现模型的特征。这些方法与变量类型无关，尽管它们在计算上很昂贵。 [RFE](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.RFE.html) 是包装器特征选择方法的一个很好的例子。
 
 > 包装器方法使用添加和/或移除预测器的过程来评估多个模型，以找到最大化模型表现的最佳组合。
 
@@ -203,7 +203,7 @@
 
 这是一个带有分类输入变量的分类预测建模问题。
 
-分类数据最常见的相关测量是[卡方检验](https://machinelearningmastery.com/chi-squared-test-for-machine-learning/)。也可以用信息论领域的互信息(信息增益)。
+类别数据最常见的相关测量是[卡方检验](https://machinelearningmastery.com/chi-squared-test-for-machine-learning/)。也可以用信息论领域的互信息(信息增益)。
 
 *   卡方检验(列联表)。
 *   相互信息。
@@ -216,25 +216,25 @@
 
 ### 相关统计
 
-scikit-learn 库提供了大多数有用的统计方法的实现。
+Sklearn 库提供了大多数有用的统计方法的实现。
 
 例如:
 
-*   皮尔逊相关系数:[f _ 回归()](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html)
-*   注释:[f _ classic()](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_classif.html)
-*   卡方: [chi2()](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.chi2.html)
-*   相互信息:[相互信息类()](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html)和[相互信息回归()](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_regression.html)
+*   皮尔逊相关系数:[f _ 回归()](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html)
+*   注释:[f _ classic()](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.f_classif.html)
+*   卡方: [chi2()](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.chi2.html)
+*   相互信息:[相互信息类()](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html)和[相互信息回归()](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_regression.html)
 
 此外，SciPy 库还提供了更多统计信息的实现，例如肯德尔τ([肯德尔τ](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kendalltau.html))和斯皮尔曼等级相关性([斯皮尔曼](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.spearmanr.html))。
 
 ### 选择方法
 
-一旦为目标的每个输入变量计算了统计数据，scikit-learn 库还提供了许多不同的过滤方法。
+一旦为目标的每个输入变量计算了统计数据，Sklearn 库还提供了许多不同的过滤方法。
 
 两种比较流行的方法包括:
 
-*   选择前 k 个变量:[选择测试](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html)
-*   选择最高百分位变量:[选择百分位](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectPercentile.html)
+*   选择前 k 个变量:[选择测试](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html)
+*   选择最高百分位变量:[选择百分位](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.SelectPercentile.html)
 
 我自己经常使用 *SelectKBest* 。
 
@@ -269,9 +269,9 @@ scikit-learn 库提供了大多数有用的统计方法的实现。
 
 本节演示了作为数字输入和数字输出的回归问题的特征选择。
 
-使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)准备一个测试回归问题。
+使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)准备一个测试回归问题。
 
-通过[f _ 回归()](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html)函数使用[皮尔逊相关系数](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)进行特征选择。
+通过[f _ 回归()](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html)函数使用[皮尔逊相关系数](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)进行特征选择。
 
 ```py
 # pearson's correlation feature selection for numeric input and numeric output
@@ -298,9 +298,9 @@ print(X_selected.shape)
 
 本节演示了作为数字输入和分类输出的分类问题的特征选择。
 
-使用 [make_classification()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html) 函数准备一个测试回归问题。
+使用 [make_classification()](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html) 函数准备一个测试回归问题。
 
-通过 [f_classif()](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_classif.html) 功能，使用[方差分析 F 测量](https://en.wikipedia.org/wiki/F-test)进行特征选择。
+通过 [f_classif()](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.f_classif.html) 功能，使用[方差分析 F 测量](https://en.wikipedia.org/wiki/F-test)进行特征选择。
 
 ```py
 # ANOVA feature selection for numeric input and categorical output
@@ -316,7 +316,7 @@ X_selected = fs.fit_transform(X, y)
 print(X_selected.shape)
 ```
 
-运行该示例首先创建分类数据集，然后定义要素选择并将要素选择过程应用于数据集，返回所选输入要素的子集。
+运行该示例首先创建类别数据集，然后定义要素选择并将要素选择过程应用于数据集，返回所选输入要素的子集。
 
 ```py
 (100, 2)
@@ -327,7 +327,7 @@ print(X_selected.shape)
 
 有关分类输入和分类输出的特征选择示例，请参见教程:
 
-*   [如何用分类数据进行特征选择](https://machinelearningmastery.com/feature-selection-with-categorical-data/)
+*   [如何用类别数据进行特征选择](https://machinelearningmastery.com/feature-selection-with-categorical-data/)
 
 ## 进一步阅读
 
@@ -348,12 +348,12 @@ print(X_selected.shape)
 
 ### 文章
 
-*   [功能选择，scikit-learn API](https://scikit-learn.org/stable/modules/feature_selection.html) 。
-*   [分类数据有哪些特征选择选项？Quora](https://www.quora.com/What-are-the-feature-selection-options-for-categorical-data) 。
+*   [功能选择，Sklearn API](https://Sklearn.org/stable/modules/feature_selection.html) 。
+*   [类别数据有哪些特征选择选项？Quora](https://www.quora.com/What-are-the-feature-selection-options-for-categorical-data) 。
 
 ## 摘要
 
-在这篇文章中，您发现了如何使用数字和分类数据为基于过滤器的特征选择选择统计度量。
+在这篇文章中，您发现了如何使用数字和类别数据为基于过滤器的特征选择选择统计度量。
 
 具体来说，您了解到:
 

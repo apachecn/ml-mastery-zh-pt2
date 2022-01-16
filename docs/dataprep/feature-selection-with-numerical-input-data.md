@@ -1,4 +1,4 @@
-# 如何用数值输入数据进行特征选择
+# 如何对数值输入数据执行特征选择
 
 > 原文：<https://machinelearningmastery.com/feature-selection-with-numerical-input-data/>
 
@@ -101,7 +101,7 @@ def load_dataset(filename):
 
 加载后，我们可以将数据分成训练集和测试集，这样我们就可以拟合和评估学习模型。
 
-我们将使用 [train_test_split()函数](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)形成 scikit-learn，并将 67%的数据用于训练，33%的数据用于测试。
+我们将使用 [train_test_split()函数](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)形成 Sklearn，并将 67%的数据用于训练，33%的数据用于测试。
 
 ```py
 ...
@@ -111,7 +111,7 @@ X, y = load_dataset('pima-indians-diabetes.csv')
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=1)
 ```
 
-将所有这些元素结合在一起，下面列出了加载、拆分和汇总原始分类数据集的完整示例。
+将所有这些元素结合在一起，下面列出了加载、拆分和汇总原始类别数据集的完整示例。
 
 ```py
 # load and summarize the dataset
@@ -174,7 +174,7 @@ Test (254, 8) (254, 1)
 
 —第 242 页，[特征工程与选择](https://amzn.to/2Yvcupn)，2019。
 
-scikit-learn 机器库提供了 [f_classif()函数](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_classif.html)中方差分析 f-检验的实现。该功能可用于特征选择策略，例如通过[选择最相关的特征(最大值)选择最相关的 *k* 类](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html)。
+Sklearn 机器库提供了 [f_classif()函数](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.f_classif.html)中方差分析 f-检验的实现。该功能可用于特征选择策略，例如通过[选择最相关的特征(最大值)选择最相关的 *k* 类](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html)。
 
 例如，我们可以定义 *SelectKBest* 类来使用 *f_classif()* 功能并选择所有特征，然后转换列车和测试集。
 
@@ -292,7 +292,7 @@ Feature 7: 25.126440
 
 有关如何实现这一点的技术细节，请参见 2014 年发表的题为“离散数据集和连续数据集之间的相互信息”的论文
 
-scikit-learn 机器学习库通过 *mutual_info_classif()* 函数，为特征选择提供了数字输入和分类输出变量的互信息实现。
+Sklearn 机器学习库通过 *mutual_info_classif()* 函数，为特征选择提供了数字输入和分类输出变量的互信息实现。
 
 和 *f_classif()* 一样，可以在 *SelectKBest* 特征选择策略(和其他策略)中使用。
 
@@ -397,7 +397,7 @@ Feature 7: 0.033098
 
 ### 使用所有功能构建的模型
 
-作为第一步，我们将使用所有可用的特性来评估一个[物流配送模型](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)。
+作为第一步，我们将使用所有可用的特性来评估一个[物流配送模型](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)。
 
 该模型适合训练数据集，并在测试数据集上进行评估。
 
@@ -613,7 +613,7 @@ Accuracy: 77.56
 
 代替猜测，我们可以系统地测试一系列不同数量的所选特征，并发现哪一个导致最佳表现的模型。这被称为网格搜索，其中可以调整 *SelectKBest* 类的 *k* 参数。
 
-使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估分类任务的模型配置是一种良好的做法。我们将通过[repeated stratifiedfold 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)使用三次重复的 10 倍交叉验证。
+使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估分类任务的模型配置是一种良好的做法。我们将通过[repeated stratifiedfold 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)使用三次重复的 10 倍交叉验证。
 
 ```py
 ...
@@ -621,7 +621,7 @@ Accuracy: 77.56
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
 ```
 
-我们可以定义一个[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，它可以在训练集上正确准备特征选择变换，并将其应用于交叉验证的每个折叠的训练集和测试集。
+我们可以定义一个[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，它可以在训练集上正确准备特征选择变换，并将其应用于交叉验证的每个折叠的训练集和测试集。
 
 在这种情况下，我们将使用方差分析 f-检验统计方法来选择特征。
 
@@ -798,7 +798,7 @@ pyplot.show()
 ### 教程
 
 *   [如何选择机器学习的特征选择方法](https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/)
-*   [如何用分类数据进行特征选择](https://machinelearningmastery.com/feature-selection-with-categorical-data/)
+*   [如何用类别数据进行特征选择](https://machinelearningmastery.com/feature-selection-with-categorical-data/)
 *   [什么是机器学习的信息增益和互信息](https://machinelearningmastery.com/information-gain-and-mutual-information)
 
 ### 书
@@ -811,10 +811,10 @@ pyplot.show()
 
 ### 蜜蜂
 
-*   [功能选择，sci kit-学习用户指南](https://scikit-learn.org/stable/modules/feature_selection.html)。
-*   [硬化. feature _ selection . f _ classic API](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_classif.html)。
-*   [sklearn . feature _ selection . mutual _ info _ class if API](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html)。
-*   [硬化. feature_selection。SelectKBest API](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html) 。
+*   [功能选择，sci kit-学习用户指南](https://Sklearn.org/stable/modules/feature_selection.html)。
+*   [硬化. feature _ selection . f _ classic API](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.f_classif.html)。
+*   [sklearn . feature _ selection . mutual _ info _ class if API](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html)。
+*   [硬化. feature_selection。SelectKBest API](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html) 。
 
 ### 文章
 

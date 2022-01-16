@@ -246,7 +246,7 @@ AdaBoost 成功后，很多注意力都放在了 boosting 方法上。
 ### 相关教程
 
 *   [如何在 Python 中开发梯度增强机器集成](https://machinelearningmastery.com/gradient-boosting-machine-ensemble-in-python/)
-*   [使用 Scikit-Learn、XGBoost、LightGBM 和 CatBoost 进行梯度增强](https://machinelearningmastery.com/gradient-boosting-with-scikit-learn-xgboost-lightgbm-and-catboost/)
+*   [使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度增强](https://machinelearningmastery.com/gradient-boosting-with-Sklearn-xgboost-lightgbm-and-catboost/)
 *   [机器学习梯度增强算法简介](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
 
 ### 书

@@ -1,4 +1,4 @@
-# 如何对回归数据进行特征选择
+# 如何对回归数据执行特征选择
 
 > 原文：<https://machinelearningmastery.com/feature-selection-for-regression-data/>
 
@@ -44,7 +44,7 @@
 
 回想一下，回归问题是一个我们想要预测数值的问题。在这种情况下，我们需要一个也有数字输入变量的数据集。
 
-scikit-learn 库中的[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)可用于定义数据集。它提供了对样本数量、输入特征数量以及重要的相关和冗余输入特征数量的控制。这一点至关重要，因为我们特别希望数据集具有一些冗余的输入特征。
+Sklearn 库中的[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)可用于定义数据集。它提供了对样本数量、输入特征数量以及重要的相关和冗余输入特征数量的控制。这一点至关重要，因为我们特别希望数据集具有一些冗余的输入特征。
 
 在这种情况下，我们将定义一个包含 1000 个样本的数据集，每个样本包含 100 个输入要素，其中 10 个是信息性的，其余 90 个是冗余的。
 
@@ -58,7 +58,7 @@ X, y = make_regression(n_samples=1000, n_features=100, n_informative=10, noise=0
 
 一旦定义好，我们就可以将数据分成训练集和测试集，这样我们就可以拟合和评估一个学习模型。
 
-我们将使用 [train_test_split()函数](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)形成 scikit-learn，并将 67%的数据用于训练，33%的数据用于测试。
+我们将使用 [train_test_split()函数](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)形成 Sklearn，并将 67%的数据用于训练，33%的数据用于测试。
 
 ```py
 ...
@@ -117,7 +117,7 @@ Test (330, 100) (330,)
 
 线性相关分数通常是介于-1 和 1 之间的值，0 表示没有关系。对于特征选择，我们通常对正值感兴趣，正值越大，关系越大，更有可能的是，特征应该被选择用于建模。这样，线性相关可以被转换成仅具有正值的相关统计。
 
-scikit-learn 机器库提供了相关统计在[f _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html)中的实现。该功能可用于特征选择策略，例如通过[选择最相关的前 k 个特征(最大值)](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html)。
+Sklearn 机器库提供了相关统计在[f _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html)中的实现。该功能可用于特征选择策略，例如通过[选择最相关的前 k 个特征(最大值)](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html)。
 
 例如，我们可以定义 *SelectKBest* 类来使用*f _ revolution()*函数并选择所有特征，然后转换火车和测试集。
 
@@ -226,7 +226,7 @@ Feature 9: 101.392225
 
 有关如何实现这一点的技术细节，请参见 2014 年发表的题为“离散数据集和连续数据集之间的相互信息”的论文
 
-scikit-learn 机器学习库通过[mutual _ info _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_regression.html)为特征选择提供了一个带有数字输入和输出变量的互信息实现。
+Sklearn 机器学习库通过[mutual _ info _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_regression.html)为特征选择提供了一个带有数字输入和输出变量的互信息实现。
 
 和*f _ revolution()*一样，可以在 *SelectKBest* 特征选择策略(和其他策略)中使用。
 
@@ -323,7 +323,7 @@ Feature 9: 0.074320
 
 ### 使用所有功能构建的模型
 
-作为第一步，我们将使用所有可用的特征评估[线性回归](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)模型。
+作为第一步，我们将使用所有可用的特征评估[线性回归](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)模型。
 
 该模型适合训练数据集，并在测试数据集上进行评估。
 
@@ -560,7 +560,7 @@ MAE: 0.084
 
 代替猜测，我们可以系统地测试一系列不同数量的所选特征，并发现哪一个导致最佳表现的模型。这被称为网格搜索，其中可以调整 *SelectKBest* 类的 *k* 参数。
 
-使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估回归任务的模型配置是一个很好的实践。我们将通过 [RepeatedKFold 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedKFold.html)使用三次重复的 10 倍交叉验证。
+使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估回归任务的模型配置是一个很好的实践。我们将通过 [RepeatedKFold 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedKFold.html)使用三次重复的 10 倍交叉验证。
 
 ```py
 ...
@@ -568,7 +568,7 @@ MAE: 0.084
 cv = RepeatedKFold(n_splits=10, n_repeats=3, random_state=1)
 ```
 
-我们可以定义一个[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，它可以在训练集上正确准备特征选择变换，并将其应用于交叉验证的每个折叠的训练集和测试集。
+我们可以定义一个[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，它可以在训练集上正确准备特征选择变换，并将其应用于交叉验证的每个折叠的训练集和测试集。
 
 在这种情况下，我们将使用互信息统计方法来选择特征。
 
@@ -593,7 +593,7 @@ grid['sel__k'] = [i for i in range(X.shape[1]-20, X.shape[1]+1)]
 
 然后，我们可以定义并运行搜索。
 
-在这种情况下，我们将使用负平均绝对误差( *neg_mean_absolute_error* )来评估模型。它是负的，因为 scikit-learn 要求分数最大化，所以 MAE 是负的，这意味着分数从-无穷大到 0(最佳)。
+在这种情况下，我们将使用负平均绝对误差( *neg_mean_absolute_error* )来评估模型。它是负的，因为 Sklearn 要求分数最大化，所以 MAE 是负的，这意味着分数从-无穷大到 0(最佳)。
 
 ```py
 ...
@@ -755,7 +755,7 @@ pyplot.show()
 ### 教程
 
 *   [如何选择机器学习的特征选择方法](https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/)
-*   [如何用分类数据进行特征选择](https://machinelearningmastery.com/feature-selection-with-categorical-data/)
+*   [如何用类别数据进行特征选择](https://machinelearningmastery.com/feature-selection-with-categorical-data/)
 *   [如何在 Python 中计算变量之间的相关性](https://machinelearningmastery.com/how-to-use-correlation-to-understand-the-relationship-between-variables/)
 *   [什么是机器学习的信息增益和互信息](https://machinelearningmastery.com/information-gain-and-mutual-information)
 
@@ -765,10 +765,10 @@ pyplot.show()
 
 ### 蜜蜂
 
-*   [功能选择，sci kit-学习用户指南](https://scikit-learn.org/stable/modules/feature_selection.html)。
-*   [sklearn . datasets . make _ revolution API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)。
-*   [sklearn . feature _ selection . f _ 回归 API](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html) 。
-*   [sklearn . feature _ selection . mutual _ info _ revolution API](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_regression.html)。
+*   [功能选择，sci kit-学习用户指南](https://Sklearn.org/stable/modules/feature_selection.html)。
+*   [sklearn . datasets . make _ revolution API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)。
+*   [sklearn . feature _ selection . f _ 回归 API](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html) 。
+*   [sklearn . feature _ selection . mutual _ info _ revolution API](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_regression.html)。
 
 ### 文章
 

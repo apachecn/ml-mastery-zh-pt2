@@ -188,7 +188,7 @@
 *   [Python 机器学习随机数生成器介绍](https://machinelearningmastery.com/introduction-to-random-number-generators-for-machine-learning/)
 *   [拥抱机器学习中的随机性](https://machinelearningmastery.com/randomness-in-machine-learning/)
 *   [为什么用随机权重初始化神经网络？](https://machinelearningmastery.com/why-initialize-a-neural-network-with-random-weights/)
-*   [使用 XGBoost 和 scikit-学习 Python 的随机梯度增强](https://machinelearningmastery.com/stochastic-gradient-boosting-xgboost-scikit-learn-python/)
+*   [使用 XGBoost 和 scikit-学习 Python 的随机梯度增强](https://machinelearningmastery.com/stochastic-gradient-boosting-xgboost-Sklearn-python/)
 
 ### 文章
 

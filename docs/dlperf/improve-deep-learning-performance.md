@@ -153,7 +153,7 @@
 相关:
 
 *   [我应该标准化输入变量(列向量)吗？](ftp://ftp.sas.com/pub/neural/FAQ2.html#A_std)
-*   [如何用 Scikit-Learn 为 Python 机器学习准备数据](https://machinelearningmastery.com/prepare-data-machine-learning-python-scikit-learn/)
+*   [如何用 Sklearn 为 Python 机器学习准备数据](https://machinelearningmastery.com/prepare-data-machine-learning-python-Sklearn/)
 
 ### 4)转换您的数据
 
@@ -185,7 +185,7 @@
 
 *   [如何定义你的机器学习问题](https://machinelearningmastery.com/how-to-define-your-machine-learning-problem/)
 *   [发现特征工程，如何工程化特征以及如何擅长](https://machinelearningmastery.com/discover-feature-engineering-how-to-engineer-features-and-how-to-get-good-at-it/)
-*   [如何用 Scikit-Learn 为 Python 机器学习准备数据](https://machinelearningmastery.com/prepare-data-machine-learning-python-scikit-learn/)
+*   [如何用 Sklearn 为 Python 机器学习准备数据](https://machinelearningmastery.com/prepare-data-machine-learning-python-Sklearn/)
 
 ### 5)特征选择
 
@@ -294,7 +294,7 @@
 
 *   [数据驱动的机器学习方法](https://machinelearningmastery.com/a-data-driven-approach-to-machine-learning/)
 *   [为什么你应该在你的机器学习问题上抽查算法](https://machinelearningmastery.com/why-you-should-be-spot-checking-algorithms-on-your-machine-learning-problems/)
-*   [用 scikit-learn 抽查 Python 中的分类机器学习算法](https://machinelearningmastery.com/spot-check-classification-machine-learning-algorithms-python-scikit-learn/)
+*   [用 Sklearn 抽查 Python 中的分类机器学习算法](https://machinelearningmastery.com/spot-check-classification-machine-learning-algorithms-python-Sklearn/)
 
 ### 2)从文学中窃取
 
@@ -626,7 +626,7 @@ Checkpointing 允许你在不停车的情况下提前停车，让你在跑步结
 
 相关:
 
-*   [用 scikit-learn 集成 Python 中的机器学习算法](https://machinelearningmastery.com/ensemble-machine-learning-algorithms-python-scikit-learn/)
+*   [用 Sklearn 集成 Python 中的机器学习算法](https://machinelearningmastery.com/ensemble-machine-learning-algorithms-python-Sklearn/)
 *   [如何提高机器学习效果](https://machinelearningmastery.com/how-to-improve-machine-learning-results/)
 
 ### 2)组合视图

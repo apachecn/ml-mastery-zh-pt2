@@ -56,7 +56,7 @@ bagging 的思想可以推广到用于改变训练数据集和在数据的每个
 *   [归一化](https://machinelearningmastery.com/standardscaler-and-minmaxscaler-transforms-in-python/)(固定范围)
 *   [标准化](https://machinelearningmastery.com/standardscaler-and-minmaxscaler-transforms-in-python/)(零均值)
 *   [稳健标准化](https://machinelearningmastery.com/robust-scaler-transforms-for-machine-learning/)(对异常值稳健)
-*   [电力变压器](https://machinelearningmastery.com/power-transforms-with-scikit-learn/)(消除歪斜)
+*   [电力变压器](https://machinelearningmastery.com/power-transforms-with-Sklearn/)(消除歪斜)
 *   [分位数变换](https://machinelearningmastery.com/quantile-transforms-for-machine-learning/)(变化分布)
 *   [离散化](https://machinelearningmastery.com/discretization-transforms-for-machine-learning/) (k 箱)
 
@@ -70,11 +70,11 @@ bagging 的思想可以推广到用于改变训练数据集和在数据的每个
 
 ## 用于分类的数据变换集成
 
-我们可以使用 scikit-learn 库开发一种打包分类的数据转换方法。
+我们可以使用 Sklearn 库开发一种打包分类的数据转换方法。
 
 该库提供了一套我们可以直接使用的标准转换。每个集成成员可以被定义为一个管道，转换之后是预测模型，以避免任何数据泄漏，进而产生乐观的结果。最后，可以使用投票集合来组合来自每个管道的预测。
 
-首先，我们可以定义一个合成的二进制分类数据集，作为探索这种类型集成的基础。
+首先，我们可以定义一个合成的二进制类别数据集，作为探索这种类型集成的基础。
 
 下面的示例创建了一个包含 1，000 个示例的数据集，每个示例包含 20 个输入要素，其中 15 个包含预测目标的信息。
 
@@ -93,11 +93,11 @@ print(X.shape, y.shape)
 (1000, 20) (1000,)
 ```
 
-接下来，我们使用我们打算在集合中使用的预测模型来建立问题的基线。标准做法是在打包集成中使用决策树，因此在这种情况下，我们将使用带有默认超参数的[决策树分类器](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)。
+接下来，我们使用我们打算在集合中使用的预测模型来建立问题的基线。标准做法是在打包集成中使用决策树，因此在这种情况下，我们将使用带有默认超参数的[决策树分类器](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)。
 
 我们将使用标准实践来评估模型，在这种情况下，使用三次重复和 10 次重复的重复分层 k-fold 交叉验证。将使用所有折叠和重复的分类准确度的平均值来报告表现。
 
-下面列出了在综合分类数据集上评估决策树的完整示例。
+下面列出了在综合类别数据集上评估决策树的完整示例。
 
 ```py
 # evaluate decision tree on synthetic classification dataset
@@ -119,7 +119,7 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例报告了决策树在合成分类数据集上的平均分类精度。
+运行该示例报告了决策树在合成类别数据集上的平均分类精度。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -135,7 +135,7 @@ Mean Accuracy: 0.823 (0.039)
 
 首先，我们可以将每个集成成员定义为一个建模管道。第一步是数据转换，第二步是决策树分类器。
 
-例如，带有[最小最大缩放器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)类的规范化转换的管道如下所示:
+例如，带有[最小最大缩放器](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)类的规范化转换的管道如下所示:
 
 ```py
 ...
@@ -145,7 +145,7 @@ norm = Pipeline([('s', MinMaxScaler()), ('m', DecisionTreeClassifier())])
 
 对于我们想要使用的每个转换或转换配置，我们可以重复这一过程，并将所有模型管道添加到列表中。
 
-[VotingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 类可用于组合所有模型的预测。这个类接受一个“*估值器*”参数，它是一个元组列表，其中每个元组都有一个名称和模型或建模管道。例如:
+[VotingClassifier](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 类可用于组合所有模型的预测。这个类接受一个“*估值器*”参数，它是一个元组列表，其中每个元组都有一个名称和模型或建模管道。例如:
 
 ```py
 ...
@@ -246,7 +246,7 @@ n_scores = cross_val_score(ensemble, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例报告了数据变换集合在合成分类数据集上的平均分类精度。
+运行该示例报告了数据变换集合在合成类别数据集上的平均分类精度。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -437,9 +437,9 @@ print(X.shape, y.shape)
 (1000, 100) (1000,)
 ```
 
-接下来，我们可以通过拟合和评估我们打算在集成中使用的基础模型来建立合成数据集的表现基线，在本例中，基础模型是[决策树回归器](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html)。
+接下来，我们可以通过拟合和评估我们打算在集成中使用的基础模型来建立合成数据集的表现基线，在本例中，基础模型是[决策树回归器](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html)。
 
-该模型将使用重复的 k-fold 交叉验证进行评估，重复 3 次，重复 10 次。数据集上的模型表现将使用平均绝对误差(MAE)报告。scikit-learn 将反转分数(使其为负数)，以便框架可以最大化分数。因此，我们可以忽略分数上的符号。
+该模型将使用重复的 k-fold 交叉验证进行评估，重复 3 次，重复 10 次。数据集上的模型表现将使用平均绝对误差(MAE)报告。Sklearn 将反转分数(使其为负数)，以便框架可以最大化分数。因此，我们可以忽略分数上的符号。
 
 下面的示例评估了合成回归数据集上的决策树。
 
@@ -475,7 +475,7 @@ MAE: -139.817 (12.449)
 
 接下来，我们可以开发和评估该合奏。
 
-我们将使用与上一节相同的数据转换。将使用[voting returnalizer](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html)来组合预测，这适用于回归问题。
+我们将使用与上一节相同的数据转换。将使用[voting returnalizer](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html)来组合预测，这适用于回归问题。
 
 下面定义的 get_ensemble()函数创建单个模型和系综模型，并将所有模型组合成元组列表进行评估。
 
@@ -620,8 +620,8 @@ pyplot.show()
 
 ### 蜜蜂
 
-*   [硬化。一起。投票分类器 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 。
-*   [硬化。一起。投票输入 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html) 。
+*   [硬化。一起。投票分类器 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 。
+*   [硬化。一起。投票输入 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html) 。
 
 ## 摘要
 

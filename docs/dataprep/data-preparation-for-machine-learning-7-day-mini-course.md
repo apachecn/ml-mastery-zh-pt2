@@ -1,4 +1,4 @@
-# 机器学习的数据准备(7 天迷你课程)
+# 机器学习的数据准备（7 天迷你课程）
 
 > 原文：<https://machinelearningmastery.com/data-preparation-for-machine-learning-7-day-mini-course/>
 
@@ -128,7 +128,7 @@
 
 [马绞痛数据集](https://raw.githubusercontent.com/jbrownlee/Datasets/master/horse-colic.csv)描述了患有绞痛的马的医学特征以及它们是活的还是死的。它缺少标有问号“？”的值。我们可以用 [read_csv()函数](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)加载数据集，并确保问号值标记为 NaN。
 
-一旦加载，我们就可以使用[simple importer](https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)类将所有用 NaN 值标记的缺失值转换为列的平均值。
+一旦加载，我们就可以使用[simple importer](https://Sklearn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)类将所有用 NaN 值标记的缺失值转换为列的平均值。
 
 下面列出了完整的示例。
 
@@ -176,9 +176,9 @@ print('Missing: %d' % sum(isnan(Xtrans).flatten()))
 
 RFE 之所以受欢迎，是因为它易于配置和使用，并且可以有效地选择训练数据集中与预测目标变量更相关或最相关的特征(列)。
 
-scikit-learn Python 机器学习库为机器学习提供了一个 [RFE](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html) 的实现。RFE 是一个转变。要使用它，首先，该类配置有通过“估计器”参数指定的所选算法，以及通过“ *n_features_to_select* ”参数选择的特征数量。
+Sklearn Python 机器学习库为机器学习提供了一个 [RFE](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.RFE.html) 的实现。RFE 是一个转变。要使用它，首先，该类配置有通过“估计器”参数指定的所选算法，以及通过“ *n_features_to_select* ”参数选择的特征数量。
 
-下面的示例定义了一个具有五个冗余输入要素的合成分类数据集。然后，使用决策树算法使用 RFE 来选择五个特征。
+下面的示例定义了一个具有五个冗余输入要素的合成类别数据集。然后，使用决策树算法使用 RFE 来选择五个特征。
 
 ```py
 # report which features were selected by RFE
@@ -214,9 +214,9 @@ for i in range(X.shape[1]):
 
 建模前缩放数值数据的最流行技术之一是标准化。规范化将每个输入变量分别缩放到 0-1 的范围，这是我们精度最高的浮点值范围。它要求你知道或能够准确估计每个变量的最小和最大可观察值。您可能能够从您的可用数据中估计这些值。
 
-您可以使用 scikit-learn 对象[最小最大缩放器](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)来规范化数据集。
+您可以使用 Sklearn 对象[最小最大缩放器](http://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)来规范化数据集。
 
-下面的例子定义了一个合成分类数据集，然后使用最小最大缩放器来规范化输入变量。
+下面的例子定义了一个合成类别数据集，然后使用最小最大缩放器来规范化输入变量。
 
 ```py
 # example of normalizing input data
@@ -248,11 +248,11 @@ print(X_norm[:3, :])
 
 在本课中，您将发现如何将分类输入变量编码为数字。
 
-机器学习模型要求所有的输入和输出变量都是数字。这意味着，如果您的数据包含分类数据，您必须将其编码为数字，然后才能拟合和评估模型。
+机器学习模型要求所有的输入和输出变量都是数字。这意味着，如果您的数据包含类别数据，您必须将其编码为数字，然后才能拟合和评估模型。
 
 将分类变量转换为数字的最流行的技术之一是 one-hot 编码。
 
-[分类数据](https://en.wikipedia.org/wiki/Categorical_variable)是包含标签值而不是数值的变量。
+[类别数据](https://en.wikipedia.org/wiki/Categorical_variable)是包含标签值而不是数值的变量。
 
 分类变量的每个标签可以映射到一个唯一的整数，称为序数编码。然后，可以对序数表示应用一次性编码。这是指为变量中的每个唯一整数值向数据集中添加一个新的二进制变量，并从数据集中移除原始分类变量。
 
@@ -267,7 +267,7 @@ red,	green,	blue
 0,		0,		1
 ```
 
-通过 [OneHotEncoder 类](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html)，在 scikit-learn Python 机器学习库中可以获得这种一次性编码转换。
+通过 [OneHotEncoder 类](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html)，在 Sklearn Python 机器学习库中可以获得这种一次性编码转换。
 
 乳腺癌数据集仅包含分类输入变量。
 
@@ -318,7 +318,7 @@ print(X_oe[:3, :])
 
 这被称为离散化变换，通过使数值输入变量的概率分布离散化，可以提高一些机器学习模型对数据集的表现。
 
-离散化转换可通过[KBinsDistrictzer 类](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.KBinsDiscretizer.html)在 scikit-learn Python 机器学习库中获得。
+离散化转换可通过[KBinsDistrictzer 类](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.KBinsDiscretizer.html)在 Sklearn Python 机器学习库中获得。
 
 它允许您指定要创建的离散面元的数量(*n _ 面元*)、转换的结果是序数还是单热编码(encode)以及用于划分变量值的分布(策略)，例如“*统一*”
 
@@ -366,9 +366,9 @@ print(X_discrete[:3, :])
 
 得到的数据集，即投影，可以用作训练机器学习模型的输入。
 
-scikit-learn 库提供了[主成分分析类](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)，它可以适合数据集，并用于转换训练数据集和未来的任何附加数据集。
+Sklearn 库提供了[主成分分析类](https://Sklearn.org/stable/modules/generated/sklearn.decomposition.PCA.html)，它可以适合数据集，并用于转换训练数据集和未来的任何附加数据集。
 
-下面的示例创建了一个包含 10 个输入变量的合成二进制分类数据集，然后使用主成分分析将数据集的维度减少到三个最重要的组成部分。
+下面的示例创建了一个包含 10 个输入变量的合成二进制类别数据集，然后使用主成分分析将数据集的维度减少到三个最重要的组成部分。
 
 ```py
 # example of pca for dimensionality reduction

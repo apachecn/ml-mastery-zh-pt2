@@ -79,29 +79,29 @@
 
 额外的树集合可以从头开始实现，尽管这对初学者来说很有挑战性。
 
-scikit-learn Python 机器学习库为机器学习提供了一个 Extra Trees 的实现。
+Sklearn Python 机器学习库为机器学习提供了一个 Extra Trees 的实现。
 
 它可以在最新版本的库中找到。
 
 首先，通过运行以下脚本来确认您使用的是现代版本的库:
 
 ```py
-# check scikit-learn version
+# check Sklearn version
 import sklearn
 print(sklearn.__version__)
 ```
 
-运行脚本将打印您的 scikit-learn 版本。
+运行脚本将打印您的 Sklearn 版本。
 
 您的版本应该相同或更高。
 
-如果没有，您必须升级 scikit-learn 库的版本。
+如果没有，您必须升级 Sklearn 库的版本。
 
 ```py
 0.22.1
 ```
 
-额外的树通过[提取树回归器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesRegressor.html)和[提取树分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html)类提供。
+额外的树通过[提取树回归器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesRegressor.html)和[提取树分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html)类提供。
 
 这两个模型以相同的方式运行，并采用相同的参数来影响决策树的创建。
 
@@ -115,7 +115,7 @@ print(sklearn.__version__)
 
 在本节中，我们将研究如何使用额外的树来解决分类问题。
 
-首先，我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
+首先，我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
 
 下面列出了完整的示例。
 
@@ -171,7 +171,7 @@ Accuracy: 0.910 (0.027)
 
 首先，额外树集合适合所有可用数据，然后可以调用 *predict()* 函数对新数据进行预测。
 
-下面的示例在我们的二进制分类数据集上演示了这一点。
+下面的示例在我们的二进制类别数据集上演示了这一点。
 
 ```py
 # make predictions using extra trees for classification
@@ -201,7 +201,7 @@ Predicted Class: 0
 
 在本节中，我们将研究如何使用额外树来解决回归问题。
 
-首先，我们可以使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
+首先，我们可以使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
 
 下面列出了完整的示例。
 
@@ -224,7 +224,7 @@ print(X.shape, y.shape)
 
 与上一节一样，我们将使用重复的 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估模型，重复 3 次，重复 10 次。我们将报告所有重复和折叠模型的平均绝对误差(MAE)。
 
-scikit-learn 库使 MAE 为负，因此它被最大化而不是最小化。这意味着负 MAE 越大越好，完美模型的 MAE 为 0。
+Sklearn 库使 MAE 为负，因此它被最大化而不是最小化。这意味着负 MAE 越大越好，完美模型的 MAE 为 0。
 
 下面列出了完整的示例。
 
@@ -285,7 +285,7 @@ print('Prediction: %d' % yhat[0])
 Prediction: 53
 ```
 
-现在我们已经熟悉了使用 scikit-learn API 来评估和使用 Extra Trees 集合，让我们来看看如何配置模型。
+现在我们已经熟悉了使用 Sklearn API 来评估和使用 Extra Trees 集合，让我们来看看如何配置模型。
 
 ## 额外树超参数
 
@@ -572,8 +572,8 @@ pyplot.show()
 
 ### 蜜蜂
 
-*   [硬化。一起。提取物分类 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html) 。
-*   [硬化。一起。外向反转录者 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesRegressor.html) 。
+*   [硬化。一起。提取物分类 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html) 。
+*   [硬化。一起。外向反转录者 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesRegressor.html) 。
 
 ## 摘要
 

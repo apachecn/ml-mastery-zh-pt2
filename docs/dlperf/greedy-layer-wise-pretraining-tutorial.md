@@ -22,7 +22,7 @@
 
 *   **2019 年 9 月更新**:修正了将按键转换为列表的剧情(感谢马库斯)
 *   **2019 年 10 月更新**:针对 Keras 2.3 和 TensorFlow 2.0 更新。
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新。
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新。
 
 ![How to Develop Deep Neural Networks With Greedy Layer-Wise Pretraining](img/a6cd1e750a3fb4b202b3e215e23dcf66.png)
 
@@ -113,7 +113,7 @@
 
 我们将使用一个小的多类分类问题作为基础来演示贪婪分层预处理对模型表现的影响。
 
-scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，该函数可用于创建具有规定数量的样本、输入变量、类和类内样本方差的多类分类问题。
+Sklearn 类提供了 [make_blobs()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，该函数可用于创建具有规定数量的样本、输入变量、类和类内样本方差的多类分类问题。
 
 该问题将配置两个输入变量(代表点的 *x* 和 *y* 坐标)和每组内点的标准偏差 2.0。我们将使用相同的随机状态(伪随机数发生器的种子)来确保我们总是获得相同的数据点。
 

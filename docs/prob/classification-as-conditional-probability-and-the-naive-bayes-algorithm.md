@@ -23,7 +23,7 @@
 我们开始吧。
 
 *   **2019 年 10 月更新**:修正了数学符号中的小的不一致问题。
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新。
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新。
 
 ![How to Develop a Naive Bayes Classifier from Scratch in Python](img/6aa80275375e2571b7e3fb503b63f08f.png)
 
@@ -128,7 +128,7 @@ X 和 y 一起表示从域中收集的观察值，即用于拟合模型的训练
 
 在本节中，我们将通过一个机器学习数据集上的小例子来具体说明朴素贝叶斯计算。
 
-我们可以使用 scikit-learn API 中的 [make_blobs()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)生成一个小的人为二进制(2 类)分类问题。
+我们可以使用 Sklearn API 中的 [make_blobs()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)生成一个小的人为二进制(2 类)分类问题。
 
 下面的示例生成了 100 个带有两个数字输入变量的示例，每个变量被分配了两个类中的一个。
 
@@ -357,9 +357,9 @@ P(y=1 | [-0.79415228  2.10495117]) = 0.000
 Truth: y=0
 ```
 
-在实践中，使用[朴素贝叶斯算法](https://scikit-learn.org/stable/modules/naive_bayes.html)的优化实现是一个好主意。scikit-learn 库提供了三种实现，三种主要概率分布各一种；例如，二项式、多项式和高斯分布输入变量分别为 [BernoulliNB](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.BernoulliNB.html) 、[多项式 B](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html) 和[高斯分布输入变量。](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html)
+在实践中，使用[朴素贝叶斯算法](https://Sklearn.org/stable/modules/naive_bayes.html)的优化实现是一个好主意。Sklearn 库提供了三种实现，三种主要概率分布各一种；例如，二项式、多项式和高斯分布输入变量分别为 [BernoulliNB](https://Sklearn.org/stable/modules/generated/sklearn.naive_bayes.BernoulliNB.html) 、[多项式 B](https://Sklearn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html) 和[高斯分布输入变量。](https://Sklearn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html)
 
-为了使用 scikit-learn 朴素贝叶斯模型，首先定义模型，然后将其拟合到训练数据集上。一旦拟合，概率可以通过 *predict_proba()* 函数预测，类标签可以通过 *predict()* 函数直接预测。
+为了使用 Sklearn 朴素贝叶斯模型，首先定义模型，然后将其拟合到训练数据集上。一旦拟合，概率可以通过 *predict_proba()* 函数预测，类标签可以通过 *predict()* 函数直接预测。
 
 下面列出了将高斯朴素贝叶斯模型(GaussianNB)拟合到同一测试数据集的完整示例。
 
@@ -457,10 +457,10 @@ Truth: y=0
 
 ### 应用程序接口
 
-*   [sklearn . dataset . make _ blobs API](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)。
+*   [sklearn . dataset . make _ blobs API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)。
 *   [scipy . stat .规范 API](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html) 。
-*   [朴素贝叶斯，sci kit-学习文档](https://scikit-learn.org/stable/modules/naive_bayes.html)。
-*   [硬化。幼稚 _bayes。高斯乙 API〔t1〕](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html)
+*   [朴素贝叶斯，sci kit-学习文档](https://Sklearn.org/stable/modules/naive_bayes.html)。
+*   [硬化。幼稚 _bayes。高斯乙 API〔t1〕](https://Sklearn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html)
 
 ### 文章
 

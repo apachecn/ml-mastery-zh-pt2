@@ -46,7 +46,7 @@
 
 在我们深入研究过采样和欠采样方法的组合之前，让我们定义一个合成数据集和模型。
 
-我们可以使用 scikit-learn 库中的 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个合成的二进制分类数据集。
+我们可以使用 Sklearn 库中的 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个合成的二进制类别数据集。
 
 例如，我们可以用两个输入变量和 1:100 的类分布创建 10，000 个示例，如下所示:
 
@@ -69,7 +69,7 @@ pyplot.legend()
 pyplot.show()
 ```
 
-将这些联系在一起，下面列出了创建不平衡分类数据集并绘制示例的完整示例。
+将这些联系在一起，下面列出了创建不平衡类别数据集并绘制示例的完整示例。
 
 ```py
 # Generate and plot a synthetic imbalanced classification dataset
@@ -103,9 +103,9 @@ Counter({0: 9900, 1: 100})
 
 ![Scatter Plot of Imbalanced Classification Dataset](img/b45b9061e6070c500986c4ce8517e3c4.png)
 
-不平衡分类数据集的散点图
+不平衡类别数据集的散点图
 
-我们可以在这个数据集上拟合一个[决策树分类器模型](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)。这是一个很好的测试模型，因为它对训练数据集中的类分布很敏感。
+我们可以在这个数据集上拟合一个[决策树分类器模型](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)。这是一个很好的测试模型，因为它对训练数据集中的类分布很敏感。
 
 ```py
 ...
@@ -127,7 +127,7 @@ scores = cross_val_score(model, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f' % mean(scores))
 ```
 
-将这些联系在一起，下面的例子评估了不平衡分类数据集上的决策树模型。
+将这些联系在一起，下面的例子评估了不平衡类别数据集上的决策树模型。
 
 ```py
 # evaluates a decision tree model on the imbalanced dataset
@@ -163,7 +163,7 @@ Mean ROC AUC: 0.762
 
 ## 不平衡学习库
 
-在这些例子中，我们将使用[不平衡学习 Python 库](https://github.com/scikit-learn-contrib/imbalanced-learn)提供的实现，可以通过 pip 安装如下:
+在这些例子中，我们将使用[不平衡学习 Python 库](https://github.com/Sklearn-contrib/imbalanced-learn)提供的实现，可以通过 pip 安装如下:
 
 ```py
 sudo pip install imbalanced-learn
@@ -314,7 +314,7 @@ SMOTE 的工作方式是选择特征空间中靠近的示例，在特征空间�
 
 我们可以将 SMOTE 与[随机欠采样](https://imbalanced-learn.org/stable/generated/imblearn.under_sampling.RandomUnderSampler.html)结合起来。同样，这些过程的应用顺序并不重要，因为它们是在训练数据集的不同子集上执行的。
 
-下面的管道实现了这种组合，首先应用 SMOTE 使少数类分布达到多数类的 10%，然后使用*随机欠采样*使多数类比少数类多 50%，然后拟合[决策树分类器](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)。
+下面的管道实现了这种组合，首先应用 SMOTE 使少数类分布达到多数类的 10%，然后使用*随机欠采样*使多数类比少数类多 50%，然后拟合[决策树分类器](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)。
 
 ```py
 ...
@@ -558,7 +558,7 @@ Mean ROC AUC: 0.856
 
 ### 应用程序接口
 
-*   [不平衡学习，GitHub](https://github.com/scikit-learn-contrib/imbalanced-learn) 。
+*   [不平衡学习，GitHub](https://github.com/Sklearn-contrib/imbalanced-learn) 。
 *   [过采样和欠采样相结合，不平衡学习用户指南](https://imbalanced-learn.org/stable/combine.html)。
 *   [imblearn.over_sampling。randomoversacompler API](https://imbalanced-learn.org/stable/generated/imblearn.over_sampling.RandomOverSampler.html)。
 *   [imb learn . pipeline . pipeline API](https://imbalanced-learn.org/stable/generated/imblearn.pipeline.Pipeline.html)。

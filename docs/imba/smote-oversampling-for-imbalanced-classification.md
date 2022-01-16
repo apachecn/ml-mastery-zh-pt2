@@ -4,13 +4,13 @@
 
 最后更新于 2021 年 3 月 17 日
 
-不平衡分类涉及在具有严重类别不平衡的分类数据集上开发预测模型。
+不平衡分类涉及在具有严重类别不平衡的类别数据集上开发预测模型。
 
 使用不平衡数据集的挑战在于，大多数机器学习技术会忽略少数类，从而导致少数类的表现不佳，尽管少数类的表现通常是最重要的。
 
 解决不平衡数据集的一种方法是对少数类进行过采样。最简单的方法是在少数类中复制例子，尽管这些例子没有给模型添加任何新的信息。相反，可以从现有的例子中合成新的例子。这是一种针对少数民族的[数据扩充](https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/)，被称为**合成少数民族过采样技术**，简称为 **SMOTE** 。
 
-在本教程中，您将发现针对过采样不平衡分类数据集的 SMOTE。
+在本教程中，您将发现针对过采样不平衡类别数据集的 SMOTE。
 
 完成本教程后，您将知道:
 
@@ -78,7 +78,7 @@ SMOTE 的工作方式是选择特征空间中靠近的示例，在特征空间�
 
 ## 不平衡学习库
 
-在这些例子中，我们将使用[不平衡学习 Python 库](https://github.com/scikit-learn-contrib/imbalanced-learn)提供的实现，可以通过 pip 安装如下:
+在这些例子中，我们将使用[不平衡学习 Python 库](https://github.com/Sklearn-contrib/imbalanced-learn)提供的实现，可以通过 pip 安装如下:
 
 ```py
 sudo pip install imbalanced-learn
@@ -102,7 +102,7 @@ print(imblearn.__version__)
 
 在本节中，我们将通过将 SMOTE 应用于不平衡二进制分类问题来发展它的直觉。
 
-首先，我们可以使用[make _ classification()sci kit-learn 函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例和 1:100 类分布的合成二进制分类数据集。
+首先，我们可以使用[make _ classification()sci kit-learn 函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例和 1:100 类分布的合成二进制类别数据集。
 
 ```py
 ...
@@ -170,7 +170,7 @@ Counter({0: 9900, 1: 100})
 
 我们可以在 [SMOTE 类](https://imbalanced-learn.org/stable/generated/imblearn.over_sampling.SMOTE.html)中使用不平衡学习 Python 库提供的 SMOTE 实现。
 
-SMOTE 类的作用类似于 scikit-learn 中的数据转换对象，因为它必须被定义和配置，适合数据集，然后应用于创建数据集的新转换版本。
+SMOTE 类的作用类似于 Sklearn 中的数据转换对象，因为它必须被定义和配置，适合数据集，然后应用于创建数据集的新转换版本。
 
 例如，我们可以用默认参数定义一个 SMOTE 实例，该实例将平衡少数类，然后一步适应并应用它来创建数据集的转换版本。
 
@@ -328,9 +328,9 @@ Counter({0: 1980, 1: 990})
 
 ## 分类标准
 
-在本节中，我们将了解在 scikit-learn 中拟合和评估机器学习算法时，如何使用 SMOTE 作为数据准备方法。
+在本节中，我们将了解在 Sklearn 中拟合和评估机器学习算法时，如何使用 SMOTE 作为数据准备方法。
 
-首先，我们使用上一节中的二进制分类数据集，然后拟合和评估决策树算法。
+首先，我们使用上一节中的二进制类别数据集，然后拟合和评估决策树算法。
 
 算法用任何需要的超参数定义(我们将使用默认值)，然后我们将使用重复分层 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估模型。我们将使用 10 倍交叉验证的三次重复，这意味着 10 倍交叉验证被应用三次，以拟合和评估数据集上的 30 个模型。
 
@@ -583,7 +583,7 @@ SMOTE 的一个流行扩展包括选择那些被错误分类的少数类的实�
 
 我们不希望盲目地为少数类生成新的合成示例，而是希望边界-SMOTE 方法只沿着两个类之间的决策边界创建合成示例。
 
-下面列出了使用边界扫描对二进制分类数据集进行过采样的完整示例。
+下面列出了使用边界扫描对二进制类别数据集进行过采样的完整示例。
 
 ```py
 # borderline-SMOTE for imbalanced dataset
@@ -711,7 +711,7 @@ Counter({0: 9900, 1: 9900})
 
 我们可以使用不平衡学习库中的 [ADASYN 类](https://imbalanced-learn.org/stable/generated/imblearn.over_sampling.ADASYN.html)来实现这个过程。
 
-下面的示例演示了在不平衡二进制分类数据集上进行过采样的替代方法。
+下面的示例演示了在不平衡二进制类别数据集上进行过采样的替代方法。
 
 ```py
 # Oversample and plot imbalanced dataset with ADASYN
@@ -787,7 +787,7 @@ Counter({0: 9900, 1: 9899})
 
 ## 摘要
 
-在本教程中，您发现了用于过采样不平衡分类数据集的 SMOTE。
+在本教程中，您发现了用于过采样不平衡类别数据集的 SMOTE。
 
 具体来说，您了解到:
 

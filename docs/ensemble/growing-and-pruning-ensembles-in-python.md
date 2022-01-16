@@ -73,13 +73,13 @@ Python 中的生长和修剪套装
 
 —第 123 页，[使用集成方法的模式分类](https://amzn.to/2zxc0F7)，2010。
 
-现在我们已经熟悉了集成选择方法，让我们来探索如何在 scikit-learn 中实现集成修剪和集成增长。
+现在我们已经熟悉了集成选择方法，让我们来探索如何在 Sklearn 中实现集成修剪和集成增长。
 
 ## 基线模型和投票
 
 在我们深入开发生长和修剪集成之前，让我们首先建立一个数据集和基线。
 
-我们将使用一个综合二元分类问题作为本研究的基础，由 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义，有 5000 个例子和 20 个数字输入特征。
+我们将使用一个综合二元分类问题作为本研究的基础，由 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义，有 5000 个例子和 20 个数字输入特征。
 
 下面的示例定义了数据集并总结了其大小。
 
@@ -192,7 +192,7 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例会评估合成二进制分类数据集上的每个独立机器学习算法。
+运行该示例会评估合成二进制类别数据集上的每个独立机器学习算法。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -220,7 +220,7 @@ pyplot.show()
 
 在这种情况下，我们将使用带有软投票的[投票集合](https://machinelearningmastery.com/voting-ensembles-with-python/)。这意味着每个模型将预测概率，并且概率将由集成模型求和，以选择每个输入样本的最终输出预测。
 
-这可以通过使用 [VotingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 类来实现，其中成员是通过“*估计器*参数来设置的，该参数需要一个模型列表，其中每个模型都是一个具有名称和配置的模型对象的元组，就像我们在上一节中定义的那样。
+这可以通过使用 [VotingClassifier](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 类来实现，其中成员是通过“*估计器*参数来设置的，该参数需要一个模型列表，其中每个模型都是一个具有名称和配置的模型对象的元组，就像我们在上一节中定义的那样。
 
 然后，我们可以通过“*投票*”参数设置要执行的投票类型，在本例中，该参数设置为“*软*”
 
@@ -230,7 +230,7 @@ pyplot.show()
 ensemble = VotingClassifier(estimators=models, voting='soft')
 ```
 
-将这些联系在一起，下面的示例评估了合成二进制分类数据集上所有五个模型的投票集合。
+将这些联系在一起，下面的示例评估了合成二进制类别数据集上所有五个模型的投票集合。
 
 ```py
 # example of a voting ensemble with soft voting of ensemble members
@@ -375,7 +375,7 @@ def prune_ensemble(models, X, y):
 	return best_score, models
 ```
 
-我们可以将所有这些结合到一个综合二进制分类数据集上的集成修剪示例中。
+我们可以将所有这些结合到一个综合二进制类别数据集上的集成修剪示例中。
 
 ```py
 # example of ensemble pruning for classification
@@ -552,7 +552,7 @@ def grow_ensemble(models, X, y):
 	return best_score, best_list
 ```
 
-将这些联系在一起，下面列出了在合成二进制分类数据集上增长的贪婪集成的完整示例。
+将这些联系在一起，下面列出了在合成二进制类别数据集上增长的贪婪集成的完整示例。
 
 ```py
 # example of ensemble growing for classification
@@ -680,7 +680,7 @@ Final Mean Accuracy: 0.956
 
 ### 蜜蜂
 
-*   [硬化。一起。投票分类器 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 。
+*   [硬化。一起。投票分类器 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 。
 
 ## 摘要
 

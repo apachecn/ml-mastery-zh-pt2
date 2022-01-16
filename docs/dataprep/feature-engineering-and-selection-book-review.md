@@ -1,4 +1,4 @@
-# 特色工程与选择(书评)
+# 特征工程与选择（书评）
 
 > 原文：<https://machinelearningmastery.com/feature-engineering-and-selection-book-review/>
 
@@ -68,7 +68,7 @@
 
 此外，与前一本书不同，这本书的全部内容也可以在网上免费获得:
 
-*   [特色工程与选择，官网](http://www.feat.engineering/)。
+*   [特征工程与选择，官网](http://www.feat.engineering/)。
 
 接下来，让我们仔细看看这本书涵盖的主题。
 
@@ -308,7 +308,7 @@
 
 我也认为，如果你是一个认真的机器学习实践者，你需要一个副本。
 
-如果你对机器学习的 R 和 Python 都很熟悉，这本书强调了像 Python/scikit-learn 这样的库要赶上 R/caret 生态系统还有多远。
+如果你对机器学习的 R 和 Python 都很熟悉，这本书强调了像 Python/Sklearn 这样的库要赶上 R/caret 生态系统还有多远。
 
 说到数据准备，我认为工作示例不如演示算法时有用。也许只是我和我的喜好。考虑到每个数据集在数量、类型和要素组成方面的差异，在标准数据集上演示数据准备并不是一个有用的教学辅助工具。
 
@@ -322,7 +322,7 @@
 
 *   [特征工程和选择:预测模型的实用方法](https://amzn.to/2VZgn4j)，2019。
 *   [应用预测建模](https://amzn.to/3c1DGjo)，2013。
-*   [特色工程与选择，官网](http://www.feat.engineering/)。
+*   [特征工程与选择，官网](http://www.feat.engineering/)。
 *   [功能工程与选择，GitHub](https://github.com/topepo/FES) 。
 
 ## 摘要

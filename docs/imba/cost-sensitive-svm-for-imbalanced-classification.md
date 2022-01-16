@@ -31,16 +31,16 @@ SVM 的这种将边际与阶级重要性成正比的修正通常被称为加权 
 
 本教程分为四个部分；它们是:
 
-1.  不平衡分类数据集
+1.  不平衡类别数据集
 2.  不平衡分类 SVM
 3.  用 Scikit 学习加权 SVM
 4.  网格搜索加权 SVM
 
-## 不平衡分类数据集
+## 不平衡类别数据集
 
-在我们深入研究 SVM 对不平衡分类的修改之前，让我们首先定义一个不平衡分类数据集。
+在我们深入研究 SVM 对不平衡分类的修改之前，让我们首先定义一个不平衡类别数据集。
 
-我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个合成的不平衡两类分类数据集。我们将生成 10，000 个少数与多数类比例大约为 1:100 的示例。
+我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个合成的不平衡两类类别数据集。我们将生成 10，000 个少数与多数类比例大约为 1:100 的示例。
 
 ```py
 ...
@@ -104,11 +104,11 @@ Counter({0: 9900, 1: 100})
 
 ![Scatter Plot of Binary Classification Dataset With 1 to 100 Class Imbalance](img/fb4952f650ef4146d18b6a868d958e73.png)
 
-1-100 类不平衡的二进制分类数据集散点图
+1-100 类不平衡的二进制类别数据集散点图
 
 接下来，我们可以在数据集上拟合标准 SVM 模型。
 
-可以使用 scikit-learn 库中的 SVC 类来定义 SVM。
+可以使用 Sklearn 库中的 SVC 类来定义 SVM。
 
 ```py
 ...
@@ -231,9 +231,9 @@ SVM 的这种修改可以称为加权支持向量机(SVM)，或者更一般地�
 
 ## 用 Scikit 学习加权 SVM
 
-scikit-learn Python 机器学习库提供了支持类加权的 SVM 算法的实现。
+Sklearn Python 机器学习库提供了支持类加权的 SVM 算法的实现。
 
-[线性支持向量机](https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html)和[支持向量机](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)类提供了可指定为模型超参数的*类权重*参数。*类权重*是一个字典，它定义了每个类标签(例如 0 和 1)以及在计算软余量时应用于 *C* 值的权重。
+[线性支持向量机](https://Sklearn.org/stable/modules/generated/sklearn.svm.LinearSVC.html)和[支持向量机](https://Sklearn.org/stable/modules/generated/sklearn.svm.SVC.html)类提供了可指定为模型超参数的*类权重*参数。*类权重*是一个字典，它定义了每个类标签(例如 0 和 1)以及在计算软余量时应用于 *C* 值的权重。
 
 例如，每个类别 0 和 1 的 1 比 1 权重可以定义如下:
 
@@ -304,7 +304,7 @@ scores = cross_val_score(model, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f' % mean(scores))
 ```
 
-运行该示例准备合成不平衡分类数据集，然后使用重复交叉验证评估 SVM 算法的类加权版本。
+运行该示例准备合成不平衡类别数据集，然后使用重复交叉验证评估 SVM 算法的类加权版本。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -330,7 +330,7 @@ Mean ROC AUC: 0.964
 *   0: 1 班，1: 10 班
 *   0: 1 班，1: 100 班
 
-这些可以定义为 [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) 类的网格搜索参数，如下所示:
+这些可以定义为 [GridSearchCV](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) 类的网格搜索参数，如下所示:
 
 ```py
 ...
@@ -435,10 +435,10 @@ Best: 0.966189 using {'class_weight': {0: 1, 1: 100}}
 
 蜜蜂
 
-*   [sklearn . utils . class _ weight . compute _ class _ weight API](https://scikit-learn.org/stable/modules/generated/sklearn.utils.class_weight.compute_class_weight.html)。
-*   [硬化. svm.SVC API](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html) 。
-*   [硬化. svm.LinearSVC API](https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html) 。
-*   [sklearn.model_selection。GridSearchCV API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) 。
+*   [sklearn . utils . class _ weight . compute _ class _ weight API](https://Sklearn.org/stable/modules/generated/sklearn.utils.class_weight.compute_class_weight.html)。
+*   [硬化. svm.SVC API](https://Sklearn.org/stable/modules/generated/sklearn.svm.SVC.html) 。
+*   [硬化. svm.LinearSVC API](https://Sklearn.org/stable/modules/generated/sklearn.svm.LinearSVC.html) 。
+*   [sklearn.model_selection。GridSearchCV API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) 。
 
 ### 文章
 

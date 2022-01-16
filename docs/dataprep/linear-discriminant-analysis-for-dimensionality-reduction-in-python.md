@@ -1,4 +1,4 @@
-# Python 中降维的线性判别分析
+# Python 中用于降维的线性判别分析
 
 > 原文：<https://machinelearningmastery.com/linear-discriminant-analysis-for-dimensionality-reduction-in-python/>
 
@@ -37,7 +37,7 @@ Python 中降维的线性判别分析
 
 1.  降维
 2.  线性判别分析
-3.  LDA Scikit-Learn API
+3.  LDA Sklearn API
 4.  维度的线性判别分析工作示例
 
 ## 降维
@@ -92,13 +92,13 @@ LDA 的框架和求解方法有很多；例如，通常用[贝叶斯定理](http
 
 *   [机器学习的线性判别分析](https://machinelearningmastery.com/linear-discriminant-analysis-for-machine-learning/)
 
-现在我们已经熟悉了降维和 LDA，让我们看看如何将这种方法用于 scikit-learn 库。
+现在我们已经熟悉了降维和 LDA，让我们看看如何将这种方法用于 Sklearn 库。
 
-## LDA Scikit-Learn API
+## LDA Sklearn API
 
 我们可以使用线性判别分析来计算数据集的投影，并选择投影的多个维度或分量作为模型的输入。
 
-scikit-learn 库提供了[linear discriminator analysis 类](https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html)，该类可适用于数据集，并用于转换训练数据集和未来的任何附加数据集。
+Sklearn 库提供了[linear discriminator analysis 类](https://Sklearn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html)，该类可适用于数据集，并用于转换训练数据集和未来的任何附加数据集。
 
 例如:
 
@@ -116,7 +116,7 @@ transformed = lda.transform(data)
 
 线性判别分析的输出可以用作训练模型的输入。
 
-也许最好的方法是使用[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，其中第一步是 LDA 变换，下一步是将变换后的数据作为输入的学习算法。
+也许最好的方法是使用[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，其中第一步是 LDA 变换，下一步是将变换后的数据作为输入的学习算法。
 
 ```py
 ...
@@ -138,7 +138,7 @@ model = Pipeline(steps=steps)
 
 ## 维度的线性判别分析工作示例
 
-首先，我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成 10 类分类问题，其中 15 个输入是有意义的。
+首先，我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成 10 类分类问题，其中 15 个输入是有意义的。
 
 下面列出了完整的示例。
 
@@ -334,9 +334,9 @@ Predicted Class: 6
 
 ### 蜜蜂
 
-*   [分解分量中的信号(矩阵分解问题)，scikit-learn](https://scikit-learn.org/stable/modules/decomposition.html) 。
-*   [sklearn . discriminal _ analysis。线性判别分析应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html)。
-*   [sklearn . pipeline . pipeline API](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)。
+*   [分解分量中的信号(矩阵分解问题)，Sklearn](https://Sklearn.org/stable/modules/decomposition.html) 。
+*   [sklearn . discriminal _ analysis。线性判别分析应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html)。
+*   [sklearn . pipeline . pipeline API](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)。
 
 ### 文章
 

@@ -123,7 +123,7 @@
 
 我们可以用一个实例来演示如何计算对数损失。
 
-首先，让我们定义一个合成的二进制分类数据集。我们将使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建 1000 个示例，两个类的分割比例为 99%/1%。下面列出了创建和汇总数据集的完整示例。
+首先，让我们定义一个合成的二进制类别数据集。我们将使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建 1000 个示例，两个类的分割比例为 99%/1%。下面列出了创建和汇总数据集的完整示例。
 
 ```py
 # create an imbalanced dataset
@@ -151,7 +151,7 @@ for c in classes:
 
 一个天真的预测策略是预测多数类的确定性，或者 P(类=0) = 1。另一种策略是预测少数民族，或 P(类=1) = 1。
 
-可以使用 [log_loss() scikit-learn 功能](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)计算 Log loss。它将每个类的概率作为输入，并返回平均日志丢失。具体来说，每个示例必须有一个预测，每个类有一个概率，这意味着一个二进制分类问题示例的预测必须有一个类 0 和类 1 的概率。
+可以使用 [log_loss() Sklearn 功能](https://Sklearn.org/stable/modules/generated/sklearn.metrics.log_loss.html)计算 Log loss。它将每个类的概率作为输入，并返回平均日志丢失。具体来说，每个示例必须有一个预测，每个类有一个概率，这意味着一个二进制分类问题示例的预测必须有一个类 0 和类 1 的概率。
 
 因此，为所有示例预测类别 0 的某些概率将按如下方式实现:
 
@@ -258,7 +258,7 @@ Perfect: Log Loss=0.000
 
 我们可以用一个工作示例来演示如何使用上一节中使用的相同数据集和简单预测模型来计算布瑞尔分数。
 
-Brier 分数可以使用[Brier _ score _ loss()scikit-learn 功能](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html)计算。它只接受正类的概率，并返回一个平均分数。
+Brier 分数可以使用[Brier _ score _ loss()Sklearn 功能](https://Sklearn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html)计算。它只接受正类的概率，并返回一个平均分数。
 
 如前一节所述，我们可以评估预测每个类标签的确定性的简单策略。在这种情况下，由于分数只考虑了正类的概率，这将涉及预测 P(类=1)=0 的 0.0 和 P(类=1)=1 的 1.0。例如:
 
@@ -428,9 +428,9 @@ Perfect: BSS=1.0000
 
 ### 应用程序接口
 
-*   [sklearn . datasets . make _ classification API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
-*   [sklearn . metrics . log _ loss API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)。
-*   [sklearn . metrics . brier _ score _ loss API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html)。
+*   [sklearn . datasets . make _ classification API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
+*   [sklearn . metrics . log _ loss API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.log_loss.html)。
+*   [sklearn . metrics . brier _ score _ loss API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html)。
 
 ### 文章
 

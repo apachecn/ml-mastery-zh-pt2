@@ -19,7 +19,7 @@
 
 我们开始吧。
 
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新。
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新。
 
 ![Probability for Machine Learning (7-Day Mini-Course)](img/08dde3a29a8c162a4a9777f93f62c491.png)
 
@@ -254,11 +254,11 @@ print(sample)
 
 *   P(yi | x1，x2，…，xn)= P(x1 | y1)* P(x2 | y1)*…P(xn | y1)* P(yi)
 
-如果我们假设每个输入变量都是高斯分布，那么 scikit-learn 库就提供了一个高效的算法实现。
+如果我们假设每个输入变量都是高斯分布，那么 Sklearn 库就提供了一个高效的算法实现。
 
-为了使用 scikit-learn 朴素贝叶斯模型，首先定义模型，然后将其拟合到训练数据集上。一旦拟合，概率可以通过 *predict_proba()* 函数预测，类标签可以通过 *predict()* 函数直接预测。
+为了使用 Sklearn 朴素贝叶斯模型，首先定义模型，然后将其拟合到训练数据集上。一旦拟合，概率可以通过 *predict_proba()* 函数预测，类标签可以通过 *predict()* 函数直接预测。
 
-下面列出了将高斯朴素贝叶斯模型([高斯年](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html))拟合到测试数据集的完整示例。
+下面列出了将高斯朴素贝叶斯模型([高斯年](https://Sklearn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html))拟合到测试数据集的完整示例。
 
 ```py
 # example of gaussian naive bayes
@@ -287,7 +287,7 @@ print('Truth: y=%d' % ysample)
 
 对于本课，您必须运行示例并报告结果。
 
-作为奖励，在真实的分类数据集上尝试该算法，例如流行的玩具分类问题，即基于花的测量来分类[鸢尾花种类](https://github.com/jbrownlee/Datasets/blob/master/iris.csv)。
+作为奖励，在真实的类别数据集上尝试该算法，例如流行的玩具分类问题，即基于花的测量来分类[鸢尾花种类](https://github.com/jbrownlee/Datasets/blob/master/iris.csv)。
 
 在下面的评论中发表你的答案。我想看看你有什么想法。
 
@@ -389,12 +389,12 @@ print('H(Q, P): %.3f bits' % ce_qp)
 
 事实证明，这一简单的改变产生了一个更好的朴素分类模型，并且可能是当类不平衡时使用的最好的朴素分类器。
 
-scikit-learn 机器学习库提供了一种称为 [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 的多数类朴素分类算法的实现，您可以在下一个分类预测建模项目中使用该算法。
+Sklearn 机器学习库提供了一种称为 [DummyClassifier](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 的多数类朴素分类算法的实现，您可以在下一个分类预测建模项目中使用该算法。
 
 下面列出了完整的示例。
 
 ```py
-# example of the majority class naive classifier in scikit-learn
+# example of the majority class naive classifier in Sklearn
 from numpy import asarray
 from sklearn.dummy import DummyClassifier
 from sklearn.metrics import accuracy_score
@@ -444,7 +444,7 @@ print('Accuracy: %.3f' % accuracy)
 
 虽然它是为训练像逻辑回归这样的二元分类模型而开发的，但它可以用于评估多类问题，并且在功能上等同于计算从信息论导出的交叉熵。
 
-一个技能完美的模型的日志丢失分数为 0.0。日志丢失可以使用 scikit-learn 中的 [log_loss()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)在 Python 中实现。
+一个技能完美的模型的日志丢失分数为 0.0。日志丢失可以使用 Sklearn 中的 [log_loss()函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.log_loss.html)在 Python 中实现。
 
 例如:
 
@@ -471,7 +471,7 @@ print(loss)
 
 错误分数总是在 0.0 到 1.0 之间，其中技能完美的模型分数为 0.0。
 
-Brier 分数可以使用 scikit-learn 中的 [brier_score_loss()函数在 Python 中计算。](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html)
+Brier 分数可以使用 Sklearn 中的 [brier_score_loss()函数在 Python 中计算。](https://Sklearn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html)
 
 例如:
 

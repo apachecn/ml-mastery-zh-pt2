@@ -152,7 +152,7 @@ pyplot.show()
 
 我们可以使用高斯混合模型来模拟估计该数据集密度的问题。
 
-可以使用[高斯混合](https://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html) scikit-learn 类来建模这个问题，并使用期望最大化算法来估计分布的参数。
+可以使用[高斯混合](https://Sklearn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html) Sklearn 类来建模这个问题，并使用期望最大化算法来估计分布的参数。
 
 该类允许我们在定义模型时通过 *n_components* 参数指定用于生成数据的底层进程的可疑数量。对于这两个过程或分布，我们将把它设置为 2。
 
@@ -237,8 +237,8 @@ print(yhat[-100:])
 
 ### 应用程序接口
 
-*   [高斯混合模型，scikit-learn API](https://scikit-learn.org/stable/modules/mixture.html) 。
-*   [sklearn . mixture . Gaussian mixture API](https://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html)。
+*   [高斯混合模型，Sklearn API](https://Sklearn.org/stable/modules/mixture.html) 。
+*   [sklearn . mixture . Gaussian mixture API](https://Sklearn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html)。
 
 ### 文章
 

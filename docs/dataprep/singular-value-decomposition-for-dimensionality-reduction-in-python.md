@@ -1,4 +1,4 @@
-# Python 中降维的奇异值分解
+# Python 中用于降维的奇异值分解
 
 > 原文：<https://machinelearningmastery.com/singular-value-decomposition-for-dimensionality-reduction-in-python/>
 
@@ -96,13 +96,13 @@ Python 中降维的奇异值分解
 
 *   [如何用 Python 从头计算奇异值分解](https://machinelearningmastery.com/singular-value-decomposition-for-machine-learning/)
 
-现在我们已经熟悉了用于降维的 SVD，让我们看看如何将这种方法用于 scikit-learn 库。
+现在我们已经熟悉了用于降维的 SVD，让我们看看如何将这种方法用于 Sklearn 库。
 
 ## 学习应用编程接口
 
 我们可以使用奇异值分解来计算数据集的投影，并选择投影的多个维度或主成分作为模型的输入。
 
-scikit-learn 库提供了[截断数据集](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html)类，该类可以适合数据集，并用于转换训练数据集和未来的任何附加数据集。
+Sklearn 库提供了[截断数据集](https://Sklearn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html)类，该类可以适合数据集，并用于转换训练数据集和未来的任何附加数据集。
 
 例如:
 
@@ -119,7 +119,7 @@ transformed = svd.transform(data)
 
 奇异值分解的输出可以用作训练模型的输入。
 
-也许最好的方法是使用[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，其中第一步是奇异值分解变换，下一步是将变换后的数据作为输入的学习算法。
+也许最好的方法是使用[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，其中第一步是奇异值分解变换，下一步是将变换后的数据作为输入的学习算法。
 
 ```py
 ...
@@ -138,7 +138,7 @@ model = Pipeline(steps=steps)
 
 然而，为了简单起见，我们将在本节中演示密集数据上的奇异值分解。您可以根据自己的稀疏数据集轻松调整它。
 
-首先，我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题，其中 15 个输入是有意义的。
+首先，我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题，其中 15 个输入是有意义的。
 
 下面列出了完整的示例。
 
@@ -347,9 +347,9 @@ Predicted Class: 1
 
 ### 蜜蜂
 
-*   [分解分量中的信号(矩阵分解问题)，scikit-learn](https://scikit-learn.org/stable/modules/decomposition.html) 。
-*   [sklearn . declaration .截断的 VD API](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) 。
-*   [sklearn . pipeline . pipeline API](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)。
+*   [分解分量中的信号(矩阵分解问题)，Sklearn](https://Sklearn.org/stable/modules/decomposition.html) 。
+*   [sklearn . declaration .截断的 VD API](https://Sklearn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) 。
+*   [sklearn . pipeline . pipeline API](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)。
 
 ### 文章
 

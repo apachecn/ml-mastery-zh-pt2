@@ -1,4 +1,4 @@
-# 如何使用离散化变换进行机器学习
+# 如何为机器学习使用离散化变换
 
 > 原文：<https://machinelearningmastery.com/discretization-transforms-for-machine-learning/>
 
@@ -86,7 +86,7 @@
 *   **分位数**:每个仓都有相同数量的值，根据百分位数进行拆分。
 *   **聚类**:识别聚类，并为每个组分配示例。
 
-离散化转换可通过[KBinsDistrictzer 类](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.KBinsDiscretizer.html)在 scikit-learn Python 机器学习库中获得。
+离散化转换可通过[KBinsDistrictzer 类](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.KBinsDiscretizer.html)在 Sklearn Python 机器学习库中获得。
 
 “*策略*”参数控制输入变量的划分方式，如“*统一*”、“*分位数*”或“*kman*”
 
@@ -216,7 +216,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 ![Histogram Plots of Input Variables for the Sonar Binary Classification Dataset](img/855400e23e4d722fa640514762f5d85b.png)
 
-声纳二进制分类数据集输入变量的直方图
+声纳二进制类别数据集输入变量的直方图
 
 接下来，让我们在原始数据集上拟合和评估一个机器学习模型。
 
@@ -268,7 +268,7 @@ Accuracy: 0.797 (0.073)
 
 一个统一的离散化变换将保留每个输入变量的概率分布，但是将使用指定数量的序数组或标签使其离散。
 
-我们可以使用[kbins 离散化器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.KBinsDiscretizer.html)类应用统一离散化变换，并将“*策略*参数设置为“*统一*”我们还必须通过“*n _ bin*参数设置所需的箱数；在这种情况下，我们将使用 10。
+我们可以使用[kbins 离散化器](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.KBinsDiscretizer.html)类应用统一离散化变换，并将“*策略*参数设置为“*统一*”我们还必须通过“*n _ bin*参数设置所需的箱数；在这种情况下，我们将使用 10。
 
 一旦定义，我们就可以调用 *fit_transform()* 函数，并将其传递给我们的数据集，以创建数据集的分位数转换版本。
 
@@ -646,7 +646,7 @@ pyplot.show()
 ### 教程
 
 *   [机器学习的连续概率分布](https://machinelearningmastery.com/continuous-probability-distributions-for-machine-learning/)
-*   [如何用 Scikit 转换回归的目标变量-学习](https://machinelearningmastery.com/how-to-transform-target-variables-for-regression-with-scikit-learn/)
+*   [如何用 Scikit 转换回归的目标变量-学习](https://machinelearningmastery.com/how-to-transform-target-variables-for-regression-with-Sklearn/)
 
 ### 书
 
@@ -660,8 +660,8 @@ pyplot.show()
 
 ### 蜜蜂
 
-*   [非线性变换，sci kit-学习指南](https://scikit-learn.org/stable/modules/preprocessing.html#preprocessing-transformer)。
-*   [硬化。预处理。kbinsdiscretize API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.KBinsDiscretizer.html)。
+*   [非线性变换，sci kit-学习指南](https://Sklearn.org/stable/modules/preprocessing.html#preprocessing-transformer)。
+*   [硬化。预处理。kbinsdiscretize API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.KBinsDiscretizer.html)。
 
 ### 文章
 

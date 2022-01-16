@@ -61,7 +61,7 @@ XGBoost 通过引入大量技术来解决梯度提升的速度问题，这些技
 
 *   [如何用 Python 开发随机森林集成](https://machinelearningmastery.com/random-forest-ensemble-in-python/)
 
-使用 XGBoost 库训练随机森林系综的主要好处是速度。预计它的使用速度将明显快于其他实现，例如本机 scikit-learn 实现。
+使用 XGBoost 库训练随机森林系综的主要好处是速度。预计它的使用速度将明显快于其他实现，例如本机 Sklearn 实现。
 
 现在我们知道了 XGBoost 提供了对随机森林集成的支持，让我们看看具体的 API。
 
@@ -92,7 +92,7 @@ print(xgboost.__version__)
 1.0.2
 ```
 
-XGBoost 库提供了两个包装类，允许该库提供的随机森林实现与 scikit-learn 机器学习库一起使用。
+XGBoost 库提供了两个包装类，允许该库提供的随机森林实现与 Sklearn 机器学习库一起使用。
 
 它们分别是用于分类和回归的 [XGBRFClassifier](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBRFClassifier) 和[xgbrfreversor](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBRFRegressor)类。
 
@@ -140,7 +140,7 @@ model = XGBRFClassifier(n_estimators=100, subsample=0.9, colsample_bynode=0.2)
 
 在本节中，我们将着眼于为分类问题开发一个 XGBoost 随机森林集成。
 
-首先，我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
+首先，我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
 
 下面列出了完整的示例。
 
@@ -197,7 +197,7 @@ Mean Accuracy: 0.891 (0.036)
 
 首先，XGBoost 随机森林集合适合所有可用数据，然后可以调用 *predict()* 函数对新数据进行预测。
 
-下面的示例在我们的二进制分类数据集上演示了这一点。
+下面的示例在我们的二进制类别数据集上演示了这一点。
 
 ```py
 # make predictions using xgboost random forest for classification
@@ -231,7 +231,7 @@ Predicted Class: 1
 
 在本节中，我们将着眼于为回归问题开发一个 XGBoost 随机森林集成。
 
-首先，我们可以使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
+首先，我们可以使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
 
 下面列出了完整的示例。
 
@@ -254,7 +254,7 @@ print(X.shape, y.shape)
 
 正如我们在上一节中所做的，我们将使用重复的 k-fold 交叉验证来评估模型，重复 3 次，重复 10 次。
 
-我们将报告所有重复和折叠模型的平均绝对误差(MAE)。scikit-learn 库使 MAE 为负，因此它被最大化而不是最小化。这意味着负 MAE 越大越好，完美模型的 MAE 为 0。
+我们将报告所有重复和折叠模型的平均绝对误差(MAE)。Sklearn 库使 MAE 为负，因此它被最大化而不是最小化。这意味着负 MAE 越大越好，完美模型的 MAE 为 0。
 
 下面列出了完整的示例。
 
@@ -504,8 +504,8 @@ XGBoost 随机森林特征集大小与分类精度的方框图
 
 *   [应用机器学习 XGBoost 的温和介绍](https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/)
 *   [如何用 Python 开发随机森林集成](https://machinelearningmastery.com/random-forest-ensemble-in-python/)
-*   [使用 Scikit-Learn、XGBoost、LightGBM 和 CatBoost 进行梯度增强](https://machinelearningmastery.com/gradient-boosting-with-scikit-learn-xgboost-lightgbm-and-catboost/)
-*   [如何用 scikit 开发你的第一个 Python xboost 模型-学习](https://machinelearningmastery.com/develop-first-xgboost-model-python-scikit-learn/)
+*   [使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度增强](https://machinelearningmastery.com/gradient-boosting-with-Sklearn-xgboost-lightgbm-and-catboost/)
+*   [如何用 scikit 开发你的第一个 Python xboost 模型-学习](https://machinelearningmastery.com/develop-first-xgboost-model-python-Sklearn/)
 
 ### 蜜蜂
 

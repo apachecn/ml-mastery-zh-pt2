@@ -15,14 +15,14 @@
 完成本教程后，您将知道:
 
 *   超级学习者是在 k 倍交叉验证期间使用折叠外预测的堆叠概括的应用。
-*   超级学习器集成算法使用 scikit-learn 模型在 Python 中直接实现。
+*   超级学习器集成算法使用 Sklearn 模型在 Python 中直接实现。
 *   ML-系综(mlens)库提供了一个方便的实现，允许超级学习者只需几行代码就能适应和使用。
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新。
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新。
 
 ![How to Develop Super Learner Ensembles in Python](img/305020642403a99813d5298244a6ddfb.png)
 
@@ -34,7 +34,7 @@
 本教程分为三个部分；它们是:
 
 1.  什么是超级学习者？
-2.  使用 scikit-learn 手动培养超级学习者
+2.  使用 Sklearn 手动培养超级学习者
 3.  超级学习者与最大似然集成库
 
 ## 什么是超级学习者？
@@ -156,15 +156,15 @@
 
 现在我们已经熟悉了超级学习器算法，让我们来看一个工作示例。
 
-## 使用 scikit-learn 手动培养超级学习者
+## 使用 Sklearn 手动培养超级学习者
 
-超级学习者算法在 scikit-learn Python 机器学习库之上实现起来相对简单。
+超级学习者算法在 Sklearn Python 机器学习库之上实现起来相对简单。
 
 在本节中，我们将为回归和分类开发一个超级学习的例子，您可以根据自己的问题进行调整。
 
 ### 回归超级学习者
 
-我们将使用[make _ revolution()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)测试问题，生成 1000 个示例(行)和 100 个特征(列)。这是一个简单的回归问题，输入和输出之间存在线性关系，并带有附加噪声。
+我们将使用[make _ revolution()](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)测试问题，生成 1000 个示例(行)和 100 个特征(列)。这是一个简单的回归问题，输入和输出之间存在线性关系，并带有附加噪声。
 
 我们将分割数据，以便 50%用于训练模型，50%用于评估最终的超级模型和基础模型。
 
@@ -299,7 +299,7 @@ yhat = super_learner_predictions(X_val, models, meta_model)
 print('Super Learner: RMSE %.3f' % (sqrt(mean_squared_error(y_val, yhat))))
 ```
 
-将所有这些结合起来，下面列出了使用 scikit-learn 模型进行回归的超级学习器算法的完整示例。
+将所有这些结合起来，下面列出了使用 Sklearn 模型进行回归的超级学习器算法的完整示例。
 
 ```py
 # example of a super learner model for regression
@@ -443,7 +443,7 @@ Super Learner: RMSE 0.546
 
 元学习者的输入可以是类别标签或类别概率，考虑到预测中捕获的粒度或不确定性增加，后者更可能有用。
 
-在这个问题中，我们将使用 [make_blobs()测试分类问题](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，并使用 100 个输入变量和两个类标签的 1000 个示例。
+在这个问题中，我们将使用 [make_blobs()测试分类问题](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，并使用 100 个输入变量和两个类标签的 1000 个示例。
 
 ```py
 ...
@@ -510,7 +510,7 @@ def fit_meta_model(X, y):
 
 分类精度将用于报告模型表现。
 
-下面列出了使用 scikit-learn 模型进行分类的超级学习器算法的完整示例。
+下面列出了使用 Sklearn 模型进行分类的超级学习器算法的完整示例。
 
 ```py
 # example of a super learner model for binary classification
@@ -645,7 +645,7 @@ Super Learner: 98.000
 
 我们可能会在实现中引入错误，并且所列出的示例没有利用多核来加快执行速度。
 
-谢天谢地， [Sebastian Flennerhag](http://flennerhag.com/) 在他的[ML-integration(mlens)Python 库](https://github.com/flennerhag/mlens)中提供了一个高效且经过测试的超级学习器算法和其他集成算法的实现。它专门设计用于 scikit-learn 模型。
+谢天谢地， [Sebastian Flennerhag](http://flennerhag.com/) 在他的[ML-integration(mlens)Python 库](https://github.com/flennerhag/mlens)中提供了一个高效且经过测试的超级学习器算法和其他集成算法的实现。它专门设计用于 Sklearn 模型。
 
 首先，必须安装库，这可以通过 pip 实现，如下所示:
 
@@ -653,7 +653,7 @@ Super Learner: 98.000
 sudo pip install mlens
 ```
 
-接下来，可以定义一个超级学习者类，通过调用 *add()* 函数添加模型，通过调用 *add_meta()* 函数添加元学习者，然后像其他 scikit-learn 模型一样使用模型。
+接下来，可以定义一个超级学习者类，通过调用 *add()* 函数添加模型，通过调用 *add_meta()* 函数添加元学习者，然后像其他 Sklearn 模型一样使用模型。
 
 ```py
 ...
@@ -931,7 +931,7 @@ Super Learner: 97.400
 具体来说，您了解到:
 
 *   超级学习者是在 k 倍交叉验证期间使用折叠外预测的堆叠概括的应用。
-*   超级学习器集成算法使用 scikit-learn 模型在 Python 中直接实现。
+*   超级学习器集成算法使用 Sklearn 模型在 Python 中直接实现。
 *   ML-系综(mlens)库提供了一个方便的实现，允许超级学习者只需几行代码就能适应和使用。
 
 你有什么问题吗？

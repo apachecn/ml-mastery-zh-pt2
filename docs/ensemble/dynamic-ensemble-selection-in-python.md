@@ -17,7 +17,7 @@
 完成本教程后，您将知道:
 
 *   动态集成选择算法在对新数据进行预测时自动选择集成成员。
-*   如何使用 scikit-learn API 开发和评估分类任务的动态集成选择模型。
+*   如何使用 Sklearn API 开发和评估分类任务的动态集成选择模型。
 *   如何探索动态集成选择模型超参数对分类精度的影响？
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -34,7 +34,7 @@ Python 中的动态合奏选择
 本教程分为三个部分；它们是:
 
 1.  动态系综选择
-2.  k-最近邻甲骨文(KNORA)与 Scikit-Learn
+2.  k-最近邻甲骨文(KNORA)与 Sklearn
     1.  克诺尔-消除(克诺尔-E)
     2.  克诺拉联盟(克诺拉-U)
 3.  KNORA 的超参数调谐
@@ -102,13 +102,13 @@ Albert Ko 等人在 2008 年发表的题为“从动态分类器选择到动态�
 
 现在我们已经熟悉了 DES 和 KNORA 算法，让我们看看如何在我们自己的分类预测建模项目中使用它。
 
-## k-最近邻甲骨文(KNORA)与 Scikit-Learn
+## k-最近邻甲骨文(KNORA)与 Sklearn
 
 动态集成库，简称 DESlib，是一个 Python 机器学习库，提供了许多不同的动态分类器和动态集成选择算法的实现。
 
 DESlib 是一个易于使用的集成学习库，专注于实现动态分类器和集成选择的最新技术。
 
-*   [动态选择库项目，GitHub](https://github.com/scikit-learn-contrib/DESlib) 。
+*   [动态选择库项目，GitHub](https://github.com/Sklearn-contrib/DESlib) 。
 
 首先，我们可以使用 pip 包管理器安装 DESlib 库，如果它还没有安装的话。
 
@@ -134,13 +134,13 @@ print(deslib.__version__)
 
 DESlib 分别通过 [KNORAE](https://deslib.readthedocs.io/en/latest/modules/des/knora_e.html) 和 [KNORAU](https://deslib.readthedocs.io/en/latest/modules/des/knora_u.html) 类为 KNORA 算法提供了每种动态集成选择技术的实现。
 
-每个类都可以直接用作 scikit-learn 模型，允许直接使用全套 scikit-learn 数据准备、建模管道和模型评估技术。
+每个类都可以直接用作 Sklearn 模型，允许直接使用全套 Sklearn 数据准备、建模管道和模型评估技术。
 
 这两个类都使用 k 最近邻算法来选择默认值为 *k=7* 的邻居。
 
 决策树的[自举聚合](https://machinelearningmastery.com/bagging-ensemble-with-python/)(打包)集成被用作为默认进行的每个分类考虑的分类器模型池，尽管这可以通过将“ *pool_classifiers* ”设置为模型列表来改变。
 
-我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例和 20 个输入特征的合成二进制分类问题。
+我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例和 20 个输入特征的合成二进制分类问题。
 
 ```py
 # synthetic binary classification dataset
@@ -157,7 +157,7 @@ print(X.shape, y.shape)
 (10000, 20) (10000,)
 ```
 
-现在我们已经熟悉了 DESlib API，让我们看看如何在我们的合成分类数据集上使用每个 KNORA 算法。
+现在我们已经熟悉了 DESlib API，让我们看看如何在我们的合成类别数据集上使用每个 KNORA 算法。
 
 ### 克诺尔-消除(克诺尔-E)
 
@@ -203,7 +203,7 @@ Mean Accuracy: 0.915 (0.009)
 
 首先，模型适合所有可用数据，然后可以调用 *predict()* 函数对新数据进行预测。
 
-下面的示例在我们的二进制分类数据集上演示了这一点。
+下面的示例在我们的二进制类别数据集上演示了这一点。
 
 ```py
 # make a prediction with KNORA-E dynamic ensemble selection
@@ -273,7 +273,7 @@ Mean Accuracy: 0.933 (0.009)
 
 首先，模型适合所有可用数据，然后可以调用 *predict()* 函数对新数据进行预测。
 
-下面的示例在我们的二进制分类数据集上演示了这一点。
+下面的示例在我们的二进制类别数据集上演示了这一点。
 
 ```py
 # make a prediction with KNORA-U dynamic ensemble selection
@@ -297,7 +297,7 @@ print('Predicted Class: %d' % yhat[0])
 Predicted Class: 0
 ```
 
-既然我们已经熟悉了使用 scikit-learn API 来评估和使用 KNORA 模型，那么让我们来看看如何配置模型。
+既然我们已经熟悉了使用 Sklearn API 来评估和使用 KNORA 模型，那么让我们来看看如何配置模型。
 
 ## KNORA 的超参数调谐
 
@@ -406,7 +406,7 @@ KNORA 池中使用的算法选择是另一个重要的超参数。
 
 ——[动态分类器选择:最新进展与展望](https://www.sciencedirect.com/science/article/pii/S1566253517304074)，2018。
 
-这需要首先定义一个分类器模型列表，以便在训练数据集中使用和拟合每个分类器模型。不幸的是，这意味着 scikit-learn 中的自动 k-fold 交叉验证模型评估方法不能用于这种情况。相反，我们将使用训练-测试分割，这样我们就可以在训练数据集上手动调整分类器池。
+这需要首先定义一个分类器模型列表，以便在训练数据集中使用和拟合每个分类器模型。不幸的是，这意味着 Sklearn 中的自动 k-fold 交叉验证模型评估方法不能用于这种情况。相反，我们将使用训练-测试分割，这样我们就可以在训练数据集上手动调整分类器池。
 
 然后，可以通过“*池分类器*”参数将拟合分类器列表指定给 KNORA-Union(或 KNORA-exclude)类。在这种情况下，我们将使用包含逻辑回归、决策树和朴素贝叶斯分类器的池。
 
@@ -517,7 +517,7 @@ Accuracy: 0.913
 >GaussianNB: 0.873
 ```
 
-代替指定分类器池，也可以从 scikit-learn 库中指定单个集成算法，KNORA 算法将自动使用内部集成成员作为分类器。
+代替指定分类器池，也可以从 Sklearn 库中指定单个集成算法，KNORA 算法将自动使用内部集成成员作为分类器。
 
 例如，我们可以使用具有 1，000 个成员的随机森林集成作为基本分类器，在 KNORA 中考虑如下:
 
@@ -593,7 +593,7 @@ Accuracy: 0.968
 
 ### 蜜蜂
 
-*   [动态选择库项目，GitHub](https://github.com/scikit-learn-contrib/DESlib) 。
+*   [动态选择库项目，GitHub](https://github.com/Sklearn-contrib/DESlib) 。
 *   [脱 lib API 文件](https://deslib.readthedocs.io/en/latest/api.html)。
 
 ## 摘要
@@ -603,7 +603,7 @@ Accuracy: 0.968
 具体来说，您了解到:
 
 *   动态集成选择算法在对新数据进行预测时自动选择集成成员。
-*   如何使用 scikit-learn API 开发和评估分类任务的动态集成选择模型。
+*   如何使用 Sklearn API 开发和评估分类任务的动态集成选择模型。
 *   如何探索动态集成选择模型超参数对分类精度的影响？
 
 **你有什么问题吗？**

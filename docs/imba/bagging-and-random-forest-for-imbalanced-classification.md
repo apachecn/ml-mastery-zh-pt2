@@ -58,13 +58,13 @@ Bagging 是一种集成算法，它在训练数据集的不同子集上拟合多
 
 这个简单的过程通常比单一配置良好的决策树算法产生更好的表现。
 
-按原样打包将创建[引导样本](https://machinelearningmastery.com/a-gentle-introduction-to-the-bootstrap-method/)，该样本将不考虑不平衡分类数据集的倾斜类分布。因此，尽管该技术总体上表现良好，但如果存在严重的类别不平衡，它可能表现不佳。
+按原样打包将创建[引导样本](https://machinelearningmastery.com/a-gentle-introduction-to-the-bootstrap-method/)，该样本将不考虑不平衡类别数据集的倾斜类分布。因此，尽管该技术总体上表现良好，但如果存在严重的类别不平衡，它可能表现不佳。
 
 ### 标准装袋
 
 在我们深入探索 bagging 的扩展之前，让我们评估一个没有 bagging 的标准 bagging 决策树集成，并将其用作比较点。
 
-我们可以使用[打包分类器 scikit-sklearn 类](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html)创建一个配置大致相同的打包决策树模型。
+我们可以使用[打包分类器 scikit-sklearn 类](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html)创建一个配置大致相同的打包决策树模型。
 
 首先，让我们用 10，000 个例子来定义一个合成的不平衡二进制分类问题，其中 99%属于多数类，1%属于少数类。
 
@@ -95,7 +95,7 @@ cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
 scores = cross_val_score(model, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 ```
 
-将这些联系在一起，下面列出了在不平衡分类数据集上评估标准袋装集成的完整示例。
+将这些联系在一起，下面列出了在不平衡类别数据集上评估标准袋装集成的完整示例。
 
 ```py
 # bagged decision trees on an imbalanced classification problem
@@ -211,7 +211,7 @@ Mean ROC AUC: 0.962
 
 在我们深入研究随机森林集成算法的扩展以使其更适合不平衡分类之前，让我们在合成数据集上拟合和评估随机森林算法。
 
-我们可以使用 scikit 中的 [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) 类——学习并使用少量的树，在本例中为 10 棵树。
+我们可以使用 scikit 中的 [RandomForestClassifier](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) 类——学习并使用少量的树，在本例中为 10 棵树。
 
 ```py
 ...
@@ -487,8 +487,8 @@ Mean ROC AUC: 0.968
 ### 蜜蜂
 
 *   [im learn .一起。平衡负载分类器 API](https://imbalanced-learn.org/stable/generated/imblearn.ensemble.BalancedBaggingClassifier.html) 。
-*   [硬化。一起。bagginclassifier API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html)。
-*   [硬化。一起。随机应变分类 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) 。
+*   [硬化。一起。bagginclassifier API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html)。
+*   [硬化。一起。随机应变分类 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) 。
 *   [im learn . together . balance dradomforestclass ification API](https://imbalanced-learn.org/stable/generated/imblearn.ensemble.BalancedRandomForestClassifier.html)。
 
 ## 摘要

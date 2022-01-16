@@ -10,9 +10,9 @@
 
 这需要仔细选择一个表现指标，该指标既有助于总体上最小化错误分类错误，又有助于最小化一种类型的错误分类错误。
 
-**德国信用数据集**是一个标准的不平衡分类数据集，它具有对错误分类错误的不同成本的特性。在此数据集上评估的模型可以使用 [Fbeta-Measure](https://machinelearningmastery.com/fbeta-measure-for-machine-learning/) 进行评估，该方法提供了一种方法，既可以总体量化模型表现，又可以满足一种错误分类错误比另一种错误分类错误成本更高的要求。
+**德国信用数据集**是一个标准的不平衡类别数据集，它具有对错误分类错误的不同成本的特性。在此数据集上评估的模型可以使用 [Fbeta-Measure](https://machinelearningmastery.com/fbeta-measure-for-machine-learning/) 进行评估，该方法提供了一种方法，既可以总体量化模型表现，又可以满足一种错误分类错误比另一种错误分类错误成本更高的要求。
 
-在本教程中，您将发现如何为不平衡的德国信用分类数据集开发和评估模型。
+在本教程中，您将发现如何为不平衡的德国信用类别数据集开发和评估模型。
 
 完成本教程后，您将知道:
 
@@ -239,7 +239,7 @@ pyplot.show()
 
 这意味着单个模型将被拟合和评估 10 * 3 或 30 次，并且这些运行的平均值和标准偏差将被报告。
 
-这可以通过使用[repeated stratifiedfold scikit-learn 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
+这可以通过使用[repeated stratifiedfold Sklearn 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
 
 我们将预测客户是否优秀的类别标签。因此，我们需要一个适合评估预测类标签的度量。
 
@@ -271,7 +271,7 @@ pyplot.show()
 
 *   F2-Measure = ((1 + 2^2) *精度*召回)/ (2^2 *精度+召回)
 
-我们将使用这一衡量标准来评估德国信贷数据集上的模型。这可以使用 [fbeta_score() scikit-learn 功能](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)来实现。
+我们将使用这一衡量标准来评估德国信贷数据集上的模型。这可以使用 [fbeta_score() Sklearn 功能](https://Sklearn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)来实现。
 
 我们可以定义一个函数来加载数据集，并将列分成输入和输出变量。我们将对分类变量进行热编码，并对目标变量进行标签编码。您可能还记得，一次性编码为变量的每个值用一个新列替换分类变量，并在该值的列中用 1 标记值。
 
@@ -286,7 +286,7 @@ X, y = dataframe.drop(last_ix, axis=1), dataframe[last_ix]
 
 接下来，我们需要选择所有分类的输入变量，然后应用一个热编码，保留数值变量不变。
 
-这可以通过使用[列转换器](https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html)并将转换定义为仅适用于分类变量列索引的 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 来实现。
+这可以通过使用[列转换器](https://Sklearn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html)并将转换定义为仅适用于分类变量列索引的 [OneHotEncoder](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 来实现。
 
 ```py
 ...
@@ -353,7 +353,7 @@ def evaluate_model(X, y, model):
 
 预测示例的少数类的模型将获得最大召回分数和基线精度分数。这为模型在这个问题上的表现提供了一个基线，通过这个基线可以比较所有其他模型。
 
-这可以通过使用 scikit-learn 库中的 [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类，并将少数民族类的“*策略*”参数设置为“*常量*”并将“*常量*”参数设置为“ *1* ”来实现。
+这可以通过使用 Sklearn 库中的 [DummyClassifier](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类，并将少数民族类的“*策略*”参数设置为“*常量*”并将“*常量*”参数设置为“ *1* ”来实现。
 
 ```py
 ...
@@ -436,7 +436,7 @@ print('Mean F2: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 我们可以看到，我们已经加载了正确的行数，并且通过对分类输入变量进行一次性编码，我们已经将输入变量的数量从 20 个增加到 61 个。这表明 13 个分类变量被编码成总共 54 列。
 
-重要的是，我们可以看到类标签正确映射到整数，多数类为 0，少数类为 1，这是不平衡二进制分类数据集的惯例。
+重要的是，我们可以看到类标签正确映射到整数，多数类为 0，少数类为 1，这是不平衡二进制类别数据集的惯例。
 
 接下来，报告 F2-Measure 分数的平均值。
 
@@ -501,9 +501,9 @@ def get_models():
 
 然后，我们可以依次列举模型列表，并对每个模型进行评估，存储分数供以后评估。
 
-我们将像上一节一样对分类输入变量进行一次热编码，在这种情况下，我们将对数字输入变量进行标准化。在交叉验证评估过程的每个折叠中，最好使用[最小最大缩放器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)来执行。
+我们将像上一节一样对分类输入变量进行一次热编码，在这种情况下，我们将对数字输入变量进行标准化。在交叉验证评估过程的每个折叠中，最好使用[最小最大缩放器](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)来执行。
 
-实现这一点的一个简单方法是使用[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，其中第一步是[列转换器](https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html)，它将 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 应用于分类变量，将*最小最大缩放器*应用于数字输入变量。为此，我们需要分类和数字输入变量的列索引列表。
+实现这一点的一个简单方法是使用[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，其中第一步是[列转换器](https://Sklearn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html)，它将 [OneHotEncoder](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 应用于分类变量，将*最小最大缩放器*应用于数字输入变量。为此，我们需要分类和数字输入变量的列索引列表。
 
 我们可以更新 *load_dataset()* 来返回列索引以及数据集的输入和输出元素。下面列出了该功能的更新版本。
 
@@ -726,7 +726,7 @@ def get_models():
 	return models, names
 ```
 
-scikit-learn 提供的[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)不知道欠采样算法。因此，我们必须使用[不平衡学习库](https://imbalanced-learn.org/stable/)提供的[管道](https://imbalanced-learn.org/stable/generated/imblearn.pipeline.Pipeline.html)实现。
+Sklearn 提供的[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)不知道欠采样算法。因此，我们必须使用[不平衡学习库](https://imbalanced-learn.org/stable/)提供的[管道](https://imbalanced-learn.org/stable/generated/imblearn.pipeline.Pipeline.html)实现。
 
 与上一节一样，管道的第一步将是分类变量的热编码和数值变量的标准化，最后一步是拟合模型。这里，中间步骤将是欠采样技术，仅在训练数据集的交叉验证评估中正确应用。
 
@@ -1243,9 +1243,9 @@ Bad Customers:
 ### 蜜蜂
 
 *   [熊猫。data frame . select _ dt types API](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.select_dtypes.html)。
-*   [硬化. metrics.fbeta_score API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html) 。
-*   [硬化。化合物。ColumnTransformer API](https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html) 。
-*   [硬化。预处理。OneHotEncoder API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 。
+*   [硬化. metrics.fbeta_score API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html) 。
+*   [硬化。化合物。ColumnTransformer API](https://Sklearn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html) 。
+*   [硬化。预处理。OneHotEncoder API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 。
 *   [imb learn . pipeline . pipeline API](https://imbalanced-learn.org/stable/generated/imblearn.pipeline.Pipeline.html)。
 
 ### 资料组
@@ -1256,7 +1256,7 @@ Bad Customers:
 
 ## 摘要
 
-在本教程中，您发现了如何为不平衡的德国信用分类数据集开发和评估模型。
+在本教程中，您发现了如何为不平衡的德国信用类别数据集开发和评估模型。
 
 具体来说，您了解到:
 

@@ -711,9 +711,9 @@ pyplot.show()
 
 去除极端情况下二元分类任务的概率分布与交叉熵的线图
 
-像这样的图可以用作解释二元分类数据集模型的平均交叉熵报告的指南。
+像这样的图可以用作解释二元类别数据集模型的平均交叉熵报告的指南。
 
-例如，您可以使用这些交叉熵值来解释 Keras 为二进制分类任务的神经网络模型或 scikit-learn 中使用对数损失度量评估的二进制分类模型报告的平均交叉熵。
+例如，您可以使用这些交叉熵值来解释 Keras 为二进制分类任务的神经网络模型或 Sklearn 中使用对数损失度量评估的二进制分类模型报告的平均交叉熵。
 
 你可以用它来回答一般的问题:
 
@@ -777,14 +777,14 @@ pyplot.show()
 
 —第 246 页，[机器学习:概率视角](https://amzn.to/2xKSTCP)，2012。
 
-因此，计算对数损失将给出与计算伯努利概率分布的交叉熵相同的量。我们可以通过使用 scikit-learn API 中的 [log_loss()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)计算 log loss 来确认这一点。
+因此，计算对数损失将给出与计算伯努利概率分布的交叉熵相同的量。我们可以通过使用 Sklearn API 中的 [log_loss()函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.log_loss.html)计算 log loss 来确认这一点。
 
 计算上一节中同一组实际和预测概率的平均测井损失应给出与计算平均交叉熵相同的结果。
 
 下面列出了完整的示例。
 
 ```py
-# calculate log loss for classification problem with scikit-learn
+# calculate log loss for classification problem with Sklearn
 from sklearn.metrics import log_loss
 from numpy import asarray
 # define classification data
@@ -845,7 +845,7 @@ Average Log Loss: 0.247
 ### 应用程序接口
 
 *   [损耗函数的使用，Keras API](https://keras.io/losses/) 。
-*   [sklearn . metrics . log _ loss API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)。
+*   [sklearn . metrics . log _ loss API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.log_loss.html)。
 
 ### 文章
 

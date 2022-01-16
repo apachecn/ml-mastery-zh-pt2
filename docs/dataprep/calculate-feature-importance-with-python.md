@@ -71,7 +71,7 @@
 
 —第 463 页，[应用预测建模](https://amzn.to/3b2LHTL)，2013 年。
 
-特征重要性分数可以被馈送到包装器模型，例如[selectfrommel](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFromModel.html)类，以执行特征选择。
+特征重要性分数可以被馈送到包装器模型，例如[selectfrommel](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.SelectFromModel.html)类，以执行特征选择。
 
 有许多方法可以计算特征重要性分数，也有许多模型可以用于此目的。
 
@@ -93,21 +93,21 @@
 
 ### 检查 Scikit-学习版本
 
-首先，确认您安装了 scikit-learn 库的现代版本。
+首先，确认您安装了 Sklearn 库的现代版本。
 
 这很重要，因为我们将在本教程中探索的一些模型需要一个现代版本的库。
 
 您可以使用下面的代码示例检查已安装的库的版本:
 
 ```py
-# check scikit-learn version
+# check Sklearn version
 import sklearn
 print(sklearn.__version__)
 ```
 
 运行该示例将打印库的版本。在撰写本文时，这大约是 0.22 版本。
 
-您需要使用 scikit-learn 或更高版本。
+您需要使用 Sklearn 或更高版本。
 
 ```py
 0.22.1
@@ -119,9 +119,9 @@ print(sklearn.__version__)
 
 每个测试问题有五个重要的和五个不重要的特征，看看哪些方法在根据特征的重要性找到或区分特征方面是一致的可能会很有趣。
 
-### 分类数据集
+### 类别数据集
 
-我们将使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个测试二进制分类数据集。
+我们将使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个测试二进制类别数据集。
 
 数据集将有 1，000 个示例，有 10 个输入要素，其中 5 个是信息性的，其余 5 个是冗余的。我们将修复随机数种子，以确保每次运行代码时得到相同的例子。
 
@@ -144,9 +144,9 @@ print(X.shape, y.shape)
 
 ### 回归数据集
 
-我们将使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个测试回归数据集。
+我们将使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个测试回归数据集。
 
-与分类数据集一样，回归数据集将有 1，000 个示例，有 10 个输入要素，其中 5 个是信息性的，其余 5 个是冗余的。
+与类别数据集一样，回归数据集将有 1，000 个示例，有 10 个输入要素，其中 5 个是信息性的，其余 5 个是冗余的。
 
 ```py
 # test regression dataset
@@ -177,7 +177,7 @@ print(X.shape, y.shape)
 
 ### 线性回归特征重要性
 
-我们可以在回归数据集上拟合[线性回归](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)模型，并检索包含为每个输入变量找到的系数的*系数 _* 属性。
+我们可以在回归数据集上拟合[线性回归](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)模型，并检索包含为每个输入变量找到的系数的*系数 _* 属性。
 
 这些系数可以为粗略的特征重要性评分提供基础。这假设输入变量具有相同的比例或者在拟合模型之前已经被缩放。
 
@@ -229,11 +229,11 @@ Feature: 9, Score: 0.00000
 
 作为特征重要性得分的线性回归系数条形图
 
-这种方法也可以用于[岭](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html)和[弹性线](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html)模型。
+这种方法也可以用于[岭](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.Ridge.html)和[弹性线](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html)模型。
 
 ### 逻辑回归特征重要性
 
-我们可以在回归数据集上拟合一个[逻辑回归](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型，并检索包含为每个输入变量找到的系数的*系数 _* 属性。
+我们可以在回归数据集上拟合一个[逻辑回归](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型，并检索包含为每个输入变量找到的系数的*系数 _* 属性。
 
 这些系数可以为粗略的特征重要性评分提供基础。这假设输入变量具有相同的比例或者在拟合模型之前已经被缩放。
 
@@ -299,7 +299,7 @@ Feature: 9, Score: 0.26540
 
 ### 购物车功能重要性
 
-我们可以使用 scikit-learn 中实现的特征重要性的 CART 算法作为*决策树回归器*和*决策树分类器*类。
+我们可以使用 Sklearn 中实现的特征重要性的 CART 算法作为*决策树回归器*和*决策树分类器*类。
 
 拟合后，模型提供了一个*特征重要度 _* 属性，可以访问该属性来检索每个输入特征的相对重要度得分。
 
@@ -307,7 +307,7 @@ Feature: 9, Score: 0.26540
 
 #### CART 回归特征重要性
 
-下面列出了拟合[决策树回归器](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html)并汇总计算出的特征重要性分数的完整示例。
+下面列出了拟合[决策树回归器](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html)并汇总计算出的特征重要性分数的完整示例。
 
 ```py
 # decision tree for feature importance on a regression problem
@@ -357,7 +357,7 @@ Feature: 9, Score: 0.00106
 
 #### CART 分类特征重要性
 
-下面列出了拟合[决策树分类器](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)并汇总计算出的特征重要性分数的完整示例。
+下面列出了拟合[决策树分类器](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)并汇总计算出的特征重要性分数的完整示例。
 
 ```py
 # decision tree for feature importance on a classification problem
@@ -407,7 +407,7 @@ Feature: 9, Score: 0.04745
 
 ### 随机森林特征重要性
 
-我们可以使用 scikit-learn 中实现的[随机森林](https://machinelearningmastery.com/implement-random-forest-scratch-python/)算法作为*随机森林回归器*和*随机森林分类器*类。
+我们可以使用 Sklearn 中实现的[随机森林](https://machinelearningmastery.com/implement-random-forest-scratch-python/)算法作为*随机森林回归器*和*随机森林分类器*类。
 
 拟合后，模型提供了一个*特征重要度 _* 属性，可以访问该属性来检索每个输入特征的相对重要度得分。
 
@@ -417,7 +417,7 @@ Feature: 9, Score: 0.04745
 
 #### 随机森林回归特征重要性
 
-下面列出了拟合一个[随机森林回归器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)并总结计算出的特征重要性分数的完整示例。
+下面列出了拟合一个[随机森林回归器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)并总结计算出的特征重要性分数的完整示例。
 
 ```py
 # random forest for feature importance on a regression problem
@@ -467,7 +467,7 @@ Feature: 9, Score: 0.00283
 
 #### 随机森林分类特征重要性
 
-下面列出了拟合一个[随机森林分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)并总结计算出的特征重要性分数的完整例子。
+下面列出了拟合一个[随机森林分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)并总结计算出的特征重要性分数的完整例子。
 
 ```py
 # random forest for feature importance on a classification problem
@@ -519,11 +519,11 @@ Feature: 9, Score: 0.04493
 
 XGBoost 是一个库，它提供了随机梯度提升算法的高效和有效的实现。
 
-该算法可以通过*xgbreversor*和 *XGBClassifier* 类与 scikit-learn 一起使用。
+该算法可以通过*xgbreversor*和 *XGBClassifier* 类与 Sklearn 一起使用。
 
 拟合后，模型提供了一个*特征重要度 _* 属性，可以访问该属性来检索每个输入特征的相对重要度得分。
 
-该算法也通过 scikit-learn 通过*梯度增强分类器*和*梯度增强回归器*类提供，并且可以使用相同的特征选择方法。
+该算法也通过 Sklearn 通过*梯度增强分类器*和*梯度增强回归器*类提供，并且可以使用相同的特征选择方法。
 
 首先，安装 XGBoost 库，比如用 pip:
 
@@ -653,19 +653,19 @@ Feature: 9, Score: 0.02220
 
 ## 排列特征重要性
 
-[排列特征重要性](https://scikit-learn.org/stable/modules/permutation_importance.html)是一种独立于所用模型计算相对重要性分数的技术。
+[排列特征重要性](https://Sklearn.org/stable/modules/permutation_importance.html)是一种独立于所用模型计算相对重要性分数的技术。
 
 首先，模型适合数据集，例如不支持原生特征重要性分数的模型。然后使用该模型对数据集进行预测，尽管数据集中某个要素(列)的值会被打乱。对数据集中的每个要素重复这一过程。然后整个过程重复 3、5、10 次或更多次。结果是每个输入特征的平均重要性分数(以及给定重复的分数分布)。
 
 这种方法可用于回归或分类，并要求选择表现指标作为重要性得分的基础，例如回归的均方误差和分类的准确性。
 
-排列特征选择可以通过[排列重要性()函数](https://scikit-learn.org/stable/modules/generated/sklearn.inspection.permutation_importance.html)使用，该函数采用拟合模型、数据集(训练或测试数据集都可以)和评分函数。
+排列特征选择可以通过[排列重要性()函数](https://Sklearn.org/stable/modules/generated/sklearn.inspection.permutation_importance.html)使用，该函数采用拟合模型、数据集(训练或测试数据集都可以)和评分函数。
 
 让我们看一下这种特征选择方法，其算法本身不支持特征选择，特别是 [k 近邻](https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/)。
 
 ### 回归的置换特征重要性
 
-下面列出了拟合一个[kneighborsrgressor](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html)并总结计算出的排列特征重要性分数的完整示例。
+下面列出了拟合一个[kneighborsrgressor](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html)并总结计算出的排列特征重要性分数的完整示例。
 
 ```py
 # permutation feature importance with knn for regression
@@ -718,7 +718,7 @@ Feature: 9, Score: 84.94768
 
 ### 排列特征对分类的重要性
 
-下面列出了拟合一个[kneighborscclassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)并汇总计算出的排列特征重要性分数的完整示例。
+下面列出了拟合一个[kneighborscclassifier](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)并汇总计算出的排列特征重要性分数的完整示例。
 
 ```py
 # permutation feature importance with knn for classification
@@ -817,7 +817,7 @@ Accuracy: 84.55
 
 我们可以使用上面探讨的任何特征重要性分数，但是在这种情况下，我们将使用随机森林提供的特征重要性分数。
 
-我们可以使用 [SelectFromModel](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFromModel.html) 类来定义我们希望计算重要性分数的模型，在这种情况下是[随机森林分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)，以及要选择的特征数量，在这种情况下是 5。
+我们可以使用 [SelectFromModel](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.SelectFromModel.html) 类来定义我们希望计算重要性分数的模型，在这种情况下是[随机森林分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)，以及要选择的特征数量，在这种情况下是 5。
 
 ```py
 ...
@@ -895,7 +895,7 @@ Accuracy: 84.55
 ### 相关教程
 
 *   [如何选择机器学习的特征选择方法](https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/)
-*   [如何用分类数据进行特征选择](https://machinelearningmastery.com/feature-selection-with-categorical-data/)
+*   [如何用类别数据进行特征选择](https://machinelearningmastery.com/feature-selection-with-categorical-data/)
 *   [利用 Python 中的 XGBoost 进行特征重要性和特征选择](https://machinelearningmastery.com/feature-importance-and-feature-selection-with-xgboost-in-python/)
 *   [Python 中机器学习的特征选择](https://machinelearningmastery.com/feature-selection-machine-learning-python/)
 *   [特征选择介绍](https://machinelearningmastery.com/an-introduction-to-feature-selection/)
@@ -906,12 +906,12 @@ Accuracy: 84.55
 
 ### 蜜蜂
 
-*   [功能选择，scikit-learn API](https://scikit-learn.org/stable/modules/feature_selection.html) 。
-*   [排列特征重要性，scikit-learn API](https://scikit-learn.org/stable/modules/permutation_importance.html) 。
-*   [sklearn . datasets . make _ classification API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
-*   [sklearn . datasets . make _ revolution API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)。
+*   [功能选择，Sklearn API](https://Sklearn.org/stable/modules/feature_selection.html) 。
+*   [排列特征重要性，Sklearn API](https://Sklearn.org/stable/modules/permutation_importance.html) 。
+*   [sklearn . datasets . make _ classification API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
+*   [sklearn . datasets . make _ revolution API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)。
 *   [xboost Python API 引用](https://xgboost.readthedocs.io/en/latest/python/python_api.html)。
-*   [硬化.检验.交换 _ 重要性 API](https://scikit-learn.org/stable/modules/generated/sklearn.inspection.permutation_importance.html) 。
+*   [硬化.检验.交换 _ 重要性 API](https://Sklearn.org/stable/modules/generated/sklearn.inspection.permutation_importance.html) 。
 
 ## 摘要
 

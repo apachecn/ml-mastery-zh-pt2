@@ -107,11 +107,11 @@
 
 ## 第二课:不平衡数据的直觉
 
-在本课中，您将发现如何为不平衡的分类数据集开发实用的直觉。
+在本课中，您将发现如何为不平衡的类别数据集开发实用的直觉。
 
 对于处理不平衡分类问题的初学者来说，一个挑战是特定的倾斜类分布意味着什么。例如，1:10 与 1:100 的班级比例的区别和含义是什么？
 
-[make _ classification()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)sci kit-learn 函数可用于定义具有所需类别不平衡的合成数据集。“*权重*参数指定了负类中示例的比例，例如[0.99，0.01]表示 99%的示例属于多数类，其余 1%属于少数类。
+[make _ classification()](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)sci kit-learn 函数可用于定义具有所需类别不平衡的合成数据集。“*权重*参数指定了负类中示例的比例，例如[0.99，0.01]表示 99%的示例属于多数类，其余 1%属于少数类。
 
 ```py
 ...
@@ -130,7 +130,7 @@ print(counter)
 
 我们还可以创建数据集的散点图，因为只有两个输入变量。然后，这些点可以被每个类着色。这个图提供了一个直观的直觉，说明了 99%对 1%的多数/少数阶级不平衡实际上是什么样子的。
 
-下面列出了创建和总结不平衡分类数据集的完整示例。
+下面列出了创建和总结不平衡类别数据集的完整示例。
 
 ```py
 # plot imbalanced classification problem
@@ -185,7 +185,7 @@ pyplot.show()
 
 *   F-measure = (2 *精度*召回)/(精度+召回)
 
-以下示例将逻辑回归模型应用于不平衡分类问题，并计算精度，然后可以将其与[精度](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)、[召回](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)和 [F-measure](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html) 进行比较。
+以下示例将逻辑回归模型应用于不平衡分类问题，并计算精度，然后可以将其与[精度](https://Sklearn.org/stable/modules/generated/sklearn.metrics.precision_score.html)、[召回](https://Sklearn.org/stable/modules/generated/sklearn.metrics.recall_score.html)和 [F-measure](https://Sklearn.org/stable/modules/generated/sklearn.metrics.f1_score.html) 进行比较。
 
 ```py
 # evaluate imbalanced classification model with different metrics
@@ -239,7 +239,7 @@ pip install imbalanced-learn
 
 一种快速可靠的方法是从多数类中随机删除示例，以将不平衡降低到不太严重的比例，甚至使类均匀。
 
-下面的例子创建了一个合成的不平衡分类数据，然后使用[随机欠采样](https://imbalanced-learn.org/stable/generated/imblearn.under_sampling.RandomUnderSampler.html)类将类分布从 1:100 的少数类更改为多数类，再更改为不太严重的 1:2。
+下面的例子创建了一个合成的不平衡类别数据，然后使用[随机欠采样](https://imbalanced-learn.org/stable/generated/imblearn.under_sampling.RandomUnderSampler.html)类将类分布从 1:100 的少数类更改为多数类，再更改为不太严重的 1:2。
 
 ```py
 # example of undersampling the majority class
@@ -358,13 +358,13 @@ print(Counter(y_over))
 
 成本敏感学习是机器学习的一个子领域，它在训练机器学习模型时考虑了预测误差的成本(以及潜在的其他成本)。许多机器学习算法可以被更新为对成本敏感，其中模型因一个类的错误分类错误而比另一个类(例如少数类)受到更多惩罚。
 
-scikit-learn 库通过定义模型时指定的 *class_weight* 属性为一系列算法提供了这种能力。可以指定与类别分布成反比的权重。
+Sklearn 库通过定义模型时指定的 *class_weight* 属性为一系列算法提供了这种能力。可以指定与类别分布成反比的权重。
 
 如果多数类和少数类的类分布为 0.99 到 0.01，那么*类权重*参数可以被定义为字典，该字典定义对多数类的错误的惩罚为 0.01，对少数类的错误的惩罚为 0.99，例如{0:0.01，1:0.99}。
 
 这是一种有用的启发式方法，可以通过将 *class_weight* 参数设置为字符串“ *balanced* 来自动配置。
 
-下面的示例演示了如何在不平衡的分类数据集上定义和拟合成本敏感的逻辑回归模型。
+下面的示例演示了如何在不平衡的类别数据集上定义和拟合成本敏感的逻辑回归模型。
 
 ```py
 # example of cost sensitive logistic regression for imbalanced classification
@@ -406,12 +406,12 @@ print('F-Measure: %.3f' % f1_score(testy, yhat))
 你发现了:
 
 *   不平衡分类的挑战是缺乏少数群体的例子，以及不同类别分类错误的重要性不同。
-*   如何为不平衡的分类数据集开发空间直觉，为数据准备和算法选择提供信息。
+*   如何为不平衡的类别数据集开发空间直觉，为数据准备和算法选择提供信息。
 *   分类精度的失败，以及像精度、召回率和 F-测度这样的替代度量如何更好地总结不平衡数据集上的模型表现。
 *   如何从训练数据集中的多数类中删除示例，称为数据欠采样。
 *   如何在训练数据集中的少数类中合成新的示例，称为数据过采样。
 *   如何在训练数据集中组合数据过采样和欠采样技术，以及产生良好表现的常见组合。
-*   如何使用代价敏感的机器学习算法的改进版本来提高不平衡分类数据集的表现。
+*   如何使用代价敏感的机器学习算法的改进版本来提高不平衡类别数据集的表现。
 
 下一步，看看我用 Python 写的关于[不平衡分类的书](https://machinelearningmastery.com/imbalanced-classification-with-python/)。
 

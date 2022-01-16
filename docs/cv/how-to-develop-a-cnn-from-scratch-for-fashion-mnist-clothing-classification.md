@@ -114,7 +114,7 @@ history = model.fit(..., validation_data=(valX, valY))
 
 为了估计模型在一般问题上的表现，我们可以使用 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)，也许是 5 倍交叉验证。这将给出关于训练和测试数据集的差异以及学习算法的随机性质的模型方差的一些说明。模型的表现可以作为 k 倍的平均表现，用标准偏差给出，如果需要，可以用来估计置信区间。
 
-我们可以使用 scikit-learn API 中的 [KFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html) 类来实现给定神经网络模型的 k 重交叉验证评估。有许多方法可以实现这一点，尽管我们可以选择一种灵活的方法，其中 KFold 仅用于指定用于每个拆分的行索引。
+我们可以使用 Sklearn API 中的 [KFold](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html) 类来实现给定神经网络模型的 k 重交叉验证评估。有许多方法可以实现这一点，尽管我们可以选择一种灵活的方法，其中 KFold 仅用于指定用于每个拆分的行索引。
 
 ```py
 # example of k-fold cv for a neural net
@@ -1076,7 +1076,7 @@ run_example()
 
 *   [硬数据集 API](https://keras.io/datasets/)
 *   [喀拉斯数据集代码](https://github.com/keras-team/keras/tree/master/keras/datasets)
-*   [sklearn.model_selection。KFold 原料药](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html)
+*   [sklearn.model_selection。KFold 原料药](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html)
 
 ### 文章
 

@@ -71,7 +71,7 @@
 *   合奏中的所有模特一般都有同样好的表现。
 *   全体模特大多已经同意了。
 
-当投票集合中使用的模型预测清晰的类别标签时，硬投票是合适的。当投票集成中使用的模型预测类成员的概率时，软投票是合适的。软投票可用于不能自然预测类别成员概率的模型，尽管在用于集成(例如支持向量机、k 近邻和决策树)之前可能需要[校准它们的类概率分数](https://machinelearningmastery.com/calibrated-classification-model-in-scikit-learn/)。
+当投票集合中使用的模型预测清晰的类别标签时，硬投票是合适的。当投票集成中使用的模型预测类成员的概率时，软投票是合适的。软投票可用于不能自然预测类别成员概率的模型，尽管在用于集成(例如支持向量机、k 近邻和决策树)之前可能需要[校准它们的类概率分数](https://machinelearningmastery.com/calibrated-classification-model-in-Sklearn/)。
 
 *   硬投票是针对预测类标签的模型。
 *   软投票适用于预测类成员概率的模型。
@@ -113,27 +113,27 @@
 
 投票集成可以从头开始实现，尽管对初学者来说可能很有挑战性。
 
-scikit-learn Python 机器学习库为机器学习提供了投票的实现。
+Sklearn Python 机器学习库为机器学习提供了投票的实现。
 
 它在 0.22 版及更高版本的库中可用。
 
 首先，通过运行以下脚本来确认您使用的是现代版本的库:
 
 ```py
-# check scikit-learn version
+# check Sklearn version
 import sklearn
 print(sklearn.__version__)
 ```
 
-运行脚本将打印您的 scikit-learn 版本。
+运行脚本将打印您的 Sklearn 版本。
 
-您的版本应该相同或更高。如果没有，您必须升级 scikit-learn 库的版本。
+您的版本应该相同或更高。如果没有，您必须升级 Sklearn 库的版本。
 
 ```py
 0.22.1
 ```
 
-投票通过[语音回归器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html)和[语音分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html)类提供。
+投票通过[语音回归器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html)和[语音分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html)类提供。
 
 两个模型的操作方式相同，采用的参数也相同。使用该模型要求您指定一个做出预测并在投票集合中组合的估计器列表。
 
@@ -147,7 +147,7 @@ models = [('lr',LogisticRegression()),('svm',SVC())]
 ensemble = VotingClassifier(estimators=models)
 ```
 
-列表中的每个模型也可以是[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，包括模型在训练数据集上拟合模型之前所需的任何数据准备。
+列表中的每个模型也可以是[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，包括模型在训练数据集上拟合模型之前所需的任何数据准备。
 
 例如:
 
@@ -167,13 +167,13 @@ models = [('lr',LogisticRegression()),('svm',SVC())]
 ensemble = VotingClassifier(estimators=models, voting='soft')
 ```
 
-现在我们已经熟悉了 scikit-learn 中的投票集成 API，让我们来看看一些工作示例。
+现在我们已经熟悉了 Sklearn 中的投票集成 API，让我们来看看一些工作示例。
 
 ## 分类投票集成
 
 在这一节中，我们将研究使用堆叠来解决分类问题。
 
-首先，我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
+首先，我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
 
 下面列出了完整的示例。
 
@@ -339,7 +339,7 @@ pyplot.show()
 
 首先，硬投票集合适合所有可用数据，然后可以调用 *predict()* 函数对新数据进行预测。
 
-下面的示例在我们的二进制分类数据集上演示了这一点。
+下面的示例在我们的二进制类别数据集上演示了这一点。
 
 ```py
 # make a prediction with a hard voting ensemble
@@ -375,7 +375,7 @@ Predicted Class: 1
 
 我们可以用[支持向量机](https://machinelearningmastery.com/support-vector-machines-for-machine-learning/) (SVM)算法来演示软投票。
 
-SVM 算法本身并不预测概率，尽管它可以被配置为通过在 [SVC 类](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)中将“*概率*”参数设置为“*真*”来预测类似概率的分数。
+SVM 算法本身并不预测概率，尽管它可以被配置为通过在 [SVC 类](https://Sklearn.org/stable/modules/generated/sklearn.svm.SVC.html)中将“*概率*”参数设置为“*真*”来预测类似概率的分数。
 
 我们可以用一个多项式核来拟合五个不同版本的 SVM 算法，每个核具有不同的多项式次数，通过“*度*参数来设置。我们将使用 1-5 度。
 
@@ -506,7 +506,7 @@ pyplot.show()
 
 首先，软投票集成适用于所有可用数据，然后可以调用 *predict()* 函数对新数据进行预测。
 
-下面的示例在我们的二进制分类数据集上演示了这一点。
+下面的示例在我们的二进制类别数据集上演示了这一点。
 
 ```py
 # make a prediction with a soft voting ensemble
@@ -542,7 +542,7 @@ Predicted Class: 1
 
 在这一节中，我们将研究使用投票来解决回归问题。
 
-首先，我们可以使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
+首先，我们可以使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
 
 下面列出了完整的示例。
 
@@ -603,7 +603,7 @@ def get_models():
 
 我们可以使用重复的 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估和报告模型表现，就像我们在上一节中所做的那样。
 
-使用平均绝对误差(MAE)评估模型。scikit-learn 将分数设为负值，这样可以最大化分数。这意味着报告的 MAE 分数为负，数值越大越好，0 表示没有误差。
+使用平均绝对误差(MAE)评估模型。Sklearn 将分数设为负值，这样可以最大化分数。这意味着报告的 MAE 分数为负，数值越大越好，0 表示没有误差。
 
 将这些联系在一起，完整的示例如下所示。
 
@@ -694,7 +694,7 @@ pyplot.show()
 
 首先，投票集合适合所有可用数据，然后可以调用 *predict()* 函数对新数据进行预测。
 
-下面的示例在我们的二进制分类数据集上演示了这一点。
+下面的示例在我们的二进制类别数据集上演示了这一点。
 
 ```py
 # make a prediction with a voting ensemble
@@ -741,9 +741,9 @@ Predicted Value: 141.319
 
 ### 蜜蜂
 
-*   [集成方法 sci kit-学习 API](https://scikit-learn.org/stable/modules/ensemble.html) 。
-*   [硬化。一起。投票分类器 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 。
-*   [硬化。一起。投票输入 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html) 。
+*   [集成方法 sci kit-学习 API](https://Sklearn.org/stable/modules/ensemble.html) 。
+*   [硬化。一起。投票分类器 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 。
+*   [硬化。一起。投票输入 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html) 。
 
 ## 摘要
 

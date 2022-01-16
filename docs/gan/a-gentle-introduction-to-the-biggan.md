@@ -61,7 +61,7 @@ BigGAN 是 GAN 架构的一个实现，旨在利用已报道的更普遍的最�
 
 由 [Andrew Brock](https://twitter.com/ajmooch) 等人在他们 2018 年发表的题为“[用于高保真自然图像合成的大规模 GAN 训练](https://arxiv.org/abs/1809.11096)”的论文中进行了描述，并在 [ICLR 2019 会议](https://openreview.net/forum?id=B1xsqj09Fm)上进行了介绍。
 
-具体来说，BigGAN 是为类条件图像生成而设计的。即，使用来自潜在空间的点和图像类别信息作为输入来生成图像。用于训练类条件 GANs 的示例数据集包括具有几十个、几百个或几千个图像类的 [CIFAR](https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/) 或 [ImageNet](https://machinelearningmastery.com/introduction-to-the-imagenet-large-scale-visual-recognition-challenge-ilsvrc/) 图像分类数据集。
+具体来说，BigGAN 是为类条件图像生成而设计的。即，使用来自潜在空间的点和图像类别信息作为输入来生成图像。用于训练类条件 GANs 的示例数据集包括具有几十个、几百个或几千个图像类的 [CIFAR](https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/) 或 [ImageNet](https://machinelearningmastery.com/introduction-to-the-imagenet-large-scale-visual-recognition-challenge-ilsvrc/) 图像类别数据集。
 
 顾名思义，BigGAN 专注于放大 GAN 模型。
 

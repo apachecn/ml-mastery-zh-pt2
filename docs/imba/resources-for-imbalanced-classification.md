@@ -45,7 +45,7 @@
 
 用机器学习解决不平衡分类预测建模问题是一个相对较新的研究领域。
 
-然而，考虑到不平衡分类数据集的普遍性，关于这个主题有几本书和几个章节。
+然而，考虑到不平衡类别数据集的普遍性，关于这个主题有几本书和几个章节。
 
 在本节中，我们将仔细阅读以下关于机器学习不平衡分类的书籍:
 
@@ -201,22 +201,22 @@ Python 已经迅速成为应用机器学习的首选编程语言。
 
 ### 科学工具包-学习库
 
-Python 中机器学习的 go-to 库是 [scikit-learn](https://scikit-learn.org/) ，它提供数据准备、机器学习算法和模型评估方案等技术。
+Python 中机器学习的 go-to 库是 [Sklearn](https://Sklearn.org/) ，它提供数据准备、机器学习算法和模型评估方案等技术。
 
-> Scikit-learn 是一个 Python 模块，集成了各种最先进的机器学习算法，用于中等规模的有监督和无监督问题。这个包侧重于使用通用高级语言将机器学习带给非专家。
+> Sklearn 是一个 Python 模块，集成了各种最先进的机器学习算法，用于中等规模的有监督和无监督问题。这个包侧重于使用通用高级语言将机器学习带给非专家。
 
-——[Scikit-learn:Python 中的机器学习](http://www.jmlr.org/papers/v12/pedregosa11a)，2011。
+——[Sklearn:Python 中的机器学习](http://www.jmlr.org/papers/v12/pedregosa11a)，2011。
 
-尽管 scikit-learn 库不是围绕不平衡分类问题设计的，但它确实提供了一些处理不平衡数据集的工具，例如:
+尽管 Sklearn 库不是围绕不平衡分类问题设计的，但它确实提供了一些处理不平衡数据集的工具，例如:
 
 *   支持一系列指标，例如 ROC AUC 和精度/召回率、F1、Brier 评分等。
 *   支持类别加权，例如决策树、SVM 等。
 
 ### 不平衡学习库
 
-一个与 scikit-learn 相关的致力于不平衡分类问题的项目叫做不平衡学习。
+一个与 Sklearn 相关的致力于不平衡分类问题的项目叫做不平衡学习。
 
-它结合 scikit-learn 库提供了可用于不平衡分类的技术，允许库之间共享学习算法和模型评估技术。
+它结合 Sklearn 库提供了可用于不平衡分类的技术，允许库之间共享学习算法和模型评估技术。
 
 > 不平衡学习是一个开源的 python 工具箱，旨在提供广泛的方法来应对机器学习和模式识别中经常遇到的不平衡数据集问题。
 
@@ -226,7 +226,7 @@ Python 中机器学习的 go-to 库是 [scikit-learn](https://scikit-learn.org/)
 
 有关不平衡学习的更多信息，请参见:
 
-*   [不平衡学习项目，GitHub](https://github.com/scikit-learn-contrib/imbalanced-learn) 。
+*   [不平衡学习项目，GitHub](https://github.com/Sklearn-contrib/imbalanced-learn) 。
 *   [不平衡学习文档](https://imbalanced-learn.org)。
 *   [不平衡学习:解决机器学习中不平衡数据集诅咒的 Python 工具箱](https://arxiv.org/abs/1609.06570)，2016。
 

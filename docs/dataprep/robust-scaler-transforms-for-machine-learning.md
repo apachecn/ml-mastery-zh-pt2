@@ -1,4 +1,4 @@
-# 如何为机器学习缩放有异常值的数据
+# 如何为机器学习缩放带有异常值的数据
 
 > 原文：<https://machinelearningmastery.com/robust-scaler-transforms-for-machine-learning/>
 
@@ -71,7 +71,7 @@
 
 ## 鲁棒缩放器变换
 
-通过[鲁棒缩放器类](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html)，在 scikit-learn Python 机器学习库中可以获得鲁棒缩放器转换。
+通过[鲁棒缩放器类](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html)，在 Sklearn Python 机器学习库中可以获得鲁棒缩放器转换。
 
 带中心的“*”参数控制值是否以零为中心(减去中间值)，默认为*真*。*
 
@@ -148,7 +148,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 ![Histogram Plots of Input Variables for the Sonar Binary Classification Dataset](img/9cc826a7edfcf0b57669fba9df1d38d1.png)
 
-声纳二进制分类数据集输入变量的直方图
+声纳二进制类别数据集输入变量的直方图
 
 接下来，让我们在原始数据集上拟合和评估一个机器学习模型。
 
@@ -407,8 +407,8 @@ pyplot.show()
 
 ### 蜜蜂
 
-*   [标准化，或均值去除和方差缩放，scikit-learn](https://scikit-learn.org/stable/modules/preprocessing.html#preprocessing-scaler) 。
-*   [sklearn . preferencing . robustscaler API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html)。
+*   [标准化，或均值去除和方差缩放，Sklearn](https://Sklearn.org/stable/modules/preprocessing.html#preprocessing-scaler) 。
+*   [sklearn . preferencing . robustscaler API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html)。
 
 ### 文章
 

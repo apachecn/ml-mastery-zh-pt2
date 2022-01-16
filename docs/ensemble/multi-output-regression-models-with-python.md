@@ -65,21 +65,21 @@
 
 ### 检查套件-学习版本
 
-首先，确认您安装了 scikit-learn 库的现代版本。
+首先，确认您安装了 Sklearn 库的现代版本。
 
 这很重要，因为我们将在本教程中探索的一些模型需要一个现代版本的库。
 
 您可以使用下面的代码示例检查库的版本:
 
 ```py
-# check scikit-learn version
+# check Sklearn version
 import sklearn
 print(sklearn.__version__)
 ```
 
 运行该示例将打印库的版本。
 
-在撰写本文时，这大约是 0.22 版本。您需要使用 scikit-learn 或更高版本。
+在撰写本文时，这大约是 0.22 版本。您需要使用 Sklearn 或更高版本。
 
 ```py
 0.22.1
@@ -89,7 +89,7 @@ print(sklearn.__version__)
 
 我们可以定义一个测试问题，用来演示不同的建模策略。
 
-我们将使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个多输出回归的测试数据集。我们将生成 1000 个具有 10 个输入特征的示例，其中五个是冗余的，五个是信息丰富的。这个问题需要预测两个数值。
+我们将使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个多输出回归的测试数据集。我们将生成 1000 个具有 10 个输入特征的示例，其中五个是冗余的，五个是信息丰富的。这个问题需要预测两个数值。
 
 *   **问题输入** : 10 个数字变量。
 *   **问题输出** : 2 个数值变量。
@@ -117,7 +117,7 @@ print(X.shape, y.shape)
 
 一些回归机器学习算法直接支持多输出。
 
-这包括 scikit-learn 库中实现的大多数流行的机器学习算法，例如:
+这包括 Sklearn 库中实现的大多数流行的机器学习算法，例如:
 
 *   linearregrecession _ 及相关)
 *   KNeighborsRegressor
@@ -254,7 +254,7 @@ MAE: 51.817 (2.863)
 
 并非所有回归算法都支持多输出回归。
 
-一个例子是[支持向量机](https://machinelearningmastery.com/support-vector-machines-for-machine-learning/)，虽然对于回归，它被称为支持向量回归，或[支持向量回归](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html)。
+一个例子是[支持向量机](https://machinelearningmastery.com/support-vector-machines-for-machine-learning/)，虽然对于回归，它被称为支持向量回归，或[支持向量回归](https://Sklearn.org/stable/modules/generated/sklearn.svm.SVR.html)。
 
 此算法不支持回归问题的多个输出，并且会产生错误。我们可以用下面列出的例子来证明这一点。
 
@@ -306,7 +306,7 @@ ValueError: bad input shape (1000, 2)
 
 例如，你的问题的输出实际上可能大部分是独立的，如果不是完全独立的话，这个策略可以帮助你找到答案。
 
-这种方法得到了以回归模型为参数的[multipoutputruler](https://scikit-learn.org/stable/modules/generated/sklearn.multioutput.MultiOutputRegressor.html)类的支持。然后，它将为问题中的每个输出创建所提供模型的一个实例。
+这种方法得到了以回归模型为参数的[multipoutputruler](https://Sklearn.org/stable/modules/generated/sklearn.multioutput.MultiOutputRegressor.html)类的支持。然后，它将为问题中的每个输出创建所提供模型的一个实例。
 
 下面的例子演示了我们如何首先创建一个单输出回归模型，然后使用*multi outputerrors*类包装回归模型并添加对多输出回归的支持。
 
@@ -406,7 +406,7 @@ Predicted: [50.01932887 64.49432991]
 *   **问题 2** :给定 *X* 和 *yhat1* ，预测 *y2* 。
 *   **问题 3** :给定 *X，yhat1，yhat2* ，预测 *y3* 。
 
-这可以使用 scikit-learn 库中的[returnorchain](https://scikit-learn.org/stable/modules/generated/sklearn.multioutput.RegressorChain.html)类来实现。
+这可以使用 Sklearn 库中的[returnorchain](https://Sklearn.org/stable/modules/generated/sklearn.multioutput.RegressorChain.html)类来实现。
 
 模型的顺序可以基于数据集中输出的顺序(默认)或通过“*顺序*参数指定。例如，*阶=[0，1]* 将首先预测第 0 个输出，然后是第 1 个输出，而*阶=[1，0]* 将首先预测最后一个输出变量，然后是我们测试问题中的第一个输出变量。
 
@@ -501,10 +501,10 @@ Predicted: [50.03206    64.73673318]
 
 ### 蜜蜂
 
-*   [多类和多标签算法，API](https://scikit-learn.org/stable/modules/multiclass.html) 。
-*   [sklearn . datasets . make _ revolution API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)。
-*   [硬化。多倍体。多倍体回归 API](https://scikit-learn.org/stable/modules/generated/sklearn.multioutput.MultiOutputRegressor.html) 。
-*   [硬化。多倍体。回归 API](https://scikit-learn.org/stable/modules/generated/sklearn.multioutput.RegressorChain.html) 。
+*   [多类和多标签算法，API](https://Sklearn.org/stable/modules/multiclass.html) 。
+*   [sklearn . datasets . make _ revolution API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)。
+*   [硬化。多倍体。多倍体回归 API](https://Sklearn.org/stable/modules/generated/sklearn.multioutput.MultiOutputRegressor.html) 。
+*   [硬化。多倍体。回归 API](https://Sklearn.org/stable/modules/generated/sklearn.multioutput.RegressorChain.html) 。
 
 ## 摘要
 

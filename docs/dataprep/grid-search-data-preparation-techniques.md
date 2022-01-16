@@ -17,7 +17,7 @@
 完成本教程后，您将知道:
 
 *   网格搜索为表格数据的数据准备提供了一种替代方法，其中变换被尝试作为建模管道的超参数。
-*   如何使用网格搜索方法进行数据准备，以提高标准分类数据集的模型表现。
+*   如何使用网格搜索方法进行数据准备，以提高标准类别数据集的模型表现。
 *   如何网格搜索序列的数据准备方法，进一步提高模型表现。
 
 **用我的新书[机器学习的数据准备](https://machinelearningmastery.com/data-preparation-for-machine-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -35,7 +35,7 @@
 
 1.  用于数据准备的网格搜索技术
 2.  数据集和表现基线
-    1.  葡萄酒分类数据集
+    1.  葡萄酒类别数据集
     2.  基线模型表现
 3.  数据准备的网格搜索方法
 
@@ -63,9 +63,9 @@
 
 在本节中，我们将首先选择一个标准的机器学习数据集，并在该数据集上建立表现基线。这将为下一节探索数据准备的网格搜索方法提供背景。
 
-### 葡萄酒分类数据集
+### 葡萄酒类别数据集
 
-我们将使用葡萄酒分类数据集。
+我们将使用葡萄酒类别数据集。
 
 该数据集有 13 个输入变量，用于描述葡萄酒样品的化学成分，并要求将葡萄酒分为三种类型。
 
@@ -162,7 +162,7 @@ scores = evaluate_model(X, y, model)
 print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-将这些联系在一起，下面列出了在原酒分类数据集上评估逻辑回归模型的完整示例。
+将这些联系在一起，下面列出了在原酒类别数据集上评估逻辑回归模型的完整示例。
 
 ```py
 # baseline model performance on the wine dataset
@@ -276,7 +276,7 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-将这些联系在一起，下面列出了葡萄酒分类数据集中网格搜索数据准备技术的完整示例。
+将这些联系在一起，下面列出了葡萄酒类别数据集中网格搜索数据准备技术的完整示例。
 
 ```py
 # compare data preparation methods for the wine classification dataset
@@ -386,13 +386,13 @@ pyplot.show()
 
 ![Box and Whisker Plot of Classification Accuracy for Different Data Transforms on the Wine Classification Dataset](img/77b02a39e7c938f68c9de3fed81927f3.png)
 
-葡萄酒分类数据集上不同数据转换的分类准确度的盒须图
+葡萄酒类别数据集上不同数据转换的分类准确度的盒须图
 
 我们还可以探索变换序列，看看它们是否能提升表现。
 
 例如，我们可能希望在标准化变换后应用 [RFE 特征选择](https://machinelearningmastery.com/rfe-feature-selection-in-python/)，以查看是否可以用更少的输入变量(例如，更少的复杂性)使用相同或更好的结果。
 
-我们可能还想看看在数据缩放变换之前的[幂变换](https://machinelearningmastery.com/power-transforms-with-scikit-learn/)是否能在数据集上获得良好的表现，因为我们认为如果分位数变换成功的话，它可以。
+我们可能还想看看在数据缩放变换之前的[幂变换](https://machinelearningmastery.com/power-transforms-with-Sklearn/)是否能在数据集上获得良好的表现，因为我们认为如果分位数变换成功的话，它可以。
 
 下面提供了更新后的 *get_pipelines()* 函数的变换序列。
 
@@ -500,7 +500,7 @@ pyplot.show()
 
 ![Box and Whisker Plot of Classification Accuracy for Different Sequences of Data Transforms on the Wine Classification Dataset](img/219b95945eb32a9407cc61f836506b77.png)
 
-葡萄酒分类数据集中不同数据转换序列分类精度的盒须图
+葡萄酒类别数据集中不同数据转换序列分类精度的盒须图
 
 ## 进一步阅读
 
@@ -513,7 +513,7 @@ pyplot.show()
 
 ### 蜜蜂
 
-*   [sklearn . pipeline . pipeline API](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)。
+*   [sklearn . pipeline . pipeline API](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)。
 
 ## 摘要
 
@@ -522,7 +522,7 @@ pyplot.show()
 具体来说，您了解到:
 
 *   网格搜索为表格数据的数据准备提供了一种替代方法，其中变换被尝试作为建模管道的超参数。
-*   如何使用网格搜索方法进行数据准备，以提高标准分类数据集的模型表现。
+*   如何使用网格搜索方法进行数据准备，以提高标准类别数据集的模型表现。
 *   如何网格搜索序列的数据准备方法，进一步提高模型表现。
 
 **你有什么问题吗？**

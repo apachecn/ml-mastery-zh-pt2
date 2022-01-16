@@ -1,4 +1,4 @@
-# 如何使用列转换器进行数据准备
+# 如何将列转换器用于数据准备
 
 > 原文：<https://machinelearningmastery.com/columntransformer-for-numerical-and-categorical-data/>
 
@@ -10,7 +10,7 @@
 
 当所有输入变量都是相同类型时，应用数据转换(如缩放或编码分类变量)非常简单。当您有一个混合类型的数据集，并且您想要有选择地将数据转换应用于一些(但不是全部)输入要素时，这可能会很有挑战性。
 
-值得庆幸的是，scikit-learn Python 机器学习库提供了 **ColumnTransformer** ，允许您选择性地将数据转换应用到数据集中的不同列。
+值得庆幸的是，Sklearn Python 机器学习库提供了 **ColumnTransformer** ，允许您选择性地将数据转换应用到数据集中的不同列。
 
 在本教程中，您将了解如何使用 ColumnTransformer 有选择地将数据转换应用于具有混合数据类型的数据集中的列。
 
@@ -28,7 +28,7 @@
 
 ![Use the ColumnTransformer for Numerical and Categorical Data in Python](img/7606632cf9520fb67ac4f712c468fb67.png)
 
-使用 Python 中的数值和分类数据的 ColumnTransformer】图片由 [Kari](https://flickr.com/photos/designsbykari/6205452745/) 提供，保留部分权利。
+使用 Python 中的数值和类别数据的 ColumnTransformer】图片由 [Kari](https://flickr.com/photos/designsbykari/6205452745/) 提供，保留部分权利。
 
 ## 教程概述
 
@@ -42,9 +42,9 @@
 
 建模前准备数据很重要。
 
-这可能涉及替换丢失的值、缩放数值和一个热编码分类数据。
+这可能涉及替换丢失的值、缩放数值和一个热编码类别数据。
 
-可以使用 scikit-learn 库执行数据转换；例如，[simplementor](https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)类可以用来替换缺失的值， [MinMaxScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html) 类可以用来缩放数值， [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 可以用来编码分类变量。
+可以使用 Sklearn 库执行数据转换；例如，[simplementor](https://Sklearn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)类可以用来替换缺失的值， [MinMaxScaler](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html) 类可以用来缩放数值， [OneHotEncoder](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 可以用来编码分类变量。
 
 例如:
 
@@ -58,7 +58,7 @@ scaler.fit(train_X)
 train_X = scaler.transform(train_X)
 ```
 
-不同变换的序列也可以使用[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)链接在一起，例如输入缺失值，然后缩放数值。
+不同变换的序列也可以使用[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)链接在一起，例如输入缺失值，然后缩放数值。
 
 例如:
 
@@ -74,13 +74,13 @@ train_X = pipeline.fit_transform(train_X)
 
 例如，您可能希望用一个中值来估算缺失的数值，然后缩放这些值，并使用最频繁的值和一个热编码类别来估算缺失的分类值。
 
-传统上，这将需要您分离数值和分类数据，然后在将列组合在一起之前，手动对这些要素组应用转换，以便拟合和评估模型。
+传统上，这将需要您分离数值和类别数据，然后在将列组合在一起之前，手动对这些要素组应用转换，以便拟合和评估模型。
 
 现在，您可以使用 ColumnTransformer 为您执行此操作。
 
 ## 如何使用列转换器
 
-[ColumnTransformer](https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html) 是 scikit-learn Python 机器学习库中的一个类，允许您选择性地应用数据准备转换。
+[ColumnTransformer](https://Sklearn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html) 是 Sklearn Python 机器学习库中的一个类，允许您选择性地应用数据准备转换。
 
 例如，它允许您将特定的转换或转换序列仅应用于数字列，将单独的转换序列仅应用于分类列。
 
@@ -109,7 +109,7 @@ transformer = ColumnTransformer(transformers=t)
 
 设置*余数=“通过”*将意味着所有未在“*变压器*列表中指定的列都将在没有转换的情况下通过，而不是被删除。
 
-例如，如果第 0 列和第 1 列是数字的，第 2 列和第 3 列是分类的，并且我们只想转换分类数据并不变地通过数字列，那么我们可以如下定义 ColumnTransformer:
+例如，如果第 0 列和第 1 列是数字的，第 2 列和第 3 列是分类的，并且我们只想转换类别数据并不变地通过数字列，那么我们可以如下定义 ColumnTransformer:
 
 ```py
 ...
@@ -162,7 +162,7 @@ yhat = pipeline.predict(test_X)
 
 一个简单的模型可以通过预测平均值达到大约 2.363(标准 0.092)的平均绝对误差(MAE)，通过 10 倍交叉验证进行评估。
 
-我们可以用支持向量机模型( [SVR](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html) )将其建模为回归预测建模问题。
+我们可以用支持向量机模型( [SVR](https://Sklearn.org/stable/modules/generated/sklearn.svm.SVR.html) )将其建模为回归预测建模问题。
 
 查看数据，您可以看到前几行如下:
 
@@ -316,12 +316,12 @@ MAE: 1.465 (0.047)
 
 ### 应用程序接口
 
-*   [硬化。化合物。ColumnTransformer API](https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html) 。
+*   [硬化。化合物。ColumnTransformer API](https://Sklearn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html) 。
 *   [熊猫. read_csv API](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html) 。
-*   [巩理。计费。简单计费 API](https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html) 。
-*   [硬化。预处理。OneHotEncoder API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 。
-*   [硬化。预处理。MinMaxScaler API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)
-*   [sklearn . pipeline . pipeline API](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)。
+*   [巩理。计费。简单计费 API](https://Sklearn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html) 。
+*   [硬化。预处理。OneHotEncoder API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 。
+*   [硬化。预处理。MinMaxScaler API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)
+*   [sklearn . pipeline . pipeline API](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)。
 
 ## 摘要
 

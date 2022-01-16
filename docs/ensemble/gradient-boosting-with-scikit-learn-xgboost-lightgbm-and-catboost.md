@@ -1,6 +1,6 @@
-# 使用 Scikit-Learn、XGBoost、LightGBM 和 CatBoost 进行梯度增强
+# 使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度增强
 
-> 原文：<https://machinelearningmastery.com/gradient-boosting-with-scikit-learn-xgboost-lightgbm-and-catboost/>
+> 原文：<https://machinelearningmastery.com/gradient-boosting-with-Sklearn-xgboost-lightgbm-and-catboost/>
 
 最后更新于 2021 年 4 月 27 日
 
@@ -17,16 +17,16 @@
 完成本教程后，您将知道:
 
 *   梯度增强是一种集成算法，通过最小化误差梯度来适应增强的决策树。
-*   如何使用 scikit-learn 评估和使用梯度增强，包括梯度增强机器和基于直方图的算法。
+*   如何使用 Sklearn 评估和使用梯度增强，包括梯度增强机器和基于直方图的算法。
 *   如何评估和使用第三方梯度增强算法，包括 XGBoost、LightGBM 和 CatBoost。
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
 我们开始吧。
 
-![Gradient Boosting with Scikit-Learn, XGBoost, LightGBM, and CatBoost](img/b874fe3e70b3ccb9ab98de9f992c11c1.png)
+![Gradient Boosting with Sklearn, XGBoost, LightGBM, and CatBoost](img/b874fe3e70b3ccb9ab98de9f992c11c1.png)
 
-使用 Scikit-Learn、XGBoost、LightGBM 和 CatBoost 进行渐变增强
+使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行渐变增强
 图片由[约翰](https://flickr.com/photos/shebalso/441861081/)提供，保留部分权利。
 
 ## 教程概述
@@ -85,7 +85,7 @@
 
 *   [如何配置梯度增强算法](https://machinelearningmastery.com/configure-gradient-boosting-algorithm/)
 
-Python 中有许多梯度增强算法的实现。也许最常用的实现是 scikit-learn 库提供的版本。
+Python 中有许多梯度增强算法的实现。也许最常用的实现是 Sklearn 库提供的版本。
 
 可以使用额外的第三方库来提供算法的计算高效的替代实现，这些实现通常在实践中获得更好的结果。例子包括 XGBoost 库、LightGBM 库和 CatBoost 库。
 
@@ -104,9 +104,9 @@ Python 中有许多梯度增强算法的实现。也许最常用的实现是 sci
 
 *   [如何用 Anaconda](https://machinelearningmastery.com/setup-python-environment-machine-learning-deep-learning-anaconda/) 设置机器学习的 Python 环境
 
-## 使用 Scikit-Learn 进行梯度增强
+## 使用 Sklearn 进行梯度增强
 
-在本节中，我们将回顾如何在 [scikit-learn 库](https://scikit-learn.org/)中使用梯度增强算法实现。
+在本节中，我们将回顾如何在 [Sklearn 库](https://Sklearn.org/)中使用梯度增强算法实现。
 
 ### 库安装
 
@@ -114,22 +114,22 @@ Python 中有许多梯度增强算法的实现。也许最常用的实现是 sci
 
 不要跳过这一步，因为您需要确保安装了最新版本。
 
-您可以使用 pip Python 安装程序安装 scikit-learn 库，如下所示:
+您可以使用 pip Python 安装程序安装 Sklearn 库，如下所示:
 
 ```py
-sudo pip install scikit-learn
+sudo pip install Sklearn
 ```
 
 有关特定于您的平台的其他安装说明，请参见:
 
-*   [安装 scikit-learn](https://scikit-learn.org/stable/install.html)
+*   [安装 Sklearn](https://Sklearn.org/stable/install.html)
 
 接下来，让我们确认库已安装，并且您使用的是现代版本。
 
 运行以下脚本打印库版本号。
 
 ```py
-# check scikit-learn version
+# check Sklearn version
 import sklearn
 print(sklearn.__version__)
 ```
@@ -144,11 +144,11 @@ print(sklearn.__version__)
 
 我们将演示用于分类和回归的梯度增强算法。
 
-因此，我们将使用 scikit-learn 库中的合成测试问题。
+因此，我们将使用 Sklearn 库中的合成测试问题。
 
-#### 分类数据集
+#### 类别数据集
 
-我们将使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个测试二进制分类数据集。
+我们将使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个测试二进制类别数据集。
 
 数据集将有 1，000 个示例，有 10 个输入要素，其中 5 个是信息性的，其余 5 个是冗余的。我们将修复随机数种子，以确保每次运行代码时得到相同的例子。
 
@@ -171,9 +171,9 @@ print(X.shape, y.shape)
 
 #### 回归数据集
 
-我们将使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个测试回归数据集。
+我们将使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个测试回归数据集。
 
-与分类数据集一样，回归数据集将有 1，000 个示例，有 10 个输入要素，其中 5 个是信息性的，其余 5 个是冗余的。
+与类别数据集一样，回归数据集将有 1，000 个示例，有 10 个输入要素，其中 5 个是信息性的，其余 5 个是冗余的。
 
 ```py
 # test regression dataset
@@ -190,22 +190,22 @@ print(X.shape, y.shape)
 (1000, 10) (1000,)
 ```
 
-接下来，让我们看看如何在 scikit-learn 中开发梯度增强模型。
+接下来，让我们看看如何在 Sklearn 中开发梯度增强模型。
 
 ### 梯度升压
 
-scikit-learn 库通过*GradientBoostingClassifier*和*gradientboostingretriever*类提供回归和分类的 GBM 算法。
+Sklearn 库通过*GradientBoostingClassifier*和*gradientboostingretriever*类提供回归和分类的 GBM 算法。
 
 让我们依次仔细看看每一个。
 
 #### 分级梯度推进机
 
-下面的示例首先使用重复的 k 倍交叉验证在测试问题上评估一个[gradientboosting 分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)，并报告平均准确度。然后在所有可用数据上拟合单一模型，并进行单一预测。
+下面的示例首先使用重复的 k 倍交叉验证在测试问题上评估一个[gradientboosting 分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)，并报告平均准确度。然后在所有可用数据上拟合单一模型，并进行单一预测。
 
 下面列出了完整的示例。
 
 ```py
-# gradient boosting for classification in scikit-learn
+# gradient boosting for classification in Sklearn
 from numpy import mean
 from numpy import std
 from sklearn.datasets import make_classification
@@ -240,12 +240,12 @@ Prediction: 1
 
 #### 回归梯度增强机
 
-下面的示例首先使用重复的 k 重交叉验证对测试问题评估一个[gradientboostingrevoller](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)，并报告平均绝对误差。然后在所有可用数据上拟合单一模型，并进行单一预测。
+下面的示例首先使用重复的 k 重交叉验证对测试问题评估一个[gradientboostingrevoller](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)，并报告平均绝对误差。然后在所有可用数据上拟合单一模型，并进行单一预测。
 
 下面列出了完整的示例。
 
 ```py
-# gradient boosting for regression in scikit-learn
+# gradient boosting for regression in Sklearn
 from numpy import mean
 from numpy import std
 from sklearn.datasets import make_regression
@@ -280,7 +280,7 @@ Prediction: -80.661
 
 ### 基于直方图的梯度增强
 
-scikit-learn 库提供了梯度增强算法的替代实现，称为基于直方图的梯度增强。
+Sklearn 库提供了梯度增强算法的替代实现，称为基于直方图的梯度增强。
 
 这是一种实现渐变树增强的替代方法，灵感来自 LightGBM 库(稍后将详细描述)。这个实现是通过*历史梯度增强分类器*和*历史梯度增强回归器*类提供的。
 
@@ -308,12 +308,12 @@ ImportError: cannot import name 'HistGradientBoostingRegressor'
 
 #### 基于直方图的梯度增强分类机
 
-下面的示例首先使用重复的 k 倍交叉验证对测试问题评估一个[HistGradientBoostingCollector](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html)，并报告平均准确度。然后在所有可用数据上拟合单一模型，并进行单一预测。
+下面的示例首先使用重复的 k 倍交叉验证对测试问题评估一个[HistGradientBoostingCollector](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html)，并报告平均准确度。然后在所有可用数据上拟合单一模型，并进行单一预测。
 
 下面列出了完整的示例。
 
 ```py
-# histogram-based gradient boosting for classification in scikit-learn
+# histogram-based gradient boosting for classification in Sklearn
 from numpy import mean
 from numpy import std
 from sklearn.datasets import make_classification
@@ -349,12 +349,12 @@ Prediction: 1
 
 #### 基于直方图的梯度增强回归机
 
-下面的示例首先使用重复的 k 重交叉验证对测试问题评估一个[HistGradientBoostingResolver](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html)，并报告平均绝对误差。然后在所有可用数据上拟合单一模型，并进行单一预测。
+下面的示例首先使用重复的 k 重交叉验证对测试问题评估一个[HistGradientBoostingResolver](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html)，并报告平均绝对误差。然后在所有可用数据上拟合单一模型，并进行单一预测。
 
 下面列出了完整的示例。
 
 ```py
-# histogram-based gradient boosting for regression in scikit-learn
+# histogram-based gradient boosting for regression in Sklearn
 from numpy import mean
 from numpy import std
 from sklearn.datasets import make_regression
@@ -426,7 +426,7 @@ print(xgboost.__version__)
 1.0.1
 ```
 
-XGBoost 库提供了包装器类，因此高效的算法实现可以与 scikit-learn 库一起使用，特别是通过 *XGBClassifier* 和*xgbreversor*类。
+XGBoost 库提供了包装器类，因此高效的算法实现可以与 Sklearn 库一起使用，特别是通过 *XGBClassifier* 和*xgbreversor*类。
 
 让我们依次仔细看看每一个。
 
@@ -552,7 +552,7 @@ print(lightgbm.__version__)
 2.3.1
 ```
 
-LightGBM 库提供了包装类，因此高效的算法实现可以与 scikit-learn 库一起使用，特别是通过 *LGBMClassifier* 和*lgbmreversor*类。
+LightGBM 库提供了包装类，因此高效的算法实现可以与 Sklearn 库一起使用，特别是通过 *LGBMClassifier* 和*lgbmreversor*类。
 
 让我们依次仔细看看每一个。
 
@@ -674,7 +674,7 @@ print(catboost.__version__)
 0.21
 ```
 
-CatBoost 库提供了包装器类，因此高效的算法实现可以与 scikit-learn 库一起使用，特别是通过*CatBoost 分类器*和*CatBoost 渐行渐远器*类。
+CatBoost 库提供了包装器类，因此高效的算法实现可以与 Sklearn 库一起使用，特别是通过*CatBoost 分类器*和*CatBoost 渐行渐远器*类。
 
 让我们依次仔细看看每一个。
 
@@ -778,7 +778,7 @@ Prediction: -74.212
 
 ### 蜜蜂
 
-*   [Scikit-学习主页](https://scikit-learn.org/)。
+*   [Scikit-学习主页](https://Sklearn.org/)。
 *   硬化。API 集。
 *   [XGBoost 主页](https://xgboost.ai/)。
 *   [XGBoost Python API](https://xgboost.readthedocs.io/en/latest/python/python_api.html) 。
@@ -799,7 +799,7 @@ Prediction: -74.212
 具体来说，您了解到:
 
 *   梯度增强是一种集成算法，通过最小化误差梯度来适应增强的决策树。
-*   如何使用 scikit-learn 评估和使用梯度增强，包括梯度增强机器和基于直方图的算法。
+*   如何使用 Sklearn 评估和使用梯度增强，包括梯度增强机器和基于直方图的算法。
 *   如何评估和使用包括 XGBoost、LightGBM 和 CatBoost 在内的第三方梯度增强算法。
 
 **你有什么问题吗？**

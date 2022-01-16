@@ -46,7 +46,7 @@
 
 作为我们探索的基础，我们将使用一个非常简单的两类或二元分类问题。
 
-scikit-learn 库提供了 [make_circles()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_circles.html)，该函数可用于创建具有规定样本数和统计噪声的二进制分类问题。
+Sklearn 库提供了 [make_circles()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)，该函数可用于创建具有规定样本数和统计噪声的二进制分类问题。
 
 每个示例都有两个输入变量，用于定义点在二维平面上的 *x* 和 *y* 坐标。这两个类的点排列成两个同心圆(它们有相同的中心)。
 
@@ -240,7 +240,7 @@ pyplot.show()
 
 运行该示例会创建一个包含四个子情节的绘图，分别针对左上角、右上角、左下角和右下角不同大小的样本[50、100、500、1000]各一个。
 
-我们可以看到，50 个例子可能太少，甚至 100 分看起来也不足以真正学会这个问题。这些图表明，500 个和 1000 个例子可能更容易学习，尽管隐藏了许多“*离群点*”导致两个圆圈重叠的事实。
+我们可以看到，50 个例子可能太少，甚至 100 分看起来也不足以真正学会这个问题。这些图表明，500 个和 1000 个例子可能更容易学习，尽管隐藏了许多“*异常值*”导致两个圆圈重叠的事实。
 
 ![Four Scatter Plots of the Circles Dataset Varied by the Amount of Samples](img/ea8464640bbe74f20a8b2afa7222131c.png)
 
@@ -883,7 +883,7 @@ MLP 圆问题中测试集大小与测试集精度的线图
 
 如果您想更深入地了解这个主题，本节将提供更多资源。
 
-*   [sklearn . dataset . make _ circles API](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_circles.html)
+*   [sklearn . dataset . make _ circles API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)
 *   [matplotlib . pyplot . scatter API](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.scatter.html)
 *   [matplotlib . pyplot . subplot API](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html)
 *   [numpy.where API](https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html)

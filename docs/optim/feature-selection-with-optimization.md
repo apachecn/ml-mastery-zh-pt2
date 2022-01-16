@@ -79,7 +79,7 @@ RFE 是系统地解决这个问题的一种方法，尽管它可能受到大量�
 
 我们将通过一个工作示例来探讨如何做到这一点。
 
-首先，让我们定义一个输入特征很少的小型二进制分类数据集。我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含五个输入变量的数据集，其中两个是信息变量，一千行。
+首先，让我们定义一个输入特征很少的小型二进制类别数据集。我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含五个输入变量的数据集，其中两个是信息变量，一千行。
 
 下面的示例定义了数据集并总结了它的形状。
 
@@ -100,7 +100,7 @@ print(X.shape, y.shape)
 
 接下来，我们可以使用在整个数据集上评估的模型来建立表现基线。
 
-我们将使用[决策树分类器](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)作为模型，因为它的表现对输入变量的选择非常敏感。
+我们将使用[决策树分类器](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)作为模型，因为它的表现对输入变量的选择非常敏感。
 
 我们将使用良好的实践来评估模型，例如[重复分层的 k-fold 交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)，重复 3 次，重复 10 次。
 
@@ -607,7 +607,7 @@ Best: f(239) = 0.918099
 
 ### 蜜蜂
 
-*   [sklearn . datasets . make _ classification API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
+*   [sklearn . datasets . make _ classification API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
 *   [te tools . product API](https://docs.python.org/3/library/itertools.html#itertools.product)。
 
 ## 摘要

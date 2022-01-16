@@ -63,7 +63,7 @@ Let’s get started.![How to Manually Optimize Neural Network Models](img/b8af55
 
 首先，让我们定义一个合成的二元分类问题，我们可以将其作为优化模型的重点。
 
-我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含 1000 行和 5 个输入变量的二元分类问题。
+我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含 1000 行和 5 个输入变量的二元分类问题。
 
 下面的示例创建数据集并总结数据的形状。
 
@@ -550,7 +550,7 @@ score = accuracy_score(y, yhat)
 print(score)
 ```
 
-将所有这些联系在一起，下面列出了在我们的合成二进制分类数据集上用随机初始权重评估 MLP 的完整示例。
+将所有这些联系在一起，下面列出了在我们的合成二进制类别数据集上用随机初始权重评估 MLP 的完整示例。
 
 ```py
 # develop an mlp model for classification
@@ -848,8 +848,8 @@ Test Accuracy: 85.15152
 
 ### 蜜蜂
 
-*   [sklearn . datasets . make _ classification APIS](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
-*   [sklearn . metrics . accuracy _ score APIS](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)。
+*   [sklearn . datasets . make _ classification APIS](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
+*   [sklearn . metrics . accuracy _ score APIS](https://Sklearn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)。
 *   num py . random . rand API。
 
 ## 摘要

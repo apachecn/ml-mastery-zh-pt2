@@ -4,7 +4,7 @@
 
 最后更新于 2020 年 8 月 28 日
 
-#### 了解如何为 CIFAR-10 对象分类数据集从头开发深度卷积神经网络模型。
+#### 了解如何为 CIFAR-10 对象类别数据集从头开发深度卷积神经网络模型。
 
 CIFAR-10 小照片分类问题是计算机视觉和深度学习中使用的标准数据集。
 
@@ -35,14 +35,14 @@ CIFAR-10 小照片分类问题是计算机视觉和深度学习中使用的标�
 
 本教程分为六个部分；它们是:
 
-1.  CIFAR-10 照片分类数据集
+1.  CIFAR-10 照片类别数据集
 2.  模型评估测试线束
 3.  如何开发基线模型
 4.  如何开发改进的模型
 5.  如何进一步改进
 6.  如何最终确定模型并做出预测
 
-## CIFAR-10 照片分类数据集
+## CIFAR-10 照片类别数据集
 
 CIFAR 是首字母缩略词，代表[加拿大高级研究所](https://www.cs.toronto.edu/~kriz/cifar.html)， [CIFAR-10 数据集](https://en.wikipedia.org/wiki/CIFAR-10)是由 CIFAR 研究所的研究人员与 CIFAR-100 数据集一起开发的。
 
@@ -1821,7 +1821,7 @@ run_example()
 
 ### 文章
 
-*   [分类数据集结果，这个图像的类别是什么？](https://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html)
+*   [类别数据集结果，这个图像的类别是什么？](https://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html)
 *   [CIFAR-10，维基百科](https://en.wikipedia.org/wiki/CIFAR-10)。
 *   [CIFAR-10 数据集和 CIFAR-100 数据集](https://www.cs.toronto.edu/~kriz/cifar.html)。
 *   [CIFAR-10–图像中的对象识别，卡格尔](https://www.kaggle.com/c/cifar-10)。

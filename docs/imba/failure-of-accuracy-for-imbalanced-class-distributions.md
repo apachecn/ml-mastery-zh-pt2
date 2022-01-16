@@ -22,7 +22,7 @@
 
 我们开始吧。
 
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新。
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新。
 
 ![Classification Accuracy Is Misleading for Skewed Class Distributions](img/ba011acaaadb85a2931645a43150dae6.png)
 
@@ -146,9 +146,9 @@ Negative Class | False Positive (FP) | True Negative (TN)
 
 首先，我们可以定义一个 1:100 类分布的合成数据集。
 
-[make_blobs() scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html) 函数将始终创建类分布相等的合成数据集。
+[make_blobs() Sklearn](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html) 函数将始终创建类分布相等的合成数据集。
 
-然而，我们可以使用这个函数来创建具有任意类分布的合成分类数据集，只需要几行额外的代码。类别分布可以定义为字典，其中关键字是类别值(例如 0 或 1)，值是要包含在数据集中的随机生成的示例数。
+然而，我们可以使用这个函数来创建具有任意类分布的合成类别数据集，只需要几行额外的代码。类别分布可以定义为字典，其中关键字是类别值(例如 0 或 1)，值是要包含在数据集中的随机生成的示例数。
 
 下面这个名为 *get_dataset()* 的函数将采用一个类分布，并返回一个具有该类分布的合成数据集。
 
@@ -263,11 +263,11 @@ Class 0: 99.010%, Class 1: 0.990%
 
 ![Scatter Plot of Binary Classification Dataset With 1 to 100 Class Distribution](img/afe50700e057358309604c08a088f278.png)
 
-1 到 100 类分布的二元分类数据集的散点图
+1 到 100 类分布的二元类别数据集的散点图
 
 接下来，我们可以拟合一个总是预测多数类的朴素分类器模型。
 
-我们可以使用 scikit 中的 [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 来实现这一点——学习并使用“*最频繁*策略，该策略将始终预测在训练数据集中观察到最多的类标签。
+我们可以使用 scikit 中的 [DummyClassifier](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 来实现这一点——学习并使用“*最频繁*策略，该策略将始终预测在训练数据集中观察到最多的类标签。
 
 ```py
 ...
@@ -275,7 +275,7 @@ Class 0: 99.010%, Class 1: 0.990%
 model = DummyClassifier(strategy='most_frequent')
 ```
 
-然后，我们可以使用重复的 k 倍交叉验证在训练数据集上评估该模型。重要的是，我们使用分层交叉验证来确保数据集的每个分割都具有与训练数据集相同的类分布。这可以通过使用[repeated stratifiedfold 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
+然后，我们可以使用重复的 k 倍交叉验证在训练数据集上评估该模型。重要的是，我们使用分层交叉验证来确保数据集的每个分割都具有与训练数据集相同的类分布。这可以通过使用[repeated stratifiedfold 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
 
 下面的 *evaluate_model()* 函数实现了这一点，并返回模型每次评估的分数列表。
 
@@ -387,9 +387,9 @@ Accuracy: 99.010%
 
 ### 蜜蜂
 
-*   [sklearn . dataset . make _ blobs API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)。
-*   [硬化. dummy . dummy class ification API](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
-*   [sklearn.model_selection。重复的策略应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)。
+*   [sklearn . dataset . make _ blobs API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)。
+*   [硬化. dummy . dummy class ification API](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
+*   [sklearn.model_selection。重复的策略应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)。
 
 ### 文章
 

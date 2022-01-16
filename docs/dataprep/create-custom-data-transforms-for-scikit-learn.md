@@ -1,20 +1,20 @@
-# 如何为 Scikit 创建自定义数据转换-学习
+# 如何为 Sklearn 创建自定义数据转换
 
-> 原文：<https://machinelearningmastery.com/create-custom-data-transforms-for-scikit-learn/>
+> 原文：<https://machinelearningmastery.com/create-custom-data-transforms-for-Sklearn/>
 
 最后更新于 2020 年 7 月 19 日
 
-用于机器学习的 scikit-learn Python 库提供了一套数据转换，用于改变输入数据的规模和分布，以及删除输入特征(列)。
+用于机器学习的 Sklearn Python 库提供了一套数据转换，用于改变输入数据的规模和分布，以及删除输入特征(列)。
 
 有许多简单的数据清理操作，如移除异常值和移除观察值很少的列，这些操作通常是手动对数据执行的，需要自定义代码。
 
-scikit-learn 库提供了一种以标准方式包装这些**自定义数据转换**的方法，因此它们可以像任何其他转换一样使用，无论是直接用于数据还是作为建模管道的一部分。
+Sklearn 库提供了一种以标准方式包装这些**自定义数据转换**的方法，因此它们可以像任何其他转换一样使用，无论是直接用于数据还是作为建模管道的一部分。
 
-在本教程中，您将发现如何为 scikit-learn 定义和使用自定义数据转换。
+在本教程中，您将发现如何为 Sklearn 定义和使用自定义数据转换。
 
 完成本教程后，您将知道:
 
-*   可以使用 FunctionTransformer 类为 scikit-learn 创建自定义数据转换。
+*   可以使用 FunctionTransformer 类为 Sklearn 创建自定义数据转换。
 *   如何开发和应用自定义转换来移除几乎没有唯一值的列。
 *   如何开发和应用自定义转换来替换每列的异常值？
 
@@ -22,7 +22,7 @@ scikit-learn 库提供了一种以标准方式包装这些**自定义数据转�
 
 我们开始吧。
 
-![How to Create Custom Data Transforms for Scikit-Learn](img/3a57fb9146c84aa3368b13756395c5c7.png)
+![How to Create Custom Data Transforms for Sklearn](img/3a57fb9146c84aa3368b13756395c5c7.png)
 
 如何为 Scikit 创建自定义数据转换-了解[贝瑞特·沃特金](https://www.flickr.com/photos/ben124/8126877692/)拍摄的
 照片，保留部分权利。
@@ -31,28 +31,28 @@ scikit-learn 库提供了一种以标准方式包装这些**自定义数据转�
 
 本教程分为四个部分；它们是:
 
-1.  Scikit-Learn 中的自定义数据转换
+1.  Sklearn 中的自定义数据转换
 2.  溢油数据集
 3.  移除列的自定义转换
 4.  替换异常值的自定义转换
 
-## Scikit-Learn 中的自定义数据转换
+## Sklearn 中的自定义数据转换
 
 数据准备是指以某种方式改变原始数据，使其更适合用机器学习算法进行预测建模。
 
-scikit-learn Python 机器学习库直接提供了许多不同的数据准备技术，例如缩放数值输入变量和改变变量概率分布的技术。
+Sklearn Python 机器学习库直接提供了许多不同的数据准备技术，例如缩放数值输入变量和改变变量概率分布的技术。
 
 这些变换可以拟合，然后应用于数据集或用作预测建模管道的一部分，从而允许在使用数据采样技术(如 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/))评估模型表现时，正确应用一系列变换，而不会出现数据泄漏。
 
-尽管 scikit-learn 中可用的数据准备技术非常广泛，但可能还需要额外的数据准备步骤。
+尽管 Sklearn 中可用的数据准备技术非常广泛，但可能还需要额外的数据准备步骤。
 
 通常，这些额外的步骤是在建模之前手动执行的，并且需要编写自定义代码。风险在于这些数据准备步骤的执行可能不一致。
 
-解决方案是在 scikit-learn 中使用 [FunctionTransformer 类](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.FunctionTransformer.html)创建自定义数据转换。
+解决方案是在 Sklearn 中使用 [FunctionTransformer 类](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.FunctionTransformer.html)创建自定义数据转换。
 
 此类允许您指定一个被调用来转换数据的函数。您可以定义函数并执行任何有效的更改，例如更改值或删除数据列(而不是删除行)。
 
-该类可以像 scikit-learn 中的任何其他数据转换一样使用，例如直接转换数据，或者在建模管道中使用。
+该类可以像 Sklearn 中的任何其他数据转换一样使用，例如直接转换数据，或者在建模管道中使用。
 
 问题是**转换是无状态的**，也就是说没有状态可以保持。
 
@@ -124,7 +124,7 @@ print(X.shape, y.shape)
 
 这并不是绝对正确的，但是您应该在删除了这种类型的列的数据集上测试模型拟合的表现，这是足够正确的。
 
-这是一种类型的[数据清理](https://machinelearningmastery.com/basic-data-cleaning-for-machine-learning/)，scikit-learn 中提供了一种称为[变量阈值](https://machinelearningmastery.com/basic-data-cleaning-for-machine-learning/)的数据转换，试图利用每一列的方差来解决这个问题。
+这是一种类型的[数据清理](https://machinelearningmastery.com/basic-data-cleaning-for-machine-learning/)，Sklearn 中提供了一种称为[变量阈值](https://machinelearningmastery.com/basic-data-cleaning-for-machine-learning/)的数据转换，试图利用每一列的方差来解决这个问题。
 
 另一种方法是移除具有少于指定数量的唯一值(如 1)的列。
 
@@ -273,7 +273,7 @@ def cust_transform(X, n_stdev=3, verbose=True):
 
 然后我们可以在 FunctionTransformer 中使用这个函数。
 
-离群点检测的方法假设一个[高斯概率分布](https://machinelearningmastery.com/continuous-probability-distributions-for-machine-learning/)并独立适用于每个变量，两者都是强假设。
+异常值检测的方法假设一个[高斯概率分布](https://machinelearningmastery.com/continuous-probability-distributions-for-machine-learning/)并独立适用于每个变量，两者都是强假设。
 
 此实现的另一个限制是，平均值和标准偏差统计是在提供的数据集上计算的，这意味着异常值的定义及其替换值都是相对于数据集而言的。这意味着，如果在训练集和测试集上使用变换，可以使用不同的异常值定义和不同的替换值。
 
@@ -396,16 +396,16 @@ print(X.shape)
 
 ### 蜜蜂
 
-*   [定制变压器，sci kit-学习用户指南](https://scikit-learn.org/stable/modules/preprocessing.html#custom-transformers)。
-*   [sklearn . preferences . function transformer API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.FunctionTransformer.html)。
+*   [定制变压器，sci kit-学习用户指南](https://Sklearn.org/stable/modules/preprocessing.html#custom-transformers)。
+*   [sklearn . preferences . function transformer API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.FunctionTransformer.html)。
 
 ### 摘要
 
-在本教程中，您发现了如何为 scikit-learn 定义和使用自定义数据转换。
+在本教程中，您发现了如何为 Sklearn 定义和使用自定义数据转换。
 
 具体来说，您了解到:
 
-*   可以使用 FunctionTransformer 类为 scikit-learn 创建自定义数据转换。
+*   可以使用 FunctionTransformer 类为 Sklearn 创建自定义数据转换。
 *   如何开发和应用自定义转换来移除几乎没有唯一值的列。
 *   如何开发和应用自定义转换来替换每列的异常值？
 

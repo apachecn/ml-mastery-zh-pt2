@@ -285,19 +285,19 @@ Predicted Positive | 1               | 0
 
 —第 69 页，[从不平衡数据集](https://amzn.to/307Xlva)中学习，2018。
 
-scikit-learn Python 机器学习库通过以下分类器上的 *class_weight* 参数提供了这些成本敏感扩展的示例:
+Sklearn Python 机器学习库通过以下分类器上的 *class_weight* 参数提供了这些成本敏感扩展的示例:
 
-*   [静止无功补偿器](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
-*   [决定相反分类器](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)
+*   [静止无功补偿器](https://Sklearn.org/stable/modules/generated/sklearn.svm.SVC.html)
+*   [决定相反分类器](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)
 
 修改现有算法的另一种更通用的方法是，在训练算法时，使用成本作为错误分类的惩罚。考虑到大多数机器学习算法都是为了最小化误差而训练的，因此在训练过程中，错误分类的成本会被添加到误差中，或者用于对误差进行加权。
 
 这种方法可以用于迭代训练的算法，如逻辑回归和人工神经网络。
 
-scikit-learn 库通过以下分类器上的 *class_weight* 参数提供了这些成本敏感扩展的示例:
+Sklearn 库通过以下分类器上的 *class_weight* 参数提供了这些成本敏感扩展的示例:
 
 *   物流损耗
-*   [重制](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeClassifier.html)
+*   [重制](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.RidgeClassifier.html)
 
 [Keras Python 深度学习库](https://machinelearningmastery.com/tutorial-first-neural-network-python-keras/)还提供了在训练模型时通过 [fit()函数](https://keras.io/models/sequential/)上的 *class_weight* 参数对神经网络的成本敏感增强的使用进行访问。
 

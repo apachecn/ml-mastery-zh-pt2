@@ -84,9 +84,9 @@
 
 ## 开发混合合奏
 
-scikit-learn 库在编写本文时并不支持混合。
+Sklearn 库在编写本文时并不支持混合。
 
-相反，我们可以使用 scikit-learn 模型自己实现它。
+相反，我们可以使用 Sklearn 模型自己实现它。
 
 首先，我们需要创建一些基础模型。对于回归或分类问题，这些可以是我们喜欢的任何模型。我们可以定义一个函数 *get_models()* ，该函数返回一个模型列表，其中每个模型被定义为一个元组，该元组有一个名称和配置的分类器或回归对象。
 
@@ -202,7 +202,7 @@ def predict_ensemble(models, blender, X_test):
 
 在这一节中，我们将研究混合在分类问题中的应用。
 
-首先，我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例和 20 个输入特征的合成二进制分类问题。
+首先，我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例和 20 个输入特征的合成二进制分类问题。
 
 下面列出了完整的示例。
 
@@ -660,7 +660,7 @@ Predicted Class: 1
 
 在这一节中，我们将研究使用堆叠来解决回归问题。
 
-首先，我们可以使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 10，000 个示例和 20 个输入特征的合成回归问题。
+首先，我们可以使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 10，000 个示例和 20 个输入特征的合成回归问题。
 
 下面列出了完整的示例。
 

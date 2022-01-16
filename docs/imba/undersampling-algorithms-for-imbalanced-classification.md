@@ -47,7 +47,7 @@
 
 ## 不平衡分类的欠采样
 
-欠采样是指一组技术，旨在平衡具有倾斜类分布的分类数据集的类分布。
+欠采样是指一组技术，旨在平衡具有倾斜类分布的类别数据集的类分布。
 
 不平衡的类分布会有一个或多个例子很少的类(少数类)和一个或多个例子很多的类(多数类)。最好在二进制(两类)分类问题的上下文中理解，其中类 0 是多数类，类 1 是少数类。
 
@@ -67,9 +67,9 @@
 
 这种方法的一个扩展是更好地识别被删除的多数类的例子。这通常涉及试探法或学习模型，试图识别冗余的删除示例或有用的未删除示例。
 
-有许多欠采样技术使用这些类型的试探法。在接下来的部分中，我们将回顾一些更常见的方法，并为它们在合成不平衡二进制分类数据集上的操作开发直觉。
+有许多欠采样技术使用这些类型的试探法。在接下来的部分中，我们将回顾一些更常见的方法，并为它们在合成不平衡二进制类别数据集上的操作开发直觉。
 
-我们可以使用 scikit-learn 库中的 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个合成的二进制分类数据集。例如，我们可以创建 10，000 个具有两个输入变量和 1:100 分布的示例，如下所示:
+我们可以使用 Sklearn 库中的 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个合成的二进制类别数据集。例如，我们可以创建 10，000 个具有两个输入变量和 1:100 分布的示例，如下所示:
 
 ```py
 ...
@@ -90,7 +90,7 @@ pyplot.legend()
 pyplot.show()
 ```
 
-将这些联系在一起，下面列出了创建不平衡分类数据集并绘制示例的完整示例。
+将这些联系在一起，下面列出了创建不平衡类别数据集并绘制示例的完整示例。
 
 ```py
 # Generate and plot a synthetic imbalanced classification dataset
@@ -122,17 +122,17 @@ Counter({0: 9900, 1: 100})
 
 ![Scatter Plot of Imbalanced Classification Dataset](img/7cf12680aee37c472ddd95ec33c4175b.png)
 
-不平衡分类数据集的散点图
+不平衡类别数据集的散点图
 
 这个图提供了发展直觉的起点，即不同的欠采样技术对多数类的影响。
 
-接下来，我们可以开始回顾通过[不平衡学习 Python 库](https://github.com/scikit-learn-contrib/imbalanced-learn)提供的流行欠采样方法。
+接下来，我们可以开始回顾通过[不平衡学习 Python 库](https://github.com/Sklearn-contrib/imbalanced-learn)提供的流行欠采样方法。
 
 有许多不同的方法可供选择。我们将把它们分成从多数类中选择要保留的示例的方法、选择要删除的示例的方法以及两种方法的组合。
 
 ## 不平衡学习库
 
-在这些例子中，我们将使用[不平衡学习 Python 库](https://github.com/scikit-learn-contrib/imbalanced-learn)提供的实现，可以通过 pip 安装如下:
+在这些例子中，我们将使用[不平衡学习 Python 库](https://github.com/Sklearn-contrib/imbalanced-learn)提供的实现，可以通过 pip 安装如下:
 
 ```py
 sudo pip install imbalanced-learn

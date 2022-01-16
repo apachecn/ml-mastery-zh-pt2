@@ -152,7 +152,7 @@ X1
 
 您可以使用 [unique() NumPy 函数](https://docs.scipy.org/doc/numpy/reference/generated/numpy.unique.html)检测具有此属性的行，该函数将报告每列中唯一值的数量。
 
-以下示例加载了包含 50 个变量的溢油分类数据集，并总结了每列的唯一值的数量。
+以下示例加载了包含 50 个变量的溢油类别数据集，并总结了每列的唯一值的数量。
 
 ```py
 # summarize the number of unique values for each column using numpy
@@ -520,7 +520,7 @@ print(df.shape)
 
 方差可以用作识别要从数据集中移除的列的过滤器。单个值的列的方差为 0.0，唯一值很少的列的方差值很小。
 
-scikit-learn 库中的 [VarianceThreshold](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.VarianceThreshold.html) 类支持这种类型的特征选择。可以创建类的一个实例，指定“*阈值*”参数，该参数默认为 0.0 以删除具有单个值的列。
+Sklearn 库中的 [VarianceThreshold](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.VarianceThreshold.html) 类支持这种类型的特征选择。可以创建类的一个实例，指定“*阈值*”参数，该参数默认为 0.0 以删除具有单个值的列。
 
 然后，可以通过调用 *fit_transform()* 函数来拟合数据集并将其应用于数据集，以创建数据集的转换版本，其中方差低于阈值的列已被自动移除。
 
@@ -764,7 +764,7 @@ print(df.shape)
 
 *   num py . unique API。
 *   [熊猫。data frame . never API](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.nunique.html)。
-*   [sklearn.feature_selection。变量阈值](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.VarianceThreshold.html) API。
+*   [sklearn.feature_selection。变量阈值](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.VarianceThreshold.html) API。
 *   [熊猫。DataFrame.drop API](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.drop.html) 。
 *   [熊猫。重复的应用编程接口](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.duplicated.html)。
 *   [熊猫。data frame . drop _ duplicates API](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.drop_duplicates.html)。

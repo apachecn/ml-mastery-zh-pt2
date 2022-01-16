@@ -556,7 +556,7 @@ beta 的一个常见值是 2，这是竞争中使用的值，召回的价值是�
 
 正负类的思想只对二元分类问题有意义。当我们预测多个类时，正项、负项和相关项的概念以一个相对于其余项的方式为每个类计算，然后在每个类中取平均值。
 
-scikit-learn 库通过 [fbeta_score()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)提供 F-beta 的实现。我们可以调用该函数来评估一组预测，并指定β值为 2，将“*平均值*参数设置为“*样本*”。
+Sklearn 库通过 [fbeta_score()函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)提供 F-beta 的实现。我们可以调用该函数来评估一组预测，并指定β值为 2，将“*平均值*参数设置为“*样本*”。
 
 ```py
 score = fbeta_score(y_true, y_pred, 2, average='samples')
@@ -594,7 +594,7 @@ train_yhat = asarray([ones(trainY.shape[1]) for _ in range(trainY.shape[0])])
 test_yhat = asarray([ones(testY.shape[1]) for _ in range(testY.shape[0])])
 ```
 
-然后可以使用 scikit-learn fbeta_score()函数，用训练和测试数据集中的真实值来评估预测。
+然后可以使用 Sklearn fbeta_score()函数，用训练和测试数据集中的真实值来评估预测。
 
 ```py
 train_score = fbeta_score(trainY, train_yhat, 2, average='samples')
@@ -673,7 +673,7 @@ def fbeta(y_true, y_pred, beta=2):
 model.compile(... metrics=[fbeta])
 ```
 
-我们可以测试这个新功能，并将结果与 scikit-learn 功能进行比较，如下所示。
+我们可以测试这个新功能，并将结果与 Sklearn 功能进行比较，如下所示。
 
 ```py
 # compare f-beta score between sklearn and keras
@@ -726,7 +726,7 @@ test_score = fbeta(backend.variable(testY), backend.variable(test_yhat))
 print('All Ones (keras): train=%.3f, test=%.3f' % (train_score, test_score))
 ```
 
-运行该示例像以前一样加载数据集，在这种情况下，使用 scikit-learn 和 Keras 计算 F-beta。我们可以看到这两个函数实现了相同的结果。
+运行该示例像以前一样加载数据集，在这种情况下，使用 Sklearn 和 Keras 计算 F-beta。我们可以看到这两个函数实现了相同的结果。
 
 ```py
 (28335, 128, 128, 3) (28335, 17) (12144, 128, 128, 3) (12144, 17)
@@ -2038,8 +2038,8 @@ run_example(inv_mapping)
 *   [Keras 应用程序接口](https://keras.io/applications/)
 *   [Keras 图像处理 API](https://keras.io/preprocessing/image/)
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [硬化. metrics.fbeta_score.html API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)
-*   [sklearn . model _ selection . train _ test _ split API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
+*   [硬化. metrics.fbeta_score.html API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)
+*   [sklearn . model _ selection . train _ test _ split API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
 *   [旧版本的 Keras 指标源代码(带 fbeta_score)。](https://github.com/keras-team/keras/blob/4fa7e5d454dd4f3f33f1d756a2a8659f2e789141/keras/metrics.py#L134)
 *   [喀拉斯、卡格尔内核的 F-beta 评分。](https://www.kaggle.com/arsenyinfo/f-beta-score-for-keras)
 

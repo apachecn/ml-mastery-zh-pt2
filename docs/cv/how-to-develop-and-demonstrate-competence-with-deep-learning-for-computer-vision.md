@@ -105,7 +105,7 @@
 
 它可能包括机器学习和深度学习库的基本数据处理能力，例如:
 
-*   [scikit-学习特征提取 API](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_extraction)
+*   [scikit-学习特征提取 API](https://Sklearn.org/stable/modules/classes.html#module-sklearn.feature_extraction)
 *   [Keras 图像预处理 API](https://keras.io/preprocessing/image/)
 
 Python 中你最喜欢的图像处理 API 有哪些？
@@ -193,7 +193,7 @@ Python 中你最喜欢的图像处理 API 有哪些？
 *   [Pillow](https://python-pillow.org/)
 *   [OpenCV](https://opencv.org/)
 *   [OpenCV Python 教程](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html)
-*   [sklearn.feature_extraction:特征提取 API](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_extraction)
+*   [sklearn.feature_extraction:特征提取 API](https://Sklearn.org/stable/modules/classes.html#module-sklearn.feature_extraction)
 *   [Keras 图像预处理 API](https://keras.io/preprocessing/image/)
 
 ### 资料组

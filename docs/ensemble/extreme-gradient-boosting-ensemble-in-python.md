@@ -15,7 +15,7 @@
 完成本教程后，您将知道:
 
 *   极端梯度增强是随机梯度增强集成算法的一个有效的开源实现。
-*   如何用 scikit-learn API 开发用于分类和回归的 XGBoost 集成？
+*   如何用 Sklearn API 开发用于分类和回归的 XGBoost 集成？
 *   如何探索 XGBoost 模型超参数对模型表现的影响？
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -86,7 +86,7 @@ XGBoost 在分类和回归预测建模问题上主导结构化或表格数据集
 
 ## xboost Scikit-学习应用编程接口
 
-xboost 可以作为一个独立的库安装，并且可以使用 scikit-learn API 开发一个 xboost 模型。
+xboost 可以作为一个独立的库安装，并且可以使用 Sklearn API 开发一个 xboost 模型。
 
 第一步是安装尚未安装的 XGBoost 库。这可以在大多数平台上使用 pip python 包管理器来实现；例如:
 
@@ -130,7 +130,7 @@ FutureWarning: pandas.util.testing is deprecated. Use the functions in the publi
 
 *   [XGBoost 安装指南](https://xgboost.readthedocs.io/en/latest/build.html)
 
-尽管我们将通过 scikit-learn 包装类使用这个方法:[xgbreversor](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBRegressor)和 [XGBClassifier](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier) ，但是 XGBoost 库有自己的自定义 API。这将允许我们使用 scikit-learn 机器学习库中的全套工具来准备数据和评估模型。
+尽管我们将通过 Sklearn 包装类使用这个方法:[xgbreversor](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBRegressor)和 [XGBClassifier](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier) ，但是 XGBoost 库有自己的自定义 API。这将允许我们使用 Sklearn 机器学习库中的全套工具来准备数据和评估模型。
 
 这两个模型以相同的方式运行，并采用相同的参数来影响决策树的创建和添加。
 
@@ -144,7 +144,7 @@ FutureWarning: pandas.util.testing is deprecated. Use the functions in the publi
 
 在本节中，我们将研究如何使用 XGBoost 解决分类问题。
 
-首先，我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
+首先，我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
 
 下面列出了完整的示例。
 
@@ -200,7 +200,7 @@ Accuracy: 0.925 (0.028)
 
 首先，XGBoost 集合适合所有可用数据，然后可以调用 *predict()* 函数对新数据进行预测。重要的是，该函数期望数据总是以 NumPy 数组的形式提供，即每个输入样本一行的矩阵。
 
-下面的示例在我们的二进制分类数据集上演示了这一点。
+下面的示例在我们的二进制类别数据集上演示了这一点。
 
 ```py
 # make predictions using xgboost for classification
@@ -232,7 +232,7 @@ Predicted Class: 1
 
 在本节中，我们将研究如何使用 XGBoost 解决回归问题。
 
-首先，我们可以使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
+首先，我们可以使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
 
 下面列出了完整的示例。
 
@@ -253,7 +253,7 @@ print(X.shape, y.shape)
 
 接下来，我们可以在这个数据集上评估一个 XGBoost 算法。
 
-正如我们在上一节中所做的，我们将使用重复的 k-fold 交叉验证来评估模型，重复 3 次，重复 10 次。我们将报告所有重复和折叠模型的平均绝对误差(MAE)。scikit-learn 库使 MAE 为负，因此它被最大化而不是最小化。这意味着负 MAE 越大越好，完美模型的 MAE 为 0。
+正如我们在上一节中所做的，我们将使用重复的 k-fold 交叉验证来评估模型，重复 3 次，重复 10 次。我们将报告所有重复和折叠模型的平均绝对误差(MAE)。Sklearn 库使 MAE 为负，因此它被最大化而不是最小化。这意味着负 MAE 越大越好，完美模型的 MAE 为 0。
 
 下面列出了完整的示例。
 
@@ -316,7 +316,7 @@ print('Prediction: %d' % yhat[0])
 Prediction: 50
 ```
 
-现在我们已经熟悉了如何使用 xboost Scikit-Learn API 来评估和使用 xboost 集成，让我们来看看如何配置模型。
+现在我们已经熟悉了如何使用 xboost Sklearn API 来评估和使用 xboost 集成，让我们来看看如何配置模型。
 
 ## XGBoost 超参数
 
@@ -736,7 +736,7 @@ XGBoost 集合柱比率与分类精度的箱线图
 ### 教程
 
 *   [机器学习梯度增强算法简介](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
-*   [使用 Scikit-Learn、XGBoost、LightGBM 和 CatBoost 进行梯度增强](https://machinelearningmastery.com/gradient-boosting-with-scikit-learn-xgboost-lightgbm-and-catboost/)
+*   [使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度增强](https://machinelearningmastery.com/gradient-boosting-with-Sklearn-xgboost-lightgbm-and-catboost/)
 *   [应用机器学习 XGBoost 的温和介绍](https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/)
 
 ### 报纸
@@ -766,7 +766,7 @@ XGBoost 集合柱比率与分类精度的箱线图
 具体来说，您了解到:
 
 *   极端梯度增强是随机梯度增强集成算法的一个有效的开源实现。
-*   如何用 scikit-learn API 开发用于分类和回归的 XGBoost 集成？
+*   如何用 Sklearn API 开发用于分类和回归的 XGBoost 集成？
 *   如何探索 XGBoost 模型超参数对模型表现的影响？
 
 **你有什么问题吗？**

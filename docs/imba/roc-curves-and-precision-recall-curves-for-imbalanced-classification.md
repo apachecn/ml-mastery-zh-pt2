@@ -96,7 +96,7 @@ x 轴表示假阳性率，y 轴表示真阳性率。
 
 —第 27 页，[不平衡学习:基础、算法和应用](https://amzn.to/32K9K6d)，2013。
 
-我们可以使用 [roc_curve() scikit-learn 函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html)在 Python 中绘制模型的 ROC 曲线。
+我们可以使用 [roc_curve() Sklearn 函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.roc_curve.html)在 Python 中绘制模型的 ROC 曲线。
 
 该函数获取测试集中的真实结果(0，1)和 1 类的预测概率。该函数返回每个阈值的假阳性率、每个阈值的真阳性率和阈值。
 
@@ -106,7 +106,7 @@ x 轴表示假阳性率，y 轴表示真阳性率。
 fpr, tpr, thresholds = roc_curve(testy, pos_probs)
 ```
 
-大多数 scikit-learn 模型可以通过调用 *predict_proba()* 函数来预测概率。
+大多数 Sklearn 模型可以通过调用 *predict_proba()* 函数来预测概率。
 
 这将为测试集中的每个样本返回每个类别的概率，例如，在二进制分类问题中，两个类别中的每个类别有两个数字。正类的概率可以作为概率数组中的第二列来检索。
 
@@ -120,7 +120,7 @@ pos_probs = yhat[:, 1]
 
 我们可以在合成数据集上演示这一点，并绘制无技能分类器和逻辑回归模型的 ROC 曲线。
 
-[make _ classing()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)可以用来创建综合分类问题。在这种情况下，我们将为二进制分类问题创建 1000 个示例(每个类大约 500 个示例)。然后，我们将数据集分割成一个训练集，并测试大小相等的集合，以便拟合和评估模型。
+[make _ classing()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)可以用来创建综合分类问题。在这种情况下，我们将为二进制分类问题创建 1000 个示例(每个类大约 500 个示例)。然后，我们将数据集分割成一个训练集，并测试大小相等的集合，以便拟合和评估模型。
 
 ```py
 ...
@@ -130,7 +130,7 @@ X, y = make_classification(n_samples=1000, n_classes=2, random_state=1)
 trainX, testX, trainy, testy = train_test_split(X, y, test_size=0.5, random_state=2)
 ```
 
-逻辑回归模型是一个很好的演示模型，因为预测的概率经过了很好的校准，而其他机器学习模型不是围绕概率模型开发的，在这种情况下，它们的[概率可能需要首先校准](https://machinelearningmastery.com/calibrated-classification-model-in-scikit-learn/)(例如 SVM)。
+逻辑回归模型是一个很好的演示模型，因为预测的概率经过了很好的校准，而其他机器学习模型不是围绕概率模型开发的，在这种情况下，它们的[概率可能需要首先校准](https://machinelearningmastery.com/calibrated-classification-model-in-Sklearn/)(例如 SVM)。
 
 ```py
 ...
@@ -202,7 +202,7 @@ pyplot.show()
 
 —第 27 页，[不平衡学习:基础、算法和应用](https://amzn.to/32K9K6d)，2013。
 
-可以在 scikit-learn 中使用 [roc_auc_score()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)计算 ROC 的 AUC。
+可以在 Sklearn 中使用 [roc_auc_score()函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)计算 ROC 的 AUC。
 
 像 *roc_curve()* 函数一样，AUC 函数同时采用测试集中的真实结果(0，1)和正类的预测概率。
 
@@ -302,7 +302,7 @@ PR 曲线对少数类的关注使其成为不平衡二元分类模型的有效�
 
 ——[不平衡分布下的预测建模综述](https://arxiv.org/abs/1505.01658)，2015 年。
 
-可以在 scikit-learn 中使用 [precision_recall_curve()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)计算精度-召回率曲线，该函数获取少数类的类标签和预测概率，并返回精度、召回率和阈值。
+可以在 Sklearn 中使用 [precision_recall_curve()函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)计算精度-召回率曲线，该函数获取少数类的类标签和预测概率，并返回精度、召回率和阈值。
 
 ```py
 ...
@@ -365,7 +365,7 @@ pyplot.show()
 
 然后，该分数可以用作二元分类问题上不同模型之间的比较点，其中分数 1.0 代表具有完美技能的模型。
 
-精度-召回 AUC 分数可以使用 scikit-learn 中的 [auc()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.auc.html)计算，以精度和召回值为参数。
+精度-召回 AUC 分数可以使用 Sklearn 中的 [auc()函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.auc.html)计算，以精度和召回值为参数。
 
 ```py
 ...
@@ -520,7 +520,7 @@ print('Logistic ROC AUC %.3f' % roc_auc)
 plot_roc_curve(testy, naive_probs, model_probs)
 ```
 
-运行该示例会像以前一样创建不平衡的二进制分类数据集。
+运行该示例会像以前一样创建不平衡的二进制类别数据集。
 
 然后在训练数据集上拟合逻辑回归模型，并在测试数据集上进行评估。一个无技能分类器被评估在旁边作为参考。
 
@@ -537,7 +537,7 @@ Logistic ROC AUC 0.869
 
 ![Plot of ROC Curve for Logistic Regression on Imbalanced Classification Dataset](img/715b698c8a32925767bdf6bb5040c683.png)
 
-不平衡分类数据集上逻辑回归的 ROC 曲线绘制
+不平衡类别数据集上逻辑回归的 ROC 曲线绘制
 
 接下来，我们可以对相同的模型拟合进行分析，并使用精度-召回曲线和 AUC 评分对相同的数据进行评估。
 
@@ -596,7 +596,7 @@ print('Logistic PR AUC: %.3f' % auc_score)
 plot_pr_curve(testy, model_probs)
 ```
 
-像以前一样，运行该示例会创建不平衡的二进制分类数据集。
+像以前一样，运行该示例会创建不平衡的二进制类别数据集。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -613,7 +613,7 @@ Logistic PR AUC: 0.228
 
 ![Plot of Precision-Recall Curve for Logistic Regression on Imbalanced Classification Dataset](img/1b328f239c01722eb1478099c80c6c86.png)
 
-不平衡分类数据集上逻辑回归精度-召回率曲线的绘制
+不平衡类别数据集上逻辑回归精度-召回率曲线的绘制
 
 为了解释为什么 ROC 曲线和 PR 曲线讲述了一个不同的故事，回想一下 PR 曲线关注的是少数族裔，而 ROC 曲线涵盖了这两个阶层。
 
@@ -698,10 +698,10 @@ Counter({0: 500})
 
 ### 应用程序接口
 
-*   [sklearn . datasets . make _ classification API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
-*   [硬化. metrics.roc_curve API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html) 。
-*   [硬化. metrics.roc_auc_score API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)
-*   [精度 _ 召回 _ 曲线 API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html) 。
+*   [sklearn . datasets . make _ classification API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
+*   [硬化. metrics.roc_curve API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.roc_curve.html) 。
+*   [硬化. metrics.roc_auc_score API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)
+*   [精度 _ 召回 _ 曲线 API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html) 。
 *   硬化.公制.无 API 。
 
 ### 文章

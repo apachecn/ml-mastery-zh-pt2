@@ -15,7 +15,7 @@ AdaBoost 算法包括使用非常短的(一级)决策树作为弱学习器，它
 完成本教程后，您将知道:
 
 *   AdaBoost 集成是从顺序添加到模型中的决策树创建的集成
-*   如何使用 AdaBoost 集成与 scikit-learn 进行分类和回归。
+*   如何使用 AdaBoost 集成与 Sklearn 进行分类和回归。
 *   如何探索 AdaBoost 模型超参数对模型表现的影响？
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -78,21 +78,21 @@ AdaBoost 集成可以从头开始实现，尽管这对初学者来说可能很�
 
 *   [机器学习的 Boosting 和 AdaBoost】](https://machinelearningmastery.com/boosting-and-adaboost-for-machine-learning/)
 
-scikit-learn Python 机器学习库为机器学习提供了 AdaBoost 集成的实现。
+Sklearn Python 机器学习库为机器学习提供了 AdaBoost 集成的实现。
 
 它有现代版本的图书馆。
 
 首先，通过运行以下脚本来确认您使用的是现代版本的库:
 
 ```py
-# check scikit-learn version
+# check Sklearn version
 import sklearn
 print(sklearn.__version__)
 ```
 
-运行脚本将打印您的 scikit-learn 版本。
+运行脚本将打印您的 Sklearn 版本。
 
-您的版本应该相同或更高。如果没有，您必须升级 scikit-learn 库的版本。
+您的版本应该相同或更高。如果没有，您必须升级 Sklearn 库的版本。
 
 ```py
 0.22.1
@@ -112,7 +112,7 @@ AdaBoost 通过【AdaBoost 渐层和【AdaBoost 分类器类提供。
 
 在本节中，我们将研究使用 AdaBoost 解决分类问题。
 
-首先，我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
+首先，我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
 
 下面列出了完整的示例。
 
@@ -168,7 +168,7 @@ Accuracy: 0.806 (0.041)
 
 首先，AdaBoost 集成适合所有可用数据，然后可以调用 *predict()* 函数对新数据进行预测。
 
-下面的示例在我们的二进制分类数据集上演示了这一点。
+下面的示例在我们的二进制类别数据集上演示了这一点。
 
 ```py
 # make predictions using adaboost for classification
@@ -198,7 +198,7 @@ Predicted Class: 0
 
 在本节中，我们将研究使用 AdaBoost 解决回归问题。
 
-首先，我们可以使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
+首先，我们可以使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
 
 下面列出了完整的示例。
 
@@ -219,7 +219,7 @@ print(X.shape, y.shape)
 
 接下来，我们可以在这个数据集上评估一个 AdaBoost 算法。
 
-正如我们在上一节中所做的，我们将使用重复的 k-fold 交叉验证来评估模型，重复 3 次，重复 10 次。我们将报告所有重复和折叠模型的平均绝对误差(MAE)。scikit-learn 库使 MAE 为负，因此它被最大化而不是最小化。这意味着负 MAE 越大越好，完美模型的 MAE 为 0。
+正如我们在上一节中所做的，我们将使用重复的 k-fold 交叉验证来评估模型，重复 3 次，重复 10 次。我们将报告所有重复和折叠模型的平均绝对误差(MAE)。Sklearn 库使 MAE 为负，因此它被最大化而不是最小化。这意味着负 MAE 越大越好，完美模型的 MAE 为 0。
 
 下面列出了完整的示例。
 
@@ -280,7 +280,7 @@ print('Prediction: %d' % yhat[0])
 Prediction: -10
 ```
 
-现在我们已经熟悉了使用 scikit-learn API 来评估和使用 AdaBoost 集成，接下来让我们看看如何配置模型。
+现在我们已经熟悉了使用 Sklearn API 来评估和使用 AdaBoost 集成，接下来让我们看看如何配置模型。
 
 ## AdaBoost 超参数
 
@@ -378,7 +378,7 @@ AdaBoost 集成大小与分类精度的箱线图
 
 通过增加决策树的深度，我们可以使集成中使用的模型不那么弱(更熟练)。
 
-下面的例子探索了增加[决策树分类器](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)弱学习器的深度对 AdBoost 集成的影响。
+下面的例子探索了增加[决策树分类器](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)弱学习器的深度对 AdBoost 集成的影响。
 
 ```py
 # explore adaboost ensemble tree depth effect on performance
@@ -565,7 +565,7 @@ AdaBoost 集成学习率与分类精度的箱线图
 
 集成中使用的默认算法是决策树，尽管也可以使用其他算法。
 
-目的是使用非常简单的模型，称为弱学习者。此外，scikit-learn 实现要求使用的任何模型也必须支持加权样本，因为它们是如何通过基于训练数据集的加权版本拟合模型来创建集成的。
+目的是使用非常简单的模型，称为弱学习者。此外，Sklearn 实现要求使用的任何模型也必须支持加权样本，因为它们是如何通过基于训练数据集的加权版本拟合模型来创建集成的。
 
 可以通过“ *base_estimator* ”参数指定基础模型。在分类的情况下，基础模型还必须支持预测概率或类似概率的分数。如果指定的模型不支持加权训练数据集，您将看到如下错误消息:
 
@@ -619,7 +619,7 @@ Accuracy: 0.794 (0.032)
 
 每个配置组合将使用重复的 k 倍交叉验证进行评估，配置将使用平均得分进行比较，在这种情况下，使用分类精度。
 
-下面列出了在我们的合成分类数据集上网格搜索 AdaBoost 算法的关键超参数的完整示例。
+下面列出了在我们的合成类别数据集上网格搜索 AdaBoost 算法的关键超参数的完整示例。
 
 ```py
 # example of grid searching key hyperparameters for adaboost on a classification dataset
@@ -699,8 +699,8 @@ Best: 0.813667 using {'learning_rate': 0.1, 'n_estimators': 500}
 
 ### 蜜蜂
 
-*   [硬化。一起。AdaBoost gressier API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html)。
-*   [硬化。一起。AdaBoost 分类 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) 。
+*   [硬化。一起。AdaBoost gressier API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html)。
+*   [硬化。一起。AdaBoost 分类 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) 。
 
 ### 文章
 
@@ -714,7 +714,7 @@ Best: 0.813667 using {'learning_rate': 0.1, 'n_estimators': 500}
 具体来说，您了解到:
 
 *   AdaBoost 集成是从顺序添加到模型中的决策树创建的集成。
-*   如何使用 AdaBoost 集成与 scikit-learn 进行分类和回归。
+*   如何使用 AdaBoost 集成与 Sklearn 进行分类和回归。
 *   如何探索 AdaBoost 模型超参数对模型表现的影响？
 
 **你有什么问题吗？**

@@ -1,4 +1,4 @@
-# 如何有选择地缩放机器学习的数值输入变量
+# 如何选择性缩放机器学习的数值输入变量
 
 > 原文：<https://machinelearningmastery.com/selectively-scale-numerical-input-variables-for-machine-learning/>
 
@@ -12,7 +12,7 @@
 
 完成本教程后，您将知道:
 
-*   如何加载和计算糖尿病分类数据集的基线预测表现？
+*   如何加载和计算糖尿病类别数据集的基线预测表现？
 *   如何评估数据转换盲目应用于所有数值输入变量的建模管道。
 *   如何用应用于输入变量子集的选择性规范化和标准化来评估建模管道？
 
@@ -95,7 +95,7 @@ pyplot.show()
 
 ![Histogram of Each Variable in the Diabetes Classification Dataset](img/24827c3c66ca7aa24ec76a0ca116d6a9.png)
 
-糖尿病分类数据集中每个变量的直方图
+糖尿病类别数据集中每个变量的直方图
 
 现在我们对数据集有点熟悉了，让我们尝试在原始数据集上拟合和评估模型。
 
@@ -151,9 +151,9 @@ Accuracy: 0.768 (0.040)
 
 缩放数字输入变量的两种常用技术是标准化和规范化。
 
-标准化将每个输入变量缩放到 0-1 的范围，并且可以使用 scikit-learn 中的[最小最大缩放器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)类来实现。标准化将每个输入变量的平均值和标准偏差分别调整为 0.0 和 1.0，可以使用 scikit-learn 中的[标准缩放器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)类来实现。
+标准化将每个输入变量缩放到 0-1 的范围，并且可以使用 Sklearn 中的[最小最大缩放器](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)类来实现。标准化将每个输入变量的平均值和标准偏差分别调整为 0.0 和 1.0，可以使用 Sklearn 中的[标准缩放器](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)类来实现。
 
-要了解有关规范化、标准化以及如何在 scikit-learn 中使用这些方法的更多信息，请参见教程:
+要了解有关规范化、标准化以及如何在 Sklearn 中使用这些方法的更多信息，请参见教程:
 
 *   [如何在 Python 中使用标准缩放器和最小最大缩放器变换](https://machinelearningmastery.com/standardscaler-and-minmaxscaler-transforms-in-python/)
 
@@ -287,7 +287,7 @@ Accuracy: 0.772 (0.043)
 
 ## 数字输入的选择性缩放
 
-使用 scikit-learn 中的 [ColumnTransformer 类，可以有选择地将数据转换应用于输入变量。](https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html)
+使用 Sklearn 中的 [ColumnTransformer 类，可以有选择地将数据转换应用于输入变量。](https://Sklearn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html)
 
 它允许您指定要应用的转换(或转换管道)以及要应用它们的列索引。然后，这可以用作建模管道的一部分，并使用交叉验证进行评估。
 
@@ -526,7 +526,7 @@ Accuracy: 0.772 (0.040)
 
 ### 蜜蜂
 
-*   [硬化。化合物。ColumnTransformer API](https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html) 。
+*   [硬化。化合物。ColumnTransformer API](https://Sklearn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html) 。
 
 ## 摘要
 
@@ -534,7 +534,7 @@ Accuracy: 0.772 (0.040)
 
 具体来说，您了解到:
 
-*   如何加载和计算糖尿病分类数据集的基线预测表现？
+*   如何加载和计算糖尿病类别数据集的基线预测表现？
 *   如何评估数据转换盲目应用于所有数值输入变量的建模管道。
 *   如何用应用于输入变量子集的选择性规范化和标准化来评估建模管道？
 

@@ -77,14 +77,14 @@
 
 首先，我们可以定义一个少数与多数类分布比为 1:100 的数据集。
 
-这可以通过使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建合成数据集来实现，指定示例数(1，000)、类数(2)和每个类的权重(99%和 1%)。
+这可以通过使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建合成数据集来实现，指定示例数(1，000)、类数(2)和每个类的权重(99%和 1%)。
 
 ```py
 # generate 2 class dataset
 X, y = make_classification(n_samples=1000, n_classes=2, weights=[0.99, 0.01], flip_y=0, random_state=1)
 ```
 
-下面的示例生成了合成二进制分类数据集，并总结了类别分布。
+下面的示例生成了合成二进制类别数据集，并总结了类别分布。
 
 ```py
 # create a binary classification dataset
@@ -114,7 +114,7 @@ for c in classes:
 
 在理想情况下，我们将在每个折叠中有 10/5 或两个示例，这意味着在训练数据集中有 4*2 (8)个折叠的示例，在给定的测试数据集中有 1*2 个折叠(2)。
 
-首先，我们将使用 [KFold 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html)将数据集随机拆分为 5 倍，并检查每个训练和测试集的组成。下面列出了完整的示例。
+首先，我们将使用 [KFold 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html)将数据集随机拆分为 5 倍，并检查每个训练和测试集的组成。下面列出了完整的示例。
 
 ```py
 # example of k-fold cross-validation with an imbalanced dataset
@@ -150,7 +150,7 @@ for train_ix, test_ix in kfold.split(X):
 
 如果我们使用简单的数据集训练/测试分割，我们可以证明存在类似的问题，尽管问题没有那么严重。
 
-我们可以使用 [train_test_split()函数](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)来创建数据集的 50/50 分割，平均来说，如果我们多次执行这种分割，每个数据集中会出现少数民族类的五个示例。
+我们可以使用 [train_test_split()函数](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)来创建数据集的 50/50 分割，平均来说，如果我们多次执行这种分割，每个数据集中会出现少数民族类的五个示例。
 
 下面列出了完整的示例。
 
@@ -192,7 +192,7 @@ print('>Train: 0=%d, 1=%d, Test: 0=%d, 1=%d' % (train_0, train_1, test_0, test_1
 
 我们可以用一个例子来具体说明。
 
-我们可以使用[StrateFiedkfold 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html)对拆分进行分层，正如其名称所示，该类支持分层的 k 倍交叉验证。
+我们可以使用[StrateFiedkfold 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html)对拆分进行分层，正如其名称所示，该类支持分层的 k 倍交叉验证。
 
 下面是相同的数据集和相同的交叉验证分层版本的示例。
 
@@ -272,9 +272,9 @@ print('>Train: 0=%d, 1=%d, Test: 0=%d, 1=%d' % (train_0, train_1, test_0, test_1
 
 ### 应用程序接口
 
-*   [sklearn.model_selection。KFold API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html) 。
-*   [sklearn.model_selection。stratifedkfold API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html)。
-*   [sklearn . model _ selection . train _ test _ split API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)。
+*   [sklearn.model_selection。KFold API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html) 。
+*   [sklearn.model_selection。stratifedkfold API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html)。
+*   [sklearn . model _ selection . train _ test _ split API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)。
 
 ## 摘要
 

@@ -102,7 +102,7 @@
 
 您可能需要考虑两种类型的数据缩放:规范化和标准化。
 
-这些都可以通过 scikit-learn 库来实现。
+这些都可以通过 Sklearn 库来实现。
 
 ### 数据标准化
 
@@ -129,7 +129,7 @@ y = 0.72
 
 您可以看到，如果提供的 *x* 值超出了最小值和最大值的界限，则结果值将不会在 0 和 1 的范围内。您可以在进行预测之前检查这些观察值，并从数据集中删除它们，或者将它们限制在预定义的最大值或最小值。
 
-您可以使用 scikit-learn 对象[最小最大缩放器](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)来规范化数据集。
+您可以使用 Sklearn 对象[最小最大缩放器](http://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)来规范化数据集。
 
 *最小最大缩放器*和其他缩放技术的良好实践用法如下:
 
@@ -219,7 +219,7 @@ y = 2.14
 
 数据集的均值和标准差估计值比最小值和最大值对新数据更稳健。
 
-您可以使用 scikit-learn 对象[标准缩放器](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)来标准化数据集。
+您可以使用 Sklearn 对象[标准缩放器](http://Sklearn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)来标准化数据集。
 
 ```py
 # demonstrate data standardization with sklearn
@@ -255,7 +255,7 @@ inverse = scaler.inverse_transform(standardized)
 
 回归[预测建模](https://machinelearningmastery.com/gentle-introduction-to-predictive-modeling/)问题涉及预测实值量。
 
-我们可以在[make _ revolution()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)中使用 scikit-learn 库提供的标准回归问题生成器。该函数将从具有给定数量的输入变量、统计噪声和其他属性的简单回归问题中生成示例。
+我们可以在[make _ revolution()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)中使用 Sklearn 库提供的标准回归问题生成器。该函数将从具有给定数量的输入变量、统计噪声和其他属性的简单回归问题中生成示例。
 
 我们将使用这个函数来定义一个有 20 个输入特征的问题；其中 10 个功能将是有意义的，10 个将不相关。总共将随机生成 1000 个示例。[伪随机数发生器](https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/)将被固定，以确保我们每次运行代码时都能得到相同的 1000 个例子。
 
@@ -412,7 +412,7 @@ Train: nan, Test: nan
 
 最佳实践是估计训练数据集的均值和标准差，并使用这些变量来缩放训练和测试数据集。这是为了避免在模型评估过程中出现任何数据泄露。
 
-scikit-learn 转换器期望输入数据是行和列的矩阵，因此在转换之前，目标变量的 1D 数组必须被重新整形为 2D 数组。
+Sklearn 转换器期望输入数据是行和列的矩阵，因此在转换之前，目标变量的 1D 数组必须被重新整形为 2D 数组。
 
 ```py
 # reshape 1d arrays to 2d arrays
@@ -748,7 +748,7 @@ Standardized: 0.008 (0.004)
 *   [如何在 Python 中扩展长短期记忆网络的数据](https://machinelearningmastery.com/how-to-scale-data-for-long-short-term-memory-networks-in-python/)
 *   [如何用 Python 从头开始扩展机器学习数据](https://machinelearningmastery.com/scale-machine-learning-data-scratch-python/)
 *   [如何在 Python 中对时间序列数据进行规范化和标准化](https://machinelearningmastery.com/normalize-standardize-time-series-data-python/)
-*   [如何用 Scikit-Learn 为 Python 机器学习准备数据](https://machinelearningmastery.com/prepare-data-machine-learning-python-scikit-learn/)
+*   [如何用 Sklearn 为 Python 机器学习准备数据](https://machinelearningmastery.com/prepare-data-machine-learning-python-Sklearn/)
 
 ### 书
 
@@ -756,9 +756,9 @@ Standardized: 0.008 (0.004)
 
 ### 应用程序接口
 
-*   [sklearn . dataset . make _ revolution API](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)
-*   [硬化。预处理。MinMaxScaler API](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)
-*   [硬化。预处理。标准锅炉 API](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)
+*   [sklearn . dataset . make _ revolution API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)
+*   [硬化。预处理。MinMaxScaler API](http://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)
+*   [硬化。预处理。标准锅炉 API](http://Sklearn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)
 
 ### 文章
 

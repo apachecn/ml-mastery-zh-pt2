@@ -23,7 +23,7 @@
 我们开始吧。
 
 *   **2019 年 10 月更新**:针对 Keras 2.3 和 TensorFlow 2.0 更新。
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新
 
 ![How to Choose Loss Functions When Training Deep Learning Neural Networks](img/9638ecc9c71c9377ea020fe578212a0a.png)
 
@@ -59,7 +59,7 @@
 
 在本节中，我们将研究适用于回归预测建模问题的损失函数。
 
-作为本次调查的背景，我们将使用由 scikit-learn 库在[make _ revolution()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)中提供的标准回归问题生成器。该函数将从具有给定数量的输入变量、统计噪声和其他属性的简单回归问题中生成示例。
+作为本次调查的背景，我们将使用由 Sklearn 库在[make _ revolution()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)中提供的标准回归问题生成器。该函数将从具有给定数量的输入变量、统计噪声和其他属性的简单回归问题中生成示例。
 
 我们将使用这个函数来定义一个有 20 个输入特征的问题；其中 10 个功能将是有意义的，10 个将不相关。总共将随机生成 1000 个示例。伪随机数发生器将是固定的，以确保我们每次运行代码时都会得到相同的 1000 个例子。
 
@@ -70,7 +70,7 @@ X, y = make_regression(n_samples=1000, n_features=20, noise=0.1, random_state=1)
 
 当实值输入和输出变量被缩放到合理的范围时，神经网络通常表现得更好。对于这个问题，每个输入变量和目标变量都具有高斯分布；因此，在这种情况下标准化数据是可取的。
 
-我们可以使用 scikit-learn 库中的[标准转换器](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)类来实现这一点。在一个实际问题上，我们将在训练数据集上准备定标器，并将其应用于训练集和测试集，但是为了简单起见，我们将在分割成训练集和测试集之前将所有数据一起定标。
+我们可以使用 Sklearn 库中的[标准转换器](http://Sklearn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)类来实现这一点。在一个实际问题上，我们将在训练数据集上准备定标器，并将其应用于训练集和测试集，但是为了简单起见，我们将在分割成训练集和测试集之前将所有数据一起定标。
 
 ```py
 # standardize dataset
@@ -356,7 +356,7 @@ Train: 0.002, Test: 0.002
 
 在本节中，我们将研究适用于二元分类预测建模问题的损失函数。
 
-我们将从 scikit-learn 中的循环测试问题中生成示例，作为本次调查的基础。[圆问题](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_circles.html)涉及从二维平面上的两个同心圆中抽取的样本，其中外圆上的点属于 0 类，内圆上的点属于 1 类。统计噪声被添加到样本中，以增加模糊性，并使问题更难学习。
+我们将从 Sklearn 中的循环测试问题中生成示例，作为本次调查的基础。[圆问题](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)涉及从二维平面上的两个同心圆中抽取的样本，其中外圆上的点属于 0 类，内圆上的点属于 1 类。统计噪声被添加到样本中，以增加模糊性，并使问题更难学习。
 
 我们将生成 1000 个示例，并添加 10%的统计噪声。伪随机数发生器将被植入相同的值，以确保我们总是得到相同的 1000 个例子。
 
@@ -698,7 +698,7 @@ Train: 0.682, Test: 0.646
 
 在本节中，我们将研究适用于多类分类预测建模问题的损失函数。
 
-我们将使用斑点问题作为调查的基础。scikit-learn 提供的 [make_blobs()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)提供了一种在给定指定数量的类和输入特征的情况下生成示例的方法。我们将使用这个函数为一个有 2 个输入变量的 3 类分类问题生成 1000 个例子。伪随机数发生器将被一致地播种，以便每次运行代码时生成相同的 1000 个例子。
+我们将使用斑点问题作为调查的基础。Sklearn 提供的 [make_blobs()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)提供了一种在给定指定数量的类和输入特征的情况下生成示例的方法。我们将使用这个函数为一个有 2 个输入变量的 3 类分类问题生成 1000 个例子。伪随机数发生器将被一致地播种，以便每次运行代码时生成相同的 1000 个例子。
 
 ```py
 # generate dataset
@@ -1051,10 +1051,10 @@ Train: 0.822, Test: 0.822
 
 *   [喀拉斯损失函数应用编程接口](https://keras.io/losses/)
 *   [喀拉斯激活功能应用编程接口](https://keras.io/activations/)
-*   [硬化。预处理。标准锅炉 API](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)
-*   [sklearn . dataset . make _ revolution API](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)
-*   [sklearn . dataset . make _ circles API](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_circles.html)
-*   [sklearn . dataset . make _ blobs API](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)
+*   [硬化。预处理。标准锅炉 API](http://Sklearn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)
+*   [sklearn . dataset . make _ revolution API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)
+*   [sklearn . dataset . make _ circles API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)
+*   [sklearn . dataset . make _ blobs API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)
 
 ### 文章
 

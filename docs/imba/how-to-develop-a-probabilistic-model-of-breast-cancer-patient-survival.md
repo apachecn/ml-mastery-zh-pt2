@@ -58,7 +58,7 @@
 
 尽管数据集描述了乳腺癌患者的生存率，但鉴于数据集规模较小，并且数据基于几十年前的乳腺癌诊断和手术，因此任何基于该数据集构建的模型都不可一概而论。
 
-**说得再清楚不过**，我们不是“*解决乳腺癌*”我们正在探索一个标准的不平衡分类数据集。
+**说得再清楚不过**，我们不是“*解决乳腺癌*”我们正在探索一个标准的不平衡类别数据集。
 
 您可以在此了解有关数据集的更多信息:
 
@@ -247,17 +247,17 @@ Class=2, Count=81, Percentage=26.471%
 
 这意味着单个模型将被拟合和评估 10 * 3 或 30 次，并且将报告这些运行的平均值和标准偏差。
 
-这可以通过使用[repeated stratifiedfold scikit-learn 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
+这可以通过使用[repeated stratifiedfold Sklearn 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
 
 鉴于我们对预测生存概率感兴趣，我们需要一个基于预测概率评估模型技能的表现指标。在这种情况下，我们将使用 [Brier 评分](https://machinelearningmastery.com/how-to-score-probability-predictions-in-python/)，计算预测概率和预期概率之间的均方误差。
 
-这可以使用[brier _ score _ loss()sci kit-learn 功能](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html)来计算。这个分数被最小化，满分为 0.0 分。我们可以通过将预测分数与参考分数进行比较来将分数反转为最大化，显示模型与 0.0 到 1.0 之间的参考分数相比有多好。任何得分低于 0.0 的模型都表示技能低于参考模型。这被称为 Brier 技能评分，简称 BSS。
+这可以使用[brier _ score _ loss()sci kit-learn 功能](https://Sklearn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html)来计算。这个分数被最小化，满分为 0.0 分。我们可以通过将预测分数与参考分数进行比较来将分数反转为最大化，显示模型与 0.0 到 1.0 之间的参考分数相比有多好。任何得分低于 0.0 的模型都表示技能低于参考模型。这被称为 Brier 技能评分，简称 BSS。
 
 *   BrierSkillScore = 1.0 –( modelberscore/ReferenceBrierScore)
 
 习惯上，不平衡数据集会将少数民族类建模为正类。在这个数据集中，正类代表非存活。这意味着，我们将预测不存活的概率，并且需要计算预测概率的补数，以便获得存活的概率。
 
-因此，我们可以将 1 类值(存活)映射到具有 0 类标签的负案例，将 2 类值(非存活)映射到具有 1 类标签的正案例。这可以使用[标签编码器类](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html)来实现。
+因此，我们可以将 1 类值(存活)映射到具有 0 类标签的负案例，将 2 类值(非存活)映射到具有 1 类标签的正案例。这可以使用[标签编码器类](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html)来实现。
 
 例如下面的 *load_dataset()* 函数将加载数据集，将变量列拆分为输入和输出，然后将目标变量编码为 0 和 1 值。
 
@@ -307,7 +307,7 @@ def brier_skill_score(y_true, y_prob):
 
 接下来，我们可以使用 *brier_skill_score()* 函数，使用重复的分层 k 重交叉验证来评估模型。
 
-要使用我们的自定义表现指标，我们可以使用 [make_scorer() scikit-learn 函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html)，该函数采用我们的自定义函数的名称，并创建一个指标，我们可以使用 scikit-learn API 来评估模型。我们将把 *needs_proba* 参数设置为 True，以确保被评估的模型使用 *predict_proba()* 函数进行预测，以确保它们给出概率而不是类标签。
+要使用我们的自定义表现指标，我们可以使用 [make_scorer() Sklearn 函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.make_scorer.html)，该函数采用我们的自定义函数的名称，并创建一个指标，我们可以使用 Sklearn API 来评估模型。我们将把 *needs_proba* 参数设置为 True，以确保被评估的模型使用 *predict_proba()* 函数进行预测，以确保它们给出概率而不是类标签。
 
 ```py
 ...
@@ -447,14 +447,14 @@ Mean BSS: -0.000 (0.000)
 
 具体来说，这些模型适用于概率框架，并明确预测每个示例的校准概率。因此，这使得它们非常适合这个数据集，即使是在类不平衡的情况下。
 
-我们将评估 scikit-learn 库实现的以下六个概率模型:
+我们将评估 Sklearn 库实现的以下六个概率模型:
 
-*   逻辑回归([逻辑回归](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
-*   线性判别分析([线性判别分析](https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html))
-*   二次判别分析([四次判别分析](https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis.html)
-*   高斯朴素贝叶斯([高斯年](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html)
-*   多项式朴素贝叶斯([多项式 B](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html) )
-*   高斯过程分类器([高斯过程分类器](https://scikit-learn.org/stable/modules/generated/sklearn.gaussian_process.GaussianProcessClassifier.html))
+*   逻辑回归([逻辑回归](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
+*   线性判别分析([线性判别分析](https://Sklearn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html))
+*   二次判别分析([四次判别分析](https://Sklearn.org/stable/modules/generated/sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis.html)
+*   高斯朴素贝叶斯([高斯年](https://Sklearn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html)
+*   多项式朴素贝叶斯([多项式 B](https://Sklearn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html) )
+*   高斯过程分类器([高斯过程分类器](https://Sklearn.org/stable/modules/generated/sklearn.gaussian_process.GaussianProcessClassifier.html))
 
 我们有兴趣直接比较这些算法的结果。我们将根据平均分数以及分数分布来比较每种算法。
 
@@ -603,7 +603,7 @@ pyplot.show()
 
 然而，我们可以用标准化来测试算法，其中每个变量都被转移到零平均值和单位标准偏差。我们将放弃*多项式*算法，因为它不支持负输入值。
 
-我们可以通过将每个模型包装在[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)中来实现这一点，其中第一步是[标准缩放器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)，它将正确地适合训练数据集，并应用于每个 k 倍交叉验证评估中的测试数据集，防止任何[数据泄漏](https://machinelearningmastery.com/data-leakage-machine-learning/)。
+我们可以通过将每个模型包装在[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)中来实现这一点，其中第一步是[标准缩放器](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)，它将正确地适合训练数据集，并应用于每个 k 倍交叉验证评估中的测试数据集，防止任何[数据泄漏](https://machinelearningmastery.com/data-leakage-machine-learning/)。
 
 ```py
 ...
@@ -721,9 +721,9 @@ pyplot.show()
 
 这将有助于我们的数据集中的“*年龄*”输入变量，并可能有助于“*节点*”变量和稍微解开分布。
 
-我们可以使用[power transformer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html)scikit-learn 类来执行 Yeo-Johnson，并根据数据集自动确定要应用的最佳参数，例如如何最好地使每个变量更具高斯性。重要的是，作为转换的一部分，该转换器还将标准化数据集，确保我们保持上一节中看到的收益。
+我们可以使用[power transformer](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html)Sklearn 类来执行 Yeo-Johnson，并根据数据集自动确定要应用的最佳参数，例如如何最好地使每个变量更具高斯性。重要的是，作为转换的一部分，该转换器还将标准化数据集，确保我们保持上一节中看到的收益。
 
-电力变换可以利用 *log()* 函数，该函数对零值不起作用。我们的数据集中有零值，因此我们将使用[最小最大缩放器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)在幂变换之前缩放数据集。
+电力变换可以利用 *log()* 函数，该函数对零值不起作用。我们的数据集中有零值，因此我们将使用[最小最大缩放器](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)在幂变换之前缩放数据集。
 
 同样，我们可以在管道中使用这种转换，以确保它适合训练数据集，并正确应用于训练和测试数据集，而不会出现数据泄漏。
 
@@ -940,9 +940,9 @@ data=[38, 69, 21], Survival=53.389%
 *   [熊猫. read_csv API](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)
 *   [熊猫。描述应用编程接口](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.describe.html)
 *   熊猫. DataFrame.hist API
-*   [sklearn.model_selection。重复的策略应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)。
+*   [sklearn.model_selection。重复的策略应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)。
 *   硬化。预处理。标签编码 API 。
-*   [硬化。预处理。动力变压器 API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html)
+*   [硬化。预处理。动力变压器 API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html)
 
 ### 资料组
 

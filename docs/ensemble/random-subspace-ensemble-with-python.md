@@ -17,7 +17,7 @@
 完成本教程后，您将知道:
 
 *   随机子空间集成是由决策树生成的，决策树适合训练数据集中不同的特征样本(列)。
-*   如何用 scikit-learn 使用随机子空间集成进行分类和回归？
+*   如何用 Sklearn 使用随机子空间集成进行分类和回归？
 *   如何探索随机子空间模型超参数对模型表现的影响？
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -88,9 +88,9 @@
 
 ## 基于打包的随机子空间集成
 
-我们可以在 scikit-learn 中使用 bagging 实现随机子空间集成。
+我们可以在 Sklearn 中使用 bagging 实现随机子空间集成。
 
-装袋通过[装袋分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingRegressor.html)和[装袋分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html)类提供。
+装袋通过[装袋分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.BaggingRegressor.html)和[装袋分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html)类提供。
 
 我们可以将 bagging 配置为随机子空间集成，方法是将“ *bootstrap* ”参数设置为“ *False* ”以关闭训练数据集行的采样，并通过“ *max_features* ”参数将最大特征数设置为给定值。
 
@@ -102,7 +102,7 @@
 
 在这一节中，我们将考虑使用 bagging 为分类问题开发一个随机子空间集成。
 
-首先，我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
+首先，我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
 
 下面列出了完整的示例。
 
@@ -167,7 +167,7 @@ Mean Accuracy: 0.854 (0.039)
 
 首先，对所有可用数据进行集合拟合，然后调用 *predict()* 函数对新数据进行预测。
 
-下面的示例在我们的二进制分类数据集上演示了这一点。
+下面的示例在我们的二进制类别数据集上演示了这一点。
 
 ```py
 # make predictions using random subspace ensemble via bagging for classification
@@ -197,7 +197,7 @@ Predicted Class: 1
 
 在这一节中，我们将研究使用 bagging 解决回归问题。
 
-首先，我们可以使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
+首先，我们可以使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
 
 下面列出了完整的示例。
 
@@ -226,7 +226,7 @@ print(X.shape, y.shape)
 model = BaggingRegressor(bootstrap=False, max_features=10)
 ```
 
-正如我们在上一节中所做的，我们将使用重复的 k-fold 交叉验证来评估模型，重复 3 次，重复 10 次。我们将报告所有重复和折叠模型的平均绝对误差(MAE)。scikit-learn 库使 MAE 为负，因此它被最大化而不是最小化。这意味着负 MAE 越大越好，完美模型的 MAE 为 0。
+正如我们在上一节中所做的，我们将使用重复的 k-fold 交叉验证来评估模型，重复 3 次，重复 10 次。我们将报告所有重复和折叠模型的平均绝对误差(MAE)。Sklearn 库使 MAE 为负，因此它被最大化而不是最小化。这意味着负 MAE 越大越好，完美模型的 MAE 为 0。
 
 下面列出了完整的示例。
 
@@ -288,7 +288,7 @@ print('Prediction: %d' % yhat[0])
 Prediction: -157
 ```
 
-现在我们已经熟悉了使用 scikit-learn API 来评估和使用随机子空间集成，让我们来看看如何配置模型。
+现在我们已经熟悉了使用 Sklearn API 来评估和使用随机子空间集成，让我们来看看如何配置模型。
 
 ## 随机子空间集成超参数
 
@@ -471,7 +471,7 @@ pyplot.show()
 
 集合中使用的算法是通过“ *base_estimator* ”参数指定的，并且必须设置为要使用的算法和算法配置的实例。
 
-下面的例子演示了使用一个[kneighgborcsclassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)作为通过 bagging 类在随机子空间集成中使用的基本算法。这里，算法与默认超参数一起使用，其中 k 设置为 5。
+下面的例子演示了使用一个[kneighgborcsclassifier](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)作为通过 bagging 类在随机子空间集成中使用的基本算法。这里，算法与默认超参数一起使用，其中 k 设置为 5。
 
 ```py
 ...
@@ -528,7 +528,7 @@ Accuracy: 0.901 (0.032)
 
 ### 蜜蜂
 
-*   [硬化。一起。bagginclassifier API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html)。
+*   [硬化。一起。bagginclassifier API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html)。
 
 ### 文章
 
@@ -541,7 +541,7 @@ Accuracy: 0.901 (0.032)
 具体来说，您了解到:
 
 *   随机子空间集成是由决策树生成的，决策树适合训练数据集中不同的特征样本(列)。
-*   如何用 scikit-learn 使用随机子空间集成进行分类和回归？
+*   如何用 Sklearn 使用随机子空间集成进行分类和回归？
 *   如何探索随机子空间模型超参数对模型表现的影响？
 
 **你有什么问题吗？**

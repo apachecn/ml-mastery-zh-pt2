@@ -17,7 +17,7 @@
 完成本教程后，您将知道:
 
 *   基于直方图的梯度增强是一种用于训练梯度增强集成中使用的更快决策树的技术。
-*   如何在 scikit-learn 库中使用基于直方图的梯度增强的实验实现？
+*   如何在 Sklearn 库中使用基于直方图的梯度增强的实验实现？
 *   如何在 XGBoost 和 LightGBM 第三方库中使用基于直方图的梯度增强集成。
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -34,7 +34,7 @@
 本教程分为四个部分；它们是:
 
 1.  直方图梯度增强
-2.  使用 Scikit-Learn 增强直方图梯度
+2.  使用 Sklearn 增强直方图梯度
 3.  使用 XGBoost 的直方图梯度增强
 4.  用 LightGBM 提升直方图梯度
 
@@ -72,17 +72,17 @@ Boosting 是指一类集成学习算法，它将树模型顺序添加到集成�
 
 现在我们已经熟悉了在梯度增强中向决策树的构造中添加直方图的思想，让我们回顾一下我们可以在预测建模项目中使用的一些常见实现。
 
-有三个主要的库支持这项技术；它们是 Scikit-Learn、XGBoost 和 LightGBM。
+有三个主要的库支持这项技术；它们是 Sklearn、XGBoost 和 LightGBM。
 
 让我们依次仔细看看每一个。
 
 **注**:我们不是在和算法赛跑；相反，我们只是演示如何配置每个实现来使用直方图方法，并将所有其他不相关的超参数保持在默认值不变。
 
-## 使用 Scikit-Learn 增强直方图梯度
+## 使用 Sklearn 增强直方图梯度
 
-scikit-learn 机器学习库提供了一个支持直方图技术的梯度增强实验实现。
+Sklearn 机器学习库提供了一个支持直方图技术的梯度增强实验实现。
 
-具体来说，这在[历史梯度增强分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html)和[历史梯度增强回归器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html)类中提供。
+具体来说，这在[历史梯度增强分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html)和[历史梯度增强回归器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html)类中提供。
 
 为了使用这些类，您必须在项目中添加一行，表明您很乐意使用这些实验技术，并且它们的行为可能会随着库的后续发布而改变。
 
@@ -92,13 +92,13 @@ scikit-learn 机器学习库提供了一个支持直方图技术的梯度增强�
 from sklearn.experimental import enable_hist_gradient_boosting
 ```
 
-scikit-learn 文档声称，这些基于直方图的梯度增强实现比库提供的默认梯度增强实现快几个数量级。
+Sklearn 文档声称，这些基于直方图的梯度增强实现比库提供的默认梯度增强实现快几个数量级。
 
 > 当样本数量大于数万个样本时，这些基于直方图的估计器可以比梯度增强分类器和梯度增强回归器快几个数量级。
 
-— [基于直方图的梯度增强，Scikit-Learn 用户指南](https://scikit-learn.org/stable/modules/ensemble.html#histogram-based-gradient-boosting) e
+— [基于直方图的梯度增强，Sklearn 用户指南](https://Sklearn.org/stable/modules/ensemble.html#histogram-based-gradient-boosting) e
 
-这些类可以像任何其他 scikit-learn 模型一样使用。
+这些类可以像任何其他 Sklearn 模型一样使用。
 
 默认情况下，集合为每个连续输入特征使用 255 个面元，这可以通过“ *max_bins* ”参数设置。将该值设置为更小的值，例如 50 或 100，可能会进一步提高效率，尽管可能会以牺牲一些模型技能为代价。
 
@@ -110,7 +110,7 @@ scikit-learn 文档声称，这些基于直方图的梯度增强实现比库提�
 model = HistGradientBoostingClassifier(max_bins=255, max_iter=100)
 ```
 
-下面的示例显示了如何在包含 10，000 个示例和 100 个特征的合成分类数据集上评估直方图梯度增强算法。
+下面的示例显示了如何在包含 10，000 个示例和 100 个特征的合成类别数据集上评估直方图梯度增强算法。
 
 使用重复分层 k 折叠交叉验证评估模型，并报告所有折叠和重复的平均准确性。
 
@@ -139,7 +139,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到 scikit-learn 直方图梯度增强算法在合成数据集上实现了大约 94.3%的平均精度。
+在这种情况下，我们可以看到 Sklearn 直方图梯度增强算法在合成数据集上实现了大约 94.3%的平均精度。
 
 ```py
 Accuracy: 0.943 (0.007)
@@ -224,9 +224,9 @@ pyplot.show()
 
 在这种情况下，我们可以看到，增加直方图中的箱数似乎会减少分布的扩散，尽管这可能会降低模型的平均表现。
 
-![Box and Whisker Plots of the Number of Bins for the Scikit-Learn Histogram Gradient Boosting Ensemble](img/728d260ed6c30a3970c94a49f6074872.png)
+![Box and Whisker Plots of the Number of Bins for the Sklearn Histogram Gradient Boosting Ensemble](img/728d260ed6c30a3970c94a49f6074872.png)
 
-Scikit-Learn 直方图梯度增强集成的箱数和须图
+Sklearn 直方图梯度增强集成的箱数和须图
 
 ## 使用 XGBoost 的直方图梯度增强
 
@@ -240,7 +240,7 @@ XGBoost 库可以用你喜欢的 Python 包管理器安装，比如 Pip 例如:
 sudo pip install xgboost
 ```
 
-我们可以通过 [XGBClassifier](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier) 和[xgbreversor](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBRegressor)类开发用于 scikit-learn 库的 XGBoost 模型。
+我们可以通过 [XGBClassifier](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier) 和[xgbreversor](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBRegressor)类开发用于 Sklearn 库的 XGBoost 模型。
 
 通过将“ *tree_method* ”参数设置为“*近似*，可以将训练算法配置为使用直方图方法，并且可以通过“ *max_bin* ”参数设置箱数。
 
@@ -294,7 +294,7 @@ LightGBM 库可以用你喜欢的 Python 包管理器安装，比如 Pip 例如:
 sudo pip install lightgbm
 ```
 
-我们可以通过[lgbm 分类器](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMClassifier.html)和[lgbm 回归器](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMRegressor.html)类开发 LightGBM 模型，用于 scikit-learn 库。
+我们可以通过[lgbm 分类器](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMClassifier.html)和[lgbm 回归器](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMRegressor.html)类开发 LightGBM 模型，用于 Sklearn 库。
 
 默认情况下，训练算法使用直方图。每个连续输入变量的最大箱数可以通过“ *max_bin* ”参数设置。
 
@@ -343,7 +343,7 @@ Accuracy: 0.942 (0.006)
 ### 教程
 
 *   [如何在 Python 中开发梯度增强机器集成](https://machinelearningmastery.com/gradient-boosting-machine-ensemble-in-python/)
-*   [使用 Scikit-Learn、XGBoost、LightGBM 和 CatBoost 进行梯度增强](https://machinelearningmastery.com/gradient-boosting-with-scikit-learn-xgboost-lightgbm-and-catboost/)
+*   [使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度增强](https://machinelearningmastery.com/gradient-boosting-with-Sklearn-xgboost-lightgbm-and-catboost/)
 
 ### 报纸
 
@@ -355,8 +355,8 @@ Accuracy: 0.942 (0.006)
 
 ### 蜜蜂
 
-*   [硬化。一起。组渐增分类器 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html) 。
-*   [硬化。一起。组曲助推器 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html) 。
+*   [硬化。一起。组渐增分类器 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html) 。
+*   [硬化。一起。组曲助推器 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html) 。
 *   [xboost，快速直方图优化生长器，8 倍至 10 倍加速](https://github.com/dmlc/xgboost/issues/1950)
 *   [xgboost。xgbcclassifier API](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier)。
 *   [xboost。xgbreversor API](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBRegressor)。
@@ -370,7 +370,7 @@ Accuracy: 0.942 (0.006)
 具体来说，您了解到:
 
 *   基于直方图的梯度增强是一种用于训练梯度增强集成中使用的更快决策树的技术。
-*   如何在 scikit-learn 库中使用基于直方图的梯度增强的实验实现？
+*   如何在 Sklearn 库中使用基于直方图的梯度增强的实验实现？
 *   如何在 XGBoost 和 LightGBM 第三方库中使用基于直方图的梯度增强集成。
 
 **你有什么问题吗？**

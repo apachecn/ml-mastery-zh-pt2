@@ -128,7 +128,7 @@
 
 这种方法还承认，适合同一数据的多个视角的模型可能比适合数据的单个视角的模型更有益。
 
-这是通过对原始数据集并行执行多个数据转换来实现的，然后将所有转换的结果收集在一起，形成一个包含数百甚至数千个输入要素的大型数据集(即 scikit-learn 中的 [FeatureUnion 类](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.FeatureUnion.html)可用于实现这一点)。它允许并行使用从不同变换中找到的良好输入特征。
+这是通过对原始数据集并行执行多个数据转换来实现的，然后将所有转换的结果收集在一起，形成一个包含数百甚至数千个输入要素的大型数据集(即 Sklearn 中的 [FeatureUnion 类](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.FeatureUnion.html)可用于实现这一点)。它允许并行使用从不同变换中找到的良好输入特征。
 
 对于使用的每个变换，输入要素的数量可能会急剧增加。因此，最好将这种方法与特征选择方法相结合，选择与目标变量最相关的特征子集。同样，这可能涉及应用一种、两种或更多种不同的特征选择技术来提供比正常情况下更大的有用特征子集。
 

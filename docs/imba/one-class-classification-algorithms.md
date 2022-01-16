@@ -10,7 +10,7 @@
 
 一类分类算法可用于类别分布严重偏斜的二进制分类任务。这些技术可以适用于训练数据集中多数类的输入示例，然后在保持测试数据集上进行评估。
 
-尽管单类分类算法不是为这些类型的问题而设计的，但对于不存在或很少存在少数类的不平衡分类数据集，或者对于没有连贯结构来分离可由监督算法学习的类的数据集，单类分类算法可能是有效的。
+尽管单类分类算法不是为这些类型的问题而设计的，但对于不存在或很少存在少数类的不平衡类别数据集，或者对于没有连贯结构来分离可由监督算法学习的类的数据集，单类分类算法可能是有效的。
 
 在本教程中，您将发现如何对具有严重倾斜类分布的数据集使用单类分类算法。
 
@@ -49,7 +49,7 @@
 
 作为一种数据准备技术，拟合机器学习模型可能需要识别和去除异常值。
 
-识别数据集中异常值的过程一般称为[异常检测](https://en.wikipedia.org/wiki/Anomaly_detection)，其中异常值为“*异常*”，其余数据为“*正常*”离群点检测或异常检测是一个具有挑战性的问题，由一系列技术组成。
+识别数据集中异常值的过程一般称为[异常检测](https://en.wikipedia.org/wiki/Anomaly_detection)，其中异常值为“*异常*”，其余数据为“*正常*”异常值检测或异常检测是一个具有挑战性的问题，由一系列技术组成。
 
 在机器学习中，解决异常检测问题的一种方法是[一类分类](https://en.wikipedia.org/wiki/One-class_classification)。
 
@@ -80,11 +80,11 @@
 
 —第 140 页，[从不平衡数据集](https://amzn.to/307Xlva)中学习，2018。
 
-scikit-learn 库提供了一些常用的一类分类算法，用于异常值或异常检测和变化检测，例如一类 SVM、隔离森林、椭圆包络和局部异常因子。
+Sklearn 库提供了一些常用的一类分类算法，用于异常值或异常检测和变化检测，例如一类 SVM、隔离森林、椭圆包络和局部异常因子。
 
 在接下来的部分中，我们将依次看一看每一个。
 
-在此之前，我们将设计一个二元分类数据集来演示算法。我们将使用[make _ classification()sci kit-learn 函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建 10，000 个示例，少数类中有 10 个示例，多数类中有 9，990 个示例，或者 0.1%对 99.9%，或者大约 1:1000 的类分布。
+在此之前，我们将设计一个二元类别数据集来演示算法。我们将使用[make _ classification()sci kit-learn 函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建 10，000 个示例，少数类中有 10 个示例，多数类中有 9，990 个示例，或者 0.1%对 99.9%，或者大约 1:1000 的类分布。
 
 下面的示例创建并总结了这个数据集。
 
@@ -134,7 +134,7 @@ Counter({0: 9990, 1: 10})
 
 ——[估计高维分布的支持](https://dl.acm.org/citation.cfm?id=1119749)，2001。
 
-scikit-learn 库在 [OneClassSVM 类](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html)中提供了一个一类 SVM 的实现。
+Sklearn 库在 [OneClassSVM 类](https://Sklearn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html)中提供了一个一类 SVM 的实现。
 
 与标准 SVM 的主要区别在于，它以无监督的方式进行拟合，并且不像 *C* 那样提供用于调整余量的正常超参数。取而代之的是，它提供了一个超参数“ *nu* ”，该参数控制支持向量的灵敏度，并且应该被调整到数据中离群值的近似比率，例如 0.01%。
 
@@ -247,7 +247,7 @@ F1 Score: 0.123
 
 ——[隔离森林](https://ieeexplore.ieee.org/abstract/document/4781136)，2008 年。
 
-scikit-learn 库在 [IsolationForest 类](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html)中提供了隔离林的实现。
+Sklearn 库在 [IsolationForest 类](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html)中提供了隔离林的实现。
 
 该模型最重要的超参数可能是设置要创建的树的数量的“*n _ estimates*”参数和用于帮助定义数据集中异常值数量的“*污染*”参数。
 
@@ -326,7 +326,7 @@ F1 Score: 0.154
 
 ——[最小协方差行列式与延拓](https://arxiv.org/abs/1709.07045)，2017。
 
-scikit-learn 库通过[椭圆包络类](https://scikit-learn.org/stable/modules/generated/sklearn.covariance.EllipticEnvelope.html)提供对该方法的访问。
+Sklearn 库通过[椭圆包络类](https://Sklearn.org/stable/modules/generated/sklearn.covariance.EllipticEnvelope.html)提供对该方法的访问。
 
 它提供了“*污染*”参数，该参数定义了在实践中观察到的异常值的预期比率。我们知道这在我们的合成数据集中是 0.01%，所以我们可以相应地设置它。
 
@@ -353,7 +353,7 @@ model.fit(trainX)
 yhat = model.predict(testX)
 ```
 
-将这些联系在一起，下面列出了在我们的合成二进制分类数据集上使用椭圆包络离群点检测模型进行不平衡分类的完整示例。
+将这些联系在一起，下面列出了在我们的合成二进制类别数据集上使用椭圆包络异常值检测模型进行不平衡分类的完整示例。
 
 ```py
 # elliptic envelope for imbalanced classification
@@ -397,13 +397,13 @@ F1 Score: 0.157
 
 这对于低维度(很少特征)的特征空间可以很好地工作，尽管随着特征数量的增加，它会变得不那么可靠，这被称为维度的诅咒。
 
-局部离群因子，简称 LOF，是一种试图利用最近邻概念进行离群点检测的技术。每个例子都被分配了一个分数，根据其局部邻域的大小来衡量孤立的程度或异常值出现的可能性。得分最高的例子更有可能是异常值。
+局部离群因子，简称 LOF，是一种试图利用最近邻概念进行异常值检测的技术。每个例子都被分配了一个分数，根据其局部邻域的大小来衡量孤立的程度或异常值出现的可能性。得分最高的例子更有可能是异常值。
 
 > 我们为数据集中的每个对象引入一个局部离群值(LOF)，指示其离群程度。
 
 ——[LOF:识别基于密度的局部异常值](https://dl.acm.org/citation.cfm?id=335388)，2000 年。
 
-scikit-learn 库在[localhoutlierfactor 类](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html)中提供了这种方法的实现。
+Sklearn 库在[localhoutlierfactor 类](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html)中提供了这种方法的实现。
 
 该模型可以被定义，并且要求指示数据集中异常值的预期百分比，例如在我们的合成数据集中为 0.01%。
 
@@ -454,9 +454,9 @@ def lof_predict(model, trainX, testX):
 	return yhat[len(trainX):]
 ```
 
-像 scikit-learn 中的其他离群点检测算法一样，预测的标签对于正常值为+1，对于离群值为-1。
+像 Sklearn 中的其他异常值检测算法一样，预测的标签对于正常值为+1，对于离群值为-1。
 
-将这些联系在一起，下面列出了使用 LOF 离群点检测算法进行分类的完整示例。
+将这些联系在一起，下面列出了使用 LOF 异常值检测算法进行分类的完整示例。
 
 ```py
 # local outlier factor for imbalanced classification
@@ -524,11 +524,11 @@ F1 Score: 0.138
 
 ### 蜜蜂
 
-*   [新颖性和异常值检测，scikit-learn API](https://scikit-learn.org/stable/modules/outlier_detection.html) 。
-*   [硬化. svm.OneClassSVM API](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html) 。
-*   [硬化。一起。绝缘林 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html) 。
-*   [硬化。协方差。椭圆包络 API](https://scikit-learn.org/stable/modules/generated/sklearn.covariance.EllipticEnvelope.html) 。
-*   [硬化。邻居。局部外显性因子 API](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html) 。
+*   [新颖性和异常值检测，Sklearn API](https://Sklearn.org/stable/modules/outlier_detection.html) 。
+*   [硬化. svm.OneClassSVM API](https://Sklearn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html) 。
+*   [硬化。一起。绝缘林 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html) 。
+*   [硬化。协方差。椭圆包络 API](https://Sklearn.org/stable/modules/generated/sklearn.covariance.EllipticEnvelope.html) 。
+*   [硬化。邻居。局部外显性因子 API](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html) 。
 
 ### 文章
 

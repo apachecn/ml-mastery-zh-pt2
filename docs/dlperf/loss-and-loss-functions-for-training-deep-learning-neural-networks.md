@@ -222,7 +222,7 @@ def mean_squared_error(actual, predicted):
 	return mean_square_error
 ```
 
-为了高效实现，我鼓励您使用 scikit-learn [均方误差()函数](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)。
+为了高效实现，我鼓励您使用 Sklearn [均方误差()函数](http://Sklearn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)。
 
 ### 交叉熵损失(或对数损失)
 
@@ -267,7 +267,7 @@ def categorical_cross_entropy(actual, predicted):
 	return -mean_sum_score
 ```
 
-为了高效实现，我鼓励您使用 scikit-learn [log_loss()函数](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)。
+为了高效实现，我鼓励您使用 Sklearn [log_loss()函数](http://Sklearn.org/stable/modules/generated/sklearn.metrics.log_loss.html)。
 
 ## 损失函数和报告的模型表现
 

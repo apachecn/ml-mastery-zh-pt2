@@ -72,9 +72,9 @@
 
 ## 朴素分类模型
 
-[朴素分类器](https://machinelearningmastery.com/how-to-develop-and-evaluate-naive-classifier-strategies-using-probability/)是一种没有逻辑的分类算法，它为分类数据集提供了表现基线。
+[朴素分类器](https://machinelearningmastery.com/how-to-develop-and-evaluate-naive-classifier-strategies-using-probability/)是一种没有逻辑的分类算法，它为类别数据集提供了表现基线。
 
-为分类数据集建立表现基线非常重要。它在沙地上提供了一条线，通过这条线可以比较所有其他算法。得分低于朴素分类模型的算法在数据集上没有技能，而得分高于朴素分类模型的算法在数据集上有一些技能。
+为类别数据集建立表现基线非常重要。它在沙地上提供了一条线，通过这条线可以比较所有其他算法。得分低于朴素分类模型的算法在数据集上没有技能，而得分高于朴素分类模型的算法在数据集上有一些技能。
 
 也许有五种不同的朴素分类方法可以用来建立数据集的表现基线。
 
@@ -86,7 +86,7 @@
 *   **少数民族类**:预测 1。
 *   **类先验**:预测每个类的先验概率。
 
-这些可以使用 scikit-learn 库的[DummyCollector](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)类来实现。
+这些可以使用 Sklearn 库的[DummyCollector](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)类来实现。
 
 这个类提供了策略参数，允许使用不同的朴素分类器技术。例子包括:
 
@@ -108,7 +108,7 @@
 
 挑战在于，每个分类指标都需要谨慎选择特定的幼稚分类策略，以实现适当的“*无技能*”表现。这可以并且应该使用每个度量的知识来选择，并且可以通过仔细的实验来确认。
 
-在本节中，我们将为每个不平衡的分类度量合理地选择合适的朴素分类器，然后在合成的二进制分类数据集上用经验结果来确认选择。
+在本节中，我们将为每个不平衡的分类度量合理地选择合适的朴素分类器，然后在合成的二进制类别数据集上用经验结果来确认选择。
 
 合成数据集有 10，000 个示例，其中 99%属于多数类(负案例或类别标签 0)，1%属于少数类(正案例或类别标签 1)。
 
@@ -660,7 +660,7 @@ pyplot.show()
 
 Brier 分数被最小化，0.0 代表可能的最低分数。
 
-因此，scikit-learn 通过使分数为负来反转分数，因此每个朴素分类器的负平均 Brier 分数为负。因此，这个标志可以忽略。
+因此，Sklearn 通过使分数为负来反转分数，因此每个朴素分类器的负平均 Brier 分数为负。因此，这个标志可以忽略。
 
 不出所料，我们可以看到预测先验概率会得到最好的分数。我们还可以看到，预测多数类也会得到相同的最佳 Brier 分数。
 
@@ -704,8 +704,8 @@ Brier 分数被最小化，0.0 代表可能的最低分数。
 
 ### 蜜蜂
 
-*   [硬化. dummy . dummy class ification API](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
-*   [sklearn . metrics . make _ scorer API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html)。
+*   [硬化. dummy . dummy class ification API](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
+*   [sklearn . metrics . make _ scorer API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.make_scorer.html)。
 
 ## 摘要
 

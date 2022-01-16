@@ -16,7 +16,7 @@
 
 *   朴素分类模型的表现提供了一个基线，通过这个基线，所有其他模型都可以被认为是熟练的或不熟练的。
 *   多数类分类器比其他朴素分类器模型(如随机猜测和预测随机选择的观察类标签)获得更好的准确性。
-*   朴素分类器策略可以通过 scikit-learn 库中的 DummyClassifier 类用于预测建模项目。
+*   朴素分类器策略可以通过 Sklearn 库中的 DummyClassifier 类用于预测建模项目。
 
 **用我的新书[机器学习概率](https://machinelearningmastery.com/probability-for-machine-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
@@ -35,7 +35,7 @@
 2.  预测随机猜测
 3.  预测随机选择的班级
 4.  预测多数阶级
-5.  scikit-learn 中的朴素分类器
+5.  Sklearn 中的朴素分类器
 
 ## 朴素分类器
 
@@ -326,11 +326,11 @@ Accuracy: 0.750
 
 现在我们已经发现了表现最好的朴素分类器模型，我们可以看到如何在下一个项目中使用它。
 
-## scikit-learn 中的朴素分类器
+## Sklearn 中的朴素分类器
 
-scikit-learn 机器学习库提供了多数类朴素分类算法的实现，您可以在下一个分类预测建模项目中使用它。
+Sklearn 机器学习库提供了多数类朴素分类算法的实现，您可以在下一个分类预测建模项目中使用它。
 
-它是作为[dummy 分类器类](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)的一部分提供的。
+它是作为[dummy 分类器类](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)的一部分提供的。
 
 要使用朴素分类器，必须定义类，并将“*策略*”参数设置为“*最频繁*，以确保预测多数类。然后，该类可以适合训练数据集，并用于对测试数据集或其他重采样模型评估策略进行预测。
 
@@ -357,7 +357,7 @@ yhat = model.predict(X)
 下面列出了完整的示例。
 
 ```py
-# example of the majority class naive classifier in scikit-learn
+# example of the majority class naive classifier in Sklearn
 from numpy import asarray
 from sklearn.dummy import DummyClassifier
 from sklearn.metrics import accuracy_score
@@ -395,7 +395,7 @@ Accuracy: 0.750
 
 *   [不平衡分类问题中的机会水平精度是多少？](https://stats.stackexchange.com/questions/148149/what-is-the-chance-level-accuracy-in-unbalanced-classification-problems)
 *   [不要使用随机猜测作为基线分类器](https://machinelearningmastery.com/dont-use-random-guessing-as-your-baseline-classifier/)
-*   [硬化. dummy . dummy class ification API](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)
+*   [硬化. dummy . dummy class ification API](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)
 
 ## 摘要
 
@@ -405,7 +405,7 @@ Accuracy: 0.750
 
 *   朴素分类模型的表现提供了一个基线，通过这个基线，所有其他模型都可以被认为是熟练的或不熟练的。
 *   多数类分类器获得了比其他朴素分类器模型更好的准确性，例如随机猜测和预测随机选择的观察类标签。
-*   朴素分类器策略可以通过 scikit-learn 库中的 DummyClassifier 类用于预测建模项目。
+*   朴素分类器策略可以通过 Sklearn 库中的 DummyClassifier 类用于预测建模项目。
 
 你有什么问题吗？
 在下面的评论中提问，我会尽力回答。

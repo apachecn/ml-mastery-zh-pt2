@@ -1,6 +1,6 @@
-# 如何在 Scikit 中保存和重用数据准备对象-学习
+# 如何在 Sklearn 中保存和重用数据准备对象
 
-> 原文：<https://machinelearningmastery.com/how-to-save-and-load-models-and-data-preparation-in-scikit-learn-for-later-use/>
+> 原文：<https://machinelearningmastery.com/how-to-save-and-load-models-and-data-preparation-in-Sklearn-for-later-use/>
 
 最后更新于 2020 年 6 月 30 日
 
@@ -22,10 +22,10 @@
 
 我们开始吧。
 
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新。
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新。
 *   **2020 年 5 月更新**:改进代码示例，打印输出。
 
-![How to Save and Load Models and Data Preparation in Scikit-Learn for Later Use](img/0cba995eae757a1620c499d20d6f898a.png)
+![How to Save and Load Models and Data Preparation in Sklearn for Later Use](img/0cba995eae757a1620c499d20d6f898a.png)
 
 如何在 Scikit 中保存和加载模型和数据准备-学习以备后用
 图片由 [Dennis Jarvis](https://www.flickr.com/photos/archer10/21730827905/) 提供，保留部分权利。
@@ -88,7 +88,7 @@
 
 首先，我们需要一个数据集。
 
-我们将使用 scikit-learn 数据集的测试数据集，特别是一个二元分类问题，通过 [make_blobs()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)随机创建两个输入变量。
+我们将使用 Sklearn 数据集的测试数据集，特别是一个二元分类问题，通过 [make_blobs()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)随机创建两个输入变量。
 
 下面的示例创建了一个包含 100 个示例、两个输入要素和两个类标签(0 和 1)的测试数据集。然后将数据集分成训练集和测试集，并报告每个变量的最小值和最大值。
 
@@ -122,7 +122,7 @@ for i in range(X_test.shape[1]):
 
 接下来，我们可以缩放数据集。
 
-我们将使用[最小最大缩放器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)将每个输入变量缩放到范围[0，1]。使用此定标器的最佳实践是将其放在训练数据集上，然后将转换应用于训练数据集和其他数据集:在本例中是测试数据集。
+我们将使用[最小最大缩放器](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)将每个输入变量缩放到范围[0，1]。使用此定标器的最佳实践是将其放在训练数据集上，然后将转换应用于训练数据集和其他数据集:在本例中是测试数据集。
 
 下面列出了缩放数据和总结效果的完整示例。
 
@@ -162,7 +162,7 @@ for i in range(X_test.shape[1]):
 
 接下来，我们可以在训练数据集上拟合模型，并将模型和缩放器对象保存到文件中。
 
-我们将使用[物流配送](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型，因为这个问题是一个简单的二元分类任务。
+我们将使用[物流配送](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型，因为这个问题是一个简单的二元分类任务。
 
 训练数据集像以前一样缩放，在这种情况下，我们将假设测试数据集当前不可用。缩放后，数据集用于拟合逻辑回归模型。
 
@@ -269,16 +269,16 @@ Test Accuracy: 1.0
 
 ### 邮件
 
-*   [用 scikit-learn 保存并加载 Python 中的机器学习模型](https://machinelearningmastery.com/save-load-machine-learning-models-python-scikit-learn/)
+*   [用 Sklearn 保存并加载 Python 中的机器学习模型](https://machinelearningmastery.com/save-load-machine-learning-models-python-Sklearn/)
 *   [如何训练最终的机器学习模型](https://machinelearningmastery.com/train-final-machine-learning-model/)
 
 ### 蜜蜂
 
-*   [sklearn . dataset . make _ blobs API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)。
-*   [sklearn . model _ selection . train _ test _ split API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)。
-*   [硬化。预处理。MinMaxScaler API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html) 。
-*   [sklearn . metrics . accuracy _ score API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)。
-*   [sklearn.linear_model。物流配送应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)。
+*   [sklearn . dataset . make _ blobs API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)。
+*   [sklearn . model _ selection . train _ test _ split API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)。
+*   [硬化。预处理。MinMaxScaler API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html) 。
+*   [sklearn . metrics . accuracy _ score API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)。
+*   [sklearn.linear_model。物流配送应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)。
 *   [泡菜 API](https://docs.python.org/3/library/pickle.html) 。
 
 ## 摘要

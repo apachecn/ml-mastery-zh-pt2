@@ -1,4 +1,4 @@
-# 如何用分类数据进行特征选择
+# 如何对类别数据执行特征选择
 
 > 原文：<https://machinelearningmastery.com/feature-selection-with-categorical-data/>
 
@@ -6,7 +6,7 @@
 
 [特征选择](https://machinelearningmastery.com/an-introduction-to-feature-selection/)是识别和选择与目标变量最相关的输入特征子集的过程。
 
-在处理实值数据时，特征选择通常很简单，例如使用皮尔逊相关系数，但在处理分类数据时可能很有挑战性。
+在处理实值数据时，特征选择通常很简单，例如使用皮尔逊相关系数，但在处理类别数据时可能很有挑战性。
 
 当目标变量也是分类的时，分类输入数据最常用的两种特征选择方法是[卡方统计](https://machinelearningmastery.com/chi-squared-test-for-machine-learning/)和[互信息统计](https://machinelearningmastery.com/information-gain-and-mutual-information)。
 
@@ -16,7 +16,7 @@
 
 *   具有分类输入和二元分类目标变量的乳腺癌预测建模问题。
 *   如何利用卡方统计和互信息统计评估分类特征的重要性。
-*   在拟合和评估分类模型时，如何对分类数据进行特征选择。
+*   在拟合和评估分类模型时，如何对类别数据进行特征选择。
 
 **用我的新书[机器学习的数据准备](https://machinelearningmastery.com/data-preparation-for-machine-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
@@ -24,14 +24,14 @@
 
 ![How to Perform Feature Selection with Categorical Data](img/5daff0ad94ad2abae2bcfed480248c50.png)
 
-如何使用分类数据进行特征选择
+如何使用类别数据进行特征选择
 图片由[菲尔杜比](https://flickr.com/photos/126654539@N08/16021168888/)提供，保留部分权利。
 
 ## 教程概述
 
 本教程分为三个部分；它们是:
 
-1.  乳腺癌分类数据集
+1.  乳腺癌类别数据集
 2.  分类特征选择
     1.  卡方特征选择
     2.  互信息特征选择
@@ -40,7 +40,7 @@
     2.  使用卡方特征建立的模型
     3.  利用互信息特征建立的模型
 
-## 乳腺癌分类数据集
+## 乳腺癌类别数据集
 
 作为本教程的基础，我们将使用自 20 世纪 80 年代以来作为机器学习数据集被广泛研究的所谓的“[乳腺癌](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer)”数据集。
 
@@ -111,7 +111,7 @@ def load_dataset(filename):
 
 加载后，我们可以将数据分成训练集和测试集，这样我们就可以拟合和评估学习模型。
 
-我们将使用 [train_test_split()函数](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)形成 scikit-learn，使用 67%的数据进行训练，33%的数据进行测试。
+我们将使用 [train_test_split()函数](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)形成 Sklearn，使用 67%的数据进行训练，33%的数据进行测试。
 
 ```py
 ...
@@ -121,7 +121,7 @@ X, y = load_dataset('breast-cancer.csv')
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=1)
 ```
 
-将所有这些元素结合在一起，下面列出了加载、拆分和汇总原始分类数据集的完整示例。
+将所有这些元素结合在一起，下面列出了加载、拆分和汇总原始类别数据集的完整示例。
 
 ```py
 # load and summarize the dataset
@@ -161,7 +161,7 @@ Test (95, 9) (95, 1)
 
 现在我们已经熟悉了数据集，让我们看看如何对它进行编码以进行建模。
 
-我们可以使用 scikit-learn 中的[序数编码器()将每个变量编码为整数。这是一个灵活的类，如果已知任何这样的顺序，它确实允许将类别的顺序指定为参数。](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html)
+我们可以使用 Sklearn 中的[序数编码器()将每个变量编码为整数。这是一个灵活的类，如果已知任何这样的顺序，它确实允许将类别的顺序指定为参数。](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html)
 
 **注**:我将把它作为一个练习留给你来更新下面的例子，尝试为那些具有自然顺序的变量指定顺序，看看它是否对模型表现有影响。
 
@@ -181,7 +181,7 @@ def prepare_inputs(X_train, X_test):
 
 我们还需要准备目标变量。
 
-这是一个二元分类问题，所以我们需要将两个类标签映射为 0 和 1。这是一种序数编码，scikit-learn 提供了专门为此目的设计的 [LabelEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html) 类。虽然*标签编码器*是为编码单个变量而设计的，但是我们也可以很容易地使用*普通编码器*来获得同样的结果。
+这是一个二元分类问题，所以我们需要将两个类标签映射为 0 和 1。这是一种序数编码，Sklearn 提供了专门为此目的设计的 [LabelEncoder](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html) 类。虽然*标签编码器*是为编码单个变量而设计的，但是我们也可以很容易地使用*普通编码器*来获得同样的结果。
 
 *prepare_targets()* 函数对列车和测试集的输出数据进行整数编码。
 
@@ -205,7 +205,7 @@ X_train_enc, X_test_enc = prepare_inputs(X_train, X_test)
 y_train_enc, y_test_enc = prepare_targets(y_train, y_test)
 ```
 
-将所有这些结合起来，下面列出了为乳腺癌分类数据集加载和编码输入和输出变量的完整示例。
+将所有这些结合起来，下面列出了为乳腺癌类别数据集加载和编码输入和输出变量的完整示例。
 
 ```py
 # example of loading and preparing the breast cancer dataset
@@ -280,7 +280,7 @@ y_train_enc, y_test_enc = prepare_targets(y_train, y_test)
 
 —第 242 页，[特征工程与选择](https://amzn.to/2Yvcupn)，2019。
 
-scikit-learn 机器库提供了 [chi2()函数](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.chi2.html)中卡方测试的实现。该功能可用于特征选择策略，例如通过[选择最相关的特征(最大值)选择最相关的 *k* 类](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html)。
+Sklearn 机器库提供了 [chi2()函数](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.chi2.html)中卡方测试的实现。该功能可用于特征选择策略，例如通过[选择最相关的特征(最大值)选择最相关的 *k* 类](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html)。
 
 例如，我们可以定义 *SelectKBest* 类来使用 *chi2()* 功能并选择所有特征，然后转换列车和测试集。
 
@@ -411,7 +411,7 @@ Feature 8: 3.699989
 
 *   [什么是机器学习的信息增益和互信息](https://machinelearningmastery.com/information-gain-and-mutual-information)
 
-scikit-learn 机器学习库通过 [mutual_info_classif()函数](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html)为特征选择提供了一个互信息的实现。
+Sklearn 机器学习库通过 [mutual_info_classif()函数](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html)为特征选择提供了一个互信息的实现。
 
 和 *chi2()* 一样，可以在 *SelectKBest* 特征选择策略(和其他策略)中使用。
 
@@ -522,7 +522,7 @@ Feature 8: 0.000000
 
 输入特征条形图(x)与互信息特征重要性条形图(y)
 
-既然我们知道了如何对分类预测建模问题的分类数据执行特征选择，我们可以尝试使用所选特征开发模型并比较结果。
+既然我们知道了如何对分类预测建模问题的类别数据执行特征选择，我们可以尝试使用所选特征开发模型并比较结果。
 
 ## 使用选定特征建模
 
@@ -536,7 +536,7 @@ Feature 8: 0.000000
 
 ### 使用所有功能构建的模型
 
-作为第一步，我们将使用所有可用的特性来评估一个[物流配送](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型。
+作为第一步，我们将使用所有可用的特性来评估一个[物流配送](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型。
 
 该模型适合训练数据集，并在测试数据集上进行评估。
 
@@ -825,13 +825,13 @@ Accuracy: 76.84
 
 ### 应用程序接口
 
-*   [sklearn . model _ selection . train _ test _ split API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)。
-*   [硬化。预处理。序编码器 API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html) 。
+*   [sklearn . model _ selection . train _ test _ split API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)。
+*   [硬化。预处理。序编码器 API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html) 。
 *   硬化。预处理。标签编码 API 。
-*   [sklearn . feature _ selection . chi2 API](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.chi2.html)
-*   [硬化. feature_selection。SelectKBest API](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html)
-*   [sklearn . feature _ selection . mutual _ info _ class if API](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html)。
-*   [sklearn.linear_model。物流配送应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)。
+*   [sklearn . feature _ selection . chi2 API](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.chi2.html)
+*   [硬化. feature_selection。SelectKBest API](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html)
+*   [sklearn . feature _ selection . mutual _ info _ class if API](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html)。
+*   [sklearn.linear_model。物流配送应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)。
 
 ### 文章
 
@@ -847,7 +847,7 @@ Accuracy: 76.84
 
 *   具有分类输入和二元分类目标变量的乳腺癌预测建模问题。
 *   如何利用卡方统计和互信息统计评估分类特征的重要性。
-*   在拟合和评估分类模型时，如何对分类数据进行特征选择。
+*   在拟合和评估分类模型时，如何对类别数据进行特征选择。
 
 你有什么问题吗？
 在下面的评论中提问，我会尽力回答。

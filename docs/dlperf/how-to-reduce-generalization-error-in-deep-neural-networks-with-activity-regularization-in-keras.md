@@ -139,7 +139,7 @@ model.add(LSTM(32, activity_regularizer=l1(0.001)))
 
 每个观察都有两个相同规模的输入变量和一个 0 或 1 的类输出值。该数据集被称为“*圆*”数据集，这是因为绘制时每个类中观测值的形状。
 
-我们可以使用 [make_circles()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_circles.html)从这个问题中生成观察值。我们将向数据中添加噪声，并为随机数生成器播种，这样每次运行代码时都会生成相同的样本。
+我们可以使用 [make_circles()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)从这个问题中生成观察值。我们将向数据中添加噪声，并为随机数生成器播种，这样每次运行代码时都会生成相同的样本。
 
 ```py
 # generate 2d classification dataset
@@ -447,7 +447,7 @@ Train: 1.000, Test: 0.743
 *   [硬核层 API](https://keras.io/layers/core/)
 *   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
 *   [喀拉斯循环层原料药](https://keras.io/layers/recurrent/)
-*   [sklearn . dataset . make _ circles](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_circles.html)
+*   [sklearn . dataset . make _ circles](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)
 
 ## 摘要
 

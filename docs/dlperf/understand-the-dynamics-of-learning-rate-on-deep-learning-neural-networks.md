@@ -24,7 +24,7 @@
 
 *   **2019 年 2 月更新**:修复了在编译()而不是 fit()函数上错误定义回调的问题。
 *   **2019 年 10 月更新**:针对 Keras 2.3 和 TensorFlow 2.0 更新。
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新。
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新。
 
 ![Understand the Dynamics of Learning Rate on Model Performance With Deep Learning Neural Networks](img/c502d4626cdb44f13a412a700245c2aa.png)
 
@@ -189,7 +189,7 @@ model.compile(..., optimizer=opt)
 
 我们将使用一个小的多类分类问题作为基础来演示学习率对模型表现的影响。
 
-scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，该函数可用于创建具有规定数量的样本、输入变量、类和类内样本方差的多类分类问题。
+Sklearn 类提供了 [make_blobs()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，该函数可用于创建具有规定数量的样本、输入变量、类和类内样本方差的多类分类问题。
 
 该问题有两个输入变量(表示点的 *x* 和 *y* 坐标)和每组内点的标准偏差 2.0。我们将使用相同的随机状态(伪随机数发生器的种子)来确保我们总是获得相同的数据点。
 

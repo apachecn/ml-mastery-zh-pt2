@@ -6,11 +6,11 @@
 
 癌症检测是不平衡分类问题的一个常见例子，因为非癌症病例通常比实际癌症病例多得多。
 
-一个标准的不平衡分类数据集是乳房 x 线摄影数据集，它涉及从放射扫描中检测乳腺癌，特别是在乳房 x 线摄影中出现明亮的微钙化簇。这个数据集是通过扫描图像，将它们分割成候选对象，并使用计算机视觉技术来描述每个候选对象来构建的。
+一个标准的不平衡类别数据集是乳房 x 线摄影数据集，它涉及从放射扫描中检测乳腺癌，特别是在乳房 x 线摄影中出现明亮的微钙化簇。这个数据集是通过扫描图像，将它们分割成候选对象，并使用计算机视觉技术来描述每个候选对象来构建的。
 
 由于严重的类别不平衡，它是不平衡分类的一个流行数据集，具体来说，98%的候选微钙化点不是癌症，只有 2%被有经验的放射技师标记为癌症。
 
-在本教程中，您将发现如何开发和评估不平衡乳腺摄影癌症分类数据集的模型。
+在本教程中，您将发现如何开发和评估不平衡乳腺摄影癌症类别数据集的模型。
 
 完成本教程后，您将知道:
 
@@ -249,9 +249,9 @@ pyplot.show()
 
 这意味着单个模型将被拟合和评估 10 * 3 或 30 次，并且这些运行的平均值和标准偏差将被报告。
 
-这可以通过使用[repeated stratifiedfold scikit-learn 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
+这可以通过使用[repeated stratifiedfold Sklearn 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
 
-我们将使用 ROC 曲线下的面积或通过 [roc_auc_score()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)计算的 ROC AUC 来评估和比较模型。
+我们将使用 ROC 曲线下的面积或通过 [roc_auc_score()函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)计算的 ROC AUC 来评估和比较模型。
 
 我们可以定义一个函数来加载数据集，并将列分成输入和输出变量。我们将正确地将类标签编码为 0 和 1。下面的 *load_dataset()* 函数实现了这一点。
 
@@ -287,7 +287,7 @@ def evaluate_model(X, y, model):
 
 一个预测随机类与每个类的基本比率成比例的模型将导致 0.5 的 ROC AUC，这是该数据集上表现的基线。这是一个所谓的“无技能”分类器。
 
-这可以通过使用 scikit-learn 库中的 [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类并将“*策略*”参数设置为“*分层*”来实现。
+这可以通过使用 Sklearn 库中的 [DummyClassifier](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类并将“*策略*”参数设置为“*分层*”来实现。
 
 ```py
 ...
@@ -354,7 +354,7 @@ print('Mean ROC AUC: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 运行该示例首先加载和汇总数据集。
 
-我们可以看到我们加载了正确的行数，并且我们有六个计算机视觉导出的输入变量。重要的是，我们可以看到类标签正确映射到整数，多数类为 0，少数类为 1，这是不平衡二进制分类数据集的惯例。
+我们可以看到我们加载了正确的行数，并且我们有六个计算机视觉导出的输入变量。重要的是，我们可以看到类标签正确映射到整数，多数类为 0，少数类为 1，这是不平衡二进制类别数据集的惯例。
 
 接下来，报告 ROC AUC 分数的平均值。
 
@@ -560,7 +560,7 @@ pyplot.show()
 *   支持向量机(SVM)
 *   随机森林
 
-这可以在 scikit-learn 中通过将“ *class_weight* ”参数设置为“ *balanced* ”来实现，以使这些算法对成本敏感。
+这可以在 Sklearn 中通过将“ *class_weight* ”参数设置为“ *balanced* ”来实现，以使这些算法对成本敏感。
 
 例如，下面更新的 *get_models()* 函数定义了要在我们的数据集上评估的这三个算法的成本敏感版本。
 
@@ -582,7 +582,7 @@ def get_models():
 
 此外，当探索数据集时，我们注意到许多变量具有看似指数的数据分布。有时，我们可以通过对每个变量使用幂变换来更好地传播变量的数据。这将特别有助于 LR 和 SVM 算法，也可能有助于 RF 算法。
 
-我们可以使用[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)在交叉验证模型评估过程的每个折叠中实现这一点。第一步将学习训练套摺上的[电力变压器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html)，并将其应用于训练和测试套摺。第二步将是我们正在评估的模型。然后可以使用我们的*评估 _ 模型()*函数直接评估管道，例如:
+我们可以使用[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)在交叉验证模型评估过程的每个折叠中实现这一点。第一步将学习训练套摺上的[电力变压器](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html)，并将其应用于训练和测试套摺。第二步将是我们正在评估的模型。然后可以使用我们的*评估 _ 模型()*函数直接评估管道，例如:
 
 ```py
 ...
@@ -816,10 +816,10 @@ Cancer:
 
 ### 蜜蜂
 
-*   [sklearn.model_selection。重复的策略应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)。
-*   [硬化. metrics.roc_auc_score API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) 。
-*   [硬化. dummy . dummy class ification API](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
-*   [硬化. svm.SVC API](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html) 。
+*   [sklearn.model_selection。重复的策略应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)。
+*   [硬化. metrics.roc_auc_score API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) 。
+*   [硬化. dummy . dummy class ification API](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
+*   [硬化. svm.SVC API](https://Sklearn.org/stable/modules/generated/sklearn.svm.SVC.html) 。
 
 ### 资料组
 
@@ -828,7 +828,7 @@ Cancer:
 
 ## 摘要
 
-在本教程中，您发现了如何开发和评估不平衡乳腺摄影癌症分类数据集的模型。
+在本教程中，您发现了如何开发和评估不平衡乳腺摄影癌症类别数据集的模型。
 
 具体来说，您了解到:
 

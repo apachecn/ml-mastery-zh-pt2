@@ -199,7 +199,7 @@ pyplot.show()
 
 这意味着单个模型将被拟合和评估 10 * 3 或 30 次，并且将报告这些运行的平均值和标准偏差。
 
-这可以通过使用[repeated stratifiedfold scikit-learn 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
+这可以通过使用[repeated stratifiedfold Sklearn 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
 
 我们正在预测卫星图像补丁是否包含溢出的类别标签。我们可以使用许多测量方法，尽管论文的作者选择报告这两个分数的敏感性、特异性和几何平均值，称为 G 均值。
 
@@ -257,7 +257,7 @@ def evaluate_model(X, y, model):
 
 预测所有情况下的多数类标签(0)或少数类标签(1)的模型将导致 G 均值为零。因此，一个好的默认策略是以 50%的概率随机预测一个或另一个类别标签，目标是 0.5 左右的 G 均值。
 
-这可以通过使用 scikit-learn 库中的 [DummyClassifier 类](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)并将“*策略*”参数设置为“*制服*”来实现。
+这可以通过使用 Sklearn 库中的 [DummyClassifier 类](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)并将“*策略*”参数设置为“*制服*”来实现。
 
 ```py
 ...
@@ -333,7 +333,7 @@ print('Mean G-Mean: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 我们可以看到我们加载了正确的行数，并且我们有 47 个计算机视觉导出的输入变量，删除了常数值列(索引 22)和补丁号列(索引 0)。
 
-重要的是，我们可以看到类标签正确映射到整数，多数类为 0，少数类为 1，这是不平衡二进制分类数据集的惯例。
+重要的是，我们可以看到类标签正确映射到整数，多数类为 0，少数类为 1，这是不平衡二进制类别数据集的惯例。
 
 接下来，报告 G 均值分数的平均值。
 
@@ -362,7 +362,7 @@ Mean G-Mean: 0.478 (0.143)
 
 让我们从评估数据集上的一些概率模型开始。
 
-概率模型是那些在概率框架下适合于数据的模型，并且通常对于不平衡分类数据集表现良好。
+概率模型是那些在概率框架下适合于数据的模型，并且通常对于不平衡类别数据集表现良好。
 
 我们将使用数据集中的默认超参数评估以下概率模型:
 
@@ -372,7 +372,7 @@ Mean G-Mean: 0.478 (0.143)
 
 LR 和 LDA 都对输入变量的规模敏感，并且通常期望和/或执行得更好，如果具有不同规模的输入变量被标准化或规范化作为预处理步骤。
 
-在这种情况下，我们将在拟合每个模型之前标准化数据集。这将使用[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)和[标准缩放器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)类来实现。管道的使用确保了标准缩放器适合训练数据集，并应用于每个 k 倍交叉验证评估中的训练集和测试集，避免了任何可能导致乐观结果的数据泄漏。
+在这种情况下，我们将在拟合每个模型之前标准化数据集。这将使用[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)和[标准缩放器](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)类来实现。管道的使用确保了标准缩放器适合训练数据集，并应用于每个 k 倍交叉验证评估中的训练集和测试集，避免了任何可能导致乐观结果的数据泄漏。
 
 我们可以定义一个模型列表来评估我们的测试工具，如下所示:
 
@@ -516,7 +516,7 @@ G 均值分数的分布通过每个算法的方框图和触须图进行总结。
 
 逻辑回归算法支持将分类错误的重要性调整为与类别权重成反比的修改。
 
-这允许模型更好地学习有利于少数类的类边界，这可能有助于整体 G 均值表现。我们可以通过将[物流配送](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)的“*类权重*参数设置为“*平衡*来实现这一点。
+这允许模型更好地学习有利于少数类的类边界，这可能有助于整体 G 均值表现。我们可以通过将[物流配送](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)的“*类权重*参数设置为“*平衡*来实现这一点。
 
 ```py
 ...
@@ -525,7 +525,7 @@ LogisticRegression(solver='liblinear', class_weight='balanced')
 
 如上所述，逻辑回归对输入变量的规模很敏感，在标准化或标准化输入下表现更好；因此，对于给定的数据集，测试这两者是一个好主意。此外，可以使用功率分布来分散每个输入变量的分布，并使那些具有类似高斯分布的变量更具高斯性。这有利于像逻辑回归这样对输入变量的分布做出假设的模型。
 
-power transom 将使用支持正输入和负输入的 Yeo-Johnson 方法，但我们也将在转换前对数据进行标准化。此外，用于转换的[电力变压器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html)类也将在转换后标准化每个变量。
+power transom 将使用支持正输入和负输入的 Yeo-Johnson 方法，但我们也将在转换前对数据进行标准化。此外，用于转换的[电力变压器](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html)类也将在转换后标准化每个变量。
 
 我们将使用三种不同的数据准备方案，特别是归一化、标准化和幂变换，将具有平衡类权重的*逻辑推理*与相同算法进行比较。
 
@@ -919,11 +919,11 @@ Spill Cases:
 ### 蜜蜂
 
 *   [熊猫. read_csv API](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html) 。
-*   [sklearn.model_selection。重复的策略应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)。
-*   [硬化. dummy . dummy class ification API](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
+*   [sklearn.model_selection。重复的策略应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)。
+*   [硬化. dummy . dummy class ification API](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
 *   [imb learn . metrics . geometry _ mean _ score API](https://imbalanced-learn.org/stable/generated/imblearn.metrics.geometric_mean_score.html)。
-*   [sklearn . pipeline . pipeline API](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)。
-*   [sklearn.linear_model。物流配送应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)。
+*   [sklearn . pipeline . pipeline API](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)。
+*   [sklearn.linear_model。物流配送应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)。
 *   [imb learn . combine . SMOTENN API](https://imbalanced-learn.org/stable/generated/imblearn.combine.SMOTEENN.html)。
 
 ### 文章

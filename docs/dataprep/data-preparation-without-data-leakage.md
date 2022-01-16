@@ -1,4 +1,4 @@
-# 进行数据准备时如何避免数据泄露
+# 执行数据准备时如何避免数据泄露
 
 > 原文：<https://machinelearningmastery.com/data-preparation-without-data-leakage/>
 
@@ -94,11 +94,11 @@
 
 ## 用训练集和测试集准备数据
 
-在本节中，我们将在输入变量已经标准化的合成二进制分类数据集上使用训练和测试集来评估逻辑回归模型。
+在本节中，我们将在输入变量已经标准化的合成二进制类别数据集上使用训练和测试集来评估逻辑回归模型。
 
 首先，让我们定义我们的合成数据集。
 
-我们将使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建包含 1000 行数据和 20 个数字输入特征的数据集。下面的示例创建数据集并总结输入和输出变量数组的形状。
+我们将使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建包含 1000 行数据和 20 个数字输入特征的数据集。下面的示例创建数据集并总结输入和输出变量数组的形状。
 
 ```py
 # test classification dataset
@@ -121,7 +121,7 @@ print(X.shape, y.shape)
 
 幼稚的方法包括首先应用数据准备方法，然后在最终评估模型之前拆分数据。
 
-我们可以使用[最小最大缩放器类](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)来归一化输入变量，该类首先用默认配置定义，将数据缩放到 0-1 的范围，然后调用 *fit_transform()* 函数来拟合数据集上的变换，并在一个步骤中将其应用于数据集。结果是输入变量的规范化版本，其中数组中的每一列都被单独规范化(例如，计算出它自己的最小值和最大值)。
+我们可以使用[最小最大缩放器类](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)来归一化输入变量，该类首先用默认配置定义，将数据缩放到 0-1 的范围，然后调用 *fit_transform()* 函数来拟合数据集上的变换，并在一个步骤中将其应用于数据集。结果是输入变量的规范化版本，其中数组中的每一列都被单独规范化(例如，计算出它自己的最小值和最大值)。
 
 ```py
 ...
@@ -130,7 +130,7 @@ scaler = MinMaxScaler()
 X = scaler.fit_transform(X)
 ```
 
-接下来，我们可以使用 [train_test_split()函数](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)将数据集分割成训练集和测试集。我们将 67%用于训练集，33%用于测试集。
+接下来，我们可以使用 [train_test_split()函数](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)将数据集分割成训练集和测试集。我们将 67%用于训练集，33%用于测试集。
 
 ```py
 ...
@@ -138,7 +138,7 @@ X = scaler.fit_transform(X)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=1)
 ```
 
-然后，我们可以通过[logisticreduction 类](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)定义我们的逻辑回归算法，使用默认配置，并使其适合训练数据集。
+然后，我们可以通过[logisticreduction 类](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)定义我们的逻辑回归算法，使用默认配置，并使其适合训练数据集。
 
 ```py
 ...
@@ -273,7 +273,7 @@ Accuracy: 85.455
 
 ## k 倍交叉验证的数据准备
 
-在本节中，我们将在输入变量已经标准化的合成二进制分类数据集上使用 k 倍交叉验证来评估逻辑回归模型。
+在本节中，我们将在输入变量已经标准化的合成二进制类别数据集上使用 k 倍交叉验证来评估逻辑回归模型。
 
 您可能还记得 [k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)涉及将数据集拆分为 k 个不重叠的行组。该模型然后在除一个组之外的所有组上训练以形成训练数据集，然后在保持折叠上评估。重复此过程，以便每个折叠都有机会用作保持测试集。最后，报告所有评估的平均绩效。
 
@@ -296,7 +296,7 @@ X = scaler.fit_transform(X)
 
 必须首先定义 k 倍交叉验证程序。我们将使用重复的分层 10 倍交叉验证，这是分类的最佳实践。重复意味着整个交叉验证过程重复多次，在本例中为三次。分层意味着每组行将具有来自每个类的示例作为整个数据集的相对组成。我们将使用 *k=10* 或 10 倍交叉验证。
 
-这可以通过使用[repeated stratifiedfold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现，它可以配置为三次重复和 10 次折叠，然后使用 [cross_val_score()函数](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html)来执行该过程，传入定义的模型、交叉验证对象和度量来计算精度，在这种情况下。
+这可以通过使用[repeated stratifiedfold](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现，它可以配置为三次重复和 10 次折叠，然后使用 [cross_val_score()函数](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html)来执行该过程，传入定义的模型、交叉验证对象和度量来计算精度，在这种情况下。
 
 ```py
 ...
@@ -360,7 +360,7 @@ Accuracy: 85.300 (3.607)
 
 评估过程从简单且不正确地评估模型转变为正确地评估数据准备的整个管道和作为单个原子单元的模型。
 
-这可以使用[管道类](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)来实现。
+这可以使用[管道类](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)来实现。
 
 这个类列出了定义管道的步骤。列表中的每个步骤都是一个包含两个元素的元组。第一个元素是步骤的名称(字符串)，第二个元素是步骤的配置对象，例如转换或模型。该模型仅作为最后一步被支持，尽管我们可以在序列中拥有任意多的变换。
 
@@ -441,12 +441,12 @@ Accuracy: 85.433 (3.471)
 
 ### 蜜蜂
 
-*   [sklearn . datasets . make _ classification API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
-*   [硬化。预处理。MinMaxScaler API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html) 。
-*   [sklearn . model _ selection . train _ test _ split API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)。
-*   [sklearn.linear_model。物流配送应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)。
-*   [sklearn.model_selection。重复的策略应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)。
-*   [sklearn . model _ selection . cross _ val _ score API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html)。
+*   [sklearn . datasets . make _ classification API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
+*   [硬化。预处理。MinMaxScaler API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html) 。
+*   [sklearn . model _ selection . train _ test _ split API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)。
+*   [sklearn.linear_model。物流配送应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)。
+*   [sklearn.model_selection。重复的策略应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)。
+*   [sklearn . model _ selection . cross _ val _ score API](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html)。
 
 ### 文章
 

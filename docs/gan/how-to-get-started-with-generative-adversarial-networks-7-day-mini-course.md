@@ -44,7 +44,7 @@ GANs 的研究和应用只有几年的历史，但所取得的成果却令人瞩
 
 这门速成课程将把你从一个懂一点机器学习的开发人员带到一个能把 GANs 带到你自己的计算机视觉项目中的开发人员。
 
-**注**:本速成课程假设您有一个正在运行的 Python 2 或 3 SciPy 环境，其中至少安装了 NumPy、Pandas、scikit-learn 和 Keras 2。如果您需要环境方面的帮助，可以遵循这里的逐步教程:
+**注**:本速成课程假设您有一个正在运行的 Python 2 或 3 SciPy 环境，其中至少安装了 NumPy、Pandas、Sklearn 和 Keras 2。如果您需要环境方面的帮助，可以遵循这里的逐步教程:
 
 *   [如何为机器学习和深度学习建立 Python 环境](https://machinelearningmastery.com/setup-python-environment-machine-learning-deep-learning-anaconda/)
 

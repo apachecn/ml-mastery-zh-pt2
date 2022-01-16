@@ -226,7 +226,7 @@ MDL 计算与 BIC 非常相似，在某些情况下可以显示为等效。
 
 重要的是，AIC 和 BIC 对于线性回归模型的具体函数形式先前已经被导出，使得例子相对简单。在为您自己的算法调整这些示例时，为您的模型和预测问题找到合适的计算推导或者自己考虑推导计算是很重要的。
 
-在本例中，我们将使用[make _ returnalism()sci kit-learn 函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)提供的测试回归问题。该问题将有两个输入变量，需要预测目标数值。
+在本例中，我们将使用[make _ returnalism()sci kit-learn 函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)提供的测试回归问题。该问题将有两个输入变量，需要预测目标数值。
 
 ```py
 ...
@@ -235,7 +235,7 @@ X, y = make_regression(n_samples=100, n_features=2, noise=0.1)
 # define and fit the model on all data
 ```
 
-我们将在整个数据集上直接拟合一个[线性回归()模型](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)。
+我们将在整个数据集上直接拟合一个[线性回归()模型](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)。
 
 ```py
 ...
@@ -255,7 +255,7 @@ print('Number of parameters: %d' % (num_params))
 
 线性回归模型的似然函数可以显示为与最小二乘函数相同；因此，我们可以通过均方误差度量来估计模型的最大似然。
 
-首先，模型可用于估计训练数据集中每个示例的结果，然后[均方误差()scikit-learn 函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)可用于计算模型的均方误差。
+首先，模型可用于估计训练数据集中每个示例的结果，然后[均方误差()Sklearn 函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)可用于计算模型的均方误差。
 
 ```py
 ...
@@ -444,9 +444,9 @@ BIC: -450.020
 
 ### 应用程序接口
 
-*   [sklearn . datasets . make _ revolution API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)。
-*   [硬化. linear_model .线性回归 API](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) 。
-*   [sklearn . metrics . mean _ squared _ error API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)。
+*   [sklearn . datasets . make _ revolution API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)。
+*   [硬化. linear_model .线性回归 API](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) 。
+*   [sklearn . metrics . mean _ squared _ error API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)。
 
 ### 文章
 

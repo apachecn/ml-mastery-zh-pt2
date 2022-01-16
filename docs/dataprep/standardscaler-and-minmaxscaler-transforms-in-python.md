@@ -78,7 +78,7 @@
 
 ## 数值数据缩放方法
 
-使用 scikit-learn 库可以实现标准化和规范化。
+使用 Sklearn 库可以实现标准化和规范化。
 
 让我们依次仔细看看每一个。
 
@@ -107,7 +107,7 @@
 
 您可以看到，如果提供的 x 值超出了最小值和最大值的界限，则结果值将不会在 0 和 1 的范围内。您可以在进行预测之前检查这些观察值，并从数据集中删除它们，或者将它们限制在预定义的最大值或最小值。
 
-您可以使用 scikit-learn 对象[最小最大缩放器](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)来规范化数据集。
+您可以使用 Sklearn 对象[最小最大缩放器](http://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)来规范化数据集。
 
 最小最大缩放器和其他缩放技术的良好实践用法如下:
 
@@ -205,7 +205,7 @@ print(scaled)
 
 数据集的均值和标准差估计值比最小值和最大值对新数据更稳健。
 
-您可以使用 scikit-learn 对象[标准缩放器](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)来标准化数据集。
+您可以使用 Sklearn 对象[标准缩放器](http://Sklearn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)来标准化数据集。
 
 我们可以通过将两个变量转换为上一节中定义的 0 到 1 的范围来演示这个类的用法。我们将使用缺省配置，它将对每一列中的值进行居中和缩放，例如完全标准化。
 
@@ -313,7 +313,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 ![Histogram Plots of Input Variables for the Sonar Binary Classification Dataset](img/2460ad65db0f80a42f184ccb8da93f1d.png)
 
-声纳二进制分类数据集输入变量的直方图
+声纳二进制类别数据集输入变量的直方图
 
 接下来，让我们在原始数据集上拟合和评估一个机器学习模型。
 
@@ -636,7 +636,7 @@ Accuracy: 0.810 (0.080)
 ### 教程
 
 *   [如何使用数据缩放提高深度学习模型的稳定性和表现](https://machinelearningmastery.com/how-to-improve-neural-network-stability-and-modeling-performance-with-data-scaling/)
-*   [使用 Scikit-Learn 重新缩放 Python 中的机器学习数据](https://machinelearningmastery.com/rescaling-data-for-machine-learning-in-python-with-scikit-learn/)
+*   [使用 Sklearn 重新缩放 Python 中的机器学习数据](https://machinelearningmastery.com/rescaling-data-for-machine-learning-in-python-with-Sklearn/)
 *   [4 时间序列预测的常用机器学习数据转换](https://machinelearningmastery.com/machine-learning-data-transforms-for-time-series-forecasting/)
 *   [如何在 Python 中扩展长短期记忆网络的数据](https://machinelearningmastery.com/how-to-scale-data-for-long-short-term-memory-networks-in-python/)
 *   [如何在 Python 中对时间序列数据进行规范化和标准化](https://machinelearningmastery.com/normalize-standardize-time-series-data-python/)
@@ -650,8 +650,8 @@ Accuracy: 0.810 (0.080)
 
 ### 蜜蜂
 
-*   [硬化。预处理。MinMaxScaler API](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html) 。
-*   [硬化。预处理。标准 cal API](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)。
+*   [硬化。预处理。MinMaxScaler API](http://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html) 。
+*   [硬化。预处理。标准 cal API](http://Sklearn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)。
 
 ### 文章
 

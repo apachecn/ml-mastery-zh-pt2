@@ -1,6 +1,6 @@
-# 如何使用幂变换进行机器学习
+# 如何为机器学习使用幂变换
 
-> 原文：<https://machinelearningmastery.com/power-transforms-with-scikit-learn/>
+> 原文：<https://machinelearningmastery.com/power-transforms-with-Sklearn/>
 
 最后更新于 2020 年 8 月 28 日
 
@@ -8,7 +8,7 @@
 
 您的数据可能没有[高斯分布](https://machinelearningmastery.com/continuous-probability-distributions-for-machine-learning/)，而是可能有类似高斯的分布(例如接近高斯但有异常值或偏斜)或完全不同的分布(例如指数分布)。
 
-因此，通过将输入和/或输出变量转换为高斯或多高斯分布，您可能能够在各种机器学习算法上获得更好的表现。像 Box-Cox 变换和 Yeo-Johnson 变换这样的幂变换提供了一种对数据执行这些变换的自动方法，并且在 scikit-learn Python 机器学习库中提供。
+因此，通过将输入和/或输出变量转换为高斯或多高斯分布，您可能能够在各种机器学习算法上获得更好的表现。像 Box-Cox 变换和 Yeo-Johnson 变换这样的幂变换提供了一种对数据执行这些变换的自动方法，并且在 Sklearn Python 机器学习库中提供。
 
 在本教程中，您将发现如何在 scikit 中使用幂变换-学习如何使变量更高斯化以进行建模。
 
@@ -22,7 +22,7 @@
 
 我们开始吧。
 
-![How to Use Power Transforms With scikit-learn](img/f974fe045b85030d634b8d77f8d14d0a.png)
+![How to Use Power Transforms With Sklearn](img/f974fe045b85030d634b8d77f8d14d0a.png)
 
 如何使用 scikit 进行电源转换-学习
 图片由[伊恩·d·基廷](https://flickr.com/photos/ian-arlett/30436658200/)提供，版权所有。
@@ -106,7 +106,7 @@
 
 在每个变量的转换中使用的这个超参数的最优值可以被存储和重用，以便将来以相同的方式转换新数据，例如测试数据集或将来的新数据。
 
-这些电源转换可通过[电源转换器类](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html)在 scikit-learn Python 机器学习库中获得。
+这些电源转换可通过[电源转换器类](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html)在 Sklearn Python 机器学习库中获得。
 
 该类采用名为“*方法*的参数，该参数可以设置为“*约-约翰逊*或“ *box-cox* ”作为首选方法。它还将在转换后自动标准化数据，这意味着每个变量都将具有零均值和单位方差。这可以通过将“*标准化*”参数设置为*假*来关闭。
 
@@ -222,7 +222,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 ![Histogram Plots of Input Variables for the Sonar Binary Classification Dataset](img/70bdf487be3e1c360904dcc9594a7b29.png)
 
-声纳二进制分类数据集输入变量的直方图
+声纳二进制类别数据集输入变量的直方图
 
 接下来，让我们在原始数据集上拟合和评估一个机器学习模型。
 
@@ -322,9 +322,9 @@ ValueError: The Box-Cox transformation can only be applied to strictly positive 
 
 不出所料，我们无法对原始数据使用转换，因为它不是严格正的。
 
-解决这个问题的一种方法是使用 [MixMaxScaler 变换](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)首先将数据缩放到正值，然后应用该变换。
+解决这个问题的一种方法是使用 [MixMaxScaler 变换](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)首先将数据缩放到正值，然后应用该变换。
 
-我们可以使用[管道对象](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)依次应用两种变换；例如:
+我们可以使用[管道对象](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)依次应用两种变换；例如:
 
 ```py
 ...
@@ -513,7 +513,7 @@ Accuracy: 0.808 (0.082)
 
 有时，通过在执行约-约翰逊变换之前首先标准化原始数据集，可以提高表现。
 
-我们可以通过添加一个[标准缩放器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)来探索这一点，作为管道的第一步。
+我们可以通过添加一个[标准缩放器](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)来探索这一点，作为管道的第一步。
 
 下面列出了完整的示例。
 
@@ -567,7 +567,7 @@ Accuracy: 0.816 (0.077)
 
 *   [机器学习的连续概率分布](https://machinelearningmastery.com/continuous-probability-distributions-for-machine-learning/)
 *   [如何用 Python 对时间序列预测数据进行幂变换](https://machinelearningmastery.com/power-transform-time-series-forecast-data-python/)
-*   [如何用 Scikit 转换回归的目标变量-学习](https://machinelearningmastery.com/how-to-transform-target-variables-for-regression-with-scikit-learn/)
+*   [如何用 Scikit 转换回归的目标变量-学习](https://machinelearningmastery.com/how-to-transform-target-variables-for-regression-with-Sklearn/)
 *   [如何转换数据以更好地拟合正态分布](https://machinelearningmastery.com/how-to-transform-data-to-fit-the-normal-distribution/)
 *   [4 时间序列预测的常用机器学习数据转换](https://machinelearningmastery.com/machine-learning-data-transforms-for-time-series-forecasting/)
 
@@ -584,8 +584,8 @@ Accuracy: 0.816 (0.077)
 
 ### 蜜蜂
 
-*   [非线性变换，sci kit-学习指南](https://scikit-learn.org/stable/modules/preprocessing.html#preprocessing-transformer)。
-*   [硬化。预处理。PowerTransformer API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html) 。
+*   [非线性变换，sci kit-学习指南](https://Sklearn.org/stable/modules/preprocessing.html#preprocessing-transformer)。
+*   [硬化。预处理。PowerTransformer API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html) 。
 
 ### 文章
 

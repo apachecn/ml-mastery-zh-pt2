@@ -15,7 +15,7 @@
 完成本教程后，您将知道:
 
 *   加权平均集成是投票集成的扩展，其中模型投票与模型表现成比例。
-*   如何使用 scikit-learn 的投票集成开发加权平均集成？
+*   如何使用 Sklearn 的投票集成开发加权平均集成？
 *   如何评估加权平均集成进行分类和回归，并确认模型是熟练的。
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -91,7 +91,7 @@
 
 在本节中，我们将开发、评估和使用加权平均或加权和集合模型。
 
-我们可以手动实现加权平均集成，尽管这不是必需的，因为我们可以使用 scikit-learn 库中的投票集成来实现期望的效果。具体来说，[voting revolutionor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html)和 [VotingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 类可以分别用于回归和分类，并且两者都提供了“权重”参数，该参数指定了每个集成成员在进行预测时的相对贡献。
+我们可以手动实现加权平均集成，尽管这不是必需的，因为我们可以使用 Sklearn 库中的投票集成来实现期望的效果。具体来说，[voting revolutionor](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html)和 [VotingClassifier](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 类可以分别用于回归和分类，并且两者都提供了“权重”参数，该参数指定了每个集成成员在进行预测时的相对贡献。
 
 基本模型列表通过“*估计量*参数提供。这是一个 Python 列表，其中列表中的每个元素都是一个元组，具有模型的名称和配置的模型实例。列表中的每个模型必须有唯一的名称。
 
@@ -127,7 +127,7 @@ ensemble = VotingClassifier(estimators=models, weights=weights, voting='soft')
 
 在这一节中，我们将研究使用加权平均集成来解决分类问题。
 
-首先，我们可以使用 [make_classification()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例和 20 个输入特征的合成二进制分类问题。
+首先，我们可以使用 [make_classification()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例和 20 个输入特征的合成二进制分类问题。
 
 下面列出了完整的示例。
 
@@ -402,7 +402,7 @@ Voting Accuracy: 90.620
 
 在这一节中，我们将研究使用加权平均集成来解决回归问题。
 
-首先，我们可以使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
+首先，我们可以使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
 
 下面列出了完整的示例。
 
@@ -779,8 +779,8 @@ Voting MAE: 102.832
 ### 蜜蜂
 
 *   num py . argsort API。
-*   [硬化。一起。投票分类器 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 。
-*   [硬化。一起。投票输入 API](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html) 。
+*   [硬化。一起。投票分类器 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 。
+*   [硬化。一起。投票输入 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html) 。
 
 ### 文章
 
@@ -794,7 +794,7 @@ Voting MAE: 102.832
 具体来说，您了解到:
 
 *   加权平均集成是投票集成的扩展，其中模型投票与模型表现成比例。
-*   如何使用 scikit-learn 的投票集成开发加权平均集成？
+*   如何使用 Sklearn 的投票集成开发加权平均集成？
 *   如何评估加权平均集成进行分类和回归，并确认模型是熟练的。
 
 **你有什么问题吗？**

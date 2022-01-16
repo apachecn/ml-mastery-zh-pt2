@@ -200,7 +200,7 @@ for i in range(dataframe.shape[1]):
 
 ## 用迭代插补器进行迭代插补
 
-scikit-learn 机器学习库提供了支持迭代插补的[迭代插补器类](https://scikit-learn.org/stable/modules/generated/sklearn.impute.IterativeImputer.html)。
+Sklearn 机器学习库提供了支持迭代插补的[迭代插补器类](https://Sklearn.org/stable/modules/generated/sklearn.impute.IterativeImputer.html)。
 
 在本节中，我们将探讨如何有效地使用*迭代器*类。
 
@@ -291,7 +291,7 @@ Missing: 0
 
 为了正确应用迭代缺失数据插补并避免数据泄漏，需要仅在训练数据集上计算每一列的模型，然后应用于数据集中每个折叠的训练集和测试集。
 
-这可以通过创建建模管道来实现，其中第一步是迭代插补，然后第二步是模型。这可以使用[管道类](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)来实现。
+这可以通过创建建模管道来实现，其中第一步是迭代插补，然后第二步是模型。这可以使用[管道类](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)来实现。
 
 例如，下面的*管道*使用带有默认策略的*迭代估算器*，后跟随机森林模型。
 
@@ -563,8 +563,8 @@ Predicted Class: 2
 
 ### 蜜蜂
 
-*   [缺失值的插补，sci kit-学习文档](https://scikit-learn.org/stable/modules/impute.html)。
-*   [硬化。计费。迭代式 API](https://scikit-learn.org/stable/modules/generated/sklearn.impute.IterativeImputer.html) 。
+*   [缺失值的插补，sci kit-学习文档](https://Sklearn.org/stable/modules/impute.html)。
+*   [硬化。计费。迭代式 API](https://Sklearn.org/stable/modules/generated/sklearn.impute.IterativeImputer.html) 。
 
 ### 资料组
 

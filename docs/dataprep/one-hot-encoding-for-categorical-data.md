@@ -1,4 +1,4 @@
-# 分类数据的顺序编码和单热编码
+# 类别数据的顺序编码和单热编码
 
 > 原文：<https://machinelearningmastery.com/one-hot-encoding-for-categorical-data/>
 
@@ -6,7 +6,7 @@
 
 机器学习模型要求所有的输入和输出变量都是数字。
 
-这意味着，如果您的数据包含分类数据，您必须将其编码为数字，然后才能拟合和评估模型。
+这意味着，如果您的数据包含类别数据，您必须将其编码为数字，然后才能拟合和评估模型。
 
 两种最流行的技术是**顺序编码**和**单热编码**。
 
@@ -14,7 +14,7 @@
 
 完成本教程后，您将知道:
 
-*   当处理机器学习算法的分类数据时，编码是必需的预处理步骤。
+*   当处理机器学习算法的类别数据时，编码是必需的预处理步骤。
 *   如何对具有自然排序的分类变量使用序数编码？
 *   如何对没有自然排序的分类变量使用一热编码？
 
@@ -32,7 +32,7 @@
 本教程分为六个部分；它们是:
 
 1.  名义变量和顺序变量
-2.  分类数据编码
+2.  类别数据编码
     1.  序数编码
     2.  一次性编码
     3.  虚拟变量编码
@@ -45,7 +45,7 @@
 
 顾名思义，数字数据包括仅由数字组成的特征，例如整数或浮点值。
 
-[分类数据](https://en.wikipedia.org/wiki/Categorical_variable)是包含标签值而不是数值的变量。
+[类别数据](https://en.wikipedia.org/wiki/Categorical_variable)是包含标签值而不是数值的变量。
 
 可能值的数量通常限于一个固定的集合。
 
@@ -68,19 +68,19 @@
 *   **名义变量** ( *分类*)。变量由一组有限的离散值组成，这些值之间没有关系。
 *   **序数变量**。变量由一组有限的离散值组成，这些值之间具有等级排序。
 
-有些算法可以直接处理分类数据。
+有些算法可以直接处理类别数据。
 
-例如，决策树可以直接从分类数据中学习，不需要数据转换(这取决于具体的实现)。
+例如，决策树可以直接从类别数据中学习，不需要数据转换(这取决于具体的实现)。
 
 许多机器学习算法不能直接对标签数据进行操作。它们要求所有输入变量和输出变量都是数字。
 
 一般来说，这主要是机器学习算法有效实现的一个限制，而不是算法本身的硬性限制。
 
-机器学习算法的一些实现要求所有数据都是数字的。比如 scikit-learn 就有这个要求。
+机器学习算法的一些实现要求所有数据都是数字的。比如 Sklearn 就有这个要求。
 
-这意味着分类数据必须转换成数字形式。如果分类变量是输出变量，您可能还希望将模型的预测转换回分类形式，以便在某些应用中呈现或使用它们。
+这意味着类别数据必须转换成数字形式。如果分类变量是输出变量，您可能还希望将模型的预测转换回分类形式，以便在某些应用中呈现或使用它们。
 
-## 分类数据编码
+## 类别数据编码
 
 有三种常见的方法将序数和分类变量转换为数值。它们是:
 
@@ -102,7 +102,7 @@
 
 它是序数变量的自然编码。对于分类变量，它强加了一种序数关系，而这种关系可能不存在。这可能会导致问题，可以使用一个热编码来代替。
 
-这种序数编码转换可以通过[序数编码器类](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html)在 scikit-learn Python 机器学习库中获得。
+这种序数编码转换可以通过[序数编码器类](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html)在 Sklearn Python 机器学习库中获得。
 
 默认情况下，它将按照数据中观察到的顺序为标签分配整数。如果需要特定的顺序，可以通过“*类别*”参数将其指定为具有所有预期标签的等级顺序的列表。
 
@@ -139,7 +139,7 @@ print(result)
 
 这个序数编码器类用于输入变量，这些变量被组织成行和列，例如矩阵。
 
-如果分类预测建模问题需要对分类目标变量进行编码，那么可以使用[标签编码器类](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html)。它做的事情与 OrdinalEncoder 相同，尽管它期望对单个目标变量进行一维输入。
+如果分类预测建模问题需要对分类目标变量进行编码，那么可以使用[标签编码器类](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html)。它做的事情与 OrdinalEncoder 相同，尽管它期望对单个目标变量进行一维输入。
 
 ### 一次性编码
 
@@ -155,7 +155,7 @@ print(result)
 
 在“ *color* ”变量示例中，有三个类别，因此需要三个二元变量。颜色的二进制变量中有一个“1”值，其他颜色的二进制变量中有“0”值。
 
-通过 [OneHotEncoder 类](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html)，在 scikit-learn Python 机器学习库中可以获得这种一次性编码转换。
+通过 [OneHotEncoder 类](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html)，在 Sklearn Python 机器学习库中可以获得这种一次性编码转换。
 
 我们可以演示 OneHotEncoder 在颜色类别上的用法。首先对类别进行排序，在这种情况下是按字母顺序排序，因为它们是字符串，然后依次为每个类别创建二进制变量。这意味着对于第一个二进制变量，蓝色将表示为[1，0，0]，然后是绿色，最后是红色。
 
@@ -302,7 +302,7 @@ X = data[:, :-1].astype(str)
 y = data[:, -1].astype(str)
 ```
 
-利用这个函数，下面列出了加载和汇总原始分类数据集的完整示例。
+利用这个函数，下面列出了加载和汇总原始类别数据集的完整示例。
 
 ```py
 # load and summarize the dataset
@@ -340,7 +340,7 @@ Output (286,)
 
 在这种情况下，我们将忽略任何可能存在的序数关系，并假设所有变量都是分类的。使用序数编码仍然是有帮助的，至少作为其他编码方案的参考点。
 
-我们可以使用 scikit 中的[序数编码器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html)-学会将每个变量编码成整数。这是一个灵活的类，如果已知任何这样的顺序，它确实允许将类别的顺序指定为参数。
+我们可以使用 scikit 中的[序数编码器](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html)-学会将每个变量编码成整数。这是一个灵活的类，如果已知任何这样的顺序，它确实允许将类别的顺序指定为参数。
 
 注意:我将把它作为一个练习留给您来更新下面的示例，以尝试为那些具有自然顺序的变量指定顺序，并查看它是否对模型表现有影响。
 
@@ -493,9 +493,9 @@ Accuracy: 75.79
 
 ## OneHotEncoder 转换
 
-单热编码适用于类别之间不存在关系的分类数据。
+单热编码适用于类别之间不存在关系的类别数据。
 
-scikit-learn 库提供了 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 类来自动对一个或多个变量进行热编码。
+Sklearn 库提供了 [OneHotEncoder](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 类来自动对一个或多个变量进行热编码。
 
 默认情况下， *OneHotEncoder* 将输出具有[稀疏表示](https://machinelearningmastery.com/sparse-matrices-for-machine-learning/)的数据，这在编码表示中大多数值为 0 的情况下是有效的。我们将通过将“*稀疏*”参数设置为*假*来禁用此功能，以便我们可以查看编码的效果。
 
@@ -626,9 +626,9 @@ Accuracy: 70.53
 
 ## 常见问题
 
-本节列出了编码分类数据时的一些常见问题和答案。
+本节列出了编码类别数据时的一些常见问题和答案。
 
-**问:如果我有数字和分类数据的混合会怎么样？**
+**问:如果我有数字和类别数据的混合会怎么样？**
 
 或者，如果我有分类和顺序数据的混合呢？
 
@@ -666,9 +666,9 @@ Accuracy: 70.53
 
 ### 蜜蜂
 
-*   [硬化。预处理。OneHotEncoder API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 。
+*   [硬化。预处理。OneHotEncoder API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 。
 *   硬化。预处理。标签编码 API 。
-*   [硬化。预处理。序编码器 API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html) 。
+*   [硬化。预处理。序编码器 API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html) 。
 
 ### 文章
 
@@ -681,7 +681,7 @@ Accuracy: 70.53
 
 具体来说，您了解到:
 
-*   当处理机器学习算法的分类数据时，编码是必需的预处理步骤。
+*   当处理机器学习算法的类别数据时，编码是必需的预处理步骤。
 *   如何对具有自然排序的分类变量使用序数编码？
 *   如何对没有自然排序的分类变量使用一热编码？
 

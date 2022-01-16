@@ -1,4 +1,4 @@
-# 音素不平衡分类数据集的预测模型
+# 音素不平衡类别数据集的预测模型
 
 > 原文：<https://machinelearningmastery.com/predictive-model-for-the-phoneme-imbalanced-classification-dataset/>
 
@@ -26,7 +26,7 @@
 
 ![Predictive Model for the Phoneme Imbalanced Classification Dataset](img/8b7a287a9d551d4229e8c784748ee311.png)
 
-音素不平衡分类数据集的预测模型
+音素不平衡类别数据集的预测模型
 图片由[埃德·邓恩斯](https://flickr.com/photos/blachswan/33812905292/)提供，保留部分权利。
 
 ## 教程概述
@@ -229,7 +229,7 @@ pyplot.show()
 
 这意味着单个模型将被拟合和评估 10 * 3 或 30 次，并且将报告这些运行的平均值和标准偏差。
 
-这可以通过使用[repeated stratifiedfold scikit-learn 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
+这可以通过使用[repeated stratifiedfold Sklearn 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
 
 类别标签将被预测，两个类别标签同等重要。因此，我们将选择一个度量来分别量化模型在两个类上的表现。
 
@@ -276,7 +276,7 @@ def evaluate_model(X, y, model):
 
 预测所有情况下的多数类标签(0)或少数类标签(1)的模型将导致 G 均值为零。因此，一个好的默认策略是以 50%的概率随机预测一个或另一个类别标签，目标是 0.5 左右的 G 均值。
 
-这可以通过使用 scikit-learn 库中的 [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类并将“*策略*”参数设置为“*制服*”来实现。
+这可以通过使用 Sklearn 库中的 [DummyClassifier](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类并将“*策略*”参数设置为“*制服*”来实现。
 
 ```py
 ...
@@ -830,8 +830,8 @@ Oral:
 
 ### 蜜蜂
 
-*   [sklearn.model_selection。重复的策略应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)。
-*   [硬化. dummy . dummy class ification API](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
+*   [sklearn.model_selection。重复的策略应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)。
+*   [硬化. dummy . dummy class ification API](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
 *   [imb learn . metrics . geometry _ mean _ score API](https://imbalanced-learn.org/stable/generated/imblearn.metrics.geometric_mean_score.html)。
 
 ### 资料组

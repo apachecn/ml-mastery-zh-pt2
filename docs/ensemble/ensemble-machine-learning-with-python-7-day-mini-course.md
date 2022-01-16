@@ -9,7 +9,7 @@
 
 集成是一种先进的机器学习方法，通常在预测的能力和技巧比使用简单易懂的模型更重要时使用。因此，它们经常被机器学习竞赛的顶尖和获奖参与者使用，如[百万美元网飞奖](https://en.wikipedia.org/wiki/Netflix_Prize)和[卡格尔竞赛](https://www.kaggle.com/)。
 
-像 scikit-learn Python 这样的现代机器学习库提供了一套高级集成学习方法，这些方法易于配置和正确使用，不会出现数据泄漏，这是使用集成算法时的一个常见问题。
+像 Sklearn Python 这样的现代机器学习库提供了一套高级集成学习方法，这些方法易于配置和正确使用，不会出现数据泄漏，这是使用集成算法时的一个常见问题。
 
 在这个速成课程中，您将发现如何在七天内开始并自信地将集成学习算法带到您的 Python 预测建模项目中。
 
@@ -122,7 +122,7 @@ Python 集成机器学习(7 天迷你课程)
 
 这被称为[引导样本](https://machinelearningmastery.com/a-gentle-introduction-to-the-bootstrap-method/)，给这项技术命名。
 
-打包在 scikit-learn 中通过[打包分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html)和[打包分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingRegressor.html)类提供，默认情况下，它们使用决策树作为基本模型，您可以通过“*n _ estimates*”参数指定要创建的树的数量。
+打包在 Sklearn 中通过[打包分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html)和[打包分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.BaggingRegressor.html)类提供，默认情况下，它们使用决策树作为基本模型，您可以通过“*n _ estimates*”参数指定要创建的树的数量。
 
 下面列出了评估打包集合进行分类的完整示例。
 
@@ -168,7 +168,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 具体来说，在构建每个决策树时，在数据中选择分割点。随机森林不会在选择分割点时考虑所有要素，而是将要素限制为要素的随机子集，例如，如果有 10 个要素，则为 3 个。
 
-随机森林集成在 scikit-learn 中通过[随机森林分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)和[随机森林回归器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)类提供。您可以通过“*n _ estimates*”参数指定要创建的树的数量，并通过“ *max_features* ”参数指定要在每个分割点考虑的随机选择的要素的数量，默认情况下，该参数设置为数据集中要素数量的平方根。
+随机森林集成在 Sklearn 中通过[随机森林分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)和[随机森林回归器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)类提供。您可以通过“*n _ estimates*”参数指定要创建的树的数量，并通过“ *max_features* ”参数指定要在每个分割点考虑的随机选择的要素的数量，默认情况下，该参数设置为数据集中要素数量的平方根。
 
 下面列出了评估随机森林集合进行分类的完整示例。
 
@@ -214,7 +214,7 @@ boosting 的思想最初是作为一种理论思想发展起来的，AdaBoost �
 
 AdaBoost 使用非常简单的树，在进行预测之前，对一个输入变量进行单一决策，而不是完整的决策树。这些矮树被称为决策树桩。
 
-AdaBoost 在 scikit-learn 中通过[adaboosttclassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html)和[adaboosttregressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html)类提供，默认情况下，它们使用决策树(决策树桩)作为基本模型，您可以通过“*n _ estimates*”参数指定要创建的树的数量。
+AdaBoost 在 Sklearn 中通过[adaboosttclassifier](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html)和[adaboosttregressor](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html)类提供，默认情况下，它们使用决策树(决策树桩)作为基本模型，您可以通过“*n _ estimates*”参数指定要创建的树的数量。
 
 下面列出了评估 AdaBoost 集成进行分类的完整示例。
 
@@ -260,7 +260,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 对于结构化或表格数据，这是一种非常成功的集成技术，尽管考虑到模型是按顺序添加的，拟合模型可能会很慢。已经开发了更有效的实现，例如流行的极限梯度增强(XGBoost)和光梯度增强机器(LightGBM)。
 
-梯度增强在 scikit-learn 中通过[梯度增强分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)和[梯度增强回归器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)类提供，默认情况下，它们使用决策树作为基本模型。您可以通过“*n _ estimates*”参数指定要创建的树的数量，并通过默认为 0.1 的“ *learning_rate* ”参数指定控制每个树的贡献的学习速率。
+梯度增强在 Sklearn 中通过[梯度增强分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)和[梯度增强回归器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)类提供，默认情况下，它们使用决策树作为基本模型。您可以通过“*n _ estimates*”参数指定要创建的树的数量，并通过默认为 0.1 的“ *learning_rate* ”参数指定控制每个树的贡献的学习速率。
 
 下面列出了评估用于分类的梯度增强集成的完整示例。
 
@@ -304,7 +304,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 当通过合计预测概率并选择具有最大合计概率的标签来预测分类问题上类别标签的概率时，也可以使用投票。这被称为软投票，当集成中使用的基本模型本身支持预测类概率时，它是首选的，因为它可以产生更好的表现。
 
-scikit-learn 中的投票组合可通过 [VotingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 和[voting retriever](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html)课程获得。基本模型的列表可以作为模型的参数提供，列表中的每个模型必须是一个带有名称和模型的元组，例如*(“lr”，logisticreduce())*。用于分类的投票类型可以通过“*投票*参数指定，并设置为“*软*或“*硬*”。
+Sklearn 中的投票组合可通过 [VotingClassifier](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 和[voting retriever](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html)课程获得。基本模型的列表可以作为模型的参数提供，列表中的每个模型必须是一个带有名称和模型的元组，例如*(“lr”，logisticreduce())*。用于分类的投票类型可以通过“*投票*参数指定，并设置为“*软*或“*硬*”。
 
 下面列出了评估投票集合进行分类的完整示例。
 
@@ -356,7 +356,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 虽然内部堆叠使用 k-fold 交叉验证来训练元模型，但是您可以以任何您喜欢的方式评估堆叠模型，例如通过 train-test 拆分或 k-fold 交叉验证。模型的评估与内部的重采样训练过程是分开的。
 
-堆叠套装在 scikit-learn 中通过[堆叠分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html)和[堆叠回归器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingRegressor.html)课程提供。基本模型的列表可以作为模型的参数提供，列表中的每个模型必须是一个带有名称和模型的元组，例如*(“lr”，logisticreduce())*。元学习器可以通过“ *final_estimator* 参数指定，重采样策略可以通过“ *cv* 参数指定，并且可以简单地设置为指示交叉验证折叠次数的整数。
+堆叠套装在 Sklearn 中通过[堆叠分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html)和[堆叠回归器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.StackingRegressor.html)课程提供。基本模型的列表可以作为模型的参数提供，列表中的每个模型必须是一个带有名称和模型的元组，例如*(“lr”，logisticreduce())*。元学习器可以通过“ *final_estimator* 参数指定，重采样策略可以通过“ *cv* 参数指定，并且可以简单地设置为指示交叉验证折叠次数的整数。
 
 下面列出了评估堆叠集合进行分类的完整示例。
 

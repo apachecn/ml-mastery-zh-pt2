@@ -10,7 +10,7 @@
 
 这意味着可以使用不平衡分类技术，同时仍然可以使用分类精度来报告模型表现，就像平衡分类问题一样。
 
-在本教程中，您将发现如何为不平衡的成人收入分类数据集开发和评估模型。
+在本教程中，您将发现如何为不平衡的成人收入类别数据集开发和评估模型。
 
 完成本教程后，您将知道:
 
@@ -217,7 +217,7 @@ pyplot.show()
 
 ![Histogram of Numeric Variables in the Adult Imbalanced Classification Dataset](img/4d195409bd4d228be77014768b94892e.png)
 
-成人不平衡分类数据集中数值变量的直方图
+成人不平衡类别数据集中数值变量的直方图
 
 现在我们已经回顾了数据集，让我们看看开发一个测试工具来评估候选模型。
 
@@ -231,7 +231,7 @@ pyplot.show()
 
 这意味着单个模型将被拟合和评估 10 * 3 或 30 次，并且这些运行的平均值和标准偏差将被报告。
 
-这可以使用[repeated stratifiedfold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)scikit-learn 类来实现。
+这可以使用[repeated stratifiedfold](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)Sklearn 类来实现。
 
 我们将为每个示例预测一个类标签，并使用分类精度来衡量模型表现。
 
@@ -273,7 +273,7 @@ def load_dataset(full_path):
 
 当使用分类精度时，简单模型将预测所有情况下的多数类。这为模型在这个问题上的表现提供了一个基线，通过这个基线可以比较所有其他模型。
 
-这可以通过使用 scikit-learn 库中的 [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类并将“*策略*”参数设置为“*最频繁*”来实现。
+这可以通过使用 Sklearn 库中的 [DummyClassifier](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类并将“*策略*”参数设置为“*最频繁*”来实现。
 
 ```py
 ...
@@ -345,7 +345,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 运行该示例首先加载和汇总数据集。
 
-我们可以看到加载了正确的行数。重要的是，我们可以看到类标签具有到整数的正确映射，多数类为 0，少数类为 1，这是不平衡二进制分类数据集的惯例。
+我们可以看到加载了正确的行数。重要的是，我们可以看到类标签具有到整数的正确映射，多数类为 0，少数类为 1，这是不平衡二进制类别数据集的惯例。
 
 接下来，报告平均分类准确度分数。
 
@@ -410,9 +410,9 @@ def get_models():
 
 然后，我们可以依次列举模型列表，并对每个模型进行评估，存储分数供以后评估。
 
-我们将使用 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 对分类输入变量进行一键编码，并将使用[最小最大缩放器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)对数字输入变量进行归一化。在交叉验证过程中，这些操作必须在每个训练/测试分割中执行，其中编码和缩放操作适合训练集并应用于训练集和测试集。
+我们将使用 [OneHotEncoder](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 对分类输入变量进行一键编码，并将使用[最小最大缩放器](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)对数字输入变量进行归一化。在交叉验证过程中，这些操作必须在每个训练/测试分割中执行，其中编码和缩放操作适合训练集并应用于训练集和测试集。
 
-实现这一点的一个简单方法是使用[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，其中第一步是[列转换器](https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html)，它将 *OneHotEncoder* 应用于分类变量，将*最小最大缩放器*应用于数字输入变量。为此，我们需要分类和数字输入变量的列索引列表。
+实现这一点的一个简单方法是使用[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，其中第一步是[列转换器](https://Sklearn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html)，它将 *OneHotEncoder* 应用于分类变量，将*最小最大缩放器*应用于数字输入变量。为此，我们需要分类和数字输入变量的列索引列表。
 
 我们在上一节中定义的 *load_dataset()* 函数加载并返回数据集和具有分类和数字数据类型的列列表。这可用于在评估前准备一个*管道*来包装每个模型。首先，定义*列转换器*，它指定要应用于每种类型列的转换，然后这被用作*管道*的第一步，该管道以将要拟合和评估的特定模型结束。
 
@@ -568,7 +568,7 @@ pyplot.show()
 
 在本节中，我们可以拟合最终模型，并使用它对单行数据进行预测。
 
-我们将使用[梯度增强分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)模型作为我们的最终模型，该模型实现了大约 86.3%的分类准确率。拟合最终模型包括定义[列转换器](https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html)来编码分类变量和缩放数值变量，然后构建[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)来在拟合模型之前对训练集执行这些转换。
+我们将使用[梯度增强分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)模型作为我们的最终模型，该模型实现了大约 86.3%的分类准确率。拟合最终模型包括定义[列转换器](https://Sklearn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html)来编码分类变量和缩放数值变量，然后构建[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)来在拟合模型之前对训练集执行这些转换。
 
 *管道*然后可以直接用于对新数据进行预测，并将使用与在训练数据集上执行的操作相同的操作来自动编码和缩放新数据。
 
@@ -700,8 +700,8 @@ for row in data:
 ### 蜜蜂
 
 *   [熊猫。data frame . select _ dt types API](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.select_dtypes.html)。
-*   [sklearn.model_selection。重复的策略应用编程接口](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)。
-*   [硬化. dummy . dummy class ification API](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
+*   [sklearn.model_selection。重复的策略应用编程接口](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)。
+*   [硬化. dummy . dummy class ification API](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
 
 ### 资料组
 
@@ -711,7 +711,7 @@ for row in data:
 
 ## 摘要
 
-在本教程中，您发现了如何为不平衡的成人收入分类数据集开发和评估模型。
+在本教程中，您发现了如何为不平衡的成人收入类别数据集开发和评估模型。
 
 具体来说，您了解到:
 

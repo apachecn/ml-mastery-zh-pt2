@@ -139,7 +139,7 @@ ROC 曲线是一个有用的诊断工具，用于了解不同阈值之间的权�
 
 首先，让我们拟合一个模型，计算一个 ROC 曲线。
 
-我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例(行)的合成二进制分类问题，其中 99%属于多数类，1%属于少数类。
+我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例(行)的合成二进制分类问题，其中 99%属于多数类，1%属于少数类。
 
 ```py
 ...
@@ -148,7 +148,7 @@ X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
 	n_clusters_per_class=1, weights=[0.99], flip_y=0, random_state=4)
 ```
 
-然后，我们可以使用 [train_test_split()函数](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)分割数据集，并将一半用于训练集，另一半用于测试集。
+然后，我们可以使用 [train_test_split()函数](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)分割数据集，并将一半用于训练集，另一半用于测试集。
 
 ```py
 ...
@@ -156,7 +156,7 @@ X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
 trainX, testX, trainy, testy = train_test_split(X, y, test_size=0.5, random_state=2, stratify=y)
 ```
 
-然后，我们可以拟合一个[逻辑推理模型](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)，并使用它对测试集进行概率预测，只保留少数类的概率预测。
+然后，我们可以拟合一个[逻辑推理模型](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)，并使用它对测试集进行概率预测，只保留少数类的概率预测。
 
 ```py
 ...
@@ -169,7 +169,7 @@ lr_probs = model.predict_proba(testX)
 lr_probs = lr_probs[:, 1]
 ```
 
-然后，我们可以使用 [roc_auc_score()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html)使用一组阈值计算预测的真阳性率和假阳性率，然后使用这些阈值创建 roc 曲线图。
+然后，我们可以使用 [roc_auc_score()函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.roc_curve.html)使用一组阈值计算预测的真阳性率和假阳性率，然后使用这些阈值创建 roc 曲线图。
 
 ```py
 ...
@@ -237,7 +237,7 @@ pyplot.show()
 
 *   g-均值= sqrt(灵敏度*特异性)
 
-一种方法是用呼叫返回的每个阈值来测试模型 [roc_auc_score()](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) 并选择具有最大 G 均值的阈值。
+一种方法是用呼叫返回的每个阈值来测试模型 [roc_auc_score()](https://Sklearn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) 并选择具有最大 G 均值的阈值。
 
 假设我们在计算 ROC 曲线时已经计算了敏感性(TPR)和特异性的补充，我们可以直接计算每个阈值的 G 均值。
 
@@ -391,7 +391,7 @@ Best Threshold=0.016153
 
 无技能模型由一条水平线表示，其精度是数据集中正面示例的比率(例如 TP / (TP + TN))，或者在我们的合成数据集中为 0.01。完美技能分类器具有完全的精度和召回率，右上角有一个点。
 
-我们可以使用上一节中的相同模型和数据集，并使用精度-召回曲线评估逻辑回归模型的概率预测。[精度 _ 召回 _ 曲线()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)可用于计算曲线，返回每个阈值的精度和召回分数以及使用的阈值。
+我们可以使用上一节中的相同模型和数据集，并使用精度-召回曲线评估逻辑回归模型的概率预测。[精度 _ 召回 _ 曲线()函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)可用于计算曲线，返回每个阈值的精度和召回分数以及使用的阈值。
 
 ```py
 ...
@@ -617,7 +617,7 @@ ix = argmax(scores)
 print('Threshold=%.3f, F-Score=%.5f' % (thresholds[ix], scores[ix]))
 ```
 
-将所有这些结合起来，下面列出了在综合不平衡分类数据集上调整逻辑回归模型阈值的完整示例。
+将所有这些结合起来，下面列出了在综合不平衡类别数据集上调整逻辑回归模型阈值的完整示例。
 
 ```py
 # search thresholds for imbalanced classification
@@ -679,9 +679,9 @@ Threshold=0.251, F-Score=0.75556
 
 ### 蜜蜂
 
-*   [硬化. metrics.roc_curve API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html) 。
+*   [硬化. metrics.roc_curve API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.roc_curve.html) 。
 *   [imb learn . metrics . geometry _ mean _ score API](https://imbalanced-learn.org/stable/generated/imblearn.metrics.geometric_mean_score.html)。
-*   [sklearn . metrics . precision _ recall _ curve API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)。
+*   [sklearn . metrics . precision _ recall _ curve API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)。
 
 ### 文章
 

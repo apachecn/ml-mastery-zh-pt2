@@ -94,7 +94,7 @@ OvR 和 OvO 都可以被认为是一种集成学习模型，假设多个单独�
 
 ## 评估和使用 ECOC 分类器
 
-scikit-learn 库通过[输出编码分类器类](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OutputCodeClassifier.html)提供了 ECOC 的实现。
+Sklearn 库通过[输出编码分类器类](https://Sklearn.org/stable/modules/generated/sklearn.multiclass.OutputCodeClassifier.html)提供了 ECOC 的实现。
 
 该类将用于拟合每个二进制分类器的模型作为参数，并且可以使用任何机器学习模型。在这种情况下，我们将使用逻辑回归模型，用于二元分类。
 
@@ -106,7 +106,7 @@ scikit-learn 库通过[输出编码分类器类](https://scikit-learn.org/stable
 *   encoding_length = 2 * 3
 *   编码长度= 6
 
-下面的例子演示了如何定义一个每类 2 位的*输出编码分类器*的例子，并为编码中的每一位使用一个[物流分类器](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型。
+下面的例子演示了如何定义一个每类 2 位的*输出编码分类器*的例子，并为编码中的每一位使用一个[物流分类器](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型。
 
 ```py
 ...
@@ -120,7 +120,7 @@ ecoc = OutputCodeClassifier(model, code_size=2, random_state=1)
 
 我们可以在一个综合的多类分类问题上探索*输出编码分类器*的使用。
 
-我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含 1000 个示例、20 个输入特征和三个类的多类分类问题。
+我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含 1000 个示例、20 个输入特征和三个类的多类分类问题。
 
 下面的示例演示了如何创建数据集并汇总数据集中的行数、列数和类数。
 
@@ -184,7 +184,7 @@ n_scores = cross_val_score(ecoc, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例定义了模型，并使用定义的测试过程在我们的合成多类分类数据集上对其进行评估。
+运行该示例定义了模型，并使用定义的测试过程在我们的合成多类类别数据集上对其进行评估。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -240,7 +240,7 @@ ECOC 模型的关键超参数是类标签的编码。
 *   表示的长度(位数等)。)
 *   预测如何映射到类(距离等)。)
 
-[OutputCodeClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OutputCodeClassifier.html)scikit-learn 实现目前没有提供对这些元素的大量控制。
+[OutputCodeClassifier](https://Sklearn.org/stable/modules/generated/sklearn.multiclass.OutputCodeClassifier.html)Sklearn 实现目前没有提供对这些元素的大量控制。
 
 它控制的元素是用于编码每个类标签的位数。
 
@@ -404,8 +404,8 @@ ECOC 每类比特的盒须图与分类精度分布
 
 ### 蜜蜂
 
-*   [硬化。多类。输出代码分类器 API](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OutputCodeClassifier.html) 。
-*   [纠错输出-代码，sci kit-学习文档](https://scikit-learn.org/stable/modules/multiclass.html#ecoc)。
+*   [硬化。多类。输出代码分类器 API](https://Sklearn.org/stable/modules/generated/sklearn.multiclass.OutputCodeClassifier.html) 。
+*   [纠错输出-代码，sci kit-学习文档](https://Sklearn.org/stable/modules/multiclass.html#ecoc)。
 
 ## 摘要
 

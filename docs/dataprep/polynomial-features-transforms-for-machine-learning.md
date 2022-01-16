@@ -1,4 +1,4 @@
-# 如何使用多项式特征变换进行机器学习
+# 如何为机器学习使用多项式特征变换
 
 > 原文：<https://machinelearningmastery.com/polynomial-features-transforms-for-machine-learning/>
 
@@ -71,7 +71,7 @@
 
 ## 多项式特征变换
 
-多项式特征变换可通过[多项式特征类](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html)在 scikit-learn Python 机器学习库中获得。
+多项式特征变换可通过[多项式特征类](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html)在 Sklearn Python 机器学习库中获得。
 
 创建的功能包括:
 
@@ -190,7 +190,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 ![Histogram Plots of Input Variables for the Sonar Binary Classification Dataset](img/e76d56e226f12756555ec436d6a4d7be.png)
 
-声纳二进制分类数据集输入变量的直方图
+声纳二进制类别数据集输入变量的直方图
 
 接下来，让我们在原始数据集上拟合和评估一个机器学习模型。
 
@@ -491,7 +491,7 @@ pyplot.show()
 
 ### 蜜蜂
 
-*   [硬化。预处理。多项式特征 API](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html) 。
+*   [硬化。预处理。多项式特征 API](https://Sklearn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html) 。
 
 ### 文章
 

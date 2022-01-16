@@ -135,7 +135,7 @@ Negative Class | False Positive (FP) | True Negative (TN)
 
 ### 使用 Scikit 计算精度-学习
 
-可以使用[precision _ score()sci kit-learn 功能](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)计算精度分数。
+可以使用[precision _ score()sci kit-learn 功能](https://Sklearn.org/stable/modules/generated/sklearn.metrics.precision_score.html)计算精度分数。
 
 例如，我们可以使用这个函数来计算上一节中场景的精度。
 
@@ -246,7 +246,7 @@ Precision: 0.677
 
 ### 用 Scikit 计算召回-学习
 
-可以使用 [recall_score() scikit-learn 功能](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)计算召回分数。
+可以使用 [recall_score() Sklearn 功能](https://Sklearn.org/stable/modules/generated/sklearn.metrics.recall_score.html)计算召回分数。
 
 例如，我们可以使用这个函数来计算上述场景的召回率。
 
@@ -356,7 +356,7 @@ F-Measure 提供了一种方法，可以将精度和召回率结合到一个能�
 
 让我们用一个实例来具体说明这个计算。
 
-考虑一个少数与多数比例为 1:100 的二元分类数据集，有 100 个少数类示例和 10，000 个多数类示例。
+考虑一个少数与多数比例为 1:100 的二元类别数据集，有 100 个少数类示例和 10，000 个多数类示例。
 
 考虑一个模型，该模型预测阳性类有 150 个例子，95 个是正确的(真阳性)，这意味着有 5 个被遗漏(假阴性)，55 个是不正确的(假阳性)。
 
@@ -386,7 +386,7 @@ F-Measure 提供了一种方法，可以将精度和召回率结合到一个能�
 
 ### 用科学工具包计算 f 测量-学习
 
-可以使用 [f1_score() scikit-learn 功能](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)计算 F-measure 分数。
+可以使用 [f1_score() Sklearn 功能](https://Sklearn.org/stable/modules/generated/sklearn.metrics.f1_score.html)计算 F-measure 分数。
 
 例如，我们使用这个函数来计算上述场景的 F-Measure。
 
@@ -436,8 +436,8 @@ F-Measure: 0.760
 
 ### 应用程序接口
 
-*   [sklearn . metrics . precision _ score API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)。
-*   [sklearn . metrics . recall _ score API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)。
+*   [sklearn . metrics . precision _ score API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.precision_score.html)。
+*   [sklearn . metrics . recall _ score API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.recall_score.html)。
 *   硬化. metrics.f1_score API 。
 
 ### 文章

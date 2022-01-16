@@ -23,7 +23,7 @@
 我们开始吧。
 
 *   **2019 年 10 月更新**:针对 Keras 2.3 和 TensorFlow 2.0 更新。
-*   **2020 年 1 月更新**:针对 scikit-learn v0.22 API 的变化进行了更新。
+*   **2020 年 1 月更新**:针对 Sklearn v0.22 API 的变化进行了更新。
 
 ![How to Create an Equally, Linearly, and Exponentially Weighted Average of Neural Network Model Weights in Keras](img/8754c43e73242f28eb2166e7690fa054.png)
 
@@ -86,7 +86,7 @@ Polyak-Ruppert 平均的最简单实现包括计算最近几个训练时期模�
 
 我们将使用一个小的多类分类问题作为基础来演示模型权重集成。
 
-scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，该函数可用于创建具有规定数量的样本、输入变量、类和类内样本方差的多类分类问题。
+Sklearn 类提供了 [make_blobs()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，该函数可用于创建具有规定数量的样本、输入变量、类和类内样本方差的多类分类问题。
 
 该问题有两个输入变量(表示点的 *x* 和 *y* 坐标)和每组内点的标准偏差 2.0。我们将使用相同的随机状态(伪随机数发生器的种子)来确保我们总是获得相同的数据点。
 
@@ -927,7 +927,7 @@ pyplot.show()
 
 *   [开始使用 Keras 顺序模型](https://keras.io/getting-started/sequential-model-guide/)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [sklearn . dataset . make _ blobs API](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)
+*   [sklearn . dataset . make _ blobs API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)
 *   [平均空气污染指数](https://docs.scipy.org/doc/numpy/reference/generated/numpy.average.html)
 
 ### 文章

@@ -223,7 +223,7 @@ Name: 29, dtype: float64
 
 这意味着单个模型将被拟合和评估 10 * 3 或 30 次，并且这些运行的平均值和标准偏差将被报告。
 
-这可以通过使用[repeated stratifiedfold scikit-learn 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
+这可以通过使用[repeated stratifiedfold Sklearn 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
 
 我们将使用精度-召回曲线或 PR AUC 下的推荐面积度量。
 
@@ -247,7 +247,7 @@ def load_dataset(full_path):
 
 然后，我们可以定义一个函数，为给定的一组预测计算曲线下的精度-召回面积。
 
-这包括首先通过[精度 _ 召回 _ 曲线()](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)函数计算预测的精度-召回曲线。然后，每个阈值的输出召回率和精度值可以作为参数提供给 [auc()](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.auc.html) 以计算曲线下的面积。下面的 *pr_auc()* 函数实现了这一点。
+这包括首先通过[精度 _ 召回 _ 曲线()](https://Sklearn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)函数计算预测的精度-召回曲线。然后，每个阈值的输出召回率和精度值可以作为参数提供给 [auc()](https://Sklearn.org/stable/modules/generated/sklearn.metrics.auc.html) 以计算曲线下的面积。下面的 *pr_auc()* 函数实现了这一点。
 
 ```py
 # calculate precision-recall area under curve
@@ -260,7 +260,7 @@ def pr_auc(y_true, probas_pred):
 
 然后，我们可以定义一个函数来评估数据集上的给定模型，并返回每次折叠和重复的 PR AUC 分数列表。
 
-下面的 *evaluate_model()* 函数实现了这一点，将数据集和模型作为参数，返回分数列表。 [make_scorer()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html)用于定义精确-召回 AUC 度量，并指示模型必须预测概率才能被评估。
+下面的 *evaluate_model()* 函数实现了这一点，将数据集和模型作为参数，返回分数列表。 [make_scorer()函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.make_scorer.html)用于定义精确-召回 AUC 度量，并指示模型必须预测概率才能被评估。
 
 ```py
 # evaluate a model
@@ -278,7 +278,7 @@ def evaluate_model(X, y, model):
 
 当使用曲线度量下的精确召回区域时，预测所有示例的正类(类 1)的模型将提供基线表现。
 
-这可以通过使用 scikit-learn 库中的 [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类，并将“*策略*”参数设置为“*常量*”并将“*常量*参数设置为“1”来预测正类来实现。
+这可以通过使用 Sklearn 库中的 [DummyClassifier](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类，并将“*策略*”参数设置为“*常量*”并将“*常量*参数设置为“1”来预测正类来实现。
 
 ```py
 ...
@@ -684,10 +684,10 @@ Fraud cases:
 ### 蜜蜂
 
 *   [熊猫. read_csv API](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html) 。
-*   [sklearn . metrics . precision _ recall _ curve API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)。
+*   [sklearn . metrics . precision _ recall _ curve API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)。
 *   硬化.公制.无 API 。
-*   [sklearn . metrics . make _ scorer API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html)。
-*   [硬化. dummy . dummy class ification API](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
+*   [sklearn . metrics . make _ scorer API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.make_scorer.html)。
+*   [硬化. dummy . dummy class ification API](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)。
 
 ### 资料组
 
@@ -696,7 +696,7 @@ Fraud cases:
 
 ## 摘要
 
-在本教程中，您发现了如何为不平衡的信用卡欺诈分类数据集开发和评估模型。
+在本教程中，您发现了如何为不平衡的信用卡欺诈类别数据集开发和评估模型。
 
 具体来说，您了解到:
 

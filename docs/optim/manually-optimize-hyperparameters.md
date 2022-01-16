@@ -66,7 +66,7 @@ Let’s get started.![How to Manually Optimize Machine Learning Model Hyperparam
 
 首先，让我们定义一个合成的二元分类问题，我们可以将其作为优化模型的重点。
 
-我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含 1000 行和 5 个输入变量的二元分类问题。
+我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含 1000 行和 5 个输入变量的二元分类问题。
 
 下面的示例创建数据集并总结数据的形状。
 
@@ -85,13 +85,13 @@ print(X.shape, y.shape)
 (1000, 5) (1000,)
 ```
 
-scikit-learn 通过[感知器类](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html)提供感知器模型的实现。
+Sklearn 通过[感知器类](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html)提供感知器模型的实现。
 
 在我们调整模型的超参数之前，我们可以使用默认超参数建立表现基线。
 
-我们将通过[重复分层 k 重交叉验证类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)的良好实践来评估模型。
+我们将通过[重复分层 k 重交叉验证类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)的良好实践来评估模型。
 
-下面列出了在我们的合成二进制分类数据集上使用默认超参数评估感知器模型的完整示例。
+下面列出了在我们的合成二进制类别数据集上使用默认超参数评估感知器模型的完整示例。
 
 ```py
 # perceptron default hyperparameters for binary classification
@@ -394,9 +394,9 @@ print("xgboost", xgboost.__version__)
 xgboost 1.0.1
 ```
 
-虽然 XGBoost 库有自己的 Python API，但是我们可以通过 [XGBClassifier 包装类](https://xgboost.readthedocs.io/en/latest/python/python_api.html)将 XGBoost 模型与 scikit-learn API 一起使用。
+虽然 XGBoost 库有自己的 Python API，但是我们可以通过 [XGBClassifier 包装类](https://xgboost.readthedocs.io/en/latest/python/python_api.html)将 XGBoost 模型与 Sklearn API 一起使用。
 
-模型的一个实例可以像任何其他用于模型评估的 scikit-learn 类一样被实例化和使用。例如:
+模型的一个实例可以像任何其他用于模型评估的 Sklearn 类一样被实例化和使用。例如:
 
 ```py
 ...
@@ -406,7 +406,7 @@ model = XGBClassifier()
 
 在我们调整 XGBoost 的超参数之前，我们可以使用默认的超参数建立一个表现基线。
 
-我们将使用上一节中相同的合成二进制分类数据集和重复分层 k-fold 交叉验证的相同测试工具。
+我们将使用上一节中相同的合成二进制类别数据集和重复分层 k-fold 交叉验证的相同测试工具。
 
 下面列出了使用默认超参数评估 XGBoost 表现的完整示例。
 
@@ -661,15 +661,15 @@ cfg=[[0.020224220443108752, 52, 0.5088096815056933, 53]]: Mean Accuracy: 0.87366
 
 ### 蜜蜂
 
-*   [sklearn . datasets . make _ classification APIS](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
-*   [sklearn . metrics . accuracy _ score APIS](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)。
+*   [sklearn . datasets . make _ classification APIS](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
+*   [sklearn . metrics . accuracy _ score APIS](https://Sklearn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)。
 *   num py . random . rand API。
-*   [sklearn.linear_model。感知器 API](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html) 。
+*   [sklearn.linear_model。感知器 API](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html) 。
 
 ### 文章
 
 *   [感知，维基百科](https://en.wikipedia.org/wiki/Perceptron)。
-*   [XGBoost，维基百科](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
+*   [XGBoost，维基百科](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
 
 ## 摘要
 

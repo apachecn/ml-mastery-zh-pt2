@@ -1,4 +1,4 @@
-# 如何利用表格数据的特征提取进行机器学习
+# 如何为机器学习在表格数据上使用特征提取
 
 > 原文：<https://machinelearningmastery.com/feature-extraction-on-tabular-data/>
 
@@ -19,7 +19,7 @@
 完成本教程后，您将知道:
 
 *   特征提取为表格数据的数据准备提供了一种替代方法，其中所有数据转换并行应用于原始输入数据，并组合在一起创建一个大型数据集。
-*   如何使用数据准备的特征提取方法来提高标准分类数据集的模型表现。
+*   如何使用数据准备的特征提取方法来提高标准类别数据集的模型表现。
 *   如何将特征选择添加到特征提取建模管道中，以进一步提升标准数据集的建模表现。
 
 **用我的新书[机器学习的数据准备](https://machinelearningmastery.com/data-preparation-for-machine-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -37,7 +37,7 @@
 
 1.  用于数据准备的特征提取技术
 2.  数据集和表现基线
-    1.  葡萄酒分类数据集
+    1.  葡萄酒类别数据集
     2.  基线模型表现
 3.  数据准备的特征提取方法
 
@@ -71,9 +71,9 @@
 
 在本节中，我们将首先选择一个标准的机器学习数据集，并在该数据集上建立表现基线。这将为下一节探讨数据准备的特征提取方法提供背景。
 
-### 葡萄酒分类数据集
+### 葡萄酒类别数据集
 
-我们将使用葡萄酒分类数据集。
+我们将使用葡萄酒类别数据集。
 
 该数据集有 13 个输入变量，用于描述葡萄酒样品的化学成分，并要求将葡萄酒分为三种类型。
 
@@ -128,7 +128,7 @@ print(X.shape, y.shape)
 
 在这种情况下，我们将评估逻辑回归模型。
 
-首先，我们可以通过确保输入变量是数字的并且目标变量是标签编码的来执行最少的数据准备工作，正如 scikit-learn 库所期望的那样。
+首先，我们可以通过确保输入变量是数字的并且目标变量是标签编码的来执行最少的数据准备工作，正如 Sklearn 库所期望的那样。
 
 ```py
 ...
@@ -166,7 +166,7 @@ scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-将这些联系在一起，下面列出了在原酒分类数据集上评估逻辑回归模型的完整示例。
+将这些联系在一起，下面列出了在原酒类别数据集上评估逻辑回归模型的完整示例。
 
 ```py
 # baseline model performance on the wine dataset
@@ -215,7 +215,7 @@ Accuracy: 0.953 (0.048)
 
 在这种情况下，假设输入变量是数字，我们将使用一系列转换来更改输入变量的比例，如最小最大缩放器、标准缩放器和[鲁棒缩放器](https://machinelearningmastery.com/robust-scaler-transforms-for-machine-learning/)，以及用于链接输入变量分布的转换，如[量化转换器](https://machinelearningmastery.com/quantile-transforms-for-machine-learning/)和[kbins 离散器](https://machinelearningmastery.com/discretization-transforms-for-machine-learning/)。最后，我们还将使用消除输入变量之间线性依赖关系的变换，如[主成分分析](https://machinelearningmastery.com/principal-components-analysis-for-dimensionality-reduction-in-python/)和[截断变量](https://machinelearningmastery.com/singular-value-decomposition-for-dimensionality-reduction-in-python/)。
 
-[功能联合类](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.FeatureUnion.html)可用于定义要执行的转换列表，其结果将被聚合在一起，即联合。这将创建一个包含大量列的新数据集。
+[功能联合类](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.FeatureUnion.html)可用于定义要执行的转换列表，其结果将被聚合在一起，即联合。这将创建一个包含大量列的新数据集。
 
 列数的估计是 13 个输入变量乘以 5 个变换，或者 65 加上从主成分分析和奇异值分解降维方法输出的 14 列，得到总共约 79 个特征。
 
@@ -234,7 +234,7 @@ transforms.append(('svd', TruncatedSVD(n_components=7)))
 fu = FeatureUnion(transforms)
 ```
 
-然后我们可以创建一个建模[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，第一步是特征联合，最后一步是逻辑回归模型。
+然后我们可以创建一个建模[管道](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，第一步是特征联合，最后一步是逻辑回归模型。
 
 ```py
 ...
@@ -426,8 +426,8 @@ Accuracy: 0.989 (0.022)
 
 ### 蜜蜂
 
-*   [sklearn . pipeline . pipeline API](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)。
-*   [sklearn . pipeline . feature union API](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.FeatureUnion.html)。
+*   [sklearn . pipeline . pipeline API](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)。
+*   [sklearn . pipeline . feature union API](https://Sklearn.org/stable/modules/generated/sklearn.pipeline.FeatureUnion.html)。
 
 ## 摘要
 
@@ -436,7 +436,7 @@ Accuracy: 0.989 (0.022)
 具体来说，您了解到:
 
 *   特征提取为表格数据的数据准备提供了一种替代方法，其中所有数据转换并行应用于原始输入数据，并组合在一起创建一个大型数据集。
-*   如何使用数据准备的特征提取方法来提高标准分类数据集的模型表现。
+*   如何使用数据准备的特征提取方法来提高标准类别数据集的模型表现。
 *   如何将特征选择添加到特征提取建模管道中，以进一步提升标准数据集的建模表现。
 
 **你有什么问题吗？**

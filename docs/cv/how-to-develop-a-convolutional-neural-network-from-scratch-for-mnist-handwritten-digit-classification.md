@@ -35,7 +35,7 @@ MNIST 手写数字分类问题是用于计算机视觉和深度学习的标准�
 
 本教程分为五个部分；它们是:
 
-1.  MNIST 手写数字分类数据集
+1.  MNIST 手写数字类别数据集
 2.  模型评估方法
 3.  如何开发基线模型
 4.  如何开发改进的模型
@@ -47,7 +47,7 @@ MNIST 手写数字分类问题是用于计算机视觉和深度学习的标准�
 
 *   [如何用 Anaconda](https://machinelearningmastery.com/setup-python-environment-machine-learning-deep-learning-anaconda/) 设置机器学习的 Python 环境
 
-## MNIST 手写数字分类数据集
+## MNIST 手写数字类别数据集
 
 [MNIST 数据集](https://en.wikipedia.org/wiki/MNIST_database)是一个首字母缩略词，代表修改后的国家标准和技术研究所数据集。
 
@@ -112,7 +112,7 @@ history = model.fit(..., validation_data=(valX, valY))
 
 为了估计一个模型在一般问题上的表现，我们可以使用 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)，也许是五倍交叉验证。这将给出关于训练和测试数据集的差异以及学习算法的随机性质的模型方差的一些说明。在给定标准差的情况下，模型的表现可以作为 k 倍的平均表现，如果需要，可以用来估计置信区间。
 
-我们可以使用 scikit-learn API 中的 [KFold 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html)来实现给定神经网络模型的 k 重交叉验证评估。有许多方法可以实现这一点，尽管我们可以选择一种灵活的方法，其中 *KFold* 类仅用于指定用于每个 spit 的行索引。
+我们可以使用 Sklearn API 中的 [KFold 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html)来实现给定神经网络模型的 k 重交叉验证评估。有许多方法可以实现这一点，尽管我们可以选择一种灵活的方法，其中 *KFold* 类仅用于指定用于每个 spit 的行索引。
 
 ```py
 # example of k-fold cv for a neural net
@@ -1121,12 +1121,12 @@ run_example()
 
 *   [硬数据集 API](https://keras.io/datasets/)
 *   [喀拉斯数据集代码](https://github.com/keras-team/keras/tree/master/keras/datasets)
-*   [sklearn.model_selection。KFold 原料药](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html)
+*   [sklearn.model_selection。KFold 原料药](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html)
 
 ### 文章
 
 *   [MNIST 数据库，维基百科。](https://en.wikipedia.org/wiki/MNIST_database)
-*   [分类数据集结果，这个图像的类别是什么？](https://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html)
+*   [类别数据集结果，这个图像的类别是什么？](https://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html)
 
 ## 摘要
 

@@ -15,7 +15,7 @@ LightGBM 通过添加一种自动特征选择以及关注具有更大梯度的�
 完成本教程后，您将知道:
 
 *   光梯度增强机器(LightGBM)是随机梯度增强集成算法的一个高效开源实现。
-*   如何用 scikit-learn API 开发用于分类和回归的 LightGBM 集成？
+*   如何用 Sklearn API 开发用于分类和回归的 LightGBM 集成？
 *   如何探索 LightGBM 模型超参数对模型表现的影响？
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -32,7 +32,7 @@ LightGBM 通过添加一种自动特征选择以及关注具有更大梯度的�
 本教程分为三个部分；它们是:
 
 1.  光梯度增强机器算法
-2.  LightGBM Scikit-Learn API
+2.  LightGBM Sklearn API
     1.  用于分类的 LightGBM 集成
     2.  回归的 LightGBM 集成
 3.  LightGBM 超参数
@@ -77,9 +77,9 @@ LightGBM 是由柯等人在 2017 年发表的论文中描述的，论文标题�
 
 ——[LightGBM:一种高效的梯度提升决策树](https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree)，2017。
 
-## LightGBM Scikit-Learn API
+## LightGBM Sklearn API
 
-LightGBM 可以作为独立的库安装，LightGBM 模型可以使用 scikit-learn API 开发。
+LightGBM 可以作为独立的库安装，LightGBM 模型可以使用 Sklearn API 开发。
 
 第一步是安装 LightGBM 库，如果还没有安装的话。这可以在大多数平台上使用 pip python 包管理器来实现；例如:
 
@@ -107,7 +107,7 @@ print(lightgbm.__version__)
 
 *   [LightGBM 安装指南](https://lightgbm.readthedocs.io/en/latest/Installation-Guide.html)
 
-LightGBM 库有自己的定制 API，尽管我们将通过 scikit-learn 包装类使用该方法:[lgbmreversor](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMRegressor.html)和 [LGBMClassifier](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMClassifier.html) 。这将允许我们使用 scikit-learn 机器学习库中的全套工具来准备数据和评估模型。
+LightGBM 库有自己的定制 API，尽管我们将通过 Sklearn 包装类使用该方法:[lgbmreversor](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMRegressor.html)和 [LGBMClassifier](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMClassifier.html) 。这将允许我们使用 Sklearn 机器学习库中的全套工具来准备数据和评估模型。
 
 这两个模型以相同的方式运行，并采用相同的参数来影响决策树的创建和添加。
 
@@ -121,7 +121,7 @@ LightGBM 库有自己的定制 API，尽管我们将通过 scikit-learn 包装�
 
 在本节中，我们将研究如何使用 LightGBM 解决分类问题。
 
-首先，我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
+首先，我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 1000 个示例和 20 个输入特征的合成二进制分类问题。
 
 下面列出了完整的示例。
 
@@ -177,7 +177,7 @@ Accuracy: 0.925 (0.031)
 
 首先，LightGBM 集合适合所有可用数据，然后可以调用 *predict()* 函数对新数据进行预测。
 
-下面的示例在我们的二进制分类数据集上演示了这一点。
+下面的示例在我们的二进制类别数据集上演示了这一点。
 
 ```py
 # make predictions using lightgbm for classification
@@ -207,7 +207,7 @@ Predicted Class: 1
 
 在本节中，我们将研究如何使用 LightGBM 解决回归问题。
 
-首先，我们可以使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
+首先，我们可以使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 1000 个示例和 20 个输入特征的合成回归问题。
 
 下面列出了完整的示例。
 
@@ -228,7 +228,7 @@ print(X.shape, y.shape)
 
 接下来，我们可以在这个数据集上评估一个 LightGBM 算法。
 
-正如我们在上一节中所做的，我们将使用重复的 k-fold 交叉验证来评估模型，重复 3 次，重复 10 次。我们将报告所有重复和折叠模型的平均绝对误差(MAE)。scikit-learn 库使 MAE 为负，因此它被最大化而不是最小化。这意味着负 MAE 越大越好，完美模型的 MAE 为 0。
+正如我们在上一节中所做的，我们将使用重复的 k-fold 交叉验证来评估模型，重复 3 次，重复 10 次。我们将报告所有重复和折叠模型的平均绝对误差(MAE)。Sklearn 库使 MAE 为负，因此它被最大化而不是最小化。这意味着负 MAE 越大越好，完美模型的 MAE 为 0。
 
 下面列出了完整的示例。
 
@@ -289,7 +289,7 @@ print('Prediction: %d' % yhat[0])
 Prediction: 52
 ```
 
-现在我们已经熟悉了使用 scikit-learn API 来评估和使用 LightGBM 集成，让我们来看看如何配置模型。
+现在我们已经熟悉了使用 Sklearn API 来评估和使用 LightGBM 集成，让我们来看看如何配置模型。
 
 ## LightGBM 超参数
 
@@ -566,7 +566,7 @@ GOSS 是随着 LightGBM 纸和图书馆一起推出的。该方法试图仅使�
 
 ——[LightGBM:一种高效的梯度提升决策树](https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree)，2017。
 
-下面的示例将合成分类数据集上的 LightGBM 与三种关键增强技术进行了比较。
+下面的示例将合成类别数据集上的 LightGBM 与三种关键增强技术进行了比较。
 
 ```py
 # explore lightgbm boosting type effect on performance
@@ -639,7 +639,7 @@ LightGBM 增强类型与分类精度的箱线图
 ### 相关教程
 
 *   [机器学习梯度增强算法的简单介绍](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
-*   [使用 Scikit-Learn、XGBoost、LightGBM 和 CatBoost 进行梯度增强](https://machinelearningmastery.com/gradient-boosting-with-scikit-learn-xgboost-lightgbm-and-catboost/)
+*   [使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度增强](https://machinelearningmastery.com/gradient-boosting-with-Sklearn-xgboost-lightgbm-and-catboost/)
 
 ### 报纸
 
@@ -666,7 +666,7 @@ LightGBM 增强类型与分类精度的箱线图
 具体来说，您了解到:
 
 *   光梯度增强机器(LightGBM)是随机梯度增强集成算法的一个有效的开源实现。
-*   如何用 scikit-learn API 开发用于分类和回归的 LightGBM 集成？
+*   如何用 Sklearn API 开发用于分类和回归的 LightGBM 集成？
 *   如何探索 LightGBM 模型超参数对模型表现的影响？
 
 **你有什么问题吗？**

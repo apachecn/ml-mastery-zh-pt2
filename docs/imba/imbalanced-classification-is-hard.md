@@ -6,7 +6,7 @@
 
 这是传统机器学习模型和评估指标表现不佳的原因，这些模型和指标假设了均衡的类分布。
 
-然而，分类数据集还有一些附加的属性，这些属性不仅对预测建模具有挑战性，而且在建模不平衡数据集时会增加或加重难度。
+然而，类别数据集还有一些附加的属性，这些属性不仅对预测建模具有挑战性，而且在建模不平衡数据集时会增加或加重难度。
 
 在本教程中，您将发现加剧不平衡分类挑战的数据特征。
 
@@ -108,7 +108,7 @@
 
 为了有所帮助，让我们用一个工作实例来具体说明这一点。
 
-我们可以使用[make _ classification()sci kit-learn 函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个给定大小的数据集，少数类与多数类的示例比例约为 1:100(1%到 99%)。
+我们可以使用[make _ classification()sci kit-learn 函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个给定大小的数据集，少数类与多数类的示例比例约为 1:100(1%到 99%)。
 
 ```py
 ...
@@ -183,7 +183,7 @@ Size=100000, Ratio=Counter({0: 99000, 1: 1000})
 
 ![Scatter Plots of an Imbalanced Classification Dataset With Different Dataset Sizes](img/be958f95d0abe3e3e3135808a66361ea.png)
 
-具有不同数据集大小的不平衡分类数据集的散点图
+具有不同数据集大小的不平衡类别数据集的散点图
 
 ## 标签噪声的复合效应
 
@@ -270,7 +270,7 @@ Noise=7%, Ratio=Counter({0: 959, 1: 41})
 
 ![Scatter Plots of an Imbalanced Classification Dataset With Different Label Noise](img/fffcf2fb60cfa0b16614f0919ca13ddd.png)
 
-具有不同标签噪声的不平衡分类数据集的散点图
+具有不同标签噪声的不平衡类别数据集的散点图
 
 ## 数据分布的复合效应
 
@@ -349,7 +349,7 @@ pyplot.show()
 
 ![Scatter Plots of an Imbalanced Classification Dataset With Different Numbers of Clusters](img/a9b6580e8da74d06efe169efbab5ad95.png)
 
-具有不同聚类数的不平衡分类数据集的散点图
+具有不同聚类数的不平衡类别数据集的散点图
 
 ## 进一步阅读
 
@@ -366,7 +366,7 @@ pyplot.show()
 
 ### 蜜蜂
 
-*   [sklearn . datasets . make _ classification API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
+*   [sklearn . datasets . make _ classification API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
 
 ## 摘要
 

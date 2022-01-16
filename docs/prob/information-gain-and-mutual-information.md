@@ -59,7 +59,7 @@
 
 现在，让我们考虑数据集的熵。
 
-我们可以根据属于一个或另一个类别的数据集中的观测值的概率分布来考虑数据集的熵，例如在二进制分类数据集的情况下是两个类别。
+我们可以根据属于一个或另一个类别的数据集中的观测值的概率分布来考虑数据集的熵，例如在二进制类别数据集的情况下是两个类别。
 
 > 信息论对熵的一种解释是，它规定了对 S 的任意成员(即以均匀概率随机抽取的 S 成员)的分类进行编码所需的最小信息位数。
 
@@ -261,7 +261,7 @@ Information Gain: 0.117 bits
 
 —第 60 页，[机器学习](https://amzn.to/2jWd51p)，1997。
 
-在决策树的大多数现代实现中，信息增益可以用作拆分标准，例如在用于分类的[决策树分类器类](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)中的 scikit-learn Python 机器学习库中实现分类和回归树(CART)算法。
+在决策树的大多数现代实现中，信息增益可以用作拆分标准，例如在用于分类的[决策树分类器类](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)中的 Sklearn Python 机器学习库中实现分类和回归树(CART)算法。
 
 这可以通过在配置模型时将标准参数设置为“*熵*”来实现；例如:
 
@@ -276,7 +276,7 @@ model = sklearn.tree.DecisionTreeClassifier(criterion='entropy')
 
 它包括计算目标变量和训练数据集中每个输入变量之间的信息增益。 [Weka 机器学习工作台](https://waikato.github.io/weka-wiki/)通过[信息增益属性评估](http://weka.sourceforge.net/doc.dev/weka/attributeSelection/InfoGainAttributeEval.html)类为特征选择提供信息增益的实现。
 
-在这个特征选择的上下文中，信息增益可以被称为“*互信息*”，并计算两个变量之间的统计相关性。使用信息增益(互信息)进行特征选择的一个例子是[互信息类函数](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html)。
+在这个特征选择的上下文中，信息增益可以被称为“*互信息*”，并计算两个变量之间的统计相关性。使用信息增益(互信息)进行特征选择的一个例子是[互信息类函数](https://Sklearn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html)。
 
 ## 什么是相互信息？
 

@@ -30,16 +30,16 @@
 
 本教程分为四个部分；它们是:
 
-1.  不平衡分类数据集
+1.  不平衡类别数据集
 2.  喀拉斯神经网络模型
 3.  不平衡分类的深度学习
 4.  带 Keras 的加权神经网络
 
-## 不平衡分类数据集
+## 不平衡类别数据集
 
-在我们深入研究不平衡分类的神经网络修改之前，让我们首先定义一个不平衡分类数据集。
+在我们深入研究不平衡分类的神经网络修改之前，让我们首先定义一个不平衡类别数据集。
 
-我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个合成的不平衡两类分类数据集。我们将生成 10，000 个少数与多数类比例大约为 1:100 的示例。
+我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个合成的不平衡两类类别数据集。我们将生成 10，000 个少数与多数类比例大约为 1:100 的示例。
 
 ```py
 ...
@@ -103,7 +103,7 @@ Counter({0: 9900, 1: 100})
 
 ![Scatter Plot of Binary Classification Dataset with 1 to 100 Class Imbalance](img/9335c399e118b2dfd1ac9b288ae41770.png)
 
-1 到 100 类不平衡的二进制分类数据集的散点图
+1 到 100 类不平衡的二进制类别数据集的散点图
 
 ## 喀拉斯神经网络模型
 
@@ -167,7 +167,7 @@ score = roc_auc_score(testy, yhat)
 print('ROC AUC: %.3f' % score)
 ```
 
-将这些联系在一起，下面列出了在不平衡分类数据集上拟合标准神经网络模型的完整示例。
+将这些联系在一起，下面列出了在不平衡类别数据集上拟合标准神经网络模型的完整示例。
 
 ```py
 # standard neural network on an imbalanced classification dataset
@@ -355,7 +355,7 @@ score = roc_auc_score(testy, yhat)
 print('ROC AUC: %.3f' % score)
 ```
 
-运行该示例准备合成的不平衡分类数据集，然后评估神经网络训练算法的类加权版本。
+运行该示例准备合成的不平衡类别数据集，然后评估神经网络训练算法的类加权版本。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -381,7 +381,7 @@ ROC AUC: 0.973
 
 ### 蜜蜂
 
-*   [sklearn . datasets . make _ classification API](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
+*   [sklearn . datasets . make _ classification API](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
 *   [硬模型 API](https://keras.io/models/sequential/) 。
 
 ## 摘要

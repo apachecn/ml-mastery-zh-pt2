@@ -184,7 +184,7 @@ LSTM 模型通常使用权重正则化。
 
 每个观察都有两个相同规模的输入变量和一个 0 或 1 的类输出值。这个数据集被称为“*卫星*”数据集，因为绘制时每个类别中观测值的形状。
 
-我们可以使用 [make_moons()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_moons.html)从这个问题中生成观测值。我们将向数据中添加噪声，并为随机数生成器播种，这样每次运行代码时都会生成相同的样本。
+我们可以使用 [make_moons()函数](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_moons.html)从这个问题中生成观测值。我们将向数据中添加噪声，并为随机数生成器播种，这样每次运行代码时都会生成相同的样本。
 
 ```py
 # generate 2d classification dataset
@@ -562,7 +562,7 @@ Param: 0.000001, Train: 1.000, Test: 0.914
 *   [硬核层 API](https://keras.io/layers/core/)
 *   [喀拉斯卷积层应用编程接口](https://keras.io/layers/convolutional/)
 *   [喀拉斯循环层原料药](https://keras.io/layers/recurrent/)
-*   [sklearn . dataset . make _ moons API](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_moons.html)
+*   [sklearn . dataset . make _ moons API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_moons.html)
 *   [matplot lib . pyplot . semilogx API](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.semilogx.html)
 
 ## 摘要

@@ -63,7 +63,7 @@ Let’s get started.![How to Use Optimization Algorithms to Manually Fit Regress
 
 首先，让我们定义一个合成回归问题，我们可以将其作为优化模型的重点。
 
-我们可以使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)定义一个有 1000 行和 10 个输入变量的回归问题。
+我们可以使用[make _ revolution()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)定义一个有 1000 行和 10 个输入变量的回归问题。
 
 下面的示例创建数据集并总结数据的形状。
 
@@ -413,7 +413,7 @@ Test MSE: 0.080779
 
 首先，让我们定义一个合成的二元分类问题，我们可以将其作为优化模型的重点。
 
-我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含 1000 行和 5 个输入变量的二元分类问题。
+我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含 1000 行和 5 个输入变量的二元分类问题。
 
 下面的示例创建数据集并总结数据的形状。
 
@@ -727,9 +727,9 @@ Test Accuracy: 0.839394
 
 ### 蜜蜂
 
-*   [sklearn . dataset . make _ revolution APIS](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)。
-*   [sklearn . datasets . make _ classification APIS](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
-*   [sklearn . metrics . mean _ squared _ error API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)。
+*   [sklearn . dataset . make _ revolution APIS](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_regression.html)。
+*   [sklearn . datasets . make _ classification APIS](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)。
+*   [sklearn . metrics . mean _ squared _ error API](https://Sklearn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)。
 *   num py . random . rand API。
 
 ### 文章

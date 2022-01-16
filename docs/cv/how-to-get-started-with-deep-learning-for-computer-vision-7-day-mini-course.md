@@ -46,7 +46,7 @@
 
 这门速成课程将把你从一个懂得一点机器学习的开发人员带到一个能给你自己的计算机视觉项目带来深度学习方法的开发人员。
 
-**注**:本速成课程假设您有一个正在运行的 Python 2 或 3 SciPy 环境，其中至少安装了 NumPy、Pandas、scikit-learn 和 Keras 2。如果您需要环境方面的帮助，可以遵循这里的逐步教程:
+**注**:本速成课程假设您有一个正在运行的 Python 2 或 3 SciPy 环境，其中至少安装了 NumPy、Pandas、Sklearn 和 Keras 2。如果您需要环境方面的帮助，可以遵循这里的逐步教程:
 
 *   [如何设置机器学习和深度学习的 Python 环境](https://machinelearningmastery.com/setup-python-environment-machine-learning-deep-learning-anaconda/)
 

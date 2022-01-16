@@ -312,7 +312,7 @@ pyplot.show()
 
 双峰概率分布数据样本的直方图
 
-scikit-learn 机器学习库提供了实现内核密度估计的[内核密度类](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html)。
+Sklearn 机器学习库提供了实现内核密度估计的[内核密度类](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html)。
 
 首先，这个类是用期望的带宽(窗口大小)和内核(基函数)参数构造的。在数据上测试不同的配置是个好主意。在这种情况下，我们将尝试带宽为 2 和高斯核。
 
@@ -405,7 +405,7 @@ KernelDensity 类功能强大，并支持多维数据的 PDF 估算。
 *   [scipy . stats . Gaussian _ kde API](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gaussian_kde.html)。
 *   [非参数方法非参数，Statsmodels API](https://www.statsmodels.org/stable/nonparametric.html) 。
 *   [核密度估计统计模型示例](https://www.statsmodels.org/stable/examples/notebooks/generated/kernel_density.html)。
-*   [密度估算，Scikit-Learn API](https://scikit-learn.org/stable/modules/density.html) 。
+*   [密度估算，Sklearn API](https://Sklearn.org/stable/modules/density.html) 。
 
 ### 文章
 

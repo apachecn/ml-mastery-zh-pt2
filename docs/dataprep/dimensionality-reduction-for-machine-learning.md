@@ -216,8 +216,8 @@
 
 ### 应用程序接口
 
-*   [流形学习，scikit-learn](https://scikit-learn.org/stable/modules/manifold.html) 。
-*   [分解分量中的信号(矩阵分解问题)，scikit-learn](https://scikit-learn.org/stable/modules/decomposition.html) 。
+*   [流形学习，Sklearn](https://Sklearn.org/stable/modules/manifold.html) 。
+*   [分解分量中的信号(矩阵分解问题)，Sklearn](https://Sklearn.org/stable/modules/decomposition.html) 。
 
 ### 文章
 
