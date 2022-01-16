@@ -1,4 +1,4 @@
-# 特征选择，提高准确率，减少训练时间
+# 用于提高准确率和减少训练时间的特征选择
 
 > 原文：<https://machinelearningmastery.com/feature-selection-to-improve-accuracy-and-decrease-training-time/>
 
@@ -47,7 +47,7 @@
 *   **提高准确率**:误导数据少意味着建模准确率提高。
 *   **减少训练时间**:数据少意味着算法训练更快。
 
-## 韦卡中的属性选择
+## Weka中的属性选择
 
 Weka 提供了一个属性选择工具。该过程分为两个部分:
 
@@ -80,13 +80,13 @@ Weka 提供了一个属性选择工具。该过程分为两个部分:
 
 ### 1.探索属性选择
 
-当你只是陈述属性选择的时候，我推荐使用一些韦卡浏览器中的方法。
+当你只是陈述属性选择的时候，我推荐使用一些Weka浏览器中的方法。
 
 加载数据集，然后单击“选择属性”选项卡。在数据集上尝试不同的属性赋值器和搜索方法，并在输出窗口中查看结果。
 
 [![Feature Selection Methods in the Weka Explorer](img/1e186d30b71fd845e4a4b3ec27db329a.png)](https://machinelearningmastery.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-09-at-11.40.22-AM.png)
 
-韦卡浏览器中的功能选择方法
+Weka浏览器中的功能选择方法
 
 这个想法是为了获得一种感觉，并建立一种直觉，知道 1)为你的问题选择了多少和 2)哪些属性。您可以将这些信息用于接下来的一个或两个步骤。
 

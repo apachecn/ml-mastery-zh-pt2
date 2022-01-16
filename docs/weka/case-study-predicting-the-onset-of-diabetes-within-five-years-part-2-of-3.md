@@ -1,4 +1,4 @@
-# 案例研究:预测五年内糖尿病的发作(第 2 部分，共 3 部分)
+# 案例研究：预测五年内糖尿病的发作（第 2 部分，共 3 部分）
 
 > 原文：<https://machinelearningmastery.com/case-study-predicting-the-onset-of-diabetes-within-five-years-part-2-of-3/>
 
@@ -14,7 +14,7 @@
 
 ## 方法学
 
-研究中的分析和数据处理使用[韦卡机器学习软件](https://machinelearningmastery.com/design-and-run-your-first-experiment-in-weka/ "Design and Run your First Experiment in Weka")进行。十倍[交叉验证](https://machinelearningmastery.com/how-to-choose-the-right-test-options-when-evaluating-machine-learning-algorithms/ "How To Choose The Right Test Options When Evaluating Machine Learning Algorithms")用于实验。其工作原理如下:
+研究中的分析和数据处理使用[Weka机器学习软件](https://machinelearningmastery.com/design-and-run-your-first-experiment-in-weka/ "Design and Run your First Experiment in Weka")进行。十倍[交叉验证](https://machinelearningmastery.com/how-to-choose-the-right-test-options-when-evaluating-machine-learning-algorithms/ "How To Choose The Right Test Options When Evaluating Machine Learning Algorithms")用于实验。其工作原理如下:
 
 *   从给定数据生成 10 个大小相等的数据集
 *   将每套分为两组:90%用于培训，10%用于测试。
@@ -81,7 +81,7 @@ C4.5(在 Weka 中也称为“J48”)是一种用于生成分类决策树的算�
 
 ## 结果
 
-为了对各种算法进行严格的分析，我使用[韦卡实验者](https://machinelearningmastery.com/design-and-run-your-first-experiment-in-weka/ "Design and Run your First Experiment in Weka")对所有创建的数据集进行了表现评估。结果如下所示。
+为了对各种算法进行严格的分析，我使用[Weka实验者](https://machinelearningmastery.com/design-and-run-your-first-experiment-in-weka/ "Design and Run your First Experiment in Weka")对所有创建的数据集进行了表现评估。结果如下所示。
 
 [![Summary of results](img/b5384f72a57063ead14f2f72706f4783.png)](https://machinelearningmastery.com/wp-content/uploads/2014/04/summary-of-results.png)
 

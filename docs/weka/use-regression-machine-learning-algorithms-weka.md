@@ -45,10 +45,10 @@ Weka 支持的大量机器学习算法是使用该平台的最大好处之一。
 
 具体来说，波士顿房价数据集。每个实例都描述了波士顿郊区的房产，任务是以千美元为单位预测房价。有 13 个不同尺度的数值输入变量描述郊区的特性。您可以在 [UCI 机器学习资源库](https://archive.ics.uci.edu/ml/datasets/Housing)上了解更多关于该数据集的信息。
 
-启动韦卡浏览器:
+启动Weka浏览器:
 
-1.  打开韦卡图形用户界面选择器。
-2.  单击“浏览器”按钮打开韦卡浏览器。
+1.  打开Weka图形用户界面选择器。
+2.  单击“浏览器”按钮打开Weka浏览器。
 3.  从 *housing.arff* 文件加载波士顿房价数据集。
 4.  单击“分类”打开“分类”选项卡。
 
@@ -69,7 +69,7 @@ Weka 支持的大量机器学习算法是使用该平台的最大好处之一。
 
 ![Weka Configuration of Linear Regression](img/aa5ffedb68aa55680e6d692eef4dc90e.png)
 
-线性回归的韦卡构型
+线性回归的Weka构型
 
 如果训练数据具有高度相关的输入属性，线性回归的表现可能会降低。Weka 可以通过将 eliminateColinearAttributes 设置为 True(默认值)来自动检测和移除高度相关的输入属性。
 
@@ -84,7 +84,7 @@ Weka 支持的大量机器学习算法是使用该平台的最大好处之一。
 
 ![Weka Results for Linear Regression](img/0a0d313e0d0df4dbb7b545181acd6d99.png)
 
-线性回归的韦卡结果
+线性回归的Weka结果
 
 ## k-最近邻
 
@@ -99,7 +99,7 @@ k 近邻算法支持分类和回归。也简称 kNN。它的工作原理是存�
 1.  点击“选择”按钮，选择“懒惰”组下的“IBk”。
 2.  单击算法名称查看算法配置。
 
-在韦卡，KNN 被称为 IBk，代表基于实例的 k。
+在Weka，KNN 被称为 IBk，代表基于实例的 k。
 
 ![Weka k-Nearest Neighbors Configuration](img/3a699adcb4723ab25371b8977d772d07.png)
 

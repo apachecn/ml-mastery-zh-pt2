@@ -401,7 +401,7 @@ Best: 0.959901 using {'scale_pos_weight': 99}
 
 ### 报纸
 
-*   [XGBoost:一个可扩展的树木助推系统](https://arxiv.org/abs/1603.02754)，2016。
+*   [XGBoost:一个可扩展的树木提升系统](https://arxiv.org/abs/1603.02754)，2016。
 
 ### 书
 

@@ -258,7 +258,7 @@ under = RandomUnderSampler(sampling_strategy=0.5)
 pipeline = Pipeline(steps=[('o', over), ('u', under), ('m', model)])
 ```
 
-下面列出了在二元分类问题上评估这种组合的完整示例。
+下面列出了在二分类问题上评估这种组合的完整示例。
 
 ```py
 # combination of random oversampling and undersampling for imbalanced classification

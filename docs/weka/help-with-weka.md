@@ -1,4 +1,4 @@
-# 如何获得更多关于 Weka 机器学习工作台的帮助
+# 如何获得更多 Weka 机器学习工作台的帮助
 
 > 原文：<https://machinelearningmastery.com/help-with-weka/>
 
@@ -14,7 +14,7 @@ Weka 机器学习工作台是一个易于使用且功能强大的应用机器学
 
 *   关于工作站上安装的 Weka 文档。
 *   您可以参考的在线资源，以获得有关您对 Weka 的技术问题的帮助。
-*   在那里你可以问自己关于韦卡的未回答的问题。
+*   在那里你可以问自己关于Weka的未回答的问题。
 
 **用我的新书[用 Weka](https://machinelearningmastery.com/machine-learning-mastery-weka/) 启动你的项目**，包括*的分步教程*和清晰的*截图*所有示例。
 
@@ -22,7 +22,7 @@ Weka 机器学习工作台是一个易于使用且功能强大的应用机器学
 
 ![How to Get More Help For the Weka Machine Learning Workbench](img/c56ff950b6ca73b7d90e3f9712b94fdd.png)
 
-如何获得更多帮助韦卡机器学习工作台
+如何获得更多帮助Weka机器学习工作台
 图片由[苏珊·尼尔森](https://www.flickr.com/photos/infomastern/15977095819/)提供，版权所有。
 
 ## Weka 离线文档
@@ -31,16 +31,16 @@ Weka 机器学习工作台是一个易于使用且功能强大的应用机器学
 
 您的安装目录包含一个名为*documentation.html*的 HTML 文件，该文件链接到您的安装所提供的所有文档，包括:
 
-*   韦卡用户手册。
+*   Weka用户手册。
 *   Weka API 文档。
 
 ![Weka Documentation](img/d84578a9e249094c538c7c720c8c9357.png)
 
-韦卡文件
+Weka文件
 
 ### 微卡手册
 
-韦卡手册提供了如何使用韦卡软件的信息。
+Weka手册提供了如何使用Weka软件的信息。
 
 这包括:
 
@@ -55,7 +55,7 @@ Weka 机器学习工作台是一个易于使用且功能强大的应用机器学
 
 微卡手册
 
-### 韦卡 Java 应用编程接口文档
+### Weka Java 应用编程接口文档
 
 这是 Java 应用程序编程接口的文档。
 
@@ -77,12 +77,12 @@ Weka 提供了一些在线文档来源，包括:
 
 ### 设置周
 
-[韦卡维基](https://waikato.github.io/weka-wiki/)提供了关于一系列韦卡主题的实用文章。
+[Weka维基](https://waikato.github.io/weka-wiki/)提供了关于一系列Weka主题的实用文章。
 
 以下是一些 wiki 页面，如果您想解决某个特定问题，这些页面可能会很有价值:
 
 *   [Weka 常见问题](https://waikato.github.io/weka-wiki/faq/)
-*   [韦卡故障排除](https://waikato.github.io/weka-wiki/troubleshooting/)
+*   [Weka故障排除](https://waikato.github.io/weka-wiki/troubleshooting/)
 
 有很多维基页面，使用搜索功能来定位特定主题的页面。
 
@@ -108,11 +108,11 @@ stackoverflow 网站是一个面向开发者的技术问答社区。
 
 就像 Weka 邮件列表一样，检查你的问题之前是否已经被问过和回答过是一种很好的礼仪。阅读给定问答页面时，使用搜索功能并密切关注页面右侧的“相关”帖子。
 
-关于韦卡的问题都标有“韦卡”关键词。通过此标签过滤问题，您可以[查看所有与 Weka 相关的问题](https://stackoverflow.com/questions/tagged/weka)。
+关于Weka的问题都标有“Weka”关键词。通过此标签过滤问题，您可以[查看所有与 Weka 相关的问题](https://stackoverflow.com/questions/tagged/weka)。
 
 ## 摘要
 
-在这篇文章中，你发现了可以用来帮助韦卡的资源。
+在这篇文章中，你发现了可以用来帮助Weka的资源。
 
 你学会了:
 

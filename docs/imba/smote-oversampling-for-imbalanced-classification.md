@@ -132,7 +132,7 @@ pyplot.legend()
 pyplot.show()
 ```
 
-将所有这些联系在一起，下面列出了生成和绘制合成二元分类问题的完整示例。
+将所有这些联系在一起，下面列出了生成和绘制合成二分类问题的完整示例。
 
 ```py
 # Generate and plot a synthetic imbalanced classification dataset
@@ -164,7 +164,7 @@ Counter({0: 9900, 1: 100})
 
 ![Scatter Plot of Imbalanced Binary Classification Problem](img/746005ca582565a57b6ecf740c082b85.png)
 
-不平衡二元分类问题的散点图
+不平衡二分类问题的散点图
 
 接下来，我们可以使用 SMOTE 对少数类进行过采样，并绘制转换后的数据集。
 
@@ -236,7 +236,7 @@ Counter({0: 9900, 1: 9900})
 
 ![Scatter Plot of Imbalanced Binary Classification Problem Transformed by SMOTE](img/3745cea7bfed41277f96c602e5c94fb7.png)
 
-非平衡二元分类问题的 SMOTE 变换散点图
+非平衡二分类问题的 SMOTE 变换散点图
 
 关于 SMOTE 的原始论文建议将 SMOTE 与多数类的随机欠采样相结合。
 
@@ -579,7 +579,7 @@ SMOTE 的一个流行扩展包括选择那些被错误分类的少数类的实�
 
 我们可以使用不平衡学习中的[边界移动类](https://imbalanced-learn.org/stable/generated/imblearn.over_sampling.BorderlineSMOTE.html)来实现边界移动 1。
 
-我们可以演示前面章节中使用的合成二元分类问题的技巧。
+我们可以演示前面章节中使用的合成二分类问题的技巧。
 
 我们不希望盲目地为少数类生成新的合成示例，而是希望边界-SMOTE 方法只沿着两个类之间的决策边界创建合成示例。
 

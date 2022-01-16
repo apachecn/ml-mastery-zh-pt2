@@ -258,7 +258,7 @@ score = accuracy_score(y_test, yhat)
 print('Blending Accuracy: %.3f' % score)
 ```
 
-将所有这些联系在一起，下面列出了在合成二元分类问题上评估混合集成的完整示例。
+将所有这些联系在一起，下面列出了在合成二分类问题上评估混合集成的完整示例。
 
 ```py
 # blending ensemble for classification using hard voting

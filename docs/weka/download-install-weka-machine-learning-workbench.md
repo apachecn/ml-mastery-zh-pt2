@@ -20,12 +20,12 @@ Weka 机器学习工作台是一个功能强大但易于使用的预测建模平
 
 ![How to Download and Install the Weka Machine Learning Workbench](img/678c0b6feb3a46c5dd3ce7cdd08d06e0.png)
 
-如何下载和安装韦卡机器学习工作台
+如何下载和安装Weka机器学习工作台
 图片由[尼古拉斯 a .托内利](https://www.flickr.com/photos/nicholas_t/14038975921/in/photolist-nozqqZ-9dNLiL-8NRyC2-cjkSq1-oztTua-bTzd5B-7nDJWP-ouUzkQ-nqxL2T-rzdr4S-787EzG-2vVkpu-nMS6rx-4Lbxc6-nqxnj7-7girE8-oMsVVE-p3Jour-kLSBV6-edpSpH-dFKdRv-6Y1J98-pWMCXe-5PA3Cu-72u6S-8gLyR8-7tZ3i8-nEZtZJ-8NP1ku-iKrUr5-zHeev-aAoHjH-8vBVVr-8vEXcj-p8QCH2-dQacqK-qivn3a-sas694-Bw5Muj-azVNVK-fEz8c9-nGR321-s8snXL-bA2jbR-83hhmH-7GPr1X-bZCWfG-mHTDBt-HLoQpb-8DRfA5)提供，版权所有。
 
 ## 下载 Weka
 
-所有版本的韦卡都可以从[韦卡下载网页](https://waikato.github.io/weka-wiki/downloading_weka/)下载。
+所有版本的Weka都可以从[Weka下载网页](https://waikato.github.io/weka-wiki/downloading_weka/)下载。
 
 选择您想要安装的 Weka 版本，然后访问 Weka 下载页面，找到并下载您喜欢的 Weka 版本。
 
@@ -72,7 +72,7 @@ Weka 为 Windows 和 Mac OS X 提供了一体化的安装版本。
 
 ![Weka Disk image for OS X](img/4192214e2d47941dc2d7ca5d5c953299.png)
 
-OS X 的扩展韦卡磁盘映像
+OS X 的扩展Weka磁盘映像
 
 点击小鸟图标开始 Weka。
 

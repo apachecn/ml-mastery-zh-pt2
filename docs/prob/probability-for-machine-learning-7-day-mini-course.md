@@ -442,7 +442,7 @@ print('Accuracy: %.3f' % accuracy)
 
 逻辑损失，简称对数损失，计算预测概率和观察概率之间的对数似然性。
 
-虽然它是为训练像逻辑回归这样的二元分类模型而开发的，但它可以用于评估多类问题，并且在功能上等同于计算从信息论导出的交叉熵。
+虽然它是为训练像逻辑回归这样的二分类模型而开发的，但它可以用于评估多类问题，并且在功能上等同于计算从信息论导出的交叉熵。
 
 一个技能完美的模型的日志丢失分数为 0.0。日志丢失可以使用 Sklearn 中的 [log_loss()函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.log_loss.html)在 Python 中实现。
 

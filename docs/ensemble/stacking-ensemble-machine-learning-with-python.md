@@ -283,7 +283,7 @@ pyplot.show()
 
 ![Box Plot of Standalone Model Accuracies for Binary Classification](img/ec5c3d33cefb7f49cdc1530dbec8fe02.png)
 
-二元分类独立模型准确率的箱线图
+二分类独立模型准确率的箱线图
 
 这里我们有五种不同的算法表现良好，大概在这个数据集上以不同的方式。
 
@@ -420,7 +420,7 @@ pyplot.show()
 
 ![Box Plot of Standalone and Stacking Model Accuracies for Binary Classification](img/5229866d1e672ed0e380dad06c751027.png)
 
-二元分类的独立和堆叠模型准确率的箱线图
+二分类的独立和堆叠模型准确率的箱线图
 
 如果我们选择一个叠加集合作为我们的最终模型，我们可以像任何其他模型一样，拟合并使用它来对新数据进行预测。
 

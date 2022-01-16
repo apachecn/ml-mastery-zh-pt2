@@ -1,4 +1,4 @@
-# 案例研究:预测五年内糖尿病的发作(第 3 部分，共 3 部分)
+# 案例研究：预测五年内糖尿病的发作（第 3 部分，共 3 部分）
 
 > 原文：<https://machinelearningmastery.com/case-study-predicting-the-onset-of-diabetes-within-five-years-part-3-of-3/>
 
@@ -22,9 +22,9 @@
 
 提高了糖尿病数据集上的算法准确率平均值和各种数据集上逻辑回归表现的散点图。原始结果为红色，而增强结果为蓝色。
 
-很明显，boosting 对 LogisticRegression 没有影响，但是明显恶化了树算法的表现。根据韦卡实验者的结果，与增强的 C4.5、随机森林和增强的随机森林给出的结果相比，增强的物流出口的表现具有统计学上的显著差异。
+很明显，boosting 对 LogisticRegression 没有影响，但是明显恶化了树算法的表现。根据Weka实验者的结果，与增强的 C4.5、随机森林和增强的随机森林给出的结果相比，增强的物流出口的表现具有统计学上的显著差异。
 
-由于 RandomForest 已经包含了一种集成方法，即装袋，增加助推可能会导致过拟合，因此可以解释表现不佳的原因。
+由于 RandomForest 已经包含了一种集成方法，即装袋，增加提升可能会导致过拟合，因此可以解释表现不佳的原因。
 
 [![diabetes boosting results accuracy weka](img/1d39bf537248e2c0095ed33a7c9d874a.png)](https://machinelearningmastery.com/wp-content/uploads/2014/04/diabetes-boosting-results-accuracy-weka.png)
 

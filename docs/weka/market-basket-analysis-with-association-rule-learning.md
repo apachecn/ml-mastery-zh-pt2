@@ -1,4 +1,4 @@
-# 关联规则学习的菜篮子分析
+# 使用关联规则学习的菜篮子分析
 
 > 原文：<https://machinelearningmastery.com/market-basket-analysis-with-association-rule-learning/>
 
@@ -31,7 +31,7 @@
 
 我分享这个故事是为了让它留在你的脑海里。如果您正在筛选大型数据集以寻找感兴趣的模式，那么关联规则学习是您应该使用的一套方法。
 
-## 1.启动韦卡浏览器
+## 1.启动Weka浏览器
 
 在之前的教程中，我们已经学习了[运行分类器](https://machinelearningmastery.com/how-to-run-your-first-classifier-in-weka/ "How to Run Your First Classifier in Weka")、[设计和运行实验](https://machinelearningmastery.com/design-and-run-your-first-experiment-in-weka/ "Design and Run your First Experiment in Weka")、[算法调整](https://machinelearningmastery.com/how-to-tune-a-machine-learning-algorithm-in-weka/ "How to Tune a Machine Learning Algorithm in Weka")和[集成方法](https://machinelearningmastery.com/improve-machine-learning-results-with-boosting-bagging-and-blending-ensemble-methods-in-weka/ "Improve Machine Learning Results with Boosting, Bagging and Blending Ensemble Methods in Weka")。如果你需要下载和安装 Weka 的帮助，请参考这些以前的帖子。
 
@@ -39,7 +39,7 @@
 
 Weka 图形用户界面选择器
 
-启动韦卡探索者。
+启动Weka探索者。
 
 ## 2.加载超市数据集
 
@@ -57,7 +57,7 @@ Weka 图形用户界面选择器
 
 ## 3.发现关联规则
 
-单击韦卡浏览器中的“关联”选项卡。已经选择了[先验](https://en.wikipedia.org/wiki/Apriori_algorithm)算法。这是最广为人知的关联规则学习方法，因为它可能是第一种( [Agrawal 和 Srikant 在 1994 年](http://rakesh.agrawal-family.com/papers/vldb94apriori.pdf))并且非常高效。
+单击Weka浏览器中的“关联”选项卡。已经选择了[先验](https://en.wikipedia.org/wiki/Apriori_algorithm)算法。这是最广为人知的关联规则学习方法，因为它可能是第一种( [Agrawal 和 Srikant 在 1994 年](http://rakesh.agrawal-family.com/papers/vldb94apriori.pdf))并且非常高效。
 
 原则上，算法很简单。它建立属性值(项目)集，最大化可以解释的实例数量(数据集的覆盖范围)。通过项目空间的搜索与属性选择和子集搜索面临的问题非常相似。
 
@@ -69,7 +69,7 @@ Weka 图形用户界面选择器
 
 [![Results for the Apriori Association Rule Learning in Weka](img/cfd8321015f3559bf5ba4fa3e37566d5.png)](https://machinelearningmastery.com/wp-content/uploads/2014/03/Screen-Shot-2014-03-09-at-1.43.39-PM.png)
 
-韦卡先验关联规则学习的结果
+Weka先验关联规则学习的结果
 
 从 *Associator 输出*窗口可以看到，算法呈现了从超市数据集学习到的 10 条规则。默认情况下，该算法被配置为停止在 10 个规则，您可以单击算法名称，并通过更改“*规则数*”值来配置它，以查找和报告更多规则。
 

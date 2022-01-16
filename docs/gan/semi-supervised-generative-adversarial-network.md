@@ -149,7 +149,7 @@ plot_model(model, to_file='discriminator_plot.png', show_shapes=True, show_layer
 
 具体来说，我们可以定义一个分类器模型来预测输入图像是真的还是假的，以及定义第二个分类器模型来预测给定模型的类别。
 
-*   **二元分类器模型**。预测图像是真的还是假的，输出层中的 sigmoid 激活函数，并使用[二进制交叉熵损失函数](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)进行优化。
+*   **二分类器模型**。预测图像是真的还是假的，输出层中的 sigmoid 激活函数，并使用[二进制交叉熵损失函数](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)进行优化。
 *   **多类分类器模型**。预测图像的类别，输出层中的 softmax 激活函数，并使用[分类交叉熵损失函数](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)进行优化。
 
 两种模型具有不同的输出层，但共享所有的要素提取层。这意味着对其中一个分类器模型的更新将影响两个模型。

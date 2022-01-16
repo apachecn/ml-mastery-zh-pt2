@@ -1,6 +1,4 @@
-# 如何在 Weka
-
-中转换你的机器学习数据
+# 如何在 Weka 中转换你的机器学习数据
 
 > 原文：<https://machinelearningmastery.com/transform-machine-learning-data-weka/>
 
@@ -43,19 +41,19 @@
 
 您也可以通过加载文件 *diabetes.arff* ，在 *data/* 目录下访问您的 Weka 安装中的数据集目录。
 
-1.打开韦卡浏览器。
+1.打开Weka浏览器。
 
 2.加载皮马印第安人糖尿病发病数据集。
 
 ![Weka Explorer Loaded Diabetes Dataset](img/478bceef5eb7b1f104aed4d9b1553530.png)
 
-韦卡浏览器加载的糖尿病数据集
+Weka浏览器加载的糖尿病数据集
 
 3.单击过滤器的“选择”按钮，并选择“离散化”，它位于“无监督.属性.离散化”下
 
 ![Weka Select Discretize Data Filter](img/873f17a8f3f4cb1feb62e2e5daed8eb9.png)
 
-韦卡选择离散化数据过滤器
+Weka选择离散化数据过滤器
 
 4.单击过滤器进行配置。您可以选择要离散化的属性的索引，默认情况下是离散化所有属性，这就是我们在这种情况下要做的。点击“确定”按钮。
 
@@ -65,7 +63,7 @@
 
 ![Weka Discretized Attribute](img/f7329d32eebe06e22469cd3c23e518b8.png)
 
-韦卡离散化属性
+Weka离散化属性
 
 [离散化](https://en.wikipedia.org/wiki/Discretization_of_continuous_features)当使用决策树类型算法时，您的实值属性最有用。当你相信在给定的属性值中有自然的分组时，这可能更有用。
 
@@ -81,7 +79,7 @@
 
 您可以从 [UCI 机器学习资源库](https://archive.ics.uci.edu/ml/datasets/Lenses)下载隐形眼镜数据集。您也可以通过加载文件*隐形眼镜，在*数据/* 目录下访问您的 Weka 安装中的数据集目录。*
 
-1.打开韦卡浏览器。
+1.打开Weka浏览器。
 
 2.加载隐形眼镜数据集。
 

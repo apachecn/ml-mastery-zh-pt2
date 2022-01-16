@@ -347,7 +347,7 @@ Keras 通过层上的*核正则化器*参数支持权重正则化，可以配置
 model.add(Dense(500, input_dim=2, activation='relu', kernel_regularizer=l2(0.01)))
 ```
 
-下面的例子演示了一个多层感知器模型，它在二元分类问题上具有权重衰减。
+下面的例子演示了一个多层感知器模型，它在二分类问题上具有权重衰减。
 
 ```py
 # example of weight decay

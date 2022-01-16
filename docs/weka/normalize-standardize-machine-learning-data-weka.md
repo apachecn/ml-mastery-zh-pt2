@@ -1,6 +1,4 @@
-# 如何在 Weka
-
-中规范和标准化你的机器学习数据
+# 如何在 Weka 中规范和标准化你的机器学习数据
 
 > 原文：<https://machinelearningmastery.com/normalize-standardize-machine-learning-data-weka/>
 
@@ -41,9 +39,9 @@
 
 ![Weka Load Diabetes Dataset](img/73294bf834f1914e3727164c6bb35469.png)
 
-韦卡负荷糖尿病数据集
+Weka负荷糖尿病数据集
 
-## 关于韦卡的数据过滤器
+## 关于Weka的数据过滤器
 
 Weka 提供了转换数据集的过滤器。查看支持哪些过滤器并在数据集上使用它们的最好方法是使用 Weka Explorer。
 
@@ -97,19 +95,19 @@ Weka 数据过滤器更多信息
 
 您可以使用以下方法来标准化数据集:
 
-1.打开韦卡浏览器。
+1.打开Weka浏览器。
 
 2.加载数据集。
 
 ![Weka Explorer Loaded Diabetes Dataset](img/ea1b9a0924324f5f08d3b2a914928753.png)
 
-韦卡浏览器加载的糖尿病数据集
+Weka浏览器加载的糖尿病数据集
 
 3.点击“选择”按钮选择一个过滤器并选择*无监督。属性。归一化*。
 
 ![Weka Select Normalize Data Filter](img/2d454cfead3b6344174310934c8d2f1a.png)
 
-韦卡选择标准化数据过滤器
+Weka选择标准化数据过滤器
 
 4.单击“应用”按钮来规范化数据集。
 
@@ -119,7 +117,7 @@ Weka 数据过滤器更多信息
 
 ![Weka Normalized Data Distribution](img/af80001e20bf923992f21d039aea256f.png)
 
-韦卡归一化数据分布
+Weka归一化数据分布
 
 您可以使用其他比例，例如-1 比 1，这在使用支持向量机和 adaboost 时非常有用。
 
@@ -135,7 +133,7 @@ Weka 数据过滤器更多信息
 
 您可以使用以下方法来标准化数据集:
 
-1.打开韦卡浏览器
+1.打开Weka浏览器
 
 2.加载数据集。
 
@@ -153,7 +151,7 @@ Weka 选择标准化数据过滤器
 
 ![Weka Standardized Data Distribution](img/a49fe5384eebd0b1a4e6c4aa9dbe5318.png)
 
-韦卡标准化数据分发
+Weka标准化数据分发
 
 当您的数据具有不同的标度，并且您使用的算法确实假设您的数据具有高斯分布时，例如线性回归、逻辑回归和线性判别分析，标准化非常有用。
 

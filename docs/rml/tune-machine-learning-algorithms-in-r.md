@@ -69,7 +69,7 @@
 
 这是来自 [UCI 机器学习资源库](https://machinelearningmastery.com/practice-machine-learning-with-small-in-memory-datasets-from-the-uci-machine-learning-repository/)的数据集，描述了雷达回波是从金属还是岩石上反弹回来的。
 
-这是一个二元分类问题，有 60 个数字输入特征来描述雷达回波的特性。你可以在这里了解更多这个问题:[声纳数据集](https://archive.ics.uci.edu/ml/datasets/Connectionist+Bench+(Sonar,+Mines+vs.+Rocks))。您可以在此处看到该数据集的世界级发布结果:[声纳数据集的准确率](http://www.is.umk.pl/projects/datasets.html#Sonar)。
+这是一个二分类问题，有 60 个数字输入特征来描述雷达回波的特性。你可以在这里了解更多这个问题:[声纳数据集](https://archive.ics.uci.edu/ml/datasets/Connectionist+Bench+(Sonar,+Mines+vs.+Rocks))。您可以在此处看到该数据集的世界级发布结果:[声纳数据集的准确率](http://www.is.umk.pl/projects/datasets.html#Sonar)。
 
 这并不是一个特别困难的数据集，但是对于这个例子来说，它并不平凡而且有趣。
 

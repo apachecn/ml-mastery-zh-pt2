@@ -152,7 +152,7 @@ oversample = RandomOverSampler(sampling_strategy=0.5)
 X_over, y_over = oversample.fit_resample(X, y)
 ```
 
-我们可以在一个简单的综合二元分类问题上演示这一点，该问题具有 1:100 的类别不平衡。
+我们可以在一个简单的综合二分类问题上演示这一点，该问题具有 1:100 的类别不平衡。
 
 ```py
 ...

@@ -554,7 +554,7 @@ F-Beta = (1 + Beta^2) x (precision x recall) / (Beta^2 x precision + recall)
 
 beta 的一个常见值是 2，这是竞争中使用的值，召回的价值是准确率的两倍。这通常被称为 F2 分数。
 
-正负类的思想只对二元分类问题有意义。当我们预测多个类时，正项、负项和相关项的概念以一个相对于其余项的方式为每个类计算，然后在每个类中取平均值。
+正负类的思想只对二分类问题有意义。当我们预测多个类时，正项、负项和相关项的概念以一个相对于其余项的方式为每个类计算，然后在每个类中取平均值。
 
 Sklearn 库通过 [fbeta_score()函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)提供 F-beta 的实现。我们可以调用该函数来评估一组预测，并指定β值为 2，将“*平均值*参数设置为“*样本*”。
 

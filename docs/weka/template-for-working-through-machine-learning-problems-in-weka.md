@@ -4,7 +4,7 @@
 
 最后更新于 2019 年 8 月 22 日
 
-当你在韦卡开始时，你可能会感到不知所措。
+当你在Weka开始时，你可能会感到不知所措。
 
 有如此多的数据集、如此多的过滤器和如此多的算法可供选择。
 
@@ -25,7 +25,7 @@
 
 这个模板是一个简化的过程，它专注于学习问题，一个好的解决方案，并且非常快地完成。
 
-它被组织成应用机器学习的六个步骤。通过使用[韦卡探索者](https://machinelearningmastery.com/how-to-run-your-first-classifier-in-weka/ "How to Run Your First Classifier in Weka")和[韦卡实验者](https://machinelearningmastery.com/design-and-run-your-first-experiment-in-weka/ "Design and Run your First Experiment in Weka")图形用户界面，每一步都被分解成特定的问题供您回答。
+它被组织成应用机器学习的六个步骤。通过使用[Weka探索者](https://machinelearningmastery.com/how-to-run-your-first-classifier-in-weka/ "How to Run Your First Classifier in Weka")和[Weka实验者](https://machinelearningmastery.com/design-and-run-your-first-experiment-in-weka/ "Design and Run your First Experiment in Weka")图形用户界面，每一步都被分解成特定的问题供您回答。
 
 该流程的六个步骤及其目标如下:
 
@@ -85,7 +85,7 @@
 
 [![Algorithm ranking when analyzing results in the Weka Experimenter](img/cdab3456f0be64680cff89d02b8213f7.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-25-at-5.30.54-AM.png)
 
-在韦卡实验器中分析结果时的算法排名
+在Weka实验器中分析结果时的算法排名
 
 1.  探索不同的分类算法
 2.  设计并运行抽查实验
@@ -129,7 +129,7 @@
 
 ## 如何使用
 
-在韦卡安装的“*目录中有许多有趣的数据集。 [UCI 机器学习资源库](https://archive.ics.uci.edu/ml/) 上也有很多数据集可以下载使用。*
+在Weka安装的“*目录中有许多有趣的数据集。 [UCI 机器学习资源库](https://archive.ics.uci.edu/ml/) 上也有很多数据集可以下载使用。*
 
  *选择一个问题，并使用此模板解决它。你会惊讶于你学到了多少，像这样的结构化过程能帮助你保持专注。
 

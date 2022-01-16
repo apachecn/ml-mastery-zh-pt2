@@ -36,7 +36,7 @@
 本教程分为五个部分；它们是:
 
 1.  梯度提升算法
-2.  梯度助推科学工具包-学习应用编程接口
+2.  梯度提升科学工具包-学习应用编程接口
     1.  用于分类的梯度提升
     2.  回归的梯度提升
 3.  梯度提升超参数
@@ -86,7 +86,7 @@
 
 现在我们已经熟悉了梯度提升算法，让我们看看如何在 Python 中拟合 GBM 模型。
 
-## 梯度助推科学工具包-学习应用编程接口
+## 梯度提升科学工具包-学习应用编程接口
 
 梯度提升集成可以从零开始实现，尽管对初学者来说很有挑战性。
 
@@ -840,7 +840,7 @@ Best: 0.946667 using {'learning_rate': 0.1, 'max_depth': 7, 'n_estimators': 500,
 
 学习率，也称为收缩，可以设置为较小的值，以便随着集成中使用的模型数量的增加而降低学习率，进而降低过拟合的影响。
 
-**问:梯度助推有哪些弊端？**
+**问:梯度提升有哪些弊端？**
 
 梯度提升可能很难配置，通常需要网格搜索或类似的搜索过程。
 
@@ -870,12 +870,12 @@ Best: 0.946667 using {'learning_rate': 0.1, 'max_depth': 7, 'n_estimators': 500,
 
 ### 蜜蜂
 
-*   [硬化。一起。梯度助推器 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) 。
-*   [硬化。集合。梯度助推器 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html) 。
+*   [硬化。一起。梯度提升器 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) 。
+*   [硬化。集合。梯度提升器 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html) 。
 
 ### 文章
 
-*   [梯度助推，维基百科](https://en.wikipedia.org/wiki/Gradient_boosting)。
+*   [梯度提升，维基百科](https://en.wikipedia.org/wiki/Gradient_boosting)。
 
 ## 摘要
 

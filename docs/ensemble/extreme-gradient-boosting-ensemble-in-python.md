@@ -62,7 +62,7 @@
 
 > 然而，xgboost 这个名字实际上指的是工程目标，即提升树算法的计算资源极限。这也是很多人使用 xgboost 的原因。
 
-—陈天琪在回答问题“[R GBM(梯度助推机)和 xgboost(极限梯度助推)有什么区别？](https://www.quora.com/What-is-the-difference-between-the-R-gbm-gradient-boosting-machine-and-xgboost-extreme-gradient-boosting/answer/Tianqi-Chen-1)“在 Quora 上
+—陈天琪在回答问题“[R GBM(梯度提升机)和 xgboost(极限梯度提升)有什么区别？](https://www.quora.com/What-is-the-difference-between-the-R-gbm-gradient-boosting-machine-and-xgboost-extreme-gradient-boosting/answer/Tianqi-Chen-1)“在 Quora 上
 
 使用 XGBoost 的两个主要原因是执行速度和模型表现。
 
@@ -741,7 +741,7 @@ XGBoost 集合柱比率与分类准确率的箱线图
 
 ### 报纸
 
-*   [XGBoost:一个可扩展的树木助推系统](https://arxiv.org/abs/1603.02754)，2016。
+*   [XGBoost:一个可扩展的树木提升系统](https://arxiv.org/abs/1603.02754)，2016。
 
 ### 项目
 
@@ -756,7 +756,7 @@ XGBoost 集合柱比率与分类准确率的箱线图
 
 ### 文章
 
-*   [梯度助推，维基百科](https://en.wikipedia.org/wiki/Gradient_boosting)。
+*   [梯度提升，维基百科](https://en.wikipedia.org/wiki/Gradient_boosting)。
 *   [XGBoost，维基百科](https://en.wikipedia.org/wiki/XGBoost)。
 
 ## 摘要

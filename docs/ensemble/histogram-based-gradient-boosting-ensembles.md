@@ -351,12 +351,12 @@ Accuracy: 0.942 (0.006)
 *   [cloud:一个用于大数据集的决策树分类器](https://www.aaai.org/Library/KDD/1998/kdd98-001.php)，1998。
 *   [通信与内存高效并行决策树构建](https://epubs.siam.org/doi/abs/10.1137/1.9781611972733.11)，2003。
 *   [LightGBM:一种高效的梯度提升决策树](https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree)，2017。
-*   [XGBoost:一个可扩展的树木助推系统](https://arxiv.org/abs/1603.02754)，2016。
+*   [XGBoost:一个可扩展的树木提升系统](https://arxiv.org/abs/1603.02754)，2016。
 
 ### 蜜蜂
 
 *   [硬化。一起。组渐增分类器 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html) 。
-*   [硬化。一起。组曲助推器 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html) 。
+*   [硬化。一起。组曲提升器 API](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html) 。
 *   [xboost，快速直方图优化生长器，8 倍至 10 倍加速](https://github.com/dmlc/xgboost/issues/1950)
 *   [xgboost。xgbcclassifier API](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier)。
 *   [xboost。xgbreversor API](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBRegressor)。

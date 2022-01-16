@@ -33,11 +33,11 @@
 
 本教程分为三个部分；它们是:
 
-1.  创建并绘制二元分类问题
+1.  创建并绘制二分类问题
 2.  创建具有类别分布的合成数据集
 3.  偏斜类分布的影响
 
-## 创建并绘制二元分类问题
+## 创建并绘制二分类问题
 
 Sklearn Python 机器学习库提供了生成合成数据集的[功能。](https://machinelearningmastery.com/generate-test-datasets-python-Sklearn/)
 

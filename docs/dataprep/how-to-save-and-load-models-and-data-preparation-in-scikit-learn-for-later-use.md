@@ -88,7 +88,7 @@
 
 首先，我们需要一个数据集。
 
-我们将使用 Sklearn 数据集的测试数据集，特别是一个二元分类问题，通过 [make_blobs()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)随机创建两个输入变量。
+我们将使用 Sklearn 数据集的测试数据集，特别是一个二分类问题，通过 [make_blobs()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)随机创建两个输入变量。
 
 下面的示例创建了一个包含 100 个示例、两个输入要素和两个类标签(0 和 1)的测试数据集。然后将数据集分成训练集和测试集，并报告每个变量的最小值和最大值。
 
@@ -162,7 +162,7 @@ for i in range(X_test.shape[1]):
 
 接下来，我们可以在训练数据集上拟合模型，并将模型和缩放器对象保存到文件中。
 
-我们将使用[物流配送](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型，因为这个问题是一个简单的二元分类任务。
+我们将使用[物流配送](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型，因为这个问题是一个简单的二分类任务。
 
 训练数据集像以前一样缩放，在这种情况下，我们将假设测试数据集当前不可用。缩放后，数据集用于拟合逻辑回归模型。
 

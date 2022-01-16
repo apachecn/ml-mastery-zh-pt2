@@ -24,7 +24,7 @@
 
 我现在向刚刚入门的程序员推荐它，因为它可以很快在数据集上获得有意义的结果。它还灌输了最佳实践，如用于比较结果的可重复实验和统计方法。
 
-如果你还没有，看看[韦卡](https://machinelearningmastery.com/what-is-the-weka-machine-learning-workbench/ "What is the Weka Machine Learning Workbench")。
+如果你还没有，看看[Weka](https://machinelearningmastery.com/what-is-the-weka-machine-learning-workbench/ "What is the Weka Machine Learning Workbench")。
 
 我有一个简短的教程，在其中你[发现如何在 5 分钟内运行一个分类器](https://machinelearningmastery.com/how-to-run-your-first-classifier-in-weka/ "How to Run Your First Classifier in Weka")。
 

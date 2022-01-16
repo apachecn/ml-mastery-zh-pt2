@@ -693,7 +693,7 @@ Best: 0.813667 using {'learning_rate': 0.1, 'n_estimators': 500}
 
 ### 报纸
 
-*   [在线学习的决策理论推广及其在助推中的应用](https://link.springer.com/chapter/10.1007/3-540-59119-2_166)，1996。
+*   [在线学习的决策理论推广及其在提升中的应用](https://link.springer.com/chapter/10.1007/3-540-59119-2_166)，1996。
 *   [多级 AdaBoost](https://www.intlpress.com/site/pub/pages/journals/items/sii/content/vols/0002/0003/a008/) ，2009。
 *   [使用增强技术改进回归器](http://professordrucker.com/Pubications/ImprovingRegressorsUsingBoostingTechniques.pdf)，1997。
 

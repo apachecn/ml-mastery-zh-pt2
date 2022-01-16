@@ -256,7 +256,7 @@
     *   [模型平均集合](https://machinelearningmastery.com/model-averaging-ensemble-for-deep-learning-neural-networks/)
     *   [加权平均集合](https://machinelearningmastery.com/weighted-average-ensemble-for-deep-learning-neural-networks/)
     *   [叠加综合(叠加)集合](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)
-    *   助推集成
+    *   提升集成
     *   [模型加权平均集成](https://machinelearningmastery.com/polyak-neural-network-model-weight-ensemble/)
 
 没有单一的最佳集成方法；也许可以尝试一些方法，或者让项目的约束来指导你。

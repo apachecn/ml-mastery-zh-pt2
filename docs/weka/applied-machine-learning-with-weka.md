@@ -1,6 +1,4 @@
-# 使用 Weka
-
-快速加快应用机器学习的进度
+# 使用 Weka 加快应用机器学习的进度
 
 > 原文：<https://machinelearningmastery.com/applied-machine-learning-with-weka/>
 
@@ -22,7 +20,7 @@
 
 ![Rapidly Accelerate Your Progress in Applied Machine Learning With Weka](img/c5cd7eae887d6140ec6bc53f1679e97b.png)
 
-使用韦卡快速加速您在应用机器学习方面的进步[乔纳森·里德尔](https://www.flickr.com/photos/jriddell/8706256603/)摄，保留部分权利。
+使用Weka快速加速您在应用机器学习方面的进步[乔纳森·里德尔](https://www.flickr.com/photos/jriddell/8706256603/)摄，保留部分权利。
 
 ## 从应用机器学习开始很难
 
@@ -94,7 +92,7 @@
 *   仍然在思考如何使用深奥的编程语言或应用程序编程接口。
 *   还在想如何设置他们的环境。
 
-在应用机器学习中，结果的快速、可靠和系统的转变比工具的状态更重要。为了这个和更多，韦卡是你前进的方向
+在应用机器学习中，结果的快速、可靠和系统的转变比工具的状态更重要。为了这个和更多，Weka是你前进的方向
 
 ## 摘要
 

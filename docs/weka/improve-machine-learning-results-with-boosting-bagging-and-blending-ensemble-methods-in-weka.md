@@ -1,6 +1,4 @@
-# 在 Weka
-
-中使用助推、装袋和混合集成进行更好的预测
+# 在 Weka 中为更好的预测使用提升、装袋和混合集成
 
 > 原文：<https://machinelearningmastery.com/improve-machine-learning-results-with-boosting-bagging-and-blending-ensemble-methods-in-weka/>
 
@@ -26,7 +24,7 @@ Weka 需要 Java。您可能已经安装了 Java，如果没有，下载页面�
 
 ## 2.启动 Weka
 
-启动 Weka。这可能需要在程序启动器中找到它，或者双击 weka.jar 文件。这将启动韦卡图形用户界面选择器。
+启动 Weka。这可能需要在程序启动器中找到它，或者双击 weka.jar 文件。这将启动Weka图形用户界面选择器。
 
 [![Weka GUI Chooser](img/fba124929a0da99095d1a3de3149684b.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/weka-loader.png)
 
@@ -34,7 +32,7 @@ Weka 图形用户界面选择器
 
 Weka 图形用户界面选择器允许您选择资源管理器、实验器、知识管理器和简单命令行界面(命令行界面)之一。
 
-点击*实验者*按钮，启动韦卡实验者。
+点击*实验者*按钮，启动Weka实验者。
 
 Weka Experimenter 允许您设计自己的在数据集上运行算法的实验，运行实验并分析结果。这是一个强大的工具。
 
@@ -59,7 +57,7 @@ Weka Experimenter 允许您设计自己的在数据集上运行算法的实验�
 
 ### 集成方法
 
-J48 ( [C4.8](https://en.wikipedia.org/wiki/C4.5) )是一种强大的决策树方法，在电离层数据集上表现良好。在本实验中，我们将研究是否可以使用[集成方法](https://en.wikipedia.org/wiki/Ensemble_learning)来改进 J48 算法的结果。我们将尝试三种流行的集成方法:助推、装袋和混合。
+J48 ( [C4.8](https://en.wikipedia.org/wiki/C4.5) )是一种强大的决策树方法，在电离层数据集上表现良好。在本实验中，我们将研究是否可以使用[集成方法](https://en.wikipedia.org/wiki/Ensemble_learning)来改进 J48 算法的结果。我们将尝试三种流行的集成方法:提升、装袋和混合。
 
 让我们从将 J48 算法添加到实验开始，这样我们就可以将其结果与该算法的集成版本进行比较。
 
@@ -72,7 +70,7 @@ J48 ( [C4.8](https://en.wikipedia.org/wiki/C4.5) )是一种强大的决策树方
 3.  点击*树*选择下的 *J48* 。
 4.  点击 *AdaBoostM1* 配置上的*确定*按钮。
 
-### 助推
+### 提升
 
 [Boosting](https://en.wikipedia.org/wiki/Boosting_(machine_learning)) 是一种集成方法，从基于训练数据准备的基本分类器开始。然后在它后面创建第二个分类器，以关注训练数据中第一个分类器出错的实例。该过程继续添加分类器，直到达到模型数量或准确率的极限。
 
@@ -100,7 +98,7 @@ bagging([Bootstrap aggregation](https://en.wikipedia.org/wiki/Bootstrap_aggregat
 
 在 Weka 中，混合被称为[堆叠](https://machinelearningmastery.com/stacking-ensemble-for-deep-learning-neural-networks/)(在堆叠概括方法之后)。我们将使用两个分类器(J48 和 IBk)添加堆叠，并使用逻辑回归作为元分类器。
 
-J48 和 IBk (k 近邻)是非常不同的算法，我们希望在我们的混合中包含“好的”(可以对问题做出有意义的预测)和多种多样(对问题有不同的观点，进而做出不同的有用预测)的算法。逻辑回归是一个很好的可靠和简单的方法来学习如何结合这两种方法的预测，并且非常适合这个二元分类问题，因为它本身会产生二元输出。
+J48 和 IBk (k 近邻)是非常不同的算法，我们希望在我们的混合中包含“好的”(可以对问题做出有意义的预测)和多种多样(对问题有不同的观点，进而做出不同的有用预测)的算法。逻辑回归是一个很好的可靠和简单的方法来学习如何结合这两种方法的预测，并且非常适合这个二分类问题，因为它本身会产生二元输出。
 
 [![Configuring and adding the Stacking algorithm that blends J48 and IBk to the Weka Experimenter.](img/bd8b087d38eab68d65b0a1077f0a0094.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-25-at-5.28.51-AM.png)
 
@@ -142,7 +140,7 @@ J48 和 IBk (k 近邻)是非常不同的算法，我们希望在我们的混合�
 
 [![Algorithm ranking when analyzing results in the Weka Experimenter](img/cdab3456f0be64680cff89d02b8213f7.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-25-at-5.30.54-AM.png)
 
-在韦卡实验器中分析结果时的算法排名
+在Weka实验器中分析结果时的算法排名
 
 我们可以看到，AdaBoostM1 版本的 J48 排名最高，与其他算法相比取得了 2 次重大胜利。我们还可以看到 Stacking 和普通老 J48 排名最低。J48 排名靠后是一个好的迹象，这表明至少一些集成方法提高了问题的准确性。
 
@@ -156,7 +154,7 @@ J48 和 IBk (k 近邻)是非常不同的算法，我们希望在我们的混合�
 
 [![Algorithm mean accuracy and statistical significance in the Weka Experimenter.](img/a1d88b4d8172dd93d688577feabecb6a.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-25-at-5.38.18-AM.png)
 
-韦卡实验者的算法平均准确率和统计意义。
+Weka实验者的算法平均准确率和统计意义。
 
 我们可以看到，AdaBoostM1 算法实现了 93.05% (+/- 3.92%)的分类准确率。我们可以看到，这个值比 J48 高 89.74% (+/- 4.38%)。我们可以在表中的 J48 准确率旁边看到一个“*”，这表明增强的 J48 算法之间的差异是有意义的(具有统计显著性)。
 

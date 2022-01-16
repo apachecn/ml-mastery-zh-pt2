@@ -158,7 +158,7 @@ r 是一个高级平台，作为初学者你可以从中获得很多。但是，
 我至少推荐三个项目:
 
 1.  **你好世界项目(鸢尾花)**。这是对项目步骤的快速浏览，无需对广泛用作机器学习的 hello world 的数据集进行太多调整或优化(更多关于[鸢尾花数据集](https://archive.ics.uci.edu/ml/datasets/Iris))。
-2.  **二进制端到端分类**。完成二元分类问题的每一步(例如[皮马印第安人糖尿病数据集](https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.names) ( [csv 文件](https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.csv)))。
+2.  **二进制端到端分类**。完成二分类问题的每一步(例如[皮马印第安人糖尿病数据集](https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.names) ( [csv 文件](https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.csv)))。
 3.  **端到端回归**。通过回归问题(例如[波士顿住房数据集](https://archive.ics.uci.edu/ml/datasets/Housing))完成流程的每一步。
 
 ### 添加和维护配方

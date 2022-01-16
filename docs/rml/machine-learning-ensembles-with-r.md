@@ -51,7 +51,7 @@
 
 本案例研究中的所有集合预测示例都将使用电离层数据集。
 
-这是可从 [UCI 机器学习资源库](https://machinelearningmastery.com/practice-machine-learning-with-small-in-memory-datasets-from-the-uci-machine-learning-repository/)获得的数据集。该数据集描述了来自大气中高能粒子的高频天线回波，以及回波是否显示结构。这个问题是一个二元分类，包含 351 个实例和 35 个数字属性。
+这是可从 [UCI 机器学习资源库](https://machinelearningmastery.com/practice-machine-learning-with-small-in-memory-datasets-from-the-uci-machine-learning-repository/)获得的数据集。该数据集描述了来自大气中高能粒子的高频天线回波，以及回波是否显示结构。这个问题是一个二分类，包含 351 个实例和 35 个数字属性。
 
 让我们加载库和数据集。
 
@@ -343,7 +343,7 @@ The final value used for the model was mtry = 2.
 
 您发现了可以在 R 中构建的三种类型的机器学习算法集成:
 
-*   助推
+*   提升
 *   制袋材料
 *   堆垛
 

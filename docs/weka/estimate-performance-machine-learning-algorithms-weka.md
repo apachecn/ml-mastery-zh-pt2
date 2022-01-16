@@ -1,4 +1,4 @@
-# 如何估计 Weka 中机器学习算法的表现
+# 如何在 Weka 中估计机器学习算法的表现
 
 > 原文：<https://machinelearningmastery.com/estimate-performance-machine-learning-algorithms-weka/>
 
@@ -8,7 +8,7 @@
 
 因此，使用稳健的技术根据可用的训练数据来训练和评估模型是至关重要的。对模型表现的估计越可靠，您就可以进一步推动表现，并确信它会转化为模型的操作使用。
 
-在这篇文章中，你将发现各种不同的方法，你可以估计你的机器学习模型在韦卡的表现。
+在这篇文章中，你将发现各种不同的方法，你可以估计你的机器学习模型在Weka的表现。
 
 看完这篇文章你会知道:
 
@@ -49,7 +49,7 @@
 
 ![Weka Algorithm Evaluation Test Options](img/2ea03118f6e53f6276a1a8ad196f7ded.png)
 
-韦卡算法评估测试选项
+Weka算法评估测试选项
 
 ## 使用哪个测试选项
 

@@ -15,7 +15,7 @@
 完成本教程后，您将知道:
 
 *   如何配置回归问题的均方误差和变量模型？
-*   如何为二元分类配置交叉熵和铰链损失函数模型。
+*   如何为二分类配置交叉熵和铰链损失函数模型。
 *   如何为多类分类配置交叉熵和 KL 散度损失函数模型。
 
 **用我的新书[更好的深度学习](https://machinelearningmastery.com/better-deep-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -38,7 +38,7 @@
     1.  均方误差损失
     2.  均方对数误差损失
     3.  平均绝对误差损失
-2.  二元分类损失函数
+2.  二分类损失函数
     1.  二元交叉熵
     2.  铰链损失
     3.  方形铰链损失
@@ -348,13 +348,13 @@ Train: 0.002, Test: 0.002
 
 训练时期平均绝对误差损失和均方误差的线图
 
-## 二元分类损失函数
+## 二分类损失函数
 
 二进制分类是那些预测建模问题，其中例子被分配两个标签中的一个。
 
 该问题通常被设计为预测第一类或第二类的值 0 或 1，并且通常被实现为预测该示例属于类值 1 的概率。
 
-在本节中，我们将研究适用于二元分类预测建模问题的损失函数。
+在本节中，我们将研究适用于二分类预测建模问题的损失函数。
 
 我们将从 Sklearn 中的循环测试问题中生成示例，作为本次调查的基础。[圆问题](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)涉及从二维平面上的两个同心圆中抽取的样本，其中外圆上的点属于 0 类，内圆上的点属于 1 类。统计噪声被添加到样本中，以增加模糊性，并使问题更难学习。
 
@@ -386,7 +386,7 @@ pyplot.show()
 
 ![Scatter Plot of Dataset for the Circles Binary Classification Problem](img/c0a6d86be5621d45eb8197ea99ce1c75.png)
 
-圆形二元分类问题的数据集散点图
+圆形二分类问题的数据集散点图
 
 这些点已经合理地缩放到 0 左右，几乎在[-1，1]中。在这种情况下，我们不会重新缩放它们。
 
@@ -422,7 +422,7 @@ model.compile(loss='...', optimizer=opt, metrics=['accuracy'])
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=200, verbose=0)
 ```
 
-现在我们已经有了问题和模型的基础，我们可以看一下评估三个适用于二元分类预测建模问题的常见损失函数。
+现在我们已经有了问题和模型的基础，我们可以看一下评估三个适用于二分类预测建模问题的常见损失函数。
 
 虽然在这些例子中使用了 MLP，但是当训练 CNN 和 RNN 模型进行二进制分类时，可以使用相同的损失函数。
 
@@ -448,7 +448,7 @@ model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
 model.add(Dense(1, activation='sigmoid'))
 ```
 
-下面列出了两个圆的二元分类问题的交叉熵损失 MLP 的完整例子。
+下面列出了两个圆的二分类问题的交叉熵损失 MLP 的完整例子。
 
 ```py
 # mlp for the circles problem with cross entropy loss
@@ -510,13 +510,13 @@ Train: 0.836, Test: 0.852
 
 ### 铰链损失
 
-二元分类问题中交叉熵的另一种选择是[铰链损失函数](https://en.wikipedia.org/wiki/Hinge_loss)，主要是为支持向量机(SVM)模型开发的。
+二分类问题中交叉熵的另一种选择是[铰链损失函数](https://en.wikipedia.org/wiki/Hinge_loss)，主要是为支持向量机(SVM)模型开发的。
 
 它适用于目标值在集合{-1，1}中的二进制分类。
 
 铰链损失函数鼓励示例使用正确的符号，当实际类别值和预测类别值之间的符号存在差异时，会分配更多的误差。
 
-铰链损失的表现报告是混合的，有时在二元分类问题上产生比交叉熵更好的表现。
+铰链损失的表现报告是混合的，有时在二分类问题上产生比交叉熵更好的表现。
 
 首先，目标变量必须修改为具有集合{-1，1}中的值。
 
@@ -537,7 +537,7 @@ model.compile(loss='hinge', optimizer=opt, metrics=['accuracy'])
 model.add(Dense(1, activation='tanh'))
 ```
 
-下面列出了两个圆的二元分类问题的具有铰链损失函数的 MLP 的完整例子。
+下面列出了两个圆的二分类问题的具有铰链损失函数的 MLP 的完整例子。
 
 ```py
 # mlp for the circles problem with hinge loss
@@ -606,7 +606,7 @@ Train: 0.792, Test: 0.740
 
 一种流行的扩展称为平方铰链损失，它简单地计算分数铰链损失的平方。它具有平滑误差函数表面的效果，并使其在数值上更容易处理。
 
-如果在给定的二元分类问题上使用铰链损失确实导致更好的表现，那么平方铰链损失可能是合适的。
+如果在给定的二分类问题上使用铰链损失确实导致更好的表现，那么平方铰链损失可能是合适的。
 
 与使用铰链损失函数一样，必须修改目标变量，使其值在集合{-1，1}中。
 
@@ -627,7 +627,7 @@ model.compile(loss='squared_hinge', optimizer=opt, metrics=['accuracy'])
 model.add(Dense(1, activation='tanh'))
 ```
 
-下面列出了在两个圆的二元分类问题上具有平方铰链损失函数的 MLP 的完整例子。
+下面列出了在两个圆的二分类问题上具有平方铰链损失函数的 MLP 的完整例子。
 
 ```py
 # mlp for the circles problem with squared hinge loss
@@ -1072,7 +1072,7 @@ Train: 0.822, Test: 0.822
 具体来说，您了解到:
 
 *   如何配置回归问题的均方误差和变量模型？
-*   如何为二元分类配置交叉熵和铰链损失函数模型。
+*   如何为二分类配置交叉熵和铰链损失函数模型。
 *   如何为多类分类配置交叉熵和 KL 散度损失函数模型。
 
 **你有什么问题吗？**

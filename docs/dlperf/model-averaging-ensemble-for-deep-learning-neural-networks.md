@@ -145,7 +145,7 @@ outcomes, _ = mode(yhats)
 
 这种方法的缺点是，对于小的集合或有大量类的问题，预测样本可能不够大，模式没有意义。
 
-在二元分类问题的情况下，在输出层使用 sigmoid 激活函数，预测概率的平均值可以像回归问题一样计算。
+在二分类问题的情况下，在输出层使用 sigmoid 激活函数，预测概率的平均值可以像回归问题一样计算。
 
 在具有两个以上类别的多类别分类问题的情况下，在输出层上使用 softmax 激活函数，并且在取 [argmax](https://docs.scipy.org/doc/numpy/reference/generated/numpy.argmax.html) 以获得类别值之前，可以计算每个预测类别的概率之和。
 

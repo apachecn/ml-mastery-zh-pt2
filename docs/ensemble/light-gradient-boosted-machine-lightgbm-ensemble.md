@@ -39,7 +39,7 @@ LightGBM 通过添加一种自动特征选择以及关注具有更大梯度的�
     1.  探索树的数量
     2.  探索树的深度
     3.  探索学习率
-    4.  探索助推类型
+    4.  探索提升类型
 
 ## 光梯度提升机算法
 
@@ -542,7 +542,7 @@ pyplot.show()
 
 LightGBM 学习率与分类准确率的箱线图
 
-### 探索助推类型
+### 探索提升类型
 
 LightGBM 的一个特点是它支持许多不同的提升算法，称为提升类型。
 
@@ -657,7 +657,7 @@ LightGBM 增强类型与分类准确率的箱线图
 
 ### 文章
 
-*   [梯度助推，维基百科](https://en.wikipedia.org/wiki/Gradient_boosting)。
+*   [梯度提升，维基百科](https://en.wikipedia.org/wiki/Gradient_boosting)。
 
 ## 摘要
 

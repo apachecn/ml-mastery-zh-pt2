@@ -64,9 +64,9 @@ Let’s get started.![How to Manually Optimize Machine Learning Model Hyperparam
 
 在本节中，我们将探讨如何手动优化感知器模型的超参数。
 
-首先，让我们定义一个合成的二元分类问题，我们可以将其作为优化模型的重点。
+首先，让我们定义一个合成的二分类问题，我们可以将其作为优化模型的重点。
 
-我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含 1000 行和 5 个输入变量的二元分类问题。
+我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含 1000 行和 5 个输入变量的二分类问题。
 
 下面的示例创建数据集并总结数据的形状。
 

@@ -789,7 +789,7 @@ Prediction: -74.212
 
 ### 文章
 
-*   [梯度助推，维基百科](https://en.wikipedia.org/wiki/Gradient_boosting)。
+*   [梯度提升，维基百科](https://en.wikipedia.org/wiki/Gradient_boosting)。
 *   [XGBoost，维基百科](https://en.wikipedia.org/wiki/XGBoost)。
 
 ## 摘要

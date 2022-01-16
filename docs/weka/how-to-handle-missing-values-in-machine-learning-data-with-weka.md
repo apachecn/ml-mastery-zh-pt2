@@ -1,4 +1,4 @@
-# 如何用 Weka 处理机器学习数据中的缺失值
+# 如何使用 Weka 处理机器学习数据中的缺失值
 
 > 原文：<https://machinelearningmastery.com/how-to-handle-missing-values-in-machine-learning-data-with-weka/>
 
@@ -46,7 +46,7 @@
 
 您可以使用 NumericalCleaner 筛选器标记 Weka 中的缺失值。下面的秘籍向您展示了如何使用这个过滤器来标记身体质量指数属性上的 11 个缺失值。
 
-1.打开韦卡浏览器。
+1.打开Weka浏览器。
 
 2.加载皮马印第安人糖尿病发病数据集。
 
@@ -140,7 +140,7 @@ Weka 替换缺失值数据过滤器
 
 ![Weka Imputed Values](img/c738796fcee9e7232e42e30139798b9c.png)
 
-韦卡估计值
+Weka估计值
 
 ## 摘要
 

@@ -20,7 +20,7 @@ Weka 机器学习工作台非常容易使用，通过机器学习项目工作会
 
 ![Multi-Class Classification Tutorial in Weka](img/be129c56d69122bf2f173784655cbd4a.png)
 
-韦卡
+Weka
 多类分类教程 [Johan Neven](https://www.flickr.com/photos/enneafive/14324446578/) 摄，保留部分权利。
 
 ## 教程概述
@@ -42,13 +42,13 @@ Weka 机器学习工作台非常容易使用，通过机器学习项目工作会
 
 虹膜数据集中的每个实例都描述了鸢尾花的测量值，任务是预测观察属于哪 3 种鸢尾花。有 4 个数值输入变量，单位相同，尺度一般相同。您可以在 [UCI 机器学习资源库](https://archive.ics.uci.edu/ml/datasets/Iris)中了解更多数据集。最高的结果大约是 96%的准确率。
 
-1.打开韦卡图形用户界面选择器。
+1.打开Weka图形用户界面选择器。
 
 ![Weka GUI Chooser](img/cb3350f780f59a000be7a7f46e92fd06.png)
 
 Weka 图形用户界面选择器
 
-2.单击“浏览器”按钮打开韦卡浏览器。
+2.单击“浏览器”按钮打开Weka浏览器。
 
 3.点击“打开文件…”按钮，导航至*数据/* 目录，选择 *iris.arff* 。单击“打开”按钮。
 
@@ -91,7 +91,7 @@ Weka 加载鸢尾花数据集
 
 ![Weka Univariate Attribute Distribution Plots](img/1dff97f4f505259752526dc9366e5703.png)
 
-韦卡单变量属性分布图
+Weka单变量属性分布图
 
 我们可以注意到一些关于数据形状的事情:
 
@@ -110,7 +110,7 @@ Weka 加载鸢尾花数据集
 
 ![Weka Attribute Scatterplot Matrix](img/93800f94e0e2aec2c7b66b41e94f56d1.png)
 
-韦卡属性散点图矩阵
+Weka属性散点图矩阵
 
 查看输入变量的图表，我们可以看到散点图上的类之间有很好的分离。例如，花瓣宽度对分离强度和花瓣宽度对分离强度就是很好的例子。
 
@@ -120,13 +120,13 @@ Weka 加载鸢尾花数据集
 
 让我们设计一个小实验来评估这个问题的一套标准分类算法。
 
-1.关闭韦卡浏览器。
+1.关闭Weka浏览器。
 
-2.单击韦卡图形用户界面选择器上的“实验者”按钮，启动韦卡实验环境。
+2.单击Weka图形用户界面选择器上的“实验者”按钮，启动Weka实验环境。
 
 ![Weka Experiment Environment](img/9a0f5717bd2ff35ee76d38449eede136.png)
 
-韦卡实验环境
+Weka实验环境
 
 3.点击“新建”开始新的实验。
 
@@ -151,13 +151,13 @@ Weka 加载鸢尾花数据集
 
 ![Weka Designed Algorithm Comparison Experiment](img/988b71f01207a47243bf0aecead8a061.png)
 
-韦卡设计算法比较实验
+Weka设计算法比较实验
 
 9.点击“运行”打开“运行”标签，点击“开始”按钮运行实验。实验应该在几秒钟内完成。
 
 ![Weka Execute Weka Algorithm Comparison Experiment](img/c807a927ecc2071d049987a632ed2e03.png)
 
-韦卡执行韦卡算法比较实验
+Weka执行Weka算法比较实验
 
 10.点击“分析”打开“分析”标签。单击“实验”按钮加载实验结果。
 
@@ -264,7 +264,7 @@ Key:
 
 我们可以根据所有训练数据创建模型的最终版本，并将其保存到文件中。
 
-1.关闭韦卡实验环境。
+1.关闭Weka实验环境。
 
 2.打开 Weka Explorer，加载*数据/iris.arff* 数据集。
 

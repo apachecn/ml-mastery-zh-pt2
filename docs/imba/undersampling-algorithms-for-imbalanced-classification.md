@@ -596,7 +596,7 @@ Tomek Links 的开发者 Ivan Tomek 在他 1976 年的论文《T0:编辑最近�
 undersample = OneSidedSelection(n_neighbors=1, n_seeds_S=200)
 ```
 
-下面列出了在二元分类问题上应用开放源码软件的完整例子。
+下面列出了在二分类问题上应用开放源码软件的完整例子。
 
 我们可能期望从分布的内部(例如，远离类边界)移除多数类的大量冗余示例。
 
@@ -668,7 +668,7 @@ Counter({0: 940, 1: 100})
 
 这种技术可以使用[邻居清理规则不平衡学习类](https://imbalanced-learn.org/stable/generated/imblearn.under_sampling.NeighbourhoodCleaningRule.html)来实现。ENN 和美国有线电视新闻网步骤中使用的邻居数量可以通过默认为 3 的 *n_neighbors* 参数来指定。*阈值清理*控制 CNN 是否应用于给定的类，如果有多个相似大小的少数民族类，这可能会很有用。这个保持在 0.5。
 
-下面列出了将 NCR 应用于二元分类问题的完整示例。
+下面列出了将 NCR 应用于二分类问题的完整示例。
 
 考虑到数据清理比删除冗余示例更为重要，我们预计多数类中的示例数量只会适度减少。
 

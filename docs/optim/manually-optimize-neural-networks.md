@@ -61,9 +61,9 @@ Let’s get started.![How to Manually Optimize Neural Network Models](img/b8af55
 
 在本节中，我们将优化感知器神经网络模型的权重。
 
-首先，让我们定义一个合成的二元分类问题，我们可以将其作为优化模型的重点。
+首先，让我们定义一个合成的二分类问题，我们可以将其作为优化模型的重点。
 
-我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含 1000 行和 5 个输入变量的二元分类问题。
+我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含 1000 行和 5 个输入变量的二分类问题。
 
 下面的示例创建数据集并总结数据的形状。
 
@@ -679,7 +679,7 @@ def hillclimbing(X, y, objective, solution, n_iter, step_size):
 	return [solution, solution_eval]
 ```
 
-将这些联系在一起，下面列出了应用随机爬山来优化二元分类的 MLP 模型权重的完整示例。
+将这些联系在一起，下面列出了应用随机爬山来优化二分类的 MLP 模型权重的完整示例。
 
 ```py
 # stochastic hill climbing to optimize a multilayer perceptron for classification

@@ -6,11 +6,11 @@
 
 [Weka](https://machinelearningmastery.com/what-is-the-weka-machine-learning-workbench/ "What is the Weka Machine Learning Workbench") 是学习机器学习的完美平台。它提供了一个图形用户界面，用于在数据集上探索和实验机器学习算法，而您不必担心数学或编程。
 
-Weka 的一个强大功能是 Weka 实验员界面。与用于过滤数据和尝试不同算法的韦卡探索者不同，实验者用于设计和运行实验。它产生的实验结果是健壮的，并且足够好，可以发表(如果你知道你在做什么)。
+Weka 的一个强大功能是 Weka 实验员界面。与用于过滤数据和尝试不同算法的Weka探索者不同，实验者用于设计和运行实验。它产生的实验结果是健壮的，并且足够好，可以发表(如果你知道你在做什么)。
 
-在之前的一篇文章中，你学习了如何在韦卡探索者中运行你的第一个分类器。
+在之前的一篇文章中，你学习了如何在Weka探索者中运行你的第一个分类器。
 
-在这篇文章中，你将发现韦卡实验者的力量。如果你按照一步一步的指示去做，你将在五分钟内为安润设计你的第一个机器学习实验。
+在这篇文章中，你将发现Weka实验者的力量。如果你按照一步一步的指示去做，你将在五分钟内为安润设计你的第一个机器学习实验。
 
 **用我的新书[用 Weka](https://machinelearningmastery.com/machine-learning-mastery-weka/) 启动你的项目**，包括*的分步教程*和清晰的*截图*所有示例。
 
@@ -19,7 +19,7 @@ Weka 的一个强大功能是 Weka 实验员界面。与用于过滤数据和尝
 第一次实验
 图片由 [mhofstrand](https://www.flickr.com/photos/mhofstrand/25972084/sizes/o/) 提供，保留部分权利
 
-## 1。下载并安装韦卡
+## 1。下载并安装Weka
 
 访问 [Weka 下载页面](https://waikato.github.io/weka-wiki/downloading_weka/)找到适合你电脑的 Weka 版本(Windows、Mac 或 Linux)。
 
@@ -29,7 +29,7 @@ Weka 需要 Java。您可能已经安装了 Java，如果没有，下载页面�
 
 ## 2.启动 Weka
 
-启动 Weka。这可能需要在程序启动器中找到它，或者双击 weka.jar 文件。这将启动韦卡图形用户界面选择器。
+启动 Weka。这可能需要在程序启动器中找到它，或者双击 weka.jar 文件。这将启动Weka图形用户界面选择器。
 
 [![Weka GUI Chooser](img/fba124929a0da99095d1a3de3149684b.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/weka-loader.png)
 
@@ -37,7 +37,7 @@ Weka 图形用户界面选择器
 
 Weka 图形用户界面选择器允许您选择资源管理器、实验器、知识管理器和简单命令行界面(命令行界面)之一。
 
-点击 ***实验者*** 按钮，启动韦卡实验者。
+点击 ***实验者*** 按钮，启动Weka实验者。
 
 Weka Experimenter 允许您设计自己的在数据集上运行算法的实验，运行实验并分析结果。这是一个强大的工具。
 
@@ -47,7 +47,7 @@ Weka Experimenter 允许您设计自己的在数据集上运行算法的实验�
 
 [![Weka Experimenter](img/e62972aa108580fd3e72907a41627ccb.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-19-at-5.36.21-AM.png)
 
-韦卡实验者
+Weka实验者
 开始新的实验
 
 ### 测试选项
@@ -91,7 +91,7 @@ J48 是决策树算法。它是 C4.8 算法在 Java 中的实现(“J”代表 J
 
 [![Weka Experimenter](img/7b8df0cf704edb9df582877210c02990.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-19-at-5.36.56-AM.png)
 
-韦卡实验者
+Weka实验者
 配置实验
 
 我们准备进行实验。
@@ -106,7 +106,7 @@ J48 是决策树算法。它是 C4.8 算法在 Java 中的实现(“J”代表 J
 
 [![Weka Experimenter](img/838de83061966acc67ad8cb6bb1230e4.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-19-at-5.37.02-AM.png)
 
-韦卡实验者
+Weka实验者
 运行实验
 
 假设数据集很小，算法很快，实验应该在几秒钟内完成。
@@ -119,7 +119,7 @@ J48 是决策树算法。它是 C4.8 算法在 Java 中的实现(“J”代表 J
 
 [![Weka Experimenter](img/d8f509fb896588af496fc915c4d86a14.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-19-at-5.37.09-AM.png)
 
-韦卡实验者
+Weka实验者
 加载实验结果
 
 点击 ***来源*** 部分中的 ***实验*** 按钮，加载当前实验的结果。
@@ -133,7 +133,7 @@ J48 是决策树算法。它是 C4.8 算法在 Java 中的实现(“J”代表 J
 
 [![Weka Experimenter](img/2b96142159d9bdf491b21cafee17acc0.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-19-at-5.37.15-AM.png)
 
-韦卡实验者
+Weka实验者
 对实验结果中的算法进行排序
 
 排名表显示了每种算法相对于数据集中所有其他算法的[统计显著](https://machinelearningmastery.com/how-to-choose-the-right-test-options-when-evaluating-machine-learning-algorithms/ "How To Choose The Right Test Options When Evaluating Machine Learning Algorithms")获胜次数。一次胜利意味着比另一种算法的准确率更高的准确率，并且差异具有统计学意义。
@@ -150,7 +150,7 @@ J48 是决策树算法。它是 C4.8 算法在 Java 中的实现(“J”代表 J
 
 [![Weka Experimenter](img/90c7556c860cdd06f527faa68827a996.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-19-at-5.42.45-AM.png)
 
-韦卡实验者
+Weka实验者
 算法准确率与零相比
 
 在“测试输出”中，我们可以看到一个包含 3 种算法结果的表格。每个算法在数据集上运行 10 次，报告的准确率是这 10 次运行的平均值和标准差。
@@ -164,7 +164,7 @@ J48 的分数高于 OneR 的分数，所以接下来我们想看看这两个准�
 
 [![Weka Experimenter](img/8be7ef0230cc8606d58e0bb6f228e186.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-19-at-5.37.46-AM.png)
 
-韦卡实验者
+Weka实验者
 算法准确率对比 J48
 
 我们可以看到，ZeroR 的结果旁边有一个“*”，这表明它的结果与 J48 相比在统计上有所不同。但我们已经知道了。我们在 OneR 算法的结果旁边看不到“*”。这告诉我们，尽管 J48 和 OneR 之间的平均准确率不同，但差异在统计上并不显著。

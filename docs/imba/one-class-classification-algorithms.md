@@ -120,7 +120,7 @@ Counter({0: 9990, 1: 10})
 
 ![Scatter Plot of a Binary Classification Problem With a 1 to 1000 Class Imbalance](img/d212ca6b3aca5586bec49dd747c41ae1.png)
 
-1 到 1000 类不平衡二元分类问题的散点图
+1 到 1000 类不平衡二分类问题的散点图
 
 ## 一类支持向量机
 

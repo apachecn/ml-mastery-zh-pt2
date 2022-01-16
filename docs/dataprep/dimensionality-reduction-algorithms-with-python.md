@@ -178,7 +178,7 @@ print(X.shape, y.shape)
 (1000, 20) (1000,)
 ```
 
-这是一个二元分类任务，我们将在每次降维变换后评估一个[物流分类](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型。
+这是一个二分类任务，我们将在每次降维变换后评估一个[物流分类](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型。
 
 模型将使用[重复分层 10 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)的金标准进行评估。将报告所有折叠和重复的平均和标准偏差分类准确率。
 
@@ -323,7 +323,7 @@ Accuracy: 0.824 (0.034)
 
 线性判别分析(LDA)是一种多类分类算法，可用于降维。
 
-投影的维数限于 1 和 C-1，其中 C 是类的数目。在这种情况下，我们的数据集是一个二元分类问题(两个类)，将维数限制为 1。
+投影的维数限于 1 和 C-1，其中 C 是类的数目。在这种情况下，我们的数据集是一个二分类问题(两个类)，将维数限制为 1。
 
 有关降维 LDA 的更多信息，请参见教程:
 

@@ -79,7 +79,7 @@ Python 中的生长和修剪集成
 
 在我们深入开发生长和修剪集成之前，让我们首先建立一个数据集和基线。
 
-我们将使用一个综合二元分类问题作为本研究的基础，由 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义，有 5000 个例子和 20 个数字输入特征。
+我们将使用一个综合二分类问题作为本研究的基础，由 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义，有 5000 个例子和 20 个数字输入特征。
 
 下面的示例定义了数据集并总结了其大小。
 

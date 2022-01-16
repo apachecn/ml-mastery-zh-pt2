@@ -405,15 +405,15 @@ Test MSE: 0.080779
 
 逻辑回归模型是线性回归的扩展，用于分类预测建模。
 
-[Logistic 回归](https://machinelearningmastery.com/logistic-regression-with-maximum-likelihood-estimation/)是针对二元分类任务的，意思是数据集有两个类标签，class=0 和 class=1。
+[Logistic 回归](https://machinelearningmastery.com/logistic-regression-with-maximum-likelihood-estimation/)是针对二分类任务的，意思是数据集有两个类标签，class=0 和 class=1。
 
 输出首先包括计算输入的加权和，然后将这个加权和传递给一个逻辑函数，也称为 sigmoid 函数。对于属于类=1 的例子，结果是 0 和 1 之间的[二项式概率](https://machinelearningmastery.com/discrete-probability-distributions-for-machine-learning/)。
 
 在本节中，我们将在上一节所学的基础上优化回归模型的系数以进行分类。我们将开发模型并用随机系数进行测试，然后使用随机爬山来优化模型系数。
 
-首先，让我们定义一个合成的二元分类问题，我们可以将其作为优化模型的重点。
+首先，让我们定义一个合成的二分类问题，我们可以将其作为优化模型的重点。
 
-我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含 1000 行和 5 个输入变量的二元分类问题。
+我们可以使用 [make_classification()函数](https://Sklearn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个包含 1000 行和 5 个输入变量的二分类问题。
 
 下面的示例创建数据集并总结数据的形状。
 
@@ -492,7 +492,7 @@ print('Accuracy: %f' % score)
 
 就这样。
 
-我们可以将所有这些联系在一起，并演示我们用于二元分类的简单逻辑回归模型。下面列出了完整的示例。
+我们可以将所有这些联系在一起，并演示我们用于二分类的简单逻辑回归模型。下面列出了完整的示例。
 
 ```py
 # logistic regression function for binary classification
