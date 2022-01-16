@@ -33,7 +33,7 @@
 
 1.  什么是半监督 GAN？
 2.  如何实现半监督鉴别器模型
-3.  如何为 MNIST 开发半监督式GAN
+3.  如何为 MNIST 开发半监督式 GAN
 4.  如何加载和使用最终的 SGAN 分类器模型
 
 ## 什么是半监督 GAN？
@@ -141,7 +141,7 @@ plot_model(model, to_file='discriminator_plot.png', show_shapes=True, show_layer
 
 ![Plot of a Standard GAN Discriminator Model](img/68948dbfadc7396d70a4ff9fd59bfcb2.png)
 
-标准GAN鉴别器模型图
+标准 GAN 鉴别器模型图
 
 ### 具有共享权重的独立鉴别器模型
 
@@ -284,7 +284,7 @@ plot_model(model, to_file='multioutput_discriminator_plot.png', show_shapes=True
 
 ![Plot of a Semi-Supervised GAN Discriminator Model With Unsupervised and Supervised Output Layers](img/0aa6f654fc9361b2de180435f32ae717.png)
 
-具有无监督和有监督输出层的半监督GAN鉴别器模型图
+具有无监督和有监督输出层的半监督 GAN 鉴别器模型图
 
 ### 具有共享权重的堆叠鉴别器模型
 
@@ -417,17 +417,17 @@ plot_model(c_model, to_file='stacked_discriminator2_plot.png', show_shapes=True,
 
 ![Plot of the Stacked Version of the Unsupervised Discriminator Model of the Semi-Supervised GAN](img/9fe7fd416ec628dad2c5fa7afd25adef.png)
 
-半监督GAN无监督鉴别器模型的堆叠图
+半监督 GAN 无监督鉴别器模型的堆叠图
 
 监督鉴别器模型的堆叠版本:
 
 ![Plot of the Stacked Version of the Supervised Discriminator Model of the Semi-Supervised GAN](img/f49a75be1f1b61a18ed2bca47a9fa813.png)
 
-半监督GAN监督鉴别器模型的堆叠图
+半监督 GAN 监督鉴别器模型的堆叠图
 
 现在我们已经看到了如何在半监督 GAN 中实现鉴别器模型，我们可以为图像生成和半监督分类开发一个完整的例子。
 
-## 如何为 MNIST 开发半监督式GAN
+## 如何为 MNIST 开发半监督式 GAN
 
 在本节中，我们将为 [MNIST 手写数字数据集](https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-from-scratch-for-mnist-handwritten-digit-classification/)开发半监督 GAN 模型。
 
@@ -1041,7 +1041,7 @@ Test Accuracy: 95.920%
 
 *   [硬数据集接口。](https://keras.io/datasets/)
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
 *   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [MatplotLib API](https://matplotlib.org/api/)
 *   [NumPy 随机采样(numpy.random) API](https://docs.scipy.org/doc/numpy/reference/routines.random.html)

@@ -30,11 +30,11 @@
 
 本教程分为三个部分；它们是:
 
-1.  Keras的活动正则化
+1.  Keras 的活动正则化
 2.  层上的活动正则化
 3.  活动正规化案例研究
 
-## Keras的活动正则化
+## Keras 的活动正则化
 
 Keras 支持活动正规化。
 
@@ -439,14 +439,14 @@ Train: 1.000, Test: 0.743
 ### 邮件
 
 *   [机器学习中向量规范的温和介绍](https://machinelearningmastery.com/vector-norms-machine-learning/)
-*   [在Keras建立自动编码器](https://blog.keras.io/building-autoencoders-in-keras.html)
+*   [在 Keras 建立自动编码器](https://blog.keras.io/building-autoencoders-in-keras.html)
 
 ### 应用程序接口
 
 *   [硬正则器 API](https://keras.io/regularizers/)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [Keras循环层原料药](https://keras.io/layers/recurrent/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 循环层原料药](https://keras.io/layers/recurrent/)
 *   [sklearn . dataset . make _ circles](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)
 
 ## 摘要

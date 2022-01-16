@@ -517,7 +517,7 @@ print(tensordot(m1, m2))
 
 ### 应用程序接口
 
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
 *   num py . asar ray API
 
 ## 摘要

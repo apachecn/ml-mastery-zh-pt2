@@ -332,7 +332,7 @@ def resnet_block(n_filters, input_layer):
 
 接下来，我们可以定义一个函数，为 256×256 个输入图像创建 9-resnet 块版本。通过将 *image_shape* 设置为(128 x128 x3)*n _ resnet*函数参数设置为 6，可以轻松将其更改为 6-resnet 块版本。
 
-重要的是，该模型输出的像素值与输入的形状相同，并且像素值在[-1，1]的范围内，这是GAN发生器模型的典型情况。
+重要的是，该模型输出的像素值与输入的形状相同，并且像素值在[-1，1]的范围内，这是 GAN 发生器模型的典型情况。
 
 ```py
 # define the standalone generator model

@@ -564,8 +564,8 @@ _________________________________________________________________
 
 ### 应用程序接口
 
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [Keras池化层应用编程接口](https://keras.io/layers/pooling/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 池化层应用编程接口](https://keras.io/layers/pooling/)
 
 ## 摘要
 

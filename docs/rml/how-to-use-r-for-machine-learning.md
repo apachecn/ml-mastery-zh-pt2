@@ -104,7 +104,7 @@ R 有超过 6000 个第三方软件包。大量可用的软件包是 R 平台的
 *   RFE:来自[Caret](https://cran.r-project.org/web/packages/caret/index.html)包的 rfe 函数
 *   相关:从[Caret](https://cran.r-project.org/web/packages/caret/index.html)包中找到相关函数
 
-Caret包提供了一套功能选择方法，请参见评估计法任务。
+Caret 包提供了一套功能选择方法，请参见评估计法任务。
 
 荣誉提名:
 
@@ -117,13 +117,13 @@ Caret包提供了一套功能选择方法，请参见评估计法任务。
 *   规范化:自定义编写的函数
 *   标准化:从基础包扩展功能。
 
-Caret包作为测试工具的一部分提供数据转换，请参见下一节。
+Caret 包作为测试工具的一部分提供数据转换，请参见下一节。
 
 ### 2.评估计法任务
 
-caret包中的函数应该用于评估数据集上的模型。
+caret 包中的函数应该用于评估数据集上的模型。
 
-caret包支持各种表现度量和测试选项，如数据拆分和交叉验证。预处理也可以配置为测试线束的一部分。
+caret 包支持各种表现度量和测试选项，如数据拆分和交叉验证。预处理也可以配置为测试线束的一部分。
 
 #### 模型评估
 
@@ -135,7 +135,7 @@ caret包支持各种表现度量和测试选项，如数据拆分和交叉验证
 
 #### 预测模型
 
-Caret包提供了对所有最佳预测建模算法的访问。
+Caret 包提供了对所有最佳预测建模算法的访问。
 
 ### 3.改进结果任务
 
@@ -143,11 +143,11 @@ Caret包提供了对所有最佳预测建模算法的访问。
 
 #### 算法调整
 
-caret包提供算法调整，作为测试工具的一部分，并包括随机、网格和自适应搜索等技术。
+caret 包提供算法调整，作为测试工具的一部分，并包括随机、网格和自适应搜索等技术。
 
 #### 模型集合
 
-许多现代预测建模算法提供内置的集成。caret包中提供了一套装袋和增强功能。
+许多现代预测建模算法提供内置的集成。caret 包中提供了一套装袋和增强功能。
 
 *   混合:来自[carestenmble](https://cran.r-project.org/web/packages/caretEnsemble/index.html)包的 carestenmble。
 *   堆叠:从[carestensemble](https://cran.r-project.org/web/packages/caretEnsemble/index.html)包装中取出。

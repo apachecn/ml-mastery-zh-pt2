@@ -1,20 +1,20 @@
-# 如何实现评估 GANs 的Frechet初始距离
+# 如何实现评估 GANs 的 Frechet 初始距离
 
 > 原文：<https://machinelearningmastery.com/how-to-implement-the-frechet-inception-distance-fid-from-scratch/>
 
 最后更新于 2019 年 10 月 11 日
 
-Frechet初始距离分数(简称 FID)是一种度量标准，用于计算为真实图像和生成图像计算的特征向量之间的距离。
+Frechet 初始距离分数(简称 FID)是一种度量标准，用于计算为真实图像和生成图像计算的特征向量之间的距离。
 
 分数总结了两组在使用用于图像分类的初始 v3 模型计算的原始图像的计算机视觉特征的统计方面有多相似。较低的分数表示两组图像更相似，或具有更相似的统计数据，满分为 0.0 表示两组图像相同。
 
 FID 分数用于评估生成对抗网络生成的图像质量，较低的分数已被证明与较高质量的图像有很好的相关性。
 
-在本教程中，您将发现如何实现Frechet初始距离来评估生成的图像。
+在本教程中，您将发现如何实现 Frechet 初始距离来评估生成的图像。
 
 完成本教程后，您将知道:
 
-*   Frechet初始距离汇总了同一域中真实图像和生成图像的初始特征向量之间的距离。
+*   Frechet 初始距离汇总了同一域中真实图像和生成图像的初始特征向量之间的距离。
 *   如何在 NumPy 中计算 FID 分数并从零开始实现计算？
 *   如何利用 Keras 深度学习库实现 FID 评分，并用真实图像计算。
 
@@ -26,28 +26,28 @@ FID 分数用于评估生成对抗网络生成的图像质量，较低的分数�
 
 ![How to Implement the Frechet Inception Distance (FID) From Scratch for Evaluating Generated Images](img/6af84e357e654e679c4a8b345139d774.png)
 
-如何从零开始实现Frechet初始距离(FID)来评估生成的图像
+如何从零开始实现 Frechet 初始距离(FID)来评估生成的图像
 照片由[德诺比克](https://www.flickr.com/photos/132646954@N02/36653868946/)，保留部分权利。
 
 ## 教程概述
 
 本教程分为五个部分；它们是:
 
-1.  什么是FrechetInception距离？
+1.  什么是 FrechetInception 距离？
 2.  如何计算弗雷歇初始距离
-3.  如何用 NumPy 实现Frechet初始距离
-4.  如何用 Keras 实现Frechet初始距离
+3.  如何用 NumPy 实现 Frechet 初始距离
+4.  如何用 Keras 实现 Frechet 初始距离
 5.  如何计算真实图像的弗雷歇初始距离
 
-## 什么是FrechetInception距离？
+## 什么是 FrechetInception 距离？
 
-Frechet初始距离，简称 FID，是一种评估生成图像质量的指标，专门用于评估生成对抗网络的表现。
+Frechet 初始距离，简称 FID，是一种评估生成图像质量的指标，专门用于评估生成对抗网络的表现。
 
 FID 分数是由[Martin heussel](https://www.linkedin.com/in/mheusel/)等人在他们 2017 年的论文中提出并使用的，该论文的标题为“[通过两时间尺度更新规则训练的 GANs 收敛到局部纳什均衡](https://arxiv.org/abs/1706.08500017)
 
 该分数是作为对现有初始得分(即 IS)的改进而提出的。
 
-> 为了评估 GANs 在图像生成方面的表现，我们引入了“Frechet初始距离”(FID)，它比初始得分更好地捕捉了生成图像与真实图像的相似性。
+> 为了评估 GANs 在图像生成方面的表现，我们引入了“Frechet 初始距离”(FID)，它比初始得分更好地捕捉了生成图像与真实图像的相似性。
 
 ——[通过两时间尺度更新规则训练的 GANs 收敛到局部纳什均衡，2017](https://arxiv.org/abs/1706.08500) 。
 
@@ -63,13 +63,13 @@ FID 分数是由[Martin heussel](https://www.linkedin.com/in/mheusel/)等人在�
 
 通过计算图像的[平均值和协方差](https://machinelearningmastery.com/introduction-to-expected-value-variance-and-covariance/)，激活被总结为多元高斯。然后计算真实和生成图像集合中激活的统计数据。
 
-然后使用[Frechet距离](https://en.wikipedia.org/wiki/Fr%C3%A9chet_distance)计算这两个分布之间的距离，也称为Wasserstein-2 距离。
+然后使用[Frechet 距离](https://en.wikipedia.org/wiki/Fr%C3%A9chet_distance)计算这两个分布之间的距离，也称为 Wasserstein-2 距离。
 
-> 两个高斯图像(合成图像和真实图像)的差异是通过Frechet距离(也称为Wasserstein-2 距离)来测量的。
+> 两个高斯图像(合成图像和真实图像)的差异是通过 Frechet 距离(也称为 Wasserstein-2 距离)来测量的。
 
 ——[通过两时间尺度更新规则训练的 GANs 收敛到局部纳什均衡](https://arxiv.org/abs/1706.08500)，2017。
 
-使用《Inception v3》模型中的激活来总结每张图像，为该分数命名为“*FrechetInception距离*”
+使用《Inception v3》模型中的激活来总结每张图像，为该分数命名为“*FrechetInception 距离*”
 
 较低的 FID 表示图像质量较好；相反，较高的分数表示较低质量的图像，并且该关系可以是线性的。
 
@@ -82,7 +82,7 @@ FID 分数是由[Martin heussel](https://www.linkedin.com/in/mheusel/)等人在�
 
 ## 如何计算弗雷歇初始距离
 
-FID 分数是通过首先加载一个预先训练好的Inception v3 模型来计算的。
+FID 分数是通过首先加载一个预先训练好的 Inception v3 模型来计算的。
 
 移除模型的输出层，并将输出作为来自最后一个池化层的激活，即[全局空间池化层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)。
 
@@ -108,7 +108,7 @@ sqrt 是方阵的[平方根，作为两个协方差矩阵的乘积给出。](htt
 
 矩阵的平方根也常写成 *M^(1/2)* ，例如矩阵的二分之一次方，也有同样的效果。根据矩阵中的值，该操作可能会失败，因为该操作是使用数值方法求解的。通常，所得矩阵中的一些元素可能是虚的，这通常可以被检测和移除。
 
-## 如何用 NumPy 实现Frechet初始距离
+## 如何用 NumPy 实现 Frechet 初始距离
 
 用 Python 中的 [NumPy 数组](https://machinelearningmastery.com/gentle-introduction-n-dimensional-arrays-python-numpy/)实现 FID 分数的计算非常简单。
 
@@ -216,13 +216,13 @@ FID (different): 358.927
 
 您可能想尝试计算 FID 分数，并测试其他病理病例。
 
-## 如何用 Keras 实现Frechet初始距离
+## 如何用 Keras 实现 Frechet 初始距离
 
 现在我们知道如何计算 FID 分数并在 NumPy 中实现它，我们可以在 Keras 中开发一个实现。
 
 这包括准备图像数据，并使用预训练的初始 v3 模型来计算每个图像的激活或特征向量。
 
-首先，我们可以直接在 Keras 中加载Inception v3 模型。
+首先，我们可以直接在 Keras 中加载 Inception v3 模型。
 
 ```py
 ...
@@ -314,7 +314,7 @@ images1 = scale_images(images1, (299,299,3))
 images2 = scale_images(images2, (299,299,3))
 ```
 
-然后可以缩放像素值以满足Inception v3 模型的期望。
+然后可以缩放像素值以满足 Inception v3 模型的期望。
 
 ```py
 ...
@@ -532,7 +532,7 @@ FID: 5.492
 ### 代码项目
 
 *   [GitHub TensorFlow 中的正式实现](https://github.com/bioinf-jku/TTUR)。
-*   [GitHub](https://github.com/mseitzer/pytorch-fid)中 PyTorch 的Frechet初始距离(FID 评分)。
+*   [GitHub](https://github.com/mseitzer/pytorch-fid)中 PyTorch 的 Frechet 初始距离(FID 评分)。
 
 ### 应用程序接口
 
@@ -544,19 +544,19 @@ FID: 5.492
 
 ### 文章
 
-*   [Frechet初启距离](https://bluewidz.blogspot.com/2017/12/frechet-inception-distance.html)，2017 年。
-*   [Frechet初启距离](https://nealjean.com/ml/frechet-inception-distance/)，2018 年。
+*   [Frechet 初启距离](https://bluewidz.blogspot.com/2017/12/frechet-inception-distance.html)，2017 年。
+*   [Frechet 初启距离](https://nealjean.com/ml/frechet-inception-distance/)，2018 年。
 *   淘气距离，维基百科。
 *   [协方差矩阵，维基百科](https://en.wikipedia.org/wiki/Covariance_matrix)。
 *   [矩阵的平方根，维基百科](https://en.wikipedia.org/wiki/Square_root_of_a_matrix)。
 
 ## 摘要
 
-在本教程中，您发现了如何实现Frechet初始距离来评估生成的图像。
+在本教程中，您发现了如何实现 Frechet 初始距离来评估生成的图像。
 
 具体来说，您了解到:
 
-*   Frechet初始距离汇总了同一域中真实图像和生成图像的初始特征向量之间的距离。
+*   Frechet 初始距离汇总了同一域中真实图像和生成图像的初始特征向量之间的距离。
 *   如何在 NumPy 中计算 FID 分数并从零开始实现计算？
 *   如何利用 Keras 深度学习库实现 FID 评分，并用真实图像计算。
 

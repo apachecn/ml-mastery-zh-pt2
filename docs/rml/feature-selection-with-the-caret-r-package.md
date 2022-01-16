@@ -1,4 +1,4 @@
-# 使用caret包选择特征
+# 使用 caret 包选择特征
 
 > 原文：<https://machinelearningmastery.com/feature-selection-with-the-caret-r-package/>
 
@@ -8,7 +8,7 @@
 
 caret R 包提供了自动报告数据中属性的相关性和重要性的工具，甚至可以为您选择最重要的特性。
 
-在这篇文章中，你会发现caret R 包中的[功能选择](https://machinelearningmastery.com/an-introduction-to-feature-selection/)工具在 R 中有独立的配方。
+在这篇文章中，你会发现 caret R 包中的[功能选择](https://machinelearningmastery.com/an-introduction-to-feature-selection/)工具在 R 中有独立的配方。
 
 看完这篇文章你会知道:
 
@@ -81,7 +81,7 @@ plot(importance)
 
 [![Rank of Features by Importance](img/2fb872b9db1aabe5824b708681dde83b.png)](https://machinelearningmastery.com/wp-content/uploads/2014/09/variable_importance.png)
 
-使用Caret R 包按重要性排列特征
+使用 Caret R 包按重要性排列特征
 
 ## 特征选择
 
@@ -113,10 +113,10 @@ plot(results, type=c("g", "o"))
 
 [![Feature Selection](img/0eeb33f328e60dbff71ca493966c02b5.png)](https://machinelearningmastery.com/wp-content/uploads/2014/09/feature-selection.png)
 
-使用Caret包选择功能
+使用 Caret 包选择功能
 
 ## 摘要
 
-在这篇文章中，您发现了caret R 包提供的 3 种特性选择方法。具体而言，搜索和移除冗余特征、按重要性对特征进行排序以及自动选择最具预测性的特征的子集。
+在这篇文章中，您发现了 caret R 包提供的 3 种特性选择方法。具体而言，搜索和移除冗余特征、按重要性对特征进行排序以及自动选择最具预测性的特征的子集。
 
 R 中提供了三个独立的方法，您可以将其复制并粘贴到自己的项目中，并根据您的具体问题进行调整。

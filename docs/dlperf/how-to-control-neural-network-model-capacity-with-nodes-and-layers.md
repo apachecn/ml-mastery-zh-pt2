@@ -592,8 +592,8 @@ layers=5: 0.794
 ### 应用程序接口
 
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [Keras循环层原料药](https://keras.io/layers/recurrent/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 循环层原料药](https://keras.io/layers/recurrent/)
 *   [Keras 实用功能](https://keras.io/utils/)
 *   [sklearn . dataset . make _ blobs API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)
 

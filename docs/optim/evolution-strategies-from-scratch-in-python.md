@@ -20,7 +20,7 @@
 
 Let’s get started.![Evolution Strategies From Scratch in Python](img/ebbd2ddcd6ea8951b03beb0cd2e3e2ab.png)
 
-Python从零开始的进化策略
+Python 从零开始的进化策略
 图片由[亚历克西斯·a·贝穆德斯](https://www.flickr.com/photos/northn/25266142837/)提供，保留部分权利。
 
 ## 教程概述

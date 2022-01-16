@@ -73,7 +73,7 @@
 
 *   [下载照片(企鹅 _ 游行. jpg)](https://machinelearningmastery.com/wp-content/uploads/2019/01/penguin_arade.jpg)
 
-本教程中的代码示例假设安装了[Pillow库](https://pillow.readthedocs.io/en/stable/)。
+本教程中的代码示例假设安装了[Pillow 库](https://pillow.readthedocs.io/en/stable/)。
 
 ### 如何向灰度图像添加通道
 
@@ -85,7 +85,7 @@
 
 这可以使用 [expand_dims() NumPy 功能](https://docs.scipy.org/doc/numpy/reference/generated/numpy.expand_dims.html)来实现。“*轴*”参数允许您指定新维度将添加到第一个维度的位置，例如，通道第一个的第一个或通道最后一个的最后一个。
 
-以下示例使用Pillow库作为灰度图像加载企鹅游行照片，并演示如何添加通道尺寸。
+以下示例使用 Pillow 库作为灰度图像加载企鹅游行照片，并演示如何添加通道尺寸。
 
 ```py
 # example of expanding dimensions
@@ -107,7 +107,7 @@ data_last = expand_dims(data, axis=2)
 print(data_last.shape)
 ```
 
-运行该示例首先使用Pillow库加载照片，然后将其转换为灰度图像。
+运行该示例首先使用 Pillow 库加载照片，然后将其转换为灰度图像。
 
 图像对象被转换成一个 NumPy 数组，我们确认数组的形状是二维的，特别是(424，640)。
 
@@ -153,7 +153,7 @@ data = moveaxis(data, 0, 2)
 print(data.shape)
 ```
 
-运行该示例首先使用Pillow库加载照片，并将其转换为 NumPy 数组，确认图像是以通道的最后格式加载的，形状为(424，640，3)。
+运行该示例首先使用 Pillow 库加载照片，并将其转换为 NumPy 数组，确认图像是以通道的最后格式加载的，形状为(424，640，3)。
 
 然后使用 *moveaxis()* 功能将通道轴从位置 2 移动到位置 0，并确认结果显示通道第一格式(3，424，640)。然后，这种情况发生逆转，将位置 0 的通道再次移动到位置 2。
 
@@ -278,7 +278,7 @@ channels_last
 *   num py . reshape API
 *   num py . move axis API
 *   [硬后端接口](https://keras.io/backend/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
 
 ## 摘要
 

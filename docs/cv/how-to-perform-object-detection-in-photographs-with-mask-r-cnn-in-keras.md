@@ -1,4 +1,4 @@
-# 如何在Keras 中将 Mask RCNN 用于照片中的对象检测
+# 如何在 Keras 中将 Mask RCNN 用于照片中的对象检测
 
 > 原文：<https://machinelearningmastery.com/how-to-perform-object-detection-in-photographs-with-mask-r-cnn-in-keras/>
 
@@ -102,7 +102,7 @@ R-CNN 模型的每个版本都有源代码，在独立的 GitHub 存储库中提
 
 在本节中，我们将使用 Matterport Mask R-CNN 库对任意照片执行对象检测。
 
-很像使用预先训练的深度 CNN 进行图像分类，例如在 ImageNet 数据集上训练的 [VGG-16，我们可以使用预先训练的 Mask R-CNN 模型来检测新照片中的对象。在这种情况下，我们将使用Mask RCNN 上训练的](https://machinelearningmastery.com/use-pre-trained-vgg-model-classify-objects-photographs/) [MS COCO 对象检测问题](http://cocodataset.org/)。
+很像使用预先训练的深度 CNN 进行图像分类，例如在 ImageNet 数据集上训练的 [VGG-16，我们可以使用预先训练的 Mask R-CNN 模型来检测新照片中的对象。在这种情况下，我们将使用 Mask RCNN 上训练的](https://machinelearningmastery.com/use-pre-trained-vgg-model-classify-objects-photographs/) [MS COCO 对象检测问题](http://cocodataset.org/)。
 
 ### 面罩安装
 
@@ -203,7 +203,7 @@ Required-by:
 
 ### 对象定位示例
 
-我们将使用预先训练好的Mask RCNN 模型来检测新照片上的对象。
+我们将使用预先训练好的 Mask RCNN 模型来检测新照片上的对象。
 
 #### 第一步。下载模型权重
 

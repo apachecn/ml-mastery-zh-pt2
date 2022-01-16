@@ -47,10 +47,10 @@
 
 每个例子都描述了来自大气层的雷达回波的特性，任务是预测电离层中是否有结构。有 34 个数值输入变量，通常具有相同的规模。您可以在 [UCI 机器学习资源库](https://archive.ics.uci.edu/ml/datasets/Ionosphere)上了解更多关于该数据集的信息。最高的结果大约是 98%的准确率。
 
-启动Weka浏览器:
+启动 Weka 浏览器:
 
-1.  打开Weka图形用户界面选择器。
-2.  单击“浏览器”按钮打开Weka浏览器。
+1.  打开 Weka 图形用户界面选择器。
+2.  单击“浏览器”按钮打开 Weka 浏览器。
 3.  从*数据/电离层. arff* 文件加载电离层数据集
 4.  单击“分类”打开“分类”选项卡。
 
@@ -105,7 +105,7 @@ Bagging 算法的 Weka 分类结果
 
 ![Weka Configuration for the Random Forest Algorithm](img/bcb589c2661ce23505569da6dea9cbec.png)
 
-随机森林算法的Weka配置
+随机森林算法的 Weka 配置
 
 除了上面列出的装袋参数之外，随机森林的一个关键参数是每个分割点中要考虑的属性数量。在 Weka 中，这可以由 numFeatures 属性控制，该属性默认设置为 0，根据经验规则自动选择值。
 
@@ -116,7 +116,7 @@ Bagging 算法的 Weka 分类结果
 
 ![Weka Classification Results for the Random Forest Algorithm](img/196fd2ef0e8c0ec37fe1e589c86c59f0.png)
 
-随机森林算法的Weka分类结果
+随机森林算法的 Weka 分类结果
 
 ## adaboost 算法
 
@@ -163,7 +163,7 @@ AdaBoost 算法的 Weka 分类结果
 
 ![Weka Configuration for the Voting Ensemble Algorithm](img/bf3811d0b3229b663c860fab1ac3349f.png)
 
-投票集成算法的Weka配置
+投票集成算法的 Weka 配置
 
 投票集成的关键参数是子模型的选择。
 
@@ -171,7 +171,7 @@ AdaBoost 算法的 Weka 分类结果
 
 ![Weka Algorithm Selection for the Voting Ensemble Algorithm](img/6e2db846721b253eae9b6dcec873d7e9.png)
 
-投票集成算法的Weka算法选择
+投票集成算法的 Weka 算法选择
 
 选择分类器后，单击“编辑”按钮，即可配置该分类器的详细信息。选择子模型的目的是选择做出完全不同预测(不相关预测)的模型。因此，选择非常不同的模型类型是一个很好的经验法则，比如树、基于实例的方法、函数等等。
 
@@ -197,7 +197,7 @@ AdaBoost 算法的 Weka 分类结果
 
 ![Weka Configuration for the Stacking Ensemble Algorithm](img/10df39a3fc9e8c437cda9a7110ba750a.png)
 
-堆叠集成算法的Weka配置
+堆叠集成算法的 Weka 配置
 
 与投票分类器一样，您可以在分类器参数中指定子模型。
 
@@ -212,7 +212,7 @@ AdaBoost 算法的 Weka 分类结果
 
 ![Weka Classification Results for the Stacking Ensemble Algorithm](img/129e034a190cb5c335fc130593ea7675.png)
 
-叠加集成算法的Weka分类结果
+叠加集成算法的 Weka 分类结果
 
 ## 摘要
 

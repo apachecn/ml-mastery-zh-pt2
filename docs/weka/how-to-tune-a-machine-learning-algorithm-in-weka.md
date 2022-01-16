@@ -15,7 +15,7 @@
 曼哈顿天际线，因为我们将使用曼哈顿距离和 k 近邻算法。
 蒂姆·皮尔斯摄，洛斯加托斯，版权所有。
 
-在这篇文章中，你将发现如何使用Weka实验者来提高你的结果，并充分利用机器学习算法。如果你按照一步一步的指导，你将在五分钟内设计并运行你的算法调优机器学习实验。
+在这篇文章中，你将发现如何使用 Weka 实验者来提高你的结果，并充分利用机器学习算法。如果你按照一步一步的指导，你将在五分钟内设计并运行你的算法调优机器学习实验。
 
 **用我的新书[用 Weka](https://machinelearningmastery.com/machine-learning-mastery-weka/) 启动你的项目**，包括*的分步教程*和清晰的*截图*所有示例。
 
@@ -29,7 +29,7 @@ Weka 需要 Java。您可能已经安装了 Java，如果没有，下载页面�
 
 ## 2.启动 Weka
 
-启动 Weka。这可能需要在程序启动器中找到它，或者双击 weka.jar 文件。这将启动Weka图形用户界面选择器。
+启动 Weka。这可能需要在程序启动器中找到它，或者双击 weka.jar 文件。这将启动 Weka 图形用户界面选择器。
 
 [![Weka GUI Chooser](img/fba124929a0da99095d1a3de3149684b.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/weka-loader.png)
 
@@ -37,7 +37,7 @@ Weka 图形用户界面选择器
 
 Weka 图形用户界面选择器允许您选择资源管理器、实验器、知识管理器和简单命令行界面(命令行界面)之一。
 
-点击“实验者”按钮，启动Weka实验者。
+点击“实验者”按钮，启动 Weka 实验者。
 
 Weka Experimenter 允许您设计自己的在数据集上运行算法的实验，运行实验并分析结果。这是一个强大的工具。
 
@@ -132,7 +132,7 @@ IBk 算法并不构建模型，而是及时为测试实例生成预测。IBk 算
 
 [![Algorithm ranking in the Weka explorer for the Ionosphere dataset](img/104e1d3c1478002f51ac6ef58c5e005b.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-24-at-5.23.06-AM.png)
 
-电离层数据集在Weka浏览器中的算法排名
+电离层数据集在 Weka 浏览器中的算法排名
 
 我们可以看到曼哈顿距离变化被排在顶部，欧几里德距离变化被排在底部。这是令人鼓舞的，看起来我们已经找到了一个比这个问题的默认算法更好的配置。
 
@@ -148,7 +148,7 @@ IBk 算法并不构建模型，而是及时为测试实例生成预测。IBk 算
 
 [![Table of algorithm classification accuracy on the Ionosphere dataset in the Weka Explorer](img/bace77d64205883fe6c8cf0bc78e10aa.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-24-at-5.23.26-AM.png)
 
-Weka探索者电离层数据集算法分类准确率表
+Weka 探索者电离层数据集算法分类准确率表
 
 我们可以看到，带有曼哈顿距离的 IBk 达到了 90.74% (+/- 4.57%)的准确率，优于默认的准确率为 87.10% (+/- 5.12%)的欧氏距离。
 

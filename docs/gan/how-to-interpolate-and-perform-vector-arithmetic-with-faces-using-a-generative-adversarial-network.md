@@ -4,7 +4,7 @@
 
 最后更新于 2020 年 9 月 1 日
 
-#### 如何利用插值和矢量算法探索GAN的潜在空间。
+#### 如何利用插值和矢量算法探索 GAN 的潜在空间。
 
 生成对抗网络是一种用于训练生成模型的体系结构，例如用于生成图像的深度卷积神经网络。
 
@@ -74,7 +74,7 @@ smiling woman - neutral woman + neutral man = smiling man
 
 ![Example of Faces on a Path Between Two GAN Generated Faces](img/b3baa90c43bcd74f693cb33437edf23f.png)
 
-两个GAN生成面之间路径上的面示例。
+两个 GAN 生成面之间路径上的面示例。
 取自深度卷积生成对抗网络的无监督表示学习。
 
 探索 GAN 模型的潜在空间的结构对于问题领域来说是有趣的，并且有助于对生成器模型所学习的内容形成直觉。
@@ -572,11 +572,11 @@ def generate_fake_samples(g_model, latent_dim, n_samples):
 	return X, y
 ```
 
-我们现在准备安装GAN模型。
+我们现在准备安装 GAN 模型。
 
 该模型适用于 100 个训练时期，这是任意的，因为该模型可能在最初的几个时期后开始生成可信的面孔。使用 128 个样本的批次大小，每个训练时期涉及 50，000/128 或大约 390 批次的真样本和假样本以及对模型的更新。
 
-首先对半批真实样本更新鉴别器模型，然后对半批伪样本更新鉴别器模型，共同形成一批权重更新。然后通过组合的GAN模型更新发生器。重要的是，对于假样本，类别标签设置为 1 或真。这具有更新生成器以更好地生成下一批真实样本的效果。
+首先对半批真实样本更新鉴别器模型，然后对半批伪样本更新鉴别器模型，共同形成一批权重更新。然后通过组合的 GAN 模型更新发生器。重要的是，对于假样本，类别标签设置为 1 或真。这具有更新生成器以更好地生成下一批真实样本的效果。
 
 下面的 *train()* 函数实现了这一点，将定义的模型、数据集和潜在维度的大小作为参数，并使用默认参数参数化纪元的数量和批处理大小。
 
@@ -980,7 +980,7 @@ plot_generated(X, 5)
 
 ![Plot of Randomly Generated Faces Using the Loaded GAN Model](img/bf3ec99856c984d6a1c3088acb37038b.png)
 
-使用加载的GAN模型绘制随机生成的人脸
+使用加载的 GAN 模型绘制随机生成的人脸
 
 ### 如何在生成的面之间进行插值
 
@@ -1067,7 +1067,7 @@ plot_generated(X, len(interpolated))
 
 ![Plot Showing the Linear Interpolation Between Two GAN Generated Faces](img/f6fe27c0fda7c7a634e7478e8ed95dc2.png)
 
-显示两个GAN生成面之间线性插值的图
+显示两个 GAN 生成面之间线性插值的图
 
 我们可以更新示例，多次重复此过程，以便在单个绘图上看到多个生成的面之间的过渡。
 
@@ -1142,7 +1142,7 @@ plot_generated(results, 10)
 
 ![Plot Showing Multiple Linear Interpolations Between Two GAN Generated Faces](img/dea81e7a52547b9e621cd86521adc087.png)
 
-显示两个GAN生成面之间多个线性插值的图
+显示两个 GAN 生成面之间多个线性插值的图
 
 在这些情况下，我们进行了线性插值，假设潜在空间是均匀分布的超立方体。从技术上讲，我们选择的潜在空间是 100 维超球面或多模态高斯分布。
 
@@ -1248,7 +1248,7 @@ plot_generated(results, 10)
 
 ![Plot Showing Multiple Seraphically Linear Interpolation Between Two GAN Generated Faces](img/192886e78a485b9c5ee5d2311d6432d7.png)
 
-显示两个GAN生成面之间多重线性插值的图
+显示两个 GAN 生成面之间多重线性插值的图
 
 ### 如何对人脸进行矢量运算
 
@@ -1504,7 +1504,7 @@ pyplot.show()
 
 *   [硬数据集 API](https://keras.io/datasets/) .
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
 *   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [MatplotLib API](https://matplotlib.org/api/)
 *   [NumPy 随机采样(numpy.random) API](https://docs.scipy.org/doc/numpy/reference/routines.random.html)

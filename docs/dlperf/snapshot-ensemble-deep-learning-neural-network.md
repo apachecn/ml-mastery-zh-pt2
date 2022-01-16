@@ -850,7 +850,7 @@ Accuracy 0.809 (0.008)
 
 *   [开始使用 Keras 顺序模型](https://keras.io/getting-started/sequential-model-guide/)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [Keras随机梯度下降 API](https://keras.io/optimizers/#sgd)
+*   [Keras 随机梯度下降 API](https://keras.io/optimizers/#sgd)
 *   [硬回调接口](https://keras.io/callbacks/)
 *   num py . argmax API
 *   [sklearn . dataset . make _ blobs API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)

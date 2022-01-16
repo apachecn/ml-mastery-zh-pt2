@@ -46,10 +46,10 @@
 
 对于预测数值的回归预测建模问题，零规则算法预测训练数据集的平均值。
 
-例如，让我们在[波士顿房价预测问题](https://archive.ics.uci.edu/ml/datasets/Housing)上演示零规则算法。您可以从[Weka数据集网页](https://sourceforge.net/projects/weka/files/datasets/)下载 ARFF 的波士顿房价预测数据集。它位于文件 *housing.arff* 中的*数据集-numeric.jar* 包中。
+例如，让我们在[波士顿房价预测问题](https://archive.ics.uci.edu/ml/datasets/Housing)上演示零规则算法。您可以从[Weka 数据集网页](https://sourceforge.net/projects/weka/files/datasets/)下载 ARFF 的波士顿房价预测数据集。它位于文件 *housing.arff* 中的*数据集-numeric.jar* 包中。
 
-1.  启动Weka图形用户界面选择器。
-2.  点击“浏览器”按钮，打开Weka浏览器界面。
+1.  启动 Weka 图形用户界面选择器。
+2.  点击“浏览器”按钮，打开 Weka 浏览器界面。
 3.  加载波士顿房价数据集 *housing.arff* 文件。
 4.  单击“分类”选项卡打开分类选项卡。
 5.  选择 ZeroR 算法(默认情况下应选择该算法)。
@@ -70,8 +70,8 @@ ZeroR 算法预测平均波士顿房价为 22.5(以千美元计)，RMSE 为 9.21
 
 例如，让我们演示关于皮马印第安人糖尿病发病问题的零规则算法。该数据集应位于您的 Weka 安装的*数据/* 目录中。如果没有，可以从 [Weka 下载网页](https://waikato.github.io/weka-wiki/downloading_weka/)下载默认的 Weka 安装，目标是扩展名为. zip 的“其他平台”，解压后找到 *diabetes.arff* 文件。
 
-1.  启动Weka图形用户界面选择器。
-2.  点击“浏览器”按钮，打开Weka浏览器界面。
+1.  启动 Weka 图形用户界面选择器。
+2.  点击“浏览器”按钮，打开 Weka 浏览器界面。
 3.  加载皮马印第安人数据集 *diabetes.arff* 文件。
 4.  单击“分类”选项卡打开分类选项卡。
 5.  选择 ZeroR 算法(默认情况下应选择该算法)。

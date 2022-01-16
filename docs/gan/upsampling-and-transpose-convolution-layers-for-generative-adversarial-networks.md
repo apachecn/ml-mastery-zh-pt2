@@ -631,7 +631,7 @@ _________________________________________________________________
 
 ### 应用程序接口
 
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
 
 ### 文章
 

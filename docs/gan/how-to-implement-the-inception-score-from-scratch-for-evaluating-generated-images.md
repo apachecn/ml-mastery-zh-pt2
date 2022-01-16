@@ -64,7 +64,7 @@
 *   **图像质量**。图像看起来像特定的对象吗？
 *   **图像多样性**。是否生成了广泛的对象？
 
-初始得分的最低值为 1.0，最高值为分类模型支持的类别数；在这种情况下，Inception v3 模型支持 [ILSVRC 2012 数据集](https://machinelearningmastery.com/introduction-to-the-imagenet-large-scale-visual-recognition-challenge-ilsvrc/)的 1000 个类，因此，该数据集上的最高Inception分数为 1000。
+初始得分的最低值为 1.0，最高值为分类模型支持的类别数；在这种情况下，Inception v3 模型支持 [ILSVRC 2012 数据集](https://machinelearningmastery.com/introduction-to-the-imagenet-large-scale-visual-recognition-challenge-ilsvrc/)的 1000 个类，因此，该数据集上的最高 Inception 分数为 1000。
 
 [CIFAR-10 数据集](https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/)是分为 10 类对象的 50，000 幅图像的集合。介绍初始阶段的原始论文在真实的 CIFAR-10 训练数据集上计算了分数，获得了 11.24 +/- 0.12 的结果。
 
@@ -248,9 +248,9 @@ print(score)
 
 现在我们知道如何计算初始得分并在 Python 中实现它，我们可以在 Keras 中开发一个实现。
 
-这包括使用真实的Inception v3 模型对图像进行分类，并在图像集合的多个分割中平均计算得分。
+这包括使用真实的 Inception v3 模型对图像进行分类，并在图像集合的多个分割中平均计算得分。
 
-首先，我们可以直接在 Keras 中加载Inception v3 模型。
+首先，我们可以直接在 Keras 中加载 Inception v3 模型。
 
 ```py
 ...
@@ -606,7 +606,7 @@ score 11.317895 0.14821531
 *   [在 CIFAR-10 上生成图像](https://paperswithcode.com/sota/image-generation-on-cifar-10)
 *   [初始得分计算](https://github.com/openai/improved-gan/issues/29)，2017 年。
 *   [初始得分的简单解释](https://medium.com/octavian-ai/a-simple-explanation-of-the-inception-score-372dff6a8c7a)
-*   [Inception评分——评估你 GAN](https://sudomake.ai/inception-score-explained/) 的真实感，2018。
+*   [Inception 评分——评估你 GAN](https://sudomake.ai/inception-score-explained/) 的真实感，2018。
 *   [kul LBA-leilbler 分歧，维基百科。](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence)
 *   [熵(信息论)，维基百科。](https://en.wikipedia.org/wiki/Entropy_(information_theory))
 

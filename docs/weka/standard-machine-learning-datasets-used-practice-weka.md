@@ -22,10 +22,10 @@ Weka 机器学习工作台在已安装的目录中提供了一个小数据集的
 
 ![Standard Machine Learning Datasets Used For Practice in Weka](img/3eb2271e543a9ec1a783c6fa76652f70.png)
 
-标准机器学习数据集用于实践Weka
+标准机器学习数据集用于实践 Weka
 照片由[马文·福希](https://www.flickr.com/photos/amon-ra123m5/5624590992)拍摄，保留部分权利。
 
-## 标准Weka数据集
+## 标准 Weka 数据集
 
 开源 Weka 机器学习工作台的安装包括一个充满标准机器学习问题的 *data/* 目录。
 
@@ -39,7 +39,7 @@ Weka 安装目录
 
 Weka 安装目录中提供的数据集
 
-所有数据集都是Weka本地 ARFF 文件格式，可以直接加载到Weka，这意味着您可以立即开始开发实践模型。
+所有数据集都是 Weka 本地 ARFF 文件格式，可以直接加载到 Weka，这意味着您可以立即开始开发实践模型。
 
 有一些特殊的 Weka 发行版可能不包括数据/目录。如果您选择安装其中一个发行版，您可以[下载。对 Weka](https://waikato.github.io/weka-wiki/downloading_weka/) 进行 zip 分发，解压后将*数据/* 目录复制到某个你可以从 Weka 轻松访问的地方。
 
@@ -75,7 +75,7 @@ Weka 安装目录中提供的数据集
 
 *数据/* 目录中回归问题的选择较少。回归是一类重要的预测建模问题。因此，我建议下载从 UCI 机器学习资源库收集的回归问题的免费附加包。
 
-它可从Weka网页上的[数据集页面获得，是列表中的第一个，名为:](https://sourceforge.net/projects/weka/files/datasets/)
+它可从 Weka 网页上的[数据集页面获得，是列表中的第一个，名为:](https://sourceforge.net/projects/weka/files/datasets/)
 
 *   包含 37 个回归问题的 jar 文件，从各种来源获得(*数据集-numeric.jar* )
 
@@ -87,7 +87,7 @@ Weka 安装目录中提供的数据集
 jar -xvf datasets-numeric.jar
 ```
 
-解压缩文件将创建一个名为*数值*的新目录，其中包含 37 个 ARFF 本地Weka格式的回归数据集。
+解压缩文件将创建一个名为*数值*的新目录，其中包含 37 个 ARFF 本地 Weka 格式的回归数据集。
 
 *数值/* 目录中您可以关注的三个回归数据集是:
 

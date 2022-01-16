@@ -129,7 +129,7 @@ Python 中你最喜欢的图像处理 API 有哪些？
 
 这也可能包括一些有效模型的一般类别的技能，例如:
 
-*   ImageNet CNNs 如 AlexNet、VGG、ResNet、Inception等。
+*   ImageNet CNNs 如 AlexNet、VGG、ResNet、Inception 等。
 *   CNN-lsms、LSM-CNNs 等。
 *   R-CNNs、YOLO 等。
 

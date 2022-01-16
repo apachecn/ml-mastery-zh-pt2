@@ -1,4 +1,4 @@
-# 如何使用Caret包估计 R 中的模型准确率
+# 如何使用 Caret 包估计 R 中的模型准确率
 
 > 原文：<https://machinelearningmastery.com/how-to-estimate-model-accuracy-in-r-using-the-caret-package/>
 
@@ -6,9 +6,9 @@
 
 当您构建预测模型时，您需要一种方法来评估模型在看不见的数据上的能力。
 
-这通常是通过使用未用于训练模型的数据(如测试集)或使用交叉验证来估计准确性。R 中的[Caret包提供了许多方法来估计机器学习算法的准确性。](http://caret.r-forge.r-project.org/)
+这通常是通过使用未用于训练模型的数据(如测试集)或使用交叉验证来估计准确性。R 中的[Caret 包提供了许多方法来估计机器学习算法的准确性。](http://caret.r-forge.r-project.org/)
 
-在这篇文章中，你发现了 5 种基于未知数据评估模型表现的方法。您还可以使用每种方法的Caret包来访问 R 中的配方，您可以立即将其复制并粘贴到自己的项目中。
+在这篇文章中，你发现了 5 种基于未知数据评估模型表现的方法。您还可以使用每种方法的 Caret 包来访问 R 中的配方，您可以立即将其复制并粘贴到自己的项目中。
 
 **用我的新书[用 R](https://machinelearningmastery.com/machine-learning-with-r/) 启动你的项目**，包括*一步一步的教程*和所有例子的 *R 源代码*文件。
 
@@ -16,7 +16,7 @@
 
 [![Caret package in R](img/3536c9556d60967e606a9a2b78ffeeed.png)](https://machinelearningmastery.com/wp-content/uploads/2014/09/Caret-package-in-R.png)
 
-从caret主页将caret包放入 R，
+从 caret 主页将 caret 包放入 R，
 
 ## 估计模型准确率
 
@@ -149,4 +149,4 @@ print(model)
 
 这些方法是:数据分割、自举、k 倍交叉验证、重复 k 倍交叉验证和遗漏交叉验证。
 
-您可以在[caret包主页](http://caret.r-forge.r-project.org/)和[caret包 CRAN 页面](https://cran.r-project.org/web/packages/caret/index.html)了解更多关于 R caret包的信息。如果你想掌握caret包，我会推荐包的作者写的书，书名是:[应用预测建模](https://amzn.to/3iFPHhq)，特别是关于过拟合模型的第 4 章。
+您可以在[caret 包主页](http://caret.r-forge.r-project.org/)和[caret 包 CRAN 页面](https://cran.r-project.org/web/packages/caret/index.html)了解更多关于 R caret 包的信息。如果你想掌握 caret 包，我会推荐包的作者写的书，书名是:[应用预测建模](https://amzn.to/3iFPHhq)，特别是关于过拟合模型的第 4 章。

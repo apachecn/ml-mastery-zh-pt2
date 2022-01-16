@@ -85,7 +85,7 @@ result = minimize(objective, point)
 
 有一套流行的本地搜索算法，例如:
 
-*   [NelderMead算法](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method)(方法= 'NelderMead')。
+*   [NelderMead 算法](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method)(方法= 'NelderMead')。
 *   [牛顿法](https://en.wikipedia.org/wiki/Newton%27s_method)(方法= '牛顿-重心')。
 *   [鲍威尔法](https://en.wikipedia.org/wiki/Powell%27s_method)(法= '鲍威尔')。
 *   [BFGS 算法和扩展](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm)(方法='BFGS ')。

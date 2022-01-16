@@ -30,11 +30,11 @@ Keras 支持通过称为高斯噪声层的单独层添加高斯噪声。此层�
 
 本教程分为三个部分；它们是:
 
-1.  Keras噪声正则化
+1.  Keras 噪声正则化
 2.  模型中的噪声正则化
 3.  噪声正则化案例研究
 
-## Keras噪声正则化
+## Keras 噪声正则化
 
 Keras 支持通过 GaussianNoise 层向模型添加噪声。
 
@@ -519,8 +519,8 @@ Train: 0.967, Test: 0.814
 
 *   [硬正则器 API](https://keras.io/regularizers/)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [Keras循环层原料药](https://keras.io/layers/recurrent/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 循环层原料药](https://keras.io/layers/recurrent/)
 *   [高噪声 API](https://keras.io/layers/noise/)
 *   [sklearn . dataset . make _ circles API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)
 

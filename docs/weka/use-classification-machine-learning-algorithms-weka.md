@@ -44,10 +44,10 @@ Weka 提供了大量的分类算法。
 
 每个例子都描述了来自大气层的雷达回波的特性，任务是预测电离层中是否有结构。有 34 个数值输入变量，通常具有相同的规模。您可以在 [UCI 机器学习资源库](https://archive.ics.uci.edu/ml/datasets/Ionosphere)上了解更多关于该数据集的信息。最高的结果大约是 98%的准确率。
 
-启动Weka浏览器:
+启动 Weka 浏览器:
 
-1.  打开Weka图形用户界面选择器。
-2.  单击“浏览器”按钮打开Weka浏览器。
+1.  打开 Weka 图形用户界面选择器。
+2.  单击“浏览器”按钮打开 Weka 浏览器。
 3.  从*数据/电离层. arff* 文件加载电离层数据集。
 4.  单击“分类”打开“分类”选项卡。
 
@@ -68,7 +68,7 @@ Weka 提供了大量的分类算法。
 
 ![Weka Configuration for the Logistic Regression Algorithm](img/fe1642a1c9e1ee823b4600879a24f834.png)
 
-逻辑回归算法的Weka配置
+逻辑回归算法的 Weka 配置
 
 该算法可以运行固定的迭代次数(maxIts)，但默认情况下将一直运行，直到估计算法已经收敛。
 
@@ -81,7 +81,7 @@ Weka 提供了大量的分类算法。
 
 ![Weka Classification Results for the Logistic Regression Algorithm](img/3bab48b810cf40af5605a92df7b6c0f1.png)
 
-逻辑回归算法的Weka分类结果
+逻辑回归算法的 Weka 分类结果
 
 ## 朴素贝叶斯
 
@@ -100,7 +100,7 @@ Weka 提供了大量的分类算法。
 
 ![Weka Configuration for the Naive Bayes Algorithm](img/bb35f935eded7b68a07ee69afb9fd8bd.png)
 
-朴素贝叶斯算法的Weka配置
+朴素贝叶斯算法的 Weka 配置
 
 默认情况下，假设每个数字属性都是高斯分布。
 
@@ -113,7 +113,7 @@ Weka 提供了大量的分类算法。
 
 ![Weka Classification Results for the Naive Bayes Algorithm](img/ed4e78e888014660707d1bd66c414ae7.png)
 
-朴素贝叶斯算法的Weka分类结果
+朴素贝叶斯算法的 Weka 分类结果
 
 你可以使用许多其他风格的朴素贝叶斯算法。
 

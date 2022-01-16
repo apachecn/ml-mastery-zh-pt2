@@ -32,11 +32,11 @@
 
 本教程分为三个部分；它们是:
 
-1.  Keras的权重限制
+1.  Keras 的权重限制
 2.  层的权重约束
 3.  权重约束案例研究
 
-## Keras的权重限制
+## Keras 的权重限制
 
 Keras API 支持重量限制。
 
@@ -64,7 +64,7 @@ norm = max_norm(3.0)
 
 ## 层的权重约束
 
-重量标准可以用于Keras的大多数层。
+重量标准可以用于 Keras 的大多数层。
 
 在本节中，我们将看一些常见的例子。
 
@@ -374,11 +374,11 @@ Train: 1.000, Test: 0.943
 
 ### 应用程序接口
 
-*   [Keras约束应用编程接口](https://keras.io/constraints/)
-*   [Keras约束. py](https://github.com/keras-team/keras/blob/master/keras/constraints.py)
+*   [Keras 约束应用编程接口](https://keras.io/constraints/)
+*   [Keras 约束. py](https://github.com/keras-team/keras/blob/master/keras/constraints.py)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [Keras循环层原料药](https://keras.io/layers/recurrent/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 循环层原料药](https://keras.io/layers/recurrent/)
 *   [sklearn . dataset . make _ moons API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_moons.html)
 
 ## 摘要

@@ -1,4 +1,4 @@
-# 为CNN准备和扩充图像数据的最佳实践
+# 为 CNN 准备和扩充图像数据的最佳实践
 
 > 原文：<https://machinelearningmastery.com/best-practices-for-preparing-and-augmenting-image-data-for-convolutional-neural-networks/>
 
@@ -114,7 +114,7 @@ ImageNet 大规模视觉识别挑战赛(简称 ILSVRC)是 2010 年至 2017 年�
 
 ——[用回旋更深入](https://arxiv.org/abs/1409.4842)，2014。
 
-第一篇论文中描述的架构版本通常被称为Inception v1。2015 年一篇名为[重新思考计算机视觉的Inception架构](https://arxiv.org/abs/1512.00567)的后续论文描述了Inception v2 和 v3。该架构的第 3 版和模型权重[可在 Keras 深度学习库](https://keras.io/applications/)中获得。
+第一篇论文中描述的架构版本通常被称为 Inception v1。2015 年一篇名为[重新思考计算机视觉的 Inception 架构](https://arxiv.org/abs/1512.00567)的后续论文描述了 Inception v2 和 v3。该架构的第 3 版和模型权重[可在 Keras 深度学习库](https://keras.io/applications/)中获得。
 
 在这个实现中，基于开源的 TensorFlow 实现，图像不居中；取而代之的是，像素值按每幅图像缩放到范围[-1，1]内，图像输入形状为 299×299 像素。这种正常化和缺乏对中似乎没有在最近的论文中提到。
 

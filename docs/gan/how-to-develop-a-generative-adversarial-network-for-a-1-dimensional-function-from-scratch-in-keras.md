@@ -1,4 +1,4 @@
-# 如何在Keras从零开始开发 1D 生成对抗网络
+# 如何在 Keras 从零开始开发 1D 生成对抗网络
 
 > 原文：<https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-a-1-dimensional-function-from-scratch-in-keras/>
 
@@ -30,7 +30,7 @@ GANs 由生成器和鉴别器模型组成。生成器负责从域中生成新的
 
 ![What Is the Naive Classifier for Each Imbalanced Classification Metric?](img/357e106ebb21de9cf6c2bdbff40aee24.png)
 
-如何在Keras从零开始发展 1D 生成对抗网络
+如何在 Keras 从零开始发展 1D 生成对抗网络
 图片由[土地管理局](https://flickr.com/photos/blmoregon/9680424451/)提供，保留部分权利。
 
 ## 教程概述
@@ -41,8 +41,8 @@ GANs 由生成器和鉴别器模型组成。生成器负责从域中生成新的
 2.  定义鉴别器模型
 3.  定义生成器模型
 4.  训练发电机模型
-5.  评估GAN的表现
-6.  训练GAN的完整示例
+5.  评估 GAN 的表现
+6.  训练 GAN 的完整示例
 
 ## 选择一维函数
 
@@ -222,7 +222,7 @@ _________________________________________________________________
 
 ![Plot of the Discriminator Model in the GAN](img/98a54ff11af9c801518b990de8413f0f.png)
 
-GAN中鉴别器模型的绘制
+GAN 中鉴别器模型的绘制
 
 我们现在可以用类标签为 1 的真实例子和类标签为 0 的随机生成的样本开始训练这个模型。
 
@@ -471,7 +471,7 @@ _________________________________________________________________
 
 ![Plot of the Generator Model in the GAN](img/ff2e8c170d094e9f4d8a2427ea593662.png)
 
-GAN中的发电机模型图
+GAN 中的发电机模型图
 
 我们可以看到，该模型将潜在空间中的一个随机五元向量作为输入，并为我们的一维函数输出一个二元向量。
 
@@ -692,7 +692,7 @@ _________________________________________________________________
 
 ![Plot of the Composite Generator and Discriminator Model in the GAN](img/c0f83d075ee01d338146a38dfac7f6da.png)
 
-GAN中复合发生器和鉴别器模型的绘制
+GAN 中复合发生器和鉴别器模型的绘制
 
 训练复合模型包括通过上一节中的*generate _ 潜伏 _points()* 函数和 class=1 标签在潜伏空间中生成一批值的点，并调用 *train_on_batch()* 函数。
 
@@ -743,13 +743,13 @@ def train(g_model, d_model, gan_model, latent_dim, n_epochs=10000, n_batch=128):
 
 剩下的一个方面是对模型的评估。
 
-## 评估GAN的表现
+## 评估 GAN 的表现
 
 通常，没有客观的方法来评估 GAN 模型的表现。
 
 在这种特定情况下，我们可以为生成的样本设计一个客观的度量，因为我们知道真正的底层输入域和目标函数，并且可以计算一个客观的误差度量。
 
-尽管如此，我们不会在本教程中计算这个客观误差分数。相反，我们将使用大多数GAN应用中使用的主观方法。具体来说，我们将使用生成器生成新的样本，并根据域中的真实样本对它们进行检查。
+尽管如此，我们不会在本教程中计算这个客观误差分数。相反，我们将使用大多数 GAN 应用中使用的主观方法。具体来说，我们将使用生成器生成新的样本，并根据域中的真实样本对它们进行检查。
 
 首先，我们可以使用上面鉴别器部分开发的 *generate_real_samples()* 函数来生成真实的例子。创建这些示例的散点图将创建我们熟悉的目标函数 u 形。
 
@@ -872,7 +872,7 @@ def train(g_model, d_model, gan_model, latent_dim, n_epochs=10000, n_batch=128, 
 			summarize_performance(i, g_model, d_model, latent_dim)
 ```
 
-## 训练GAN的完整示例
+## 训练 GAN 的完整示例
 
 我们现在有了在我们选择的一维函数上训练和评估 GAN 所需的一切。
 

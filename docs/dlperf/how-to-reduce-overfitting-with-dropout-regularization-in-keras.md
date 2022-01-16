@@ -24,18 +24,18 @@ Dropout 的工作原理是从概率上删除或“退出”一个层的输入，
 
 ![How to Reduce Overfitting With Dropout Regularization in Keras](img/755febfb982a694fa9e38536ce065eee.png)
 
-如何减少过拟合与丢弃正规化在Keras
+如何减少过拟合与丢弃正规化在 Keras
 图片由[项目拉刀疤](https://www.flickr.com/photos/jlascar/19198105290)，一些权利保留。
 
 ## 教程概述
 
 本教程分为三个部分；它们是:
 
-1.  Keras的丢弃正规化
+1.  Keras 的丢弃正规化
 2.  层上的缺失正则化
 3.  丢弃正规化案例研究
 
-## Keras的丢弃正规化
+## Keras 的丢弃正规化
 
 Keras 支持丢弃正规化。
 
@@ -132,7 +132,7 @@ model.add(Dense(1))
 
 ——[使用卷积网络的高效目标定位](https://arxiv.org/abs/1411.4280)，2015。
 
-空间丢失在Keras通过空间丢失 2D 层(以及 1D 和 3D 版本)提供。
+空间丢失在 Keras 通过空间丢失 2D 层(以及 1D 和 3D 版本)提供。
 
 ```py
 # example of spatial dropout for a CNN
@@ -459,8 +459,8 @@ Train: 0.967, Test: 0.814
 
 *   [硬正则器 API](https://keras.io/regularizers/)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [Keras循环层原料药](https://keras.io/layers/recurrent/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 循环层原料药](https://keras.io/layers/recurrent/)
 *   [sklearn . dataset . make _ circles API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)
 
 ## 摘要

@@ -150,7 +150,7 @@ model.add(LSTM(32, kernel_regularizer=l2(0.01), recurrent_regularizer=l2(0.01), 
 
 > 通过权重衰减(L2 惩罚乘数设置为 5×10^−4)来调整训练
 
-谷歌的 Francois Chollet(也是 Keras 的作者)在 2016 年发表的题为“T0”异常:深度可分离卷积的深度学习的论文中报告了来自谷歌的Inception V3 CNN 模型的权重衰减(从Inception V3 论文中不清楚)以及他对 ImageNet 数据集的改进异常中使用的权重衰减:
+谷歌的 Francois Chollet(也是 Keras 的作者)在 2016 年发表的题为“T0”异常:深度可分离卷积的深度学习的论文中报告了来自谷歌的 Inception V3 CNN 模型的权重衰减(从 Inception V3 论文中不清楚)以及他对 ImageNet 数据集的改进异常中使用的权重衰减:
 
 > Inception V3 模型使用 4e-5 的权重衰减(L2 正则化)率，这是针对 ImageNet 上的表现精心调整的。我们发现这个速率对于异常来说是非常次优的，而是稳定在 1e-5。
 
@@ -560,8 +560,8 @@ Param: 0.000001, Train: 1.000, Test: 0.914
 
 *   [Keras 正则化 API](https://keras.io/regularizers/)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [Keras循环层原料药](https://keras.io/layers/recurrent/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 循环层原料药](https://keras.io/layers/recurrent/)
 *   [sklearn . dataset . make _ moons API](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_moons.html)
 *   [matplot lib . pyplot . semilogx API](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.semilogx.html)
 

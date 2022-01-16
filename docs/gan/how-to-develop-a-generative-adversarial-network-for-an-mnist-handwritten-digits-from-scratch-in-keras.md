@@ -35,7 +35,7 @@
 3.  如何定义和使用生成器模型
 4.  如何训练发电机模型
 5.  如何评估 GAN 模型的表现
-6.  MNIST GAN完整范例
+6.  MNIST GAN 完整范例
 7.  如何使用最终生成器模型生成图像
 
 ## MNIST 手写数字数据集
@@ -605,7 +605,7 @@ _________________________________________________________________
 
 ![Plot of the Generator Model in the MNIST GAN](img/6f6fc424348268418741a598dcc7418e.png)
 
-MNIST GAN发电机模型图
+MNIST GAN 发电机模型图
 
 这种模式目前做不了什么。
 
@@ -1054,7 +1054,7 @@ def summarize_performance(epoch, g_model, d_model, dataset, latent_dim, n_sample
 	g_model.save(filename)
 ```
 
-## MNIST GAN完整范例
+## MNIST GAN 完整范例
 
 我们现在拥有了在 MNIST 手写数字数据集上训练和评估 GAN 所需的一切。
 
@@ -1276,7 +1276,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 在这种情况下，我们可以看到准确率随着训练而波动。当查看鉴别器模型的准确度分数与生成的图像一致时，我们可以看到假例子的准确度与图像的主观质量没有很好的关联，但是真实例子的准确度可能有关联。
 
-这是一个粗略的、可能不可靠的GAN表现指标，还有损耗。
+这是一个粗略的、可能不可靠的 GAN 表现指标，还有损耗。
 
 ```py
 >Accuracy real: 51%, fake: 78%
@@ -1297,13 +1297,13 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 ![Plot of 100 GAN Generated MNIST Figures After 10 Epochs](img/dc5299e186ddf116fcbbf44190fa9e2c.png)
 
-10 个时代后 100 个GAN生成的 MNIST 图形图
+10 个时代后 100 个 GAN 生成的 MNIST 图形图
 
 在 20 或 30 个以上的时代之后，模型开始生成非常可信的 MNIST 数字，这表明所选模型配置可能不需要 100 个时代。
 
 ![Plot of 100 GAN Generated MNIST Figures After 40 Epochs](img/d25d929fa04e000f7ff5151096729740.png)
 
-40 年代后 100 个GAN生成的 MNIST 图形图
+40 年代后 100 个 GAN 生成的 MNIST 图形图
 
 100 个纪元后生成的图像差别不大，但我相信我可以在曲线中检测到较少的块状。
 
@@ -1425,7 +1425,7 @@ pyplot.show()
 
 *   [硬数据集 API](https://keras.io/datasets/)
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
 *   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [MatplotLib API](https://matplotlib.org/api/)
 *   [NumPy 随机采样(numpy.random) API](https://docs.scipy.org/doc/numpy/reference/routines.random.html)

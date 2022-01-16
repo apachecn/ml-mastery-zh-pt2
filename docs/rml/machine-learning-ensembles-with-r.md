@@ -143,7 +143,7 @@ gbm  0.8824  0.9143 0.9429 0.9402  0.9641    1    0
 
 增强机器学习算法
 
-了解有关Caret增强模型树的更多信息:[增强模型](https://topepo.github.io/caret/Boosting.html)。
+了解有关 Caret 增强模型树的更多信息:[增强模型](https://topepo.github.io/caret/Boosting.html)。
 
 ### 2.装袋算法
 
@@ -193,7 +193,7 @@ R
 
 您可以使用*carestensemble*包组合多个*脱字符*模型的预测。
 
-给定Caret模型列表， *caretStack()* 函数可用于指定更高阶的模型，以学习如何最好地将子模型的预测组合在一起。
+给定 Caret 模型列表， *caretStack()* 函数可用于指定更高阶的模型，以学习如何最好地将子模型的预测组合在一起。
 
 让我们首先看一下为电离层数据集创建 5 个子模型，具体来说:
 
@@ -203,7 +203,7 @@ R
 *   k 近邻
 *   具有径向基核函数的支持向量机(SVM)
 
-下面是创建这 5 个子模型的示例。注意由*carestenmble*包提供的新的有用的 *caretList()* 功能，用于创建标准Caret模型的列表。
+下面是创建这 5 个子模型的示例。注意由*carestenmble*包提供的新的有用的 *caretList()* 功能，用于创建标准 Caret 模型的列表。
 
 ```py
 # Example of Stacking algorithms

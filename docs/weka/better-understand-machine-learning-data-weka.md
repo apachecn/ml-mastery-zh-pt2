@@ -24,8 +24,8 @@
 
 Weka 浏览器将自动计算数字属性的描述性统计。
 
-1.  打开Weka图形用户界面选择器。
-2.  点击“浏览器”打开Weka浏览器。
+1.  打开 Weka 图形用户界面选择器。
+2.  点击“浏览器”打开 Weka 浏览器。
 3.  从*数据/diabetes.arff* 加载皮马印第安人数据集
 
 皮马印第安人数据集包含数字输入变量，我们可以使用这些变量来演示描述性统计的计算。
@@ -44,7 +44,7 @@ Weka 浏览器将自动计算数字属性的描述性统计。
 
 ![Weka List of Attributes](img/90f5a417983bb3485b7687f4cd4e1611.png)
 
-Weka属性列表
+Weka 属性列表
 
 请注意“选定属性”面板中的详细信息。它列出了关于所选属性的许多信息，例如:
 
@@ -55,7 +55,7 @@ Weka属性列表
 
 ![Weka Summary of Attribute](img/2d1cfc84085b8bf44817c521613d0e99.png)
 
-Weka属性摘要
+Weka 属性摘要
 
 下表列出了一些描述性统计数据及其值。为数字属性提供了一个有用的四位数摘要，包括:
 
@@ -90,7 +90,7 @@ Weka属性摘要
 
 ![Weka Univariate Attribute Distribution](img/ce6592f9381eb4917c46dcc353d4549e.png)
 
-Weka单变量属性分布
+Weka 单变量属性分布
 
 注意红色和蓝色分别指的是正类和负类。颜色会自动分配给每个分类值。如果类值有三个类别，我们会看到 preg 分布的细分是三种颜色，而不是两种颜色。
 
@@ -100,7 +100,7 @@ Weka单变量属性分布
 
 ![Weka All Univariate Attribute Distributions](img/2b34d86c8be3615d07b7c419de63d502.png)
 
-Weka所有单变量属性分布
+Weka 所有单变量属性分布
 
 看看这些图，我们可以看到一些关于这个数据集的有趣的事情。
 
@@ -127,7 +127,7 @@ Weka 可视化选项卡
 
 ![Weka Scatterplot Matrix](img/2191ab6b069b305b3a96b5d01acc3b24.png)
 
-Weka散点图矩阵
+Weka 散点图矩阵
 
 您可以看到所有属性的组合都是以系统的方式绘制的。您还可以看到每个图出现两次，第一次出现在左上方的三角形中，第二次出现在右下方的三角形中，轴翻转。您还可以看到从左下角开始，一直到右上角的一系列绘图，其中每个属性都是相对于自身绘制的。这些都可以忽略。
 
@@ -137,7 +137,7 @@ Weka散点图矩阵
 
 ![Weka Individual Scatterplot](img/85590140330a9ebbad7a44e7d54c27f9.png)
 
-Weka个人散点图
+Weka 个人散点图
 
 请注意屏幕底部的控件。它们可以让你增加图的大小，增加点的大小和增加抖动。
 
@@ -147,13 +147,13 @@ Weka个人散点图
 
 ![Weka Controls for Scatterplot Matrix](img/354c05ca12559f40b94214e78e43972a.png)
 
-散点图矩阵的Weka控制
+散点图矩阵的 Weka 控制
 
 例如，下面是相同的图，具有更大的点尺寸，使得更容易看到数据中的任何趋势。
 
 ![Weka Improved Scatterplot Matrix](img/b37e7009407cca0ba512563889bc9b40.png)
 
-Weka改进的散点图矩阵
+Weka 改进的散点图矩阵
 
 ## 摘要
 

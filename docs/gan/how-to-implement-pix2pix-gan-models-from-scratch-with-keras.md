@@ -59,7 +59,7 @@ Pix2Pix GAN 已经在一系列图像到图像的转换任务中进行了演示�
 
 ## 如何实现 PatchGAN 鉴别器模型
 
-Pix2Pix GAN中的鉴别器模型被实现为一个补丁GAN。
+Pix2Pix GAN 中的鉴别器模型被实现为一个补丁 GAN。
 
 PatchGAN 是根据感受野的大小设计的，有时也称为有效感受野。感受野是模型的一次输出激活与输入图像上的一个区域之间的关系(实际上是在输入通道中的音量)。
 
@@ -278,7 +278,7 @@ ________________________________________________________________________________
 
 ![Plot of the PatchGAN Model Used in the Pix2Pix GAN Architecture](img/e829a25b21edc1aeb5f2f6a7be74431b.png)
 
-Pix2Pix GAN架构中使用的贴片GAN模型图
+Pix2Pix GAN 架构中使用的贴片 GAN 模型图
 
 现在我们知道了如何实现 PatchGAN 鉴别器模型，我们现在可以考虑实现 U-Net 生成器模型。
 
@@ -811,7 +811,7 @@ ________________________________________________________________________________
 
 ![Plot of the Composite GAN Model Used to Train the Generator in the Pix2Pix GAN Architecture](img/c90ae689b1a6658ad345f64b893f7fa1.png)
 
-用于训练 Pix2Pix GAN架构中发生器的复合GAN模型图
+用于训练 Pix2Pix GAN 架构中发生器的复合 GAN 模型图
 
 ## 如何更新模型权重
 
@@ -875,7 +875,7 @@ d_loss1 = d_model.train_on_batch([X_realA, X_realB], y_real)
 d_loss2 = d_model.train_on_batch([X_realA, X_fakeB], y_fake)
 ```
 
-到目前为止，这对于在Keras更新一个 GAN 是正常的。
+到目前为止，这对于在 Keras 更新一个 GAN 是正常的。
 
 接下来，我们可以通过对抗性损失和 L1 损失来更新发电机模型。回想一下，复合 GAN 模型以一批源图像作为输入，首先预测真假分类，其次预测生成的目标。这里，我们向合成模型的鉴别器输出提供一个目标来指示生成的图像是“*真实的*”(class = 1)。提供真实目标图像用于计算它们和生成的目标图像之间的 L1 损失。
 
@@ -943,7 +943,7 @@ train(d_model, g_model, gan_model, dataset)
 
 *   [硬数据集 API](https://keras.io/datasets/) .
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
 *   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 
 ### 文章

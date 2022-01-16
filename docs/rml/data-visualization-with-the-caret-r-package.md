@@ -1,24 +1,24 @@
-# 将Caret R 包用于数据可视化
+# 将 Caret R 包用于数据可视化
 
 > 原文：<https://machinelearningmastery.com/data-visualization-with-the-caret-r-package/>
 
 最后更新于 2019 年 8 月 22 日
 
-R 中的caret包旨在简化应用机器学习的过程。
+R 中的 caret 包旨在简化应用机器学习的过程。
 
 解决数据问题的一个关键部分是理解你现有的数据。通过用数据可视化总结属性，您可以非常快速地做到这一点。
 
-R 中有很多用于汇总数据的包和函数，可以感觉到势不可挡。出于应用机器学习的目的，caret包提供了一些关键工具，可以让您快速总结数据。
+R 中有很多用于汇总数据的包和函数，可以感觉到势不可挡。出于应用机器学习的目的，caret 包提供了一些关键工具，可以让您快速总结数据。
 
-在这篇文章中，你会发现数据可视化工具可用的caret R 包。
+在这篇文章中，你会发现数据可视化工具可用的 caret R 包。
 
 **用我的新书[用 R](https://machinelearningmastery.com/machine-learning-with-r/) 启动你的项目**，包括*一步一步的教程*和所有例子的 *R 源代码*文件。
 
 我们开始吧。
 
-## Caret包
+## Caret 包
 
-caret包主要用于简化模型训练、估计模型表现和调优。它还有许多方便的数据可视化工具，可以快速让您了解正在处理的数据。
+caret 包主要用于简化模型训练、估计模型表现和调优。它还有许多方便的数据可视化工具，可以快速让您了解正在处理的数据。
 
 在这篇文章中，我们将看到以下 4 个数据可视化:
 
@@ -47,7 +47,7 @@ featurePlot(x=iris[,1:4], y=iris[,5], plot="pairs", auto.key=list(columns=3))
 
 [![Scatterplot Matrix of the Iris dataset using the Caret R package](img/8612278817a81c54bd53013c5c2e7a14.png)](https://machinelearningmastery.com/wp-content/uploads/2014/09/scatterplot_matrix.png)
 
-使用Caret包的虹膜数据集散点图矩阵
+使用 Caret 包的虹膜数据集散点图矩阵
 
 ## 密度图
 
@@ -68,7 +68,7 @@ featurePlot(x=iris[,1:4], y=iris[,5], plot="density", scales=list(x=list(relatio
 
 [![Density Plot of the iris dataset using the Caret R package](img/9f98c0d99fb6b8ca3d6c8b82acaa20d7.png)](https://machinelearningmastery.com/wp-content/uploads/2014/09/density_plots.png)
 
-使用Caret包绘制虹膜数据集的密度图
+使用 Caret 包绘制虹膜数据集的密度图
 
 ## 方框图和触须图
 
@@ -89,10 +89,10 @@ featurePlot(x=iris[,1:4], y=iris[,5], plot="box", scales=list(x=list(relation="f
 
 [![Box plots of the iris dataset using the Caret R package](img/64ac04f5797a0fce3782a0cc8b92c3b3.png)](https://machinelearningmastery.com/wp-content/uploads/2014/09/boxplots.png)
 
-使用Caret包绘制虹膜数据集的方框图
+使用 Caret 包绘制虹膜数据集的方框图
 
 ## 摘要
 
-在这篇文章中，您发现了三种使用caret R 包的快速数据可视化，可以帮助您理解您的类别数据集。
+在这篇文章中，您发现了三种使用 caret R 包的快速数据可视化，可以帮助您理解您的类别数据集。
 
 每个示例都是独立的，可以复制粘贴到您自己的项目中并适应您的问题。

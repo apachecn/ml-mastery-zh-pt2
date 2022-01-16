@@ -50,7 +50,7 @@
 
 下面的示例将加载图像，显示关于加载图像的一些属性，然后显示图像。
 
-本示例和教程的其余部分假设您已经安装了Pillow Python 库。
+本示例和教程的其余部分假设您已经安装了 Pillow Python 库。
 
 ```py
 # load and show an image with Pillow

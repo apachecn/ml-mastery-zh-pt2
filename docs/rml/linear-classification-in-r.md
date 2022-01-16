@@ -88,7 +88,7 @@ predictions <- predict(fit, iris[,1:4])
 table(predictions, iris$Species)
 ```
 
-了解更多关于[caret包](https://cran.r-project.org/web/packages/caret/index.html)中 **plsda** 功能的信息。
+了解更多关于[caret 包](https://cran.r-project.org/web/packages/caret/index.html)中 **plsda** 功能的信息。
 
 ## 摘要
 

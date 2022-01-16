@@ -215,7 +215,7 @@ Let’s get started.![How to Choose an Optimization Algorithm](img/61c806943d9ed
 *   循环坐标搜索
 *   鲍威尔方法
 *   胡克-吉夫斯方法
-*   NelderMead单纯形搜索
+*   NelderMead 单纯形搜索
 
 ### 随机算法
 

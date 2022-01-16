@@ -1,4 +1,4 @@
-# 用于Fashion-MNIST 服装分类的深度学习 CNN
+# 用于 Fashion-MNIST 服装分类的深度学习 CNN
 
 > 原文：<https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-fashion-mnist-clothing-classification/>
 
@@ -1075,7 +1075,7 @@ run_example()
 ### 蜜蜂
 
 *   [硬数据集 API](https://keras.io/datasets/)
-*   [Keras数据集代码](https://github.com/keras-team/keras/tree/master/keras/datasets)
+*   [Keras 数据集代码](https://github.com/keras-team/keras/tree/master/keras/datasets)
 *   [sklearn.model_selection。KFold 原料药](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html)
 
 ### 文章

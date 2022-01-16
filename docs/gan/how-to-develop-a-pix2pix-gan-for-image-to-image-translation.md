@@ -79,7 +79,7 @@ train 文件夹包含 1，097 个图像，而验证数据集包含 1，099 个�
 
 地图数据集中的样本图像，包括卫星和谷歌地图图像。
 
-我们可以准备这个数据集，在Keras训练一个 Pix2Pix GAN 模型。我们将只处理训练数据集中的图像。每张图片都将被加载、重新缩放，并分割成卫星和谷歌地图元素。结果将是 1097 个彩色图像对，宽度和高度为 256×256 像素。
+我们可以准备这个数据集，在 Keras 训练一个 Pix2Pix GAN 模型。我们将只处理训练数据集中的图像。每张图片都将被加载、重新缩放，并分割成卫星和谷歌地图元素。结果将是 1097 个彩色图像对，宽度和高度为 256×256 像素。
 
 下面的 *load_images()* 函数实现了这一点。它枚举给定目录中的图像列表，加载每个目标大小为 256×512 像素的图像，将每个图像拆分为卫星和地图元素，并返回每个元素的数组。
 
@@ -1144,7 +1144,7 @@ def load_real_samples(filename):
 
 *   [硬数据集接口。](https://keras.io/datasets/)
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
 *   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 
 ## 摘要

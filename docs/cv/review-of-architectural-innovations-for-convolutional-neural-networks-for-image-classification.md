@@ -4,7 +4,7 @@
 
 最后更新于 2019 年 7 月 5 日
 
-#### 温和地介绍了 LeNet，AlexNet，VGG，Inception和 ResNet 卷积神经网络的创新。
+#### 温和地介绍了 LeNet，AlexNet，VGG，Inception 和 ResNet 卷积神经网络的创新。
 
 卷积神经网络由两个非常简单的元素组成，即[卷积层](https://machinelearningmastery.com/convolutional-layers-for-deep-learning-neural-networks/)和[汇聚层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)。
 
@@ -30,22 +30,22 @@
 
 本教程分为六个部分；它们是:
 
-1.  CNN的建筑设计
+1.  CNN 的建筑设计
 2.  莱内-5
 3.  阿勒克斯网
 4.  VGG
-5.  Inception和谷歌网
+5.  Inception 和谷歌网
 6.  剩余网络或资源网
 
-## CNN的建筑设计
+## CNN 的建筑设计
 
 卷积神经网络的元素，如卷积层和池化层，理解起来相对简单。
 
 在实践中使用卷积神经网络的挑战部分是如何设计最好地使用这些简单元素的模型架构。
 
-学习如何设计有效的卷积神经网络体系结构的一个有用方法是研究成功的应用。这一点特别容易做到，因为在 2012 年至 2016 年期间，针对 ImageNet 大规模视觉识别挑战(ILSVRC)对CNN进行了大量研究和应用。这一挑战导致了非常困难的计算机视觉任务在技术水平上的快速进步，以及卷积神经网络模型体系结构的一般创新的发展。
+学习如何设计有效的卷积神经网络体系结构的一个有用方法是研究成功的应用。这一点特别容易做到，因为在 2012 年至 2016 年期间，针对 ImageNet 大规模视觉识别挑战(ILSVRC)对 CNN 进行了大量研究和应用。这一挑战导致了非常困难的计算机视觉任务在技术水平上的快速进步，以及卷积神经网络模型体系结构的一般创新的发展。
 
-我们将从 LeNet-5 开始，它通常被描述为在 ILSVRC 之前 CNNs 的第一个成功和重要的应用，然后看看为 ILSVRC 开发的卷积神经网络的四个不同的获奖架构创新，即 AlexNet、VGG、Inception和 ResNet。
+我们将从 LeNet-5 开始，它通常被描述为在 ILSVRC 之前 CNNs 的第一个成功和重要的应用，然后看看为 ILSVRC 开发的卷积神经网络的四个不同的获奖架构创新，即 AlexNet、VGG、Inception 和 ResNet。
 
 通过从高层次理解这些里程碑模型及其架构或架构创新，您将对这些架构元素在 CNN 在计算机视觉中的现代应用中的使用形成欣赏，并能够识别和选择可能对您自己的模型设计有用的架构元素。
 
@@ -149,7 +149,7 @@ AlexNet 的体系结构是深入的，并且扩展了 LeNet-5 建立的一些模
 *   卷积池块模式的戏剧性重复。
 *   开发非常深的(16 层和 19 层)模型。
 
-## Inception和谷歌网
+## Inception 和谷歌网
 
 克里斯蒂安·塞格迪(Christian Szegedy)等人在 2015 年的论文中提出了卷积层使用方面的重要创新，该论文的标题为“利用卷积进行更深入的研究”
 
@@ -171,7 +171,7 @@ AlexNet 的体系结构是深入的，并且扩展了 LeNet-5 建立的一些模
 
 初始模型中第二个重要的设计决策是连接模型中不同点的输出。这是通过从主网络创建小的离拍输出网络来实现的，这些网络被训练来进行预测。目的是在深度模型的不同点提供来自分类任务的额外误差信号，以便解决梯度消失问题。这些小的输出网络在训练后被移除。
 
-下图显示了 GoogLeNet 模型架构的旋转版本(从左到右为输入到输出)，该模型取自论文，使用了从左侧输入到右侧输出分类的Inception模块以及仅在培训期间使用的两个额外的输出网络。
+下图显示了 GoogLeNet 模型架构的旋转版本(从左到右为输入到输出)，该模型取自论文，使用了从左侧输入到右侧输出分类的 Inception 模块以及仅在培训期间使用的两个额外的输出网络。
 
 ![Architecture of the GoogLeNet Model Used During Training for Object Photo Classification](img/7cc55a9b4cf26bc216641e212cf278ef.png)
 
@@ -232,7 +232,7 @@ AlexNet 的体系结构是深入的，并且扩展了 LeNet-5 建立的一些模
 ### 文章
 
 *   [你需要了解的 9 篇深度学习论文](https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html)
-*   [Inception网络版本简单指南](https://towardsdatascience.com/a-simple-guide-to-the-versions-of-the-inception-network-7fc52b863202)，2018 年。
+*   [Inception 网络版本简单指南](https://towardsdatascience.com/a-simple-guide-to-the-versions-of-the-inception-network-7fc52b863202)，2018 年。
 *   [CNN 架构:LeNet、AlexNet、VGG、GoogLeNet、ResNet 等。](https://medium.com/@sidereal/cnns-architectures-lenet-alexnet-vgg-googlenet-resnet-and-more-666091488df5)，2017 年。
 
 ### 摘要

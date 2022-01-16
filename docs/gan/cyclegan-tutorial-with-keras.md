@@ -304,7 +304,7 @@ def resnet_block(n_filters, input_layer):
 
 接下来，我们可以定义一个函数，为 256×256 个输入图像创建 9-resnet 块版本。通过将 *image_shape* 设置为(128 x128 x3)*n _ resnet*函数参数设置为 6，可以轻松将其更改为 6-resnet 块版本。
 
-重要的是，该模型输出的像素值与输入的形状相同，并且像素值在[-1，1]的范围内，这是GAN发生器模型的典型情况。
+重要的是，该模型输出的像素值与输入的形状相同，并且像素值在[-1，1]的范围内，这是 GAN 发生器模型的典型情况。
 
 ```py
 # define the standalone generator model
@@ -1257,7 +1257,7 @@ pyplot.show()
 
 *   [硬数据集 API](https://keras.io/datasets/) .
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
 *   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [硬贡献项目](https://github.com/keras-team/keras-contrib)
 

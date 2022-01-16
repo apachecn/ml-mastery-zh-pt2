@@ -1,4 +1,4 @@
-# Python中从零开始的随机爬山
+# Python 中从零开始的随机爬山
 
 > 原文：<https://machinelearningmastery.com/stochastic-hill-climbing-in-python-from-scratch/>
 

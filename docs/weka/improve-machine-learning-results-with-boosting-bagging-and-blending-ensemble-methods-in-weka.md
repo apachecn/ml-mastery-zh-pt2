@@ -24,7 +24,7 @@ Weka 需要 Java。您可能已经安装了 Java，如果没有，下载页面�
 
 ## 2.启动 Weka
 
-启动 Weka。这可能需要在程序启动器中找到它，或者双击 weka.jar 文件。这将启动Weka图形用户界面选择器。
+启动 Weka。这可能需要在程序启动器中找到它，或者双击 weka.jar 文件。这将启动 Weka 图形用户界面选择器。
 
 [![Weka GUI Chooser](img/fba124929a0da99095d1a3de3149684b.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/weka-loader.png)
 
@@ -32,7 +32,7 @@ Weka 图形用户界面选择器
 
 Weka 图形用户界面选择器允许您选择资源管理器、实验器、知识管理器和简单命令行界面(命令行界面)之一。
 
-点击*实验者*按钮，启动Weka实验者。
+点击*实验者*按钮，启动 Weka 实验者。
 
 Weka Experimenter 允许您设计自己的在数据集上运行算法的实验，运行实验并分析结果。这是一个强大的工具。
 
@@ -140,7 +140,7 @@ J48 和 IBk (k 近邻)是非常不同的算法，我们希望在我们的混合�
 
 [![Algorithm ranking when analyzing results in the Weka Experimenter](img/cdab3456f0be64680cff89d02b8213f7.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-25-at-5.30.54-AM.png)
 
-在Weka实验器中分析结果时的算法排名
+在 Weka 实验器中分析结果时的算法排名
 
 我们可以看到，AdaBoostM1 版本的 J48 排名最高，与其他算法相比取得了 2 次重大胜利。我们还可以看到 Stacking 和普通老 J48 排名最低。J48 排名靠后是一个好的迹象，这表明至少一些集成方法提高了问题的准确性。
 
@@ -154,7 +154,7 @@ J48 和 IBk (k 近邻)是非常不同的算法，我们希望在我们的混合�
 
 [![Algorithm mean accuracy and statistical significance in the Weka Experimenter.](img/a1d88b4d8172dd93d688577feabecb6a.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-25-at-5.38.18-AM.png)
 
-Weka实验者的算法平均准确率和统计意义。
+Weka 实验者的算法平均准确率和统计意义。
 
 我们可以看到，AdaBoostM1 算法实现了 93.05% (+/- 3.92%)的分类准确率。我们可以看到，这个值比 J48 高 89.74% (+/- 4.38%)。我们可以在表中的 J48 准确率旁边看到一个“*”，这表明增强的 J48 算法之间的差异是有意义的(具有统计显著性)。
 

@@ -1817,7 +1817,7 @@ run_example()
 ### 应用程序接口
 
 *   [硬数据集 API](https://keras.io/datasets/)
-*   [Keras数据集代码](https://github.com/keras-team/keras/tree/master/keras/datasets)
+*   [Keras 数据集代码](https://github.com/keras-team/keras/tree/master/keras/datasets)
 
 ### 文章
 

@@ -143,21 +143,21 @@ R
 install.packages("caret")
 ```
 
-**UPDATE** :我们可能需要其他的包，但是caret应该会问我们要不要加载。如果程序包有问题，您可以通过键入以下命令来安装caret程序包和所有可能需要的程序包:
+**UPDATE** :我们可能需要其他的包，但是 caret 应该会问我们要不要加载。如果程序包有问题，您可以通过键入以下命令来安装 caret 程序包和所有可能需要的程序包:
 
 ```py
 install.packages("caret", dependencies=c("Depends", "Suggests"))
 ```
 
-现在，让我们加载我们将在本教程中使用的包，Caret包。
+现在，让我们加载我们将在本教程中使用的包，Caret 包。
 
 ```py
 library(caret)
 ```
 
-caret包为数百种机器学习算法提供了一致的接口，并为数据可视化、数据重采样、模型调整和模型比较等功能提供了有用的便利方法。这是 r 中机器学习项目的必备工具。
+caret 包为数百种机器学习算法提供了一致的接口，并为数据可视化、数据重采样、模型调整和模型比较等功能提供了有用的便利方法。这是 r 中机器学习项目的必备工具。
 
-有关Caret包的更多信息，请参见[Caret包主页](https://topepo.github.io/caret/index.html)。
+有关 Caret 包的更多信息，请参见[Caret 包主页](https://topepo.github.io/caret/index.html)。
 
 ### 2.加载数据
 

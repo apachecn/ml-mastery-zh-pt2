@@ -38,7 +38,7 @@
 3.  如何定义和使用生成器模型
 4.  如何训练发电机模型
 5.  如何评估 GAN 模型的表现
-6.  CIFAR-10 的完整GAN示例
+6.  CIFAR-10 的完整 GAN 示例
 7.  如何使用最终生成器模型生成图像
 
 ## CIFAR-10 小对象照片数据集
@@ -1117,7 +1117,7 @@ def summarize_performance(epoch, g_model, d_model, dataset, latent_dim, n_sample
 	g_model.save(filename)
 ```
 
-## CIFAR-10 的完整GAN示例
+## CIFAR-10 的完整 GAN 示例
 
 我们现在拥有了在 CIFAR-10 小对象照片数据集上训练和评估 GAN 所需的一切。
 
@@ -1368,7 +1368,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 ![Plot of 49 GAN Generated CIFAR-10 Photographs After 10 Epochs](img/098bbd579801ea13c7259a6246c1764d.png)
 
-10 个时代后 49 张GAN生成的 CIFAR-10 照片图
+10 个时代后 49 张 GAN 生成的 CIFAR-10 照片图
 
 在 90 或 100 个时代之后，我们开始看到看似可信的照片，斑点看起来像鸟、狗、猫和马。
 
@@ -1376,11 +1376,11 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 ![Plot of 49 GAN Generated CIFAR-10 Photographs After 90 Epochs](img/eec0888b17d5a9875818727fb2df11c1.png)
 
-90 年代后 49 张GAN生成的 CIFAR-10 照片图
+90 年代后 49 张 GAN 生成的 CIFAR-10 照片图
 
 ![Plot of 49 GAN Generated CIFAR-10 Photographs After 100 Epochs](img/07ae8788590fb2f5529546d1aeed0ecf.png)
 
-100 个时代后 49 张GAN生成的 CIFAR-10 照片图
+100 个时代后 49 张 GAN 生成的 CIFAR-10 照片图
 
 该模型在接下来的 100 个时期内保持稳定，生成的图像几乎没有重大改进。
 
@@ -1388,7 +1388,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 ![Plot of 49 GAN Generated CIFAR-10 Photographs After 200 Epochs](img/8d338552fd782a99a3e3a0a2147b3803.png)
 
-200 年后 49 张GAN生成的 CIFAR-10 照片图
+200 年后 49 张 GAN 生成的 CIFAR-10 照片图
 
 ## 如何使用最终生成器模型生成图像
 
@@ -1446,7 +1446,7 @@ create_plot(X, 10)
 
 ![Example of 100 GAN Generated CIFAR-10 Small Object Photographs](img/2157fdd21e039eaf4ed9c80e8a031f1b.png)
 
-100 张GAN生成的 CIFAR-10 小对象照片示例
+100 张 GAN 生成的 CIFAR-10 小对象照片示例
 
 潜在空间现在定义了 CIFAR-10 照片的压缩表示。
 
@@ -1511,7 +1511,7 @@ pyplot.show()
 
 *   [硬数据集接口。](https://keras.io/datasets/)
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
 *   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [MatplotLib API](https://matplotlib.org/api/)
 *   [NumPy 随机采样(numpy.random) API](https://docs.scipy.org/doc/numpy/reference/routines.random.html)

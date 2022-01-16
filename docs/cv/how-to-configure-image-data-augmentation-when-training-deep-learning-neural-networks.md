@@ -437,7 +437,7 @@ pyplot.show()
 ### 应用程序接口
 
 *   [图像预处理 Keras API](https://keras.io/preprocessing/image/)
-*   [Keras图像预处理代码](https://github.com/keras-team/keras-preprocessing/blob/master/keras_preprocessing/image/affine_transformations.py)
+*   [Keras 图像预处理代码](https://github.com/keras-team/keras-preprocessing/blob/master/keras_preprocessing/image/affine_transformations.py)
 *   [顺序模型应用编程接口](https://keras.io/models/sequential/)
 
 ### 文章

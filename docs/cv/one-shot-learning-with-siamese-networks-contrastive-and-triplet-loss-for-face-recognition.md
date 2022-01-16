@@ -95,7 +95,7 @@
 
 暹罗网络是最近才使用的，在 Gregory Koch 等人在 2015 年发表的题为“[用于单次图像识别的暹罗神经网络](https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf)的论文中，深度卷积神经网络被用于并行图像输入。”
 
-深度CNN首先被训练来区分每一类的例子。其思想是让模型学习能够有效地从输入图像中提取抽象特征的特征向量。
+深度 CNN 首先被训练来区分每一类的例子。其思想是让模型学习能够有效地从输入图像中提取抽象特征的特征向量。
 
 ![Example of Image Verification Used to Train a Siamese Network.](img/ce7cc024c6b67877b32255e85e362907.png)
 

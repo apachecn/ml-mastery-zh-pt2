@@ -88,7 +88,7 @@ FaceNet 是一个人脸识别系统，由谷歌的 Florian schrovf 等人在他�
 
 另一个著名的项目是由大卫·桑德伯格开发的 [FaceNet，它提供了使用 TensorFlow 构建和训练的 FaceNet 模型。该项目看起来很成熟，尽管在撰写本文时并未提供基于库的安装，也没有干净的 API。有用的是，大卫的项目提供了许多高表现的预先训练的 FaceNet 模型，并且有许多项目移植或转换这些模型用于 Keras。](https://github.com/davidsandberg/facenet)
 
-一个显著的例子是谷井弘的 Keras[face net](https://github.com/nyoki-mtl/keras-facenet)。他的项目提供了一个脚本，用于将Inception ResNet v1 模型从 TensorFlow 转换为 Keras。他还提供了一个预先训练好的 Keras 模型以备使用。
+一个显著的例子是谷井弘的 Keras[face net](https://github.com/nyoki-mtl/keras-facenet)。他的项目提供了一个脚本，用于将 Inception ResNet v1 模型从 TensorFlow 转换为 Keras。他还提供了一个预先训练好的 Keras 模型以备使用。
 
 我们将在本教程中使用[谷井博树](https://github.com/nyoki-mtl)提供的预先训练好的 Keras FaceNet 模型。它在 [MS-Celeb-1M 数据集](https://www.microsoft.com/en-us/research/project/ms-celeb-1m-challenge-recognizing-one-million-celebrities-real-world/)上训练，期望输入图像是彩色的，像素值变白(在所有三个通道上标准化)，并且具有 160×160 像素的正方形形状。
 

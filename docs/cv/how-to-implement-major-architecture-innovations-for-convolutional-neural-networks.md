@@ -1,4 +1,4 @@
-# 如何在 Keras 从头开发 VGG、Inception和 ResNet 模块
+# 如何在 Keras 从头开发 VGG、Inception 和 ResNet 模块
 
 > 原文：<https://machinelearningmastery.com/how-to-implement-major-architecture-innovations-for-convolutional-neural-networks/>
 

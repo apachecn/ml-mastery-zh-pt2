@@ -64,7 +64,7 @@ Let’s get started.![Local Optimization Versus Global Optimization](img/4813222
 
 对于什么是本地搜索算法可能会有争论；然而，使用我们的定义的本地搜索算法的三个例子包括:
 
-*   NelderMead算法
+*   NelderMead 算法
 *   BFGS 算法
 *   爬山算法
 

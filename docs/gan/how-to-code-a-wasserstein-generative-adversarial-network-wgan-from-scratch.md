@@ -1,19 +1,19 @@
-# 如何从零开始开发Wasserstein生成对抗网络
+# 如何从零开始开发 Wasserstein 生成对抗网络
 
 > 原文：<https://machinelearningmastery.com/how-to-code-a-wasserstein-generative-adversarial-network-wgan-from-scratch/>
 
 最后更新于 2021 年 1 月 18 日
 
-Wasserstein生成对抗网络是生成对抗网络的扩展，既提高了训练模型时的稳定性，又提供了与生成图像质量相关的损失函数。
+Wasserstein 生成对抗网络是生成对抗网络的扩展，既提高了训练模型时的稳定性，又提供了与生成图像质量相关的损失函数。
 
 WGAN 的发展有一个密集的数学动机，尽管在实践中只需要对已建立的标准深度卷积生成对抗网络或 DCGAN 进行一些小的修改。
 
-在本教程中，您将发现如何从零开始实现Wasserstein生成对抗网络。
+在本教程中，您将发现如何从零开始实现 Wasserstein 生成对抗网络。
 
 完成本教程后，您将知道:
 
-*   标准深度卷积 GAN 和新的Wasserstein GAN 的区别。
-*   如何从头实现Wasserstein GAN 的具体细节。
+*   标准深度卷积 GAN 和新的 Wasserstein GAN 的区别。
+*   如何从头实现 Wasserstein GAN 的具体细节。
 *   如何开发用于图像生成的 WGAN 并解释模型的动态行为。
 
 **用我的新书[Python 生成对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -24,20 +24,20 @@ WGAN 的发展有一个密集的数学动机，尽管在实践中只需要对已
 
 ![How to Code a Wasserstein Generative Adversarial Network (WGAN) From Scratch](img/c776794619091d3445fad36ab3c28ac0.png)
 
-如何从零开始编码Wasserstein生成对抗网络
+如何从零开始编码 Wasserstein 生成对抗网络
 图片由[费利西亚诺·吉马雷斯](https://www.flickr.com/photos/40145521@N00/2316564611)提供，版权所有。
 
 ## 教程概述
 
 本教程分为三个部分；它们是:
 
-1.  Wasserstein生成对抗网络
+1.  Wasserstein 生成对抗网络
 2.  Wasserstein GAN 实现细节
-3.  如何训练Wasserstein GAN 模型
+3.  如何训练 Wasserstein GAN 模型
 
-## Wasserstein生成对抗网络
+## Wasserstein 生成对抗网络
 
-Wasserstein甘，简称 WGAN，是由 Martin Arjovsky 等人在 2017 年发表的论文《Wasserstein甘》中介绍的
+Wasserstein 甘，简称 WGAN，是由 Martin Arjovsky 等人在 2017 年发表的论文《Wasserstein 甘》中介绍的
 
 它是 GAN 的扩展，寻求一种训练生成器模型的替代方法，以更好地近似给定训练数据集中观察到的数据分布。
 
@@ -55,14 +55,14 @@ WGAN 的好处是训练过程更稳定，对模型架构和超参数配置的选
 
 ![Algorithm for the Wasserstein Generative Adversarial Networks](img/0316f4776f47adf166824a3fb4763e35.png)
 
-Wasserstein生成对抗网络的算法。
+Wasserstein 生成对抗网络的算法。
 取自:Wasserstein GAN。
 
 工作组的实现差异如下:
 
 1.  在批评模型的输出层使用线性激活函数(而不是 sigmoid)。
 2.  对真实图像使用-1 标签，对假图像使用 1 标签(而不是 1 和 0)。
-3.  用Wasserstein损失来训练批评家和发电机模型。
+3.  用 Wasserstein 损失来训练批评家和发电机模型。
 4.  每次小批量更新后，将关键模型权重限制在有限的范围内(例如[-0.01，0.01])。
 5.  每次迭代更新批评模型的次数比生成器多(例如 5 次)。
 6.  使用 RMSProp 版本的梯度下降，学习率小，没有动量(例如 0.00005)。
@@ -97,7 +97,7 @@ DCGAN 对假图像使用类 0，对真图像使用类 1，这些类标签用于�
 
 在 DCGAN 中，这些是鉴别器期望达到的精确标签。WGAN 没有给这位评论家贴上精确的标签。相反，它鼓励评论家输出真实和虚假图像的不同分数。
 
-这是通过Wasserstein函数实现的，该函数巧妙地利用了正负类标签。
+这是通过 Wasserstein 函数实现的，该函数巧妙地利用了正负类标签。
 
 可以实现 WGAN，其中-1 类标签用于真实图像，而+1 类标签用于伪造或生成的图像。
 
@@ -114,7 +114,7 @@ y = -ones((n_samples, 1))
 y = ones((n_samples, 1))
 ```
 
-### 3.Wasserstein损失函数
+### 3.Wasserstein 损失函数
 
 DCGAN 将鉴别器训练为二分类模型，以预测给定图像真实的概率。
 
@@ -268,7 +268,7 @@ opt = RMSprop(lr=0.00005)
 model.compile(loss=wasserstein_loss, optimizer=opt)
 ```
 
-## 如何训练Wasserstein GAN 模型
+## 如何训练 Wasserstein GAN 模型
 
 现在我们知道了 WGAN 的具体实现细节，就可以实现图像生成的模型了。
 
@@ -484,13 +484,13 @@ def plot_history(d1_hist, d2_hist, g_hist):
 	pyplot.close()
 ```
 
-我们现在已经准备好适应GAN模型。
+我们现在已经准备好适应 GAN 模型。
 
 该模型适用于 10 个训练时期，这是任意的，因为该模型可能在最初的几个时期之后开始生成似是而非的数字 7。使用 64 个样本的批次大小，并且每个训练时期涉及 6，265/64，或大约 97 个批次的真实和虚假样本以及对模型的更新。因此，模型被训练了 97 个批次的 10 个时期，或者 970 次迭代。
 
 首先，对半批真实样本更新评论家模型，然后对半批假样本进行更新，一起形成一批权重更新。然后根据 WGAN 算法的要求，重复*n _ critical*(5)次。
 
-然后通过复合GAN模型更新发生器。重要的是，对于生成的样本，目标标签被设置为-1 或实数。这具有更新生成器以更好地生成下一批真实样本的效果。
+然后通过复合 GAN 模型更新发生器。重要的是，对于生成的样本，目标标签被设置为-1 或实数。这具有更新生成器以更好地生成下一批真实样本的效果。
 
 下面的 *train()* 函数实现了这一点，将定义的模型、数据集和潜在维度的大小作为参数，并使用默认参数参数化纪元的数量和批处理大小。发电机模型在训练结束时保存。
 
@@ -807,7 +807,7 @@ train(generator, critic, gan_model, dataset, latent_dim)
 
 c1 分数作为损失函数的一部分被反转；这意味着如果他们被报告为阴性，那么他们真的是阳性，如果他们被报告为阳性，那么他们真的是阴性。c2 分数的符号不变。
 
-回想一下，Wasserstein的损失是为了寻找真实和虚假的分数，而真实和虚假的分数在训练中会有所不同。我们可以在运行接近结束时看到这一点，例如最后一个时期，真实示例的 *c1* 损失为 5.338(真的-5.338)，而虚假示例的 *c2* 损失为-14.260，这种大约 10 个单位的分离至少在之前的几次迭代中是一致的。
+回想一下，Wasserstein 的损失是为了寻找真实和虚假的分数，而真实和虚假的分数在训练中会有所不同。我们可以在运行接近结束时看到这一点，例如最后一个时期，真实示例的 *c1* 损失为 5.338(真的-5.338)，而虚假示例的 *c2* 损失为-14.260，这种大约 10 个单位的分离至少在之前的几次迭代中是一致的。
 
 我们还可以看到，在这种情况下，模型将发电机的损失评分为 20 分左右。同样，回想一下，我们通过批评模型更新生成器，并将生成的示例视为真实的，目标为-1，因此分数可以解释为-20 左右的值，接近假样本的损失。
 
@@ -833,11 +833,11 @@ c1 分数作为损失函数的一部分被反转；这意味着如果他们被�
 
 WGAN 的好处是损耗与生成的图像质量相关。对于稳定的训练过程来说，较低的损失意味着更好的图像质量。
 
-在这种情况下，较低的损失具体是指评论家报告的生成图像的较低的Wasserstein损失(橙色线)。这种损失的标志不会被目标标签反转(例如，目标标签为+1.0)，因此，随着生成的模型的图像质量的提高，表现良好的 WGAN 应该会显示这条线向下的趋势。
+在这种情况下，较低的损失具体是指评论家报告的生成图像的较低的 Wasserstein 损失(橙色线)。这种损失的标志不会被目标标签反转(例如，目标标签为+1.0)，因此，随着生成的模型的图像质量的提高，表现良好的 WGAN 应该会显示这条线向下的趋势。
 
 ![Line Plots of Loss and Accuracy for a Wasserstein Generative Adversarial Network](img/b9b9462ef5d4612cf189764f848881f7.png)
 
-Wasserstein生成对抗网络的损失和准确率线图
+Wasserstein 生成对抗网络的损失和准确率线图
 
 在这种情况下，更多的训练似乎会产生质量更好的图像，主要障碍出现在 200-300 年左右，之后模型的质量仍然很好。
 
@@ -845,13 +845,13 @@ Wasserstein生成对抗网络的损失和准确率线图
 
 ![Sample of 100 Generated Images of a Handwritten Number 7 at Epoch 97 from a Wasserstein GAN.](img/769b0092648e3d798f86bedf9df3a1b3.png)
 
-100 张由Wasserstein GAN 手写数字 7 在纪元 97 生成的图像样本。
+100 张由 Wasserstein GAN 手写数字 7 在纪元 97 生成的图像样本。
 
 在这个时代之后，WGAN 继续生成看似可信的手写数字。
 
 ![Sample of 100 Generated Images of a Handwritten Number 7 at Epoch 970 from a Wasserstein GAN.](img/792234bf5391a2c1f3adcb290e3f6d8c.png)
 
-100 个样本的手写数字 7 在纪元 970 从Wasserstein甘生成的图像。
+100 个样本的手写数字 7 在纪元 970 从 Wasserstein 甘生成的图像。
 
 ## 进一步阅读
 
@@ -860,13 +860,13 @@ Wasserstein生成对抗网络的损失和准确率线图
 ### 报纸
 
 *   [水的输入 gan](https://arxiv.org/abs/1701.07875)2017 年。
-*   [Wasserstein甘斯](https://arxiv.org/abs/1704.00028)改良训练，2017。
+*   [Wasserstein 甘斯](https://arxiv.org/abs/1704.00028)改良训练，2017。
 
 ### 应用程序接口
 
 *   [硬数据集 API](https://keras.io/datasets/) .
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
 *   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [MatplotLib API](https://matplotlib.org/api/)
 *   [NumPy 随机采样(numpy.random) API](https://docs.scipy.org/doc/numpy/reference/routines.random.html)
@@ -875,18 +875,18 @@ Wasserstein生成对抗网络的损失和准确率线图
 ### 文章
 
 *   [进水，GitHub](https://github.com/martinarjovsky/WassersteinGAN) 。
-*   [Wasserstein生成对抗网络(WGANS)项目，GitHub](https://github.com/kpandey008/wasserstein-gans) 。
+*   [Wasserstein 生成对抗网络(WGANS)项目，GitHub](https://github.com/kpandey008/wasserstein-gans) 。
 *   [Keras-GAN:生成对抗网络的 Keras 实现，GitHub](https://github.com/eriklindernoren/Keras-GAN) 。
 *   [改良 WGAN，keras-contrib 项目，GitHub。](https://github.com/keras-team/keras-contrib/blob/master/examples/improved_wgan.py)
 
 ## 摘要
 
-在本教程中，您发现了如何从零开始实现Wasserstein生成对抗网络。
+在本教程中，您发现了如何从零开始实现 Wasserstein 生成对抗网络。
 
 具体来说，您了解到:
 
-*   标准深度卷积 GAN 和新的Wasserstein GAN 的区别。
-*   如何从头实现Wasserstein GAN 的具体细节。
+*   标准深度卷积 GAN 和新的 Wasserstein GAN 的区别。
+*   如何从头实现 Wasserstein GAN 的具体细节。
 *   如何开发用于图像生成的 WGAN 并解释模型的动态行为。
 
 你有什么问题吗？

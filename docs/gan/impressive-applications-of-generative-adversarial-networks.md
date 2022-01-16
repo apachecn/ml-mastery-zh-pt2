@@ -62,7 +62,7 @@ GAN 生成的卧室照片示例。摘自《深度卷积生成对抗网络的无�
 
 ![Example of Vector Arithmetic for GAN Generated Faces](img/b4890846db713f9ae0038bdd22e89b3a.png)
 
-GAN生成人脸的矢量算法示例。摘自《深度卷积生成对抗网络的无监督表示学习》，2015 年。
+GAN 生成人脸的矢量算法示例。摘自《深度卷积生成对抗网络的无监督表示学习》，2015 年。
 
 ## 生成人脸照片
 
@@ -70,7 +70,7 @@ Tero Karras 等人在他们 2017 年发表的题为“为提高质量、稳定�
 
 ![Examples of Photorealistic GAN Generated Faces](img/37af429d7d2fbad9c1ccdfe12b6f4e8c.png)
 
-照片真实感GAN生成的脸的例子。摘自 2017 年《为提高质量、稳定性和变化性而逐步发展的 GANs》。
+照片真实感 GAN 生成的脸的例子。摘自 2017 年《为提高质量、稳定性和变化性而逐步发展的 GANs》。
 
 他们的方法也被用来演示对象和场景的生成。
 
@@ -180,7 +180,7 @@ ting-王春等人在他们 2017 年发表的题为“H [高分辨率图像合成
 
 ![Example of Semantic Image and GAN Generated Cityscape Photograph](img/178dd04a8e4cbd61072903479cf92075.png)
 
-语义图像和GAN生成的城市景观照片的例子。摘自 2017 年高分辨率图像合成和条件 GANs 语义处理。
+语义图像和 GAN 生成的城市景观照片的例子。摘自 2017 年高分辨率图像合成和条件 GANs 语义处理。
 
 具体例子包括:
 
@@ -247,7 +247,7 @@ Grigory Antipov 等人在他们 2017 年发表的题为“利用条件生成对�
 
 ![Example of Photographs of Faces Generated with a GAN with Different Apparent Ages](img/0bfb7e23ecca44e30896e54923dd6766.png)
 
-用不同表观年龄的GAN生成的人脸照片示例。摘自《条件生成对抗网络下的面部衰老》，2017 年。
+用不同表观年龄的 GAN 生成的人脸照片示例。摘自《条件生成对抗网络下的面部衰老》，2017 年。
 
 张，在他们 2017 年的论文《条件对抗自动编码器的年龄进展/回归》中使用了一种基于 GAN 的人脸照片去老化方法。
 
@@ -261,7 +261,7 @@ Grigory Antipov 等人在他们 2017 年发表的题为“利用条件生成对�
 
 ![Example of GAN-based Photograph Blending](img/8a8a08f0be55e743c106abb6403789ee.png)
 
-基于GAN的照片混合示例。摘自 GP-GAN:走向逼真的高分辨率图像混合，2017 年。
+基于 GAN 的照片混合示例。摘自 GP-GAN:走向逼真的高分辨率图像混合，2017 年。
 
 ## 超分辨率
 
@@ -281,7 +281,7 @@ Subeesh 瓦苏等人在他们 2018 年的论文中倾斜了“[使用增强感�
 
 ![Example of High Resolution GAN-Generated Photographs of Buildings](img/40dd4ef7d91527d51d15aa217d5f2c2d.png)
 
-高分辨率GAN生成的建筑物照片示例。摘自《使用增强感知超分辨率网络分析感知-失真权衡》，2018 年。
+高分辨率 GAN 生成的建筑物照片示例。摘自《使用增强感知超分辨率网络分析感知-失真权衡》，2018 年。
 
 ## 照片修复
 
@@ -317,7 +317,7 @@ Carl Vondrick 等人在 2016 年发表的论文《利用场景动力学生成视
 
 ![Example of Video Frames Generated with a GAN](img/058a3c64a67bd4d6cc65caf061e8c8fb.png)
 
-用GAN生成的视频帧示例。摘自《用场景动态生成视频》，2016 年。
+用 GAN 生成的视频帧示例。摘自《用场景动态生成视频》，2016 年。
 
 ## 三维对象生成
 
@@ -325,7 +325,7 @@ Carl Vondrick 等人在 2016 年发表的论文《利用场景动力学生成视
 
 ![Example of GAN Generated Three Dimensional Objects](img/fa3f87d8b9cd4becc6fd00b8a6c0f04e.png)
 
-GAN生成的三维对象的例子。取自通过三维生成对抗建模学习对象形状的概率潜在空间
+GAN 生成的三维对象的例子。取自通过三维生成对抗建模学习对象形状的概率潜在空间
 
 Matheus Gadelha 等人在 2016 年发表的题为“从多个对象的 2D 视图中进行三维形状归纳”的论文中使用 GANs 从多个视角生成给定对象二维图片的三维模型。
 
@@ -335,7 +335,7 @@ Matheus Gadelha 等人在 2016 年发表的题为“从多个对象的 2D 视图
 
 ## 进一步阅读
 
-本节提供了更多的GAN应用程序列表来补充这个列表。
+本节提供了更多的 GAN 应用程序列表来补充这个列表。
 
 *   [gans-awesome-applications:精选的 awesome GAN 应用和演示列表](https://github.com/nashory/gans-awesome-applications)。
 *   [GANs 的一些很酷的应用](https://medium.com/@jonathan_hui/gan-some-cool-applications-of-gans-4c9ecca35900)，2018。

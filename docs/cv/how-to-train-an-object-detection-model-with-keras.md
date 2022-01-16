@@ -29,7 +29,7 @@
 
 本教程分为五个部分；它们是:
 
-1.  如何为Keras安装口罩
+1.  如何为 Keras 安装口罩
 2.  如何准备用于对象检测的数据集
 3.  如何训练一个用于袋鼠检测的掩蔽模型
 4.  如何评估一个面具
@@ -44,7 +44,7 @@ sudo pip install --no-deps tensorflow==1.15.3
 sudo pip install --no-deps keras==2.2.4
 ```
 
-## 如何为Keras安装口罩
+## 如何为 Keras 安装口罩
 
 对象检测是计算机视觉中的一项任务，包括识别给定图像中一个或多个目标的存在、位置和类型。
 
@@ -1797,7 +1797,7 @@ plot_actual_vs_predicted(test_set, model, cfg)
 
 ### 文章
 
-*   [色彩喷溅:用Mask RCNN 和 TensorFlow 进行实例分割，2018](https://engineering.matterport.com/splash-of-color-instance-segmentation-with-mask-r-cnn-and-tensorflow-7c761e238b46) 。
+*   [色彩喷溅:用 Mask RCNN 和 TensorFlow 进行实例分割，2018](https://engineering.matterport.com/splash-of-color-instance-segmentation-with-mask-r-cnn-and-tensorflow-7c761e238b46) 。
 *   [口罩 R-CNN–检查气球训练模型，笔记本](https://github.com/matterport/Mask_RCNN/blob/master/samples/balloon/inspect_balloon_model.ipynb)。
 *   [Mask RCNN–在形状数据集上训练，笔记本](https://github.com/matterport/Mask_RCNN/blob/master/samples/shapes/train_shapes.ipynb)。
 *   [对象检测平均准确率图，2018](https://medium.com/@jonathan_hui/map-mean-average-precision-for-object-detection-45c121a31173) 。

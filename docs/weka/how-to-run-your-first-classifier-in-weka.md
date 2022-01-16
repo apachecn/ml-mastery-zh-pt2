@@ -26,7 +26,7 @@ Weka 需要 Java。您可能已经安装了 [Java](https://java.com) ，如果�
 
 ## 2.启动 Weka
 
-启动 Weka。这可能需要在程序启动器中找到它，或者双击 weka.jar 文件。这将启动Weka图形用户界面选择器。
+启动 Weka。这可能需要在程序启动器中找到它，或者双击 weka.jar 文件。这将启动 Weka 图形用户界面选择器。
 
 Weka 图形用户界面选择器允许您选择资源管理器、实验器、知识管理器和简单命令行界面(命令行界面)之一。
 
@@ -34,7 +34,7 @@ Weka 图形用户界面选择器允许您选择资源管理器、实验器、知
 
 Weka 图形用户界面选择器
 
-点击 ***探索者*** 按钮，启动Weka探索者。
+点击 ***探索者*** 按钮，启动 Weka 探索者。
 
 该图形用户界面允许您加载数据集和运行分类算法。它还提供了其他功能，如数据过滤、聚类、关联规则提取和可视化，但我们现在不会使用这些功能。
 
@@ -90,7 +90,7 @@ Weka J48 算法在鸢尾花数据集上的结果
 
 [![Just the results of the J48 algorithm on the Iris flower dataset in Weka](img/e266a0b91dd34934a5057b184b942cb5.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/weka-results.png)
 
-只是在Weka的鸢尾花数据集上的 J48 算法的结果
+只是在 Weka 的鸢尾花数据集上的 J48 算法的结果
 
 首先注意[分类准确率](https://en.wikipedia.org/wiki/Accuracy_and_precision)。您可以看到，该模型获得了 144/150 正确率或 96%的结果，这似乎比 33%的基线好得多。
 

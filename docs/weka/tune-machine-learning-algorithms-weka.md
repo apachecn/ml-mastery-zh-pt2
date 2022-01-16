@@ -71,13 +71,13 @@ Weka 实验环境提供了一个界面，允许您设计、执行和分析这些
 
 我们将选择用于评估不同算法配置的数据集。我们还将添加 kNN 算法的多个实例(在 Weka 中称为 IBk)，每个实例都有不同的算法配置。
 
-1.打开Weka图形用户界面选择器
+1.打开 Weka 图形用户界面选择器
 
-2.点击“实验者”按钮，打开Weka实验者界面。
+2.点击“实验者”按钮，打开 Weka 实验者界面。
 
 ![Weka Experiment Environment](img/0a0f7bff9a8476a6b0dd26e38ec56f8d.png)
 
-Weka实验环境
+Weka 实验环境
 
 3.在“设置”选项卡上，单击“新建”按钮开始新的实验。
 
@@ -115,7 +115,7 @@ WEKA k-最近邻算法配置
 
 ![Weka Configured Algorithm Tuning Experiment](img/516da387fd196e5e23b58f33dcac1f06.png)
 
-Weka配置算法调优实验
+Weka 配置算法调优实验
 
 ## 2.运行实验
 

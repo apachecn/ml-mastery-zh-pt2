@@ -1120,7 +1120,7 @@ run_example()
 ### 蜜蜂
 
 *   [硬数据集 API](https://keras.io/datasets/)
-*   [Keras数据集代码](https://github.com/keras-team/keras/tree/master/keras/datasets)
+*   [Keras 数据集代码](https://github.com/keras-team/keras/tree/master/keras/datasets)
 *   [sklearn.model_selection。KFold 原料药](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html)
 
 ### 文章

@@ -31,11 +31,11 @@
 
 本教程分为三个部分；它们是:
 
-1.  Keras的 BatchNormalization
+1.  Keras 的 BatchNormalization
 2.  模型中的批处理规范化
 3.  批量化案例研究
 
-## Keras的 BatchNormalization
+## Keras 的 BatchNormalization
 
 Keras 通过 batch normalization 层提供对批处理规范化的支持。
 
@@ -498,8 +498,8 @@ Train: 0.826, Test: 0.830
 
 *   [硬正则器 API](https://keras.io/regularizers/)
 *   [硬核层 API](https://keras.io/layers/core/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
-*   [Keras循环层原料药](https://keras.io/layers/recurrent/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 循环层原料药](https://keras.io/layers/recurrent/)
 *   [批量精化硬质原料药](https://keras.io/layers/normalization/)
 *   [sklearn . dataset . make _ circles](http://Sklearn.org/stable/modules/generated/sklearn.datasets.make_circles.html)
 

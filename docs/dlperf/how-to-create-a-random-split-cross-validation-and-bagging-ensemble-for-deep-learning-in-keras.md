@@ -27,7 +27,7 @@
 
 ![How to Create a Random-Split, Cross-Validation, and Bagging Ensembles for Deep Learning in Keras](img/233c602b870d6b148bcff696ce0e156b.png)
 
-如何在Keras创建用于深度学习的随机拆分、交叉验证和装袋集成
+如何在 Keras 创建用于深度学习的随机拆分、交叉验证和装袋集成
 吉安·卢卡·庞蒂摄，版权所有。
 
 ## 教程概述

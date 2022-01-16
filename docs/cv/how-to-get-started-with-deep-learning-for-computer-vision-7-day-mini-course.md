@@ -130,15 +130,15 @@
 
 这称为规范化，可以直接在加载的图像上执行。下面的示例使用 PIL 库(Python 中的标准图像处理库)来加载图像并规范化其像素值。
 
-首先，确认您已经安装了Pillow库；它安装在大多数 SciPy 环境中，但您可以在这里了解更多信息:
+首先，确认您已经安装了 Pillow 库；它安装在大多数 SciPy 环境中，但您可以在这里了解更多信息:
 
-*   [PIL/Pillow安装说明](https://pillow.readthedocs.io/en/stable/installation.html)
+*   [PIL/Pillow 安装说明](https://pillow.readthedocs.io/en/stable/installation.html)
 
 接下来，下载一张澳大利亚悉尼邦迪海滩的照片，由伊莎贝尔·舒尔茨拍摄，并根据许可许可发布。将图像保存在当前工作目录中，文件名为“ *bondi_beach.jpg* ”。
 
 *   [下载邦迪海滩照片(bondi_beach.jpg)](https://machinelearningmastery.com/wp-content/uploads/2019/01/bondi_beach.jpg)
 
-接下来，我们可以使用Pillow库加载照片，确认最小和最大像素值，对这些值进行归一化，并确认进行了归一化。
+接下来，我们可以使用 Pillow 库加载照片，确认最小和最大像素值，对这些值进行归一化，并确认进行了归一化。
 
 ```py
 # example of pixel normalization

@@ -20,7 +20,7 @@
 
 ![How to Implement Progressive Growing GAN Models in Keras](img/d8acfb006fe95f44fe93fd68f4fda872.png)
 
-如何在Keras实现渐进式增长 GAN 模型
+如何在 Keras 实现渐进式增长 GAN 模型
 图片由[迪奥戈·桑多斯·席尔瓦](https://www.flickr.com/photos/dsantoss/32782524633/)提供，保留部分权利。
 
 ## 教程概述
@@ -28,8 +28,8 @@
 本教程分为五个部分；它们是:
 
 1.  什么是渐进式增长的 GAN 架构？
-2.  如何实现渐进增长的GAN鉴别器模型
-3.  如何实现渐进式增长GAN发生器模型
+2.  如何实现渐进增长的 GAN 鉴别器模型
+3.  如何实现渐进式增长 GAN 发生器模型
 4.  如何实现用于更新生成器的复合模型
 5.  如何训练鉴别器和生成器模型
 
@@ -78,7 +78,7 @@ GANs 在生成清晰的合成图像方面很有效，尽管通常受限于可以
 
 这些实现细节将为您开发适合自己应用的渐进增长的 GAN 提供基础。
 
-## 如何实现渐进增长的GAN鉴别器模型
+## 如何实现渐进增长的 GAN 鉴别器模型
 
 鉴别器模型被给予图像作为输入，并且必须将它们分类为真实的(来自数据集)或虚假的(生成的)。
 
@@ -505,11 +505,11 @@ ________________________________________________________________________________
 
 ![Plot of the Fade-In Discriminator Model For the Progressive Growing GAN Transitioning From 8x8 to 16x16 Input Images](img/74138ea3745326208c45ae3ba0879b37.png)
 
-渐进式增长GAN从 8×8 到 16×16 输入图像过渡的淡入鉴别器模型图
+渐进式增长 GAN 从 8×8 到 16×16 输入图像过渡的淡入鉴别器模型图
 
 既然我们已经看到了如何定义鉴别器模型，那么让我们看看如何定义生成器模型。
 
-## 如何实现渐进式增长GAN发生器模型
+## 如何实现渐进式增长 GAN 发生器模型
 
 渐进式增长 GAN 的生成器模型比鉴别器模型更容易在 Keras 中实现。
 
@@ -844,7 +844,7 @@ ________________________________________________________________________________
 
 ![Plot of the Fade-In Generator Model For the Progressive Growing GAN Transitioning From 8x8 to 16x16 Output Images](img/145c99b20fb46c2e9f7f1e7f6c4ea69a.png)
 
-渐进式增长GAN从 8×8 到 16×16 输出图像过渡的淡入发生器模型图
+渐进式增长 GAN 从 8×8 到 16×16 输出图像过渡的淡入发生器模型图
 
 既然我们已经看到了如何定义生成器模型，我们可以回顾一下如何通过鉴别器模型更新生成器模型。
 
@@ -1294,7 +1294,7 @@ train(g_models, d_models, gan_models, dataset, latent_dim, 100, 100, 16)
 
 *   [硬数据集 API](https://keras.io/datasets/) .
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
 *   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [硬贡献项目](https://github.com/keras-team/keras-contrib)
 *   [浏览.转换.调整应用编程接口](https://scikit-image.org/docs/dev/api/skimage.transform.html#skimage.transform.resize)

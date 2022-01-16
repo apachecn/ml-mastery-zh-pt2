@@ -331,7 +331,7 @@ def generate_fake_samples(generator, latent_dim, n_samples):
 	return X, y
 ```
 
-我们现在准备安装GAN模型。
+我们现在准备安装 GAN 模型。
 
 该模型适合 100 个训练时期，这是任意的，因为该模型在大约 20 个时期后开始生成看似合理的服装项目。使用 128 个样本的批次大小，并且每个训练时期涉及 60，000/128，或者大约 468 批次的真实和虚假样本以及对模型的更新。
 
@@ -745,7 +745,7 @@ def define_gan(g_model, d_model):
 	return model
 ```
 
-下图总结了复合GAN模型。
+下图总结了复合 GAN 模型。
 
 重要的是，它完整地显示了以潜在空间中的点和类标签作为输入的生成器模型，以及生成器的输出和作为输入的同一个类标签到鉴别器模型(图底部的最后一个框)的连接，以及真实或虚假的单个类标签分类的输出。
 
@@ -1134,7 +1134,7 @@ save_plot(X, 10)
 
 *   [硬数据集接口。](https://keras.io/datasets/)
 *   [Keras 顺序模型 API](https://keras.io/models/sequential/)
-*   [Keras卷积层应用编程接口](https://keras.io/layers/convolutional/)
+*   [Keras 卷积层应用编程接口](https://keras.io/layers/convolutional/)
 *   [如何“冻结”Keras 层？](https://keras.io/getting-started/faq/#how-can-i-freeze-keras-layers)
 *   [MatplotLib API](https://matplotlib.org/api/)
 *   [NumPy 随机采样(numpy.random) API](https://docs.scipy.org/doc/numpy/reference/routines.random.html)
