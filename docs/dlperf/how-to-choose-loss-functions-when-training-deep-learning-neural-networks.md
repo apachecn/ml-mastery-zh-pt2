@@ -174,7 +174,7 @@ pyplot.show()
 
 运行该示例首先在训练和测试数据集上打印模型的均方误差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型学会了实现零误差的问题，至少达到小数点后三位。
 
@@ -254,7 +254,7 @@ pyplot.show()
 
 运行该示例首先打印训练和测试数据集中模型的均方误差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型在训练和测试数据集上都导致了稍差的均方误差。因为目标变量的分布是标准的高斯分布，所以它可能不太适合这个问题。
 
@@ -330,7 +330,7 @@ pyplot.show()
 
 运行该示例首先打印训练和测试数据集中模型的均方误差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型学会了这个问题，实现了接近零的误差，至少到小数点后三位。
 
@@ -490,9 +490,9 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例首先打印模型在训练和测试数据集上的分类精度。
+运行该示例首先打印模型在训练和测试数据集上的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型相当好地学习了问题，在训练数据集上达到了大约 83%的准确率，在测试数据集上达到了大约 85%。分数相当接近，表明该模型可能没有结束或不足。
 
@@ -500,13 +500,13 @@ pyplot.show()
 Train: 0.836, Test: 0.852
 ```
 
-还创建了一个图形，显示了两条线图，顶部显示了列车(蓝色)和测试(橙色)数据集在不同时期的交叉熵损失，底部显示了不同时期的分类精度。
+还创建了一个图形，显示了两条线图，顶部显示了列车(蓝色)和测试(橙色)数据集在不同时期的交叉熵损失，底部显示了不同时期的分类准确率。
 
-该图显示训练过程收敛良好。给定概率分布之间误差的连续性质，损失的曲线是平滑的，而精度的直线曲线显示颠簸，在列车和测试集中给出的例子最终只能被预测为正确或不正确，从而对表现提供不太精细的反馈。
+该图显示训练过程收敛良好。给定概率分布之间误差的连续性质，损失的曲线是平滑的，而准确率的直线曲线显示颠簸，在列车和测试集中给出的例子最终只能被预测为正确或不正确，从而对表现提供不太精细的反馈。
 
 ![Line Plots of Cross Entropy Loss and Classification Accuracy over Training Epochs on the Two Circles Binary Classification Problem](img/803f1ebd585aaa996bb632991d7e9bc7.png)
 
-两圆二分类问题的交叉熵损失和训练时段分类精度的线图
+两圆二分类问题的交叉熵损失和训练时段分类准确率的线图
 
 ### 铰链损失
 
@@ -582,9 +582,9 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例首先打印模型在训练和测试数据集上的分类精度。
+运行该示例首先打印模型在训练和测试数据集上的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到比使用交叉熵稍差的表现，所选择的模型配置在列车和测试集上的准确率低于 80%。
 
@@ -592,13 +592,13 @@ pyplot.show()
 Train: 0.792, Test: 0.740
 ```
 
-还创建了一个图形，显示了两条线图，顶部显示了列车(蓝色)和测试(橙色)数据集在不同时期的铰链损耗，底部显示了不同时期的分类精度。
+还创建了一个图形，显示了两条线图，顶部显示了列车(蓝色)和测试(橙色)数据集在不同时期的铰链损耗，底部显示了不同时期的分类准确率。
 
-铰链损失图表明模型已经收敛，并且在两个数据集上都有合理的损失。分类精度图也显示了趋同的迹象，尽管在这个问题上，技术水平可能低于理想水平。
+铰链损失图表明模型已经收敛，并且在两个数据集上都有合理的损失。分类准确率图也显示了趋同的迹象，尽管在这个问题上，技术水平可能低于理想水平。
 
 ![Line Plots of Hinge Loss and Classification Accuracy over Training Epochs on the Two Circles Binary Classification Problem](img/ad04d95b96cfd743b8d3d7acb3fba88b.png)
 
-两圆二分类问题的铰链损失和训练时期分类精度的线图
+两圆二分类问题的铰链损失和训练时期分类准确率的线图
 
 ### 方形铰链损失
 
@@ -672,23 +672,23 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例首先在训练和测试数据集上打印模型的分类精度。
+运行该示例首先在训练和测试数据集上打印模型的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到，对于这个问题和所选的模型配置，铰链平方损失可能不合适，导致列车和测试集上的分类精度低于 70%。
+在这种情况下，我们可以看到，对于这个问题和所选的模型配置，铰链平方损失可能不合适，导致列车和测试集上的分类准确率低于 70%。
 
 ```py
 Train: 0.682, Test: 0.646
 ```
 
-还创建了一个图形，显示了两条线图，顶部显示了列车(蓝色)和测试(橙色)数据集在各个时期的平方铰链损耗，底部显示了各个时期的分类精度。
+还创建了一个图形，显示了两条线图，顶部显示了列车(蓝色)和测试(橙色)数据集在各个时期的平方铰链损耗，底部显示了各个时期的分类准确率。
 
 损失图显示，确实，模型收敛了，但是误差表面的形状不像其他损失函数那样平滑，在其他损失函数中，权重的微小变化导致损失的巨大变化。
 
 ![Line Plots of Squared Hinge Loss and Classification Accuracy over Training Epochs on the Two Circles Binary Classification Problem](img/38fa3a9b51e0b9eec318355eccbcc703.png)
 
-两圆二分类问题的平方铰链损失和训练时期分类精度的线图
+两圆二分类问题的平方铰链损失和训练时期分类准确率的线图
 
 ## 多类分类损失函数
 
@@ -759,7 +759,7 @@ opt = SGD(lr=0.01, momentum=0.9)
 model.compile(loss='...', optimizer=opt, metrics=['accuracy'])
 ```
 
-该模型将适用于训练数据集上的 100 个时期，测试数据集将用作验证数据集，允许我们在每个训练时期结束时评估训练集和测试集的损失和分类精度，并绘制学习曲线。
+该模型将适用于训练数据集上的 100 个时期，测试数据集将用作验证数据集，允许我们在每个训练时期结束时评估训练集和测试集的损失和分类准确率，并绘制学习曲线。
 
 ```py
 # fit model
@@ -847,9 +847,9 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例首先打印模型在训练和测试数据集上的分类精度。
+运行该示例首先打印模型在训练和测试数据集上的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型表现良好，在训练数据集上实现了大约 84%的分类准确率，在测试数据集上实现了大约 82%的分类准确率。
 
@@ -857,13 +857,13 @@ pyplot.show()
 Train: 0.840, Test: 0.822
 ```
 
-还创建了一个图形，显示了两条线图，顶部显示了列车(蓝色)和测试(橙色)数据集在不同时期的交叉熵损失，底部显示了不同时期的分类精度。
+还创建了一个图形，显示了两条线图，顶部显示了列车(蓝色)和测试(橙色)数据集在不同时期的交叉熵损失，底部显示了不同时期的分类准确率。
 
 在这种情况下，图表显示模型似乎已经收敛。交叉熵和准确度的线图都显示了良好的收敛行为，尽管有些颠簸。如果没有过拟合或拟合不足的迹象，模型可能配置良好。在这种情况下，可以调整学习率或批处理大小来平衡收敛的平滑度。
 
 ![Line Plots of Cross Entropy Loss and Classification Accuracy over Training Epochs on the Blobs Multi-Class Classification Problem](img/d4b141d8a473f061ed48a3e0cfa4ebf5.png)
 
-斑点多类分类问题的交叉熵损失和训练时段分类精度的线图
+斑点多类分类问题的交叉熵损失和训练时段分类准确率的线图
 
 ### 稀疏多类交叉熵损失
 
@@ -930,9 +930,9 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例首先打印模型在训练和测试数据集上的分类精度。
+运行该示例首先打印模型在训练和测试数据集上的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型在问题上取得了良好的表现。事实上，如果多次重复实验，稀疏和非稀疏交叉熵的平均表现应该是相当的。
 
@@ -940,13 +940,13 @@ pyplot.show()
 Train: 0.832, Test: 0.818
 ```
 
-还创建了一个图形，显示了两条线图，顶部显示了列车(蓝色)和测试(橙色)数据集在不同时期的稀疏交叉熵损失，底部显示了不同时期的分类精度。
+还创建了一个图形，显示了两条线图，顶部显示了列车(蓝色)和测试(橙色)数据集在不同时期的稀疏交叉熵损失，底部显示了不同时期的分类准确率。
 
-在这种情况下，该图显示了模型在损失和分类精度方面相对于训练的良好收敛性。
+在这种情况下，该图显示了模型在损失和分类准确率方面相对于训练的良好收敛性。
 
 ![Line Plots of Sparse Cross Entropy Loss and Classification Accuracy over Training Epochs on the Blobs Multi-Class Classification Problem](img/37e4b9efb844be6038215a2e87ad6f0a.png)
 
-斑点多类分类问题的稀疏交叉熵损失线图和训练时期的分类精度
+斑点多类分类问题的稀疏交叉熵损失线图和训练时期的分类准确率
 
 ### 库尔巴克·莱布勒发散损失
 
@@ -1017,9 +1017,9 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例首先打印模型在训练和测试数据集上的分类精度。
+运行该示例首先打印模型在训练和测试数据集上的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们看到的表现类似于交叉熵损失的结果，在这种情况下，训练和测试数据集的准确率约为 82%。
 
@@ -1027,13 +1027,13 @@ pyplot.show()
 Train: 0.822, Test: 0.822
 ```
 
-还创建了一个图形，显示了两条线图，顶部显示了列车(蓝色)和测试(橙色)数据集在不同时期的 KL 散度损失，底部显示了不同时期的分类精度。
+还创建了一个图形，显示了两条线图，顶部显示了列车(蓝色)和测试(橙色)数据集在不同时期的 KL 散度损失，底部显示了不同时期的分类准确率。
 
-在这种情况下，该图显示了损失和分类精度的良好收敛行为。考虑到度量的相似性，交叉熵的评估很可能导致几乎相同的行为。
+在这种情况下，该图显示了损失和分类准确率的良好收敛行为。考虑到度量的相似性，交叉熵的评估很可能导致几乎相同的行为。
 
 ![Line Plots of KL Divergence Loss and Classification Accuracy over Training Epochs on the Blobs Multi-Class Classification Problem](img/564df455c0e382cffba12970e79b9597.png)
 
-斑点多类分类问题的 KL 散度损失和训练时期分类精度的线图
+斑点多类分类问题的 KL 散度损失和训练时期分类准确率的线图
 
 ## 进一步阅读
 

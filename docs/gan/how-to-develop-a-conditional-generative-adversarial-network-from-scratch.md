@@ -547,7 +547,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 鉴别器在真样品和假样品上的损失，以及发生器的损失，在每批之后报告。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，在整个训练过程中，鉴频器和发生器的损耗都在 0.6 到 0.7 左右。
 
@@ -604,7 +604,7 @@ show_plot(X, 10)
 
 运行该示例会创建一个由 100 件随机生成的衣服组成的图，这些衣服排列成 10×10 的网格。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到各种各样的衣服，如鞋子、毛衣和裤子。大多数项目看起来都很合理，可能来自时尚 MNIST 数据集。然而，它们并不完美，因为有些单袖毛衣和鞋子看起来一团糟。
 

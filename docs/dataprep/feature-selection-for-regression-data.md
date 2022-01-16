@@ -184,7 +184,7 @@ pyplot.show()
 
 运行该示例首先打印为每个输入要素和目标变量计算的分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们不会列出所有 100 个输入变量的分数，因为这会占用太多空间。然而，我们可以看到一些变量比其他变量得分更高，例如小于 1 比 5，而其他变量得分更高，例如特征 9 的得分为 101。
 
@@ -283,7 +283,7 @@ pyplot.show()
 
 运行该示例首先打印为每个输入要素和目标变量计算的分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 同样，我们不会列出所有 100 个输入变量的分数。我们可以看到许多特性的得分为 0.0，而这项技术已经识别了更多可能与目标相关的特性。
 
@@ -351,7 +351,7 @@ print('MAE: %.3f' % mae)
 
 运行该示例将打印训练数据集中模型的平均绝对误差(MAE)。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型实现了大约 0.086 的误差。
 
@@ -422,7 +422,7 @@ print('MAE: %.3f' % mae)
 
 运行该示例会报告模型在使用相关性统计信息选择的 100 个输入要素中的 10 个要素上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们看到模型获得了大约 2.7 的误差分数，这比使用所有特征并获得 0.086 的 MAE 的基线模型大得多。
 
@@ -477,7 +477,7 @@ print('MAE: %.3f' % mae)
 
 运行该示例会报告模型在使用相关性统计信息选择的 100 个输入要素中的 88 个要素上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，删除一些冗余功能导致了表现的小幅提升，与实现约 0.086 误差的基线相比，误差约为 0.085。
 
@@ -546,7 +546,7 @@ print('MAE: %.3f' % mae)
 
 运行该示例使模型适合使用互信息选择的 88 个顶级精选要素。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，与相关统计相比，我们可以看到误差进一步减小，在这种情况下，与上一节中的 0.085 相比，MAE 约为 0.084。
 
@@ -560,7 +560,7 @@ MAE: 0.084
 
 代替猜测，我们可以系统地测试一系列不同数量的所选特征，并发现哪一个导致最佳表现的模型。这被称为网格搜索，其中可以调整 *SelectKBest* 类的 *k* 参数。
 
-使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估回归任务的模型配置是一个很好的实践。我们将通过 [RepeatedKFold 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedKFold.html)使用三次重复的 10 倍交叉验证。
+使用[重复分层 K 折交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估回归任务的模型配置是一个很好的实践。我们将通过 [RepeatedKFold 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedKFold.html)使用三次重复的 10 倍交叉验证。
 
 ```py
 ...
@@ -641,7 +641,7 @@ for mean, param in zip(means, params):
 
 运行示例网格使用互信息统计搜索不同数量的选定要素，其中使用重复交叉验证评估每个建模管道。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到所选特征的最佳数量是 81，这实现了大约 0.082 的 MAE(忽略符号)。
 
@@ -715,7 +715,7 @@ pyplot.show()
 
 运行该示例首先报告每个选定特征的平均值和标准偏差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，报告 MAE 的平均值和标准差不是很有趣，除了 80 年代的 k 值比 90 年代的 k 值更好。
 

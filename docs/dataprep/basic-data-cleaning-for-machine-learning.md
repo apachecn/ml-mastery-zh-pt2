@@ -60,22 +60,22 @@
 
 在我们深入识别和纠正混乱的数据之前，让我们定义一些混乱的数据集。
 
-我们将使用两个数据集作为本教程的基础，**溢油数据集**和**鸢尾花数据集**。
+我们将使用两个数据集作为本教程的基础，**漏油数据集**和**鸢尾花数据集**。
 
-### 溢油数据集
+### 漏油数据集
 
-所谓的“[溢油](https://machinelearningmastery.com/imbalanced-classification-model-to-detect-oil-spills/)”数据集是标准的机器学习数据集。
+所谓的“[漏油](https://machinelearningmastery.com/imbalanced-classification-model-to-detect-oil-spills/)”数据集是标准的机器学习数据集。
 
 该任务包括预测该区块是否含有石油泄漏，例如，非法或意外倾倒在海洋中的石油，给出一个矢量，描述一个卫星图像区块的内容。
 
 有 937 例。每个案例由 48 个数字计算机视觉衍生特征、一个补丁编号和一个类别标签组成。
 
-正常情况下，没有溢油被指定为 0 级标签，而溢油被指定为 1 级标签。无溢油 896 例，溢油 41 例。
+正常情况下，没有漏油被指定为 0 级标签，而漏油被指定为 1 级标签。无漏油 896 例，漏油 41 例。
 
 您可以在这里访问整个数据集:
 
-*   [溢油数据集(溢油 csv)](https://raw.githubusercontent.com/jbrownlee/Datasets/master/oil-spill.csv)
-*   [溢油数据集描述(溢油名称)](https://raw.githubusercontent.com/jbrownlee/Datasets/master/oil-spill.names)
+*   [漏油数据集(漏油 csv)](https://raw.githubusercontent.com/jbrownlee/Datasets/master/oil-spill.csv)
+*   [漏油数据集描述(漏油名称)](https://raw.githubusercontent.com/jbrownlee/Datasets/master/oil-spill.names)
 
 查看文件的内容。
 
@@ -152,7 +152,7 @@ X1
 
 您可以使用 [unique() NumPy 函数](https://docs.scipy.org/doc/numpy/reference/generated/numpy.unique.html)检测具有此属性的行，该函数将报告每列中唯一值的数量。
 
-以下示例加载了包含 50 个变量的溢油类别数据集，并总结了每列的唯一值的数量。
+以下示例加载了包含 50 个变量的漏油类别数据集，并总结了每列的唯一值的数量。
 
 ```py
 # summarize the number of unique values for each column using numpy
@@ -532,7 +532,7 @@ transform = VarianceThreshold()
 X_sel = transform.fit_transform(X)
 ```
 
-我们可以在溢油数据集上对此进行如下演示:
+我们可以在漏油数据集上对此进行如下演示:
 
 ```py
 # example of apply the variance threshold

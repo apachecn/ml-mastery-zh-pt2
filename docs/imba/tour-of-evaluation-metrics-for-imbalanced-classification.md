@@ -1,4 +1,4 @@
-# 不平衡分类评估指标之旅
+# 不平衡分类的评估指标之旅
 
 > 原文：<https://machinelearningmastery.com/tour-of-evaluation-metrics-for-imbalanced-classification/>
 
@@ -49,7 +49,7 @@
 
 ——[不平衡数据的分类:综述](https://www.worldscientific.com/doi/abs/10.1142/S0218001409007326)，2009。
 
-有标准的度量标准被广泛用于评估分类预测模型，例如分类精度或分类误差。
+有标准的度量标准被广泛用于评估分类预测模型，例如分类准确率或分类误差。
 
 标准度量在大多数问题上运行良好，这就是为什么它们被广泛采用的原因。但是所有的度量都是对问题或者问题中什么是重要的做出假设。因此，必须选择一个最能抓住您或您的项目涉众认为模型或预测的重要之处的评估指标，这使得选择模型评估指标具有挑战性。
 
@@ -105,19 +105,19 @@
 
 ——[分类表现指标的实验比较](https://www.sciencedirect.com/science/article/abs/pii/S0167865508002687)，2008 年。
 
-也许最广泛使用的阈值度量是分类精度。
+也许最广泛使用的阈值度量是分类准确率。
 
 *   **准确性** =正确预测/总预测
 
-而分类精度的补充称为分类误差。
+而分类准确率的补充称为分类误差。
 
 *   **误差** =不正确的预测/总预测
 
-尽管分类精度被广泛使用，但它几乎普遍不适用于不平衡分类。原因是，高精度(或低误差)可以通过只预测多数类的无技能模型来实现。
+尽管分类准确率被广泛使用，但它几乎普遍不适用于不平衡分类。原因是，高准确率(或低误差)可以通过只预测多数类的无技能模型来实现。
 
 有关分类准确性失败的更多信息，请参见教程:
 
-*   [不平衡类别分布的分类精度失败](https://machinelearningmastery.com/failure-of-accuracy-for-imbalanced-class-distributions/)
+*   [不平衡类别分布的分类准确率故障](https://machinelearningmastery.com/failure-of-accuracy-for-imbalanced-class-distributions/)
 
 对于不平衡分类问题，多数类通常称为阴性结果(如“*无变化*”或“*阴性检测结果*”)，少数类通常称为阳性结果(如“*变化*”或“*阳性检测结果*”)。
 
@@ -152,11 +152,11 @@ Negative Class | False Positive (FP) | True Negative (TN)
 
 *   **G 均值** = sqrt(灵敏度*特异性)
 
-#### 精度-召回度量
+#### 准确率-召回度量
 
 Precision 汇总了分配给正类的属于正类的示例的比例。
 
-*   **精度** =真正/(真正+假正)
+*   **准确率** =真正/(真正+假正)
 
 回忆总结了正类的预测效果，与敏感度的计算是一样的。
 
@@ -164,21 +164,21 @@ Precision 汇总了分配给正类的属于正类的示例的比例。
 
 精确度和召回率可以合并成一个分数，寻求平衡这两个问题，称为 F 分数或 F 度量。
 
-*   **F-Measure** = (2 *精度*召回)/(精度+召回)
+*   **F-Measure** = (2 *准确率*召回)/(准确率+召回)
 
 F-Measure 是一种流行的不平衡分类度量。
 
-Fbeta 测度是 F 测度的抽象，其中[谐波均值](https://machinelearningmastery.com/arithmetic-geometric-and-harmonic-means-for-machine-learning/)计算中的精度和召回率的平衡由一个称为*β*的系数控制。
+Fbeta 测度是 F 测度的抽象，其中[谐波均值](https://machinelearningmastery.com/arithmetic-geometric-and-harmonic-means-for-machine-learning/)计算中的准确率和召回率的平衡由一个称为*β*的系数控制。
 
-*   **fbeta-measure**=((1+beta^2)*精度*召回)/ (beta^2 *精度+召回)
+*   **fbeta-measure**=((1+beta^2)*准确率*召回)/ (beta^2 *准确率+召回)
 
-有关不平衡分类的精度、召回率和 F-measure 的更多信息，请参见教程:
+有关不平衡分类的准确率、召回率和 F-measure 的更多信息，请参见教程:
 
-*   [如何计算不平衡分类的精度、召回率和 F-Measure](https://machinelearningmastery.com/precision-recall-and-f-measure-for-imbalanced-classification/)
+*   [如何计算不平衡分类的准确率、召回率和 F-Measure](https://machinelearningmastery.com/precision-recall-and-f-measure-for-imbalanced-classification/)
 
 #### 附加阈值指标
 
-这些可能是最受欢迎的度量标准，尽管还有很多其他的存在。为了让您品尝一下，这些包括卡帕，宏观平均精度，平均类加权精度，优化精度，调整几何平均，平衡精度，等等。
+这些可能是最受欢迎的度量标准，尽管还有很多其他的存在。为了让您品尝一下，这些包括卡帕，宏观平均准确率，平均类加权准确率，优化准确率，调整几何平均，平衡准确率，等等。
 
 阈值指标易于计算和理解。
 
@@ -238,27 +238,27 @@ ROC 曲线对一个模型是一个有用的诊断。
 
 虽然一般有效，但 ROC 曲线和 ROC AUC 在严重的阶级不平衡下可以乐观，尤其是当少数阶级的例子数量很少时。
 
-ROC 曲线的另一种选择是精度-召回率曲线，它可以以类似的方式使用，尽管侧重于少数类分类器的表现。
+ROC 曲线的另一种选择是准确率-召回率曲线，它可以以类似的方式使用，尽管侧重于少数类分类器的表现。
 
-同样，模型对一组预测使用不同的阈值，在这种情况下，计算精度和召回率。这些点形成一条曲线，在一系列不同阈值下表现更好的分类器将被排列得更高。
+同样，模型对一组预测使用不同的阈值，在这种情况下，计算准确率和召回率。这些点形成一条曲线，在一系列不同阈值下表现更好的分类器将被排列得更高。
 
-无技能分类器将是图上的一条水平线，其精度与数据集中的正例数成正比。对于平衡数据集，这将是 0.5。一个完美的分类器由右上角的一个点表示。
+无技能分类器将是图上的一条水平线，其准确率与数据集中的正例数成正比。对于平衡数据集，这将是 0.5。一个完美的分类器由右上角的一个点表示。
 
 ![Depiction of a Precision-Recall Curve](img/6194f2d3abf43d544073103b968b85f3.png)
 
 精确-召回曲线的描绘
 
-像 ROC 曲线一样，精度-召回曲线是评估单个分类器的有用诊断工具，但对比较分类器具有挑战性。
+像 ROC 曲线一样，准确率-召回曲线是评估单个分类器的有用诊断工具，但对比较分类器具有挑战性。
 
 像 ROC AUC 一样，我们可以计算曲线下的面积作为分数，并使用该分数来比较分类器。在这种情况下，对少数类的关注使得精确-召回 AUC 对不平衡分类问题更有用。
 
-*   **PR AUC** =曲线下精度-召回区域
+*   **PR AUC** =曲线下准确率-召回区域
 
 还有其他不太广泛使用的排名指标，例如针对不平衡分类和成本曲线修改 ROC 曲线。
 
-有关不平衡分类的 ROC 曲线和精度-召回曲线的更多信息，请参见教程:
+有关不平衡分类的 ROC 曲线和准确率-召回曲线的更多信息，请参见教程:
 
-*   [不平衡分类的 ROC 曲线和精度-召回曲线](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-imbalanced-classification/)
+*   [不平衡分类的 ROC 曲线和准确率-召回曲线](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-imbalanced-classification/)
 
 ### 不平衡分类的概率度量
 
@@ -333,7 +333,7 @@ Brier 分数计算为正类的预期概率(例如 1.0)和预测概率之间的�
 *   **你在预测概率吗？**
     *   **需要类标签吗？**
         *   **正课更重要吗？**
-            *   使用精度-召回 AUC
+            *   使用准确率-召回 AUC
         *   **两个班都重要吗？**
             *   使用 ROC AUC
     *   **你需要概率吗？**

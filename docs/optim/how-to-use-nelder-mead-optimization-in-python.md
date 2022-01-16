@@ -178,7 +178,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 运行该示例会执行优化，然后报告结果。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到搜索是成功的，正如我们所料，并且在 88 次功能评估后完成。
 
@@ -245,7 +245,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 运行该示例会执行优化，然后报告结果。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，算法不收敛，而是使用最大函数求值次数，即 200。
 
@@ -344,7 +344,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 运行该示例会执行优化，然后报告结果。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到搜索成功完成，但没有找到全局最优解。它卡住了，找到了一个本地的 optima。
 

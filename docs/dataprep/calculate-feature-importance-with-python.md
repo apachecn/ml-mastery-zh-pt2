@@ -206,7 +206,7 @@ pyplot.show()
 
 运行该示例来拟合模型，然后报告每个特征的系数值。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 这些分数表明，该模型找到了五个重要的特征，并用零系数标记了所有其他特征，基本上将它们从模型中移除。
 
@@ -262,7 +262,7 @@ pyplot.show()
 
 运行该示例来拟合模型，然后报告每个特征的系数值。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 回想一下，这是 0 类和 1 类的分类问题。请注意，系数既是正的，也是负的。正分数表示预测类别 1 的特征，而负分数表示预测类别 0 的特征。
 
@@ -332,7 +332,7 @@ pyplot.show()
 
 运行该示例来拟合模型，然后报告每个特征的系数值。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 结果表明，10 个特征中可能有 3 个对预测很重要。
 
@@ -382,7 +382,7 @@ pyplot.show()
 
 运行该示例来拟合模型，然后报告每个特征的系数值。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 结果表明，10 个特征中可能有 4 个对预测很重要。
 
@@ -442,7 +442,7 @@ pyplot.show()
 
 运行该示例来拟合模型，然后报告每个特征的系数值。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 结果表明，10 个特征中可能有两三个对预测很重要。
 
@@ -492,7 +492,7 @@ pyplot.show()
 
 运行该示例来拟合模型，然后报告每个特征的系数值。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 结果表明，10 个特征中可能有两三个对预测很重要。
 
@@ -578,7 +578,7 @@ pyplot.show()
 
 运行该示例来拟合模型，然后报告每个特征的系数值。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 结果表明，10 个特征中可能有两三个对预测很重要。
 
@@ -628,7 +628,7 @@ pyplot.show()
 
 运行该示例拟合模型，然后报告每个特征的系数值。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 结果表明，10 个特征中可能有 7 个对预测很重要。
 
@@ -693,7 +693,7 @@ pyplot.show()
 
 运行该示例来拟合模型，然后报告每个特征的系数值。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 结果表明，10 个特征中可能有两三个对预测很重要。
 
@@ -746,7 +746,7 @@ pyplot.show()
 
 运行该示例来拟合模型，然后报告每个特征的系数值。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 结果表明，10 个特征中可能有两三个对预测很重要。
 
@@ -777,7 +777,7 @@ Feature: 9, Score: 0.03080
 
 回想一下，我们的合成数据集有 1000 个例子，每个例子有 10 个输入变量，其中 5 个是冗余的，5 个对结果很重要。我们可以使用特征重要性分数来帮助选择相关的五个变量，并且只将它们用作预测模型的输入。
 
-首先，我们可以将训练数据集分成训练集和测试集，并在训练数据集上训练模型，在测试集上进行预测，并使用分类精度评估结果。我们将使用逻辑回归模型作为预测模型。
+首先，我们可以将训练数据集分成训练集和测试集，并在训练数据集上训练模型，在测试集上进行预测，并使用分类准确率评估结果。我们将使用逻辑回归模型作为预测模型。
 
 当我们使用特征重要性分数移除一些特征时，这为比较提供了基线。
 
@@ -805,7 +805,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 运行示例首先在训练数据集上运行逻辑回归模型，并在测试集上对其进行评估。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型使用数据集中的所有特征实现了大约 84.55%的分类准确率。
 
@@ -880,7 +880,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 运行该示例首先对数据集执行特征选择，然后像以前一样拟合和评估逻辑回归模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型在数据集上实现了相同的表现，尽管输入要素的数量只有一半。不出所料，由随机森林计算的特征重要性分数使我们能够准确地对输入特征进行排名，并删除那些与目标变量无关的特征。
 

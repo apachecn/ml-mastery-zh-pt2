@@ -32,7 +32,7 @@ Sklearn 库提供了一种以标准方式包装这些**自定义数据转换**�
 本教程分为四个部分；它们是:
 
 1.  Sklearn 中的自定义数据转换
-2.  溢油数据集
+2.  漏油数据集
 3.  移除列的自定义转换
 4.  替换异常值的自定义转换
 
@@ -62,20 +62,20 @@ Sklearn Python 机器学习库直接提供了许多不同的数据准备技术�
 
 我们将探索这两种情况，但是首先，让我们定义一个数据集，我们可以将其用作探索的基础。
 
-## 溢油数据集
+## 漏油数据集
 
-所谓的“[溢油](https://machinelearningmastery.com/imbalanced-classification-model-to-detect-oil-spills/)”数据集是标准的机器学习数据集。
+所谓的“[漏油](https://machinelearningmastery.com/imbalanced-classification-model-to-detect-oil-spills/)”数据集是标准的机器学习数据集。
 
 这项任务包括预测一块区域是否有石油泄漏，例如非法或意外倾倒在海洋中的石油，给定一个描述卫星图像一块区域内容的向量。
 
 有 937 例。每个案例由 48 个数值计算机视觉衍生特征、一个补丁号和一个类别标签组成。
 
-正常情况下，没有溢油被指定为 0 级标签，而溢油被指定为 1 级标签。无溢油 896 例，溢油 41 例。
+正常情况下，没有漏油被指定为 0 级标签，而漏油被指定为 1 级标签。无漏油 896 例，漏油 41 例。
 
 您可以在这里访问整个数据集:
 
-*   [溢油数据集(溢油 csv)](https://raw.githubusercontent.com/jbrownlee/Datasets/master/oil-spill.csv)
-*   [溢油数据集描述(溢油名称)](https://raw.githubusercontent.com/jbrownlee/Datasets/master/oil-spill.names)
+*   [漏油数据集(漏油 csv)](https://raw.githubusercontent.com/jbrownlee/Datasets/master/oil-spill.csv)
+*   [漏油数据集描述(漏油名称)](https://raw.githubusercontent.com/jbrownlee/Datasets/master/oil-spill.names)
 
 查看文件的内容。
 
@@ -157,7 +157,7 @@ def cust_transform(X, min_values=1, verbose=True):
 
 这种转换的一个限制是，它根据提供的数据选择要删除的列。这意味着如果一个训练和测试数据集相差很大，那么就有可能从每一个中移除不同的列，使得模型评估具有挑战性(*不稳定*！？).因此，最好将唯一值的最小数量保持较小，例如 1。
 
-我们可以在溢油数据集上使用这种转换。下面列出了完整的示例。
+我们可以在漏油数据集上使用这种转换。下面列出了完整的示例。
 
 ```py
 # custom data transform for removing columns with few unique values
@@ -277,7 +277,7 @@ def cust_transform(X, n_stdev=3, verbose=True):
 
 此实现的另一个限制是，平均值和标准偏差统计是在提供的数据集上计算的，这意味着异常值的定义及其替换值都是相对于数据集而言的。这意味着，如果在训练集和测试集上使用变换，可以使用不同的异常值定义和不同的替换值。
 
-我们可以在溢油数据集上使用这种转换。下面列出了完整的示例。
+我们可以在漏油数据集上使用这种转换。下面列出了完整的示例。
 
 ```py
 # custom data transform for replacing outliers

@@ -1,4 +1,4 @@
-# 套袋和随机森林不平衡分类
+# 用于不平衡分类的装袋和随机森林
 
 > 原文：<https://machinelearningmastery.com/bagging-and-random-forest-for-imbalanced-classification/>
 
@@ -6,7 +6,7 @@
 
 Bagging 是一种集成算法，它在训练数据集的不同子集上拟合多个模型，然后组合来自所有模型的预测。
 
-[随机森林](https://machinelearningmastery.com/random-forest-ensemble-in-python/)是 bagging 的扩展，它也随机选择每个数据样本中使用的特征子集。套袋和随机森林都已被证明对各种不同的预测建模问题有效。
+[随机森林](https://machinelearningmastery.com/random-forest-ensemble-in-python/)是 bagging 的扩展，它也随机选择每个数据样本中使用的特征子集。装袋和随机森林都已被证明对各种不同的预测建模问题有效。
 
 虽然有效，但它们不适合具有倾斜类分布的分类问题。然而，已经提出了对算法的许多修改，以适应它们的行为，并使它们更好地适应严重的类不平衡。
 
@@ -119,7 +119,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例评估模型并报告平均 ROC AUC 分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型获得了大约 0.87 的分数。
 
@@ -179,7 +179,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例评估模型并报告平均 ROC AUC 分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到平均 ROC AUC 从没有任何数据重采样的约 0.87 提升到大多数类随机欠采样的约 0.96。
 
@@ -193,7 +193,7 @@ Mean ROC AUC: 0.962
 
 ## 不平衡分类的随机森林
 
-[随机森林](https://machinelearningmastery.com/implement-random-forest-scratch-python/)是决策树模型的另一个集合，可以认为是套袋后的改进。
+[随机森林](https://machinelearningmastery.com/implement-random-forest-scratch-python/)是决策树模型的另一个集合，可以认为是装袋后的改进。
 
 像装袋一样，随机森林包括从训练数据集中选择自举样本，并在每个样本上拟合决策树。主要区别是没有使用所有的特性(变量或列)；取而代之的是，为每个引导样本选择一个小的、随机选择的特征(列)子集。这具有去相关决策树(使它们更独立)的效果，并且反过来改善集成预测。
 
@@ -243,7 +243,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例评估模型并报告平均 ROC AUC 分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型实现了大约 0.86 的平均 ROC AUC。
 
@@ -299,7 +299,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例评估模型并报告平均 ROC AUC 分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型实现了平均 ROC AUC 从 0.86 到约 0.87 的适度提升。
 
@@ -339,7 +339,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例评估模型并报告平均 ROC AUC 分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型实现了平均 ROC AUC 从 0.87 到约 0.88 的适度提升。
 
@@ -385,7 +385,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例评估模型并报告平均 ROC AUC 分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型实现了平均 ROC AUC 从 0.89 到约 0.97 的适度提升。
 
@@ -459,7 +459,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例评估模型并报告平均 ROC AUC 分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到集成在数据集上表现良好，实现了约 0.96 的平均 ROC AUC，接近于在具有随机欠采样的随机森林的数据集上实现的平均 ROC AUC(0.97)。
 

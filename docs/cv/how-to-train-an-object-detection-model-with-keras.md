@@ -1162,7 +1162,7 @@ model.train(train_set, test_set, learning_rate=config.LEARNING_RATE, epochs=5, l
 
 运行该示例将使用标准的 Keras 进度条报告进度。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，对于网络的每个输出头，报告了许多不同的训练和测试损失分数。注意哪一项损失可能会很令人困惑。
 
@@ -1193,19 +1193,19 @@ Epoch 5/5
 
 ## 如何评估一个面具
 
-对象识别任务的模型表现通常使用平均绝对精度(mAP)来评估。
+对象识别任务的模型表现通常使用平均绝对准确率(mAP)来评估。
 
 我们正在预测边界框，因此我们可以根据预测的边界框和实际边界框重叠的程度来确定边界框预测是否良好。这可以通过将重叠区域除以两个边界框的总面积来计算，或者将交集除以并集来计算，称为并集上的“*交集*”或 IoU。完美的边界框预测的 IoU 为 1。
 
 如果 IoU 大于 0.5，则假设边界框为正预测是标准的，例如，它们重叠 50%或更多。
 
-精度是指所有预测的边界框中正确预测的边界框的百分比(IoU > 0.5)。回忆是照片中所有对象中正确预测的边界框的百分比(IoU > 0.5)。
+准确率是指所有预测的边界框中正确预测的边界框的百分比(IoU > 0.5)。回忆是照片中所有对象中正确预测的边界框的百分比(IoU > 0.5)。
 
-随着我们做出更多的预测，召回率将会增加，但随着我们开始做出假阳性预测，精确度将会下降或变得不稳定。召回( *x* )可以相对于每一个预测数的精度( *y* )来绘制，以创建曲线或直线。我们可以最大化这条线上每个点的值，并为每个召回值计算精度或 AP 的平均值。
+随着我们做出更多的预测，召回率将会增加，但随着我们开始做出假阳性预测，精确度将会下降或变得不稳定。召回( *x* )可以相对于每一个预测数的准确率( *y* )来绘制，以创建曲线或直线。我们可以最大化这条线上每个点的值，并为每个召回值计算准确率或 AP 的平均值。
 
 **注**:AP 的计算方式存在差异，例如广泛使用的 PASCAL VOC 数据集和 MS COCO 数据集的计算方式不同。
 
-数据集中所有图像的平均精度(AP)的平均值或平均值称为平均精度(mAP)。
+数据集中所有图像的平均准确率(AP)的平均值或平均值称为平均准确率(mAP)。
 
 mask-rcnn 库提供了一个 *mrcnn.utils.compute_ap* 来计算给定图像的 ap 和其他度量。这些应用程序分数可以在整个数据集上收集，并计算平均值，以了解该模型在检测数据集中的对象方面有多好。
 
@@ -1460,7 +1460,7 @@ print("Test mAP: %.3f" % test_mAP)
 
 运行该示例将对训练和测试数据集中的每个图像进行预测，并计算每个图像的 mAP。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 mAP 高于 90%或 95%是一个很好的分数。我们可以看到，mAP 分数在两个数据集上都很好，在测试数据集上可能比在训练数据集上稍好。
 
@@ -1757,7 +1757,7 @@ plot_actual_vs_predicted(test_set, model, cfg)
 
 运行该示例首先创建一个图形，显示训练数据集中的五张照片，这些照片带有地面真实边界框，同一张照片和预测边界框在旁边。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到模型在这些例子中做得很好，找到了所有的袋鼠，即使在一张照片中有两三只袋鼠的情况下。第二张向下的照片(在右栏)确实显示了一个失误，模型已经预测了同一个袋鼠周围的边界框两次。
 
@@ -1800,7 +1800,7 @@ plot_actual_vs_predicted(test_set, model, cfg)
 *   [色彩喷溅:用Mask RCNN 和 TensorFlow 进行实例分割，2018](https://engineering.matterport.com/splash-of-color-instance-segmentation-with-mask-r-cnn-and-tensorflow-7c761e238b46) 。
 *   [口罩 R-CNN–检查气球训练模型，笔记本](https://github.com/matterport/Mask_RCNN/blob/master/samples/balloon/inspect_balloon_model.ipynb)。
 *   [Mask RCNN–在形状数据集上训练，笔记本](https://github.com/matterport/Mask_RCNN/blob/master/samples/shapes/train_shapes.ipynb)。
-*   [对象检测平均精度图，2018](https://medium.com/@jonathan_hui/map-mean-average-precision-for-object-detection-45c121a31173) 。
+*   [对象检测平均准确率图，2018](https://medium.com/@jonathan_hui/map-mean-average-precision-for-object-detection-45c121a31173) 。
 
 ## 摘要
 

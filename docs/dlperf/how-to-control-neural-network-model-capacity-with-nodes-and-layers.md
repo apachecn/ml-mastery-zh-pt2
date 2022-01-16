@@ -329,7 +329,7 @@ def evaluate_model(n_nodes, trainX, trainy, testX, testy):
 
 我们预计，随着节点数量的增加，这将增加模型的容量，并允许模型更好地学习训练数据集，至少在学习算法的所选配置(例如，学习率、批次大小和时期)所限制的点上。
 
-将打印每个配置的测试精度，并绘制每个配置的训练精度的学习曲线。
+将打印每个配置的测试准确率，并绘制每个配置的训练准确率的学习曲线。
 
 ```py
 # evaluate model and plot learning curve with given number of nodes
@@ -402,9 +402,9 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行示例首先打印每个模型配置的测试精度。
+运行示例首先打印每个模型配置的测试准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，随着节点数量的增加，模型学习问题的能力也会增加。这导致模型在测试数据集上的泛化误差逐渐降低，直到模型完美地学习问题的 6 和 7 个节点。
 
@@ -440,7 +440,7 @@ nodes=7: 1.000
 
 从上一节中我们知道，一个大约有七个或更多节点的 MLP 适合 100 个时代，它将完美地学习这个问题。因此，我们将在每一层中使用 10 个节点，以确保模型在一层中有足够的容量来学习问题。
 
-下面列出了更新后的函数，以层数和数据集为参数，返回模型的训练历史和测试精度。
+下面列出了更新后的函数，以层数和数据集为参数，返回模型的训练历史和测试准确率。
 
 ```py
 # fit model with given number of layers, returns test set accuracy
@@ -540,9 +540,9 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行示例首先打印每个模型配置的测试精度。
+运行示例首先打印每个模型配置的测试准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型能够很好地学习问题，最多有三层，然后开始动摇。我们可以看到，五层的表现确实下降了，如果层数进一步增加，预计还会继续下降。
 

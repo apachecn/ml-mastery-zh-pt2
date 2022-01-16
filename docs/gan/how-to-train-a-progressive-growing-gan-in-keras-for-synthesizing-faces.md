@@ -1407,7 +1407,7 @@ train(g_models, d_models, gan_models, dataset, latent_dim, n_epochs, n_epochs, n
 
 在现代 GPU 硬件上运行该示例可能需要几个小时才能完成。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 如果训练迭代期间的损失值为零或非常大/小的数字，这可能是故障模式的一个例子，可能需要重新开始训练过程。
 
@@ -1657,7 +1657,7 @@ plot_generated(X, n_images)
 
 运行该示例将加载模型并生成 25 个面，这些面绘制在 5×5 的网格中。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 ![Plot of 25 Synthetic Faces with 16x16 Resolution Generated With a Final Progressive Growing GAN Model](img/76049c3aa0dfaa57086ef59603cbe94f.png)
 

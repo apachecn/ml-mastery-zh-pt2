@@ -161,7 +161,7 @@ _, test_acc = model.evaluate(testX, testy, verbose=0)
 print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 ```
 
-最后，我们将在训练和验证数据集上绘制每个训练时期的模型精度的学习曲线。
+最后，我们将在训练和验证数据集上绘制每个训练时期的模型准确率的学习曲线。
 
 ```py
 # learning curves of model accuracy
@@ -209,7 +209,7 @@ pyplot.show()
 
 运行该示例首先打印每个数据集的形状以供确认，然后打印最终模型在训练和测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型在训练数据集上获得了大约 87%的准确率，我们知道这是乐观的，在测试数据集上获得了大约 81%的准确率，我们预计这将更加真实。
 
@@ -218,13 +218,13 @@ pyplot.show()
 Train: 0.870, Test: 0.814
 ```
 
-还创建了一个线图，显示了在每个训练周期内，训练和测试集上模型精度的学习曲线。
+还创建了一个线图，显示了在每个训练周期内，训练和测试集上模型准确率的学习曲线。
 
 我们可以看到，在大部分跑步过程中，训练的准确性更加乐观，我们也注意到了最终得分。
 
 ![Line Plot Learning Curves of Model Accuracy on Train and Test Dataset over Each Training Epoch](img/4795723622aea0252b6f084a764cefbc.png)
 
-每个训练时期训练和测试数据集上模型精度的线图学习曲线
+每个训练时期训练和测试数据集上模型准确率的线图学习曲线
 
 既然我们已经确定该模型是开发集成的一个很好的候选对象，我们接下来可以考虑开发一个简单的模型平均集成。
 
@@ -394,7 +394,7 @@ pyplot.show()
 
 运行该示例首先报告每个单个模型的表现，以及给定大小(1、2、3 等)的模型平均集合。成员。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这次运行中，单个模型的平均表现约为 80.4%，我们可以看到一个由 5 到 9 名成员组成的集合将达到 80.8%到 81%的表现。正如预期的那样，中等规模模型平均集成的表现平均超过随机选择的单个模型的表现。
 
@@ -413,13 +413,13 @@ pyplot.show()
 Accuracy 0.804 (0.005)
 ```
 
-接下来，创建一个图表，将单个模型(蓝点)的精度与不断增大的模型平均集合(橙色线)进行比较。
+接下来，创建一个图表，将单个模型(蓝点)的准确率与不断增大的模型平均集合(橙色线)进行比较。
 
 在这一轮中，橙色系列的集成明显显示出比单一型号更好或相当的表现(如果隐藏圆点的话)。
 
 ![Line Plot Showing Single Model Accuracy (blue dots) and Accuracy of Ensembles of Increasing Size (orange line)](img/7ec1c125b7bcf064759f59fa302cf9bf.png)
 
-显示单一模型精度(蓝点)和增加尺寸的集合精度(橙色线)的线图
+显示单一模型准确率(蓝点)和增加尺寸的集合准确率(橙色线)的线图
 
 现在我们知道如何开发一个模型平均集成，我们可以通过加权集成成员的贡献来进一步扩展该方法。
 
@@ -661,7 +661,7 @@ print('Grid Search Weights: %s, Score: %.3f' % (weights, score))
 
 运行该示例首先创建五个单一模型，并在测试数据集上评估它们的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这次运行中，我们可以看到 model 2 具有大约 81.7%准确率的最佳独奏表现。
 
@@ -704,7 +704,7 @@ SciPy 库提供了许多优秀的优化算法，包括局部和全局搜索方�
 
 SciPy 提供了[差分进化](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.differential_evolution.html)方法的实现。这是为数不多的随机全局搜索算法之一，对于具有连续输入的函数优化，*只是起作用*，而且效果很好。
 
-*微分进化()* SciPy 函数要求指定一个函数来评估一组权重并返回一个要最小化的分数。我们可以将分类误差降至最低(1–精度)。
+*微分进化()* SciPy 函数要求指定一个函数来评估一组权重并返回一个要最小化的分数。我们可以将分类误差降至最低(1–准确率)。
 
 与网格搜索一样，我们在评估权重向量之前，通常会对其进行归一化。下面的 *loss_function()* 函数将在优化过程中用作评估函数。
 
@@ -853,7 +853,7 @@ print('Optimized Weights Score: %.3f' % score)
 
 运行该示例首先创建五个单一模型，并在测试数据集上评估每个模型的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这次运行中，我们可以看到模型 3 和 4 都表现最好，准确率约为 82.2%。
 

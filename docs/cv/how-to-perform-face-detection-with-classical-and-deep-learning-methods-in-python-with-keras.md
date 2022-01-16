@@ -274,7 +274,7 @@ pixels = imread('test2.jpg')
 
 运行该示例，我们可以看到许多人脸被正确检测到，但结果并不完美。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，第一排或最下面一排人的一张脸被检测了两次，中间一排人的一张脸没有被检测到，第三排或最上面一排的背景被检测为人脸。
 

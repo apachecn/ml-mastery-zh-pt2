@@ -221,7 +221,7 @@ def get_voting():
 
 然后，我们可以创建一个要评估的模型列表，包括每个独立版本的 KNN 模型配置和硬投票集合。
 
-这将有助于我们在分类精度分数的分布方面直接比较 KNN 模型和集合的每个独立配置。下面的 *get_models()* 函数创建模型列表供我们评估。
+这将有助于我们在分类准确率分数的分布方面直接比较 KNN 模型和集合的每个独立配置。下面的 *get_models()* 函数创建模型列表供我们评估。
 
 ```py
 # get a list of models to evaluate
@@ -314,9 +314,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个模型的平均值和标准偏差精度。
+运行该示例首先报告每个模型的平均值和标准偏差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，与模型的所有独立版本相比，硬投票集成实现了约 90.2%的更好的分类准确率。
 
@@ -329,7 +329,7 @@ pyplot.show()
 >hard_voting 0.902 (0.034)
 ```
 
-然后创建一个方块-触须图，比较每个模型的分布精度分数，让我们清楚地看到，平均而言，硬投票集合比所有独立模型表现更好。
+然后创建一个方块-触须图，比较每个模型的分布准确率分数，让我们清楚地看到，平均而言，硬投票集合比所有独立模型表现更好。
 
 ![Box Plot of Hard Voting Ensemble Compared to Standalone Models for Binary Classification](img/bc0ee03bfa5b33dae833d05c2b8c5d6d.png)
 
@@ -400,7 +400,7 @@ def get_voting():
 
 然后，我们可以创建一个要评估的模型列表，包括每个独立版本的 SVM 模型配置和软投票集合。
 
-这将有助于我们在分类精度分数的分布方面直接比较 SVM 模型和集合的每个独立配置。下面的 *get_models()* 函数创建模型列表供我们评估。
+这将有助于我们在分类准确率分数的分布方面直接比较 SVM 模型和集合的每个独立配置。下面的 *get_models()* 函数创建模型列表供我们评估。
 
 ```py
 # get a list of models to evaluate
@@ -481,9 +481,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个模型的平均值和标准偏差精度。
+运行该示例首先报告每个模型的平均值和标准偏差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，与模型的所有独立版本相比，软投票集成实现了约 92.4%的更好的分类准确率。
 
@@ -496,7 +496,7 @@ pyplot.show()
 >soft_voting 0.924 (0.028)
 ```
 
-然后创建一个方块-触须图，比较每个模型的分布精度分数，使我们能够清楚地看到软投票集合的平均表现优于所有独立模型。
+然后创建一个方块-触须图，比较每个模型的分布准确率分数，使我们能够清楚地看到软投票集合的平均表现优于所有独立模型。
 
 ![Box Plot of Soft Voting Ensemble Compared to Standalone Models for Binary Classification](img/7b3d59c15bc4eb55eae31f1a0485b64b.png)
 
@@ -669,9 +669,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个模型的平均值和标准偏差精度。
+运行该示例首先报告每个模型的平均值和标准偏差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，投票集成实现了更好的均方误差，约为-136.338，与模型的所有独立版本相比，这更大(更好)。
 

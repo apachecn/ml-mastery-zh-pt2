@@ -144,10 +144,10 @@
 
 *   [Python 中概率评分方法的温和介绍](https://machinelearningmastery.com/how-to-score-probability-predictions-in-python/)
 
-对于预测单一概率分数的二进制分类任务，可以构建接收器操作特性(ROC)曲线，以探索在解释预测时可以使用的不同临界值，这些临界值反过来会导致不同的权衡。ROC 曲线下的面积，或 ROC AUC，也可以作为一个综合指标来计算。正类上的一个相关方法是精度-召回曲线和曲线下面积。
+对于预测单一概率分数的二进制分类任务，可以构建接收器操作特性(ROC)曲线，以探索在解释预测时可以使用的不同临界值，这些临界值反过来会导致不同的权衡。ROC 曲线下的面积，或 ROC AUC，也可以作为一个综合指标来计算。正类上的一个相关方法是准确率-召回曲线和曲线下面积。
 
 *   ROC 曲线和 ROC 曲线面积比
-*   精度-召回曲线和 AUC
+*   准确率-召回曲线和 AUC
 
 有关这些曲线以及何时使用它们的更多信息，请参见教程:
 
@@ -180,7 +180,7 @@
 ### 邮件
 
 *   [Python 中概率评分方法的温和介绍](https://machinelearningmastery.com/how-to-score-probability-predictions-in-python/)
-*   [如何以及何时在 Python 中使用 ROC 曲线和精度-召回曲线进行分类](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)
+*   [如何以及何时在 Python 中使用 ROC 曲线和准确率-召回曲线进行分类](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)
 *   [训练深度学习神经网络时如何选择损失函数](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)
 
 ### 文章

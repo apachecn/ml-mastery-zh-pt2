@@ -299,7 +299,7 @@ print('MAE: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 运行该示例使用 10 倍交叉验证来评估数据准备管道。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们实现了大约 1.4 的平均 MAE，这比基线分数 2.3 要好。
 

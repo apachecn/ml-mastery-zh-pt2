@@ -119,9 +119,9 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例报告了决策树在合成类别数据集上的平均分类精度。
+运行该示例报告了决策树在合成类别数据集上的平均分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型实现了大约 82.3%的分类准确率。
 
@@ -246,9 +246,9 @@ n_scores = cross_val_score(ensemble, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例报告了数据变换集合在合成类别数据集上的平均分类精度。
+运行该示例报告了数据变换集合在合成类别数据集上的平均分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到数据转换集成实现了大约 83.8%的分类准确率，这比单独使用决策树实现了大约 82.3%的准确率有所提升。
 
@@ -388,9 +388,9 @@ pyplot.boxplot(results, labels=[n for n,_ in models], showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个单独模型的平均和标准分类精度，最后是组合模型的集成的表现。
+运行该示例首先报告每个单独模型的平均和标准分类准确率，最后是组合模型的集成的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到许多单个成员表现良好，例如准确率约为 83.3%的“T0”kbins，准确率约为 83.1%的“T2”STD。我们还可以看到，与任何贡献成员相比，该集成实现了更好的整体表现，准确率约为 83.4%。
 
@@ -404,13 +404,13 @@ pyplot.show()
 >ensemble: 0.834 (0.040)
 ```
 
-还创建了一个图形，显示了每个单独模型以及数据转换集合的分类精度的方框图和触须图。
+还创建了一个图形，显示了每个单独模型以及数据转换集合的分类准确率的方框图和触须图。
 
 我们可以看到集成的分布是向上倾斜的，这是我们可能希望的，并且平均值(绿色三角形)略高于单个集成成员的平均值。
 
 ![Box and Whisker Plot of Accuracy Distribution for Individual Models and Data Transform Ensemble](img/9a73e5045ff892d5bfe7911e6f3cb3cb.png)
 
-单个模型和数据转换集合精度分布的盒须图
+单个模型和数据转换集合准确率分布的盒须图
 
 既然我们已经熟悉了如何开发一个用于分类的数据转换集成，那么让我们看看如何对回归做同样的事情。
 
@@ -465,7 +465,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例会报告合成回归数据集上决策树的 MAE。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型实现了大约 139.817 的 MAE。这提供了一个我们期望集合模型改进的表现下限。
 
@@ -580,7 +580,7 @@ pyplot.show()
 
 运行该示例首先报告每个单独模型的 MAE，最后是组合模型的集合的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，每个模型的表现都差不多，MAE 误差分数在 140 左右，都高于孤立使用的决策树。有趣的是，该集成表现最好，超过了所有单个成员和没有变换的树，达到了大约 126.487 的 MAE。
 

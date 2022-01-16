@@ -801,7 +801,7 @@ train(generator, critic, gan_model, dataset, latent_dim)
 
 运行这个例子很快，在没有图形处理器的现代硬件上大约需要 10 分钟。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 首先，在训练循环的每次迭代中，都会向控制台报告批评模型和生成器模型的丢失。具体来说，c1 是真实例子中的批评者的损失，c2 是生成样本中的批评者的损失，g 是通过批评者训练的生成器的损失。
 
@@ -837,7 +837,7 @@ WGAN 的好处是损耗与生成的图像质量相关。对于稳定的训练过
 
 ![Line Plots of Loss and Accuracy for a Wasserstein Generative Adversarial Network](img/b9b9462ef5d4612cf189764f848881f7.png)
 
-Wasserstein生成对抗网络的损失和精度线图
+Wasserstein生成对抗网络的损失和准确率线图
 
 在这种情况下，更多的训练似乎会产生质量更好的图像，主要障碍出现在 200-300 年左右，之后模型的质量仍然很好。
 

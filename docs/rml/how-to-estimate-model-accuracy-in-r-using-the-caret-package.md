@@ -1,6 +1,6 @@
 # 如何使用脱字符号包
 
-估算 R 中的模型精度
+估算 R 中的模型准确率
 
 > 原文：<https://machinelearningmastery.com/how-to-estimate-model-accuracy-in-r-using-the-caret-package/>
 
@@ -20,9 +20,9 @@
 
 从脱字符号主页将脱字符号包放入 R，
 
-## 估计模型精度
+## 估计模型准确率
 
-我们以前在测试线束的测试选项配置中考虑过模型精度。你可以在帖子里读到更多:[评估机器学习算法时如何选择正确的测试选项](https://machinelearningmastery.com/how-to-choose-the-right-test-options-when-evaluating-machine-learning-algorithms/ "How To Choose The Right Test Options When Evaluating Machine Learning Algorithms")。
+我们以前在测试线束的测试选项配置中考虑过模型准确率。你可以在帖子里读到更多:[评估机器学习算法时如何选择正确的测试选项](https://machinelearningmastery.com/how-to-choose-the-right-test-options-when-evaluating-machine-learning-algorithms/ "How To Choose The Right Test Options When Evaluating Machine Learning Algorithms")。
 
 在这篇文章中，你可以发现 5 种不同的方法，你可以用来估计模型的准确性。
 
@@ -86,9 +86,9 @@ print(model)
 
 ## k 倍交叉验证
 
-[k 重交叉验证](https://en.wikipedia.org/wiki/Cross-validation_(statistics))方法包括将数据集分割成 k 个子集。对于每个子集，在模型在所有其他子集上训练的同时，保持不变。此过程一直持续到确定数据集中每个实例的精度，并提供总体精度估计值。
+[K 折交叉验证](https://en.wikipedia.org/wiki/Cross-validation_(statistics))方法包括将数据集分割成 k 个子集。对于每个子集，在模型在所有其他子集上训练的同时，保持不变。此过程一直持续到确定数据集中每个实例的准确率，并提供总体准确率估计值。
 
-这是一种稳健的方法，用于估计精度和 k 的大小，并调整估计中的偏差量，常用值设置为 3、5、7 和 10。
+这是一种稳健的方法，用于估计准确率和 k 的大小，并调整估计中的偏差量，常用值设置为 3、5、7 和 10。
 
 以下示例使用 10 倍交叉验证来估计虹膜数据集上的朴素贝叶斯。
 
@@ -109,7 +109,7 @@ print(model)
 
 ## 重复 k 倍交叉验证
 
-将数据拆分为 k 折叠的过程可以重复多次，这称为重复 k 折叠交叉验证。最终的模型精度作为重复次数的平均值。
+将数据拆分为 k 折叠的过程可以重复多次，这称为重复 k 折叠交叉验证。最终的模型准确率作为重复次数的平均值。
 
 以下示例使用具有 3 次重复的 10 倍交叉验证来估计虹膜数据集上的朴素贝叶斯。
 

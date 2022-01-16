@@ -192,7 +192,7 @@ _, test_acc = model.evaluate(testX, testy, verbose=0)
 print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 ```
 
-最后，我们将在训练和验证数据集上绘制每个训练时期的模型精度的学习曲线。
+最后，我们将在训练和验证数据集上绘制每个训练时期的模型准确率的学习曲线。
 
 ```py
 # learning curves of model accuracy
@@ -240,7 +240,7 @@ pyplot.show()
 
 运行该示例首先打印每个数据集的形状以供确认，然后打印最终模型在训练和测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型在训练数据集上实现了大约 85%的准确率，我们知道这是乐观的，在测试数据集上实现了大约 80%的准确率，我们预计这将更加真实。
 
@@ -249,13 +249,13 @@ pyplot.show()
 Train: 0.850, Test: 0.809
 ```
 
-还创建了一个线图，显示了在每个训练周期内，训练和测试集上模型精度的学习曲线。
+还创建了一个线图，显示了在每个训练周期内，训练和测试集上模型准确率的学习曲线。
 
 我们可以看到，在大部分跑步过程中，训练的准确性更加乐观，我们也注意到了最终得分。
 
 ![Line Plot Learning Curves of Model Accuracy on Train and Test Dataset Over Each Training Epoch](img/f80a07757298c7d980a853c3511d896c.png)
 
-每个训练时期训练和测试数据集上模型精度的线图学习曲线
+每个训练时期训练和测试数据集上模型准确率的线图学习曲线
 
 我们现在可以将这个模型的实例作为堆叠集合的一部分。
 
@@ -265,7 +265,7 @@ Train: 0.850, Test: 0.809
 
 我们还将使用保持验证数据集来训练集合中的第一级或元学习器。
 
-更高级的例子可以使用不同类型的 MLP 模型(更深、更宽等)。)作为子模型，使用 [k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)训练元学习器。
+更高级的例子可以使用不同类型的 MLP 模型(更深、更宽等)。)作为子模型，使用 [K 折交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)训练元学习器。
 
 在本节中，我们将训练多个子模型，[将它们保存到文件中，以便以后在我们的堆叠集成中使用](https://machinelearningmastery.com/save-load-keras-deep-learning-models/)。
 
@@ -567,7 +567,7 @@ print('Stacked Test Accuracy: %.3f' % acc)
 
 运行该示例首先将子模型加载到列表中，并评估每个子模型的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，表现最好的模型是最终模型，准确率约为 81.3%。
 
@@ -805,9 +805,9 @@ print('Stacked Test Accuracy: %.3f' % acc)
 
 运行该示例首先加载五个子模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-定义了一个更大的叠加集成神经网络，并将其拟合到测试数据集上，然后利用新模型对测试数据集进行预测。我们可以看到，在这种情况下，模型达到了大约 83.3%的精度，超过了前面部分的线性模型。
+定义了一个更大的叠加集成神经网络，并将其拟合到测试数据集上，然后利用新模型对测试数据集进行预测。我们可以看到，在这种情况下，模型达到了大约 83.3%的准确率，超过了前面部分的线性模型。
 
 ```py
 (100, 2) (1000, 2)
@@ -826,7 +826,7 @@ Stacked Test Accuracy: 0.833
 
 *   **交替元学习器**。更新示例，将替代元学习器分类器模型用于逻辑回归模型。
 *   **单级 0 模型**。更新示例以使用单个 0 级模型并比较结果。
-*   **改变 0 级模型**。开展一项研究，证明测试分类精度和堆叠集成中使用的子模型数量之间的关系。
+*   **改变 0 级模型**。开展一项研究，证明测试分类准确率和堆叠集成中使用的子模型数量之间的关系。
 *   **交叉验证堆叠集合**。更新示例，使用 k-fold 交叉验证为元学习器模型准备训练数据集。
 *   **在元学习器中使用原始输入**。更新示例，以便元学习器算法获取样本的原始输入数据以及子模型的输出，并比较表现。
 

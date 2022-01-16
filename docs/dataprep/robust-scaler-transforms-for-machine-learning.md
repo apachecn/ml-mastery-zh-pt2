@@ -45,7 +45,7 @@
 
 这是因为数据通常由许多不同的输入变量或特征(列)组成，每个变量或特征可能有不同的值或度量单位范围，如英尺、英里、公斤、美元等。
 
-如果存在相对于其他输入变量具有非常大值的输入变量，这些大值会支配或扭曲一些机器学习算法。结果是算法把大部分注意力放在大值上，而忽略了小值的变量。
+如果存在相对于其他输入变量具有非常大值的输入变量，这些大值会支配或偏斜一些机器学习算法。结果是算法把大部分注意力放在大值上，而忽略了小值的变量。
 
 这包括使用线性回归、逻辑回归和人工神经网络等输入加权和的算法，以及使用示例间距离度量的算法，如 k 近邻和支持向量机。
 
@@ -57,7 +57,7 @@
 
 *   值=(值–平均值)/ stdev
 
-有时一个输入变量可能有[个异常值](https://machinelearningmastery.com/how-to-use-statistics-to-identify-outliers-in-data/)。这些值处于分布的边缘，出现的概率可能很低，但由于某种原因，它们的出现率过高。异常值会扭曲概率分布，并使使用标准化进行数据缩放变得困难，因为异常值的存在会扭曲计算的平均值和标准偏差。
+有时一个输入变量可能有[个异常值](https://machinelearningmastery.com/how-to-use-statistics-to-identify-outliers-in-data/)。这些值处于分布的边缘，出现的概率可能很低，但由于某种原因，它们的出现率过高。异常值会偏斜概率分布，并使使用标准化进行数据缩放变得困难，因为异常值的存在会偏斜计算的平均值和标准偏差。
 
 存在异常值时标准化输入变量的一种方法是忽略平均值和标准偏差计算中的异常值，然后使用计算值来缩放变量。
 
@@ -67,7 +67,7 @@
 
 *   值=(值–中间值)/(p75–p25)
 
-所得变量的平均值和中值为零，标准偏差为 1，尽管没有被异常值扭曲，并且异常值仍然以与其他值相同的相对关系存在。
+所得变量的平均值和中值为零，标准偏差为 1，尽管没有被异常值偏斜，并且异常值仍然以与其他值相同的相对关系存在。
 
 ## 鲁棒缩放器变换
 
@@ -89,7 +89,7 @@
 
 它涉及 60 个实值输入和一个两类目标变量。数据集中有 208 个示例，类别相当均衡。
 
-使用重复的分层 10 倍交叉验证，基线分类算法可以达到大约 53.4%的分类精度。[使用重复的分层 10 倍交叉验证，该数据集的最高表现](https://machinelearningmastery.com/results-for-standard-classification-and-regression-machine-learning-datasets/)约为 88%。
+使用重复的分层 10 倍交叉验证，基线分类算法可以达到大约 53.4%的分类准确率。[使用重复的分层 10 倍交叉验证，该数据集的最高表现](https://machinelearningmastery.com/results-for-standard-classification-and-regression-machine-learning-datasets/)约为 88%。
 
 该数据集描述了岩石或模拟地雷的雷达回波。
 
@@ -152,7 +152,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 接下来，让我们在原始数据集上拟合和评估一个机器学习模型。
 
-我们将使用带有默认超参数的 k 近邻算法，并使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)对其进行评估。下面列出了完整的示例。
+我们将使用带有默认超参数的 k 近邻算法，并使用[重复分层 K 折交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)对其进行评估。下面列出了完整的示例。
 
 ```py
 # evaluate knn on the raw sonar dataset
@@ -293,7 +293,7 @@ n_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1,
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例，我们可以看到稳健的定标器变换将表现从无变换时的 79.7%提升到有变换时的约 81.9%。
 
@@ -373,9 +373,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例会报告每个值定义的 IQR 范围的平均分类精度。
+运行该示例会报告每个值定义的 IQR 范围的平均分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，默认的第 25 到第 75 百分位达到了最好的结果，尽管 20-80 和 30-70 的值达到了非常相似的结果。
 
@@ -391,11 +391,11 @@ pyplot.show()
 
 创建方框图和触须图来总结每个 IQR 范围的分类准确度分数。
 
-在 25-75%和 30-70%的较大范围内，我们可以看到分布和平均精度的显著差异。
+在 25-75%和 30-70%的较大范围内，我们可以看到分布和平均准确率的显著差异。
 
 ![Histogram Plots of Robust Scaler Transformed Input Variables for the Sonar Dataset](img/3a0ca30f128057ca6bbbef2948d1e016.png)
 
-声呐数据集上鲁棒定标器 IQR 距离与 KNN 分类精度的箱线图
+声呐数据集上鲁棒定标器 IQR 距离与 KNN 分类准确率的箱线图
 
 ## 进一步阅读
 

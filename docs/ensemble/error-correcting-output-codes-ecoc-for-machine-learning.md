@@ -147,7 +147,7 @@ Counter({2: 335, 1: 333, 0: 332})
 
 接下来，我们可以在数据集上评估纠错输出代码模型。
 
-我们将使用上面定义的每类 2 位的逻辑回归。然后将使用重复的分层 k-fold 交叉验证对模型进行评估，重复 3 次，重复 10 次。我们将使用所有重复和折叠的分类精度的平均值和标准差来总结模型的表现。
+我们将使用上面定义的每类 2 位的逻辑回归。然后将使用重复的分层 k-fold 交叉验证对模型进行评估，重复 3 次，重复 10 次。我们将使用所有重复和折叠的分类准确率的平均值和标准差来总结模型的表现。
 
 ```py
 ...
@@ -186,7 +186,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例定义了模型，并使用定义的测试过程在我们的合成多类类别数据集上对其进行评估。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型实现了大约 76.6%的平均分类准确率。
 
@@ -349,7 +349,7 @@ pyplot.show()
 
 运行该示例首先评估每个模型配置，并报告准确度分数的平均值和标准偏差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，每个类可能有 5 或 6 个比特导致最佳表现，报告的平均准确度分数分别约为 78.2%和 78.0%。我们还看到每个类 9、13、17 和 20 位的良好结果，每个类 17 位可能给出大约 78.5%的最佳结果。
 
@@ -382,7 +382,7 @@ pyplot.show()
 
 ![Box and Whisker Plots of Bits Per Class vs. Distribution of Classification Accuracy for ECOC](img/722a9cdd157ac7e148132afcbc9f86f1.png)
 
-ECOC 每类比特的盒须图与分类精度分布
+ECOC 每类比特的盒须图与分类准确率分布
 
 ## 进一步阅读
 

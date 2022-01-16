@@ -8,7 +8,7 @@
 
 识别欺诈性信用卡交易是一种常见的不平衡二进制分类，其重点是积极类(即欺诈类)。
 
-因此，当将预测概率映射到类标签时，像精度和召回率这样的度量可以用来总结类标签方面的模型表现，而精度-召回率曲线可以用来总结概率阈值范围内的模型表现。
+因此，当将预测概率映射到类标签时，像准确率和召回率这样的度量可以用来总结类标签方面的模型表现，而准确率-召回率曲线可以用来总结概率阈值范围内的模型表现。
 
 这使得模型的操作者可以控制如何根据模型产生的假阳性或假阴性类型的误差进行预测。
 
@@ -53,9 +53,9 @@
 
 ——[不平衡分类欠采样校准概率](https://ieeexplore.ieee.org/abstract/document/7376606/)，2015。
 
-一些出版物使用[曲线度量下的 ROC 面积](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)，尽管数据集的网站建议使用曲线度量下的精度-召回面积，因为存在严重的类别不平衡。
+一些出版物使用[曲线度量下的 ROC 面积](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)，尽管数据集的网站建议使用曲线度量下的准确率-召回面积，因为存在严重的类别不平衡。
 
-> 给定类别不平衡比率，我们建议使用精度-召回曲线下面积(AUPRC)来测量精度。
+> 给定类别不平衡比率，我们建议使用准确率-召回曲线下面积(AUPRC)来测量准确率。
 
 ——[信用卡欺诈检测](https://www.kaggle.com/mlg-ulb/creditcardfraud)，卡格尔。
 
@@ -82,7 +82,7 @@
 
 请注意，此版本的数据集删除了标题行。如果您[从 Kaggle](https://www.kaggle.com/mlg-ulb/creditcardfraud) 下载数据集，您必须先删除标题行。
 
-我们可以看到第一列是时间，是整数，第二最后一列是购买金额。最后一列包含类标签。我们可以看到，PCA 变换后的特征有正有负，并且包含大量的浮点精度。
+我们可以看到第一列是时间，是整数，第二最后一列是购买金额。最后一列包含类标签。我们可以看到，PCA 变换后的特征有正有负，并且包含大量的浮点准确率。
 
 时间列不太可能有用，可能可以删除。主成分分析变量和美元金额之间的比例差异表明，对于那些对输入变量的比例敏感的算法，应该使用数据比例。
 
@@ -225,11 +225,11 @@ Name: 29, dtype: float64
 
 这可以通过使用[repeated stratifiedfold Sklearn 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
 
-我们将使用精度-召回曲线或 PR AUC 下的推荐面积度量。
+我们将使用准确率-召回曲线或 PR AUC 下的推荐面积度量。
 
-这要求给定的算法首先预测一个概率或类似概率的度量。然后，使用精度和召回率在不同阈值范围内评估预测概率，用于将概率映射到类别标签，并且这些阈值曲线下的区域被报告为模型的表现。
+这要求给定的算法首先预测一个概率或类似概率的度量。然后，使用准确率和召回率在不同阈值范围内评估预测概率，用于将概率映射到类别标签，并且这些阈值曲线下的区域被报告为模型的表现。
 
-这一指标侧重于正类，这对于如此严重的类失衡是可取的。它还允许最终模型的操作者选择一个阈值，用于将概率映射到类标签(欺诈或非欺诈交易)，从而最好地平衡最终模型的精度和召回率。
+这一指标侧重于正类，这对于如此严重的类失衡是可取的。它还允许最终模型的操作者选择一个阈值，用于将概率映射到类标签(欺诈或非欺诈交易)，从而最好地平衡最终模型的准确率和召回率。
 
 我们可以定义一个函数来加载数据集，并将列分成输入和输出变量。下面的 *load_dataset()* 函数实现了这一点。
 
@@ -245,9 +245,9 @@ def load_dataset(full_path):
 	return X, y
 ```
 
-然后，我们可以定义一个函数，为给定的一组预测计算曲线下的精度-召回面积。
+然后，我们可以定义一个函数，为给定的一组预测计算曲线下的准确率-召回面积。
 
-这包括首先通过[精度 _ 召回 _ 曲线()](https://Sklearn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)函数计算预测的精度-召回曲线。然后，每个阈值的输出召回率和精度值可以作为参数提供给 [auc()](https://Sklearn.org/stable/modules/generated/sklearn.metrics.auc.html) 以计算曲线下的面积。下面的 *pr_auc()* 函数实现了这一点。
+这包括首先通过[准确率 _ 召回 _ 曲线()](https://Sklearn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)函数计算预测的准确率-召回曲线。然后，每个阈值的输出召回率和准确率值可以作为参数提供给 [auc()](https://Sklearn.org/stable/modules/generated/sklearn.metrics.auc.html) 以计算曲线下的面积。下面的 *pr_auc()* 函数实现了这一点。
 
 ```py
 # calculate precision-recall area under curve
@@ -535,7 +535,7 @@ pyplot.show()
 
 运行该示例依次评估每个算法，并报告平均值和标准差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到所有测试的算法都有技巧，实现了高于默认值 0.5 的 PR AUC。结果表明，决策树算法的集成在该数据集上表现良好，尽管数据集标准化的 KNN 似乎平均表现最好。
 

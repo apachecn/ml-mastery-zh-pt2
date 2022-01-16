@@ -481,7 +481,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 运行该示例以正确的方式准备数据集，然后对转换后的数据进行模型拟合评估。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，该模型实现了大约 75.79%的分类准确率，这是一个合理的分数。
 
@@ -616,7 +616,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 运行该示例以正确的方式准备数据集，然后对转换后的数据进行模型拟合评估。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，该模型实现了大约 70.53%的分类准确率，这比前一节中的序数编码稍差。
 

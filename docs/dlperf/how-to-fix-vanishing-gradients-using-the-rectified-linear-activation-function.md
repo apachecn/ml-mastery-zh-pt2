@@ -241,7 +241,7 @@ pyplot.show()
 
 运行该示例只需几秒钟就能适应模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，在这种情况下，模型很好地学习了问题，在训练数据集和测试数据集上都达到了大约 81.6%的准确率。
 
@@ -249,13 +249,13 @@ pyplot.show()
 Train: 0.816, Test: 0.816
 ```
 
-创建了列车和测试集上模型精度的线图，显示了所有 500 个训练时期的表现变化。
+创建了列车和测试集上模型准确率的线图，显示了所有 500 个训练时期的表现变化。
 
-该图表明，对于本次运行，列车和测试集的表现在 epoch 300 附近以大约 80%的精度开始下降。
+该图表明，对于本次运行，列车和测试集的表现在 epoch 300 附近以大约 80%的准确率开始下降。
 
 ![Line Plot of Train and Test Set Accuracy Over Training Epochs for MLP in the Two Circles Problem](img/cd97473b83d9b98035893a2d1dc966bd.png)
 
-MLP 在两个圆问题中训练和测试集精度在训练时期的线图
+MLP 在两个圆问题中训练和测试集准确率在训练时期的线图
 
 既然我们已经看到了如何使用 tanh 激活函数来开发一个经典的 MLP 来解决两个圆的问题，我们可以考虑修改模型，使其具有更多的隐藏层。
 
@@ -329,7 +329,7 @@ pyplot.show()
 
 运行该示例首先打印拟合模型在训练和测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，在达到大约 50%准确率的训练集和测试集上，表现都很差。这表明所配置的模型不能了解问题，也不能概括解决方案。
 
@@ -337,11 +337,11 @@ pyplot.show()
 Train: 0.530, Test: 0.468
 ```
 
-列车上模型精度的线图和训练期间的测试集讲述了类似的故事。我们可以看到表现很糟糕，实际上随着训练的进行会变得更糟。
+列车上模型准确率的线图和训练期间的测试集讲述了类似的故事。我们可以看到表现很糟糕，实际上随着训练的进行会变得更糟。
 
 ![Line Plot of Train and Test Set Accuracy of Over Training Epochs for Deep MLP in the Two Circles Problem](img/2baec076f3f90294fc7ec53ab33468cb.png)
 
-两个圆问题中深 MLP 超训练时段的训练和测试集精度的线图
+两个圆问题中深 MLP 超训练时段的训练和测试集准确率的线图
 
 ## 两个圆问题的 ReLU 深 MLP 模型
 
@@ -407,7 +407,7 @@ pyplot.show()
 
 运行该示例将打印模型在列车和测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，这一小小的改变已经允许模型学习问题，在两个数据集上实现了大约 84%的准确率，优于使用 tanh 激活函数的单层模型。
 
@@ -415,27 +415,27 @@ pyplot.show()
 Train: 0.836, Test: 0.840
 ```
 
-还创建了列车上的模型精度和训练时期的测试集的线图。这个情节显示了与我们目前所看到的截然不同的动态。
+还创建了列车上的模型准确率和训练时期的测试集的线图。这个情节显示了与我们目前所看到的截然不同的动态。
 
 这个模型似乎很快就学会了这个问题，并在大约 100 个时代内达成了一个解决方案。
 
 ![Line Plot of Train and Test Set Accuracy of Over Training Epochs for Deep MLP with ReLU in the Two Circles Problem](img/1fa44c23b38b9d57a2a6f6b460ac2fcb.png)
 
-用两个圆问题中的 ReLU 对深 MLP 进行超训练时的训练和测试集精度的线图
+用两个圆问题中的 ReLU 对深 MLP 进行超训练时的训练和测试集准确率的线图
 
 ReLU 激活函数的使用使我们能够为这个简单的问题拟合一个更深层次的模型，但是这种能力不会无限扩展。例如，增加层数会导致学习速度变慢，达到大约 20 层时，模型不再能够学习问题，至少在所选的配置下是如此。
 
-例如，下面是具有 15 个隐藏层的同一模型的训练和测试精度的线图，表明它仍然能够学习问题。
+例如，下面是具有 15 个隐藏层的同一模型的训练和测试准确率的线图，表明它仍然能够学习问题。
 
 ![Line Plot of Train and Test Set Accuracy of Over Training Epochs for Deep MLP with ReLU with 15 Hidden Layers](img/693eb48697a4cd25cf0121bc46a5b942.png)
 
-带 15 个隐层的 ReLU 深 MLP 训练和超训练时段测试集精度线图
+带 15 个隐层的 ReLU 深 MLP 训练和超训练时段测试集准确率线图
 
-下面是具有 20 层的相同模型的各个时期的列车和测试精度的线图，显示配置不再能够学习问题。
+下面是具有 20 层的相同模型的各个时期的列车和测试准确率的线图，显示配置不再能够学习问题。
 
 ![Line Plot of Train and Test Set Accuracy of Over Training Epochs for Deep MLP with ReLU with 20 Hidden Layers](img/b1dae24275876697ba3b6c1bbf5a441c.png)
 
-具有 20 个隐藏层的 ReLU 的深 MLP 超训练时期的训练和测试集精度的线图
+具有 20 个隐藏层的 ReLU 的深 MLP 超训练时期的训练和测试集准确率的线图
 
 虽然 ReLU 的使用是有效的，但我们不能确信 tanh 函数的使用会因为梯度消失而失败，ReLU 会成功，因为它克服了这个问题。
 
@@ -519,7 +519,7 @@ python -m tensorboard.main --logdir=/code/logs/
 
 可以在界面的“*分布*”和“*直方图*选项卡下查看每个训练时期每层平均梯度的图。使用搜索过滤器“ *kernel_0_grad* ”，可以过滤图以仅显示密集层的梯度，不包括偏差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 首先，为 6 个层中的每一个层创建线图(5 个隐藏，1 个输出)。地块名称表示层，其中“ *dense_1* ”表示输入层后的隐藏层，“ *dense_6* ”表示输出层。
 

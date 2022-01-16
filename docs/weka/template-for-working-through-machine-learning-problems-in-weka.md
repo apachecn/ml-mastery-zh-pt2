@@ -81,7 +81,7 @@
 
 ## 4.评估算法
 
-评估算法的目的是开发测试工具和基线精度，并以此为基础进行改进。
+评估算法的目的是开发测试工具和基线准确率，并以此为基础进行改进。
 
 [![Algorithm ranking when analyzing results in the Weka Experimenter](img/cdab3456f0be64680cff89d02b8213f7.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-25-at-5.30.54-AM.png)
 

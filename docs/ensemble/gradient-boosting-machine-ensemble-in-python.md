@@ -145,7 +145,7 @@ print(X.shape, y.shape)
 
 接下来，我们可以在这个数据集上评估一个梯度提升算法。
 
-我们将使用重复的分层 k 折叠交叉验证来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
+我们将使用重复的分层 k 折叠交叉验证来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型准确率的平均值和标准偏差。
 
 ```py
 # evaluate gradient boosting algorithm for classification
@@ -167,11 +167,11 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到带有默认超参数的梯度提升集成在这个测试数据集上实现了大约 89.9%的分类精度。
+在这种情况下，我们可以看到带有默认超参数的梯度提升集成在这个测试数据集上实现了大约 89.9%的分类准确率。
 
 ```py
 Mean Accuracy: 0.899 (0.030)
@@ -257,9 +257,9 @@ n_scores = cross_val_score(model, X, y, scoring='neg_mean_absolute_error', cv=cv
 print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到带有默认超参数的梯度提升集成实现了大约 62 的 MAE。
 
@@ -373,7 +373,7 @@ pyplot.show()
 
 运行该示例首先报告每个配置数量的决策树的平均准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该数据集上的表现有所提高，直到大约 500 棵树，之后表现似乎趋于平稳。与 AdaBoost 不同，在这种情况下，随着树的数量增加，梯度提升似乎不会过度。
 
@@ -392,7 +392,7 @@ pyplot.show()
 
 ![Box Plot of Gradient Boosting Ensemble Size vs. Classification Accuracy](img/86bb99176c72e5b1543c1ac5f70d1187.png)
 
-梯度提升集合大小与分类精度的箱线图
+梯度提升集合大小与分类准确率的箱线图
 
 ### 探索样本数量
 
@@ -458,7 +458,7 @@ pyplot.show()
 
 运行示例首先报告每个配置样本大小的平均准确度。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到平均表现对于大约是训练数据集一半大小的样本来说可能是最好的，例如 0.4 或更高。
 
@@ -481,7 +481,7 @@ pyplot.show()
 
 ![Box Plot of Gradient Boosting Ensemble Sample Size vs. Classification Accuracy](img/3c8dcfa0236435e66e78a5a271796cdb.png)
 
-梯度提升集合样本量与分类精度的箱线图
+梯度提升集合样本量与分类准确率的箱线图
 
 ### 探索功能数量
 
@@ -543,9 +543,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个已配置特征数量的平均精度。
+运行该示例首先报告每个已配置特征数量的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到平均表现增加到功能数量的一半左右，并且在此之后保持一定水平。令人惊讶的是，去掉一半的输入变量效果如此之小。
 
@@ -578,7 +578,7 @@ pyplot.show()
 
 ![Box Plot of Gradient Boosting Ensemble Number of Features vs. Classification Accuracy](img/5328779caae2b580d39bc4802554b119.png)
 
-梯度提升集成特征数量与分类精度的箱线图
+梯度提升集成特征数量与分类准确率的箱线图
 
 ### 探索学习率
 
@@ -643,7 +643,7 @@ pyplot.show()
 
 运行示例首先报告每个配置的学习率的平均准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，较大的学习率会在该数据集上产生更好的表现。我们预计，为较小的学习率向集合中添加更多的树将进一步提升表现。
 
@@ -663,7 +663,7 @@ pyplot.show()
 
 ![Box Plot of Gradient Boosting Ensemble Learning Rate vs. Classification Accuracy](img/64944fbfbe3c49c55e6c66d4d0387f54.png)
 
-梯度提升集成学习率与分类精度的箱线图
+梯度提升集成学习率与分类准确率的箱线图
 
 ### 探索树的深度
 
@@ -727,9 +727,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个配置的树深度的平均精度。
+运行该示例首先报告每个配置的树深度的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到表现随着树的深度而提高，可能在深度 3 到 6 左右达到峰值，之后更深、更专门化的树会导致表现下降。
 
@@ -746,13 +746,13 @@ pyplot.show()
 >10 0.835 (0.034)
 ```
 
-为每个配置的树深度的精度分数分布创建一个方框和须图。
+为每个配置的树深度的准确率分数分布创建一个方框和须图。
 
 我们可以看到模型表现随着树的深度增加到一定程度的总体趋势，之后表现开始随着过度专门化的树而迅速下降。
 
 ![Box Plot of Gradient Boosting Ensemble Tree Depth vs. Classification Accuracy](img/aeb36ae2fd701c609d50f51879e06691.png)
 
-梯度提升集成树深度与分类精度的箱线图
+梯度提升集成树深度与分类准确率的箱线图
 
 ## 网格搜索超参数
 
@@ -764,7 +764,7 @@ pyplot.show()
 
 在这种情况下，我们将网格搜索梯度提升的四个关键超参数:集成中使用的树的数量、学习率、用于训练每棵树的子样本大小以及每棵树的最大深度。我们将为每个超参数使用一系列流行的表现良好的值。
 
-每个配置组合将使用重复的 k 倍交叉验证进行评估，配置将使用平均得分进行比较，在这种情况下，使用分类精度。
+每个配置组合将使用重复的 k 倍交叉验证进行评估，配置将使用平均得分进行比较，在这种情况下，使用分类准确率。
 
 下面列出了在我们的合成类别数据集上网格搜索梯度提升算法的关键超参数的完整示例。
 
@@ -802,7 +802,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 运行该示例可能需要一段时间，具体取决于您的硬件。在运行结束时，首先报告获得最佳分数的配置，然后是所考虑的所有其他配置的分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，学习率为 0.1、最大深度为 7 级、500 棵树和子样本为 70%的配置表现最好，分类准确率约为 94.6%。
 

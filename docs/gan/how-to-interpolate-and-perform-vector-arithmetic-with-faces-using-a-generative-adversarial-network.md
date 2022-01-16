@@ -617,7 +617,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
 
 下面定义了*summary _ performance()*和 *save_plot()* 功能。
 
-*summary _ performance()*函数生成样本，评估鉴别器在真样本和假样本上的表现。报告了分类精度，并可能提供对模型表现的洞察。调用 *save_plot()* 创建并保存生成的图像的图，然后将模型保存到文件中。
+*summary _ performance()*函数生成样本，评估鉴别器在真样本和假样本上的表现。报告了分类准确率，并可能提供对模型表现的洞察。调用 *save_plot()* 创建并保存生成的图像的图，然后将模型保存到文件中。
 
 ```py
 # create and save a plot of generated images
@@ -882,7 +882,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 *   [如何设置亚马逊 AWS EC2 GPUs 训练 Keras 深度学习模型(分步)](https://machinelearningmastery.com/develop-evaluate-large-deep-learning-models-keras-amazon-web-services/)
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 鉴别器在真样品和假样品上的损失，以及发生器的损失，在每批之后报告。
 
@@ -974,7 +974,7 @@ plot_generated(X, 5)
 
 运行该示例首先加载保存的模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 然后，在 100 维潜在空间中创建 25 个随机点，提供给生成器模型以创建 25 个面部图像，然后将其绘制在 5×5 的网格中。
 
@@ -1138,7 +1138,7 @@ plot_generated(results, 10)
 
 运行该示例会创建 10 个不同的面起点和 10 个匹配的面终点，以及它们之间的线性插值。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 ![Plot Showing Multiple Linear Interpolations Between Two GAN Generated Faces](img/dea81e7a52547b9e621cd86521adc087.png)
 
@@ -1242,7 +1242,7 @@ plot_generated(results, 10)
 
 结果是生成的面之间又有 10 个过渡，这次使用了正确的 Slerp 插值方法。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 这种差异很微妙，但在视觉上更为正确。
 
@@ -1459,7 +1459,7 @@ pyplot.show()
 
 运行该示例首先为我们的特定图像加载潜在空间中的点，计算这些点的平均值，并为这些点生成面。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，事实上，我们选择的人脸被正确地检索到，向量空间中的点的平均值捕捉到了我们在每一行中要寻找的显著特征(例如，微笑的女人、中性女人等)。).
 

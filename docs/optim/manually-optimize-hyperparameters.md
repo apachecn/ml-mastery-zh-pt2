@@ -89,7 +89,7 @@ Sklearn 通过[感知器类](https://Sklearn.org/stable/modules/generated/sklear
 
 在我们调整模型的超参数之前，我们可以使用默认超参数建立表现基线。
 
-我们将通过[重复分层 k 重交叉验证类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)的良好实践来评估模型。
+我们将通过[重复分层 K 折交叉验证类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)使用[重复分层 K 折交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)的良好实践来评估模型。
 
 下面列出了在我们的合成二进制类别数据集上使用默认超参数评估感知器模型的完整示例。
 
@@ -113,11 +113,11 @@ scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-运行示例报告评估模型，并报告分类精度的平均值和标准偏差。
+运行示例报告评估模型，并报告分类准确率的平均值和标准偏差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到具有默认超参数的模型实现了大约 78.5%的分类精度。
+在这种情况下，我们可以看到具有默认超参数的模型实现了大约 78.5%的分类准确率。
 
 我们希望通过优化超参数，我们可以获得比这更好的表现。
 
@@ -138,9 +138,9 @@ Mean Accuracy: 0.786 (0.069)
 
 我们将调整控制正则化权重的“*α*”超参数，例如它影响学习的量。如果设置为 0.0，则好像没有使用正则化。合理的值介于 0.0 和 1.0 之间。
 
-首先，我们需要为优化算法定义目标函数。我们将使用重复分层 k 倍交叉验证的平均分类精度来评估配置。我们将寻求最大限度地提高配置的准确性。
+首先，我们需要为优化算法定义目标函数。我们将使用重复分层 k 倍交叉验证的平均分类准确率来评估配置。我们将寻求最大限度地提高配置的准确性。
 
-下面的*目标()*函数实现了这一点，获取数据集和配置值列表。配置值(学习率和正则化权重)被解包，用于配置模型，然后对模型进行评估，并返回平均精度。
+下面的*目标()*函数实现了这一点，获取数据集和配置值列表。配置值(学习率和正则化权重)被解包，用于配置模型，然后对模型进行评估，并返回平均准确率。
 
 ```py
 # objective function
@@ -340,9 +340,9 @@ print('cfg=%s: Mean Accuracy: %f' % (cfg, score))
 
 每次在搜索过程中看到改进时，运行示例都会报告配置和结果。运行结束时，会报告最佳配置和结果。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到，最佳结果涉及在 1.004 时使用略高于 1 的学习率和大约 0.002 的正则化权重，实现了大约 79.1%的平均精度，优于实现了大约 78.5%的精度的默认配置。
+在这种情况下，我们可以看到，最佳结果涉及在 1.004 时使用略高于 1 的学习率和大约 0.002 的正则化权重，实现了大约 79.1%的平均准确率，优于实现了大约 78.5%的准确率的默认配置。
 
 **能不能得到更好的结果？**
 在下面的评论里告诉我。
@@ -430,11 +430,11 @@ scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-运行该示例评估模型，并报告分类精度的平均值和标准偏差。
+运行该示例评估模型，并报告分类准确率的平均值和标准偏差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到具有默认超参数的模型实现了大约 84.9%的分类精度。
+在这种情况下，我们可以看到具有默认超参数的模型实现了大约 84.9%的分类准确率。
 
 我们希望通过优化超参数，我们可以获得比这更好的表现。
 
@@ -465,7 +465,7 @@ Mean Accuracy: 0.849 (0.040)
 
 **树深**是每棵树的层数。更深的树对训练数据集来说更具体，可能会过度匹配。矮一些的树通常更好地概括。合理值在 1 到 10 或 20 之间。
 
-首先，我们必须更新 *objective()* 函数来解包 XGBoost 模型的超参数，对其进行配置，然后评估平均分类精度。
+首先，我们必须更新 *objective()* 函数来解包 XGBoost 模型的超参数，对其进行配置，然后评估平均分类准确率。
 
 ```py
 # objective function
@@ -618,11 +618,11 @@ print('cfg=[%s]: Mean Accuracy: %f' % (cfg, score))
 
 每次在搜索过程中看到改进时，运行示例都会报告配置和结果。运行结束时，会报告最佳配置和结果。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到最佳结果涉及使用大约 0.02 的学习率、52 棵树、大约 50%的子采样率和 53 个级别的大深度。
 
-这种配置的平均精度约为 87.3%，优于默认配置的 84.9%。
+这种配置的平均准确率约为 87.3%，优于默认配置的 84.9%。
 
 **能不能得到更好的结果？**
 在下面的评论里告诉我。

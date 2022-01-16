@@ -1,4 +1,4 @@
-# 如何建立乳腺癌患者生存概率模型
+# 如何为乳腺癌患者存活建立概率模型
 
 > 原文：<https://machinelearningmastery.com/how-to-develop-a-probabilistic-model-of-breast-cancer-patient-survival/>
 
@@ -6,11 +6,11 @@
 
 一般来说，开发一个概率模型是具有挑战性的，尽管当案例的分布存在偏差时，这种挑战性会更大，这种偏差被称为不平衡数据集。
 
-**哈贝曼数据集**描述了 20 世纪 50 年代和 60 年代乳腺癌患者 5 年或更长时间的生存率，并且主要包含存活的患者。这个标准的机器学习数据集可以用作开发概率模型的基础，该概率模型可以预测给定一些患者病例细节的患者的生存概率。
+**哈贝曼数据集**描述了 20 世纪 50 年代和 60 年代乳腺癌患者 5 年或更长时间的存活率，并且主要包含存活的患者。这个标准的机器学习数据集可以用作开发概率模型的基础，该概率模型可以预测给定一些患者病例细节的患者的存活概率。
 
-给定数据集中病例的偏斜分布，必须仔细注意预测模型的选择，以确保预测校准的概率，并注意模型评估的选择，以确保模型的选择基于其预测概率的技巧，而不是简单的生存与非生存类别标签。
+给定数据集中病例的偏斜分布，必须仔细注意预测模型的选择，以确保预测校准的概率，并注意模型评估的选择，以确保模型的选择基于其预测概率的技巧，而不是简单的存活与非存活类别标签。
 
-在本教程中，您将发现如何开发一个模型来预测不平衡数据集上患者的生存概率。
+在本教程中，您将发现如何开发一个模型来预测不平衡数据集上患者的存活概率。
 
 完成本教程后，您将知道:
 
@@ -24,14 +24,14 @@
 
 ![How to Develop a Probabilistic Model of Breast Cancer Patient Survival](img/16b2931d9b467f390fff07e0527806a6.png)
 
-如何开发乳腺癌患者生存的概率模型
+如何开发乳腺癌患者存活的概率模型
 图片由 [Tanja-Milfoil](https://flickr.com/photos/milfoil/35128176284/) 提供，保留部分权利。
 
 ## 教程概述
 
 本教程分为五个部分；它们是:
 
-1.  哈贝曼乳腺癌生存数据集
+1.  哈贝曼乳腺癌存活数据集
 2.  浏览数据集
 3.  模型测试和基线结果
 4.  评估概率模型
@@ -40,9 +40,9 @@
     3.  用幂变换进行模型评估
 5.  对新数据进行预测
 
-## 哈贝曼乳腺癌生存数据集
+## 哈贝曼乳腺癌存活数据集
 
-在这个项目中，我们将使用一个小型乳腺癌生存数据集，通常称为“[哈贝曼数据集](https://archive.ics.uci.edu/ml/datasets/Haberman's+Survival)”
+在这个项目中，我们将使用一个小型乳腺癌存活数据集，通常称为“[哈贝曼数据集](https://archive.ics.uci.edu/ml/datasets/Haberman's+Survival)”
 
 数据集描述了乳腺癌患者数据，结果是患者存活率。具体来说，患者是否存活了 5 年或更长时间，或者患者是否没有存活。
 
@@ -56,15 +56,15 @@
 
 因此，除了数据集中可用的情况之外，我们无法控制组成数据集的情况或在这些情况下使用的要素的选择。
 
-尽管数据集描述了乳腺癌患者的生存率，但鉴于数据集规模较小，并且数据基于几十年前的乳腺癌诊断和手术，因此任何基于该数据集构建的模型都不可一概而论。
+尽管数据集描述了乳腺癌患者的存活率，但鉴于数据集规模较小，并且数据基于几十年前的乳腺癌诊断和手术，因此任何基于该数据集构建的模型都不可一概而论。
 
 **说得再清楚不过**，我们不是“*解决乳腺癌*”我们正在探索一个标准的不平衡类别数据集。
 
 您可以在此了解有关数据集的更多信息:
 
-*   [哈贝曼的生存数据](https://raw.githubusercontent.com/jbrownlee/Datasets/master/haberman.names)
+*   [哈贝曼的存活数据](https://raw.githubusercontent.com/jbrownlee/Datasets/master/haberman.names)
 
-我们将选择将此数据集作为患者生存概率的预测框架。
+我们将选择将此数据集作为患者存活概率的预测框架。
 
 那就是:
 
@@ -78,7 +78,7 @@
 
 首先，下载数据集并保存在您当前的工作目录中，名称为“ *haberman.csv* ”。
 
-*   [下载哈贝曼生存数据(haberman.csv)](https://raw.githubusercontent.com/jbrownlee/Datasets/master/haberman.csv)
+*   [下载哈贝曼存活数据(haberman.csv)](https://raw.githubusercontent.com/jbrownlee/Datasets/master/haberman.csv)
 
 查看文件的内容。
 
@@ -192,11 +192,11 @@ pyplot.show()
 
 我们可以看到节点具有指数型分布，可能大多数示例显示 0 个节点，其后是一长串值。将这个分布转换为非聚集分布可能对以后的一些模型有所帮助。
 
-最后，我们可以看到具有不平等的阶级分布的两个阶级的价值，显示出可能比非生存情况多 2-3 倍的生存。
+最后，我们可以看到具有不平等的阶级分布的两个阶级的价值，显示出可能比非存活情况多 2-3 倍的存活。
 
 ![Histogram of Each Variable in the Haberman Breast Cancer Survival Dataset](img/79a1844b01b6414b43e6cc762160eebb.png)
 
-哈贝曼乳腺癌生存数据集中各变量的直方图
+哈贝曼乳腺癌存活数据集中各变量的直方图
 
 了解数据集实际上有多不平衡可能会有所帮助。
 
@@ -224,7 +224,7 @@ for k,v in counter.items():
 
 运行该示例总结了数据集的类分布。
 
-我们可以看到生存类 1 在 225 处有最多的例子，大约占数据集的 74%。我们可以看到非存活类 2 的例子更少，只有 81 个，约占数据集的 26%。
+我们可以看到存活类 1 在 225 处有最多的例子，大约占数据集的 74%。我们可以看到非存活类 2 的例子更少，只有 81 个，约占数据集的 26%。
 
 阶级分布是倾斜的，但并不严重不平衡。
 
@@ -249,7 +249,7 @@ Class=2, Count=81, Percentage=26.471%
 
 这可以通过使用[repeated stratifiedfold Sklearn 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
 
-鉴于我们对预测生存概率感兴趣，我们需要一个基于预测概率评估模型技能的表现指标。在这种情况下，我们将使用 [Brier 评分](https://machinelearningmastery.com/how-to-score-probability-predictions-in-python/)，计算预测概率和预期概率之间的均方误差。
+鉴于我们对预测存活概率感兴趣，我们需要一个基于预测概率评估模型技能的表现指标。在这种情况下，我们将使用 [Brier 评分](https://machinelearningmastery.com/how-to-score-probability-predictions-in-python/)，计算预测概率和预期概率之间的均方误差。
 
 这可以使用[brier _ score _ loss()sci kit-learn 功能](https://Sklearn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html)来计算。这个分数被最小化，满分为 0.0 分。我们可以通过将预测分数与参考分数进行比较来将分数反转为最大化，显示模型与 0.0 到 1.0 之间的参考分数相比有多好。任何得分低于 0.0 的模型都表示技能低于参考模型。这被称为 Brier 技能评分，简称 BSS。
 
@@ -279,7 +279,7 @@ def load_dataset(full_path):
 
 首先，我们需要一个 Brier 分数作为参考预测。我们预测概率的问题的参考预测是数据集内正类标签的概率。
 
-在这种情况下，正的类标签表示非存活，并且在数据集中出现大约 26%。因此，预测约 0.26471 代表此数据集上预测模型的最坏情况或基线表现。任何比这个布里埃得分高的模型都有一些技能，而任何比这个布里埃得分低的模型都没有技能。简明技能评分抓住了这一重要关系。我们可以在 k 重交叉验证过程中为每个训练集自动计算这个默认预测策略的 Brier 分数，然后将其用作给定模型的比较点。
+在这种情况下，正的类标签表示非存活，并且在数据集中出现大约 26%。因此，预测约 0.26471 代表此数据集上预测模型的最坏情况或基线表现。任何比这个布里埃得分高的模型都有一些技能，而任何比这个布里埃得分低的模型都没有技能。简明技能评分抓住了这一重要关系。我们可以在 K 折交叉验证过程中为每个训练集自动计算这个默认预测策略的 Brier 分数，然后将其用作给定模型的比较点。
 
 ```py
 ...
@@ -305,7 +305,7 @@ def brier_skill_score(y_true, y_prob):
 	return 1.0 - (bs_model / bs_ref)
 ```
 
-接下来，我们可以使用 *brier_skill_score()* 函数，使用重复的分层 k 重交叉验证来评估模型。
+接下来，我们可以使用 *brier_skill_score()* 函数，使用重复的分层 K 折交叉验证来评估模型。
 
 要使用我们的自定义表现指标，我们可以使用 [make_scorer() Sklearn 函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.make_scorer.html)，该函数采用我们的自定义函数的名称，并创建一个指标，我们可以使用 Sklearn API 来评估模型。我们将把 *needs_proba* 参数设置为 True，以确保被评估的模型使用 *predict_proba()* 函数进行预测，以确保它们给出概率而不是类标签。
 
@@ -363,7 +363,7 @@ scores = evaluate_model(X, y, model)
 print('Mean BSS: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-将所有这些结合起来，下面列出了使用布瑞尔技能评分在哈贝曼乳腺癌生存数据集上评估基线模型的完整示例。
+将所有这些结合起来，下面列出了使用布瑞尔技能评分在哈贝曼乳腺癌存活数据集上评估基线模型的完整示例。
 
 我们期望基线模型达到 0.0 的 BSS，例如与参考模型相同，因为它是参考模型。
 
@@ -572,7 +572,7 @@ pyplot.show()
 
 运行该示例首先总结了每个算法的平均和标准偏差(分数越大越好)。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，结果表明，只有两种算法不熟练，显示出负分数，也许逻辑推理(LR)和线性判别分析(LDA)算法表现最好。
 
@@ -591,7 +591,7 @@ pyplot.show()
 
 ![Box and Whisker Plot of Probabilistic Models on the Haberman Breast Cancer Survival Dataset](img/cec34584dcd53dc273a8eef86dd14229.png)
 
-哈贝曼乳腺癌生存数据集概率模型的盒须图
+哈贝曼乳腺癌存活数据集概率模型的盒须图
 
 这是一个好的开始；让我们看看能否通过基础数据准备来改善结果。
 
@@ -693,7 +693,7 @@ pyplot.show()
 
 再次运行该示例总结了每个算法的平均和标准偏差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，除了高斯过程分类器(GPC)之外，标准化对算法没有太大影响。具有标准化的 GPC 的表现大幅提升，现在是表现最好的技术。这突出了准备数据以满足每个模型的期望的重要性。
 
@@ -711,7 +711,7 @@ pyplot.show()
 
 ![Box and Whisker Plot of Probabilistic Models With Data Standardization on the Haberman Breast Cancer Survival Dataset](img/953eb72d503c7a822d88d6e873a9cd51.png)
 
-哈贝曼乳腺癌生存数据集数据标准化概率模型的盒须图
+哈贝曼乳腺癌存活数据集数据标准化概率模型的盒须图
 
 有进一步的数据准备，使输入变量更高斯，如幂变换。
 
@@ -817,7 +817,7 @@ pyplot.show()
 
 再次运行该示例总结了每个算法的平均和标准偏差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到被评估的三个模型的模型技能进一步提升。我们可以看到 LR 似乎已经超过了其他两种方法。
 
@@ -833,7 +833,7 @@ pyplot.show()
 
 ![Box and Whisker Plot of Probabilistic Models With Power Transforms on the Haberman Breast Cancer Survival Dataset](img/4dc0a23c99ca28afb6dd7e4be2495698.png)
 
-哈贝曼乳腺癌生存数据集上带幂变换的概率模型的盒须图
+哈贝曼乳腺癌存活数据集上带幂变换的概率模型的盒须图
 
 ## 对新数据进行预测
 
@@ -848,7 +848,7 @@ model = Pipeline(steps=[('t1', MinMaxScaler()), ('t2', PowerTransformer()),('m',
 model.fit(X, y)
 ```
 
-一旦拟合，我们可以通过调用 *predict_proba()* 函数来使用它对新数据进行预测。这将为每个预测返回两个概率，第一个概率用于生存，第二个概率用于非生存，例如它的补码。
+一旦拟合，我们可以通过调用 *predict_proba()* 函数来使用它对新数据进行预测。这将为每个预测返回两个概率，第一个概率用于存活，第二个概率用于非存活，例如它的补码。
 
 例如:
 
@@ -860,7 +860,7 @@ yhat = model.predict_proba([row])
 p_survive = yhat[0, 0] * 100
 ```
 
-为了证明这一点，我们可以使用拟合模型对一些我们知道有生存的情况和一些我们知道没有生存的情况进行概率预测。
+为了证明这一点，我们可以使用拟合模型对一些我们知道有存活的情况和一些我们知道没有存活的情况进行概率预测。
 
 下面列出了完整的示例。
 
@@ -946,13 +946,13 @@ data=[38, 69, 21], Survival=53.389%
 
 ### 资料组
 
-*   [哈贝曼生存数据集，UCI 机器学习资源库](https://archive.ics.uci.edu/ml/datasets/Haberman's+Survival)。
-*   [哈贝曼生存数据集 CSV 文件](https://raw.githubusercontent.com/jbrownlee/Datasets/master/haberman.csv)
-*   [哈贝曼生存数据集名称文件](https://raw.githubusercontent.com/jbrownlee/Datasets/master/haberman.names)
+*   [哈贝曼存活数据集，UCI 机器学习资源库](https://archive.ics.uci.edu/ml/datasets/Haberman's+Survival)。
+*   [哈贝曼存活数据集 CSV 文件](https://raw.githubusercontent.com/jbrownlee/Datasets/master/haberman.csv)
+*   [哈贝曼存活数据集名称文件](https://raw.githubusercontent.com/jbrownlee/Datasets/master/haberman.names)
 
 ## 摘要
 
-在本教程中，您发现了如何开发一个模型来预测不平衡数据集中患者的生存概率。
+在本教程中，您发现了如何开发一个模型来预测不平衡数据集中患者的存活概率。
 
 具体来说，您了解到:
 

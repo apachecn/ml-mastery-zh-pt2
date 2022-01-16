@@ -163,7 +163,7 @@ pyplot.show()
 
 它包括 60 个实值输入和一个 2 类目标变量。数据集中有 208 个示例，类别相当均衡。
 
-使用重复的分层 10 倍交叉验证，基线分类算法可以达到大约 53.4%的分类精度。[使用重复的分层 10 倍交叉验证，该数据集的最高表现](https://machinelearningmastery.com/results-for-standard-classification-and-regression-machine-learning-datasets/)约为 88%。
+使用重复的分层 10 倍交叉验证，基线分类算法可以达到大约 53.4%的分类准确率。[使用重复的分层 10 倍交叉验证，该数据集的最高表现](https://machinelearningmastery.com/results-for-standard-classification-and-regression-machine-learning-datasets/)约为 88%。
 
 该数据集描述了岩石或模拟地雷的雷达回波。
 
@@ -226,7 +226,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 接下来，让我们在原始数据集上拟合和评估一个机器学习模型。
 
-我们将使用带有默认超参数的 [k 最近邻算法](https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/)，并使用重复的分层 k 重交叉验证对其进行评估。下面列出了完整的示例。
+我们将使用带有默认超参数的 [k 最近邻算法](https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/)，并使用重复的分层 K 折交叉验证对其进行评估。下面列出了完整的示例。
 
 ```py
 # evaluate knn on the raw sonar dataset
@@ -258,7 +258,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例会评估原始声纳数据集上的 KNN 模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，该模型实现了大约 79.7%的平均分类准确率，表明它具有技巧性(优于 53.4%)，并且处于良好表现的球园区(88%)。
 
@@ -409,7 +409,7 @@ n_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1,
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例，我们可以看到 Box-Cox 变换将表现从没有变换时的 79.7%提升到有变换时的 81.1%。
 
@@ -503,7 +503,7 @@ n_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1,
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例，我们可以看到 Yeo-Johnson 变换将表现从没有变换时的 79.7%提升到有变换时的约 80.8%，低于达到约 81.1%的 Box-Cox 变换。
 
@@ -551,7 +551,7 @@ n_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1,
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例，我们可以看到，在 Yeo-Johnson 转换之前对数据进行标准化导致表现从约 80.8%小幅提升至约 81.6%，比 Box-Cox 转换的结果略有提升。
 

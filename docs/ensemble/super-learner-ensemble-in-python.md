@@ -4,7 +4,7 @@
 
 最后更新于 2021 年 8 月 24 日
 
-为预测建模问题选择机器学习算法涉及使用 k 重交叉验证来评估许多不同的模型和模型配置。
+为预测建模问题选择机器学习算法涉及使用 K 折交叉验证来评估许多不同的模型和模型配置。
 
 超级学习器是一种[集成机器学习](https://machinelearningmastery.com/bagging-and-random-forest-ensemble-algorithms-for-machine-learning/)算法，它结合了您可能为预测建模问题调查的所有模型和模型配置，并使用它们来做出与您可能调查的任何单个模型一样好或更好的预测。
 
@@ -410,7 +410,7 @@ print('Super Learner: RMSE %.3f' % (sqrt(mean_squared_error(y_val, yhat))))
 
 接下来，在保持数据集上报告每个基本模型的表现，最后，在保持数据集上报告超级学习器的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到线性模型在数据集上表现良好，而非线性算法表现不太好。
 
@@ -508,7 +508,7 @@ def fit_meta_model(X, y):
 	return model
 ```
 
-分类精度将用于报告模型表现。
+分类准确率将用于报告模型表现。
 
 下面列出了使用 Sklearn 模型进行分类的超级学习器算法的完整示例。
 
@@ -618,7 +618,7 @@ print('Super Learner: %.3f' % (accuracy_score(y_val, yhat) * 100))
 
 像以前一样，报告数据集和准备好的元数据集的形状，然后是基础模型在保持数据集上的表现，最后是超级模型本身在保持数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到超级学习器的表现比基本学习器算法稍好。
 
@@ -779,7 +779,7 @@ print('Super Learner: RMSE %.3f' % (rmse(y_val, yhat)))
 
 考虑到在后端使用多线程允许使用机器的所有内核，拟合和评估非常快。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到超级学习器表现良好。
 
@@ -868,7 +868,7 @@ print('Super Learner: %.3f' % (accuracy_score(y_val, yhat) * 100))
 
 运行该示例总结了数据集的形状、基础模型的表现，以及超级学习器在保持数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 同样，我们可以看到超级学习器在这个测试问题上表现良好，更重要的是，与上一节中的手动示例相比，非常快速地适应和评估。
 

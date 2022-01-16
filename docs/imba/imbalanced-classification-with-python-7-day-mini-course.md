@@ -1,4 +1,4 @@
-# Python 不平衡分类(7 天迷你课程)
+# Python 不平衡分类（7 天迷你课程）
 
 > 原文：<https://machinelearningmastery.com/imbalanced-classification-with-python-7-day-mini-course/>
 
@@ -165,27 +165,27 @@ pyplot.show()
 
 在本课中，您将发现如何评估不平衡分类问题的模型。
 
-预测精度是分类任务最常见的度量标准，尽管当用于不平衡的分类任务时，它是不合适的，并且有潜在的危险误导。
+预测准确率是分类任务最常见的度量标准，尽管当用于不平衡的分类任务时，它是不合适的，并且有潜在的危险误导。
 
 这样做的原因是，如果 98%的数据属于负类，那么只需一直预测负类，就可以达到平均 98%的准确率，达到一个天真地看起来不错，但实际上没有技巧的分数。
 
 相反，必须采用替代表现指标。
 
-流行的替代方法是精度和召回分数，这使得模型的表现可以通过关注被称为正类的少数类来考虑。
+流行的替代方法是准确率和召回分数，这使得模型的表现可以通过关注被称为正类的少数类来考虑。
 
-精度计算正确预测的正例数除以预测的正例总数的比率。最大化精度将最小化误报。
+准确率计算正确预测的正例数除以预测的正例总数的比率。最大化准确率将最小化误报。
 
-*   精度=真阳性/(真阳性+假阳性)
+*   准确率=真阳性/(真阳性+假阳性)
 
 回忆预测正确预测的正面例子总数除以本来可以预测的正面例子总数的比率。最大限度地召回将最大限度地减少假阴性。
 
 *   回忆=真阳性/(真阳性+假阴性)
 
-一个模型的表现可以用一个平均精度和召回率的分数来概括，称为 F-Measure。最大化 F-Measure 将同时最大化精确度和召回率。
+一个模型的表现可以用一个平均准确率和召回率的分数来概括，称为 F-Measure。最大化 F-Measure 将同时最大化精确度和召回率。
 
-*   F-measure = (2 *精度*召回)/(精度+召回)
+*   F-measure = (2 *准确率*召回)/(准确率+召回)
 
-以下示例将逻辑回归模型应用于不平衡分类问题，并计算精度，然后可以将其与[精度](https://Sklearn.org/stable/modules/generated/sklearn.metrics.precision_score.html)、[召回](https://Sklearn.org/stable/modules/generated/sklearn.metrics.recall_score.html)和 [F-measure](https://Sklearn.org/stable/modules/generated/sklearn.metrics.f1_score.html) 进行比较。
+以下示例将逻辑回归模型应用于不平衡分类问题，并计算准确率，然后可以将其与[准确率](https://Sklearn.org/stable/modules/generated/sklearn.metrics.precision_score.html)、[召回](https://Sklearn.org/stable/modules/generated/sklearn.metrics.recall_score.html)和 [F-measure](https://Sklearn.org/stable/modules/generated/sklearn.metrics.f1_score.html) 进行比较。
 
 ```py
 # evaluate imbalanced classification model with different metrics
@@ -215,7 +215,7 @@ print('F-measure: %.3f' % f1_score(testy, yhat))
 
 ### 你的任务
 
-在本课中，您必须运行该示例，并将分类精度与其他指标(如精度、召回率和 F-measure)进行比较。
+在本课中，您必须运行该示例，并将分类准确率与其他指标(如准确率、召回率和 F-measure)进行比较。
 
 对于奖励积分，尝试其他指标，如 Fbeta-measure 和 ROC AUC 分数。
 
@@ -407,7 +407,7 @@ print('F-Measure: %.3f' % f1_score(testy, yhat))
 
 *   不平衡分类的挑战是缺乏少数群体的例子，以及不同类别分类错误的重要性不同。
 *   如何为不平衡的类别数据集开发空间直觉，为数据准备和算法选择提供信息。
-*   分类精度的失败，以及像精度、召回率和 F-测度这样的替代度量如何更好地总结不平衡数据集上的模型表现。
+*   分类准确率的失败，以及像准确率、召回率和 F-测度这样的替代度量如何更好地总结不平衡数据集上的模型表现。
 *   如何从训练数据集中的多数类中删除示例，称为数据欠采样。
 *   如何在训练数据集中的少数类中合成新的示例，称为数据过采样。
 *   如何在训练数据集中组合数据过采样和欠采样技术，以及产生良好表现的常见组合。

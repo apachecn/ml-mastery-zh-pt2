@@ -380,9 +380,9 @@ for i in range(len(learning_rates)):
 pyplot.show()
 ```
 
-运行该示例会创建一个包含八个不同评估学习率的八条线图的图形。训练数据集上的分类精度用蓝色标记，而测试数据集上的精度用橙色标记。
+运行该示例会创建一个包含八个不同评估学习率的八条线图的图形。训练数据集上的分类准确率用蓝色标记，而测试数据集上的准确率用橙色标记。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 这些图显示了在过大的学习率为 1.0 时的行为振荡，以及模型在过小的学习率为 1E-6 和 1E-7 时无法学习任何东西。
 
@@ -390,7 +390,7 @@ pyplot.show()
 
 ![Line Plots of Train and Test Accuracy for a Suite of Learning Rates on the Blobs Classification Problem](img/12adcb06d3f1c88248e560acea6950dc.png)
 
-斑点分类问题上一组学习率的训练和测试精度的线图
+斑点分类问题上一组学习率的训练和测试准确率的线图
 
 ### 动量动力学
 
@@ -490,17 +490,17 @@ for i in range(len(momentums)):
 pyplot.show()
 ```
 
-运行该示例会创建一个图形，其中包含四个不同动量值的线图。训练数据集上的分类精度用蓝色标记，而测试数据集上的精度用橙色标记。
+运行该示例会创建一个图形，其中包含四个不同动量值的线图。训练数据集上的分类准确率用蓝色标记，而测试数据集上的准确率用橙色标记。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-我们可以看到动量的加入确实加速了模型的训练。具体而言，0.9 和 0.99 的动量值在大约 50 个训练时期内实现了合理的训练和测试精度，而当不使用动量时为 200 个训练时期。
+我们可以看到动量的加入确实加速了模型的训练。具体而言，0.9 和 0.99 的动量值在大约 50 个训练时期内实现了合理的训练和测试准确率，而当不使用动量时为 200 个训练时期。
 
-在所有使用动量的情况下，模型在保持测试数据集上的精度看起来更稳定，在训练时期表现出较少的波动性。
+在所有使用动量的情况下，模型在保持测试数据集上的准确率看起来更稳定，在训练时期表现出较少的波动性。
 
 ![Line Plots of Train and Test Accuracy for a Suite of Momentums on the Blobs Classification Problem](img/112258a48a90485e82ebfcd1cffa238d.png)
 
-关于斑点分类问题的列车线图和一组动量的检验精度
+关于斑点分类问题的列车线图和一组动量的检验准确率
 
 ## 学习进度计划的影响
 
@@ -597,7 +597,7 @@ def fit_model(trainX, trainy, testX, testy, decay):
 	pyplot.title('decay='+str(decay), pad=-80)
 ```
 
-我们可以评估[1E-1，1E-2，1E-3，1E-4]的相同四个衰减值及其对模型精度的影响。
+我们可以评估[1E-1，1E-2，1E-3，1E-4]的相同四个衰减值及其对模型准确率的影响。
 
 下面列出了完整的示例。
 
@@ -652,15 +652,15 @@ for i in range(len(decay_rates)):
 pyplot.show()
 ```
 
-运行该示例会创建一个图形，其中包含不同评估学习率衰减值的四条线图。训练数据集上的分类精度用蓝色标记，而测试数据集上的精度用橙色标记。
+运行该示例会创建一个图形，其中包含不同评估学习率衰减值的四条线图。训练数据集上的分类准确率用蓝色标记，而测试数据集上的准确率用橙色标记。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，1E-1 和 1E-2 的大衰减值确实会使该模型在这个问题上的学习率衰减过快，从而导致表现不佳。衰减值越小，表现越好，1E-4 的值可能会导致完全不使用衰减的类似结果。事实上，我们可以计算出 1E-4 衰减的最终学习率约为 0.0075，只比初始值 0.01 小一点点。
 
 ![Line Plots of Train and Test Accuracy for a Suite of Decay Rates on the Blobs Classification Problem](img/26feb593ccb616f8307ad30c5dad1f5a.png)
 
-斑点分类问题上一组衰减率的训练和检验精度的线图
+斑点分类问题上一组衰减率的训练和检验准确率的线图
 
 ### 高原学习率下降
 
@@ -739,7 +739,7 @@ for i in range(len(patiences)):
 	acc_list.append(acc)
 ```
 
-在运行结束时，我们将为每个耐心值的学习率、训练损失和每个耐心值的训练精度创建带有线图的数字。
+在运行结束时，我们将为每个耐心值的学习率、训练损失和每个耐心值的训练准确率创建带有线图的数字。
 
 我们可以创建一个助手函数来轻松地为我们记录的每个系列创建一个带有子情节的图形。
 
@@ -836,7 +836,7 @@ line_plots(patiences, acc_list)
 
 运行该示例会创建三个图形，每个图形包含不同耐心值的线图。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 第一个图显示了每个评估的耐心值在训练时期的学习率的线图。我们可以看到，最小的两个耐心值在 25 个纪元内迅速将学习率降至最小值，最大的 15 个耐心值仅遭受一次学习率下降。
 
@@ -856,13 +856,13 @@ line_plots(patiences, acc_list)
 
 最后一个图显示了每个耐心值在不同训练时期的训练集准确度。
 
-我们可以看到，事实上，2 和 5 个时期的小耐心值导致模型过早收敛到低于最优的模型，准确率分别约为 65%和低于 75%。更大的耐心值导致更好的模型表现，耐心 10 在 150 个纪元之前显示出收敛，而耐心 15 在给定几乎完全不变的学习率的情况下继续显示出不稳定的精度的影响。
+我们可以看到，事实上，2 和 5 个时期的小耐心值导致模型过早收敛到低于最优的模型，准确率分别约为 65%和低于 75%。更大的耐心值导致更好的模型表现，耐心 10 在 150 个纪元之前显示出收敛，而耐心 15 在给定几乎完全不变的学习率的情况下继续显示出不稳定的准确率的影响。
 
 这些图显示了学习率的降低是解决问题的一种明智方式，所选择的模型配置可以产生一组熟练且收敛的稳定的最终权重，这是训练结束时最终模型的一个理想特性。
 
 ![Line Plots of Training Accuracy Over Epochs for Different Patience Values Used in the ReduceLROnPlateau Schedule](img/2f02c189ffa019900d59879d806f4e66.png)
 
-减少延迟计划中使用的不同耐心值在不同时期的训练精度线图
+减少延迟计划中使用的不同耐心值在不同时期的训练准确率线图
 
 ## 适应性学习率的影响
 
@@ -970,17 +970,17 @@ for i in range(len(momentums)):
 pyplot.show()
 ```
 
-运行该示例会创建一个图形，其中包含不同优化算法的四条线图。训练数据集上的分类精度用蓝色标记，而测试数据集上的精度用橙色标记。
+运行该示例会创建一个图形，其中包含不同优化算法的四条线图。训练数据集上的分类准确率用蓝色标记，而测试数据集上的准确率用橙色标记。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-同样，我们可以看到，默认学习率为 0.01 并且没有动量的 SGD 确实学习了问题，但是需要几乎所有 200 个时期，并且导致训练数据的不稳定精度，并且在测试数据集上更是如此。这些图显示，所有三种自适应学习率方法都能够更快地学习问题，并且在训练和测试集准确性方面波动性显著更小。
+同样，我们可以看到，默认学习率为 0.01 并且没有动量的 SGD 确实学习了问题，但是需要几乎所有 200 个时期，并且导致训练数据的不稳定准确率，并且在测试数据集上更是如此。这些图显示，所有三种自适应学习率方法都能够更快地学习问题，并且在训练和测试集准确性方面波动性显著更小。
 
 RMSProp 和 Adam 都表现出了相似的表现，在 50 个训练期内有效地学习了问题，并花费剩余的训练时间进行了非常小的权重更新，但没有像我们在上一节中看到的学习率计划那样收敛。
 
 ![Line Plots of Train and Test Accuracy for a Suite of Adaptive Learning Rate Methods on the Blobs Classification Problem](img/b88cebb423608a6abe4e970895f5551a.png)
 
-一套自适应学习率方法在斑点分类问题上的训练和测试精度的线图
+一套自适应学习率方法在斑点分类问题上的训练和测试准确率的线图
 
 ## 进一步阅读
 

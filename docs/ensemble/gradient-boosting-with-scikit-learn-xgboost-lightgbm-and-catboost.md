@@ -229,7 +229,7 @@ yhat = model.predict(row)
 print('Prediction: %d' % yhat[0])
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
@@ -240,7 +240,7 @@ Prediction: 1
 
 #### 回归梯度提升机
 
-下面的示例首先使用重复的 k 重交叉验证对测试问题评估一个[gradientboostingrevoller](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)，并报告平均绝对误差。然后在所有可用数据上拟合单一模型，并进行单一预测。
+下面的示例首先使用重复的 K 折交叉验证对测试问题评估一个[gradientboostingrevoller](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)，并报告平均绝对误差。然后在所有可用数据上拟合单一模型，并进行单一预测。
 
 下面列出了完整的示例。
 
@@ -269,7 +269,7 @@ yhat = model.predict(row)
 print('Prediction: %.3f' % yhat[0])
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
@@ -338,7 +338,7 @@ yhat = model.predict(row)
 print('Prediction: %d' % yhat[0])
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
@@ -349,7 +349,7 @@ Prediction: 1
 
 #### 基于直方图的梯度提升回归机
 
-下面的示例首先使用重复的 k 重交叉验证对测试问题评估一个[HistGradientBoostingResolver](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html)，并报告平均绝对误差。然后在所有可用数据上拟合单一模型，并进行单一预测。
+下面的示例首先使用重复的 K 折交叉验证对测试问题评估一个[HistGradientBoostingResolver](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html)，并报告平均绝对误差。然后在所有可用数据上拟合单一模型，并进行单一预测。
 
 下面列出了完整的示例。
 
@@ -379,7 +379,7 @@ yhat = model.predict(row)
 print('Prediction: %.3f' % yhat[0])
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
@@ -463,7 +463,7 @@ yhat = model.predict(row)
 print('Prediction: %d' % yhat[0])
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
@@ -505,7 +505,7 @@ yhat = model.predict(row)
 print('Prediction: %.3f' % yhat[0])
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
@@ -587,7 +587,7 @@ yhat = model.predict(row)
 print('Prediction: %d' % yhat[0])
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
@@ -627,7 +627,7 @@ yhat = model.predict(row)
 print('Prediction: %.3f' % yhat[0])
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
@@ -709,7 +709,7 @@ yhat = model.predict(row)
 print('Prediction: %d' % yhat[0])
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
@@ -749,7 +749,7 @@ yhat = model.predict(row)
 print('Prediction: %.3f' % yhat[0])
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 

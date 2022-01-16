@@ -285,7 +285,7 @@ print('f(%s) = %f' % (best, score))
 
 运行示例在目标函数上执行随机爬山搜索。搜索过程中发现的每个改进都会被报告，然后在搜索结束时报告最佳解决方案。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以在搜索过程中看到大约 13 个改进，最终的解约为 f(-0.981，1.965)，得到的评估值约为 5.381，与 f(0.0，0.0) = 0 相差甚远。
 
@@ -467,7 +467,7 @@ print('f(%s) = %f' % (best, score))
 
 运行该示例将执行随机爬山，随机重新开始搜索阿克利目标函数。每次发现改进的整体解决方案时，都会进行报告，并总结通过搜索找到的最终最佳解决方案。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以在搜索过程中看到三个改进，并且找到的最佳解决方案大约是 f(0.002，0.002)，其评估为大约 0.009，这比爬山算法的单次运行好得多。
 
@@ -619,7 +619,7 @@ print('f(%s) = %f' % (best, score))
 
 每次发现改进的整体解决方案时，都会进行报告，并在运行结束时总结通过搜索找到的最终最佳解决方案。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以在搜索过程中看到四个改进，找到的最佳解决方案是两个非常小的输入，接近于零，估计约为 0.0003，这比爬山者的单次运行或重新启动爬山者要好。
 

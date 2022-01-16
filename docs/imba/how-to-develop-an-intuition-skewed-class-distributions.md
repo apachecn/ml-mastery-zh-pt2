@@ -1,4 +1,4 @@
-# 为严重扭曲的类分布开发直觉
+# 开发严重偏斜的类分布的直觉
 
 > 原文：<https://machinelearningmastery.com/how-to-develop-an-intuition-skewed-class-distributions/>
 
@@ -26,7 +26,7 @@
 
 ![How to Develop an Intuition Severely Skewed Class Distributions](img/8490e533b76a7a18147750c929a04257.png)
 
-为严重扭曲的类分布开发一种直觉
+为严重偏斜的类分布开发一种直觉
 图片由[鲍里斯·卡西莫夫](https://flickr.com/photos/kasio69/40486873483/)提供，保留部分权利。
 
 ## 教程概述

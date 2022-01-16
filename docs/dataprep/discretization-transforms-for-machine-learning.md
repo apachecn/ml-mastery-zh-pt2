@@ -159,7 +159,7 @@ pyplot.show()
 
 它涉及 60 个实值输入和一个两类目标变量。数据集中有 208 个示例，类别相当均衡。
 
-使用重复的分层 10 倍交叉验证，基线分类算法可以达到大约 53.4%的分类精度。[使用重复的分层 10 倍交叉验证，该数据集的最高表现](https://machinelearningmastery.com/results-for-standard-classification-and-regression-machine-learning-datasets/)约为 88%。
+使用重复的分层 10 倍交叉验证，基线分类算法可以达到大约 53.4%的分类准确率。[使用重复的分层 10 倍交叉验证，该数据集的最高表现](https://machinelearningmastery.com/results-for-standard-classification-and-regression-machine-learning-datasets/)约为 88%。
 
 该数据集描述了岩石或模拟地雷的雷达回波。
 
@@ -220,7 +220,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 接下来，让我们在原始数据集上拟合和评估一个机器学习模型。
 
-我们将使用带有默认超参数的 [k 最近邻算法](https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/)，并使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)对其进行评估。
+我们将使用带有默认超参数的 [k 最近邻算法](https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/)，并使用[重复分层 K 折交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)对其进行评估。
 
 下面列出了完整的示例。
 
@@ -254,7 +254,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例会评估原始声纳数据集上的 KNN 模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，该模型实现了大约 79.7%的平均分类准确率，表明它具有技巧性(优于 53.4%)，并且处于良好表现的球园区(88%)。
 
@@ -349,7 +349,7 @@ n_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1,
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例，我们可以看到均匀离散化变换将表现从没有变换时的 79.7%提升到有变换时的 82.7%。
 
@@ -446,7 +446,7 @@ n_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1,
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例，我们可以看到 K-means 离散化变换将表现从没有变换时的 79.7%提升到有变换时的 81.4%，尽管略低于上一节中的均匀分布。
 
@@ -539,7 +539,7 @@ n_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1,
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例，我们可以看到均匀变换将表现从没有变换时的 79.7%提升到有变换时的 84.0%，优于前面部分的均匀和 K-means 方法。
 
@@ -551,7 +551,7 @@ Accuracy: 0.840 (0.072)
 
 这个超参数可以被调整来探索变换的分辨率对模型的最终技能的影响。
 
-下面的示例执行了该实验，并绘制了从 2 到 10 的不同“*n _ bin*”值的平均精度。
+下面的示例执行了该实验，并绘制了从 2 到 10 的不同“*n _ bin*”值的平均准确率。
 
 ```py
 # explore number of discrete bins on classification accuracy
@@ -611,9 +611,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例会报告“*n _ bin*”参数的每个值的平均分类精度。
+运行该示例会报告“*n _ bin*”参数的每个值的平均分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，令人惊讶的是，较小的值导致了更好的准确性，例如三个值达到了大约 86.7%的准确性。
 
@@ -629,15 +629,15 @@ pyplot.show()
 >10 0.840 (0.072)
 ```
 
-创建方框图和触须图来总结数据集上每个离散面元数的分类精度分数。
+创建方框图和触须图来总结数据集上每个离散面元数的分类准确率分数。
 
-我们可以在三个面元处看到精度的小幅提升，对于更大的值，分数会下降并保持不变。
+我们可以在三个面元处看到准确率的小幅提升，对于更大的值，分数会下降并保持不变。
 
 结果强调，对于所选择的方法，探索不同数量的离散箱可能会有一些好处，以查看是否可以实现更好的表现。
 
 ![Box Plots of Number of Discrete Bins vs. Classification Accuracy of KNN on the Sonar Dataset](img/9d7c1d8abcdefb2adc02852966aece2f.png)
 
-声纳数据集中离散面元数量与 KNN 分类精度的箱线图
+声纳数据集中离散面元数量与 KNN 分类准确率的箱线图
 
 ## 进一步阅读
 

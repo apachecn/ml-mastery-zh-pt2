@@ -41,7 +41,7 @@
 
 使用重采样技术(如 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/))来评估数据集上机器学习算法的表现是很常见的。
 
-k 重交叉验证过程包括将训练数据集分成 *k* 组，然后在测试集上使用每组 *k* 示例，而剩余示例用作训练集。
+K 折交叉验证过程包括将训练数据集分成 *k* 组，然后在测试集上使用每组 *k* 示例，而剩余示例用作训练集。
 
 这意味着 *k* 不同的模型被训练和评估。模型的表现是使用所有 k 倍模型的预测来估计的。
 
@@ -95,7 +95,7 @@ k 重交叉验证过程包括将训练数据集分成 *k* 组，然后在测试�
 
 这些预测可以使用两种主要方法来估计模型的表现。
 
-第一种方法是根据每次折叠期间所做的预测对模型进行评分，然后计算这些评分的平均值。例如，如果我们正在评估一个分类模型，那么可以对每组超出范围的预测计算分类精度，然后可以报告平均精度。
+第一种方法是根据每次折叠期间所做的预测对模型进行评分，然后计算这些评分的平均值。例如，如果我们正在评估一个分类模型，那么可以对每组超出范围的预测计算分类准确率，然后可以报告平均准确率。
 
 *   **方法 1** :将绩效评估为每组异常预测的平均得分。
 
@@ -172,9 +172,9 @@ mean_s, std_s = mean(scores), std(scores)
 print('Mean: %.3f, Standard Deviation: %.3f' % (mean_s, std_s))
 ```
 
-运行该示例会报告每次迭代中保持折叠的模型分类精度。
+运行该示例会报告每次迭代中保持折叠的模型分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行结束时，报告准确度分数的平均值和标准偏差。
 
@@ -227,7 +227,7 @@ acc = accuracy_score(data_y, data_yhat)
 print('Accuracy: %.3f' % (acc))
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例会收集每个保持数据集的所有预期值和预测值，并在运行结束时报告一个准确度分数。
 
@@ -474,7 +474,7 @@ print('Meta Model Accuracy: %.3f' % (acc))
 
 运行该示例首先报告决策树和 kNN 模型的准确性，然后报告元模型在保持数据集上的表现，这在训练期间是看不到的。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到元模型在两个子模型上都表现出色。
 

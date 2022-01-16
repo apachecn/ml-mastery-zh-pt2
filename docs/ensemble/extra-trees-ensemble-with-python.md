@@ -14,7 +14,7 @@
 
 完成本教程后，您将知道:
 
-*   额外树集成是决策树的集成，与套袋和随机森林有关。
+*   额外树集成是决策树的集成，与装袋和随机森林有关。
 *   如何使用额外树集合进行分类和回归。
 *   如何探索 Extra Trees 模型超参数对模型表现的影响。
 
@@ -136,7 +136,7 @@ print(X.shape, y.shape)
 
 接下来，我们可以在这个数据集上评估一个额外树算法。
 
-我们将使用重复的分层 k 折叠交叉验证来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
+我们将使用重复的分层 k 折叠交叉验证来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型准确率的平均值和标准偏差。
 
 ```py
 # evaluate extra trees algorithm for classification
@@ -157,11 +157,11 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1, er
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到带有默认超参数的额外树集成在这个测试数据集上实现了大约 91%的分类精度。
+在这种情况下，我们可以看到带有默认超参数的额外树集成在这个测试数据集上实现了大约 91%的分类准确率。
 
 ```py
 Accuracy: 0.910 (0.027)
@@ -247,9 +247,9 @@ n_scores = cross_val_score(model, X, y, scoring='neg_mean_absolute_error', cv=cv
 print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到带有默认超参数的额外树集合达到了大约 70 的 MAE。
 
@@ -354,7 +354,7 @@ pyplot.show()
 
 运行该示例首先报告每个配置数量的决策树的平均准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到大约 100 棵树后，表现会上升并保持不变。平均准确度分数在 100、500 和 1000 棵树之间波动，这可能是统计噪声。
 
@@ -373,7 +373,7 @@ pyplot.show()
 
 ![Box Plot of Extra Trees Ensemble Size vs. Classification Accuracy](img/8115ee64aa2e7e177452f272165a0a69.png)
 
-额外树集合大小与分类精度的箱线图
+额外树集合大小与分类准确率的箱线图
 
 ### 探索功能数量
 
@@ -383,7 +383,7 @@ pyplot.show()
 
 它通过 *max_features* 参数设置，默认为输入特征数的平方根。在这种情况下，对于我们的测试数据集，这将是 sqrt(20)或大约四个特征。
 
-以下示例探讨了在每个分割点随机选择的特征数量对模型精度的影响。我们将尝试从 1 到 20 的值，并期望一个大约为 4 的小值根据启发式算法表现良好。
+以下示例探讨了在每个分割点随机选择的特征数量对模型准确率的影响。我们将尝试从 1 到 20 的值，并期望一个大约为 4 的小值根据启发式算法表现良好。
 
 ```py
 # explore extra trees number of features effect on performance
@@ -435,9 +435,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行示例首先报告每个特征集大小的平均精度。
+运行示例首先报告每个特征集大小的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，结果表明介于 4 和 9 之间的值是合适的，这证实了在这个数据集上 4 是合理的默认值。
 
@@ -466,13 +466,13 @@ pyplot.show()
 >20 0.903 (0.025)
 ```
 
-为每个要素集大小的精度分数分布创建了一个方框和触须图。
+为每个要素集大小的准确率分数分布创建了一个方框和触须图。
 
 我们看到一种表现上升和峰值的趋势，数值在 4 到 9 之间，随着考虑更大的特征集大小，表现下降或保持不变。
 
 ![Box Plot of Extra Trees Feature Set Size vs. Classification Accuracy](img/895dfd3f32f842aefaa8002b10ca1124.png)
 
-额外树特征集大小与分类精度的箱线图
+额外树特征集大小与分类准确率的箱线图
 
 ### 探索每次拆分的最小样本数
 
@@ -532,9 +532,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行示例首先报告每个配置的最大树深度的平均精度。
+运行示例首先报告每个配置的最大树深度的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到较小的值会导致更好的表现，这证实了两个值的合理默认值。
 
@@ -554,13 +554,13 @@ pyplot.show()
 >14 0.892 (0.027)
 ```
 
-为每个配置的最大树深的精度分数分布创建一个方框和须图。
+为每个配置的最大树深的准确率分数分布创建一个方框和须图。
 
 在这种情况下，我们可以看到表现提高的趋势，分割的最小样本更少，如我们所料。
 
 ![Box Plot of Extra Trees Minimum Samples per Split vs. Classification Accuracy](img/4092cbc2b708c975790324395c9286f2.png)
 
-额外树木的箱线图每次分割的最小样本数与分类精度
+额外树木的箱线图每次分割的最小样本数与分类准确率
 
 ## 进一步阅读
 
@@ -581,7 +581,7 @@ pyplot.show()
 
 具体来说，您了解到:
 
-*   额外树集成是决策树的集成，与套袋和随机森林有关。
+*   额外树集成是决策树的集成，与装袋和随机森林有关。
 *   如何使用额外树集合进行分类和回归。
 *   如何探索 Extra Trees 模型超参数对模型表现的影响。
 

@@ -329,9 +329,9 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 正确运行该示例将数据插补应用于交叉验证程序的每个折叠。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-使用 10 倍交叉验证的三次重复对管道进行评估，并报告数据集上的平均分类精度约为 86.3%，这是一个不错的分数。
+使用 10 倍交叉验证的三次重复对管道进行评估，并报告数据集上的平均分类准确率约为 86.3%，这是一个不错的分数。
 
 ```py
 Mean Accuracy: 0.863 (0.054)
@@ -343,7 +343,7 @@ Mean Accuracy: 0.863 (0.054)
 
 答案是我们没有，它是被任意选择的。
 
-我们可以设计一个实验来测试每个统计策略，并通过比较均值、中位数、模式(最频繁)和常数(0)策略来发现什么最适合这个数据集。然后可以比较每种方法的平均精度。
+我们可以设计一个实验来测试每个统计策略，并通过比较均值、中位数、模式(最频繁)和常数(0)策略来发现什么最适合这个数据集。然后可以比较每种方法的平均准确率。
 
 下面列出了完整的示例。
 
@@ -384,7 +384,7 @@ pyplot.show()
 
 运行该示例使用重复交叉验证来评估马结肠数据集上的每个统计插补策略。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 每种策略的平均精确度都是一路上报告的。结果表明，使用一个恒定值，例如 0，会产生大约 88.1%的最佳表现，这是一个出色的结果。
 

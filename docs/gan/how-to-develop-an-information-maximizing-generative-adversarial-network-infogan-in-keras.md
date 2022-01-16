@@ -831,7 +831,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim, n_cat)
 
 运行示例可能需要一些时间，建议使用 GPU 硬件，但不是必需的。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在每次训练迭代中报告模型间的损失。如果鉴别器的损失保持在 0.0 或长时间达到 0.0，这可能是训练失败的信号，您可能需要重新开始训练过程。鉴别器损耗可能从 0.0 开始，但很可能会上升，就像在这种特定情况下一样。
 
@@ -1023,7 +1023,7 @@ save_plot(X, n_samples)
 
 结果是生成了一个由 25 幅图像组成的网格，分类代码设置为值 1。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 控制代码的值预计会影响生成的图像；具体来说，它们会影响数字类型。但是，不希望对它们进行排序，例如，1、2 和 3 的控制代码会创建这些数字。
 

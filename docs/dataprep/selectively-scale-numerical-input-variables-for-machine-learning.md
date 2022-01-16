@@ -131,9 +131,9 @@ m_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(m_scores), std(m_scores)))
 ```
 
-运行该示例评估模型，并报告在原始数据集上拟合逻辑回归模型的平均值和标准偏差精度。
+运行该示例评估模型，并报告在原始数据集上拟合逻辑回归模型的平均值和标准偏差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型达到了大约 76.8%的准确率。
 
@@ -211,11 +211,11 @@ m_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(m_scores), std(m_scores)))
 ```
 
-运行该示例评估建模管道，并报告在标准化数据集上拟合逻辑回归模型的平均值和标准偏差精度。
+运行该示例评估建模管道，并报告在标准化数据集上拟合逻辑回归模型的平均值和标准偏差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到，输入变量的标准化导致平均分类精度从原始数据模型拟合的 76.8%下降到标准化管道的 76.4%。
+在这种情况下，我们可以看到，输入变量的标准化导致平均分类准确率从原始数据模型拟合的 76.8%下降到标准化管道的 76.4%。
 
 ```py
 Accuracy: 0.764 (0.045)
@@ -271,11 +271,11 @@ m_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(m_scores), std(m_scores)))
 ```
 
-运行该示例评估建模管道，并报告在标准化数据集上拟合逻辑回归模型的均值和标准差精度。
+运行该示例评估建模管道，并报告在标准化数据集上拟合逻辑回归模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到，标准化所有数字输入变量已导致平均分类精度从原始数据集上评估的模型的 76.8%提升到标准化输入变量数据集上评估的模型的约 77.2%。
+在这种情况下，我们可以看到，标准化所有数字输入变量已导致平均分类准确率从原始数据集上评估的模型的 76.8%提升到标准化输入变量数据集上评估的模型的约 77.2%。
 
 ```py
 Accuracy: 0.772 (0.043)
@@ -368,9 +368,9 @@ m_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(m_scores), std(m_scores)))
 ```
 
-运行该示例评估建模管道，并报告平均值和标准偏差精度。
+运行该示例评估建模管道，并报告平均值和标准偏差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到稍好的表现，随着基线模型在原始数据集上的拟合度从 76.8%提高到约 76.9%，并对一些输入变量进行选择性归一化。
 
@@ -431,9 +431,9 @@ m_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(m_scores), std(m_scores)))
 ```
 
-运行该示例评估建模管道，并报告平均值和标准偏差精度。
+运行该示例评估建模管道，并报告平均值和标准偏差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，我们的表现提升了 76.8%，超过了原始数据集上基线模型拟合的 76.8%，也超过了所有输入变量标准化的 77.2%。通过选择性标准化，我们实现了大约 77.3%的平均准确率，这是一个适度但可测量的提升。
 
@@ -495,9 +495,9 @@ m_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(m_scores), std(m_scores)))
 ```
 
-运行该示例评估建模管道，并报告平均值和标准偏差精度。
+运行该示例评估建模管道，并报告平均值和标准偏差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 有趣的是，在这种情况下，我们可以看到，我们实现了与标准化所有输入变量相同的表现，达到了 77.2%。
 

@@ -188,7 +188,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例在不平衡类别数据集上用未校准的概率评估 SVM。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到 SVM 实现了约 0.804 的 ROC AUC。
 
@@ -243,7 +243,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例在不平衡类别数据集上评估具有校准概率的 SVM。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到 SVM 实现了 ROC AUC 从约 0.804 到约 0.875 的提升。
 
@@ -288,7 +288,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例在不平衡类别数据集上评估具有校准概率的类加权 SVM。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，SVM 实现了中华民国 AUC 从约 0.875 到约 0.966 的进一步提升。
 
@@ -330,7 +330,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例在不平衡类别数据集上评估具有未校准概率的决策树。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到决策树实现了大约 0.842 的 ROC AUC。
 
@@ -375,7 +375,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例评估不平衡类别数据集上具有校准概率的决策树。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到决策树实现了 ROC AUC 从大约 0.842 到大约 0.859 的提升。
 
@@ -417,7 +417,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例在不平衡类别数据集上用未校准的概率评估 KNN。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到 KNN 实现了约 0.864 的 ROC AUC。
 
@@ -511,7 +511,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 运行该示例使用不平衡类别数据集上的一组不同类型的校准概率来评估 KNN。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到最佳结果是用 2 的“ *cv* ”和“*方法*的“*等张*值”获得的，平均 ROC AUC 约为 0.895，比没有校准时的 0.864 有所提高。
 

@@ -415,7 +415,7 @@ history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
 	validation_data=test_it, validation_steps=len(test_it), epochs=20, verbose=0)
 ```
 
-一旦拟合，最终模型可以直接在测试数据集上进行评估，并报告分类精度。
+一旦拟合，最终模型可以直接在测试数据集上进行评估，并报告分类准确率。
 
 ```py
 # evaluate model
@@ -425,9 +425,9 @@ print('> %.3f' % (acc * 100.0))
 
 最后，我们可以创建一个存储在从调用 *fit_generator()* 返回的“ *history* ”目录中的训练期间收集的历史的图。
 
-历史记录包含每个时期结束时测试和训练数据集的模型精度和损失。这些度量在训练时期的线图提供了学习曲线，我们可以用它来了解模型是过拟合、欠拟合还是拟合良好。
+历史记录包含每个时期结束时测试和训练数据集的模型准确率和损失。这些度量在训练时期的线图提供了学习曲线，我们可以用它来了解模型是过拟合、欠拟合还是拟合良好。
 
-下面的*summary _ diagnostics()*函数获取历史目录，并创建一个单独的数字，一个是损失的线图，另一个是精度图。然后，图形被保存到一个文件中，该文件的文件名基于脚本的名称。如果我们希望评估不同文件中模型的许多变化，并为每个变化自动创建线图，这将非常有用。
+下面的*summary _ diagnostics()*函数获取历史目录，并创建一个单独的数字，一个是损失的线图，另一个是准确率图。然后，图形被保存到一个文件中，该文件的文件名基于脚本的名称。如果我们希望评估不同文件中模型的许多变化，并为每个变化自动创建线图，这将非常有用。
 
 ```py
 # plot diagnostic learning curves
@@ -552,17 +552,17 @@ Found 6303 images belonging to 2 classes.
 > 72.331
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型在测试数据集上达到了大约 72%的准确率。
 
-还创建了一个图形，显示了列车(蓝色)和测试(橙色)数据集上的损耗线图和另一个模型精度图。
+还创建了一个图形，显示了列车(蓝色)和测试(橙色)数据集上的损耗线图和另一个模型准确率图。
 
 回顾这个图，我们可以看到模型在大约 12 个时期对训练数据集进行了过拟合。
 
 ![Line Plots of Loss and Accuracy Learning Curves for the Baseline Model With One VGG Block on the Dogs and Cats Dataset](img/b7dd2d91600a99c0e43bb07fe2743169.png)
 
-狗和猫数据集上具有一个 VGG 块的基线模型的损失和精度学习曲线的线图
+狗和猫数据集上具有一个 VGG 块的基线模型的损失和准确率学习曲线的线图
 
 ### 两块 VGG 模型
 
@@ -597,7 +597,7 @@ Found 6303 images belonging to 2 classes.
 > 76.646
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，该模型在表现上实现了小幅提升，从一个块的约 72%提升到两个块的约 76%
 
@@ -607,7 +607,7 @@ Found 6303 images belonging to 2 classes.
 
 ![Line Plots of Loss and Accuracy Learning Curves for the Baseline Model With Two VGG Block on the Dogs and Cats Dataset](img/15a8bc387211bde876ec7dcc6ebd6831.png)
 
-狗和猫数据集上具有两个 VGG 块的基线模型的损失和精度学习曲线的线图
+狗和猫数据集上具有两个 VGG 块的基线模型的损失和准确率学习曲线的线图
 
 ### 三块 VGG 模型
 
@@ -644,7 +644,7 @@ Found 6303 images belonging to 2 classes.
 > 80.184
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，我们实现了表现的进一步提升，从两个模块的 76%左右提升到三个模块的 80%左右。这个结果是好的，因为它接近于该论文中使用 SVM 以大约 82%的准确度报道的现有技术水平。
 
@@ -652,7 +652,7 @@ Found 6303 images belonging to 2 classes.
 
 ![Line Plots of Loss and Accuracy Learning Curves for the Baseline Model With Three VGG Block on the Dogs and Cats Dataset](img/8d7be869e337b38adf26a9c58b7c63bb.png)
 
-狗和猫数据集上具有三个 VGG 块的基线模型的损失和精度学习曲线的线图
+狗和猫数据集上具有三个 VGG 块的基线模型的损失和准确率学习曲线的线图
 
 ## 讨论
 
@@ -795,9 +795,9 @@ run_test_harness()
 
 运行该示例首先适合模型，然后在等待测试数据集上报告模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到模型表现的小幅提升，从基线模型的 80%左右的精度提升到增加了脱落的 81%左右。
+在这种情况下，我们可以看到模型表现的小幅提升，从基线模型的 80%左右的准确率提升到增加了脱落的 81%左右。
 
 ```py
 Found 18697 images belonging to 2 classes.
@@ -813,7 +813,7 @@ Found 6303 images belonging to 2 classes.
 
 ![Line Plots of Loss and Accuracy Learning Curves for the Baseline Model With Dropout on the Dogs and Cats Dataset](img/693ab0987caee8ec0e9a5b879b40769d.png)
 
-犬猫数据集上缺失基线模型的损失和精度学习曲线的线图
+犬猫数据集上缺失基线模型的损失和准确率学习曲线的线图
 
 ### 图像数据增长
 
@@ -918,7 +918,7 @@ run_test_harness()
 
 运行该示例首先适合模型，然后在等待测试数据集上报告模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到表现提升了大约 5%，从基线模型的大约 80%提升到具有简单数据增加的基线模型的大约 85%。
 
@@ -932,7 +932,7 @@ run_test_harness()
 
 ![Line Plots of Loss and Accuracy Learning Curves for the Baseline Model With Data Augmentation on the Dogs and Cats Dataset](img/ec0b89ea370147400a9f1bf4111d2c5f.png)
 
-狗和猫数据集上具有数据增加的基线模型的损失和精度学习曲线的线图
+狗和猫数据集上具有数据增加的基线模型的损失和准确率学习曲线的线图
 
 ### 讨论
 
@@ -1072,7 +1072,7 @@ run_test_harness()
 
 运行该示例首先适合模型，然后在等待测试数据集上报告模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型在保持测试数据集上以大约 97%的分类准确率获得了非常令人印象深刻的结果。
 
@@ -1088,7 +1088,7 @@ Found 6303 images belonging to 2 classes.
 
 ![Line Plots of Loss and Accuracy Learning Curves for the VGG16 Transfer Learning Model on the Dogs and Cats Dataset](img/d57e0d5f823a101736d7429b9c72dff0.png)
 
-狗和猫数据集上 VGG16 迁移学习模型的损失和精度学习曲线的线图
+狗和猫数据集上 VGG16 迁移学习模型的损失和准确率学习曲线的线图
 
 ## 如何最终确定模型并做出预测
 

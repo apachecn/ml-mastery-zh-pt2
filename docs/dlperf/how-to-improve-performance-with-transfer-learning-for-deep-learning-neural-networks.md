@@ -221,7 +221,7 @@ model, history = fit_model(trainX, trainy, testX, testy)
 
 最后，我们可以总结模型的表现。
 
-可以评估模型在列车和测试集上的分类精度。
+可以评估模型在列车和测试集上的分类准确率。
 
 ```py
 # evaluate the model
@@ -230,7 +230,7 @@ _, test_acc = model.evaluate(testX, testy, verbose=0)
 print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 ```
 
-在训练期间收集的历史可以用于创建线图，该线图显示了在每个训练时期模型和测试集的损失和分类精度，提供了学习曲线。
+在训练期间收集的历史可以用于创建线图，该线图显示了在每个训练时期模型和测试集的损失和分类准确率，提供了学习曲线。
 
 ```py
 # plot loss during training
@@ -360,9 +360,9 @@ summarize_model(model, history, trainX, trainy, testX, testy)
 model.save('model.h5')
 ```
 
-运行该示例适合并评估模型的表现，在列车和测试集上打印分类精度。
+运行该示例适合并评估模型的表现，在列车和测试集上打印分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型在问题 1 上表现良好，在训练和测试数据集上都达到了大约 92%的分类准确率。
 
@@ -370,7 +370,7 @@ model.save('model.h5')
 Train: 0.916, Test: 0.920
 ```
 
-还创建了一个图形，总结了模型的学习曲线，显示了在每个训练时期结束时训练(蓝色)和测试(橙色)数据集上模型的损失(顶部)和精度(底部)。
+还创建了一个图形，总结了模型的学习曲线，显示了在每个训练时期结束时训练(蓝色)和测试(橙色)数据集上模型的损失(顶部)和准确率(底部)。
 
 你的情节可能看起来不一样，但预计会表现出相同的一般行为。如果没有，尝试运行该示例几次。
 
@@ -378,7 +378,7 @@ Train: 0.916, Test: 0.920
 
 ![Loss and Accuracy Learning Curves on the Train and Test Sets for an MLP on Problem 1](img/b2543504e1f1cd47e8bce1470fde8218.png)
 
-问题 1 中 MLP 的训练和测试集的损失和精度学习曲线
+问题 1 中 MLP 的训练和测试集的损失和准确率学习曲线
 
 现在我们已经看到了如何为 blobs 问题 1 开发一个独立的 MLP，我们可以看看如何为问题 2 做同样的事情，它可以作为一个基线。
 
@@ -459,9 +459,9 @@ model, history = fit_model(trainX, trainy, testX, testy)
 summarize_model(model, history, trainX, trainy, testX, testy)
 ```
 
-运行该示例适合并评估模型的表现，在列车和测试集上打印分类精度。
+运行该示例适合并评估模型的表现，在列车和测试集上打印分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型在问题 2 上表现良好，但不如在问题 1 上表现得好，在训练数据集和测试数据集上都达到了大约 79%的分类准确率。
 
@@ -475,7 +475,7 @@ Train: 0.794, Test: 0.794
 
 ![Loss and Accuracy Learning Curves on the Train and Test Sets for an MLP on Problem 2](img/2a628f06d980748b5e5de0de459a82e4.png)
 
-问题 2 中 MLP 的训练和测试集的损失和精度学习曲线
+问题 2 中 MLP 的训练和测试集的损失和准确率学习曲线
 
 现在我们已经有了 MLP 在问题 2 上的表现和学习动态的基线，我们可以看到在这个问题上转移学习的增加是如何影响 MLP 的。
 
@@ -574,11 +574,11 @@ model, history = fit_model(trainX, trainy, testX, testy)
 summarize_model(model, history, trainX, trainy, testX, testy)
 ```
 
-运行该示例适合并评估模型的表现，在列车和测试集上打印分类精度。
+运行该示例适合并评估模型的表现，在列车和测试集上打印分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到模型实现了较低的泛化误差，在问题 2 的测试数据集上实现了约 81%的精度，而独立模型实现了约 79%的精度。
+在这种情况下，我们可以看到模型实现了较低的泛化误差，在问题 2 的测试数据集上实现了约 81%的准确率，而独立模型实现了约 79%的准确率。
 
 ```py
 Train: 0.786, Test: 0.810
@@ -590,7 +590,7 @@ Train: 0.786, Test: 0.810
 
 ![Loss and Accuracy Learning Curves on the Train and Test Sets for an MLP With Transfer Learning on Problem 2](img/ce9a5ea14280c9176494f9d72e5834d1.png)
 
-问题 2 中具有迁移学习的 MLP 的训练和测试集上的损失和精度学习曲线
+问题 2 中具有迁移学习的 MLP 的训练和测试集上的损失和准确率学习曲线
 
 我们只研究了一个独立的 MLP 模式和一个有转移学习的 MLP。
 
@@ -606,7 +606,7 @@ Train: 0.786, Test: 0.810
 
 在问题 1 上训练的模型有两个隐藏层。通过保持第一或第一和第二隐藏层固定，具有不变权重的层将充当特征提取器，并且可以提供使得学习问题 2 更容易的特征，从而影响学习的速度和/或测试集上模型的准确性。
 
-作为第一步，我们将简化 *fit_model()* 函数来拟合模型，并丢弃任何训练历史，这样我们就可以专注于训练模型的最终精度。
+作为第一步，我们将简化 *fit_model()* 函数来拟合模型，并丢弃任何训练历史，这样我们就可以专注于训练模型的最终准确率。
 
 ```py
 # define and fit model on a training dataset
@@ -782,15 +782,15 @@ pyplot.boxplot(dists, labels=dist_labels)
 pyplot.show()
 ```
 
-运行该示例首先报告每个模型的测试数据集中分类精度的平均值和标准偏差。
+运行该示例首先报告每个模型的测试数据集中分类准确率的平均值和标准偏差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到独立模型在问题 2 上达到了大约 78%的准确率，并且有 10%的大标准偏差。相比之下，我们可以看到所有迁移学习模型的传播范围要小得多，从大约 0.05%到 1.5%不等。
 
 测试准确度分数的标准偏差的差异显示了转移学习可以给模型带来的稳定性，减少了通过随机学习算法引入的最终模型的表现差异。
 
-比较模型的平均测试精度，我们可以看到，使用模型作为权重初始化方案(固定=0)的转移学习比独立模型的表现更好，准确率约为 80%。
+比较模型的平均测试准确率，我们可以看到，使用模型作为权重初始化方案(固定=0)的转移学习比独立模型的表现更好，准确率约为 80%。
 
 保持所有隐藏层固定(固定=2)并将其用作特征提取方案，平均而言会导致比独立模型更差的表现。这表明这种方法在这种情况下限制太多。
 
@@ -813,7 +813,7 @@ Transfer (fixed=2) 0.750 (0.014)
 
 ![Box and Whisker Plot Comparing Standalone and Transfer Learning Models via Test Set Accuracy on the Blobs Multiclass Classification Problem](img/5e301366fb9e4544bb776931e0292e85.png)
 
-Blobs 多类分类问题中通过测试集精度比较独立和迁移学习模型的盒须图
+Blobs 多类分类问题中通过测试集准确率比较独立和迁移学习模型的盒须图
 
 ## 扩展ˌ扩张
 

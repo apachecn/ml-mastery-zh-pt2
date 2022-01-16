@@ -1,4 +1,4 @@
-# 如何开发不平衡分类模型来检测溢油
+# 如何开发不平衡分类模型来检测漏油
 
 > 原文：<https://machinelearningmastery.com/imbalanced-classification-model-to-detect-oil-spills/>
 
@@ -33,7 +33,7 @@
 
 本教程分为五个部分；它们是:
 
-1.  溢油数据集
+1.  漏油数据集
 2.  浏览数据集
 3.  模型测试和基线结果
 4.  评估模型
@@ -42,9 +42,9 @@
     3.  用概率模型评估重采样
 5.  对新数据进行预测
 
-## 溢油数据集
+## 漏油数据集
 
-在本项目中，我们将使用标准的不平衡机器学习数据集，称为“*溢油*”数据集，“*油膜*数据集”或简称为“*油*”
+在本项目中，我们将使用标准的不平衡机器学习数据集，称为“*漏油*”数据集，“*油膜*数据集”或简称为“*油*”
 
 该数据集是由米罗斯拉夫·库巴特等人在 1998 年发表的论文中引入的，该论文的标题为“用于检测卫星雷达图像中漏油的 T2 机器学习”该数据集通常被归功于该论文的合著者[罗伯特·霍尔特](https://webdocs.cs.ualberta.ca/~holte/)。
 
@@ -52,7 +52,7 @@
 
 > [系统]的输入是来自雷达卫星的原始像素图像。使用图像处理技术[……]图像处理的输出是每个可疑区域的固定长度特征向量。在正常操作期间，这些特征向量被馈送到分类器中，以决定图像中的哪些图像和哪些区域呈现给人类检查。
 
-——[卫星雷达图像溢油检测的机器学习](https://link.springer.com/article/10.1023/A:1007452223027)，1998。
+——[卫星雷达图像漏油检测的机器学习](https://link.springer.com/article/10.1023/A:1007452223027)，1998。
 
 该任务被赋予一个矢量，该矢量描述了一幅卫星图像的内容，然后预测该图像是否包含石油泄漏，例如非法或意外倾倒在海洋中的石油。
 
@@ -60,11 +60,11 @@
 
 总共有九幅卫星图像被处理成小块。数据集中的案例按图像排序，数据集中的第一列表示图像的面片编号。这是为了估计每个图像的模型表现而提供的。在这种情况下，我们对图像或补丁编号不感兴趣，可以删除第一列。
 
-正常情况下，没有溢油被指定为 0 级标签，而溢油被指定为 1 级标签。无溢油 896 例，溢油 41 例。
+正常情况下，没有漏油被指定为 0 级标签，而漏油被指定为 1 级标签。无漏油 896 例，漏油 41 例。
 
 > 石油泄漏领域的第二个关键特征可以称为不平衡训练集:反面例子相似物比正面例子油膜多得多。相对于 41 个正面的例子，我们有 896 个负面的例子，因此多数类构成了几乎 96%的数据。
 
-——[卫星雷达图像溢油检测的机器学习](https://link.springer.com/article/10.1023/A:1007452223027)，1998。
+——[卫星雷达图像漏油检测的机器学习](https://link.springer.com/article/10.1023/A:1007452223027)，1998。
 
 我们无法访问用于从卫星图像中准备计算机视觉特征的程序，因此我们只能处理收集并提供的提取特征。
 
@@ -72,9 +72,9 @@
 
 ## 浏览数据集
 
-首先，下载数据集并将其保存在您当前的工作目录中，名称为“*溢油. csv*
+首先，下载数据集并将其保存在您当前的工作目录中，名称为“*漏油. csv*
 
-*   [下载溢油数据集](https://raw.githubusercontent.com/jbrownlee/Datasets/master/oil-spill.csv)
+*   [下载漏油数据集](https://raw.githubusercontent.com/jbrownlee/Datasets/master/oil-spill.csv)
 
 查看文件的内容。
 
@@ -147,7 +147,7 @@ for k,v in counter.items():
 
 运行该示例首先加载数据集并确认行数和列数。
 
-然后总结了类别分布，确认了溢油和非溢油的数量以及少数和多数类别中的案例百分比。
+然后总结了类别分布，确认了漏油和非漏油的数量以及少数和多数类别中的案例百分比。
 
 ```py
 (937, 50)
@@ -185,7 +185,7 @@ pyplot.show()
 
 ![Histogram of Each Variable in the Oil Spill Dataset](img/32dae11023a59c1c381ff6659699a364.png)
 
-溢油数据集中每个变量的直方图
+漏油数据集中每个变量的直方图
 
 现在我们已经回顾了数据集，让我们看看开发一个测试工具来评估候选模型。
 
@@ -205,7 +205,7 @@ pyplot.show()
 
 > 为此，我们主要使用了几何均值(g 均值)[……]这种度量具有独立于类间示例分布的独特性质，因此在这种分布可能随时间变化或在训练和测试集中不同的情况下是稳健的。
 
-——[卫星雷达图像溢油检测的机器学习](https://link.springer.com/article/10.1023/A:1007452223027)，1998。
+——[卫星雷达图像漏油检测的机器学习](https://link.springer.com/article/10.1023/A:1007452223027)，1998。
 
 回想一下，灵敏度是阳性类别准确性的量度，特异性是阴性类别准确性的量度。
 
@@ -417,7 +417,7 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-将这些联系在一起，下面列出了使用测试工具对溢油数据集上的三个概率模型进行比较的完整示例。
+将这些联系在一起，下面列出了使用测试工具对漏油数据集上的三个概率模型进行比较的完整示例。
 
 ```py
 # compare probabilistic model on the oil spill dataset
@@ -490,7 +490,7 @@ pyplot.show()
 
 运行该示例评估数据集上的每个概率模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 您可能会从 LDA 算法中看到一些警告，例如“*变量共线*”。目前可以安全地忽略这些，但是建议该算法可以受益于特征选择来移除一些变量。
 
@@ -508,7 +508,7 @@ G 均值分数的分布通过每个算法的方框图和触须图进行总结。
 
 ![Box and Whisker Plot of Probabilistic Models on the Imbalanced Oil Spill Dataset](img/96e8ef7c6b6167c7bea3420bd63e57bc.png)
 
-不平衡溢油数据集上概率模型的盒须图
+不平衡漏油数据集上概率模型的盒须图
 
 我们有一个好的开始，但我们可以做得更好。
 
@@ -623,7 +623,7 @@ pyplot.show()
 
 运行该示例评估数据集上平衡逻辑回归模型的每个版本。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 你可能会看到第一个平衡 LR 模型的一些警告，比如“ *Liblinear 未能收敛*”。这些警告目前可以安全地忽略，但是建议该算法可以受益于特征选择来移除一些变量。
 
@@ -644,7 +644,7 @@ pyplot.show()
 
 ![Box and Whisker Plot of Balanced Logistic Regression Models on the Imbalanced Oil Spill Dataset](img/e7baf72fd893672b57a9cb6dccf67933.png)
 
-不平衡溢油数据集上平衡逻辑回归模型的盒须图
+不平衡漏油数据集上平衡逻辑回归模型的盒须图
 
 我们现在用很少的工作就取得了优异的表现；让我们看看能否更进一步。
 
@@ -771,7 +771,7 @@ pyplot.show()
 
 运行该示例使用数据集上的逻辑回归模型评估每个版本的 SMOTEENN。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到 SMOTEENN 的加入提高了默认 LR 算法的表现，实现了 0.852 的平均 G 均值，而在第一组实验结果中看到的是 0.621。这甚至比没有任何数据缩放的平衡 LR(上一节)更好，后者的 G 均值约为 0.846。
 
@@ -788,7 +788,7 @@ pyplot.show()
 
 ![Box and Whisker Plot of Logistic Regression Models with Data Sampling on the Imbalanced Oil Spill Dataset](img/a166b012ec5442b71039877579077aab.png)
 
-不平衡溢油数据集上数据采样的 Logistic 回归模型的盒须图
+不平衡漏油数据集上数据采样的 Logistic 回归模型的盒须图
 
 ## 对新数据进行预测
 
@@ -893,9 +893,9 @@ for row in data:
 
 运行该示例首先在整个训练数据集上拟合模型。
 
-然后，从数据集文件中选择拟合模型，用于预测我们知道没有溢油的情况下的溢油标签。我们可以看到所有的情况都是正确预测的。
+然后，从数据集文件中选择拟合模型，用于预测我们知道没有漏油的情况下的漏油标签。我们可以看到所有的情况都是正确预测的。
 
-然后将实际溢油的一些情况用作模型的输入，并对标签进行预测。正如我们所希望的，正确的标签再次被预测。
+然后将实际漏油的一些情况用作模型的输入，并对标签进行预测。正如我们所希望的，正确的标签再次被预测。
 
 ```py
 Non-Spill Cases:
@@ -914,7 +914,7 @@ Spill Cases:
 
 ### 报纸
 
-*   [卫星雷达图像溢油检测的机器学习](https://link.springer.com/article/10.1023/A:1007452223027)，1998。
+*   [卫星雷达图像漏油检测的机器学习](https://link.springer.com/article/10.1023/A:1007452223027)，1998。
 
 ### 蜜蜂
 
@@ -928,8 +928,8 @@ Spill Cases:
 
 ### 文章
 
-*   [溢油数据集 CSV](https://raw.githubusercontent.com/jbrownlee/Datasets/master/oil-spill.csv) 。
-*   [溢油数据集详情](https://raw.githubusercontent.com/jbrownlee/Datasets/master/oil-spill.names)。
+*   [漏油数据集 CSV](https://raw.githubusercontent.com/jbrownlee/Datasets/master/oil-spill.csv) 。
+*   [漏油数据集详情](https://raw.githubusercontent.com/jbrownlee/Datasets/master/oil-spill.names)。
 
 ## 摘要
 

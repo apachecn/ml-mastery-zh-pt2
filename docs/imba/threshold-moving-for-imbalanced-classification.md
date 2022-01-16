@@ -1,4 +1,4 @@
-# 不平衡分类阈值移动的温和介绍
+# 用于不平衡分类的阈值移动的温和介绍
 
 > 原文：<https://machinelearningmastery.com/threshold-moving-for-imbalanced-classification/>
 
@@ -10,14 +10,14 @@
 
 对于那些类别严重失衡的分类问题，默认阈值可能会导致表现不佳。因此，提高预测不平衡分类问题上的概率的分类器的表现的简单和直接的方法是调整用于将概率映射到类别标签的阈值。
 
-在某些情况下，例如当使用 ROC 曲线和精度-召回曲线时，可以直接计算分类器的最佳或最优阈值。在其他情况下，可以使用网格搜索来调整阈值并定位最佳值。
+在某些情况下，例如当使用 ROC 曲线和准确率-召回曲线时，可以直接计算分类器的最佳或最优阈值。在其他情况下，可以使用网格搜索来调整阈值并定位最佳值。
 
 在本教程中，您将发现如何在将概率转换为清晰的类标签进行不平衡分类时调整最佳阈值。
 
 完成本教程后，您将知道:
 
 *   将概率解释为类标签的默认阈值是 0.5，调整这个超参数称为阈值移动。
-*   如何直接计算 ROC 曲线和精度-召回曲线的最佳阈值。
+*   如何直接计算 ROC 曲线和准确率-召回曲线的最佳阈值。
 *   如何手动搜索所选模型和模型评估指标的阈值。
 
 **用我的新书[Python 不平衡分类](https://machinelearningmastery.com/imbalanced-classification-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -88,7 +88,7 @@
 
 例如，您可以使用 [ROC 曲线](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)来分析模型的预测概率，并使用 ROC AUC 分数来比较和选择模型，尽管您需要模型中清晰的类别标签。如何在 ROC 曲线上选择阈值，使真阳性率和假阳性率达到最佳平衡？
 
-或者，您可以使用精度-召回曲线来分析模型的预测概率，精度-召回 AUC 来比较和选择模型，并需要清晰的类标签作为预测。您如何选择精度-召回率曲线上的阈值，以实现精度和召回率之间的最佳平衡？
+或者，您可以使用准确率-召回曲线来分析模型的预测概率，准确率-召回 AUC 来比较和选择模型，并需要清晰的类标签作为预测。您如何选择准确率-召回率曲线上的阈值，以实现准确率和召回率之间的最佳平衡？
 
 您可以使用基于概率的度量来训练、评估和比较像对数损失([交叉熵](https://machinelearningmastery.com/cross-entropy-for-machine-learning/))这样的模型，但是需要清晰的类标签来进行预测。如何更一般地从预测概率中选择最佳阈值？
 
@@ -302,7 +302,7 @@ pyplot.show()
 
 运行该示例首先定位最佳阈值，并报告该阈值和平均得分。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到最佳阈值约为 0.016153。
 
@@ -383,15 +383,15 @@ Best Threshold=0.016153
 
 ## 精确-召回曲线的最佳阈值
 
-与 ROC 曲线不同的是，[精度-召回率曲线](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)只关注正类(少数类)分类器的表现。
+与 ROC 曲线不同的是，[准确率-召回率曲线](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)只关注正类(少数类)分类器的表现。
 
-精度是真阳性数除以真阳性和假阳性之和的比率。它描述了一个模型在预测正类方面有多好。回忆的计算方法是真阳性数除以真阳性和假阴性之和。回忆和敏感是一样的。
+准确率是真阳性数除以真阳性和假阳性之和的比率。它描述了一个模型在预测正类方面有多好。回忆的计算方法是真阳性数除以真阳性和假阴性之和。回忆和敏感是一样的。
 
-通过在一组阈值上为概率预测创建清晰的类标签，并计算每个阈值的精度和召回率，来计算精度-召回率曲线。将为阈值创建一个折线图，以升序排列，x 轴表示召回率，y 轴表示精度。
+通过在一组阈值上为概率预测创建清晰的类标签，并计算每个阈值的准确率和召回率，来计算准确率-召回率曲线。将为阈值创建一个折线图，以升序排列，x 轴表示召回率，y 轴表示准确率。
 
-无技能模型由一条水平线表示，其精度是数据集中正面示例的比率(例如 TP / (TP + TN))，或者在我们的合成数据集中为 0.01。完美技能分类器具有完全的精度和召回率，右上角有一个点。
+无技能模型由一条水平线表示，其准确率是数据集中正面示例的比率(例如 TP / (TP + TN))，或者在我们的合成数据集中为 0.01。完美技能分类器具有完全的准确率和召回率，右上角有一个点。
 
-我们可以使用上一节中的相同模型和数据集，并使用精度-召回曲线评估逻辑回归模型的概率预测。[精度 _ 召回 _ 曲线()函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)可用于计算曲线，返回每个阈值的精度和召回分数以及使用的阈值。
+我们可以使用上一节中的相同模型和数据集，并使用准确率-召回曲线评估逻辑回归模型的概率预测。[准确率 _ 召回 _ 曲线()函数](https://Sklearn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)可用于计算曲线，返回每个阈值的准确率和召回分数以及使用的阈值。
 
 ```py
 ...
@@ -399,7 +399,7 @@ Best Threshold=0.016153
 precision, recall, thresholds = precision_recall_curve(testy, yhat)
 ```
 
-将这些联系在一起，下面列出了为不平衡分类问题上的逻辑回归计算精度-召回率曲线的完整示例。
+将这些联系在一起，下面列出了为不平衡分类问题上的逻辑回归计算准确率-召回率曲线的完整示例。
 
 ```py
 # pr curve for logistic regression model
@@ -434,19 +434,19 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例会计算每个阈值的精度和召回率，并创建一个精度-召回率图，显示模型在该数据集的一系列阈值上具有一定的技能。
+运行该示例会计算每个阈值的准确率和召回率，并创建一个准确率-召回率图，显示模型在该数据集的一系列阈值上具有一定的技能。
 
 如果我们要求这个模型有清晰的类标签，哪个阈值会达到最好的结果？
 
 ![Precision-Recall Curve Line Plot for Logistic Regression Model for Imbalanced Classification](img/2334cc951a3178fd62a6adb365eee05c.png)
 
-不平衡分类逻辑回归模型的精度-召回曲线
+不平衡分类逻辑回归模型的准确率-召回曲线
 
-如果我们对一个能在精度和召回率之间取得最佳平衡的阈值感兴趣，那么这就和优化总结两种度量的调和平均值的 F 度量一样。
+如果我们对一个能在准确率和召回率之间取得最佳平衡的阈值感兴趣，那么这就和优化总结两种度量的调和平均值的 F 度量一样。
 
-*   F-Measure = (2 *精度*召回)/(精度+召回)
+*   F-Measure = (2 *准确率*召回)/(准确率+召回)
 
-如前一节所述，寻找最佳阈值的简单方法是计算每个阈值的 F 测度。我们可以通过将精度和召回率直接转换为 F-measure 来达到同样的效果；例如:
+如前一节所述，寻找最佳阈值的简单方法是计算每个阈值的 F 测度。我们可以通过将准确率和召回率直接转换为 F-measure 来达到同样的效果；例如:
 
 ```py
 ...
@@ -457,7 +457,7 @@ ix = argmax(fscore)
 print('Best Threshold=%f, F-Score=%.3f' % (thresholds[ix], fscore[ix]))
 ```
 
-然后，我们可以在精度-召回曲线上绘制该点。
+然后，我们可以在准确率-召回曲线上绘制该点。
 
 下面列出了完整的示例。
 
@@ -503,7 +503,7 @@ pyplot.show()
 
 运行该示例首先计算每个阈值的 F 度量，然后定位具有最大值的分数和阈值。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到最佳的 F 值是 0.756，阈值约为 0.25。
 
@@ -511,13 +511,13 @@ pyplot.show()
 Best Threshold=0.256036, F-Score=0.756
 ```
 
-绘制了精度-召回率曲线，这次用较大的黑点绘制了具有最佳 F 度量的阈值。
+绘制了准确率-召回率曲线，这次用较大的黑点绘制了具有最佳 F 度量的阈值。
 
 然后，当在未来进行概率预测时，必须将概率转换为清晰的类别标签时，可以使用该阈值。
 
 ![Precision-Recall Curve Line Plot for Logistic Regression Model With Optimal Threshold](img/f4f96f95980ebb70c9ef43645c112a44.png)
 
-具有最优阈值的逻辑回归模型的精度-召回曲线
+具有最优阈值的逻辑回归模型的准确率-召回曲线
 
 ## 最佳阈值调整
 
@@ -527,7 +527,7 @@ Best Threshold=0.256036, F-Score=0.756
 
 我们可以用一个成功的例子来证明这一点。
 
-首先，我们可以在我们的综合分类问题上拟合一个逻辑回归模型，然后预测类标签并使用 F-Measure 对它们进行评估，F-Measure 是精度和召回率的调和平均值。
+首先，我们可以在我们的综合分类问题上拟合一个逻辑回归模型，然后预测类标签并使用 F-Measure 对它们进行评估，F-Measure 是准确率和召回率的调和平均值。
 
 在解释逻辑回归模型预测的概率时，这将使用默认阈值 0.5。
 
@@ -554,7 +554,7 @@ score = f1_score(testy, yhat)
 print('F-Score: %.5f' % score)
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例，我们可以看到该模型在测试数据集上实现了大约 0.70 的 F-Measure。
 
@@ -655,7 +655,7 @@ print('Threshold=%.3f, F-Score=%.5f' % (thresholds[ix], scores[ix]))
 
 运行该示例报告的最佳阈值为 0.251(默认值为 0.5)，其 F-Measure 值约为 0.75(默认值为 0.70)。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 当您根据自己的问题调整阈值时，可以使用此示例作为模板，允许您替换自己的模型、度量，甚至是要评估的阈值的分辨率。
 
@@ -696,7 +696,7 @@ Threshold=0.251, F-Score=0.75556
 具体来说，您了解到:
 
 *   将概率解释为类标签的默认阈值是 0.5，调整这个超参数称为阈值移动。
-*   如何直接计算 ROC 曲线和精度-召回曲线的最佳阈值。
+*   如何直接计算 ROC 曲线和准确率-召回曲线的最佳阈值。
 *   如何手动搜索所选模型和模型评估指标的阈值。
 
 你有什么问题吗？

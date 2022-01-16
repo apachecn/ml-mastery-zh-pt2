@@ -76,7 +76,7 @@
 
 ![Example of the Table of Results Comparing Classification Accuracy of other GAN models to a SGAN on MNIST](img/2dcae11dc4a1a0dcb301b3460396e71e.png)
 
-将其他 GAN 模型的分类精度与 MNIST 的 SGAN 进行比较的结果表示例。
+将其他 GAN 模型的分类准确率与 MNIST 的 SGAN 进行比较的结果表示例。
 摘自:训练 GANs 的改进技术
 
 ## 如何实现半监督鉴别器模型
@@ -567,7 +567,7 @@ def generate_fake_samples(generator, latent_dim, n_samples):
 
 该功能将使用发电机模型的当前状态生成并绘制 100 幅图像。该图像图可用于主观评估发电机模型的表现。
 
-然后在整个训练数据集上评估监督鉴别器模型，并报告分类精度。最后，生成器模型和监督鉴别器模型被保存到文件中，以供以后使用。
+然后在整个训练数据集上评估监督鉴别器模型，并报告分类准确率。最后，生成器模型和监督鉴别器模型被保存到文件中，以供以后使用。
 
 下面的*summary _ performance()*函数实现了这一点，可以定期调用，比如每个[训练时期](https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/)的结束。可以在运行结束时查看结果，以选择分类器甚至生成器模型。
 
@@ -897,13 +897,13 @@ train(g_model, d_model, c_model, gan_model, dataset, latent_dim)
 
 该示例可以在带有中央处理器或图形处理器硬件的工作站上运行，尽管建议使用图形处理器来加快执行速度。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在运行开始时，总结了训练数据集的大小，以及监督子集，从而确认了我们的配置。
 
 每个模型的表现在每次更新结束时进行总结，包括有监督鉴别器模型的损失和准确性( *c* )、无监督鉴别器模型在真实和生成示例上的损失( *d* )以及通过复合模型更新的生成器模型的损失( *g* )。
 
-监督模型的损失将缩小到接近于零的小值，并且精度将达到 100%，这将在整个运行期间保持不变。如果无监督鉴别器和发生器保持平衡，它们的损失在整个运行过程中应保持在适当的值。
+监督模型的损失将缩小到接近于零的小值，并且准确率将达到 100%，这将在整个运行期间保持不变。如果无监督鉴别器和发生器保持平衡，它们的损失在整个运行过程中应保持在适当的值。
 
 ```py
 (60000, 28, 28, 1) (60000,)
@@ -1001,11 +1001,11 @@ print('Test Accuracy: %.3f%%' % (test_acc * 100))
 
 运行该示例会加载模型，并在 MNIST 数据集上对其进行评估。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，在这种情况下，模型在训练数据集上达到了 95.432%的预期表现，证实我们已经加载了正确的模型。
 
-我们还可以看到，在保持测试数据集上的精度同样好，或者略好，大约为 95.920%。这表明所学习的分类器具有良好的泛化能力。
+我们还可以看到，在保持测试数据集上的准确率同样好，或者略好，大约为 95.920%。这表明所学习的分类器具有良好的泛化能力。
 
 ```py
 Train Accuracy: 95.432%

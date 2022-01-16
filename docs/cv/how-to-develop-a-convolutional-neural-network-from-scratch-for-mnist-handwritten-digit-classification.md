@@ -112,7 +112,7 @@ history = model.fit(..., validation_data=(valX, valY))
 
 为了估计一个模型在一般问题上的表现，我们可以使用 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)，也许是五倍交叉验证。这将给出关于训练和测试数据集的差异以及学习算法的随机性质的模型方差的一些说明。在给定标准差的情况下，模型的表现可以作为 k 倍的平均表现，如果需要，可以用来估计置信区间。
 
-我们可以使用 Sklearn API 中的 [KFold 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html)来实现给定神经网络模型的 k 重交叉验证评估。有许多方法可以实现这一点，尽管我们可以选择一种灵活的方法，其中 *KFold* 类仅用于指定用于每个 spit 的行索引。
+我们可以使用 Sklearn API 中的 [KFold 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.KFold.html)来实现给定神经网络模型的 K 折交叉验证评估。有许多方法可以实现这一点，尽管我们可以选择一种灵活的方法，其中 *KFold* 类仅用于指定用于每个 spit 的行索引。
 
 ```py
 # example of k-fold cv for a neural net
@@ -225,7 +225,7 @@ def prep_pixels(train, test):
 
 所有层将使用 [ReLU 激活功能](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)和 he 权重初始化方案，两者都是最佳实践。
 
-我们将对随机梯度下降优化器使用保守配置，其[学习率](https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/)为 0.01，动量为 0.9。[分类交叉熵](https://machinelearningmastery.com/cross-entropy-for-machine-learning/)损失函数将被优化，适用于多类分类，我们将监控分类精度度量，这是适当的，因为我们在 10 类中的每一类都有相同数量的例子。
+我们将对随机梯度下降优化器使用保守配置，其[学习率](https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/)为 0.01，动量为 0.9。[分类交叉熵](https://machinelearningmastery.com/cross-entropy-for-machine-learning/)损失函数将被优化，适用于多类分类，我们将监控分类准确率度量，这是适当的，因为我们在 10 类中的每一类都有相同数量的例子。
 
 下面的 *define_model()* 函数将定义并返回这个模型。
 
@@ -252,7 +252,7 @@ def define_model():
 
 训练数据集在被分割之前被混洗，并且每次都执行样本混洗，因此我们评估的任何模型将在每个文件夹中具有相同的训练和测试数据集，从而在模型之间提供苹果对苹果的比较。
 
-我们将为一个适度的 10 个训练时期训练基线模型，默认批量为 32 个例子。每个折叠的测试集将用于在训练运行的每个时期评估模型，以便我们以后可以创建学习曲线，并在运行结束时评估模型的表现。因此，我们将跟踪每次运行的结果历史，以及折叠的分类精度。
+我们将为一个适度的 10 个训练时期训练基线模型，默认批量为 32 个例子。每个折叠的测试集将用于在训练运行的每个时期评估模型，以便我们以后可以创建学习曲线，并在运行结束时评估模型的表现。因此，我们将跟踪每次运行的结果历史，以及折叠的分类准确率。
 
 下面的 *evaluate_model()* 函数实现了这些行为，将训练数据集作为参数，并返回一个准确性分数和训练历史的列表，稍后可以对其进行总结。
 
@@ -455,9 +455,9 @@ def run_test_harness():
 run_test_harness()
 ```
 
-运行该示例会打印交叉验证过程中每个折叠的分类精度。这有助于了解模型评估正在进行。
+运行该示例会打印交叉验证过程中每个折叠的分类准确率。这有助于了解模型评估正在进行。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到模型达到完美技能的两种情况，以及达到低于 98%准确率的一种情况。这些都是好结果。
 
@@ -475,7 +475,7 @@ run_test_harness()
 
 ![Loss and Accuracy Learning Curves for the Baseline Model During k-Fold Cross-Validation](img/4360bacc237947f6e33995a0c66ad01c.png)
 
-k 重交叉验证期间基线模型的损失和精度学习曲线
+K 折交叉验证期间基线模型的损失和准确率学习曲线
 
 接下来，计算模型表现的概要。
 
@@ -647,7 +647,7 @@ run_test_harness()
 
 再次运行该示例会报告交叉验证过程中每个折叠的模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 与交叉验证折叠中的基线相比，我们可能会看到模型表现的小幅下降。
 
@@ -665,9 +665,9 @@ run_test_harness()
 
 ![Loss and Accuracy Learning Curves for the BatchNormalization Model During k-Fold Cross-Validation](img/75857e8c73822f4e6cf4b8d74e102333.png)
 
-k 重交叉验证中批处理模型的损失和精度学习曲线
+K 折交叉验证中批处理模型的损失和准确率学习曲线
 
-接下来，给出了模型的估计表现，显示了模型的平均精度略有下降的表现:与基线模型的 98.677 相比，为 98.643。
+接下来，给出了模型的估计表现，显示了模型的平均准确率略有下降的表现:与基线模型的 98.677 相比，为 98.643。
 
 ```py
 Accuracy: mean=98.643 std=0.101, n=5
@@ -824,7 +824,7 @@ run_test_harness()
 
 运行该示例会报告交叉验证过程中每个折叠的模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 每倍得分可能表明比基线有所改善。
 
@@ -840,7 +840,7 @@ run_test_harness()
 
 ![Loss and Accuracy Learning Curves for the Deeper Model During k-Fold Cross-Validation](img/9b8e9e3ca6080806b4bb8d5d994f7421.png)
 
-k 重交叉验证期间更深模型的损失和精度学习曲线
+K 折交叉验证期间更深模型的损失和准确率学习曲线
 
 接下来，给出了模型的估计表现，与基线相比，表现略有提高，从 98.677 提高到 99.062，标准偏差也略有下降。
 
@@ -1008,9 +1008,9 @@ run_test_harness()
 
 运行该示例将加载保存的模型，并在暂挂测试数据集上评估该模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-计算并打印测试数据集中模型的分类精度。在这种情况下，我们可以看到该模型达到了 99.090%的准确率，或者仅仅不到 1%，这一点也不差，并且相当接近估计的 99.753%，标准偏差约为 0.5%(例如 99%的分数)。
+计算并打印测试数据集中模型的分类准确率。在这种情况下，我们可以看到该模型达到了 99.090%的准确率，或者仅仅不到 1%，这一点也不差，并且相当接近估计的 99.753%，标准偏差约为 0.5%(例如 99%的分数)。
 
 ```py
 > 99.090

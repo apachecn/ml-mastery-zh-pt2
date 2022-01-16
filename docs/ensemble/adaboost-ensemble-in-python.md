@@ -64,7 +64,7 @@ AdaBoost 结合了来自短的一级决策树的预测，称为决策树桩，�
 
 该算法是为分类而开发的，涉及到组合集合中所有决策树做出的预测。类似的方法也被开发用于回归问题，其中通过使用决策树的平均值进行预测。基于模型在训练数据集上的表现，加权每个模型对集成预测的贡献。
 
-> ……新算法不需要弱假设准确性的先验知识。相反，它适应这些精度，并生成加权多数假设，其中每个弱假设的权重是其精度的函数。
+> ……新算法不需要弱假设准确性的先验知识。相反，它适应这些准确率，并生成加权多数假设，其中每个弱假设的权重是其准确率的函数。
 
 ——[在线学习的决策理论推广及其在增强](https://link.springer.com/chapter/10.1007/3-540-59119-2_166)中的应用，1996。
 
@@ -133,7 +133,7 @@ print(X.shape, y.shape)
 
 接下来，我们可以在这个数据集上评估一个 AdaBoost 算法。
 
-我们将使用[重复分层 k 折叠交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
+我们将使用[重复分层 k 折叠交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型准确率的平均值和标准偏差。
 
 ```py
 # evaluate adaboost algorithm for classification
@@ -154,11 +154,11 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1, er
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到带有默认超参数的 AdaBoost 集成在这个测试数据集上实现了大约 80%的分类精度。
+在这种情况下，我们可以看到带有默认超参数的 AdaBoost 集成在这个测试数据集上实现了大约 80%的分类准确率。
 
 ```py
 Accuracy: 0.806 (0.041)
@@ -242,9 +242,9 @@ n_scores = cross_val_score(model, X, y, scoring='neg_mean_absolute_error', cv=cv
 print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到带有默认超参数的 AdaBoost 集成实现了大约 100 的 MAE。
 
@@ -351,7 +351,7 @@ pyplot.show()
 
 运行该示例首先报告每个配置数量的决策树的平均准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到这个数据集上的表现提高了，直到大约 50 棵树，然后下降。这可能是在添加额外树之后，集合过拟合训练数据集的迹象。
 
@@ -370,7 +370,7 @@ pyplot.show()
 
 ![Box Plot of AdaBoost Ensemble Size vs. Classification Accuracy](img/117f5b0f338b2a9ea0446466d75933d4.png)
 
-AdaBoost 集成大小与分类精度的箱线图
+AdaBoost 集成大小与分类准确率的箱线图
 
 ### 探索弱势学习器
 
@@ -434,9 +434,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个配置的弱学习器树深度的平均精度。
+运行该示例首先报告每个配置的弱学习器树深度的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，随着决策树深度的增加，集成的表现在这个数据集上也增加了。
 
@@ -459,7 +459,7 @@ pyplot.show()
 
 ![Box Plot of AdaBoost Ensemble Weak Learner Depth vs. Classification Accuracy](img/2358a97f3e3b413e80095c87408358a7.png)
 
-AdaBoost 集成弱学习器深度与分类精度的箱线图
+AdaBoost 集成弱学习器深度与分类准确率的箱线图
 
 ### 探索学习率
 
@@ -526,7 +526,7 @@ pyplot.show()
 
 运行示例首先报告每个配置的学习率的平均准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到 0.5 到 1.0 之间的相似值，以及之后模型表现的下降。
 
@@ -559,7 +559,7 @@ pyplot.show()
 
 ![Box Plot of AdaBoost Ensemble Learning Rate vs. Classification Accuracy](img/84a842a1bed535e3a31602ad6bc4df9f.png)
 
-AdaBoost 集成学习率与分类精度的箱线图
+AdaBoost 集成学习率与分类准确率的箱线图
 
 ### 探索替代算法
 
@@ -597,11 +597,11 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1, er
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到带有逻辑回归弱模型的 AdaBoost 集成在这个测试数据集上实现了大约 79%的分类精度。
+在这种情况下，我们可以看到带有逻辑回归弱模型的 AdaBoost 集成在这个测试数据集上实现了大约 79%的分类准确率。
 
 ```py
 Accuracy: 0.794 (0.032)
@@ -617,7 +617,7 @@ Accuracy: 0.794 (0.032)
 
 在这种情况下，我们将网格搜索 AdaBoost 的两个关键超参数:集成中使用的树的数量和学习率。我们将为每个超参数使用一系列流行的表现良好的值。
 
-每个配置组合将使用重复的 k 倍交叉验证进行评估，配置将使用平均得分进行比较，在这种情况下，使用分类精度。
+每个配置组合将使用重复的 k 倍交叉验证进行评估，配置将使用平均得分进行比较，在这种情况下，使用分类准确率。
 
 下面列出了在我们的合成类别数据集上网格搜索 AdaBoost 算法的关键超参数的完整示例。
 
@@ -653,7 +653,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 运行该示例可能需要一段时间，具体取决于您的硬件。在运行结束时，首先报告获得最佳分数的配置，然后是所考虑的所有其他配置的分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到具有 500 棵树和 0.1 学习率的配置表现最好，分类准确率约为 81.3%。
 

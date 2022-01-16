@@ -168,7 +168,7 @@ _, test_acc = model.evaluate(testX, testy, verbose=0)
 print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 ```
 
-最后，我们将在训练和测试数据集上绘制每个训练时期的模型精度的学习曲线。
+最后，我们将在训练和测试数据集上绘制每个训练时期的模型准确率的学习曲线。
 
 ```py
 # plot history
@@ -215,7 +215,7 @@ pyplot.show()
 
 运行该示例首先打印最终模型在列车和测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型在训练数据集上达到了大约 83%的准确率，在测试数据集上达到了大约 86%的准确率。
 
@@ -225,13 +225,13 @@ pyplot.show()
 Train: 0.830, Test: 0.860
 ```
 
-还创建了一个线图，显示了在每个训练周期内，训练和测试集上模型精度的学习曲线。
+还创建了一个线图，显示了在每个训练周期内，训练和测试集上模型准确率的学习曲线。
 
 我们可以看到模型有一个相当稳定的拟合。
 
 ![Line Plot Learning Curves of Model Accuracy on Train and Test Dataset Over Each Training Epoch](img/22e02038fc46c134e3dfb1c746954dde.png)
 
-每个训练时期训练和测试数据集上模型精度的线图学习曲线
+每个训练时期训练和测试数据集上模型准确率的线图学习曲线
 
 ## 随机拆分集合
 
@@ -278,7 +278,7 @@ def evaluate_model(trainX, trainy, testX, testy):
 
 我们可以使用 Sklearn 库中的 [train_test_split()函数](http://Sklearn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)将数据集随机分割成训练集和测试集。它以 X 和 y 数组作为参数，并且“ *test_size* ”以百分比的形式指定测试数据集的大小。我们将使用 5000 个例子中的 10%作为测试。
 
-然后，我们可以调用 evaluate_model()来拟合和评估模型。然后可以将返回的精度和模型添加到列表中供以后使用。
+然后，我们可以调用 evaluate_model()来拟合和评估模型。然后可以将返回的准确率和模型添加到列表中供以后使用。
 
 在本例中，我们将限制拆分的数量，并依次将拟合模型的数量限制为 10 个。
 
@@ -321,7 +321,7 @@ for i in range(1, n_splits+1):
 	single_scores.append(single_score)
 ```
 
-最后，我们可以比较和计算平均模型在预测问题上的总体表现的更稳健的估计，然后在保持数据集上绘制集成大小对精度的表现。
+最后，我们可以比较和计算平均模型在预测问题上的总体表现的更稳健的估计，然后在保持数据集上绘制集成大小对准确率的表现。
 
 ```py
 # plot score vs number of ensemble members
@@ -421,7 +421,7 @@ pyplot.show()
 
 运行该示例首先在 10 个不同的数据集随机分割成训练集和测试集上拟合和评估 10 个模型。
 
-根据这些分数，我们估计数据集上的平均模型拟合将达到约 83%的精度，标准偏差约为 1.9%。
+根据这些分数，我们估计数据集上的平均模型拟合将达到约 83%的准确率，标准偏差约为 1.9%。
 
 ```py
 >0.816
@@ -439,7 +439,7 @@ Estimated Accuracy 0.832 (0.019)
 
 然后，我们在未看到的数据集上评估每个模型的表现，以及从 1 到 10 个模型的模型集合的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 从这些分数中，我们可以看出，平均模型在这个问题上的表现的更准确估计约为 82%，并且估计的表现是乐观的。
 
@@ -459,13 +459,13 @@ Accuracy 0.820 (0.000)
 
 准确度分数之间的很大差异是以百分比的分数出现的。
 
-创建了一个图表，将未看到的保持数据集上每个单独模型的精度显示为蓝点，将给定数量的成员(从 1 到 10)的集合的表现显示为橙色线和点。
+创建了一个图表，将未看到的保持数据集上每个单独模型的准确率显示为蓝点，将给定数量的成员(从 1 到 10)的集合的表现显示为橙色线和点。
 
-我们可以看到，至少在这种情况下，使用 4 到 8 个成员的集合会产生比大多数单独运行更好的精度(橙色线在许多蓝点上方)。
+我们可以看到，至少在这种情况下，使用 4 到 8 个成员的集合会产生比大多数单独运行更好的准确率(橙色线在许多蓝点上方)。
 
 ![Line Plot Showing Single Model Accuracy (blue dots) vs Accuracy of Ensembles of Varying Size for Random-Split Resampling](img/aeb36cf5f2fdc680db104c85b2c7753b.png)
 
-显示随机分割重采样的单一模型精度(蓝点)与不同大小集合精度的线图
+显示随机分割重采样的单一模型准确率(蓝点)与不同大小集合准确率的线图
 
 该图确实显示了一些单个模型可以比一组模型表现得更好(橙色线上方的蓝点)，但是我们无法选择这些模型。这里，我们证明了在没有额外数据(例如，样本外数据集)的情况下，4 到 8 个成员的集合将比随机选择的训练测试模型给出更好的平均表现。
 
@@ -610,7 +610,7 @@ pyplot.show()
 
 运行该示例首先打印 10 个模型在交叉验证的每个折叠上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 据报道，这些模型的平均表现约为 82%，这似乎不如前一节中使用的随机拆分方法乐观。
 
@@ -646,9 +646,9 @@ Estimated Accuracy 0.827 (0.018)
 Accuracy 0.820 (0.001)
 ```
 
-创建单个模型精度(蓝点)和集合大小与精度(橙色线)的关系图。
+创建单个模型准确率(蓝点)和集合大小与准确率(橙色线)的关系图。
 
-与前面的示例一样，模型表现之间的真正差异在于模型精度的几分之一。
+与前面的示例一样，模型表现之间的真正差异在于模型准确率的几分之一。
 
 橙色线表明，随着成员数量的增加，集合的准确性会增加到收益递减的程度。
 
@@ -658,7 +658,7 @@ Accuracy 0.820 (0.001)
 
 ![Line Plot Showing Single Model Accuracy (blue dots) vs Accuracy of Ensembles of Varying Size for Cross-Validation Resampling](img/7c7bb8f1fe1b6a6e4d552d22774b0d47.png)
 
-显示交叉验证重采样的单一模型精度(蓝点)与不同大小集合精度的线图
+显示交叉验证重采样的单一模型准确率(蓝点)与不同大小集合准确率的线图
 
 ## 装袋集成
 
@@ -799,7 +799,7 @@ pyplot.show()
 
 运行该示例将打印每个引导示例的未使用示例的模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，在这种情况下，模型的预期表现不如随机训练测试分割乐观，可能与 k 倍交叉验证的发现非常相似。
 
@@ -841,7 +841,7 @@ Accuracy 0.819 (0.001)
 
 ![Line Plot Showing Single Model Accuracy (blue dots) vs Accuracy of Ensembles of Varying Size for Bagging](img/b33c8889a1d3623ee982f22542929267.png)
 
-显示单个模型精度(蓝点)与不同装袋尺寸的集成精度的线图
+显示单个模型准确率(蓝点)与不同装袋尺寸的集成准确率的线图
 
 ## 扩展ˌ扩张
 

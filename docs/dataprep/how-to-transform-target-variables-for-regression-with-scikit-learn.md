@@ -261,7 +261,7 @@ print('Mean MAE: %.3f' % (s_mean))
 
 运行该示例使用输入和输出变量的规范化来评估模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们实现了大约 3.1 的 MAE，比实现了大约 6.6 的天真模型好得多。
 
@@ -306,7 +306,7 @@ print('Mean MAE: %.3f' % (s_mean))
 
 运行该示例使用输入和输出变量的幂变换来评估模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们看到 MAE 进一步提高到大约 2.9。
 

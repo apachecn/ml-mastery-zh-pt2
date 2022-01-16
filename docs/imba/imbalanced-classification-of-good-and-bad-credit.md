@@ -1,4 +1,4 @@
-# 开发一个信用好坏不平衡分类模型
+# 开发信用好坏的不平衡分类模型
 
 > 原文：<https://machinelearningmastery.com/imbalanced-classification-of-good-and-bad-credit/>
 
@@ -243,14 +243,14 @@ pyplot.show()
 
 我们将预测客户是否优秀的类别标签。因此，我们需要一个适合评估预测类标签的度量。
 
-任务的重点是积极类(坏客户)。精确和召回是一个很好的起点。最大化精度将最小化误报，最大化召回将最小化模型预测中的误报。
+任务的重点是积极类(坏客户)。精确和召回是一个很好的起点。最大化准确率将最小化误报，最大化召回将最小化模型预测中的误报。
 
-*   精度=真阳性/(真阳性+假阳性)
+*   准确率=真阳性/(真阳性+假阳性)
 *   回忆=真阳性/(真阳性+假阴性)
 
-使用 F-Measure 将计算精度和召回率之间的调和平均值。这是一个很好的数字，可以用来比较和选择这个问题的模型。问题是假阴性比假阳性更具破坏性。
+使用 F-Measure 将计算准确率和召回率之间的调和平均值。这是一个很好的数字，可以用来比较和选择这个问题的模型。问题是假阴性比假阳性更具破坏性。
 
-*   F-Measure = (2 *精度*召回)/(精度+召回)
+*   F-Measure = (2 *准确率*召回)/(准确率+召回)
 
 请记住，这个数据集上的假阴性是坏客户被标记为好客户并获得贷款的情况。假阳性是指一个好客户被标记为坏客户，却没有得到贷款。
 
@@ -263,13 +263,13 @@ pyplot.show()
 
 换句话说，我们对 F 度量感兴趣，它将总结模型最小化正类错误分类错误的能力，但是我们希望更好的模型是最小化假阴性而不是假阳性。
 
-这可以通过使用一个版本的 F-measure 来实现，该版本计算精度和召回率的加权[调和平均值](https://machinelearningmastery.com/arithmetic-geometric-and-harmonic-means-for-machine-learning/)，但是倾向于较高的召回率分数而不是精度分数。这被称为 [Fbeta-measure](https://machinelearningmastery.com/fbeta-measure-for-machine-learning/) ，是 F-measure 的推广，其中“ *beta* ”是定义两个分数权重的参数。
+这可以通过使用一个版本的 F-measure 来实现，该版本计算准确率和召回率的加权[调和平均值](https://machinelearningmastery.com/arithmetic-geometric-and-harmonic-means-for-machine-learning/)，但是倾向于较高的召回率分数而不是准确率分数。这被称为 [Fbeta-measure](https://machinelearningmastery.com/fbeta-measure-for-machine-learning/) ，是 F-measure 的推广，其中“ *beta* ”是定义两个分数权重的参数。
 
-*   Fbeta-Measure = ((1 + beta^2) *精度*召回)/ (beta^2 *精度+召回)
+*   Fbeta-Measure = ((1 + beta^2) *准确率*召回)/ (beta^2 *准确率+召回)
 
-β值 2 比精度更重视召回率，被称为 F2-测度。
+β值 2 比准确率更重视召回率，被称为 F2-测度。
 
-*   F2-Measure = ((1 + 2^2) *精度*召回)/ (2^2 *精度+召回)
+*   F2-Measure = ((1 + 2^2) *准确率*召回)/ (2^2 *准确率+召回)
 
 我们将使用这一衡量标准来评估德国信贷数据集上的模型。这可以使用 [fbeta_score() Sklearn 功能](https://Sklearn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)来实现。
 
@@ -351,7 +351,7 @@ def evaluate_model(X, y, model):
 
 最后，我们可以使用这个测试工具在数据集上评估一个基线模型。
 
-预测示例的少数类的模型将获得最大召回分数和基线精度分数。这为模型在这个问题上的表现提供了一个基线，通过这个基线可以比较所有其他模型。
+预测示例的少数类的模型将获得最大召回分数和基线准确率分数。这为模型在这个问题上的表现提供了一个基线，通过这个基线可以比较所有其他模型。
 
 这可以通过使用 Sklearn 库中的 [DummyClassifier](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类，并将少数民族类的“*策略*”参数设置为“*常量*”并将“*常量*”参数设置为“ *1* ”来实现。
 
@@ -664,7 +664,7 @@ pyplot.show()
 
 运行该示例依次评估每个算法，并报告平均值和标准偏差 F2-Measure。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，在所有情况下，没有一个测试模型的 F2 度量高于预测多数类的默认值(0.682)。这些模特都不熟练。这是令人惊讶的，尽管这表明这两个类别之间的决策边界可能是嘈杂的。
 
@@ -845,7 +845,7 @@ pyplot.show()
 
 运行该示例使用五种不同的欠采样技术来评估逻辑回归算法。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到五种欠采样技术中的三种产生了 F2 度量，比基线 0.682 有所改善。具体来说，ENN，雷恩和 NCR，重复编辑最近的邻居导致最好的表现，F2-测量值约为 0.716。
 
@@ -941,7 +941,7 @@ scores = evaluate_model(X, y, pipeline)
 print('%.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例会得到以下结果。
 
@@ -1018,7 +1018,7 @@ scores = evaluate_model(X, y, pipeline)
 print('%.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例会得到以下结果。
 
@@ -1095,7 +1095,7 @@ scores = evaluate_model(X, y, pipeline)
 print('%.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例会得到以下结果。
 

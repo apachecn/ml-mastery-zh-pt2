@@ -251,7 +251,7 @@ pyplot.show()
 
 运行该示例首先打印为每个输入要素和目标变量计算的分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到一些特性可能比其他特性更相关，具有更大的测试统计值。
 
@@ -359,7 +359,7 @@ pyplot.show()
 
 运行该示例首先打印为每个输入要素和目标变量计算的分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到一些功能的得分较低，这表明它们可能可以被删除。
 
@@ -437,11 +437,11 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 运行该示例将打印训练数据集中模型的准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型实现了大约 77%的分类准确率。
 
-我们更喜欢使用达到与此相同或更好的分类精度的特征子集。
+我们更喜欢使用达到与此相同或更好的分类准确率的特征子集。
 
 ```py
 Accuracy: 77.56
@@ -519,7 +519,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 运行该示例报告了模型在使用方差分析 f-检验统计选择的八个输入特征中的四个特征上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们看到模型达到了大约 78.74%的准确率，与达到 77.56%的基线相比，表现有所提升。
 
@@ -599,7 +599,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 运行该示例使模型适合使用互信息选择的四个顶级选定要素。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，与基线模型相比，我们没有什么不同。这很有趣，因为我们知道该方法与之前的方法相比选择了不同的四个特征。
 
@@ -613,7 +613,7 @@ Accuracy: 77.56
 
 代替猜测，我们可以系统地测试一系列不同数量的所选特征，并发现哪一个导致最佳表现的模型。这被称为网格搜索，其中可以调整 *SelectKBest* 类的 *k* 参数。
 
-使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估分类任务的模型配置是一种良好的做法。我们将通过[repeated stratifiedfold 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)使用三次重复的 10 倍交叉验证。
+使用[重复分层 K 折交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估分类任务的模型配置是一种良好的做法。我们将通过[repeated stratifiedfold 类](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)使用三次重复的 10 倍交叉验证。
 
 ```py
 ...
@@ -700,7 +700,7 @@ print('Best Config: %s' % results.best_params_)
 
 运行示例网格使用 ANOVA f-test 搜索不同数量的选定要素，其中使用重复交叉验证评估每个建模管道。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到所选特征的最佳数量是七个；达到了 77%的准确率。
 
@@ -709,9 +709,9 @@ Best Mean Accuracy: 0.770
 Best Config: {'anova__k': 7}
 ```
 
-我们可能希望看到所选特征的数量和分类精度之间的关系。在这种关系中，我们可能期望更多的特性在某种程度上导致更好的表现。
+我们可能希望看到所选特征的数量和分类准确率之间的关系。在这种关系中，我们可能期望更多的特性在某种程度上导致更好的表现。
 
-这种关系可以通过从 1 到 8 手动评估*选择测试*的 *k* 的每个配置，收集准确度分数的样本，并使用方框图和触须图并排绘制结果来探索。这些箱线图的分布和平均值预计将显示所选要素的数量和管道分类精度之间的任何有趣关系。
+这种关系可以通过从 1 到 8 手动评估*选择测试*的 *k* 的每个配置，收集准确度分数的样本，并使用方框图和触须图并排绘制结果来探索。这些箱线图的分布和平均值预计将显示所选要素的数量和管道分类准确率之间的任何有趣关系。
 
 下面列出了实现这一点的完整示例。
 
@@ -766,9 +766,9 @@ pyplot.boxplot(results, labels=num_features, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个选定特征数量的平均值和标准偏差精度。
+运行该示例首先报告每个选定特征数量的平均值和标准偏差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，选择五个和七个要素的准确度大致相同。
 
@@ -783,7 +783,7 @@ pyplot.show()
 >8 0.768 (0.040)
 ```
 
-并排创建方框图和触须图，显示平均精度随着所选要素的数量增加到五个要素而增加的趋势，之后可能会变得不太稳定。
+并排创建方框图和触须图，显示平均准确率随着所选要素的数量增加到五个要素而增加的趋势，之后可能会变得不太稳定。
 
 在这种情况下，选择五个功能可能是合适的配置。
 

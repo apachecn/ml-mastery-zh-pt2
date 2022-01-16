@@ -338,9 +338,9 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 正确运行该示例将数据插补应用于交叉验证程序的每个折叠。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-使用三次重复的 10 倍交叉验证对管道进行评估，并报告数据集上的平均分类精度约为 86.3%，这是一个不错的分数。
+使用三次重复的 10 倍交叉验证对管道进行评估，并报告数据集上的平均分类准确率约为 86.3%，这是一个不错的分数。
 
 ```py
 Mean Accuracy: 0.863 (0.057)
@@ -399,7 +399,7 @@ pyplot.show()
 
 运行该示例使用重复的交叉验证来评估马结肠数据集上的每个插补顺序。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 每种策略的平均精确度都是一路上报告的。结果表明，大多数方法之间差别不大，降序(与默认值相反)表现最好。结果表明，阿拉伯语(从右到左)或罗马顺序可能更适合此数据集，准确率约为 87.2%。
 
@@ -421,7 +421,7 @@ pyplot.show()
 
 默认情况下，迭代估算器将重复迭代 10 次。
 
-大量的迭代可能会开始偏离或扭曲估计值，而较少的迭代可能是优选的。过程的迭代次数可以通过“ *max_iter* ”参数指定。
+大量的迭代可能会开始偏离或偏斜估计值，而较少的迭代可能是优选的。过程的迭代次数可以通过“ *max_iter* ”参数指定。
 
 评估不同的迭代次数可能会很有趣。以下示例比较了从 1 到 20 的“ *max_iter* ”的不同值。
 
@@ -464,7 +464,7 @@ pyplot.show()
 
 运行该示例使用重复的交叉验证来评估马结肠数据集上的每次迭代次数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 结果表明，在这个数据集上，很少的迭代，如 3 次迭代，可能与 9-12 次迭代一样有效或更有效。
 

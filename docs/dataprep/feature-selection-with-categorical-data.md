@@ -373,7 +373,7 @@ pyplot.show()
 
 运行该示例首先打印为每个输入要素和目标变量计算的分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到分数很小，很难仅从数字中得出哪个特征更相关的想法。
 
@@ -496,7 +496,7 @@ pyplot.show()
 
 运行该示例首先打印为每个输入要素和目标变量计算的分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到一些特征的得分非常低，这表明它们可能可以被移除。
 
@@ -600,11 +600,11 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 运行该示例将打印训练数据集中模型的准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型实现了大约 75%的分类准确率。
 
-我们更喜欢使用达到与此相同或更好的分类精度的特征子集。
+我们更喜欢使用达到与此相同或更好的分类准确率的特征子集。
 
 ```py
 Accuracy: 75.79
@@ -698,7 +698,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 运行该示例报告了模型在使用卡方统计选择的九个输入要素中的四个要素上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们看到模型达到了大约 74%的准确率，表现略有下降。
 
@@ -798,7 +798,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 运行该示例使模型适合使用互信息选择的四个顶级选定要素。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到分类准确率小幅提升至 76%。
 

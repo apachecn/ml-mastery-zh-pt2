@@ -228,7 +228,7 @@ print('F1 Score: %.3f' % score)
 
 所选模型和重采样配置是任意的，旨在提供一个模板，您可以使用该模板来测试数据集和学习算法的欠采样，而不是最佳地求解合成数据集。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 使用默认的过采样策略，平衡少数类和多数类。报告每次折叠和每次重复的 F1 平均得分。
 
@@ -358,7 +358,7 @@ print('F1 Score: %.3f' % score)
 
 所选模型和重采样配置是任意的，旨在提供一个模板，您可以使用该模板来测试数据集和学习算法的欠采样，而不是最佳地求解合成数据集。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 使用默认的欠采样策略，平衡多数类和少数类。报告每次折叠和每次重复的 F1 平均得分。
 
@@ -467,9 +467,9 @@ score = mean(scores)
 print('F1 Score: %.3f' % score)
 ```
 
-运行该示例使用重复的 k 重交叉验证来评估决策树模型，其中对训练数据集进行变换，首先使用过采样，然后对执行的每个分割和重复进行欠采样。报告每次折叠和每次重复的 F1 平均得分。
+运行该示例使用重复的 K 折交叉验证来评估决策树模型，其中对训练数据集进行变换，首先使用过采样，然后对执行的每个分割和重复进行欠采样。报告每次折叠和每次重复的 F1 平均得分。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 所选模型和重采样配置是任意的，旨在提供一个模板，您可以使用该模板来测试数据集和学习算法的欠采样，而不是最佳地求解合成数据集。
 

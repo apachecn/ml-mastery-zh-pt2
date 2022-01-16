@@ -148,7 +148,7 @@ def evaluate_model(X, y, model):
 	return scores
 ```
 
-然后，我们可以调用函数来加载数据集，定义我们的模型，然后对其进行评估，报告平均值和标准偏差精度。
+然后，我们可以调用函数来加载数据集，定义我们的模型，然后对其进行评估，报告平均值和标准偏差准确率。
 
 ```py
 ...
@@ -204,11 +204,11 @@ scores = evaluate_model(X, y, model)
 print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-运行该示例评估模型表现，并报告平均和标准偏差分类精度。
+运行该示例评估模型表现，并报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到，适合原始输入数据的逻辑回归模型实现了大约 95.3%的平均分类精度，提供了表现基线。
+在这种情况下，我们可以看到，适合原始输入数据的逻辑回归模型实现了大约 95.3%的平均分类准确率，提供了表现基线。
 
 ```py
 Accuracy: 0.953 (0.048)
@@ -360,9 +360,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例会评估每个管道的表现，并报告平均和标准偏差分类精度。
+运行该示例会评估每个管道的表现，并报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到标准化输入变量和使用分位数变换都获得了最佳结果，分类准确率约为 98.7%，比没有数据准备的基线提高了 95.3%。
 
@@ -483,11 +483,11 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例会评估每个管道的表现，并报告平均和标准偏差分类精度。
+运行该示例会评估每个管道的表现，并报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到，具有特征选择的标准化提供了从 98.7%到 98.9%的额外精度提升，尽管数据缩放和功率变换没有提供任何超过分位数变换的额外好处。
+在这种情况下，我们可以看到，具有特征选择的标准化提供了从 98.7%到 98.9%的额外准确率提升，尽管数据缩放和功率变换没有提供任何超过分位数变换的额外好处。
 
 ```py
 >std: 0.989 (0.022)
@@ -500,7 +500,7 @@ pyplot.show()
 
 ![Box and Whisker Plot of Classification Accuracy for Different Sequences of Data Transforms on the Wine Classification Dataset](img/219b95945eb32a9407cc61f836506b77.png)
 
-葡萄酒类别数据集中不同数据转换序列分类精度的盒须图
+葡萄酒类别数据集中不同数据转换序列分类准确率的盒须图
 
 ## 进一步阅读
 

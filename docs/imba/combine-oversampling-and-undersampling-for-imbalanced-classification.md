@@ -1,4 +1,4 @@
-# 如何结合过采样和欠采样进行不平衡分类
+# 如何为不平衡分类结合过采样和欠采样
 
 > 原文：<https://machinelearningmastery.com/combine-oversampling-and-undersampling-for-imbalanced-classification/>
 
@@ -151,7 +151,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例会报告数据集上决策树在三次重复的 10 倍交叉验证中的平均 ROC AUC(例如，30 次不同模型评估的平均值)。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这个例子中，你可以看到模型实现了大约 0.76 的 ROC AUC。这为这个数据集提供了一个基线，我们可以用它来比较训练数据集中过采样和欠采样方法的不同组合。
 
@@ -290,7 +290,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例评估转换系统和模型，并将表现总结为平均 ROC AUC。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到 ROC AUC 表现从无变换的 0.76 适度提升到随机过采样和欠采样的约 0.81。
 
@@ -358,7 +358,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例评估转换系统和模型，并将表现总结为平均 ROC AUC。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到 ROC AUC 表现从大约 0.81 到大约 0.83 的另一个列表。
 
@@ -447,7 +447,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例评估转换系统和模型，并将表现总结为平均 ROC AUC。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，这种组合的重采样策略似乎没有为该数据集上的模型提供好处。
 
@@ -525,7 +525,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例评估转换系统和模型，并将表现总结为平均 ROC AUC。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们看到随机欠采样方法的表现比 SMOTE 进一步提升，从约 0.81 提升到约 0.85。
 

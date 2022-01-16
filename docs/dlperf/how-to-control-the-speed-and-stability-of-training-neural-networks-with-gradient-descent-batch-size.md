@@ -14,7 +14,7 @@
 
 完成本教程后，您将知道:
 
-*   当训练神经网络时，批量控制误差梯度估计的精度。
+*   当训练神经网络时，批量控制误差梯度估计的准确率。
 *   批处理、随机和迷你批处理梯度下降是学习算法的三种主要风格。
 *   批量大小与学习过程的速度和稳定性之间存在紧张关系。
 
@@ -234,7 +234,7 @@ _, test_acc = model.evaluate(testX, testy, verbose=0)
 print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 ```
 
-创建一个线图，显示每个训练时期模型的训练和测试集精度。
+创建一个线图，显示每个训练时期模型的训练和测试集准确率。
 
 这些学习曲线提供了三个指标:模型学习问题的速度，学习问题的效果，以及在训练过程中模型更新的噪音。
 
@@ -286,7 +286,7 @@ pyplot.show()
 
 运行示例首先报告模型在列车和测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到训练集和测试集的表现相似，分别为 81%和 83%。
 
@@ -294,11 +294,11 @@ pyplot.show()
 Train: 0.816, Test: 0.830
 ```
 
-创建列车(蓝色)和测试(橙色)数据集上模型分类精度的线图。我们可以看到，模型学习这个问题的速度相对较慢，大约 100 个时代后就收敛到一个解决方案上，之后模型表现的变化很小。
+创建列车(蓝色)和测试(橙色)数据集上模型分类准确率的线图。我们可以看到，模型学习这个问题的速度相对较慢，大约 100 个时代后就收敛到一个解决方案上，之后模型表现的变化很小。
 
 ![Line Plot of Classification Accuracy on Train and Tests Sets of an MLP Fit With Batch Gradient Descent](img/5837bf263f9fc6607f7838ecaeceb25e.png)
 
-列车分类精度线图和批量梯度下降的 MLP 拟合检验集
+列车分类准确率线图和批量梯度下降的 MLP 拟合检验集
 
 ## 随机梯度下降的 MLP 拟合
 
@@ -355,7 +355,7 @@ pyplot.show()
 
 运行示例首先报告模型在列车和测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到训练集和测试集之间的表现是相似的，大约 60%的准确率，但是比使用批量梯度下降的表现差得多(大约 20 个百分点)。
 
@@ -365,13 +365,13 @@ pyplot.show()
 Train: 0.612, Test: 0.606
 ```
 
-创建列车(蓝色)和测试(橙色)数据集上模型分类精度的线图。
+创建列车(蓝色)和测试(橙色)数据集上模型分类准确率的线图。
 
 该图显示了所选配置的训练过程的不稳定性。表现不佳，模型变化剧烈，说明每次训练示例后用于更新权重的[学习率](https://machinelearningmastery.com/learning-rate-for-deep-learning-neural-networks/)可能过大，较小的学习率可能会使学习过程更加稳定。
 
 ![Line Plot of Classification Accuracy on Train and Tests Sets of an MLP Fit With Stochastic Gradient Descent](img/264aeb5ed0b3538b9e684a283c41b007.png)
 
-列车分类精度线图及随机梯度下降 MLP 拟合检验集
+列车分类准确率线图及随机梯度下降 MLP 拟合检验集
 
 我们可以通过用随机梯度下降和较小的学习率重新运行模型拟合来测试这一点。例如，我们可以将学习率降低一个数量级，从 0.01 到 0.001。
 
@@ -421,15 +421,15 @@ pyplot.show()
 
 运行这个例子讲述了一个非常不同的故事。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-报告的表现大大提高，在列车和测试集上实现了与使用批量梯度下降的拟合相当的分类精度。
+报告的表现大大提高，在列车和测试集上实现了与使用批量梯度下降的拟合相当的分类准确率。
 
 ```py
 Train: 0.816, Test: 0.824
 ```
 
-线形图显示了预期的行为。也就是说，与分批梯度下降相比，该模型快速学习问题，在大约 25 个时期内跳跃到大约 80%的精度，而不是使用分批梯度下降时看到的 100 个时期。由于训练速度更快，我们本可以在第 50 期而不是第 200 期停止训练。
+线形图显示了预期的行为。也就是说，与分批梯度下降相比，该模型快速学习问题，在大约 25 个时期内跳跃到大约 80%的准确率，而不是使用分批梯度下降时看到的 100 个时期。由于训练速度更快，我们本可以在第 50 期而不是第 200 期停止训练。
 
 这并不奇怪。使用批量梯度下降，100 个时期涉及 100 个误差估计和 100 个权重更新。在随机梯度下降中，涉及 25 个时期(500 * 25)或 12，500 个权重更新，为如何改进模型提供了超过 10 倍的反馈，尽管反馈噪声更大。
 
@@ -439,7 +439,7 @@ Train: 0.816, Test: 0.824
 
 ![Line Plot of Classification Accuracy on Train and Tests Sets of an MLP Fit With Stochastic Gradient Descent and Smaller Learning Rate](img/ff671994debe1f53eac4f8d73b27b06c.png)
 
-列车上分类精度的线图和具有随机梯度下降和较小学习率的 MLP 拟合的测试集
+列车上分类准确率的线图和具有随机梯度下降和较小学习率的 MLP 拟合的测试集
 
 这个例子强调了批量和学习率之间的重要关系。也就是说，对模型的噪声更大的更新需要更小的学习率，而噪声更小的误差梯度的更精确的估计可以更自由地应用于模型。我们可以总结如下:
 
@@ -452,7 +452,7 @@ Train: 0.816, Test: 0.824
 
 使用随机梯度下降和调整学习率的另一种方法是保持学习率不变并改变批量大小。
 
-实际上，这意味着我们指定每次估计误差梯度时应用于权重的学习率或变化量，但根据用于估计的样本数量来改变梯度的精度。
+实际上，这意味着我们指定每次估计误差梯度时应用于权重的学习率或变化量，但根据用于估计的样本数量来改变梯度的准确率。
 
 将学习率保持在 0.01，就像我们使用批处理梯度下降一样，我们可以将批处理大小设置为 32，这是一个广泛采用的默认批处理大小。
 
@@ -501,7 +501,7 @@ pyplot.legend()
 pyplot.show()
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例在训练集和测试集上都报告了相似的表现，在我们降低学习率之后，可以与批处理梯度下降和随机梯度下降相媲美。
 
@@ -515,7 +515,7 @@ Train: 0.832, Test: 0.812
 
 ![Line Plot of Classification Accuracy on Train and Tests Sets of an MLP Fit With Minibatch Gradient Descent](img/4f894e35573566ab22fce63b23a354de.png)
 
-列车分类精度线图和具有小批量梯度下降的 MLP 拟合测试集
+列车分类准确率线图和具有小批量梯度下降的 MLP 拟合测试集
 
 ## 批量对模型行为的影响
 
@@ -537,7 +537,7 @@ def prepare_data():
 	return trainX, trainy, testX, testy
 ```
 
-接下来，我们可以创建一个函数来拟合给定批量的问题模型，并在训练和测试数据集上绘制分类精度的学习曲线。
+接下来，我们可以创建一个函数来拟合给定批量的问题模型，并在训练和测试数据集上绘制分类准确率的学习曲线。
 
 ```py
 # fit a model and plot learning curve
@@ -629,15 +629,15 @@ for i in range(len(batch_sizes)):
 pyplot.show()
 ```
 
-运行该示例创建了一个带有八条线图的图形，显示了使用小批量梯度下降时列车和不同批量模型测试集的分类精度。
+运行该示例创建了一个带有八条线图的图形，显示了使用小批量梯度下降时列车和不同批量模型测试集的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-这些图显示，小批量通常导致快速学习，但学习过程不稳定，分类精度差异较大。较大的批量会减慢学习过程，但最终阶段会收敛到更稳定的模型，例如分类精度的较低方差。
+这些图显示，小批量通常导致快速学习，但学习过程不稳定，分类准确率差异较大。较大的批量会减慢学习过程，但最终阶段会收敛到更稳定的模型，例如分类准确率的较低方差。
 
 ![Line Plots of Classification Accuracy on Train and Test Datasets With Different Batch Sizes](img/19ad5a754363d936295c47fe058765f3.png)
 
-不同批量的训练和测试数据集上分类精度的线图
+不同批量的训练和测试数据集上分类准确率的线图
 
 ## 进一步阅读
 
@@ -666,7 +666,7 @@ pyplot.show()
 
 具体来说，您了解到:
 
-*   当训练神经网络时，批量控制误差梯度估计的精度。
+*   当训练神经网络时，批量控制误差梯度估计的准确率。
 *   批处理、随机和迷你批处理梯度下降是学习算法的三种主要风格。
 *   批量大小与学习过程的速度和稳定性之间存在紧张关系。
 

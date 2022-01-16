@@ -1,4 +1,4 @@
-# 成本敏感的不平衡分类 SVM
+# 用于不平衡分类的成本敏感 SVM
 
 > 原文：<https://machinelearningmastery.com/cost-sensitive-svm-for-imbalanced-classification/>
 
@@ -154,7 +154,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例在不平衡数据集上评估标准 SVM 模型，并报告平均 ROC AUC。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到模型有技巧，实现了 0.5 以上的 ROC AUC，在这种情况下实现了 0.804 的平均得分。
 
@@ -306,7 +306,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例准备合成不平衡类别数据集，然后使用重复交叉验证评估 SVM 算法的类加权版本。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，报告的平均 ROC AUC 分数比 SVM 算法的未加权版本显示更好的分数，0.964 比 0.804。
 
@@ -400,7 +400,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 运行该示例使用重复的 k 倍交叉验证评估每个类别权重，并报告最佳配置和相关的平均 ROC AUC 分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到 1:100 的多数对少数类权重获得了最佳的平均 ROC 分数。这与一般启发式算法的配置相匹配。
 

@@ -126,9 +126,9 @@ scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-运行该示例会评估整个数据集上的决策树，并报告平均和标准偏差分类精度。
+运行该示例会评估整个数据集上的决策树，并报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型达到了大约 80.5%的准确率。
 
@@ -196,7 +196,7 @@ scores = cross_val_score(model, X_new, y, scoring='accuracy', cv=cv, n_jobs=-1)
 result = mean(scores)
 ```
 
-如果模型的精度优于目前为止找到的最佳序列，我们可以存储它。
+如果模型的准确率优于目前为止找到的最佳序列，我们可以存储它。
 
 ```py
 ...
@@ -251,11 +251,11 @@ print('Done!')
 print('f(%s) = %f' % (best_subset, best_score))
 ```
 
-运行该示例会报告所考虑的每个特征子集的模型平均分类精度。然后在运行结束时报告最佳子集。
+运行该示例会报告所考虑的每个特征子集的模型平均分类准确率。然后在运行结束时报告最佳子集。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到特征的最佳子集涉及索引[2，3，4]处的特征，这导致了大约 83.0%的平均分类精度，这优于之前使用所有输入特征报告的结果。
+在这种情况下，我们可以看到特征的最佳子集涉及索引[2，3，4]处的特征，这导致了大约 83.0%的平均分类准确率，这优于之前使用所有输入特征报告的结果。
 
 ```py
 >f([0, 1, 2, 3, 4]) = 0.813667
@@ -344,9 +344,9 @@ scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-运行该示例会评估整个数据集上的决策树，并报告平均和标准偏差分类精度。
+运行该示例会评估整个数据集上的决策树，并报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型达到了大约 91.3%的准确率。
 
@@ -358,7 +358,7 @@ Mean Accuracy: 0.913 (0.001)
 
 我们将使用简单的随机爬山算法作为优化算法。
 
-首先，我们必须定义目标函数。它将使用数据集和要素子集作为输入，并返回从 0(最差)到 1(最佳)的估计模型精度。这是一个最大化优化问题。
+首先，我们必须定义目标函数。它将使用数据集和要素子集作为输入，并返回从 0(最差)到 1(最佳)的估计模型准确率。这是一个最大化优化问题。
 
 这个目标函数只是上一节中序列和模型评估步骤的解码。
 
@@ -559,9 +559,9 @@ print('Done!')
 print('Best: f(%d) = %f' % (len(ix), score))
 ```
 
-运行该示例会报告所考虑的每个特征子集的模型平均分类精度。然后在运行结束时报告最佳子集。
+运行该示例会报告所考虑的每个特征子集的模型平均分类准确率。然后在运行结束时报告最佳子集。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到最佳表现是通过 239 个特征的子集和大约 91.8%的分类准确率实现的。
 

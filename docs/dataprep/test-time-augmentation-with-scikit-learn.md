@@ -116,7 +116,7 @@ for train_ix, test_ix in cv.split(X, y):
 	scores.append(acc)
 ```
 
-最后，我们可以报告所有折叠和重复的平均分类精度。
+最后，我们可以报告所有折叠和重复的平均分类准确率。
 
 ```py
 ...
@@ -157,7 +157,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 运行该示例使用重复的分层 k 倍交叉验证来评估逻辑回归。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型实现了 79.8%的平均分类准确率。
 
@@ -312,7 +312,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 运行该示例使用重复的分层 k 倍交叉验证和测试时间扩充来评估逻辑回归。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型实现了 81.0%的平均分类准确率，这优于没有使用测试时间扩充的测试工具，后者实现了 79.8%的准确率。
 
@@ -403,7 +403,7 @@ pyplot.show()
 
 运行该示例报告了在测试时间扩充期间创建的不同数量的合成示例的准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 回想一下，我们在前面的例子中使用了三个例子。
 
@@ -432,13 +432,13 @@ pyplot.show()
 >20, acc: 0.804 (0.109)
 ```
 
-创建了示例数量与分类精度的线图，显示奇数个示例通常比偶数个示例具有更好的表现。
+创建了示例数量与分类准确率的线图，显示奇数个示例通常比偶数个示例具有更好的表现。
 
 这可能是意料之中的，因为他们在使用预测模式时有能力打破联系。
 
 ![Line Plot of Number of Synthetic Examples in TTA vs. Classification Accuracy](img/95aca6932841b042fe8a31add8967412.png)
 
-TTA 合成样本数与分类精度的线图
+TTA 合成样本数与分类准确率的线图
 
 在测试时间扩充期间，我们也可以用添加到测试集中的示例中的随机噪声量来执行相同的灵敏度分析。
 
@@ -524,11 +524,11 @@ pyplot.show()
 
 运行该示例报告了在测试时间扩充期间添加到创建的示例中的不同统计噪声量的准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 回想一下，我们在第一个示例中使用了 0.02 的标准偏差。
 
-在这种情况下，看起来大约 0.230 的值可能是该测试线束的最佳值，导致 81.2%的稍高精度。
+在这种情况下，看起来大约 0.230 的值可能是该测试线束的最佳值，导致 81.2%的稍高准确率。
 
 ```py
 >noise=0.010, acc: 0.798 (0.110)
@@ -563,11 +563,11 @@ pyplot.show()
 >noise=0.300, acc: 0.808 (0.116)
 ```
 
-创建了添加到示例中的噪声量与分类精度之间的线图，显示了在标准偏差为 0.250 左右的小范围噪声可能是该测试线束的最佳值。
+创建了添加到示例中的噪声量与分类准确率之间的线图，显示了在标准偏差为 0.250 左右的小范围噪声可能是该测试线束的最佳值。
 
 ![Line Plot of Statistical Noise Added to Examples in TTA vs. Classification Accuracy](img/e680422f26f92dc92441378580f84add.png)
 
-添加到 TTA 示例中的统计噪声的线图与分类精度的关系
+添加到 TTA 示例中的统计噪声的线图与分类准确率的关系
 
 ### **为什么不用 SMOTE 这样的过采样方法？**
 

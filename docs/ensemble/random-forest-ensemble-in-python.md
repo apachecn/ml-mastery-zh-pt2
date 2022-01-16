@@ -14,7 +14,7 @@
 
 完成本教程后，您将知道:
 
-*   随机森林集成是决策树的集成，是套袋的自然延伸。
+*   随机森林集成是决策树的集成，是装袋的自然延伸。
 *   如何用 Sklearn 使用随机森林集成进行分类和回归？
 *   如何探索随机森林模型超参数对模型表现的影响？
 
@@ -160,7 +160,7 @@ print(X.shape, y.shape)
 
 接下来，我们可以在这个数据集上评估一个随机森林算法。
 
-我们将使用[重复分层 k 折叠交叉验证](https://machinelearningmastery.com/cross-validation-for-imbalanced-classification/)来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
+我们将使用[重复分层 k 折叠交叉验证](https://machinelearningmastery.com/cross-validation-for-imbalanced-classification/)来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型准确率的平均值和标准偏差。
 
 ```py
 # evaluate random forest algorithm for classification
@@ -181,11 +181,11 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1, er
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到带有默认超参数的随机森林集成达到了大约 90.5%的分类精度。
+在这种情况下，我们可以看到带有默认超参数的随机森林集成达到了大约 90.5%的分类准确率。
 
 ```py
 Accuracy: 0.905 (0.025)
@@ -271,7 +271,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例会报告模型的均值和标准差 MAE。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到具有默认超参数的随机森林集合达到了大约 90 的 MAE。
 
@@ -382,9 +382,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行示例首先报告每个数据集大小的平均精度。
+运行示例首先报告每个数据集大小的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，结果表明使用与训练数据集大小相等的引导样本大小可以在该数据集上获得最佳结果。
 
@@ -411,7 +411,7 @@ pyplot.show()
 
 ![Box Plot of Random Forest Bootstrap Sample Size vs. Classification Accuracy](img/d4b08cc672a1419c98188a9e66e2d210.png)
 
-随机森林自举样本量与分类精度的箱线图
+随机森林自举样本量与分类准确率的箱线图
 
 ### 探索功能数量
 
@@ -419,7 +419,7 @@ pyplot.show()
 
 它通过 *max_features* 参数设置，默认为输入特征数的平方根。在这种情况下，对于我们的测试数据集，这将是 *sqrt(20)* 或大约四个特征。
 
-以下示例探讨了在每个分割点随机选择的特征数量对模型精度的影响。我们将尝试从 1 到 7 的值，并期望一个小的值，大约 4，在启发式的基础上表现良好。
+以下示例探讨了在每个分割点随机选择的特征数量对模型准确率的影响。我们将尝试从 1 到 7 的值，并期望一个小的值，大约 4，在启发式的基础上表现良好。
 
 ```py
 # explore random forest number of features effect on performance
@@ -471,9 +471,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行示例首先报告每个特征集大小的平均精度。
+运行示例首先报告每个特征集大小的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，结果表明介于 3 和 5 之间的值是合适的，这证实了在这个数据集上 4 是合理的默认值。如果分类准确度的标准偏差小于三或四，则五的值可能更好。
 
@@ -487,13 +487,13 @@ pyplot.show()
 >7 0.900 (0.024)
 ```
 
-为每个要素集大小的精度分数分布创建了一个方框和触须图。
+为每个要素集大小的准确率分数分布创建了一个方框和触须图。
 
 我们可以看到表现上升并达到峰值的趋势，其值在 3 到 5 之间，当考虑更大的特征集大小时，表现会再次下降。
 
 ![Box Plot of Random Forest Feature Set Size vs. Classification Accuracy](img/689c203222f7b95f811534cd1e775f88.png)
 
-随机森林特征集大小与分类精度的箱线图
+随机森林特征集大小与分类准确率的箱线图
 
 ### 探索树的数量
 
@@ -556,9 +556,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个配置的树数的平均精度。
+运行该示例首先报告每个配置的树数的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到大约 100 棵树后，表现会上升并保持不变。平均准确度分数在 100、500 和 1000 棵树之间波动，这可能是统计噪声。
 
@@ -574,7 +574,7 @@ pyplot.show()
 
 ![Box Plot of Random Forest Ensemble Size vs. Classification Accuracy](img/6a810c53672652eb17b85e36aabfcdd2.png)
 
-随机森林集合大小与分类精度的箱线图
+随机森林集合大小与分类准确率的箱线图
 
 ### 探索树的深度
 
@@ -637,9 +637,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行示例首先报告每个配置的最大树深度的平均精度。
+运行示例首先报告每个配置的最大树深度的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到更大的深度会带来更好的模型表现，默认的无最大深度会在这个数据集上获得最佳表现。
 
@@ -654,13 +654,13 @@ pyplot.show()
 >None 0.903 (0.027)
 ```
 
-为每个配置的最大树深的精度分数分布创建一个方框和须图。
+为每个配置的最大树深的准确率分数分布创建一个方框和须图。
 
 在这种情况下，我们可以看到表现随着树深度的增加而提高的趋势，支持无最大深度的默认值。
 
 ![Box Plot of Random Forest Maximum Tree Depth vs. Classification Accuracy](img/0c5a71e1e448a18f7c16a150275357b1.png)
 
-随机森林最大树深与分类精度的箱线图
+随机森林最大树深与分类准确率的箱线图
 
 ## 常见问题
 
@@ -742,7 +742,7 @@ pyplot.show()
 
 具体来说，您了解到:
 
-*   随机森林集成是决策树的集成，是套袋的自然延伸。
+*   随机森林集成是决策树的集成，是装袋的自然延伸。
 *   如何用 Sklearn 使用随机森林集成进行分类和回归？
 *   如何探索随机森林模型超参数对模型表现的影响？
 

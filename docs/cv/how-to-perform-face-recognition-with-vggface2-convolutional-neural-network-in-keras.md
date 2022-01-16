@@ -448,7 +448,7 @@ for result in results[0]:
 
 然后显示前五个概率最高的名称。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，该模型正确地将人脸识别为属于莎朗·斯通，可能性为 99.642%。
 
@@ -640,7 +640,7 @@ is_match(embeddings[0], embeddings[3])
 
 运行该示例，我们可以看到系统正确验证了莎朗·斯通早期和晚期照片中的两个阳性病例。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们还可以看到，查宁·塔图姆的照片没有被正确地验证为莎朗·斯通。探索其他负面照片的验证，如其他女性名人的照片，将是一个有趣的扩展。
 

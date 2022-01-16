@@ -256,7 +256,7 @@ model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=100, verbose=0)
 ```
 
-在运行结束时，在列车和测试数据集上评估模型，并报告精度。
+在运行结束时，在列车和测试数据集上评估模型，并报告准确率。
 
 ```py
 # evaluate the model
@@ -265,7 +265,7 @@ _, test_acc = model.evaluate(testX, testy, verbose=0)
 print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 ```
 
-最后，创建线图，显示每个训练时期结束时列车和测试集的模型精度[，提供学习曲线](https://machinelearningmastery.com/how-to-control-neural-network-model-capacity-with-nodes-and-layers/)。
+最后，创建线图，显示每个训练时期结束时列车和测试集的模型准确率[，提供学习曲线](https://machinelearningmastery.com/how-to-control-neural-network-model-capacity-with-nodes-and-layers/)。
 
 这个学习曲线图很有用，因为它给出了模型学习问题的速度和效果的概念。
 
@@ -313,7 +313,7 @@ pyplot.show()
 
 运行该示例符合模型，并在列车和测试集上对其进行评估。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型在保持数据集上实现了大约 84%的准确率，并且在给定两个数据集的相同大小和相似组成的情况下，在训练集和测试集上都实现了相当的表现。
 
@@ -321,13 +321,13 @@ pyplot.show()
 Train: 0.838, Test: 0.846
 ```
 
-创建一个图表，显示列车(蓝色)和测试(橙色)数据集上分类精度的线图。
+创建一个图表，显示列车(蓝色)和测试(橙色)数据集上分类准确率的线图。
 
-该图显示了训练过程中模型在两个数据集上的可比表现。我们可以看到，在最初的 30 到 40 个时期，表现跃升至 80%以上，然后精度慢慢提高。
+该图显示了训练过程中模型在两个数据集上的可比表现。我们可以看到，在最初的 30 到 40 个时期，表现跃升至 80%以上，然后准确率慢慢提高。
 
 ![Line Plot of MLP Classification Accuracy on Train and Test Datasets Over Training Epochs](img/488470292adfd9b6e50f1e37516084f6.png)
 
-训练和测试数据集上训练时期的 MLP 分类精度线图
+训练和测试数据集上训练时期的 MLP 分类准确率线图
 
 这个结果，特别是训练过程中模型的动态，提供了一个基线，可以与添加批处理规范化的相同模型进行比较。
 
@@ -335,7 +335,7 @@ Train: 0.838, Test: 0.846
 
 上一节中介绍的模型可以更新，以添加批处理规范化。
 
-预期批量标准化的增加将加速训练过程，在更少的训练时期提供相似或更好的模型分类精度。据报道，批处理规范化还提供了一种适度的规范化形式，这意味着它还可以通过保持测试数据集上分类精度的小幅提高来提供泛化误差的小幅降低。
+预期批量标准化的增加将加速训练过程，在更少的训练时期提供相似或更好的模型分类准确率。据报道，批处理规范化还提供了一种适度的规范化形式，这意味着它还可以通过保持测试数据集上分类准确率的小幅提高来提供泛化误差的小幅降低。
 
 在输出层之前的隐藏层之后，可以向模型添加新的 BatchNormalization 层。具体来说，在前一隐藏层的激活功能之后。
 
@@ -385,9 +385,9 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例首先打印模型在训练和测试数据集上的分类精度。
+运行该示例首先打印模型在训练和测试数据集上的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型在列车和测试集上的可比表现，准确率约为 84%，与我们在上一节中看到的非常相似，如果不是更好一点的话。
 
@@ -395,7 +395,7 @@ pyplot.show()
 Train: 0.846, Test: 0.848
 ```
 
-还创建了学习曲线的图，示出了每个训练时期的训练集和测试集的分类精度。
+还创建了学习曲线的图，示出了每个训练时期的训练集和测试集的分类准确率。
 
 在这种情况下，我们可以看到，在没有批处理规范化的情况下，模型比上一节中的模型学习问题的速度更快。具体来说，我们可以看到，在前 20 个时期内，训练和测试数据集上的分类准确率跃升至 80%以上，而在没有批量标准化的模型中，这一比例为 30-40 个时期。
 
@@ -403,7 +403,7 @@ Train: 0.846, Test: 0.848
 
 ![Line Plot Classification Accuracy of MLP With Batch Normalization After Activation Function on Train and Test Datasets Over Training Epochs](img/23e8898d1878473a89c95380c799e7df.png)
 
-训练和测试数据集上激活函数后批量归一化的 MLP 线路图分类精度
+训练和测试数据集上激活函数后批量归一化的 MLP 线路图分类准确率
 
 我们也可以尝试模型的一种变体，在隐藏层的激活函数之前应用批处理规范化，而不是在激活函数之后。
 
@@ -456,9 +456,9 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例首先打印模型在训练和测试数据集上的分类精度。
+运行该示例首先打印模型在训练和测试数据集上的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型在训练和测试数据集上的表现相当，但比没有批处理归一化的模型稍差。
 
@@ -468,13 +468,13 @@ Train: 0.826, Test: 0.830
 
 火车和测试集上学习曲线的线图也讲述了一个不同的故事。
 
-该图显示，模型学习的速度可能与没有批处理标准化的模型相同，但模型在训练数据集上的表现要差得多，精度徘徊在 70%到 75%左右，这很可能是收集和使用的统计数据对每个小批处理的影响。
+该图显示，模型学习的速度可能与没有批处理标准化的模型相同，但模型在训练数据集上的表现要差得多，准确率徘徊在 70%到 75%左右，这很可能是收集和使用的统计数据对每个小批处理的影响。
 
 至少对于这个特定数据集上的这个模型配置，在校正线性激活函数之后，批处理规范化似乎更有效。
 
 ![Line Plot Classification Accuracy of MLP With Batch Normalization Before Activation Function on Train and Test Datasets Over Training Epochs](img/50b6d7f0f94b4808d657a9e7ab266690.png)
 
-训练和测试数据集上激活函数前批量归一化的 MLP 线路图分类精度
+训练和测试数据集上激活函数前批量归一化的 MLP 线路图分类准确率
 
 ## 扩展ˌ扩张
 

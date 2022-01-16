@@ -243,7 +243,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 最后，我们将绘制模型在每个时期的列车和测试集上的表现。
 
-如果模型确实过度训练了训练数据集，那么随着模型学习训练数据集中的统计噪声，我们将期望训练集上的精度线图继续增加，并且测试集上升，然后再次下降。
+如果模型确实过度训练了训练数据集，那么随着模型学习训练数据集中的统计噪声，我们将期望训练集上的准确率线图继续增加，并且测试集上升，然后再次下降。
 
 ```py
 # plot history
@@ -287,7 +287,7 @@ pyplot.show()
 
 运行该示例会报告列车和测试数据集上的模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，该模型在训练数据集上的表现优于测试数据集，这可能是过拟合的一个迹象。
 
@@ -295,13 +295,13 @@ pyplot.show()
 Train: 1.000, Test: 0.757
 ```
 
-创建一个图形，显示列车和测试集上模型精度的线图。
+创建一个图形，显示列车和测试集上模型准确率的线图。
 
-我们可以看到过拟合模型的预期形状，其中测试精度增加到一个点，然后开始再次降低。
+我们可以看到过拟合模型的预期形状，其中测试准确率增加到一个点，然后开始再次降低。
 
 ![Line Plots of Accuracy on Train and Test Datasets While Training Showing an Overfit](img/c2807e186a057795104e7b89c285cb94.png)
 
-训练时训练和测试数据集上的精度线图显示出过拟合
+训练时训练和测试数据集上的准确率线图显示出过拟合
 
 ## 具有输入层噪声的 MLP
 
@@ -356,7 +356,7 @@ pyplot.show()
 
 运行该示例会报告列车和测试数据集上的模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可能会在测试数据集上看到模型表现的小幅提升，而不会对训练数据集产生负面影响。
 
@@ -368,11 +368,11 @@ Train: 1.000, Test: 0.771
 
 也许较低的输入噪声标准偏差会更合适。
 
-该模型仍然显示出一种过度训练的模式，随着训练时间的推移，测试精度先上升后下降。
+该模型仍然显示出一种过度训练的模式，随着训练时间的推移，测试准确率先上升后下降。
 
 ![Line Plot of Train and Test Accuracy With Input Layer Noise](img/8dae7c9cbf9372cf425c4f99b4dbdd0b.png)
 
-列车线形图和带有输入层噪声的测试精度
+列车线形图和带有输入层噪声的测试准确率
 
 ## 具有隐藏层噪声的 MLP
 
@@ -428,7 +428,7 @@ pyplot.show()
 
 运行该示例会报告列车和测试数据集上的模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型在等待测试集上的表现显著提高。
 
@@ -436,11 +436,11 @@ pyplot.show()
 # Train: 0.967, Test: 0.814
 ```
 
-我们还可以从训练时期的精度线图中看到，模型似乎不再显示过拟合的特性。
+我们还可以从训练时期的准确率线图中看到，模型似乎不再显示过拟合的特性。
 
 ![Line Plot of Train and Test Accuracy With Hidden Layer Noise](img/cc89ef643c716422c9c594041477b7d5.png)
 
-列车线形图及隐层噪声测试精度
+列车线形图及隐层噪声测试准确率
 
 我们还可以在第一个隐藏层的输出通过激活函数后进行实验并添加噪声。
 
@@ -489,7 +489,7 @@ pyplot.show()
 
 运行该示例会报告列车和测试数据集上的模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 令人惊讶的是，我们在模型的表现上几乎看不到差异。
 
@@ -497,11 +497,11 @@ pyplot.show()
 Train: 0.967, Test: 0.814
 ```
 
-同样，我们可以从训练时期的精度线图中看到，模型不再显示过拟合的迹象。
+同样，我们可以从训练时期的准确率线图中看到，模型不再显示过拟合的迹象。
 
 ![Line Plot of Train and Test Accuracy With Hidden Layer Noise (alternate)](img/89d1458b91e3743fab9c01789faea0f8.png)
 
-列车线形图和带隐层噪声的测试精度(备选)
+列车线形图和带隐层噪声的测试准确率(备选)
 
 ## 扩展ˌ扩张
 

@@ -209,7 +209,7 @@ print(yhat[-100:])
 
 运行该示例使用 EM 算法在准备好的数据集上拟合高斯混合模型。拟合后，该模型用于预测训练数据集中示例的潜在变量值。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，至少在数据集中的前几个和最后几个示例中，模型主要预测潜在变量的正确值。这通常是一个具有挑战性的问题，预计分布峰值之间的点将保持不明确，并整体分配给一个或另一个过程。
 

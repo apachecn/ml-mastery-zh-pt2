@@ -1,4 +1,4 @@
-# 不平衡类别数据采样方法之旅
+# 不平衡类别的数据采样方法之旅
 
 > 原文：<https://machinelearningmastery.com/data-sampling-methods-for-imbalanced-classification/>
 

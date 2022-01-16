@@ -161,7 +161,7 @@ print(X.shape, y.shape)
 
 接下来，我们可以在这个数据集上评估一个 XGBoost 随机森林算法。
 
-我们将使用[重复分层 k 折叠交叉验证](https://machinelearningmastery.com/cross-validation-for-imbalanced-classification/)来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
+我们将使用[重复分层 k 折叠交叉验证](https://machinelearningmastery.com/cross-validation-for-imbalanced-classification/)来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型准确率的平均值和标准偏差。
 
 ```py
 # evaluate xgboost random forest algorithm for classification
@@ -183,9 +183,9 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到 XGBoost 随机森林集成实现了大约 89.1%的分类准确率。
 
@@ -280,7 +280,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例会报告模型的均值和标准差 MAE。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到具有默认超参数的随机森林集合达到了大约 108 的 MAE。
 
@@ -387,9 +387,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个配置的树数的平均精度。
+运行该示例首先报告每个配置的树数的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到大约 500 棵树后，表现会上升并保持不变。平均准确度分数在 500、1000 和 5000 棵树之间波动，这可能是统计噪声。
 
@@ -406,7 +406,7 @@ pyplot.show()
 
 ![Box Plots of XGBoost Random Forest Ensemble Size vs. Classification Accuracy](img/88f33a52466e085dc02a87f47755ae09.png)
 
-XGBoost 随机森林集合大小与分类精度的箱线图
+XGBoost 随机森林集合大小与分类准确率的箱线图
 
 ### 探索功能数量
 
@@ -414,7 +414,7 @@ XGBoost 随机森林集合大小与分类精度的箱线图
 
 它是通过“ *colsample_bynode* ”参数设置的，该参数从 0 到 1 取输入特征数量的百分比。
 
-以下示例探讨了在每个分割点随机选择的特征数量对模型精度的影响。我们将尝试从 0.0 到 1.0 的值，增量为 0.1，尽管我们预计低于 0.2 或 0.3 的值会产生良好或最佳的表现，因为这相当于输入特征数量的平方根，这是一种常见的启发式方法。
+以下示例探讨了在每个分割点随机选择的特征数量对模型准确率的影响。我们将尝试从 0.0 到 1.0 的值，增量为 0.1，尽管我们预计低于 0.2 或 0.3 的值会产生良好或最佳的表现，因为这相当于输入特征数量的平方根，这是一种常见的启发式方法。
 
 ```py
 # explore xgboost random forest number of features effect on performance
@@ -467,9 +467,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行示例首先报告每个特征集大小的平均精度。
+运行示例首先报告每个特征集大小的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，随着集成成员使用更多的输入特征，我们可以看到平均模型表现下降的总体趋势。
 
@@ -488,13 +488,13 @@ pyplot.show()
 >1.0 0.846 (0.027)
 ```
 
-为每个要素集大小的精度分数分布创建了一个方框和触须图。
+为每个要素集大小的准确率分数分布创建了一个方框和触须图。
 
 我们可以看到表现随着决策树所考虑的特征数量而下降的趋势。
 
 ![Box Plots of XGBoost Random Forest Feature Set Size vs. Classification Accuracy](img/22930477011b4bcd3d4267846f01526c.png)
 
-XGBoost 随机森林特征集大小与分类精度的方框图
+XGBoost 随机森林特征集大小与分类准确率的方框图
 
 ## 进一步阅读
 

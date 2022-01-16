@@ -161,7 +161,7 @@ print(X.shape, y.shape)
 
 我们将使用管道，其中第一步执行线性判别分析变换并选择五个最重要的维度或组件，然后在这些特征上拟合[朴素贝叶斯](https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm/)模型。我们不需要标准化这个数据集中的变量，因为所有的变量都有相同的设计比例。
 
-管道将使用[重复分层交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)进行评估，重复三次，每次重复 10 次。表现表示为平均分类精度。
+管道将使用[重复分层交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)进行评估，重复三次，每次重复 10 次。表现表示为平均分类准确率。
 
 下面列出了完整的示例。
 
@@ -187,9 +187,9 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1, er
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行示例评估模型并报告分类精度。
+运行示例评估模型并报告分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到带有朴素贝叶斯的 LDA 变换获得了大约 31.4%的表现。
 
@@ -205,7 +205,7 @@ Accuracy: 0.314 (0.049)
 
 LDA 在降维中使用的组件数量被限制在类的数量减一之间，在这种情况下是(10–1)或 9
 
-下面的示例执行了该实验，并总结了每种配置的平均分类精度。
+下面的示例执行了该实验，并总结了每种配置的平均分类准确率。
 
 ```py
 # compare lda number of components with naive bayes algorithm for classification
@@ -254,11 +254,11 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告所选组件或特征的每个数量的分类精度。
+运行该示例首先报告所选组件或特征的每个数量的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-随着维度数量的增加，我们可以看到表现提高的总体趋势。在这个数据集上，结果显示了维度数量和模型分类精度之间的权衡。
+随着维度数量的增加，我们可以看到表现提高的总体趋势。在这个数据集上，结果显示了维度数量和模型分类准确率之间的权衡。
 
 结果表明，使用默认的九个组件可以在这个数据集上获得最佳表现，尽管会有一个温和的折衷，因为使用的维度更少。
 
@@ -274,13 +274,13 @@ pyplot.show()
 >9 0.358 (0.056)
 ```
 
-为每个配置的尺寸数量的精度分数的分布创建一个方框和触须图。
+为每个配置的尺寸数量的准确率分数的分布创建一个方框和触须图。
 
-我们可以看到分类精度随着组件数量的增加而增加的趋势，限制在 9 个。
+我们可以看到分类准确率随着组件数量的增加而增加的趋势，限制在 9 个。
 
 ![Box Plot of LDA Number of Components vs. Classification Accuracy](img/460f5a5f0620a498d01a432597d9db37.png)
 
-线性判别分析组件数与分类精度的箱线图
+线性判别分析组件数与分类准确率的箱线图
 
 我们可以选择使用线性判别分析变换和朴素贝叶斯模型组合作为最终模型。
 

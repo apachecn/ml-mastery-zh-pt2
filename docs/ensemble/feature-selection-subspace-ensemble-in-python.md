@@ -111,9 +111,9 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告平均和标准偏差分类精度。
+运行该示例会报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到单个决策树模型实现了大约 79.4%的分类准确率。我们可以将此作为表现的基准，看看我们的功能选择集成是否能够实现更好的表现。
 
@@ -243,9 +243,9 @@ n_scores = cross_val_score(ensemble, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告平均和标准偏差分类精度。
+运行该示例会报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到单个模型的表现有所提升，使用基于方差分析统计选择的特征的模型集合，该模型的准确率达到了约 79.4%至约 83.2%。
 
@@ -329,9 +329,9 @@ n_scores = cross_val_score(ensemble, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告平均和标准偏差分类精度。
+运行该示例会报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到表现比使用单一模型有所提升，尽管比选择的特征子空间略少，方差分析的平均准确率约为 82.7%。
 
@@ -418,11 +418,11 @@ n_scores = cross_val_score(ensemble, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告平均和标准偏差分类精度。
+运行该示例会报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到平均精度与互信息特征选择相似，得分约为 82.3%。
+在这种情况下，我们可以看到平均准确率与互信息特征选择相似，得分约为 82.3%。
 
 ```py
 Mean Accuracy: 0.823 (0.045)
@@ -522,9 +522,9 @@ n_scores = cross_val_score(ensemble, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告平均和标准偏差分类精度。
+运行该示例会报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到表现相对于上一节中考虑的技术有适度的提升，导致平均分类准确率约为 83.9%。
 
@@ -597,7 +597,7 @@ pyplot.show()
 
 运行该示例会报告每个单个模型在选定特征上的平均表现，并以组合所有三个模型的集合的表现结束。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，结果表明，如我们所希望的那样，适合所选特征的模型集合比集合中的任何单个模型表现得更好。
 
@@ -610,7 +610,7 @@ pyplot.show()
 
 创建一个图形来显示每组结果的方框图和触须图，允许直接比较分布准确度分数。
 
-我们可以看到，集合的分布倾斜得更高，并且具有更大的中值分类精度(橙色线)，直观地证实了这一发现。
+我们可以看到，集合的分布倾斜得更高，并且具有更大的中值分类准确率(橙色线)，直观地证实了这一发现。
 
 ![Box and Whisker Plots of Accuracy of Singles Model Fit On Selected Features vs. Ensemble](img/a3fb8a2f288b680fc9338967ee808582.png)
 
@@ -702,9 +702,9 @@ n_scores = cross_val_score(ensemble, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告集合的均值和标准差分类精度。
+运行该示例会报告集合的均值和标准差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到表现的进一步提升，正如我们所希望的那样，组合集成导致平均分类准确率约为 86.0%。
 

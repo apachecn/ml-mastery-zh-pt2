@@ -525,20 +525,20 @@ Loaded: (40479, 128, 128, 3) (40479, 17)
 
 在开始建模之前，我们必须选择一个表现指标。
 
-分类精度通常适用于每个类别中具有平衡数量的示例的二进制分类任务。
+分类准确率通常适用于每个类别中具有平衡数量的示例的二进制分类任务。
 
 在这种情况下，我们既不处理二进制分类任务，也不处理多类分类任务；相反，它是一个多标签分类任务，标签的数量并不均衡，有些标签的使用量比其他标签更大。
 
 因此，卡格尔竞赛组织选择了 F-beta 指标，特别是 F2 分数。这是一个与 [F1 得分](https://en.wikipedia.org/wiki/F1_score)相关的指标(也称为 F-measure)。
 
-F1 分数计算[召回率和](https://en.wikipedia.org/wiki/Precision_and_recall)精确度的平均值。您可能还记得精度和召回率的计算方法如下:
+F1 分数计算[召回率和](https://en.wikipedia.org/wiki/Precision_and_recall)精确度的平均值。您可能还记得准确率和召回率的计算方法如下:
 
 ```py
 precision = true positives / (true positives + false positives)
 recall = true positives / (true positives + false negatives)
 ```
 
-精度描述了模型在预测正类方面有多好。回忆描述了当实际结果为正时，模型预测正类的能力。
+准确率描述了模型在预测正类方面有多好。回忆描述了当实际结果为正时，模型预测正类的能力。
 
 F1 是这两个分数的平均值，特别是[调和平均值](https://machinelearningmastery.com/arithmetic-geometric-and-harmonic-means-for-machine-learning/)，而不是算术平均值，因为这些值是比例。在不平衡数据集上评估模型表现时，F1 优于精确度，最差和最佳可能得分的值介于 0 和 1 之间。
 
@@ -546,13 +546,13 @@ F1 是这两个分数的平均值，特别是[调和平均值](https://machinele
 F1 = 2 x (precision x recall) / (precision + recall)
 ```
 
-F-β度量是 F1 的推广，它允许引入一个名为*β*的术语，该术语衡量在计算平均值时，回忆与精度相比有多重要
+F-β度量是 F1 的推广，它允许引入一个名为*β*的术语，该术语衡量在计算平均值时，回忆与准确率相比有多重要
 
 ```py
 F-Beta = (1 + Beta^2) x (precision x recall) / (Beta^2 x precision + recall)
 ```
 
-beta 的一个常见值是 2，这是竞争中使用的值，召回的价值是精度的两倍。这通常被称为 F2 分数。
+beta 的一个常见值是 2，这是竞争中使用的值，召回的价值是准确率的两倍。这通常被称为 F2 分数。
 
 正负类的思想只对二元分类问题有意义。当我们预测多个类时，正项、负项和相关项的概念以一个相对于其余项的方式为每个类计算，然后在每个类中取平均值。
 
@@ -996,7 +996,7 @@ run_test_harness()
 
 对模型进行拟合和评估，并报告测试数据集上最终模型的 F-beta 分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，基线模型获得了大约 0.831 的 F-beta 分数，这比前一节中报告的 0.483 的幼稚分数好得多。这表明基线模型是有技巧的。
 
@@ -1177,7 +1177,7 @@ run_test_harness()
 
 运行该示例首先适合模型，然后在等待测试数据集上报告模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型表现的小幅提升，从基线模型的约 0.831 的 F-beta 分数提升到约 0.859，并增加了脱落。
 
@@ -1327,7 +1327,7 @@ run_test_harness()
 
 运行该示例首先适合模型，然后在等待测试数据集上报告模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到表现提升了大约 0.06，从基线模型的大约 0.831 的 F-beta 分数提升到具有简单数据增加的基线模型的大约 0.882 的分数。这是一个很大的进步，比我们看到的丢弃率要大。
 
@@ -1518,7 +1518,7 @@ run_test_harness()
 
 运行该示例首先适合模型，然后在等待测试数据集上报告模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型获得了约 0.860 的 F-beta 评分，优于基线模型，但不如具有图像数据扩充的基线模型。
 
@@ -1565,7 +1565,7 @@ def define_model(in_shape=(128, 128, 3), out_shape=17):
 
 然后，在行星数据集上使用 VGG-16 的转移学习的例子可以通过这种修改重新运行。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们看到，与 VGG-16 模型特征提取模型相比，模型表现有所提高，因为它将 F-beta 评分从约 0.860 提高到约 0.879。该分数接近基线模型的 F-beta 分数，增加了图像数据扩充。
 
@@ -1695,7 +1695,7 @@ run_test_harness()
 
 运行该示例首先适合模型，然后在等待测试数据集上报告模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型表现从大约 0.879 的 F-beta 分数进一步提升到大约 0.891 的 F-beta 分数。
 

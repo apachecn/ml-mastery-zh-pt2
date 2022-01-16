@@ -42,7 +42,7 @@
 
 因此，混合与[堆叠概括](https://machinelearningmastery.com/stacking-ensemble-machine-learning-with-python/)相同，称为堆叠，广义上来说。通常，在同一篇论文或模型描述中，混合和堆叠可以互换使用。
 
-> 许多机器学习实践者已经成功地使用堆叠和相关技术来提高预测精度，使其超过任何单个模型获得的水平。在某些情况下，堆叠也被称为混合，我们将在这里互换使用这些术语。
+> 许多机器学习实践者已经成功地使用堆叠和相关技术来提高预测准确率，使其超过任何单个模型获得的水平。在某些情况下，堆叠也被称为混合，我们将在这里互换使用这些术语。
 
 ——[特征加权线性叠加](https://arxiv.org/abs/0911.0460)，2009。
 
@@ -249,7 +249,7 @@ blender = fit_ensemble(models, X_train, X_val, y_train, y_val)
 yhat = predict_ensemble(models, blender, X_test)
 ```
 
-最后，我们可以通过在测试数据集上报告分类精度来评估混合模型的表现。
+最后，我们可以通过在测试数据集上报告分类准确率来评估混合模型的表现。
 
 ```py
 ...
@@ -345,7 +345,7 @@ print('Blending Accuracy: %.3f' % (score*100))
 
 运行该示例首先报告训练、验证和测试数据集的形状，然后报告测试数据集上集成的准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到混合集成实现了大约 97.900%的分类准确率。
 
@@ -487,7 +487,7 @@ print('Blending Accuracy: %.3f' % (score*100))
 
 运行该示例首先报告训练、验证和测试数据集的形状，然后报告测试数据集上集成的准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到混合类概率导致分类准确率提升到大约 98.240%。
 
@@ -548,9 +548,9 @@ for name, model in models:
 	print('>%s Accuracy: %.3f' % (name, score*100))
 ```
 
-运行该示例首先报告完整训练和测试数据集的形状，然后报告测试数据集上每个基础模型的精度。
+运行该示例首先报告完整训练和测试数据集的形状，然后报告测试数据集上每个基础模型的准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到所有模型的表现都比混合集成差。
 
@@ -796,7 +796,7 @@ print('Blending MAE: %.3f' % score)
 
 运行该示例首先报告训练、验证和测试数据集的形状，然后报告测试数据集上集合的 MAE。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到混合集成在测试数据集上实现了大约 0.237 的 MAE。
 
@@ -858,7 +858,7 @@ for name, model in models:
 
 运行该示例首先报告完整的训练和测试数据集的形状，然后报告测试数据集上每个基础模型的 MAE。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到线性回归模型确实比混合集成表现得稍好，实现了 0.236 的 MAE，而集成为 0.237。这可能是因为合成数据集的构建方式。
 

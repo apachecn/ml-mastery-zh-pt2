@@ -71,7 +71,7 @@
 
 对用于分类的候选解决方案的修改是选择一个预测，并将其从 0 翻转到 1 或从 1 翻转到 0。对回归的候选解决方案的修改是向列表中的一个值添加高斯噪声，或者用新值替换列表中的一个值。
 
-解决方案的评分包括计算评分标准，例如分类任务的分类精度或回归任务的平均绝对误差。
+解决方案的评分包括计算评分标准，例如分类任务的分类准确率或回归任务的平均绝对误差。
 
 现在我们已经熟悉了算法，让我们实现它。
 
@@ -116,7 +116,7 @@ def load_dataset():
 
 接下来，我们需要一个函数来评估候选解决方案——也就是预测列表。
 
-我们将使用分类精度，其中对于最差的可能解决方案，得分在 0 到 1 之间，对于一组完美的预测。
+我们将使用分类准确率，其中对于最差的可能解决方案，得分在 0 到 1 之间，对于一组完美的预测。
 
 ```py
 # evaluate a set of predictions
@@ -267,9 +267,9 @@ pyplot.plot(scores)
 pyplot.show()
 ```
 
-运行该示例将运行 20，000 次迭代的搜索，如果达到完美的精度，则停止搜索。
+运行该示例将运行 20，000 次迭代的搜索，如果达到完美的准确率，则停止搜索。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们在大约 12，900 次迭代中为测试集找到了一组完美的预测。
 
@@ -294,7 +294,7 @@ pyplot.show()
 
 ![Line Plot of Accuracy vs. Hill Climb Optimization Iteration for a Classification Task](img/a48cecd831bd316b00b77340aab2fa16.png)
 
-分类任务的精度与爬坡优化迭代的线图
+分类任务的准确率与爬坡优化迭代的线图
 
 现在我们已经熟悉了爬坡测试集，让我们在真实数据集上尝试这种方法。
 
@@ -413,9 +413,9 @@ pyplot.show()
 
 在这种情况下，我们使用更少的迭代，因为这是一个更简单的优化问题，因为我们要做的预测更少。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到我们在大约 1500 次迭代中达到了完美的精度。
+在这种情况下，我们可以看到我们在大约 1500 次迭代中达到了完美的准确率。
 
 ```py
 ...
@@ -436,7 +436,7 @@ pyplot.show()
 
 ![Line Plot of Accuracy vs. Hill Climb Optimization Iteration for the Diabetes Dataset](img/c38824778074ba326bb3b41975fdd8e1.png)
 
-糖尿病数据集的精度线图与爬坡优化迭代
+糖尿病数据集的准确率线图与爬坡优化迭代
 
 ## 爬坡住房回归数据集
 
@@ -671,7 +671,7 @@ if score <= 1e-7:
 	break
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，在运行结束时，我们实现了一个很好的错误。
 
@@ -693,7 +693,7 @@ if score <= 1e-7:
 
 ![Line Plot of Accuracy vs. Hill Climb Optimization Iteration for the Housing Dataset](img/7ca5124aa3786c786c7eb2d8b8be0868.png)
 
-房屋数据集的精度线图与爬坡优化迭代
+房屋数据集的准确率线图与爬坡优化迭代
 
 ## 进一步阅读
 

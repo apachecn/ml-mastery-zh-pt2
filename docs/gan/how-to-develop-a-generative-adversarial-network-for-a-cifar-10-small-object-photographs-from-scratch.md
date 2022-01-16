@@ -462,7 +462,7 @@ train_discriminator(model, dataset)
 
 运行该示例首先定义模型，加载 CIFAR-10 数据集，然后训练鉴别器模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，鉴别器模型学会非常快速地分辨真实和随机生成的 CIFAR-10 图像，大约分 20 批。
 
@@ -1021,7 +1021,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=200, n_batc
 
 有三种方法可以处理这种复杂的训练情况。
 
-1.  定期评估真假图像鉴别器的分类精度。
+1.  定期评估真假图像鉴别器的分类准确率。
 2.  定期生成许多图像，并保存到文件中进行主观审查。
 3.  定期保存发电机模型。
 
@@ -1029,7 +1029,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=200, n_batc
 
 在许多时期，例如数百或数千个时期，训练 GAN 将产生模型的许多快照，这些快照可以被检查，并且可以从中挑选特定的输出和模型供以后使用。
 
-首先，我们可以定义一个名为*summary _ performance()*的函数，它将总结鉴别器模型的表现。它通过检索真实 CIFAR-10 图像的样本，以及用生成器模型生成相同数量的假 CIFAR-10 图像，然后评估鉴别器模型对每个样本的分类精度，并报告这些分数来实现这一点。
+首先，我们可以定义一个名为*summary _ performance()*的函数，它将总结鉴别器模型的表现。它通过检索真实 CIFAR-10 图像的样本，以及用生成器模型生成相同数量的假 CIFAR-10 图像，然后评估鉴别器模型对每个样本的分类准确率，并报告这些分数来实现这一点。
 
 ```py
 # evaluate the discriminator, plot generated images, save generator model
@@ -1329,7 +1329,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 每批报告一次模型表现，包括区分模型( *d* )和生成模型( *g* )的损失。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，损失在整个训练过程中保持稳定。真实例子和生成例子的鉴别器损耗在 0.5 左右，而通过鉴别器训练的生成器在大部分训练过程中的损耗在 1.5 左右。
 
@@ -1349,7 +1349,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 生成器每 10 个时期评估一次，产生 20 个评估、20 个生成的图像图和 20 个保存的模型。
 
-在这种情况下，我们可以看到精度随着训练而波动。当查看鉴别器模型的准确度分数与生成的图像一致时，我们可以看到假例子的准确度与图像的主观质量没有很好的关联，但是真实例子的准确度可能有关联。
+在这种情况下，我们可以看到准确率随着训练而波动。当查看鉴别器模型的准确度分数与生成的图像一致时，我们可以看到假例子的准确度与图像的主观质量没有很好的关联，但是真实例子的准确度可能有关联。
 
 这是一个粗略的，可能不可靠的 GAN 表现指标，以及损失。
 
@@ -1438,7 +1438,7 @@ create_plot(X, 10)
 
 运行该示例首先加载模型，对潜在空间中的 100 个随机点进行采样，生成 100 幅图像，然后将结果绘制为一幅图像。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到大多数图像都是可信的，或者说是小对象的可信碎片。
 
@@ -1472,7 +1472,7 @@ pyplot.imshow(X[0, :, :])
 pyplot.show()
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，向量全为 0.75 会导致绿野中出现一只鹿或者看起来像鹿马的动物。
 

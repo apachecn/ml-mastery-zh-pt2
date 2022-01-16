@@ -427,7 +427,7 @@ Negative Prediction | False Negative (FN) | True Negative (TN)
 *   P(A|B) = 85% * 0.02% / 5.016%
 *   P(A|B) = 0.339%
 
-原来，在这种情况下，我们用贝叶斯定理计算的[后验概率](https://en.wikipedia.org/wiki/Posterior_probability)相当于[精度](https://en.wikipedia.org/wiki/Precision_and_recall)，也称混淆矩阵的正预测值(PPV):
+原来，在这种情况下，我们用贝叶斯定理计算的[后验概率](https://en.wikipedia.org/wiki/Posterior_probability)相当于[准确率](https://en.wikipedia.org/wiki/Precision_and_recall)，也称混淆矩阵的正预测值(PPV):
 
 *   PPV = TP / (TP + FP)
 

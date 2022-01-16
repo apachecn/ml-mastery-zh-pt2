@@ -261,7 +261,7 @@ _, test_acc = model.evaluate(testX, testy, verbose=0)
 print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 ```
 
-最后，我们将在训练和测试数据集上绘制每个训练时期的模型精度的学习曲线。
+最后，我们将在训练和测试数据集上绘制每个训练时期的模型准确率的学习曲线。
 
 ```py
 # plot history
@@ -307,7 +307,7 @@ pyplot.show()
 
 运行该示例首先打印最终模型在列车和测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型在训练数据集上实现了约 84%的准确率，在测试数据集上实现了约 76%的准确率；不可怕。
 
@@ -315,13 +315,13 @@ pyplot.show()
 Train: 0.847, Test: 0.766
 ```
 
-还创建了一个线图，显示了在每个训练周期内，训练和测试集上模型精度的学习曲线。
+还创建了一个线图，显示了在每个训练周期内，训练和测试集上模型准确率的学习曲线。
 
 我们可以看到，该模型并没有真正过量，但可能有点不足，可能会受益于容量的增加、更多的培训以及一些正则化。所有这些改进，我们都有意抑制，以迫使我们的案例研究出现高方差。
 
 ![Line Plot Learning Curves of Model Accuracy on Train and Test Dataset Over Each Training Epoch](img/15472af2a1bfdfac4eb7827ef80bd245.png)
 
-每个训练时期训练和测试数据集上模型精度的线图学习曲线
+每个训练时期训练和测试数据集上模型准确率的线图学习曲线
 
 ## MLP 模型的高方差
 
@@ -329,7 +329,7 @@ Train: 0.847, Test: 0.766
 
 我们可以通过在同一数据集上重复相同模型配置的拟合和评估，并总结模型的最终表现来演示这一点。
 
-为此，我们首先将模型的拟合和评估拆分为一个可以重复调用的函数。下面的 evaluate_model()函数获取训练和测试数据集，拟合一个模型，然后对其进行评估，在测试数据集上重新调整模型的精度。
+为此，我们首先将模型的拟合和评估拆分为一个可以重复调用的函数。下面的 evaluate_model()函数获取训练和测试数据集，拟合一个模型，然后对其进行评估，在测试数据集上重新调整模型的准确率。
 
 ```py
 # fit and evaluate a neural net model on the dataset
@@ -427,7 +427,7 @@ pyplot.show()
 
 运行该示例首先打印测试集上每个模型的准确性，最后打印准确性分数样本的平均值和标准偏差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到样本的平均值为 77%，标准偏差约为 1.4%。假设为高斯分布，我们预计 99%的准确率会在 73%到 81%之间(即高于和低于平均值的 3 个标准差)。
 
@@ -473,13 +473,13 @@ Scores Mean: 0.770, Standard Deviation: 0.014
 
 ![Histogram of Model Test Accuracy Over 30 Repeats](img/97d72a00d364aa3a10acbe8d67e6cd04.png)
 
-超过 30 次重复的模型测试精度直方图
+超过 30 次重复的模型测试准确率直方图
 
 还创建了一个方框和触须图，显示了测试集上准确度约为 76.5%的中位数处的一条线，以及约 78%至 76%之间的样本的四分位数范围或中间 50%。
 
 ![Box and Whisker Plot of Model Test Accuracy Over 30 Repeats](img/53ecf22984e99b077654c7f08bb6dbed.png)
 
-模型试验精度超过 30 次重复的盒须图
+模型试验准确率超过 30 次重复的盒须图
 
 对测试分数样本的分析清楚地表明了在相同数据集上训练的相同模型的表现差异。
 
@@ -525,7 +525,7 @@ def ensemble_predictions(members, testX):
 
 我们不知道有多少文工团成员适合这个问题。
 
-因此，我们可以对集合成员的数量及其如何影响测试精度进行敏感性分析。这意味着我们需要一个函数来评估指定数量的集合成员，并返回这些成员组合的预测的准确性。
+因此，我们可以对集合成员的数量及其如何影响测试准确率进行敏感性分析。这意味着我们需要一个函数来评估指定数量的集合成员，并返回这些成员组合的预测的准确性。
 
 ```py
 # evaluate a specific number of members in an ensemble
@@ -539,7 +539,7 @@ def evaluate_n_members(members, n_members, testX, testy):
 	return accuracy_score(testy, yhat)
 ```
 
-最后，我们可以创建集成成员数量(x 轴)与测试数据集(y 轴)上许多成员的平均预测精度的线图。
+最后，我们可以创建集成成员数量(x 轴)与测试数据集(y 轴)上许多成员的平均预测准确率的线图。
 
 ```py
 # plot score vs number of ensemble members
@@ -618,9 +618,9 @@ pyplot.show()
 
 运行该示例首先将 20 个模型放在同一个训练数据集上，这在现代硬件上可能不到一分钟。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-然后，从 1 个成员到所有 20 个成员测试不同大小的集成，并打印每个集成大小的测试精度结果。
+然后，从 1 个成员到所有 20 个成员测试不同大小的集成，并打印每个集成大小的测试准确率结果。
 
 ```py
 1
@@ -671,7 +671,7 @@ pyplot.show()
 
 ![Line Plot of Ensemble Size Versus Model Test Accuracy](img/e4e660b4ff56b0127c44835f36e49703.png)
 
-集合大小对模型检验精度的线图
+集合大小对模型检验准确率的线图
 
 最后，我们可以更新重复评估实验，使用五个模型的集合来代替单个模型，并比较分数的分布。
 
@@ -745,7 +745,7 @@ print('Scores Mean: %.3f, Standard Deviation: %.3f' % (mean(scores), std(scores)
 
 打印测试集上每个模型的表现，以提供进度指示。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 模型表现的平均值和标准偏差在运行结束时打印。
 

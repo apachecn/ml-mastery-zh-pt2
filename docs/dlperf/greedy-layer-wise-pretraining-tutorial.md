@@ -234,7 +234,7 @@ model = get_base_model(trainX, trainy)
 
 我们需要能够轻松评估模型在列车和测试集上的表现。
 
-下面的 *evaluate_model()* 函数将训练集和测试集作为参数和模型，并返回两个数据集的精度。
+下面的 *evaluate_model()* 函数将训练集和测试集作为参数和模型，并返回两个数据集的准确率。
 
 ```py
 # evaluate a fit model
@@ -334,7 +334,7 @@ for i in range(n_layers):
 	scores[len(model.layers)] = (train_acc, test_acc)
 ```
 
-在运行结束时，会创建一个线图，显示模型中的层数(x 轴)与列车和测试数据集上的模型精度数的比较。
+在运行结束时，会创建一个线图，显示模型中的层数(x 轴)与列车和测试数据集上的模型准确率数的比较。
 
 我们希望增加层可以提高模型在训练数据集上甚至测试数据集上的表现。
 
@@ -430,11 +430,11 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例会报告基本模型(两层)在列车和测试集上的分类精度，然后添加每个附加层(从 3 层到 12 层)。
+运行该示例会报告基本模型(两层)在列车和测试集上的分类准确率，然后添加每个附加层(从 3 层到 12 层)。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到基线模型在这个问题上做得相当好。随着层的增加，我们可以大致看到模型在训练数据集上的准确性有所提高，这可能是因为它开始过度填充数据。我们在测试数据集上看到分类精度的粗略下降，可能是因为过拟合。
+在这种情况下，我们可以看到基线模型在这个问题上做得相当好。随着层的增加，我们可以大致看到模型在训练数据集上的准确性有所提高，这可能是因为它开始过度填充数据。我们在测试数据集上看到分类准确率的粗略下降，可能是因为过拟合。
 
 ```py
 > layers=2, train=0.816, test=0.830
@@ -450,13 +450,13 @@ pyplot.show()
 > layers=12, train=0.850, test=0.826
 ```
 
-还会创建一个线图，显示每个附加层添加到模型时的列车(蓝色)和测试集(橙色)精度。
+还会创建一个线图，显示每个附加层添加到模型时的列车(蓝色)和测试集(橙色)准确率。
 
 在这种情况下，该图表明训练数据集略有过拟合，但在添加七个层后，测试集表现可能会更好。
 
 ![Line Plot for Supervised Greedy Layer-Wise Pretraining Showing Model Layers vs Train and Test Set Classification Accuracy on the Blobs Classification Problem](img/ec322f970b536f1ea158149b98dfcc5a.png)
 
-有监督贪婪逐层预处理的线图显示模型层与训练和测试集在斑点分类问题上的分类精度
+有监督贪婪逐层预处理的线图显示模型层与训练和测试集在斑点分类问题上的分类准确率
 
 这个例子的一个有趣的扩展是允许对模型中的所有权重进行微调，对于大量的训练时期使用较小的学习率，看看这是否能进一步减少泛化误差。
 
@@ -529,7 +529,7 @@ model.compile(loss='categorical_crossentropy', optimizer=SGD(lr=0.01, momentum=0
 
 然后，可以在训练数据集上重新拟合模型，特别是训练输出层如何使用从自动编码器学习的特征作为输入来进行类预测。
 
-然后可以在训练和测试数据集上评估拟合模型的分类精度。
+然后可以在训练和测试数据集上评估拟合模型的分类准确率。
 
 ```py
 # fit model
@@ -548,7 +548,7 @@ model.add(output_layer)
 model.compile(loss='mse', optimizer=SGD(lr=0.01, momentum=0.9))
 ```
 
-我们可以将它绑定到一个*evaluate _ auto encoder _ as _ classifier()*函数中，该函数获取模型以及训练集和测试集，然后返回训练集和测试集的分类精度。
+我们可以将它绑定到一个*evaluate _ auto encoder _ as _ classifier()*函数中，该函数获取模型以及训练集和测试集，然后返回训练集和测试集的分类准确率。
 
 ```py
 # evaluate the autoencoder as a classifier
@@ -576,7 +576,7 @@ def evaluate_autoencoder_as_classifier(model, trainX, trainy, testX, testy):
 	return train_acc, test_acc
 ```
 
-可以调用该函数来评估基线自动编码器模型，然后根据模型中的层数(在本例中为两层)将精度分数存储在字典中。
+可以调用该函数来评估基线自动编码器模型，然后根据模型中的层数(在本例中为两层)将准确率分数存储在字典中。
 
 ```py
 # evaluate the base model
@@ -588,7 +588,7 @@ scores[len(model.layers)] = (train_acc, test_acc)
 
 我们现在准备定义向模型添加和预处理层的过程。
 
-添加层的过程与上一节中的监督情况非常相似，只是我们优化的是重建损失，而不是新层的分类精度。
+添加层的过程与上一节中的监督情况非常相似，只是我们优化的是重建损失，而不是新层的分类准确率。
 
 下面的*add _ layer _ to _ autoencoder()*函数向 auto encoder 模型中添加一个新的隐藏层，更新新层和隐藏层的权重，然后报告列车上的重建错误并测试输入数据的集合。该函数确实将所有先前的层重新标记为不可训练的，这是多余的，因为我们已经在*evaluate _ auto encoder _ as _ classifier()*函数中这样做了，但我将其留在了中，以防您决定在自己的项目中重用该函数。
 
@@ -750,11 +750,11 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例会报告基本模型(两层)的训练集和测试集的重建误差和分类精度，然后添加每个附加层(从三层到十二层)。
+运行该示例会报告基本模型(两层)的训练集和测试集的重建误差和分类准确率，然后添加每个附加层(从三层到十二层)。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到重建误差从低开始，实际上接近完美，然后在训练过程中慢慢增加。随着层被添加到编码器中，训练数据集上的精度似乎会降低，尽管精度测试似乎会随着层的添加而提高，至少在模型有五层之前是这样，之后表现似乎会崩溃。
+在这种情况下，我们可以看到重建误差从低开始，实际上接近完美，然后在训练过程中慢慢增加。随着层被添加到编码器中，训练数据集上的准确率似乎会降低，尽管准确率测试似乎会随着层的添加而提高，至少在模型有五层之前是这样，之后表现似乎会崩溃。
 
 ```py
 > reconstruction error train=0.000, test=0.000
@@ -771,13 +771,13 @@ pyplot.show()
 > classifier accuracy layers=7, train=0.764, test=0.760
 ```
 
-还会创建一个线图，显示每个附加层添加到模型时的列车(蓝色)和测试集(橙色)精度。
+还会创建一个线图，显示每个附加层添加到模型时的列车(蓝色)和测试集(橙色)准确率。
 
 在这种情况下，该图表明，无监督的贪婪逐层预训练可能有一些小的好处，但也许超过五层，模型变得不稳定。
 
 ![Line Plot for Unsupervised Greedy Layer-Wise Pretraining Showing Model Layers vs Train and Test Set Classification Accuracy on the Blobs Classification Problem](img/ea7a6f917547b89658407ff819d54560.png)
 
-无监督贪婪逐层预处理的线图显示模型层与训练和测试集在斑点分类问题上的分类精度
+无监督贪婪逐层预处理的线图显示模型层与训练和测试集在斑点分类问题上的分类准确率
 
 一个有趣的扩展是探索在拟合分类器输出层之前或之后微调模型中的所有权重是否会提高表现。
 

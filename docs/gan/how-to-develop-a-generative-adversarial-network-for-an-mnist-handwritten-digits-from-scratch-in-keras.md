@@ -437,7 +437,7 @@ train_discriminator(model, dataset)
 
 运行该示例首先定义模型，加载 MNIST 数据集，然后训练鉴别器模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，鉴别器模型学会非常快速地分辨真实和随机生成的 MNIST 图像，大约分 50 批。
 
@@ -960,7 +960,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
 
 有三种方法可以处理这种复杂的训练情况。
 
-1.  定期评估真假图像鉴别器的分类精度。
+1.  定期评估真假图像鉴别器的分类准确率。
 2.  定期生成许多图像，并保存到文件中进行主观审查。
 3.  定期保存发电机模型。
 
@@ -968,7 +968,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
 
 在许多时期，例如数百或数千个时期，训练 GAN 将产生模型的许多快照，这些快照可以被检查，并且可以从中挑选特定的输出和模型供以后使用。
 
-首先，我们可以定义一个名为*summary _ performance()*的函数，该函数将总结鉴别器模型的表现。它通过检索真实 MNIST 图像的样本，以及用生成器模型生成相同数量的假 MNIST 图像，然后在每个样本上评估鉴别器模型的分类精度并报告这些分数来实现这一点。
+首先，我们可以定义一个名为*summary _ performance()*的函数，该函数将总结鉴别器模型的表现。它通过检索真实 MNIST 图像的样本，以及用生成器模型生成相同数量的假 MNIST 图像，然后在每个样本上评估鉴别器模型的分类准确率并报告这些分数来实现这一点。
 
 ```py
 # evaluate the discriminator, plot generated images, save generator model
@@ -1253,7 +1253,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 每批报告一次模型表现，包括区分模型( *d* )和生成模型( *g* )的损失。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，损失在整个训练过程中保持稳定。
 
@@ -1274,7 +1274,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 每 20 个时期对生成器进行一次评估，结果是 10 次评估、10 幅生成的图像图和 10 个保存的模型。
 
-在这种情况下，我们可以看到精度随着训练而波动。当查看鉴别器模型的准确度分数与生成的图像一致时，我们可以看到假例子的准确度与图像的主观质量没有很好的关联，但是真实例子的准确度可能有关联。
+在这种情况下，我们可以看到准确率随着训练而波动。当查看鉴别器模型的准确度分数与生成的图像一致时，我们可以看到假例子的准确度与图像的主观质量没有很好的关联，但是真实例子的准确度可能有关联。
 
 这是一个粗略的、可能不可靠的GAN表现指标，还有损耗。
 
@@ -1385,7 +1385,7 @@ pyplot.imshow(X[0, :, :, 0], cmap='gray_r')
 pyplot.show()
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，一个全零的向量会得到一个手写的 9 或者 8。然后，您可以尝试在空间中导航，看看是否可以生成一系列相似但不同的手写数字。
 

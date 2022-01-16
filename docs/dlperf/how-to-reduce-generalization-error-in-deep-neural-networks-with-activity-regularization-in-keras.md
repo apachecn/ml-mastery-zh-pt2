@@ -232,7 +232,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 最后，我们将绘制模型在每个时期的列车和测试集上的表现。
 
-如果模型确实过度训练了训练数据集，那么随着模型学习训练数据集中的统计噪声，我们将期望训练集上的精度线图继续增加，并且测试集上升，然后再次下降。
+如果模型确实过度训练了训练数据集，那么随着模型学习训练数据集中的统计噪声，我们将期望训练集上的准确率线图继续增加，并且测试集上升，然后再次下降。
 
 ```py
 # plot history
@@ -278,21 +278,21 @@ pyplot.show()
 
 我们可以看到，该模型在训练数据集上的表现优于测试数据集，这可能是过拟合的一个迹象。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-因为模型被严重过拟合，我们通常不会期望模型在同一数据集上重复运行时的精度有太大差异。
+因为模型被严重过拟合，我们通常不会期望模型在同一数据集上重复运行时的准确率有太大差异。
 
 ```py
 Train: 1.000, Test: 0.786
 ```
 
-创建一个图形，显示列车和测试集上模型精度的线图。
+创建一个图形，显示列车和测试集上模型准确率的线图。
 
-我们可以看到 overfit 模型的预期形状，其中测试精度增加到一个点，然后开始再次降低。
+我们可以看到 overfit 模型的预期形状，其中测试准确率增加到一个点，然后开始再次降低。
 
 ![Line Plots of Accuracy on Train and Test Datasets While Training Showing an Overfit](img/5533146ebbdb7d6ccfd57539ee7e8d79.png)
 
-训练时训练和测试数据集上的精度线图显示出过拟合
+训练时训练和测试数据集上的准确率线图显示出过拟合
 
 ### 激活正则化的过采样 MLP
 
@@ -348,7 +348,7 @@ pyplot.show()
 
 运行该示例会报告列车和测试数据集上的模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，活动正则化导致训练数据集的准确率从 100%下降到 96%，测试集的准确率从 78%提升到 82%。
 
@@ -356,13 +356,13 @@ pyplot.show()
 Train: 0.967, Test: 0.829
 ```
 
-回顾训练和测试精度的线图，我们可以看到模型似乎不再过拟合训练数据集。
+回顾训练和测试准确率的线图，我们可以看到模型似乎不再过拟合训练数据集。
 
-列车和测试集上的模型精度继续增加到平稳状态。
+列车和测试集上的模型准确率继续增加到平稳状态。
 
 ![Line Plots of Accuracy on Train and Test Datasets While Training With Activity Regularization](img/6bc5d28053f4065ad6c2de5903bdaa77.png)
 
-活动正则化训练时训练和测试数据集上的精度线图
+活动正则化训练时训练和测试数据集上的准确率线图
 
 为了完整起见，我们可以将结果与模型的一个版本进行比较，其中在 relu 激活函数之后应用了活动正则化。
 
@@ -405,7 +405,7 @@ pyplot.show()
 
 运行该示例会报告列车和测试数据集上的模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，至少在这个问题上以及用这个模型，激活函数后的激活正则化并没有改善泛化误差；事实上，这让事情变得更糟。
 
@@ -413,11 +413,11 @@ pyplot.show()
 Train: 1.000, Test: 0.743
 ```
 
-回顾训练和测试精度的线图，我们可以看到模型确实仍然显示出过度训练数据集的迹象。
+回顾训练和测试准确率的线图，我们可以看到模型确实仍然显示出过度训练数据集的迹象。
 
 ![Line Plots of Accuracy on Train and Test Datasets While Training With Activity Regularization, Still Overfit](img/db3dd91fa125bcd0a43e408b576954f7.png)
 
-训练和测试数据集上的精度线图，同时使用活动正则化进行训练，仍然过度训练
+训练和测试数据集上的准确率线图，同时使用活动正则化进行训练，仍然过度训练
 
 这表明，用您自己的数据集实现活动正则化的两种方法都值得尝试，以确认您充分利用了这种方法。
 

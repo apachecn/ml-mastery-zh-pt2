@@ -51,7 +51,7 @@ Python 中基于模型的异常值检测和移除
 
 在训练机器学习算法进行预测建模时，从数据中识别和移除异常值可能很重要。
 
-异常值会扭曲统计度量和数据分布，对底层数据和关系提供误导性的表示。在建模之前从训练数据中去除异常值可以使数据更好地匹配，进而产生更巧妙的预测。
+异常值会偏斜统计度量和数据分布，对底层数据和关系提供误导性的表示。在建模之前从训练数据中去除异常值可以使数据更好地匹配，进而产生更巧妙的预测。
 
 谢天谢地，有各种基于模型的自动方法来识别输入数据中的异常值。重要的是，每种方法对异常值的定义略有不同，提供了准备可评估和比较的训练数据集的替代方法，就像建模管道中的任何其他数据准备步骤一样。
 
@@ -158,7 +158,7 @@ print('MAE: %.3f' % mae)
 
 运行该示例适合并评估模型，然后报告 MAE。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型实现了大约 3.417 的 MAE。这提供了一个表现基线，我们可以据此比较不同的异常值识别和去除程序。
 
@@ -252,7 +252,7 @@ print('MAE: %.3f' % mae)
 
 运行该示例适合并评估模型，然后报告 MAE。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，该模型识别并移除了 34 个异常值，并获得了约 3.189 的 MAE，这比得分约为 3.417 的基线有所改善。
 
@@ -327,7 +327,7 @@ print('MAE: %.3f' % mae)
 
 运行该示例适合并评估模型，然后报告 MAE。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到椭圆包络方法仅识别并移除了 4 个异常值，导致 MAE 从基线的 3.417 下降到 3.388。
 
@@ -400,7 +400,7 @@ print('MAE: %.3f' % mae)
 
 运行该示例适合并评估模型，然后报告 MAE。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到局部离群因子方法识别并移除了 34 个离群值，与隔离林的数量相同，导致 MAE 从基线的 3.417 下降到 3.356。更好，但不如隔离森林，这表明发现并移除了一组不同的异常值。
 
@@ -412,7 +412,7 @@ MAE: 3.356
 
 ### 一等 SVM
 
-最初为二进制分类开发的[支持向量机](https://machinelearningmastery.com/support-vector-machines-for-machine-learning/)或 SVM 算法可用于一类分类。
+最初为二进制分类开发的[支持向量机](https://machinelearningmastery.com/support-vector-machines-for-machine-learning/)或 SVM 算法可用于单类分类。
 
 当对一个类建模时，该算法捕获多数类的密度，并将密度函数极值上的例子分类为异常值。SVM 的这种修改被称为一级 SVM。
 
@@ -473,7 +473,7 @@ print('MAE: %.3f' % mae)
 
 运行该示例适合并评估模型，然后报告 MAE。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到只有三个异常值被识别和移除，并且模型实现了大约 3.431 的 MAE，这并不比实现 3.417 的基线模型更好。也许通过更多的调整可以获得更好的表现。
 
@@ -489,7 +489,7 @@ MAE: 3.431
 
 ### 相关教程
 
-*   [不平衡数据集的一类分类算法](https://machinelearningmastery.com/one-class-classification-algorithms/)
+*   [不平衡数据集的单类分类算法](https://machinelearningmastery.com/one-class-classification-algorithms/)
 *   [如何去除机器学习的异常值](https://machinelearningmastery.com/how-to-use-statistics-to-identify-outliers-in-data/)
 
 ### 报纸

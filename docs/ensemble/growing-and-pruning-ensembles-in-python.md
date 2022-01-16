@@ -194,9 +194,9 @@ pyplot.show()
 
 运行该示例会评估合成二进制类别数据集上的每个独立机器学习算法。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到 KNN 模型和 SVM 模型在这个数据集上表现最好，实现了大约 95.3%的平均分类精度。
+在这种情况下，我们可以看到 KNN 模型和 SVM 模型在这个数据集上表现最好，实现了大约 95.3%的平均分类准确率。
 
 这些结果提供了一个表现基线，我们要求任何集成都要超过这个基线，才能被认为对这个数据集有用。
 
@@ -214,7 +214,7 @@ pyplot.show()
 
 ![Box and Whisker Plots of Classification Accuracy for Standalone Machine Learning Models](img/d80bc3b399f369cf068adb8a356eadbe.png)
 
-独立机器学习模型分类精度的盒须图
+独立机器学习模型分类准确率的盒须图
 
 接下来，我们需要建立一个使用所有模型的基线集合。这将提供一个与生长和修剪方法的比较点，生长和修剪方法寻求用更小的模型子集获得更好的表现。
 
@@ -277,7 +277,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 运行该示例使用重复的分层 k 折叠交叉验证来评估所有模型的软投票集合，并报告所有折叠和重复的平均准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到投票集合实现了大约 92.8%的平均准确率。这比单独使用的 SVM 和 KNN 模型要低，后者的准确率约为 95.3%。
 
@@ -297,7 +297,7 @@ Mean Accuracy: 0.928 (0.012)
 
 它被称为“*贪婪*”算法，因为它在每一步都寻求最佳的改进。可能成员的最佳组合不在贪婪改进的路径上，在这种情况下，贪婪算法将找不到它，可以使用全局优化算法来代替。
 
-首先，我们可以定义一个函数来评估候选模型列表。该函数将获取模型列表和数据集，并从模型列表中构建投票集成，并使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/repeated-k-fold-cross-validation-with-python/)评估其表现，返回平均分类精度。
+首先，我们可以定义一个函数来评估候选模型列表。该函数将获取模型列表和数据集，并从模型列表中构建投票集成，并使用[重复分层 K 折交叉验证](https://machinelearningmastery.com/repeated-k-fold-cross-validation-with-python/)评估其表现，返回平均分类准确率。
 
 这个函数可以用来评估每个候选人从集合中的移除。下面的 *evaluate_ensemble()* 函数实现了这一点。
 
@@ -348,7 +348,7 @@ def prune_round(models_in, X, y):
 
 接下来，我们需要推动修剪过程。
 
-这包括运行一轮修剪，直到通过重复调用*修剪 _round()* 函数无法进一步提高精度。
+这包括运行一轮修剪，直到通过重复调用*修剪 _round()* 函数无法进一步提高准确率。
 
 如果函数为要移除的模型返回 None，我们知道没有单一的贪婪改进是可能的，我们可以返回模型的最终列表。否则，从集合中移除所选模型，并且该过程继续。
 
@@ -472,7 +472,7 @@ print('Final Mean Accuracy: %.3f' % score)
 
 运行该示例会执行集成修剪过程，报告每轮移除了哪个模型，以及移除模型后模型的准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到执行了三轮修剪，删除了朴素贝叶斯、决策树和逻辑回归算法，只剩下平均分类准确率约为 95.7%的 SVM 和 KNN 算法。这比 SVM 和 KNN 单独使用时达到的 95.3%要好得多，也明显比将所有型号组合在一起要好。
 
@@ -526,7 +526,7 @@ def grow_round(models_in, models_candidate, X, y):
 
 这涉及到一个循环，它运行一轮又一轮的增长，直到没有进一步的增加导致模型表现的提高。对于可以进行的每个添加，集合中的主要模型列表被更新，并且当前在集合中的模型列表与表现一起被报告。
 
-*grow _ 集成()*函数实现了这一点，并返回模型列表，这些模型被贪婪地确定为产生最佳表现以及预期的平均精度。
+*grow _ 集成()*函数实现了这一点，并返回模型列表，这些模型被贪婪地确定为产生最佳表现以及预期的平均准确率。
 
 ```py
 # grow an ensemble from scratch
@@ -650,11 +650,11 @@ print('Models: %s' % names)
 print('Final Mean Accuracy: %.3f' % score)
 ```
 
-运行该示例一次递增地向集合添加一个模型，并报告模型集合的平均分类精度。
+运行该示例一次递增地向集合添加一个模型，并报告模型集合的平均分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到，集成增长找到了与贪婪集成修剪相同的解决方案，其中 SVM 和 KNN 的集成实现了大约 95.6%的平均分类精度，比任何单个独立模型和组合所有模型都有所提高。
+在这种情况下，我们可以看到，集成增长找到了与贪婪集成修剪相同的解决方案，其中 SVM 和 KNN 的集成实现了大约 95.6%的平均分类准确率，比任何单个独立模型和组合所有模型都有所提高。
 
 ```py
 >0.953 (svm)

@@ -147,7 +147,7 @@ model = LogisticRegression()
 model.fit(X_train, y_train)
 ```
 
-然后，拟合模型可以对测试集的输入数据进行预测，我们可以将预测值与期望值进行比较，并计算分类精度分数。
+然后，拟合模型可以对测试集的输入数据进行预测，我们可以将预测值与期望值进行比较，并计算分类准确率分数。
 
 ```py
 ...
@@ -186,7 +186,7 @@ print('Accuracy: %.3f' % (accuracy*100))
 
 运行该示例将数据标准化，将数据分成训练集和测试集，然后拟合和评估模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型的估计值约为 84.848%。
 
@@ -194,7 +194,7 @@ print('Accuracy: %.3f' % (accuracy*100))
 Accuracy: 84.848
 ```
 
-鉴于我们知道存在数据泄露，我们知道这种对模型精度的估计是错误的。
+鉴于我们知道存在数据泄露，我们知道这种对模型准确率的估计是错误的。
 
 接下来，让我们探讨如何正确准备数据以避免数据泄漏。
 
@@ -261,9 +261,9 @@ print('Accuracy: %.3f' % (accuracy*100))
 
 运行该示例将数据分为训练集和测试集，正确地标准化数据，然后拟合和评估模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到模型的估计值约为 85.455%，这比上一节中具有数据泄漏的估计值更准确，后者达到了 84.848%的精度。
+在这种情况下，我们可以看到模型的估计值约为 85.455%，这比上一节中具有数据泄漏的估计值更准确，后者达到了 84.848%的准确率。
 
 我们预计数据泄露会导致对模型表现的错误估计。我们希望这是一个乐观的估计，数据泄漏会带来更好的表现，尽管在这种情况下，我们可以看到数据泄漏会导致表现略微下降。这可能是因为预测任务的难度。
 
@@ -275,7 +275,7 @@ Accuracy: 85.455
 
 在本节中，我们将在输入变量已经标准化的合成二进制类别数据集上使用 k 倍交叉验证来评估逻辑回归模型。
 
-您可能还记得 [k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)涉及将数据集拆分为 k 个不重叠的行组。该模型然后在除一个组之外的所有组上训练以形成训练数据集，然后在保持折叠上评估。重复此过程，以便每个折叠都有机会用作保持测试集。最后，报告所有评估的平均绩效。
+您可能还记得 [K 折交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)涉及将数据集拆分为 k 个不重叠的行组。该模型然后在除一个组之外的所有组上训练以形成训练数据集，然后在保持折叠上评估。重复此过程，以便每个折叠都有机会用作保持测试集。最后，报告所有评估的平均绩效。
 
 k-fold 交叉验证程序通常比训练测试分割给出更可靠的模型表现估计，尽管考虑到模型的重复拟合和评估，它的计算成本更高。
 
@@ -296,7 +296,7 @@ X = scaler.fit_transform(X)
 
 必须首先定义 k 倍交叉验证程序。我们将使用重复的分层 10 倍交叉验证，这是分类的最佳实践。重复意味着整个交叉验证过程重复多次，在本例中为三次。分层意味着每组行将具有来自每个类的示例作为整个数据集的相对组成。我们将使用 *k=10* 或 10 倍交叉验证。
 
-这可以通过使用[repeated stratifiedfold](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现，它可以配置为三次重复和 10 次折叠，然后使用 [cross_val_score()函数](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html)来执行该过程，传入定义的模型、交叉验证对象和度量来计算精度，在这种情况下。
+这可以通过使用[repeated stratifiedfold](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现，它可以配置为三次重复和 10 次折叠，然后使用 [cross_val_score()函数](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html)来执行该过程，传入定义的模型、交叉验证对象和度量来计算准确率，在这种情况下。
 
 ```py
 ...
@@ -306,7 +306,7 @@ cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
 scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 ```
 
-然后，我们可以报告所有重复和折叠的平均精度。
+然后，我们可以报告所有重复和折叠的平均准确率。
 
 将所有这些结合起来，下面列出了使用数据准备和数据泄漏来评估模型的交叉验证的完整示例。
 
@@ -336,9 +336,9 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores)*100, std(scores)*100))
 
 运行该示例首先标准化数据，然后使用重复的分层交叉验证来评估模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到模型达到了大约 85.300%的估计精度，考虑到数据准备过程允许的数据泄漏，我们知道这是不正确的。
+在这种情况下，我们可以看到模型达到了大约 85.300%的估计准确率，考虑到数据准备过程允许的数据泄漏，我们知道这是不正确的。
 
 ```py
 Accuracy: 85.300 (3.607)
@@ -412,9 +412,9 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores)*100, std(scores)*100))
 
 运行该示例可以在评估过程的交叉验证折叠中正确地标准化数据，以避免数据泄漏。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到，该模型的估计精度约为 85.433%，而数据泄露的方法达到了约 85.300%的精度。
+在这种情况下，我们可以看到，该模型的估计准确率约为 85.433%，而数据泄露的方法达到了约 85.300%的准确率。
 
 与上一节中的训练测试示例一样，当我们的直觉认为数据泄漏通常会导致对模型表现的乐观估计时，消除数据泄漏会使表现略有提高。尽管如此，这些示例清楚地表明，数据泄漏确实会影响模型表现的估计，以及如何在数据拆分后通过正确执行数据准备来纠正数据泄漏。
 

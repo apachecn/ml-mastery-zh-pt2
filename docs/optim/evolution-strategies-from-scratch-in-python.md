@@ -370,7 +370,7 @@ print('f(%s) = %f' % (best, score))
 
 运行该示例会报告候选解决方案，并在每次找到更好的解决方案时进行评分，然后报告在搜索结束时找到的最佳解决方案。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到在搜索过程中大约有 22 项表现改进，最佳解决方案接近 optima。
 
@@ -554,7 +554,7 @@ print('f(%s) = %f' % (best, score))
 
 运行该示例会报告候选解决方案，并在每次找到更好的解决方案时进行评分，然后报告在搜索结束时找到的最佳解决方案。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到在搜索过程中大约有 24 项表现改进。我们还可以看到，在评估值为 0.000532 时，找到了更好的最终解决方案，而在此目标函数上，逗号版本的评估值为 0.001147。
 

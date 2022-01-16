@@ -534,7 +534,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 **注**:示例可以在 CPU 上运行，虽然可能需要一段时间，建议在 GPU 硬件上运行。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例将报告真实( *d1* )和虚假( *d2* )示例上的鉴别器的丢失，以及生成的呈现为真实( *g* )的示例上的鉴别器的生成器的丢失。
 

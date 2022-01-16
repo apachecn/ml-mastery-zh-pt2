@@ -131,7 +131,7 @@ print(X.shape, y.shape)
 model = BaggingClassifier(bootstrap=False, max_features=10)
 ```
 
-我们将使用重复的分层 k 折叠交叉验证来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
+我们将使用重复的分层 k 折叠交叉验证来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型准确率的平均值和标准偏差。
 
 ```py
 # evaluate random subspace ensemble via bagging for classification
@@ -153,11 +153,11 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到具有默认超参数的随机子空间集成在这个测试数据集上实现了大约 85.4%的分类精度。
+在这种情况下，我们可以看到具有默认超参数的随机子空间集成在这个测试数据集上实现了大约 85.4%的分类准确率。
 
 ```py
 Mean Accuracy: 0.854 (0.039)
@@ -250,9 +250,9 @@ n_scores = cross_val_score(model, X, y, scoring='neg_mean_absolute_error', cv=cv
 print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到具有默认超参数的 bagging 集成实现了大约 114 的 MAE。
 
@@ -349,7 +349,7 @@ pyplot.show()
 
 运行该示例首先报告每个配置数量的决策树的平均准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，随着集成成员的数量增加到 5000 人，这种表现似乎在继续改善。
 
@@ -368,7 +368,7 @@ pyplot.show()
 
 ![Box Plot of Random Subspace Ensemble Size vs. Classification Accuracy](img/5f84e2fa93865cb6c5af4852d5486661.png)
 
-随机子空间集合大小与分类精度的箱线图
+随机子空间集合大小与分类准确率的箱线图
 
 ### 探索功能数量
 
@@ -424,9 +424,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行示例首先报告每个特征数量的平均精度。
+运行示例首先报告每个特征数量的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，当使用 100 棵决策树时，在随机子空间中使用 8 到 11 个特征可能适合这个数据集。这可能建议首先将树的数量增加到一个较大的值，然后调整在每个子集中选择的特征的数量。
 
@@ -453,13 +453,13 @@ pyplot.show()
 >20 0.801 (0.049)
 ```
 
-为每个随机子集特征的精度分数分布创建一个方框和须图。
+为每个随机子集特征的准确率分数分布创建一个方框和须图。
 
-我们可以看到一个普遍的趋势，即精度增加到一个点，并且在 11 个特征之后表现稳步下降。
+我们可以看到一个普遍的趋势，即准确率增加到一个点，并且在 11 个特征之后表现稳步下降。
 
 ![Box Plot of Random Subspace Ensemble Features vs. Classification Accuracy](img/3de13593fcd76971578e01ba297765bc.png)
 
-随机子空间集成特征与分类精度的箱线图
+随机子空间集成特征与分类准确率的箱线图
 
 ### 探索替代算法
 
@@ -502,11 +502,11 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1, er
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到具有 KNN 和默认超参数的随机子空间集成在这个测试数据集上实现了大约 90%的分类精度。
+在这种情况下，我们可以看到具有 KNN 和默认超参数的随机子空间集成在这个测试数据集上实现了大约 90%的分类准确率。
 
 ```py
 Accuracy: 0.901 (0.032)

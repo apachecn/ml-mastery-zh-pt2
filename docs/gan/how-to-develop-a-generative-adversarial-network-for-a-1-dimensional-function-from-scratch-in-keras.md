@@ -272,7 +272,7 @@ def generate_fake_samples(n):
 
 这可以通过手动枚举训练时期并为每个时期生成半批真实例子和半批伪造例子，以及在每个例子上更新模型来实现，例如一整批例子。可以使用 *train()* 功能，但是在这种情况下，我们将直接使用 *train_on_batch()* 功能。
 
-然后可以在生成的示例上评估模型，并且我们可以报告真实和虚假样本的分类精度。
+然后可以在生成的示例上评估模型，并且我们可以报告真实和虚假样本的分类准确率。
 
 下面的 *train_discriminator()* 函数实现了这一点，对模型进行了 1000 批次的训练，每批次使用 128 个样本(64 个假样本，64 个真样本)。
 
@@ -371,9 +371,9 @@ model = define_discriminator()
 train_discriminator(model)
 ```
 
-运行该示例生成真实和虚假的示例并更新模型，然后在相同的示例上评估模型并打印分类精度。
+运行该示例生成真实和虚假的示例并更新模型，然后在相同的示例上评估模型并打印分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，模型快速学会以完美的准确率正确识别真实的例子，并且非常擅长以 80%到 90%的准确率识别虚假的例子。
 
@@ -1005,9 +1005,9 @@ train(generator, discriminator, gan_model, latent_dim)
 
 运行该示例每 2，000 次训练迭代(批次)报告一次模型表现，并创建一个图。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-我们可以看到训练过程是比较不稳定的。第一列报告迭代次数，第二列报告鉴别器对真实示例的分类精度，第三列报告鉴别器对生成(伪造)示例的分类精度。
+我们可以看到训练过程是比较不稳定的。第一列报告迭代次数，第二列报告鉴别器对真实示例的分类准确率，第三列报告鉴别器对生成(伪造)示例的分类准确率。
 
 在这种情况下，我们可以看到鉴别器对真实的例子仍然相对困惑，并且识别假例子的表现各不相同。
 

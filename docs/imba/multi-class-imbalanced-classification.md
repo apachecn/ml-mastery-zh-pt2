@@ -336,7 +336,7 @@ Sklearn 中的 [RandomForestClassifier 类](https://Sklearn.org/stable/modules/g
 
 默认情况下，随机森林类为每个类分配相同的权重。
 
-我们可以在玻璃不平衡多类类别数据集上评估默认随机森林类权重的分类精度。
+我们可以在玻璃不平衡多类类别数据集上评估默认随机森林类权重的分类准确率。
 
 下面列出了完整的示例。
 
@@ -386,7 +386,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 平均和标准偏差分类准确度在运行结束时报告。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到默认模型实现了大约 79.6%的分类准确率。
 
@@ -446,11 +446,11 @@ scores = evaluate_model(X, y, model)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-运行该示例报告了成本敏感型随机森林在玻璃数据集上的平均和标准偏差分类精度。
+运行该示例报告了成本敏感型随机森林在玻璃数据集上的平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到默认模型在分类精度上比成本不敏感的算法版本有所提高，分类精度为 80.2%，而不是 79.6%。
+在这种情况下，我们可以看到默认模型在分类准确率上比成本不敏感的算法版本有所提高，分类准确率为 80.2%，而不是 79.6%。
 
 ```py
 Mean Accuracy: 0.802 (0.044)
@@ -512,9 +512,9 @@ scores = evaluate_model(X, y, model)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-运行该示例报告了具有自定义权重的玻璃数据集上随机森林的成本敏感版本的均值和标准差分类精度。
+运行该示例报告了具有自定义权重的玻璃数据集上随机森林的成本敏感版本的均值和标准差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，我们实现了准确性的进一步提升，从平衡类权重的 80.2%提升到更偏向类权重的 80.8%。
 

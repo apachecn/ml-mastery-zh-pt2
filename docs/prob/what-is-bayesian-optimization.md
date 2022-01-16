@@ -243,7 +243,7 @@ Optima: x=0.900, y=0.810
 
 然后创建一个图，显示样本的噪声评估(点)和目标函数的非噪声和真实形状(线)。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 ![Plot of The Input Samples Evaluated with a Noisy (dots) and Non-Noisy (Line) Objective Function](img/f32589ac77cf6b64807642cb8ebe2123.png)
 
@@ -392,7 +392,7 @@ plot(X, y, model)
 
 然后，通过替代函数评估的数据样本和跨域点网格分别绘制为点和线。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，如我们所料，该图类似于基础无噪声目标函数的粗略版本，重要的是峰值在 0.9 左右，我们知道真正的最大值位于该处。
 
@@ -591,7 +591,7 @@ print('Best Result: x=%.3f, y=%.3f' % (X[ix], y[ix]))
 
 运行该示例首先创建搜索空间的初始随机样本和结果评估。然后在此数据上拟合一个 GP 模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 创建一个图，将原始观察结果显示为点，并在整个域中显示替代函数。在这种情况下，初始样本在整个域中有很好的分布，代理函数偏向我们知道 optima 所在的域部分。
 
@@ -682,7 +682,7 @@ search_space = [Integer(1, 5, name='n_neighbors'), Integer(1, 2, name='p')]
 
 因此，我们的自定义函数将把超参数值作为参数，这些参数可以直接提供给模型，以便对其进行配置。我们可以在 python 中使用函数的** *参数*参数来定义这些参数，然后通过 [set_params(**)函数](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier.set_params)将它们传递给模型。
 
-既然模型已经配置好了，我们就可以进行评估了。在这种情况下，我们将在数据集上使用 5 倍交叉验证，并评估每一倍的准确性。然后，我们可以将模型的表现报告为 1 减去这些折叠的平均精度。这意味着精度为 1.0 的完美模型将返回 0.0 的值(1.0–平均精度)。
+既然模型已经配置好了，我们就可以进行评估了。在这种情况下，我们将在数据集上使用 5 倍交叉验证，并评估每一倍的准确性。然后，我们可以将模型的表现报告为 1 减去这些折叠的平均准确率。这意味着准确率为 1.0 的完美模型将返回 0.0 的值(1.0–平均准确率)。
 
 这个函数是在我们加载数据集并定义模型之后定义的，这样数据集和模型都在范围内，可以直接使用。
 
@@ -767,7 +767,7 @@ UserWarning: The objective has been evaluated at this point before.
 
 这是意料之中的，是由同一超参数配置被多次评估引起的。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，该模型通过与 3 个邻居和 p 值为 2 的平均 5 倍交叉验证获得了约 97%的准确性。
 

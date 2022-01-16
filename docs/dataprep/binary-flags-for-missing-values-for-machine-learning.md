@@ -131,9 +131,9 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 运行该示例使用马结肠数据集上的平均统计插补来评估随机森林。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，管道实现了大约 86.2%的估计分类精度。
+在这种情况下，管道实现了大约 86.2%的估计分类准确率。
 
 ```py
 Mean Accuracy: 0.862 (0.056)
@@ -239,9 +239,9 @@ scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-运行该示例报告了具有附加特征和插补的马结肠数据集的平均和标准偏差分类精度。
+运行该示例报告了具有附加特征和插补的马结肠数据集的平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们看到表现从 86.2%适度提升到 86.3%。差异很小，可能没有统计学意义。
 
@@ -329,9 +329,9 @@ scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-运行该示例报告了马结肠数据集的平均和标准偏差分类精度，以及附加的指标特征和插补。
+运行该示例报告了马结肠数据集的平均和标准偏差分类准确率，以及附加的指标特征和插补。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们看到表现从上一部分的 86.3%提升到了 86.7%。
 

@@ -520,7 +520,7 @@ pyplot.show()
 
 运行该示例依次评估每个算法，并报告平均值和标准差 ROC AUC。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到所有测试的算法都有技巧，实现了高于默认值 0.5 的 ROC AUC。
 
@@ -670,7 +670,7 @@ pyplot.show()
 
 运行该示例依次评估每个算法，并报告平均值和标准差 ROC AUC。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，与它们的非转换和成本不敏感的版本相比，所有三种测试算法在 ROC AUC 上都有所提升。在没有转换的情况下重复实验，看看是转换还是算法的成本敏感版本，或者两者都导致了表现的提升，这将是很有趣的。
 

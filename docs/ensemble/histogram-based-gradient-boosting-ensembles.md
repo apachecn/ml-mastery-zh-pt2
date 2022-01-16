@@ -135,11 +135,11 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会评估模型在合成数据集上的表现，并报告平均和标准偏差分类精度。
+运行该示例会评估模型在合成数据集上的表现，并报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到 Sklearn 直方图梯度提升算法在合成数据集上实现了大约 94.3%的平均精度。
+在这种情况下，我们可以看到 Sklearn 直方图梯度提升算法在合成数据集上实现了大约 94.3%的平均准确率。
 
 ```py
 Accuracy: 0.943 (0.007)
@@ -201,11 +201,11 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例评估每个配置，报告一路上的平均和标准偏差分类精度，并最终创建分数分布图。
+运行该示例评估每个配置，报告一路上的平均和标准偏差分类准确率，并最终创建分数分布图。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到，增加面元的数量可能会降低该数据集上模型的平均精度。
+在这种情况下，我们可以看到，增加面元的数量可能会降低该数据集上模型的平均准确率。
 
 我们可能会预计，箱数的增加也可能需要树数的增加( *max_iter* )，以确保模型可以有效地探索和利用额外的分割点。
 
@@ -272,11 +272,11 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会评估模型在合成数据集上的表现，并报告平均和标准偏差分类精度。
+运行该示例会评估模型在合成数据集上的表现，并报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到 XGBoost 直方图梯度提升算法在合成数据集上实现了大约 95.7%的平均精度。
+在这种情况下，我们可以看到 XGBoost 直方图梯度提升算法在合成数据集上实现了大约 95.7%的平均准确率。
 
 ```py
 Accuracy: 0.957 (0.007)
@@ -326,11 +326,11 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会评估模型在合成数据集上的表现，并报告平均和标准偏差分类精度。
+运行该示例会评估模型在合成数据集上的表现，并报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到 LightGBM 直方图梯度提升算法在合成数据集上实现了大约 94.2%的平均精度。
+在这种情况下，我们可以看到 LightGBM 直方图梯度提升算法在合成数据集上实现了大约 94.2%的平均准确率。
 
 ```py
 Accuracy: 0.942 (0.006)

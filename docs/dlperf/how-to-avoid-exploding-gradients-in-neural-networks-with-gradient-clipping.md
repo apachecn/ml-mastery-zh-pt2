@@ -46,7 +46,7 @@
 
 这首先需要对一个或多个训练示例的损失进行估计，然后计算损失的导数，该导数通过网络向后传播，以便更新权重。使用由[学习率](https://machinelearningmastery.com/learning-rate-for-deep-learning-neural-networks/)控制的反向传播误差的一部分来更新权重。
 
-权重的更新可能太大，以至于权重要么溢出，要么下溢其数值精度。在实践中，当权重上溢或下溢时，权重可以采用“ *NaN* ”或“ *Inf* ”的值，并且出于实际目的，网络从该点开始将是无用的，当信号流过无效权重时，永远预测 NaN 值。
+权重的更新可能太大，以至于权重要么溢出，要么下溢其数值准确率。在实践中，当权重上溢或下溢时，权重可以采用“ *NaN* ”或“ *Inf* ”的值，并且出于实际目的，网络从该点开始将是无用的，当信号流过无效权重时，永远预测 NaN 值。
 
 > 出现的困难是，当参数梯度非常大时，梯度下降参数更新可能会将参数抛得很远，进入目标函数更大的区域，从而撤销为达到当前解所做的大量工作。
 
@@ -334,7 +334,7 @@ pyplot.show()
 
 运行该示例符合模型，并在列车和测试集上对其进行评估，打印均方误差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，用 1.0 的向量范数缩放梯度已经产生了能够学习问题并收敛到解决方案的稳定模型。
 
@@ -402,7 +402,7 @@ pyplot.show()
 
 运行此示例符合模型，并在列车和测试集上对其进行评估，打印均方误差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，在这种情况下，模型能够在不分解梯度的情况下学习问题，在训练集和测试集中均达到小于 10 的均方误差。
 

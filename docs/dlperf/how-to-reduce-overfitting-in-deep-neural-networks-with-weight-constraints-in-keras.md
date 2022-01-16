@@ -214,7 +214,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 最后，我们将绘制模型在每个时期的列车和测试集上的表现。
 
-如果模型确实过度训练了训练数据集，那么随着模型学习训练数据集中的统计噪声，我们将期望训练集上的精度线图继续增加，并且测试集上升，然后再次下降。
+如果模型确实过度训练了训练数据集，那么随着模型学习训练数据集中的统计噪声，我们将期望训练集上的准确率线图继续增加，并且测试集上升，然后再次下降。
 
 ```py
 # plot history
@@ -260,21 +260,21 @@ pyplot.show()
 
 我们可以看到，该模型在训练数据集上的表现优于测试数据集，这可能是过拟合的一个迹象。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-因为模型过于精确，我们通常不会期望在同一数据集上模型的重复运行中有太多(如果有的话)精度差异。
+因为模型过于精确，我们通常不会期望在同一数据集上模型的重复运行中有太多(如果有的话)准确率差异。
 
 ```py
 Train: 1.000, Test: 0.914
 ```
 
-创建一个图形，显示列车和测试集上模型精度的线图。
+创建一个图形，显示列车和测试集上模型准确率的线图。
 
-我们可以看到过拟合模型的预期形状，其中测试精度增加到一个点，然后开始再次降低。
+我们可以看到过拟合模型的预期形状，其中测试准确率增加到一个点，然后开始再次降低。
 
 ![Line Plots of Accuracy on Train and Test Datasets While Training Showing an Overfit](img/d52df1ae787be4b54279937916b59883.png)
 
-训练时训练和测试数据集上的精度线图显示出过拟合
+训练时训练和测试数据集上的准确率线图显示出过拟合
 
 ### 重量受限的 MLP 过度捕捞
 
@@ -337,7 +337,7 @@ pyplot.show()
 
 运行该示例会报告列车和测试数据集上的模型表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，对权重大小的严格约束确实提高了模型在保持集上的表现，而不影响训练集的表现。
 
@@ -345,13 +345,13 @@ pyplot.show()
 Train: 1.000, Test: 0.943
 ```
 
-回顾训练和测试精度的线图，我们可以看到模型似乎不再过拟合训练数据集。
+回顾训练和测试准确率的线图，我们可以看到模型似乎不再过拟合训练数据集。
 
-列车和测试集上的模型精度继续增加到平稳状态。
+列车和测试集上的模型准确率继续增加到平稳状态。
 
 ![Line Plots of Accuracy on Train and Test Datasets While Training With Weight Constraints](img/c9f4f9fa3b6493f53dbe3bd38f7a1f54.png)
 
-带权重约束的训练和测试数据集上的精度线图
+带权重约束的训练和测试数据集上的准确率线图
 
 ## 扩展ˌ扩张
 

@@ -27,7 +27,7 @@
 
 一旦你有了一个精确模型的候选列表，你就可以使用算法调整来从每个算法中获得最大的收益。
 
-另一种可以用来提高数据集精度的方法是将多个不同模型的预测组合在一起。
+另一种可以用来提高数据集准确率的方法是将多个不同模型的预测组合在一起。
 
 这被称为[集合预测](https://machinelearningmastery.com/ensemble-methods-for-deep-learning-neural-networks/)。
 

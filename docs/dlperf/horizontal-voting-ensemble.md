@@ -168,7 +168,7 @@ _, test_acc = model.evaluate(testX, testy, verbose=0)
 print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 ```
 
-最后，我们将在训练和验证数据集上绘制每个训练时期的模型精度的学习曲线。
+最后，我们将在训练和验证数据集上绘制每个训练时期的模型准确率的学习曲线。
 
 ```py
 # learning curves of model accuracy
@@ -216,7 +216,7 @@ pyplot.show()
 
 运行该示例首先打印每个数据集的形状以供确认，然后打印最终模型在训练和测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，该模型在我们知道是乐观的训练数据集上达到了大约 85%的准确率，在测试数据集上达到了大约 80%，我们预计这将更加真实。
 
@@ -225,15 +225,15 @@ pyplot.show()
 Train: 0.850, Test: 0.804
 ```
 
-还创建了一个线图，显示了在每个训练周期内，训练和测试集上模型精度的学习曲线。
+还创建了一个线图，显示了在每个训练周期内，训练和测试集上模型准确率的学习曲线。
 
 我们可以看到，在整个跑步过程中，训练的准确性更加乐观，我们也注意到了最终得分。我们可以看到，与测试集相比，模型的准确性在训练数据集上具有较高的方差，这是我们所期望的。
 
-模型中的差异突出了这样一个事实，即在运行结束时选择模型或从大约纪元 800 开始的任何模型都是具有挑战性的，因为训练数据集上的精度具有很高的差异。我们还在测试数据集上看到了方差的静音版本。
+模型中的差异突出了这样一个事实，即在运行结束时选择模型或从大约纪元 800 开始的任何模型都是具有挑战性的，因为训练数据集上的准确率具有很高的差异。我们还在测试数据集上看到了方差的静音版本。
 
 ![Line Plot Learning Curves of Model Accuracy on Train and Test Dataset over Each Training Epoch](img/644e52ecf5cd252f20ee895aac02af0d.png)
 
-每个训练时期训练和测试数据集上模型精度的线图学习曲线
+每个训练时期训练和测试数据集上模型准确率的线图学习曲线
 
 既然我们已经确定该模型是横向投票集成的良好候选，我们就可以开始实现该技术了。
 
@@ -576,9 +576,9 @@ pyplot.show()
 
 大致上，我们可以看到，该集成似乎优于大多数单一模型，始终达到 81.8%左右的准确率。
 
-接下来，报告单个模型的精度分布。我们可以看到，随机选择任何一个保存的模型都会得到一个平均准确率为 81.6%的模型，其相对严格的标准偏差为 0.3%。
+接下来，报告单个模型的准确率分布。我们可以看到，随机选择任何一个保存的模型都会得到一个平均准确率为 81.6%的模型，其相对严格的标准偏差为 0.3%。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 为了有用，我们需要水平集成超过这个平均值。
 
@@ -594,7 +594,7 @@ Accuracy 0.816 (0.003)
 
 ![Line Plot Showing Single Model Accuracy (blue dots) vs Accuracy of Ensembles of Varying Size With a Horizontal Voting Ensemble](img/7729bd042e19ca1eb8a9f57783c3be88.png)
 
-显示单个模型精度(蓝点)与水平投票集合中不同大小集合的精度的线图
+显示单个模型准确率(蓝点)与水平投票集合中不同大小集合的准确率的线图
 
 ## 扩展ˌ扩张
 

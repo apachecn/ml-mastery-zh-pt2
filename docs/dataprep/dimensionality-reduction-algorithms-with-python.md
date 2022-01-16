@@ -180,7 +180,7 @@ print(X.shape, y.shape)
 
 这是一个二元分类任务，我们将在每次降维变换后评估一个[物流分类](https://Sklearn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型。
 
-模型将使用[重复分层 10 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)的金标准进行评估。将报告所有折叠和重复的平均和标准偏差分类精度。
+模型将使用[重复分层 10 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)的金标准进行评估。将报告所有折叠和重复的平均和标准偏差分类准确率。
 
 以下示例将原始数据集上的模型作为比较点进行评估。
 
@@ -205,7 +205,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例会对包含所有 20 列的原始数据集进行逻辑回归评估，分类准确率约为 82.4%。
 
-对该数据进行成功的降维变换应该会产生比该基线具有更好精度的模型，尽管这可能不是所有技术都可以做到的。
+对该数据进行成功的降维变换应该会产生比该基线具有更好准确率的模型，尽管这可能不是所有技术都可以做到的。
 
 注意:我们并不是试图“*求解*”这个数据集，只是提供可以作为起点的工作示例。
 
@@ -267,7 +267,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例评估具有降维和逻辑回归预测模型的建模管道。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们看不到使用主成分分析变换对模型表现有任何提升。
 
@@ -311,7 +311,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例评估具有降维和逻辑回归预测模型的建模管道。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们看不到使用奇异值分解变换对模型表现有任何提升。
 
@@ -357,7 +357,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例评估具有降维和逻辑回归预测模型的建模管道。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，与原始数据的基线拟合相比，我们可以看到表现略有提升。
 
@@ -397,7 +397,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例评估具有降维和逻辑回归预测模型的建模管道。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，与原始数据的基线拟合相比，我们可以看到 Isomap 数据转换的表现有所提升。
 
@@ -437,7 +437,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例评估具有降维和逻辑回归预测模型的建模管道。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，与原始数据的基线拟合相比，我们可以看到 LLE 数据转换的表现提升。
 
@@ -477,7 +477,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例评估具有降维和逻辑回归预测模型的建模管道。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，与原始数据的基线拟合相比，我们可以看到修改后的 LLE 数据转换的表现有所提升。
 

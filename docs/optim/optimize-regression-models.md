@@ -45,7 +45,7 @@ Let’s get started.![How to Use Optimization Algorithms to Manually Fit Regress
 
 可以使用任意优化算法来训练线性和逻辑回归模型。
 
-也就是说，我们可以定义一个回归模型，并使用给定的优化算法为该模型找到一组系数，从而使预测误差最小或分类精度最大。
+也就是说，我们可以定义一个回归模型，并使用给定的优化算法为该模型找到一组系数，从而使预测误差最小或分类准确率最大。
 
 平均而言，使用替代优化算法的效率低于使用推荐的优化算法。尽管如此，在某些特定情况下，例如如果输入数据不符合模型的期望(如高斯分布)并且与外部输入不相关，这可能更有效。
 
@@ -196,7 +196,7 @@ print('MSE: %f' % score)
 
 运行示例会为训练数据集中的每个示例生成预测，然后打印预测的均方误差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在给定一组随机权重的情况下，我们预计会有很大的误差，这就是我们在这种情况下看到的，误差值约为 7，307 个单位。
 
@@ -373,7 +373,7 @@ print('Test MSE: %f' % (score))
 
 在搜索结束时，报告最佳系数集在训练数据集上的表现，并计算和报告相同模型在测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到优化算法在训练和测试数据集上都找到了一组误差约为 0.08 的系数。
 
@@ -537,9 +537,9 @@ score = accuracy_score(y, yhat)
 print('Accuracy: %f' % score)
 ```
 
-运行示例会为训练数据集中的每个示例生成预测，然后打印预测的分类精度。
+运行示例会为训练数据集中的每个示例生成预测，然后打印预测的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在给定一组随机权重和每个类中具有相同数量示例的数据集的情况下，我们期望大约 50%的准确性，这大约是我们在本例中看到的。
 
@@ -547,11 +547,11 @@ print('Accuracy: %f' % score)
 Accuracy: 0.540000
 ```
 
-我们现在可以优化数据集的权重，以在该数据集上获得良好的精度。
+我们现在可以优化数据集的权重，以在该数据集上获得良好的准确率。
 
 用于线性回归的随机爬山算法可以再次用于逻辑回归。
 
-重要的区别是更新了*目标()*函数，使用分类精度而不是均方误差来舍入预测和评估模型。
+重要的区别是更新了*目标()*函数，使用分类准确率而不是均方误差来舍入预测和评估模型。
 
 ```py
 # objective function
@@ -587,7 +587,7 @@ def hillclimbing(X, y, objective, solution, n_iter, step_size):
 	return [solution, solution_eval]
 ```
 
-最后，通过搜索找到的系数可以在运行结束时使用分类精度进行评估。
+最后，通过搜索找到的系数可以在运行结束时使用分类准确率进行评估。
 
 ```py
 ...
@@ -600,7 +600,7 @@ score = accuracy_score(y_test, yhat)
 print('Test Accuracy: %f' % (score))
 ```
 
-将所有这些联系在一起，下面列出了使用随机爬山来最大化逻辑回归模型的分类精度的完整示例。
+将所有这些联系在一起，下面列出了使用随机爬山来最大化逻辑回归模型的分类准确率的完整示例。
 
 ```py
 # optimize logistic regression model with a stochastic hill climber
@@ -686,11 +686,11 @@ score = accuracy_score(y_test, yhat)
 print('Test Accuracy: %f' % (score))
 ```
 
-每次对模型进行改进时，运行该示例都会报告迭代次数和分类精度。
+每次对模型进行改进时，运行该示例都会报告迭代次数和分类准确率。
 
 在搜索结束时，报告最佳系数集在训练数据集上的表现，并计算和报告相同模型在测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到优化算法找到了一组权重，在训练数据集上获得了大约 87.3%的准确率，在测试数据集上获得了大约 83.9%的准确率。
 

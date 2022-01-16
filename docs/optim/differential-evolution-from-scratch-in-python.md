@@ -385,7 +385,7 @@ print('\nSolution: f([%s]) = %.5f' % (around(solution[0], decimals=5), solution[
 
 在搜索结束时，找到最佳解决方案并报告其评估。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到算法在 100 次迭代中的大约 33 次改进中收敛到非常接近 f(0.0，0.0) = 0.0。
 

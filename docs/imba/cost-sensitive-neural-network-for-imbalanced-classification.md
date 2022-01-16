@@ -215,7 +215,7 @@ print('ROC AUC: %.3f' % score)
 
 运行该示例评估不平衡数据集上的神经网络模型，并报告 ROC AUC。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，模型实现了大约 0.949 的 ROC AUC。这表明，与 ROC AUC 为 0.5 的朴素分类器相比，该模型具有一些技巧。
 
@@ -357,7 +357,7 @@ print('ROC AUC: %.3f' % score)
 
 运行该示例准备合成的不平衡类别数据集，然后评估神经网络训练算法的类加权版本。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 报告了 ROC AUC 分数，在这种情况下显示出比训练算法的未加权版本更好的分数，或者与大约 0.949 相比大约 0.973。
 

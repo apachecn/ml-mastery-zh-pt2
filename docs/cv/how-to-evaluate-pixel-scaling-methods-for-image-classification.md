@@ -66,7 +66,7 @@
 高级像素缩放方法的清晰信号可以通过以下两种方式之一看到:
 
 *   **更快的学习**。学习曲线清楚地表明，在给定的数据准备方案下，模型学习得更快。
-*   **精度更高**。在给定的数据准备方案下，平均模型表现明显显示出更好的准确性。
+*   **准确率更高**。在给定的数据准备方案下，平均模型表现明显显示出更好的准确性。
 
 现在，我们有了一个为图像数据选择像素缩放方法的过程，让我们看一个例子。我们将使用适合美国有线电视新闻网的 MNIST 图像分类任务，并评估一系列标准像素缩放方法。
 
@@ -170,7 +170,7 @@ model.add(Dense(64, activation='relu'))
 model.add(Dense(10, activation='softmax'))
 ```
 
-随机梯度下降的 [Adam](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/) 变异用于寻找模型权重。使用分类交叉熵损失函数，这是多类分类所需要的，并且在训练期间监控分类精度。
+随机梯度下降的 [Adam](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/) 变异用于寻找模型权重。使用分类交叉熵损失函数，这是多类分类所需要的，并且在训练期间监控分类准确率。
 
 ```py
 # compile model
@@ -235,7 +235,7 @@ print(acc)
 
 运行实例表明，该模型能够很好地快速学习问题。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 事实上，在这次运行中，模型在测试数据集上的表现是 99%，即 1%的错误率。这不是最先进的(通过设计)，但也离最先进的不远。
 
@@ -346,7 +346,7 @@ print('Test', testX.min(), testX.max(), testX.mean(), testX.std())
 
 运行该示例首先标准化数据集，并报告训练和测试数据集的最小、最大、平均和标准偏差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 然后，针对定心和标准化数据准备方案重复这一过程。结果提供了缩放程序确实被正确实现的证据。
 
@@ -574,7 +574,7 @@ pyplot.show()
 
 在中央处理器上运行该示例可能需要大约 30 分钟。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 报告模型每次重复评估的准确性，并在每次运行结束时重复准确性得分的平均值和标准偏差。
 
@@ -622,13 +622,13 @@ Standardized: 0.990 (0.001
 
 为简洁起见，我们将只在数据准备方案的比较中查看模型表现。这项研究的扩展还将关注每个像素缩放方法下的学习率。
 
-实验结果表明，在 MNIST 数据集上，像素归一化和标准化与所选模型之间的差异很小或没有差异(在所选精度下)。
+实验结果表明，在 MNIST 数据集上，像素归一化和标准化与所选模型之间的差异很小或没有差异(在所选准确率下)。
 
 从这些结果来看，我会在这个数据集和这个模型上使用规范化而不是标准化，因为结果很好，而且与标准化相比规范化很简单。
 
 这些是有用的结果，因为它们表明在建模之前对像素值进行居中的默认启发式方法对于这个数据集来说并不是好的建议。
 
-可悲的是，方框图和触须图并不能很容易地比较精度分数的分布，因为中心缩放方法的一些可怕的异常值会挤压分布。
+可悲的是，方框图和触须图并不能很容易地比较准确率分数的分布，因为中心缩放方法的一些可怕的异常值会挤压分布。
 
 ## 扩展ˌ扩张
 

@@ -382,7 +382,7 @@
 
 ![Plot of Model Accuracy on Train and Validation Datasets](img/0b0e2152156143c45994c88814946cdd.png)
 
-训练和验证数据集上的模型精度图
+训练和验证数据集上的模型准确率图
 
 *   如果训练比验证集好得多，那么你可能是过拟合了，你可以使用正则化之类的技术。
 *   如果训练和验证都很低，你可能是适应不足，你可能会增加你的网络容量，训练更多或更长时间。
@@ -585,7 +585,7 @@ drop 在训练过程中随机跳过神经元，迫使层中的其他人捡起松
 
 一旦验证数据集的表现开始下降，就可以停止训练。
 
-如果满足此条件(测量精度损失)，您也可以设置检查点来保存模型，并允许模型继续学习。
+如果满足此条件(测量准确率损失)，您也可以设置检查点来保存模型，并允许模型继续学习。
 
 Checkpointing 允许你在不停止的情况下提前停止，让你在跑步结束时有几个模型可以选择。
 
@@ -666,7 +666,7 @@ Checkpointing 允许你在不停止的情况下提前停止，让你在跑步结
 *   [神经网络常见问题](ftp://ftp.sas.com/pub/neural/FAQ.html)
 *   [如何用 Keras 在 Python 中网格搜索深度学习模型的超参数](https://machinelearningmastery.com/grid-search-hyperparameters-deep-learning-models-python-keras/)
 *   [必须知道深层神经网络的技巧/诀窍](http://lamda.nju.edu.cn/weixs/project/CNNTricks/CNNTricks.html)
-*   [如何用深度神经网络提高验证精度？](https://stackoverflow.com/questions/37020754/how-to-increase-validation-accuracy-with-deep-neural-net)
+*   [如何用深度神经网络提高验证准确率？](https://stackoverflow.com/questions/37020754/how-to-increase-validation-accuracy-with-deep-neural-net)
 
 知道好的资源吗？让我知道，留下评论。
 

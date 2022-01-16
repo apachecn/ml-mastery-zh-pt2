@@ -73,7 +73,7 @@ LightGBM 是由柯等人在 2017 年发表的论文中描述的，论文标题�
 
 这两个变化加起来可以将算法的训练时间加快 20 倍。因此，LightGBM 可以被认为是梯度提升决策树(GBDT)，增加了 GOSS 和 EFB。
 
-> 我们称我们的新 GBDT 实现为 GOSS 和 EFB LightGBM。我们在多个公共数据集上的实验表明，LightGBM 将传统 GBDT 的训练过程加快了 20 多倍，同时达到了几乎相同的精度
+> 我们称我们的新 GBDT 实现为 GOSS 和 EFB LightGBM。我们在多个公共数据集上的实验表明，LightGBM 将传统 GBDT 的训练过程加快了 20 多倍，同时达到了几乎相同的准确率
 
 ——[LightGBM:一种高效的梯度提升决策树](https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree)，2017。
 
@@ -142,7 +142,7 @@ print(X.shape, y.shape)
 
 接下来，我们可以在这个数据集上评估一个 LightGBM 算法。
 
-我们将使用三次重复和 10 次折叠的重复分层 k 折叠交叉验证来评估模型。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
+我们将使用三次重复和 10 次折叠的重复分层 k 折叠交叉验证来评估模型。我们将报告所有重复和折叠的模型准确率的平均值和标准偏差。
 
 ```py
 # evaluate lightgbm algorithm for classification
@@ -163,11 +163,11 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到带有默认超参数的 LightGBM 集成在这个测试数据集上实现了大约 92.5%的分类精度。
+在这种情况下，我们可以看到带有默认超参数的 LightGBM 集成在这个测试数据集上实现了大约 92.5%的分类准确率。
 
 ```py
 Accuracy: 0.925 (0.031)
@@ -251,9 +251,9 @@ n_scores = cross_val_score(model, X, y, scoring='neg_mean_absolute_error', cv=cv
 print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到带有默认超参数的 LightGBM 集成实现了大约 60 的 MAE。
 
@@ -358,7 +358,7 @@ pyplot.show()
 
 运行该示例首先报告每个配置数量的决策树的平均准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该数据集上的表现有所提高，直到大约 500 棵树，之后表现似乎趋于平稳。
 
@@ -377,7 +377,7 @@ pyplot.show()
 
 ![Box Plots of LightGBM Ensemble Size vs. Classification Accuracy](img/457f8a51ba2962d8aafc793480302aee.png)
 
-LightGBM 集合大小与分类精度的箱线图
+LightGBM 集合大小与分类准确率的箱线图
 
 ### 探索树的深度
 
@@ -437,9 +437,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个配置的树深度的平均精度。
+运行该示例首先报告每个配置的树深度的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到表现随着树的深度而提高，可能一直到 10 级。探索更深的树木可能会很有趣。
 
@@ -456,13 +456,13 @@ pyplot.show()
 >10 0.928 (0.029)
 ```
 
-为每个配置的树深度的精度分数分布创建一个方框和须图。
+为每个配置的树深度的准确率分数分布创建一个方框和须图。
 
 我们可以看到随着树的深度增加到五个级别的深度，模型表现增加的总体趋势，之后表现开始合理地持平。
 
 ![Box Plots of LightGBM Ensemble Tree Depth vs. Classification Accuracy](img/4f4c14dff94891781e045d809b21cd30.png)
 
-LightGBM 集成树深度与分类精度的箱线图
+LightGBM 集成树深度与分类准确率的箱线图
 
 ### 探索学习率
 
@@ -522,7 +522,7 @@ pyplot.show()
 
 运行示例首先报告每个配置的学习率的平均准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，较大的学习率会在该数据集上产生更好的表现。我们预计，为较小的学习率向集合中添加更多的树将进一步提升表现。
 
@@ -540,7 +540,7 @@ pyplot.show()
 
 ![Box Plot of LightGBM Learning Rate vs. Classification Accuracy](img/2b396bc128aae7220eb232b6c8881a58.png)
 
-LightGBM 学习率与分类精度的箱线图
+LightGBM 学习率与分类准确率的箱线图
 
 ### 探索助推类型
 
@@ -614,9 +614,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行示例首先报告每种配置的升压类型的平均精度。
+运行示例首先报告每种配置的升压类型的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到默认的增强方法比评估的其他两种技术表现得更好。
 
@@ -630,7 +630,7 @@ pyplot.show()
 
 ![Box Plots of LightGBM Boosting Type vs. Classification Accuracy](img/03e73feffb404d2b1dd45965e4b08a5c.png)
 
-LightGBM 增强类型与分类精度的箱线图
+LightGBM 增强类型与分类准确率的箱线图
 
 ## 进一步阅读
 

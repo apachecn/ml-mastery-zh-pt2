@@ -1,4 +1,4 @@
-# 从乘客生存预测案例研究中获得的应用机器学习经验
+# 从乘客存活预测案例研究中获得的应用机器学习经验
 
 > 原文：<https://machinelearningmastery.com/applied-machine-learning-lessons-from-a-case-study-of-passenger-survival-prediction/>
 
@@ -41,11 +41,11 @@ Curt 孤立地研究属性的分布，查看名义属性的直方图。他提取
 属性分布
 由[科特·韦赫利](https://github.com/wehrley/wehrley.github.io/blob/master/SOUPTONUTS.md)创建的图形
 
-### 属性与生存的关系
+### 属性与存活的关系
 
-接下来，Curt 在预测变量生存的背景下研究属性的分布。他使用马赛克图(来自 [vcd 包](https://cran.r-project.org/web/packages/vcd/index.html)的马赛克图)来评估预测变量的分类属性，并使用相关图(来自[相关图包](https://cran.r-project.org/web/packages/corrgram/)的相关图函数)来支持他的解释。
+接下来，Curt 在预测变量存活的背景下研究属性的分布。他使用马赛克图(来自 [vcd 包](https://cran.r-project.org/web/packages/vcd/index.html)的马赛克图)来评估预测变量的分类属性，并使用相关图(来自[相关图包](https://cran.r-project.org/web/packages/corrgram/)的相关图函数)来支持他的解释。
 
-通过每一个关键属性，Curt 挑选出关键关系和解释，比如阶级影响生存概率和性别与生存的关系。
+通过每一个关键属性，Curt 挑选出关键关系和解释，比如阶级影响存活概率和性别与存活的关系。
 
 有一个有用的模式需要注意，那就是可视化、解释和确认。这种确认是通过另一种主观的方法进行的，但是假设也可以很容易地在过程的后期进行建模。
 

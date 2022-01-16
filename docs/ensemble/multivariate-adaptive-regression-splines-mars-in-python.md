@@ -299,7 +299,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例评估 MARS 模型的表现，并报告 MAE 分数的平均值和标准偏差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到 MARS 算法在合成回归数据集上实现了大约 4.0(忽略符号)的平均 MAE。
 

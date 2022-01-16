@@ -146,7 +146,7 @@ print(X.shape, y.shape)
 
 接下来，我们可以在这个数据集上评估 RFE 特征选择算法。我们将使用[决策树分类器](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)来选择特征，并将特征数量设置为 5。然后，我们将在所选特征上安装一个新的*决策树分类器*模型。
 
-我们将使用重复的分层 k 折叠交叉验证来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
+我们将使用重复的分层 k 折叠交叉验证来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型准确率的平均值和标准偏差。
 
 下面列出了完整的示例。
 
@@ -173,9 +173,9 @@ n_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1,
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到使用决策树并选择五个特征，然后将决策树拟合到所选特征上的 RFE 分类准确率约为 88.6%。
 
@@ -273,9 +273,9 @@ n_scores = cross_val_score(pipeline, X, y, scoring='neg_mean_absolute_error', cv
 print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到具有决策树模型的 RFE 管道实现了大约 26 的 MAE。
 
@@ -379,9 +379,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个配置数量的输入要素的平均精度。
+运行该示例首先报告每个配置数量的输入要素的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到表现随着特征数量的增加而提高，并且可能在 4-7 左右达到峰值，正如我们可能预期的那样，假设只有五个特征与目标变量相关。
 
@@ -396,11 +396,11 @@ pyplot.show()
 >9 0.884 (0.025)
 ```
 
-为每个配置数量的特征的精度分数分布创建一个方框和须图。
+为每个配置数量的特征的准确率分数分布创建一个方框和须图。
 
 ![Box Plot of RFE Number of Selected Features vs. Classification Accuracy](img/e5233dd202ed151fc280e42a50f2d828.png)
 
-选定要素的 RFE 数与分类精度的箱线图
+选定要素的 RFE 数与分类准确率的箱线图
 
 ### 自动选择特征数量
 
@@ -445,9 +445,9 @@ n_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1,
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到使用决策树并自动选择多个特征，然后将决策树拟合到所选特征上的 RFE 分类准确率约为 88.6%。
 
@@ -479,7 +479,7 @@ for i in range(X.shape[1]):
 	print('Column: %d, Selected %s, Rank: %.3f' % (i, rfe.support_[i], rfe.ranking_[i]))
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行 10 个输入特征的示例列表，以及它们是否被选中以及它们的相对重要性排名。
 
@@ -572,9 +572,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个包装算法的平均精度。
+运行该示例首先报告每个包装算法的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，结果表明，像逻辑回归这样的线性算法可能比所选择的决策树和决策树算法的集成更可靠地选择更好的特征。
 
@@ -592,7 +592,7 @@ pyplot.show()
 
 ![Box Plot of RFE Wrapped Algorithm vs. Classification Accuracy](img/061053584de20116dde125f0ad279154.png)
 
-RFE 包裹算法的箱线图与分类精度
+RFE 包裹算法的箱线图与分类准确率
 
 ## 进一步阅读
 

@@ -319,7 +319,7 @@ print('f(%s) = %f' % (best, score))
 
 运行该示例从搜索空间中的随机点开始，然后应用梯度下降算法，报告一路上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到算法在大约 27 次迭代后找到了一个好的解，函数求值约为 0.0。
 
@@ -482,7 +482,7 @@ pyplot.show()
 
 运行该示例会像以前一样对目标函数执行梯度下降搜索，但在这种情况下，搜索过程中找到的每个点都会被绘制出来。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到搜索从功能右侧的一半以上开始，然后向下走到盆地底部。
 
@@ -616,7 +616,7 @@ print('f(%s) = %f' % (best, score))
 
 运行该示例从搜索空间中的随机点开始，然后应用带有动量的梯度下降算法，报告一路上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到算法在大约 13 次迭代后找到了一个很好的解，函数求值约为 0.0。
 
@@ -732,7 +732,7 @@ pyplot.show()
 
 运行该示例执行梯度下降搜索，目标函数上的动量与之前一样，除了在这种情况下，搜索过程中找到的每个点都被绘制出来。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，如果我们将该图与之前为执行梯度下降(没有动量)而创建的图进行比较，我们可以看到搜索确实以更少的步骤到达最优值，在到达盆地底部的路径上用更少的明显红点进行标注。
 

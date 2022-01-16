@@ -178,7 +178,7 @@ _, test_acc = model.evaluate(testX, testy, verbose=0)
 print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 ```
 
-最后，我们将在训练和验证数据集上绘制每个训练时期的模型精度的学习曲线。
+最后，我们将在训练和验证数据集上绘制每个训练时期的模型准确率的学习曲线。
 
 ```py
 # learning curves of model accuracy
@@ -227,7 +227,7 @@ pyplot.show()
 
 运行该示例将打印最终模型在列车和测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型在训练数据集上获得了大约 86%的准确率，我们知道这是乐观的，在测试数据集上获得了大约 81%的准确率，我们预计这将更加真实。
 
@@ -235,13 +235,13 @@ pyplot.show()
 Train: 0.860, Test: 0.812
 ```
 
-还创建了一个线图，显示了在每个训练周期内，训练和测试集上模型精度的学习曲线。
+还创建了一个线图，显示了在每个训练周期内，训练和测试集上模型准确率的学习曲线。
 
 我们可以看到，在大部分跑步过程中，训练的准确性更加乐观，我们也注意到了最终得分。重要的是，我们确实在训练和测试数据集上的训练期间看到了合理数量的准确性差异，这可能为使用模型权重平均提供了良好的基础。
 
 ![Line Plot Learning Curves of Model Accuracy on Train and Test Dataset over Each Training Epoch](img/41da6831856386ab286e31b81151e6e6.png)
 
-每个训练时期训练和测试数据集上模型精度的线图学习曲线
+每个训练时期训练和测试数据集上模型准确率的线图学习曲线
 
 ## 将多个模型保存到文件
 
@@ -622,9 +622,9 @@ Loaded 10 models
 
 报告每个单独保存的模型的表现，以及一个集合模型，该集合模型具有从所有模型到每个模型(包括每个模型)的平均权重，从训练运行结束后向后工作。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-结果表明，后两种模型的测试精度最高可达 81.4%。我们可以看到，模型权重集成的测试精度平衡了表现，并且表现良好。
+结果表明，后两种模型的测试准确率最高可达 81.4%。我们可以看到，模型权重集成的测试准确率平衡了表现，并且表现良好。
 
 ```py
 > 1: single=0.814, ensemble=0.814
@@ -639,7 +639,7 @@ Loaded 10 models
 > 10: single=0.810, ensemble=0.807
 ```
 
-还会创建一个线图，显示每个单个模型的测试精度(蓝点)和模型权重集合的表现(橙色线)。
+还会创建一个线图，显示每个单个模型的测试准确率(蓝点)和模型权重集合的表现(橙色线)。
 
 我们可以看到，对模型权重进行平均确实会使最终模型的表现变得均衡，并且表现至少与运行的最终模型一样好。
 
@@ -753,7 +753,7 @@ pyplot.show()
 
 运行该示例再次报告每个单个模型的表现，这一次测试每个平均模型权重集合的准确性，其中模型的贡献呈线性下降。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，至少在这种情况下，集成实现了比任何独立模型都小的表现提升，达到了大约 81.5%的准确率。
 
@@ -771,7 +771,7 @@ pyplot.show()
 > 10: single=0.810, ensemble=0.809
 ```
 
-折线图显示了表现的提升，并显示了与使用平均加权集成相比，在所创建的不同大小的集成上，测试精度方面更稳定的表现。
+折线图显示了表现的提升，并显示了与使用平均加权集成相比，在所创建的不同大小的集成上，测试准确率方面更稳定的表现。
 
 ![Line Plot of Single Model Test Performance (blue dots) and Model Weight Ensemble Test Performance (orange line) With a Linear Decay](img/251036c6a9a28770260f0aa3d89dd5d4.png)
 
@@ -878,7 +878,7 @@ pyplot.plot(x_axis, ensemble_scores, marker='o')
 pyplot.show()
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例显示了表现的小幅提升，就像使用已保存模型的加权平均值的线性衰减一样。
 

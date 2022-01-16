@@ -74,7 +74,7 @@ J48 ( [C4.8](https://en.wikipedia.org/wiki/C4.5) )是一种强大的决策树方
 
 ### 助推
 
-[Boosting](https://en.wikipedia.org/wiki/Boosting_(machine_learning)) 是一种集成方法，从基于训练数据准备的基本分类器开始。然后在它后面创建第二个分类器，以关注训练数据中第一个分类器出错的实例。该过程继续添加分类器，直到达到模型数量或精度的极限。
+[Boosting](https://en.wikipedia.org/wiki/Boosting_(machine_learning)) 是一种集成方法，从基于训练数据准备的基本分类器开始。然后在它后面创建第二个分类器，以关注训练数据中第一个分类器出错的实例。该过程继续添加分类器，直到达到模型数量或准确率的极限。
 
 在 [AdaBoostM1(自适应升压)算法](https://en.wikipedia.org/wiki/AdaBoost)中，在 Weka 中提供了升压。
 
@@ -138,7 +138,7 @@ J48 和 IBk (k 近邻)是非常不同的算法，我们希望在我们的混合�
 1.  点击*测试基地*的*选择*按钮，选择*排名*。
 2.  现在点击*执行测试*按钮。
 
-排名表显示了每种算法相对于数据集中所有其他算法的统计显著优势。一次胜利意味着比另一种算法的精度更高的精度，并且差异具有统计学意义。
+排名表显示了每种算法相对于数据集中所有其他算法的统计显著优势。一次胜利意味着比另一种算法的准确率更高的准确率，并且差异具有统计学意义。
 
 [![Algorithm ranking when analyzing results in the Weka Experimenter](img/cdab3456f0be64680cff89d02b8213f7.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-25-at-5.30.54-AM.png)
 
@@ -146,7 +146,7 @@ J48 和 IBk (k 近邻)是非常不同的算法，我们希望在我们的混合�
 
 我们可以看到，AdaBoostM1 版本的 J48 排名最高，与其他算法相比取得了 2 次重大胜利。我们还可以看到 Stacking 和普通老 J48 排名最低。J48 排名靠后是一个好的迹象，这表明至少一些集成方法提高了问题的准确性。
 
-### 算法精度
+### 算法准确率
 
 接下来我们想知道算法取得了什么表现。
 
@@ -156,9 +156,9 @@ J48 和 IBk (k 近邻)是非常不同的算法，我们希望在我们的混合�
 
 [![Algorithm mean accuracy and statistical significance in the Weka Experimenter.](img/a1d88b4d8172dd93d688577feabecb6a.png)](https://machinelearningmastery.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-25-at-5.38.18-AM.png)
 
-韦卡实验者的算法平均精度和统计意义。
+韦卡实验者的算法平均准确率和统计意义。
 
-我们可以看到，AdaBoostM1 算法实现了 93.05% (+/- 3.92%)的分类准确率。我们可以看到，这个值比 J48 高 89.74% (+/- 4.38%)。我们可以在表中的 J48 精度旁边看到一个“*”，这表明增强的 J48 算法之间的差异是有意义的(具有统计显著性)。
+我们可以看到，AdaBoostM1 算法实现了 93.05% (+/- 3.92%)的分类准确率。我们可以看到，这个值比 J48 高 89.74% (+/- 4.38%)。我们可以在表中的 J48 准确率旁边看到一个“*”，这表明增强的 J48 算法之间的差异是有意义的(具有统计显著性)。
 
 我们还可以看到，AdaBoostM1 算法在 92.40% (+/- 4.40%)时获得了高于 Bagging 的值，但我们没有看到一点“*”，这表明差异没有意义(没有统计意义)。
 

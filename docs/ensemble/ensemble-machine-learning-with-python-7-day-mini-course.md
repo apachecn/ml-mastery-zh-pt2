@@ -89,7 +89,7 @@ Python 集成机器学习(7 天迷你课程)
 
 它们是:
 
-*   **套袋**，如套袋决策树、随机林。
+*   **装袋**，如装袋决策树、随机林。
 *   **升压**，例如 adaboost 和梯度升压
 *   **堆叠**，例如投票和使用元模型。
 
@@ -160,7 +160,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在本课中，您将发现随机森林集合。
 
-[随机森林](https://machinelearningmastery.com/random-forest-ensemble-in-python/)是套袋集成的延伸。
+[随机森林](https://machinelearningmastery.com/random-forest-ensemble-in-python/)是装袋集成的延伸。
 
 像装袋一样，随机森林集成在训练数据集的不同引导样本上拟合决策树。
 
@@ -406,7 +406,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 *   什么是集成学习，为什么要在预测建模项目中使用它。
 *   如何使用引导聚合或装袋集成。
-*   如何使用随机森林集合作为套袋的延伸？
+*   如何使用随机森林集合作为装袋的延伸？
 *   如何使用自适应增强或 adaboost 集成？
 *   如何使用梯度提升集成？
 *   如何使用投票集合组合模型的预测。

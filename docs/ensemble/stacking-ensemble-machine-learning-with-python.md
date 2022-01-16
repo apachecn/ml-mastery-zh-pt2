@@ -265,9 +265,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个模型的平均值和标准偏差精度。
+运行该示例首先报告每个模型的平均值和标准偏差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，在这种情况下，SVM 表现最好，平均准确率约为 95.7%。
 
@@ -279,11 +279,11 @@ pyplot.show()
 >bayes 0.833 (0.031)
 ```
 
-然后创建一个方框图，比较每个模型的分布精度分数，让我们清楚地看到 KNN 和 SVM 的平均表现优于 LR、CART 和 Bayes。
+然后创建一个方框图，比较每个模型的分布准确率分数，让我们清楚地看到 KNN 和 SVM 的平均表现优于 LR、CART 和 Bayes。
 
 ![Box Plot of Standalone Model Accuracies for Binary Classification](img/ec5c3d33cefb7f49cdc1530dbec8fe02.png)
 
-二元分类独立模型精度的箱线图
+二元分类独立模型准确率的箱线图
 
 这里我们有五种不同的算法表现良好，大概在这个数据集上以不同的方式。
 
@@ -401,7 +401,7 @@ pyplot.show()
 
 运行示例首先报告每个模型的表现。这包括每个基础模型的表现，然后是堆叠集合。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到叠加集成的平均表现似乎比任何单个模型都好，达到了大约 96.4%的准确率。
 
@@ -414,13 +414,13 @@ pyplot.show()
 >stacking 0.964 (0.019)
 ```
 
-创建一个显示模型分类精度分布的方框图。
+创建一个显示模型分类准确率分布的方框图。
 
-在这里，我们可以看到叠加模型的平均和中值精度略高于 SVM 模型。
+在这里，我们可以看到叠加模型的平均和中值准确率略高于 SVM 模型。
 
 ![Box Plot of Standalone and Stacking Model Accuracies for Binary Classification](img/5229866d1e672ed0e380dad06c751027.png)
 
-二元分类的独立和堆叠模型精度的箱线图
+二元分类的独立和堆叠模型准确率的箱线图
 
 如果我们选择一个叠加集合作为我们的最终模型，我们可以像任何其他模型一样，拟合并使用它来对新数据进行预测。
 
@@ -575,7 +575,7 @@ pyplot.show()
 
 运行该示例首先报告每个模型的平均和标准偏差 MAE。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，在这种情况下，KNN 表现最好，平均负 MAE 约为-100。
 
@@ -698,7 +698,7 @@ pyplot.show()
 
 运行示例首先报告每个模型的表现。这包括每个基础模型的表现，然后是堆叠集合。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到叠加集成的平均表现似乎比任何单个模型都好，平均负 MAE 约为-56。
 

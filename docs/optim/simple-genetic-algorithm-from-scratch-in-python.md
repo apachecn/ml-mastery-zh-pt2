@@ -379,7 +379,7 @@ print('f(%s) = %f' % (best, score))
 
 运行该示例将报告一路上找到的最佳结果，然后是搜索结束时的最终最佳解决方案，我们希望这是最佳解决方案。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到搜索在大约八代之后找到了最优解。
 
@@ -593,7 +593,7 @@ print('f(%s) = %f' % (decoded, score))
 
 运行该示例会报告沿途的最佳解码结果以及运行结束时的最佳解码解决方案。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到算法发现一个非常接近 f(0.0，0.0) = 0.0 的输入。
 

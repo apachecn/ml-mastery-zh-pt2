@@ -179,7 +179,7 @@ model.add(Dense(10, activation='softmax'))
 
 随机梯度下降的[亚当变异](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)用于寻找模型权重。
 
-使用[分类交叉熵损失函数](https://machinelearningmastery.com/loss-and-loss-functions-for-training-deep-learning-neural-networks/)，多类分类需要，训练时监控分类精度。
+使用[分类交叉熵损失函数](https://machinelearningmastery.com/loss-and-loss-functions-for-training-deep-learning-neural-networks/)，多类分类需要，训练时监控分类准确率。
 
 ```py
 # compile model
@@ -298,7 +298,7 @@ def define_model():
 	return model
 ```
 
-接下来，定义 *evaluate_model()* 函数，该函数将在训练数据集上拟合定义的模型，然后在测试数据集上对其进行评估，返回运行的估计分类精度。
+接下来，定义 *evaluate_model()* 函数，该函数将在训练数据集上拟合定义的模型，然后在测试数据集上对其进行评估，返回运行的估计分类准确率。
 
 ```py
 # fit and evaluate a defined model
@@ -329,7 +329,7 @@ def repeated_evaluation(trainX, trainY, testX, testY, repeats=10):
 	return scores
 ```
 
-最后，我们可以调用 *load_dataset()* 函数来准备数据集，然后*repeat _ evaluation()*得到一个精度分数的分布，可以通过报告均值和标准差来总结。
+最后，我们可以调用 *load_dataset()* 函数来准备数据集，然后*repeat _ evaluation()*得到一个准确率分数的分布，可以通过报告均值和标准差来总结。
 
 ```py
 # load dataset
@@ -418,7 +418,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 对于每次重复评估，报告模型的准确性，并报告最终的平均模型表现。
 
-在这种情况下，我们可以看到所选模型配置的平均精度约为 68%，接近单次模型运行的估计值。
+在这种情况下，我们可以看到所选模型配置的平均准确率约为 68%，接近单次模型运行的估计值。
 
 ```py
 > 0.690
@@ -491,7 +491,7 @@ def tta_evaluate_model(model, testX, testY):
 	return acc
 ```
 
-然后可以更新 *evaluate_model()* 函数来调用 *tta_evaluate_model()* ，以获得模型精度分数。
+然后可以更新 *evaluate_model()* 函数来调用 *tta_evaluate_model()* ，以获得模型准确率分数。
 
 ```py
 # fit and evaluate a defined model

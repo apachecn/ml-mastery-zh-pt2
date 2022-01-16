@@ -1083,7 +1083,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 运行示例可能需要一些时间，建议使用 GPU 硬件，但不是必需的。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在每次训练迭代中报告损失，包括真实示例上鉴别器(dr)、虚假示例上鉴别器(df)的真实/虚假和类别损失，以及生成图像时通过合成模型更新的生成器(g)。
 

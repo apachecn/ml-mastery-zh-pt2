@@ -175,7 +175,7 @@ _, test_acc = model.evaluate(testX, testy, verbose=0)
 print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 ```
 
-最后，我们将在训练和验证数据集上绘制每个训练时期的模型精度的学习曲线。
+最后，我们将在训练和验证数据集上绘制每个训练时期的模型准确率的学习曲线。
 
 ```py
 # learning curves of model accuracy
@@ -224,7 +224,7 @@ pyplot.show()
 
 运行该示例将打印最终模型在列车和测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型在训练数据集上获得了大约 84%的准确率，我们知道这是乐观的，在测试数据集上获得了大约 79%的准确率，我们预计这将更加真实。
 
@@ -232,13 +232,13 @@ pyplot.show()
 Train: 0.840, Test: 0.796
 ```
 
-还创建了一个线图，显示了在每个训练周期内，训练和测试集上模型精度的学习曲线。
+还创建了一个线图，显示了在每个训练周期内，训练和测试集上模型准确率的学习曲线。
 
 我们可以看到，在大部分跑步过程中，训练的准确性更加乐观，我们也注意到了最终得分。
 
 ![Line Plot Learning Curves of Model Accuracy on Train and Test Dataset over Each Training Epoch](img/77e882edf07c7f38f3e8153e0e835652.png)
 
-每个训练时期训练和测试数据集上模型精度的线图学习曲线
+每个训练时期训练和测试数据集上模型准确率的线图学习曲线
 
 接下来，我们可以看看如何实现积极的学习进度计划。
 
@@ -444,7 +444,7 @@ pyplot.show()
 
 运行该示例首先报告模型在训练集和测试集上的准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，与前一部分相比，我们看不出最终模型的表现有多大差异。
 
@@ -458,13 +458,13 @@ Train: 0.850, Test: 0.806
 
 布洛布问题拟合 MLP 时的余弦退火学习率调度
 
-最后，在每个训练时期，在训练集和测试集上创建模型精度的线图。
+最后，在每个训练时期，在训练集和测试集上创建模型准确率的线图。
 
 我们可以看到，虽然学习率发生了巨大的变化，但对模型的准确性没有显著的影响，这可能是因为所选的分类问题并不是很难。
 
 ![Line Plot of Train and Test Set Accuracy on the Blobs Dataset With a Cosine Annealing Learning Rate Schedule](img/708d6ff2269e9c34cd78480746b4b356.png)
 
-余弦退火学习率调度下 Blobs 数据集上训练和测试集精度的线图
+余弦退火学习率调度下 Blobs 数据集上训练和测试集准确率的线图
 
 现在我们知道如何实现余弦退火学习调度，我们可以使用它来准备快照集成。
 
@@ -651,7 +651,7 @@ def ensemble_predictions(members, testX):
 	return result
 ```
 
-然后，我们可以通过从模型列表中选择前 n 个成员来评估给定大小的集成，通过调用*集成 _ 预测()*函数进行预测，然后计算并返回预测的精度。下面的 *evaluate_n_members()* 函数实现了这个行为。
+然后，我们可以通过从模型列表中选择前 n 个成员来评估给定大小的集成，通过调用*集成 _ 预测()*函数进行预测，然后计算并返回预测的准确率。下面的 *evaluate_n_members()* 函数实现了这个行为。
 
 ```py
 # evaluate a specific number of members in an ensemble
@@ -796,7 +796,7 @@ Loaded 10 models
 
 结果显示，当我们从运行结束向后工作时，快照模型的表现会变得更差，正如我们可能预期的那样。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 将快照模型组合成一个集合表明，表现提高到包括最后 3 到 5 个模型，达到大约 82%。这可以与大约 80%测试集准确度的快照模型的平均表现相比较。
 

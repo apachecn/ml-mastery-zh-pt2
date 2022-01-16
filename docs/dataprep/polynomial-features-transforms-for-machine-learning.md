@@ -133,7 +133,7 @@ print(data)
 
 它涉及 60 个实值输入和一个两类目标变量。数据集中有 208 个示例，类别相当均衡。
 
-使用重复的分层 10 倍交叉验证，基线分类算法可以达到大约 53.4%的分类精度。[使用重复的分层 10 倍交叉验证，该数据集的最高表现](https://machinelearningmastery.com/results-for-standard-classification-and-regression-machine-learning-datasets/)约为 88%。
+使用重复的分层 10 倍交叉验证，基线分类算法可以达到大约 53.4%的分类准确率。[使用重复的分层 10 倍交叉验证，该数据集的最高表现](https://machinelearningmastery.com/results-for-standard-classification-and-regression-machine-learning-datasets/)约为 88%。
 
 该数据集描述了岩石或模拟地雷的雷达回波。
 
@@ -194,7 +194,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 接下来，让我们在原始数据集上拟合和评估一个机器学习模型。
 
-我们将使用带有默认超参数的 k 近邻算法，并使用重复的分层 k 重交叉验证对其进行评估。下面列出了完整的示例。
+我们将使用带有默认超参数的 k 近邻算法，并使用重复的分层 K 折交叉验证对其进行评估。下面列出了完整的示例。
 
 ```py
 # evaluate knn on the raw sonar dataset
@@ -226,7 +226,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例会评估原始声纳数据集上的 KNN 模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，该模型实现了大约 79.7%的平均分类准确率，表明它具有技巧性(优于 53.4%)，并且处于良好表现的球园区(88%)。
 
@@ -318,7 +318,7 @@ n_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1,
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例，我们可以看到多项式特征变换将表现从没有变换时的 79.7%提升到有变换时的 80.0%。
 
@@ -397,7 +397,7 @@ Degree: 5, Features: 8259888
 
 将多项式特征变换的次数视为超参数并测试数据集的不同值可能是一个好主意。
 
-下面的示例探索了从 1 到 4 的度值，并评估了它们对所选模型的分类精度的影响。
+下面的示例探索了从 1 到 4 的度值，并评估了它们对所选模型的分类准确率的影响。
 
 ```py
 # explore the effect of degree on accuracy for the polynomial features transform
@@ -457,9 +457,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例会报告每个多项式次数的平均分类精度。
+运行该示例会报告每个多项式次数的平均分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，除了 3 级之外，表现通常比没有转换(1 级)差。
 
@@ -478,7 +478,7 @@ pyplot.show()
 
 ![Box Plots of Degree for the Polynomial Feature Transform vs. Classification Accuracy of KNN on the Sonar Dataset](img/7784a9369db518fe221189b378e7d40b.png)
 
-声纳数据集上多项式特征变换的次数与 KNN 分类精度的箱线图
+声纳数据集上多项式特征变换的次数与 KNN 分类准确率的箱线图
 
 ## 进一步阅读
 

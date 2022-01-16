@@ -228,7 +228,7 @@ pyplot.show()
 
 所有的课都同等重要。少数类只占数据的 4%或 6%，但没有一个类在数据集中的优势超过 35%。
 
-因此，在这种情况下，我们将使用分类精度来评估模型。
+因此，在这种情况下，我们将使用分类准确率来评估模型。
 
 首先，我们可以定义一个函数来加载数据集，并将输入变量分成输入和输出变量，并使用标签编码器来确保类标签从 0 到 5 按顺序编号。
 
@@ -274,7 +274,7 @@ print(X.shape, y.shape, Counter(y))
 
 这可以通过使用 [DummyClassifier](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类并将“*策略*”设置为“*最频繁*”来自动实现，这将预测训练数据集中最常见的类(例如，类 2)。
 
-因此，鉴于这是训练数据集中最常见类别的分布，我们期望该模型达到大约 35%的分类精度。
+因此，鉴于这是训练数据集中最常见类别的分布，我们期望该模型达到大约 35%的分类准确率。
 
 ```py
 ...
@@ -292,7 +292,7 @@ scores = evaluate_model(X, y, model)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-将所有这些结合起来，下面列出了使用分类精度评估玻璃识别数据集基线模型的完整示例。
+将所有这些结合起来，下面列出了使用分类准确率评估玻璃识别数据集基线模型的完整示例。
 
 ```py
 # baseline model and test harness for the glass identification dataset
@@ -501,9 +501,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例依次评估每个算法，并报告平均和标准偏差分类精度。
+运行该示例依次评估每个算法，并报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到所有测试的算法都有技巧，达到了高于默认的 35.5%的准确率。
 
@@ -578,9 +578,9 @@ scores = evaluate_model(X, y, model)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-运行该示例评估算法并报告平均值和标准偏差精度。
+运行该示例评估算法并报告平均值和标准偏差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，模型达到了约 80.8%的准确率。
 

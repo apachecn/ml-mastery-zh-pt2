@@ -1,4 +1,4 @@
-# 如何配置不平衡分类的 xboost
+# 如何为不平衡分类配置 XGBoost
 
 > 原文：<https://machinelearningmastery.com/xgboost-for-imbalanced-classification/>
 
@@ -174,7 +174,7 @@ print('Mean ROC AUC: %.5f' % mean(scores))
 
 运行该示例会评估不平衡数据集上的默认 XGBoost 模型，并报告平均 ROC AUC。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到模型有技巧，实现了大于 0.5 的 ROC AUC，在这种情况下实现了 0.95724 的平均得分。
 
@@ -280,7 +280,7 @@ print('Mean ROC AUC: %.5f' % mean(scores))
 
 运行该示例准备合成不平衡类别数据集，然后使用重复交叉验证评估 XGBoost 训练算法的类加权版本。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到表现的适度提升，从上一节中 *scale_pos_weight=1* 时的约 0.95724 的 ROC AUC 提升到 *scale_pos_weight=99* 时的 0.95990 的值。
 
@@ -377,7 +377,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 运行该示例使用重复的 k 倍交叉验证评估每个正类别权重，并报告最佳配置和相关的平均 ROC AUC 分数。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到 *scale_pos_weight=99* 正类加权达到了最好的平均 ROC 得分。这与一般启发式算法的配置相匹配。
 

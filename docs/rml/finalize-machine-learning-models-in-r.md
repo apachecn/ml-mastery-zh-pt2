@@ -82,7 +82,7 @@ predictions <- predict(fit.lda, newdata=validation)
 confusionMatrix(predictions, validation$diabetes)
 ```
 
-运行该示例，我们可以看到训练数据集上的估计精度为 76.91%。在拟合中使用 finalModel，我们可以看到搁置验证数据集的准确率为 77.78%，与我们的估计非常相似。
+运行该示例，我们可以看到训练数据集上的估计准确率为 76.91%。在拟合中使用 finalModel，我们可以看到搁置验证数据集的准确率为 77.78%，与我们的估计非常相似。
 
 ```py
 Resampling results
@@ -153,7 +153,7 @@ final_predictions <- predict(finalModel, validation[,1:60])
 confusionMatrix(final_predictions, validation$Class)
 ```
 
-我们可以看到，最优配置的估计精度为 85.07%。我们可以看到，在所有训练数据集上训练的最终独立模型和对验证数据集的预测的准确率为 82.93%。
+我们可以看到，最优配置的估计准确率为 85.07%。我们可以看到，在所有训练数据集上训练的最终独立模型和对验证数据集的预测的准确率为 82.93%。
 
 ```py
 Random Forest 
@@ -218,7 +218,7 @@ Prediction  M  R
        'Positive' Class : M
 ```
 
-一些更简单的模型，如线性模型，可以输出它们的系数。这很有用，因为通过这些，您可以用您选择的语言实现简单的预测过程，并使用系数来获得相同的精度。随着表示的复杂性增加，这变得更加困难。
+一些更简单的模型，如线性模型，可以输出它们的系数。这很有用，因为通过这些，您可以用您选择的语言实现简单的预测过程，并使用系数来获得相同的准确率。随着表示的复杂性增加，这变得更加困难。
 
 ### 3.保存并加载您的模型
 

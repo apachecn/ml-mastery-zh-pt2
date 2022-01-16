@@ -1,4 +1,4 @@
-# 成人收入数据集不平衡分类
+# 成人收入数据集的不平衡分类
 
 > 原文：<https://machinelearningmastery.com/imbalanced-classification-with-the-adult-income-dataset/>
 
@@ -8,7 +8,7 @@
 
 一个流行的例子是成人收入数据集，该数据集涉及根据关系和教育水平等个人详细信息预测每年高于或低于 5 万美元的个人收入水平。收入低于 5 万美元的案例比高于 5 万美元的案例多得多，尽管这种偏离并不严重。
 
-这意味着可以使用不平衡分类技术，同时仍然可以使用分类精度来报告模型表现，就像平衡分类问题一样。
+这意味着可以使用不平衡分类技术，同时仍然可以使用分类准确率来报告模型表现，就像平衡分类问题一样。
 
 在本教程中，您将发现如何为不平衡的成人收入类别数据集开发和评估模型。
 
@@ -73,9 +73,9 @@
 *   **' > 50K'** :多数派，约 25%。
 *   **' < =50K'** :少数民族，约 75%。
 
-假设类不平衡不严重，并且两个类标签同等重要，则通常使用分类精度或分类错误来报告此数据集上的模型表现。
+假设类不平衡不严重，并且两个类标签同等重要，则通常使用分类准确率或分类错误来报告此数据集上的模型表现。
 
-使用预定义的训练集和测试集，报告的良好分类误差约为 14%，分类精度约为 86%。这可能会在处理此数据集时提供一个目标。
+使用预定义的训练集和测试集，报告的良好分类误差约为 14%，分类准确率约为 86%。这可能会在处理此数据集时提供一个目标。
 
 接下来，让我们仔细看看数据。
 
@@ -233,7 +233,7 @@ pyplot.show()
 
 这可以使用[repeated stratifiedfold](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)Sklearn 类来实现。
 
-我们将为每个示例预测一个类标签，并使用分类精度来衡量模型表现。
+我们将为每个示例预测一个类标签，并使用分类准确率来衡量模型表现。
 
 下面的 *evaluate_model()* 函数将获取加载的数据集和定义的模型，并使用重复的分层 k 倍交叉验证对其进行评估，然后返回一个准确性分数列表，稍后可以对其进行汇总。
 
@@ -271,7 +271,7 @@ def load_dataset(full_path):
 
 最后，我们可以使用这个测试工具在数据集上评估一个基线模型。
 
-当使用分类精度时，简单模型将预测所有情况下的多数类。这为模型在这个问题上的表现提供了一个基线，通过这个基线可以比较所有其他模型。
+当使用分类准确率时，简单模型将预测所有情况下的多数类。这为模型在这个问题上的表现提供了一个基线，通过这个基线可以比较所有其他模型。
 
 这可以通过使用 Sklearn 库中的 [DummyClassifier](https://Sklearn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类并将“*策略*”参数设置为“*最频繁*”来实现。
 
@@ -428,7 +428,7 @@ pipeline = Pipeline(steps=[('t',ct),('m',models[i])])
 scores = evaluate_model(X, y, pipeline)
 ```
 
-我们可以总结每个算法的平均精度，这将有助于直接比较算法。
+我们可以总结每个算法的平均准确率，这将有助于直接比较算法。
 
 ```py
 ...
@@ -535,9 +535,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例依次评估每个算法，并报告平均和标准偏差分类精度。
+运行该示例依次评估每个算法，并报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 **你考了多少分？**
 在下面的评论中发布你的结果。
@@ -695,7 +695,7 @@ for row in data:
 
 ### 报纸
 
-*   [提高朴素贝叶斯分类器的精度:决策树混合](https://dl.acm.org/citation.cfm?id=3001502)，1996。
+*   [提高朴素贝叶斯分类器的准确率:决策树混合](https://dl.acm.org/citation.cfm?id=3001502)，1996。
 
 ### 蜜蜂
 

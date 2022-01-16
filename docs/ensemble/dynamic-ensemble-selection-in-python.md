@@ -18,7 +18,7 @@
 
 *   动态集成选择算法在对新数据进行预测时自动选择集成成员。
 *   如何使用 Sklearn API 开发和评估分类任务的动态集成选择模型。
-*   如何探索动态集成选择模型超参数对分类精度的影响？
+*   如何探索动态集成选择模型超参数对分类准确率的影响？
 
 **用我的新书[Python 集成学习算法](https://machinelearningmastery.com/ensemble-learning-algorithms-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
@@ -65,7 +65,7 @@ Python 中的动态集成选择
 
 ——[动态分类器选择:最新进展与展望](https://www.sciencedirect.com/science/article/pii/S1566253517304074)，2018。
 
-动态集成选择的典型方法可能是 k-最近邻甲骨文或 KNORA 算法，因为它是典型动态分类器选择算法“*动态分类器选择局部精度*”或 DCS-LA 的自然扩展。
+动态集成选择的典型方法可能是 k-最近邻甲骨文或 KNORA 算法，因为它是典型动态分类器选择算法“*动态分类器选择局部准确率*”或 DCS-LA 的自然扩展。
 
 DCS-LA 包括从训练或验证数据集中为给定的新输入模式选择 k 个最近邻，然后基于其在 k 个示例的邻域中的表现选择单个最佳分类器，以对新示例进行预测。
 
@@ -85,7 +85,7 @@ Albert Ko 等人在 2008 年发表的题为“从动态分类器选择到动态�
 
 描述了 KNORA 的两个版本，包括 KNORA-消除和 KNORA-联合。
 
-*   **KNORA-exclude(KNORA-E)**:在新示例的邻域上实现完美精度的分类器的集成，邻域大小减小，直到找到至少一个完美的分类器。
+*   **KNORA-exclude(KNORA-E)**:在新示例的邻域上实现完美准确率的分类器的集成，邻域大小减小，直到找到至少一个完美的分类器。
 *   **KNORA-Union (KNORA-U)** :所有分类器的集成，通过加权投票和与邻域准确度成比例的投票，对邻域做出至少一个正确的预测。
 
 **KNORA-exclude**，简称 KNORA-E，包括选择在邻域中 k 个示例的邻域上实现完美预测的所有分类器。如果没有分类器达到 100%的准确率，邻域大小将减少 1，模型将被重新评估。重复这个过程，直到发现一个或多个具有完美表现的模型，然后用于对新示例进行预测。
@@ -165,7 +165,7 @@ print(X.shape, y.shape)
 
 在这种情况下，我们将使用默认的模型超参数，包括袋装决策树作为分类器模型池，以及一个 *k=7* 用于在进行预测时选择局部邻域。
 
-我们将使用三次重复和 10 次折叠的重复分层 k 折叠交叉验证来评估模型。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
+我们将使用三次重复和 10 次折叠的重复分层 k 折叠交叉验证来评估模型。我们将报告所有重复和折叠的模型准确率的平均值和标准偏差。
 
 下面列出了完整的示例。
 
@@ -189,9 +189,9 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到 KNORA-E 集成和默认超参数实现了大约 91.5%的分类准确率。
 
@@ -235,7 +235,7 @@ Predicted Class: 0
 
 在这种情况下，我们将使用默认的模型超参数，包括袋装决策树作为分类器模型池，以及一个 *k=7* 用于在进行预测时选择局部邻域。
 
-我们将使用三次重复和 10 次折叠的重复分层 k 折叠交叉验证来评估模型。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
+我们将使用三次重复和 10 次折叠的重复分层 k 折叠交叉验证来评估模型。我们将报告所有重复和折叠的模型准确率的平均值和标准偏差。
 
 下面列出了完整的示例。
 
@@ -259,11 +259,11 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到 KNORA-U 动态集成选择模型和默认超参数实现了大约 93.3%的分类精度。
+在这种情况下，我们可以看到 KNORA-U 动态集成选择模型和默认超参数实现了大约 93.3%的分类准确率。
 
 ```py
 Mean Accuracy: 0.933 (0.009)
@@ -313,7 +313,7 @@ k-最近邻算法的配置对于 KNORA 模型至关重要，因为它定义了�
 
 k 值控制邻域的大小，重要的是将其设置为适合数据集的值，特别是特征空间中样本的密度。太小的值意味着训练集中的相关例子可能被排除在邻域之外，而太大的值可能意味着信号被太多的例子冲掉。
 
-下面的代码示例探讨了 k 值从 2 到 21 的 KNORA-U 算法的分类精度。
+下面的代码示例探讨了 k 值从 2 到 21 的 KNORA-U 算法的分类准确率。
 
 ```py
 # explore k in knn for KNORA-U dynamic ensemble selection
@@ -359,11 +359,11 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个配置的邻域大小的平均精度。
+运行该示例首先报告每个配置的邻域大小的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到精度会随着邻域大小的增加而增加，可能会增加到 k=10，此时精度会趋于平稳。
+在这种情况下，我们可以看到准确率会随着邻域大小的增加而增加，可能会增加到 k=10，此时准确率会趋于平稳。
 
 ```py
 >2 0.933 (0.008)
@@ -388,13 +388,13 @@ pyplot.show()
 >21 0.936 (0.009)
 ```
 
-为每个配置的邻域大小的精度分数分布创建一个方框和须图。
+为每个配置的邻域大小的准确率分数分布创建一个方框和须图。
 
 我们可以看到模型表现和 k 值在达到平稳之前增加的总体趋势。
 
 ![Box and Whisker Plots of Accuracy Distributions for k Values in KNORA-U](img/7b1d4b7da8e0f4fcf77221da9ee35062.png)
 
-KNORA-U 中 k 值精度分布的方框图和触须图
+KNORA-U 中 k 值准确率分布的方框图和触须图
 
 ### 探索分类器池的算法
 
@@ -445,7 +445,7 @@ print('Accuracy: %.3f' % (score))
 
 运行该示例首先报告具有自定义分类器池的模型的平均准确度。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到模型达到了大约 91.3%的准确率。
 
@@ -504,9 +504,9 @@ for c in classifiers:
 	print('>%s: %.3f' % (c.__class__.__name__, score))
 ```
 
-运行该示例首先报告带有自定义分类器池的模型的平均精度和每个贡献模型的精度。
+运行该示例首先报告带有自定义分类器池的模型的平均准确率和每个贡献模型的准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以再次看到 KNORAU 达到了大约 91.3%的准确率，这比任何贡献模型都好。
 
@@ -562,9 +562,9 @@ score = accuracy_score(y_test, yhat)
 print('>%s: %.3f' % (pool.__class__.__name__, score))
 ```
 
-运行该示例首先报告带有自定义分类器池的模型的平均精度和随机森林模型的精度。
+运行该示例首先报告带有自定义分类器池的模型的平均准确率和随机森林模型的准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，具有动态选择的集成成员的 KNORA 模型比具有静态选择的(完全集合)集成成员的随机森林表现更好。
 
@@ -604,7 +604,7 @@ Accuracy: 0.968
 
 *   动态集成选择算法在对新数据进行预测时自动选择集成成员。
 *   如何使用 Sklearn API 开发和评估分类任务的动态集成选择模型。
-*   如何探索动态集成选择模型超参数对分类精度的影响？
+*   如何探索动态集成选择模型超参数对分类准确率的影响？
 
 **你有什么问题吗？**
 在下面的评论中提问，我会尽力回答。

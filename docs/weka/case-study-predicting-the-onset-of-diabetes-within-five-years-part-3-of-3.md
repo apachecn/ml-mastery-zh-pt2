@@ -16,11 +16,11 @@
 
 为了提高结果，我们可以求助于[集成方法，比如增强](https://machinelearningmastery.com/improve-machine-learning-results-with-boosting-bagging-and-blending-ensemble-methods-in-weka/ "Improve Machine Learning Results with Boosting, Bagging and Blending Ensemble Methods in Weka")。Boosting 是一种集成方法，从基于训练数据准备的基本分类器开始。然后在它后面创建第二个分类器，以关注训练数据中第一个分类器出错的实例。
 
-该过程继续添加分类器，直到达到模型数量或精度的极限。Weka 在 AdaBoostM1(自适应升压)算法中提供了升压功能。结果如下所示:
+该过程继续添加分类器，直到达到模型数量或准确率的极限。Weka 在 AdaBoostM1(自适应升压)算法中提供了升压功能。结果如下所示:
 
 [![diabetes boosting results accuracy](img/e02dd800f95b995f516fdaf8f8ab3aaa.png)](https://machinelearningmastery.com/wp-content/uploads/2014/04/diabetes-boosting-results-accuracy.png)
 
-提高了糖尿病数据集上的算法精度平均值和各种数据集上逻辑回归表现的散点图。原始结果为红色，而增强结果为蓝色。
+提高了糖尿病数据集上的算法准确率平均值和各种数据集上逻辑回归表现的散点图。原始结果为红色，而增强结果为蓝色。
 
 很明显，boosting 对 LogisticRegression 没有影响，但是明显恶化了树算法的表现。根据韦卡实验者的结果，与增强的 C4.5、随机森林和增强的随机森林给出的结果相比，增强的物流出口的表现具有统计学上的显著差异。
 
@@ -44,7 +44,7 @@ Weka Experimenter 输出将增强逻辑回归的表现与其他算法的表现�
 
 Weka Experimenter 输出将逻辑回归的 ROC 曲线面积与其他算法的 ROC 曲线面积进行比较。
 
-乍一看这似乎有点奇怪:提升 C4.5 会降低精度，但增加 ROC 面积。如果我们考虑到准确性实际上是真阳性和假阳性的总结，而 ROC 区域是命中率和虚警率的综合，那么差异就很明显了。无论哪种方式，我们发现增强的 C4.5 与 LogisticRegression(默认和增强形式)给出的结果相比，具有统计学上的显著差异。
+乍一看这似乎有点奇怪:提升 C4.5 会降低准确率，但增加 ROC 面积。如果我们考虑到准确性实际上是真阳性和假阳性的总结，而 ROC 区域是命中率和虚警率的综合，那么差异就很明显了。无论哪种方式，我们发现增强的 C4.5 与 LogisticRegression(默认和增强形式)给出的结果相比，具有统计学上的显著差异。
 
 最后，我们将看一看 F1 对增强算法的度量。
 
@@ -66,7 +66,7 @@ Weka Experimenter 输出将 Boosted Logistic 回归的 F1 分数与其他算法�
 
 [![diabetes less features results accuracy](img/318691853de6254ed25ca927f604188f.png)](https://machinelearningmastery.com/wp-content/uploads/2014/04/diabetes-less-features-results-accuracy.png)
 
-有创和无创糖尿病数据集上的算法精度平均值。非侵入性结果为红色，而原始结果为蓝色。
+有创和无创糖尿病数据集上的算法准确率平均值。非侵入性结果为红色，而原始结果为蓝色。
 
 [![diabetes less features results accuracy weka](img/977f8c66fc81575d187f135f77c15d73.png)](https://machinelearningmastery.com/wp-content/uploads/2014/04/diabetes-less-features-results-accuracy-weka.png)
 

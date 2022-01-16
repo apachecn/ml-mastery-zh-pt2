@@ -61,7 +61,7 @@ CIFAR 是首字母缩略词，代表[加拿大高级研究所](https://www.cs.to
 
 这些是非常小的图像，比典型的照片小得多，数据集是为计算机视觉研究而设计的。
 
-CIFAR-10 是一个众所周知的数据集，广泛用于机器学习领域的计算机视觉算法基准测试。问题是“*解决了*”达到 80%的分类准确率相对简单。通过深度学习卷积神经网络在测试数据集上达到 90%以上的分类精度，在该问题上取得了最佳表现。
+CIFAR-10 是一个众所周知的数据集，广泛用于机器学习领域的计算机视觉算法基准测试。问题是“*解决了*”达到 80%的分类准确率相对简单。通过深度学习卷积神经网络在测试数据集上达到 90%以上的分类准确率，在该问题上取得了最佳表现。
 
 下面的示例使用 Keras API 加载 CIFAR-10 数据集，并创建训练数据集中前九个图像的图。
 
@@ -248,7 +248,7 @@ def summarize_diagnostics(history):
 
 接下来，我们可以在测试数据集上报告最终的模型表现。
 
-这可以通过直接打印分类精度来实现。
+这可以通过直接打印分类准确率来实现。
 
 ```py
 print('> %.3f' % (acc * 100.0))
@@ -407,7 +407,7 @@ model.add(Dense(10, activation='softmax'))
 
 模型将使用随机梯度下降进行优化。
 
-我们将使用 0.001 的适度学习率和 0.9 的大动量，这两者都是很好的一般起点。该模型将优化多类分类所需的[分类交叉熵损失函数](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)，并将监控分类精度。
+我们将使用 0.001 的适度学习率和 0.9 的大动量，这两者都是很好的一般起点。该模型将优化多类分类所需的[分类交叉熵损失函数](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)，并将监控分类准确率。
 
 ```py
 # compile model
@@ -441,9 +441,9 @@ def define_model():
 	return model
 ```
 
-在测试线束中运行模型首先会在测试数据集上打印分类精度。
+在测试线束中运行模型首先会在测试数据集上打印分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该模型实现了不到 70%的分类准确率。
 
@@ -451,7 +451,7 @@ def define_model():
 > 67.070
 ```
 
-创建一个图形并保存到文件中，显示在训练和测试数据集上训练期间模型的学习曲线，包括损失和精度。
+创建一个图形并保存到文件中，显示在训练和测试数据集上训练期间模型的学习曲线，包括损失和准确率。
 
 在这种情况下，我们可以看到模型快速地覆盖了测试数据集。如果我们查看损失图(顶部图)，我们可以看到模型在训练数据集(蓝色)上的表现继续提高，而在测试数据集(橙色)上的表现提高，然后在大约 15 个时期开始变差。
 
@@ -482,9 +482,9 @@ def define_model():
 	return model
 ```
 
-在测试线束中运行模型首先会在测试数据集上打印分类精度。
+在测试线束中运行模型首先会在测试数据集上打印分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到具有两个块的模型比具有单个块的模型表现更好:这是一个好迹象。
 
@@ -524,9 +524,9 @@ def define_model():
 	return model
 ```
 
-在测试线束中运行模型首先会在测试数据集上打印分类精度。
+在测试线束中运行模型首先会在测试数据集上打印分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，随着模型深度的增加，表现又有了适度的提高。
 
@@ -552,7 +552,7 @@ CIFAR-10 数据集上 VGG 3 基线的学习曲线线图
 
 在所有情况下，模型都能够学习训练数据集，显示出对训练数据集的改进，至少持续到 40 个时代，也许更多。这是一个好的迹象，因为它表明这个问题是可以学习的，并且所有三个模型都有足够的能力来学习这个问题。
 
-模型在测试数据集上的结果表明，随着模型深度的增加，分类精度会提高。如果对四层和五层模型进行评估，这种趋势可能会继续下去，这可能是一个有趣的扩展。尽管如此，这三个模型在大约 15 到 20 个时期都显示出同样的戏剧性过拟合模式。
+模型在测试数据集上的结果表明，随着模型深度的增加，分类准确率会提高。如果对四层和五层模型进行评估，这种趋势可能会继续下去，这可能是一个有趣的扩展。尽管如此，这三个模型在大约 15 到 20 个时期都显示出同样的戏剧性过拟合模式。
 
 这些结果表明，具有三个 VGG 区块的模型是我们研究的良好起点或基线模型。
 
@@ -709,9 +709,9 @@ def run_test_harness():
 run_test_harness()
 ```
 
-在测试线束中运行模型会在测试数据集上打印分类精度。
+在测试线束中运行模型会在测试数据集上打印分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到分类准确率提高了约 10%，从没有丢弃的约 73%提高到丢弃的约 83%。
 
@@ -860,9 +860,9 @@ def run_test_harness():
 run_test_harness()
 ```
 
-在测试线束中运行模型会打印测试数据集的分类精度。
+在测试线束中运行模型会打印测试数据集的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们在测试集上看不到模型表现的改善；事实上，我们看到分类准确率从大约 73%下降到大约 72%。
 
@@ -884,7 +884,7 @@ CIFAR-10 数据集上权重衰减基线模型的学习曲线线图
 
 这具有正则化效果，因为它既扩展了训练数据集，又允许模型学习相同的一般特征，尽管是以更一般化的方式。
 
-有许多类型的数据扩充可以应用。假设数据集由对象的小照片组成，我们不希望使用过度扭曲图像的增强，以便可以保留和使用图像中的有用特征。
+有许多类型的数据扩充可以应用。假设数据集由对象的小照片组成，我们不希望使用过度偏斜图像的增强，以便可以保留和使用图像中的有用特征。
 
 可能有用的随机增强类型包括水平翻转、图像的微小移动以及图像的小缩放或裁剪。
 
@@ -1032,9 +1032,9 @@ def run_test_harness():
 run_test_harness()
 ```
 
-在测试线束中运行模型会在测试数据集上打印分类精度。
+在测试线束中运行模型会在测试数据集上打印分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们看到了模型表现的另一个大的改进，很像我们看到的丢弃。在这种情况下，从基线模型的约 73%提高到约 84%，提高了约 11%。
 
@@ -1205,9 +1205,9 @@ def run_test_harness():
 run_test_harness()
 ```
 
-在测试线束中运行模型会在测试数据集上打印分类精度。
+在测试线束中运行模型会在测试数据集上打印分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到从大约 83%的固定丢弃率到大约 84%的增加丢弃率的适度提升。
 
@@ -1332,9 +1332,9 @@ def run_test_harness():
 run_test_harness()
 ```
 
-在测试线束中运行模型会在测试数据集上打印分类精度。
+在测试线束中运行模型会在测试数据集上打印分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，正如我们所希望的那样，同时使用这两种正则化技术已经在测试集上进一步提升了模型表现。在这种情况下，将大约 83%的固定丢失率和大约 84%的数据增加率相结合，已经导致分类准确率提高到大约 85%。
 
@@ -1506,9 +1506,9 @@ def run_test_harness():
 run_test_harness()
 ```
 
-在测试线束中运行模型会在测试数据集上打印分类精度。
+在测试线束中运行模型会在测试数据集上打印分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，我们实现了模型表现的进一步提升，达到约 88%的准确率，仅在丢失和数据增加方面就提高了约 84%，仅在丢失增加方面就提高了约 85%。
 
@@ -1698,11 +1698,11 @@ run_test_harness()
 
 运行该示例将加载保存的模型，并在暂挂测试数据集上评估该模型。
 
-计算并打印测试数据集中模型的分类精度。
+计算并打印测试数据集中模型的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到模型达到了大约 73%的精度，非常接近我们在评估模型作为测试工具的一部分时看到的精度。
+在这种情况下，我们可以看到模型达到了大约 73%的准确率，非常接近我们在评估模型作为测试工具的一部分时看到的准确率。
 
 ```py
 73.750

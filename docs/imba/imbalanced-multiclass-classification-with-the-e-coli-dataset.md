@@ -236,7 +236,7 @@ k-fold 交叉验证程序对模型表现提供了一个良好的总体估计，�
 
 这可以使用[repeated stratifiedfold](https://Sklearn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)Sklearn 类来实现。
 
-所有的课都同等重要。因此，在这种情况下，我们将使用分类精度来评估模型。
+所有的课都同等重要。因此，在这种情况下，我们将使用分类准确率来评估模型。
 
 首先，我们可以定义一个函数来加载数据集，并将输入变量分成输入和输出变量，并使用标签编码器来确保类标签按顺序编号。
 
@@ -300,7 +300,7 @@ scores = evaluate_model(X, y, model)
 print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
 
-将所有这些结合在一起，下面列出了在大肠杆菌数据集上使用分类精度评估基线模型的完整示例。
+将所有这些结合在一起，下面列出了在大肠杆菌数据集上使用分类准确率评估基线模型的完整示例。
 
 ```py
 # baseline model and test harness for the ecoli dataset
@@ -349,7 +349,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 运行该示例首先加载数据集，并按照我们的预期正确地报告案例数为 336，以及类标签的分布。
 
-然后使用重复分层的 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)评估带有我们默认策略的*Dummy 分类器*，分类精度的平均值和标准偏差报告为大约 42.6%。
+然后使用重复分层的 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)评估带有我们默认策略的*Dummy 分类器*，分类准确率的平均值和标准偏差报告为大约 42.6%。
 
 ```py
 (336, 7) (336,) Counter({0: 143, 1: 77, 7: 52, 4: 35, 5: 20, 6: 5, 3: 2, 2: 2})
@@ -600,9 +600,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例依次评估每个算法，并报告平均和标准偏差分类精度。
+运行该示例依次评估每个算法，并报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到所有测试的算法都有技巧，达到了高于默认的 43.1%的准确率。
 
@@ -761,9 +761,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例依次评估每个算法，并报告平均和标准偏差分类精度。
+运行该示例依次评估每个算法，并报告平均和标准偏差分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，使用 SMOTE 的 LDA 导致了从 88.6%到大约 87.9%的小幅下降，而使用 SMOTE 的 SVM 看到了从大约 88.3%到大约 88.8%的小幅上升。
 

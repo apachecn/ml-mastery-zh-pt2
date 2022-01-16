@@ -238,9 +238,9 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 运行该示例将 BFGS 算法应用于我们的目标函数，并报告结果。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到算法执行了四次迭代，发现了非常接近 optima f(0.0，0.0) = 0.0 的解，至少达到了有用的精度水平。
+在这种情况下，我们可以看到算法执行了四次迭代，发现了非常接近 optima f(0.0，0.0) = 0.0 的解，至少达到了有用的准确率水平。
 
 ```py
 Status: Optimization terminated successfully.
@@ -292,7 +292,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 运行示例应用程序将 L-BFGS-B 算法应用于我们的目标函数并报告结果。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 同样，我们可以看到函数的最小值是在很少的评估中找到的。
 

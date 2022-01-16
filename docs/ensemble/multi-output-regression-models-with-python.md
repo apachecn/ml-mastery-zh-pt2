@@ -242,7 +242,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例评估决策树模型在测试问题上的多输出回归的表现。报告了所有折叠和所有重复的平均和标准偏差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 重要的是，误差是跨两个输出变量报告的，而不是每个输出变量单独的误差分数。
 
@@ -352,7 +352,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行这个例子报告了直接包装模型的平均值和标准偏差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到由直接多输出回归策略包装的线性支持向量回归模型实现了大约 0.419 的 MAE。
 
@@ -455,7 +455,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 运行这个例子报告了链式包装模型的平均值和标准偏差。
 请注意，在运行示例时，您可能会看到一个*收敛警告*，可以安全地忽略。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到由链式多输出回归策略包装的线性支持向量回归模型实现了大约 0.643 的 MAE。
 

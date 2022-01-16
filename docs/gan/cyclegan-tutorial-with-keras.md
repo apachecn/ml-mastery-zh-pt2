@@ -904,7 +904,7 @@ train(d_model_A, d_model_B, g_model_AtoB, g_model_BtoA, c_model_AtoB, c_model_Bt
 
 *   [如何设置亚马逊 AWS EC2 GPUs 训练 Keras 深度学习模型(分步)](https://machinelearningmastery.com/develop-evaluate-large-deep-learning-models-keras-amazon-web-services/)
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在每个训练迭代中报告损失，包括真假示例的鉴别器-A 损失( *dA* )、真假示例的鉴别器-B 损失( *dB* )以及生成器-AtoB 和生成器-BtoA 损失，每个损失都是对抗、同一性、前向和后向循环损失的加权平均值( *g* )。
 
@@ -1129,7 +1129,7 @@ show_plot(B_real, A_generated, B_reconstructed)
 
 使用 CycleGAN 绘制斑马的真实照片、翻译成马以及重建斑马的照片。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 模型并不完美，尤其是斑马到马的模型，所以你可能需要生成许多翻译的例子来回顾。
 

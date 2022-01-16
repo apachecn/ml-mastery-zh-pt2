@@ -146,7 +146,7 @@ seed <- 7
 
 有关在脱字符号中使用所有三个推荐测试选项的示例，请参见文章:
 
-*   [如何使用脱字符号包](https://machinelearningmastery.com/how-to-estimate-model-accuracy-in-r-using-the-caret-package/)估算 R 中的模型精度
+*   [如何使用脱字符号包](https://machinelearningmastery.com/how-to-estimate-model-accuracy-in-r-using-the-caret-package/)估算 R 中的模型准确率
 
 #### 测试度量
 
@@ -156,8 +156,8 @@ seed <- 7
 
 分类:
 
-*   **精度** : x 正确除以 y 总实例。通俗易懂，应用广泛。
-*   **Kappa** :容易理解为考虑了类的基数分布的精度。
+*   **准确率** : x 正确除以 y 总实例。通俗易懂，应用广泛。
+*   **Kappa** :容易理解为考虑了类的基数分布的准确率。
 
 回归:
 
@@ -174,7 +174,7 @@ metric <- "Accuracy"
 
 在帖子中了解更多关于测试指标的信息:
 
-*   [分类精度不够:可以使用更多表现指标](https://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/)
+*   [分类准确率不够:可以使用更多表现指标](https://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/)
 
 ### 2.模型结构
 

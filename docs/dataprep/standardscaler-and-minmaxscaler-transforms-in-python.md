@@ -8,7 +8,7 @@
 
 这包括使用输入加权和的算法，如线性回归，以及使用距离度量的算法，如 k 近邻。
 
-建模前缩放数值数据的两种最流行的技术是标准化和规范化。**归一化**将每个输入变量分别缩放到 0-1 范围，这是我们精度最高的浮点值范围。**标准化**通过减去平均值(称为对中)并除以标准差来分别缩放每个输入变量，以使分布的平均值为零，标准差为 1。
+建模前缩放数值数据的两种最流行的技术是标准化和规范化。**归一化**将每个输入变量分别缩放到 0-1 范围，这是我们准确率最高的浮点值范围。**标准化**通过减去平均值(称为对中)并除以标准差来分别缩放每个输入变量，以使分布的平均值为零，标准差为 1。
 
 在本教程中，您将发现如何使用 scaler 变换来标准化和规范化用于分类和回归的数字输入变量。
 
@@ -317,7 +317,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 接下来，让我们在原始数据集上拟合和评估一个机器学习模型。
 
-我们将使用带有默认超参数的 k 近邻算法，并使用重复的分层 k 重交叉验证对其进行评估。下面列出了完整的示例。
+我们将使用带有默认超参数的 k 近邻算法，并使用重复的分层 K 折交叉验证对其进行评估。下面列出了完整的示例。
 
 ```py
 # evaluate knn on the raw sonar dataset
@@ -349,7 +349,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例会评估原始声纳数据集上的 KNN 模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，该模型实现了大约 79.7%的平均分类准确率，表明它具有技巧性(优于 53.4%)，并且处于良好表现的球园区(88%)。
 
@@ -460,7 +460,7 @@ n_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1,
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例，我们可以看到，最小最大缩放器变换将表现从没有变换时的 79.7%提升到有变换时的 81.3%。
 
@@ -573,7 +573,7 @@ n_scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1,
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 运行该示例，我们可以看到*标准缩放器*变换将表现从无变换时的 79.7%提升到有变换时的 81.0%，尽管比使用*最小最大缩放器*的结果略低。
 

@@ -161,7 +161,7 @@ print(X.shape, y.shape)
 
 我们将使用管道，其中第一步执行奇异值分解转换并选择 10 个最重要的维度或组件，然后在这些特征上拟合逻辑回归模型。我们不需要标准化这个数据集中的变量，因为所有的变量都有相同的设计比例。
 
-管道将使用[重复分层交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)进行评估，重复三次，每次重复 10 次。表现表示为平均分类精度。
+管道将使用[重复分层交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)进行评估，重复三次，每次重复 10 次。表现表示为平均分类准确率。
 
 下面列出了完整的示例。
 
@@ -187,9 +187,9 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1, er
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例评估模型并报告分类精度。
+运行该示例评估模型并报告分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到带有逻辑回归的奇异值分解变换获得了大约 81.4%的表现。
 
@@ -203,7 +203,7 @@ Accuracy: 0.814 (0.034)
 
 更好的方法是用不同数量的输入特征评估相同的变换和模型，并选择导致最佳平均表现的特征数量(降维量)。
 
-下面的示例执行了该实验，并总结了每种配置的平均分类精度。
+下面的示例执行了该实验，并总结了每种配置的平均分类准确率。
 
 ```py
 # compare svd number of components with logistic regression algorithm for classification
@@ -253,11 +253,11 @@ pyplot.xticks(rotation=45)
 pyplot.show()
 ```
 
-运行该示例首先报告所选组件或特征的每个数量的分类精度。
+运行该示例首先报告所选组件或特征的每个数量的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-随着维度数量的增加，我们可以看到表现提高的总体趋势。在这个数据集上，结果显示了维度数量和模型分类精度之间的权衡。
+随着维度数量的增加，我们可以看到表现提高的总体趋势。在这个数据集上，结果显示了维度数量和模型分类准确率之间的权衡。
 
 有趣的是，我们没有看到超过 15 个组件的任何改进。这与我们对问题的定义相匹配，其中只有前 15 个组件包含关于该类的信息，其余 5 个是冗余的。
 
@@ -283,13 +283,13 @@ pyplot.show()
 >19 0.865 (0.027)
 ```
 
-为每个配置的尺寸数量的精度分数的分布创建一个方框和触须图。
+为每个配置的尺寸数量的准确率分数的分布创建一个方框和触须图。
 
-我们可以看到分类精度随着组件数量的增加而增加的趋势，限制在 15。
+我们可以看到分类准确率随着组件数量的增加而增加的趋势，限制在 15。
 
 ![Box Plot of SVD Number of Components vs. Classification Accuracy](img/ff4454c9ce3c315cf2d2d12b0dc0fe1b.png)
 
-奇异值分解组件数与分类精度的箱线图
+奇异值分解组件数与分类准确率的箱线图
 
 我们可以选择使用奇异值分解变换和逻辑回归模型组合作为最终模型。
 

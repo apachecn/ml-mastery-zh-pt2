@@ -1,4 +1,4 @@
-# 使用 Python 进行不平衡分类的 SMOTE】
+# Python 中用于不平衡分类的 SMOTE
 
 > 原文：<https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/>
 
@@ -376,7 +376,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行示例评估模型并报告平均 ROC AUC。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到报告了大约 0.76 的 ROC AUC。
 
@@ -424,7 +424,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例评估模型，并报告多次折叠和重复的平均 ROC AUC 得分。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到从大约 0.76 到大约 0.80 的 ROC AUC 在表现上的适度改善。
 
@@ -477,7 +477,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 运行该示例使用训练数据集上的 SMOTE 过采样和随机欠采样管道来评估模型。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到报告的 ROC AUC 显示额外的提升至约 0.83。
 
@@ -535,7 +535,7 @@ for k in k_values:
 
 报告了每种配置的平均 ROC AUC。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，结果表明 *k=3* 可能是好的，ROC AUC 约为 0.84， *k=7* 也可能是好的，ROC AUC 约为 0.85。
 

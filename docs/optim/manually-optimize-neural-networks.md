@@ -45,7 +45,7 @@ Let’s get started.![How to Manually Optimize Neural Network Models](img/b8af55
 
 可以使用任意优化算法来训练神经网络模型。
 
-也就是说，我们可以定义一个神经网络模型架构，并使用给定的优化算法来为模型找到一组权重，从而使预测误差最小或分类精度最大。
+也就是说，我们可以定义一个神经网络模型架构，并使用给定的优化算法来为模型找到一组权重，从而使预测误差最小或分类准确率最大。
 
 平均而言，使用交替优化算法的效率低于使用带反向传播的随机梯度下降算法。然而，在某些特定情况下，例如非标准网络架构或非差分传输功能，它可能更有效。
 
@@ -232,9 +232,9 @@ score = accuracy_score(y, yhat)
 print(score)
 ```
 
-运行示例会为训练数据集中的每个示例生成预测，然后打印预测的分类精度。
+运行示例会为训练数据集中的每个示例生成预测，然后打印预测的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在给定一组随机权重和每个类中具有相同数量示例的数据集的情况下，我们期望大约 50%的准确性，这大约是我们在本例中看到的。
 
@@ -242,7 +242,7 @@ print(score)
 0.548
 ```
 
-我们现在可以优化数据集的权重，以在该数据集上获得良好的精度。
+我们现在可以优化数据集的权重，以在该数据集上获得良好的准确率。
 
 首先，我们需要将数据集拆分成[训练和测试集](https://machinelearningmastery.com/train-test-split-for-evaluating-machine-learning-algorithms/)。重要的是保留一些未用于优化模型的数据，以便我们可以在用于对新数据进行预测时对模型的表现进行合理的估计。
 
@@ -260,7 +260,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
 
 在这种情况下，我们将使用给定的一组权重来评估模型的准确性，并返回分类准确性，分类准确性必须最大化。
 
-给定数据集和一组权重，下面的 *objective()* 函数实现了这一点，并返回模型的精度
+给定数据集和一组权重，下面的 *objective()* 函数实现了这一点，并返回模型的准确率
 
 ```py
 # objective function
@@ -417,11 +417,11 @@ score = accuracy_score(y_test, yhat)
 print('Test Accuracy: %.5f' % (score * 100))
 ```
 
-每次对模型进行改进时，运行该示例都会报告迭代次数和分类精度。
+每次对模型进行改进时，运行该示例都会报告迭代次数和分类准确率。
 
 在搜索结束时，报告最佳权重集在训练数据集上的表现，并计算和报告相同模型在测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到优化算法找到了一组权重，在训练数据集上获得了大约 88.5%的准确率，在测试数据集上获得了大约 81.8%的准确率。
 
@@ -539,7 +539,7 @@ network = [hidden1, output1]
 yhat = predict_dataset(X, network)
 ```
 
-在计算分类精度之前，我们必须将预测四舍五入到类别标签 0 和 1。
+在计算分类准确率之前，我们必须将预测四舍五入到类别标签 0 和 1。
 
 ```py
 ...
@@ -617,9 +617,9 @@ score = accuracy_score(y, yhat)
 print(score)
 ```
 
-运行示例会为训练数据集中的每个示例生成一个预测，然后打印预测的分类精度。
+运行示例会为训练数据集中的每个示例生成一个预测，然后打印预测的分类准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 同样，在给定一组随机权重和每个类中具有相同数量示例的数据集的情况下，我们期望大约 50%的准确性，这大约是我们在本例中看到的。
 
@@ -802,11 +802,11 @@ score = accuracy_score(y_test, yhat)
 print('Test Accuracy: %.5f' % (score * 100))
 ```
 
-每次对模型进行改进时，运行该示例都会报告迭代次数和分类精度。
+每次对模型进行改进时，运行该示例都会报告迭代次数和分类准确率。
 
 在搜索结束时，报告最佳权重集在训练数据集上的表现，并计算和报告相同模型在测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到优化算法找到了一组权重，在训练数据集上获得了大约 87.3%的准确率，在测试数据集上获得了大约 85.1%的准确率。
 

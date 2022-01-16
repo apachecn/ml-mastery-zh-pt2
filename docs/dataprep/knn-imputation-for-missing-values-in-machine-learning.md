@@ -330,9 +330,9 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 正确运行该示例将数据插补应用于交叉验证程序的每个折叠。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-使用 10 倍交叉验证的三次重复对管道进行评估，并报告数据集上的平均分类精度约为 86.2%，这是一个合理的分数。
+使用 10 倍交叉验证的三次重复对管道进行评估，并报告数据集上的平均分类准确率约为 86.2%，这是一个合理的分数。
 
 ```py
 Mean Accuracy: 0.862 (0.059)
@@ -387,11 +387,11 @@ pyplot.show()
 
 运行该示例使用重复的交叉验证来评估马绞痛数据集中的每个 *k* 值。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-报告管道的平均分类精度，每个 *k* 值用于插补。
+报告管道的平均分类准确率，每个 *k* 值用于插补。
 
-在这种情况下，我们可以看到，较大的 k 值会产生表现更好的模型，其中 *k=1* 会产生约 86.7%精度的最佳表现。
+在这种情况下，我们可以看到，较大的 k 值会产生表现更好的模型，其中 *k=1* 会产生约 86.7%准确率的最佳表现。
 
 ```py
 >1 0.867 (0.049)

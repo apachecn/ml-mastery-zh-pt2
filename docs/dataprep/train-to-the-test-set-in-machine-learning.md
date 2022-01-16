@@ -144,7 +144,7 @@ print('Accuracy: %.3f' % (accuracy * 100))
 
 运行该示例首先加载数据集并总结行数和列数，符合我们的预期。然后报告列车和测试集的形状，显示测试集中大约有 230 行。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 最后，该模型的分类准确率约为 77.056%。
 
@@ -220,7 +220,7 @@ print('Accuracy: %.3f' % (accuracy * 100))
 
 运行该示例，我们可以看到新训练数据集的报告大小与测试集的大小相同，正如我们预期的那样。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，与在整个训练数据集上训练模型相比，通过训练测试集，我们已经实现了表现的提升。在这种情况下，我们实现了大约 79.654%的分类准确率，而在使用整个训练数据集时，分类准确率为 77.056%。
 
@@ -295,7 +295,7 @@ print('MAE: %.3f' % mae)
 
 运行该示例首先加载数据集并总结行数和列数，符合我们的预期。然后报告列车和测试集的形状，显示测试集中大约有 150 行。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 最后，模型的 MAE 据报道约为 4.488。
 
@@ -371,7 +371,7 @@ print('MAE: %.3f' % mae)
 
 运行该示例，我们可以看到新训练数据集的报告大小与测试集的大小相同，正如我们预期的那样。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到，与在整个训练数据集上训练模型相比，通过训练测试集，我们已经实现了表现的提升。在这种情况下，与使用整个训练数据集时的 4.488 相比，我们获得了大约 4.433 的 MAE。
 

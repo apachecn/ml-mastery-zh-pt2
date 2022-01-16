@@ -69,7 +69,7 @@ Bootstrap Aggregation，简称 Bagging，是一种集成机器学习算法。
 
 > 装袋预测器是一种生成预测器的多个版本并使用这些版本获得聚合预测器的方法。[……]多个版本是通过对学习集进行引导复制并将其用作新的学习集而形成的
 
-——[套袋预测因子](https://link.springer.com/article/10.1007/BF00058655)，1996。
+——[装袋预测因子](https://link.springer.com/article/10.1007/BF00058655)，1996。
 
 对回归问题的预测是通过对决策树中的预测取平均值来进行的。通过在决策树所做的预测中对类别进行多数票预测，来对分类问题进行预测。
 
@@ -81,13 +81,13 @@ Bootstrap Aggregation，简称 Bagging，是一种集成机器学习算法。
 
 > 如果扰动学习集会导致构建的预测器发生显著变化，那么装袋可以提高准确性。
 
-——[套袋预测因子](https://link.springer.com/article/10.1007/BF00058655)，1996。
+——[装袋预测因子](https://link.springer.com/article/10.1007/BF00058655)，1996。
 
 装袋并不总是能带来改善。对于已经表现良好的低方差模型，装袋会导致模型表现下降。
 
 > 实验和理论证据都表明，装袋可以将一个好的但不稳定的过程推向最优化的重要一步。另一方面，它会稍微降低稳定程序的表现。
 
-——[套袋预测因子](https://link.springer.com/article/10.1007/BF00058655)，1996。
+——[装袋预测因子](https://link.springer.com/article/10.1007/BF00058655)，1996。
 
 ## 装袋科学工具包-学习应用编程接口
 
@@ -152,7 +152,7 @@ print(X.shape, y.shape)
 
 接下来，我们可以在这个数据集上评估 Bagging 算法。
 
-我们将使用[重复分层 k 折叠交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
+我们将使用[重复分层 k 折叠交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型准确率的平均值和标准偏差。
 
 ```py
 # evaluate bagging algorithm for classification
@@ -173,11 +173,11 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1, er
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到具有默认超参数的 Bagging 集成在这个测试数据集上实现了大约 85%的分类精度。
+在这种情况下，我们可以看到具有默认超参数的 Bagging 集成在这个测试数据集上实现了大约 85%的分类准确率。
 
 ```py
 Accuracy: 0.856 (0.037)
@@ -261,9 +261,9 @@ n_scores = cross_val_score(model, X, y, scoring='neg_mean_absolute_error', cv=cv
 print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到具有默认超参数的 Bagging 集成实现了大约 100 的 MAE。
 
@@ -368,7 +368,7 @@ pyplot.show()
 
 运行该示例首先报告每个配置数量的决策树的平均准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到在这个数据集上的表现有所提高，直到大约 100 棵树，之后保持不变。
 
@@ -387,7 +387,7 @@ pyplot.show()
 
 ![Box Plot of Bagging Ensemble Size vs. Classification Accuracy](img/12e0a7d7e69dda0c4fe1ac8d3bcdddc6.png)
 
-装袋集合大小与分类精度的箱线图
+装袋集合大小与分类准确率的箱线图
 
 ### 探索样本数量
 
@@ -453,7 +453,7 @@ pyplot.show()
 
 运行该示例首先报告每个样本集大小的平均准确度。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，结果表明，随着样本大小的增加，表现通常会提高，这突出表明默认的 100%的训练数据集大小是合理的。
 
@@ -512,11 +512,11 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1, er
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到具有 KNN 和默认超参数的 Bagging 集成在这个测试数据集上实现了大约 88%的分类精度。
+在这种情况下，我们可以看到具有 KNN 和默认超参数的 Bagging 集成在这个测试数据集上实现了大约 88%的分类准确率。
 
 ```py
 Accuracy: 0.888 (0.036)
@@ -580,11 +580,11 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个 k 值的平均精度。
+运行该示例首先报告每个 k 值的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，结果表明，当在 bagging 集合中使用时，较小的 k 值(例如 2 到 4)导致最佳的平均精度。
+在这种情况下，结果表明，当在 bagging 集合中使用时，较小的 k 值(例如 2 到 4)导致最佳的平均准确率。
 
 ```py
 >1 0.884 (0.025)
@@ -615,7 +615,7 @@ pyplot.show()
 
 ![Box Plot of Bagging KNN Number of Neighbors vs. Classification Accuracy](img/5816d2bdaee8406a022973b191c05f92.png)
 
-装袋 KNN 邻居数量与分类精度的箱线图
+装袋 KNN 邻居数量与分类准确率的箱线图
 
 ## 装袋扩展
 
@@ -660,9 +660,9 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1, er
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到粘贴集成在这个数据集上实现了大约 84%的分类准确率。
 
@@ -701,9 +701,9 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1, er
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到随机子空间集成在这个数据集上实现了大约 86%的分类准确率。
 
@@ -759,7 +759,7 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行示例首先报告每个特征数量的平均精度。
+运行示例首先报告每个特征数量的平均准确率。
 
 在这种情况下，结果表明使用数据集中大约一半数量的特征(例如，在 9 和 13 之间)可能给出该数据集上随机子空间集成的最佳结果。
 
@@ -788,11 +788,11 @@ pyplot.show()
 
 为每个随机子空间大小的准确度分数的分布创建一个方框和须图。
 
-我们看到了一个总体趋势，即随着特征数量的增加，精度增加到大约 10 到 13 个特征，在这一水平上，精度大致保持不变，然后表现呈适度下降趋势。
+我们看到了一个总体趋势，即随着特征数量的增加，准确率增加到大约 10 到 13 个特征，在这一水平上，准确率大致保持不变，然后表现呈适度下降趋势。
 
 ![Box Plot of Random Subspace Ensemble Number of Features vs. Classification Accuracy](img/00a0658c8ddba6083bc91a9184b82403.png)
 
-随机子空间集合特征数与分类精度的箱线图
+随机子空间集合特征数与分类准确率的箱线图
 
 ### 随机面片集合
 
@@ -825,9 +825,9 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1, er
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到随机补丁集成在这个数据集上实现了大约 84%的分类准确率。
 
@@ -890,11 +890,11 @@ Accuracy: 0.845 (0.036)
 *   [引导法的简单介绍](https://machinelearningmastery.com/a-gentle-introduction-to-the-bootstrap-method/)
 *   [如何用 Python 实现从零开始装袋](https://machinelearningmastery.com/implement-bagging-scratch-python/)
 *   [如何在 Keras 创建深度学习模型的装袋集成](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/)
-*   [机器学习的套袋和随机森林集成算法](https://machinelearningmastery.com/bagging-and-random-forest-ensemble-algorithms-for-machine-learning/)
+*   [机器学习的装袋和随机森林集成算法](https://machinelearningmastery.com/bagging-and-random-forest-ensemble-algorithms-for-machine-learning/)
 
 ### 报纸
 
-*   [套袋预测因子](https://link.springer.com/article/10.1007/BF00058655)，1996。
+*   [装袋预测因子](https://link.springer.com/article/10.1007/BF00058655)，1996。
 *   [在大型数据库和网上粘贴分类小票](https://link.springer.com/article/10.1023/A:1007563306331)，1999。
 *   [构建决策森林的随机子空间方法](https://ieeexplore.ieee.org/abstract/document/709601)，1998。
 *   [随机面片集合](https://link.springer.com/chapter/10.1007/978-3-642-33460-3_28)，2012。

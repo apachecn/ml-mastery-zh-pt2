@@ -301,9 +301,9 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 我们可以看到，该模型在训练数据集上的表现优于测试数据集，这可能是过拟合的一个迹象。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-因为模型被严重过拟合，我们通常不会期望模型在同一数据集上重复运行时的精度有太大差异。
+因为模型被严重过拟合，我们通常不会期望模型在同一数据集上重复运行时的准确率有太大差异。
 
 ```py
 Train: 1.000, Test: 0.914
@@ -311,7 +311,7 @@ Train: 1.000, Test: 0.914
 
 过拟合的另一个标志是训练和测试数据集的模型学习曲线图。
 
-overfit 模型应该在训练和测试中显示精度增加，并且在某一点上，精度在测试数据集中下降，但在训练数据集中继续上升。
+overfit 模型应该在训练和测试中显示准确率增加，并且在某一点上，准确率在测试数据集中下降，但在训练数据集中继续上升。
 
 我们可以更新示例来绘制这些曲线。下面列出了完整的示例。
 
@@ -342,13 +342,13 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例会在列车和测试集上创建模型精度的线图。
+运行该示例会在列车和测试集上创建模型准确率的线图。
 
-我们可以看到过拟合模型的预期形状，其中测试精度增加到一个点，然后开始再次降低。
+我们可以看到过拟合模型的预期形状，其中测试准确率增加到一个点，然后开始再次降低。
 
 ![Line Plots of Accuracy on Train and Test Datasets While Training](img/9c813e5b232753623fd8813f7196d7fc.png)
 
-训练时训练和测试数据集的精度线图
+训练时训练和测试数据集的准确率线图
 
 ### 带权重正则化的 MLP 模型
 
@@ -391,7 +391,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 运行该示例会报告模型在列车和测试数据集上的表现。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 我们可以看到训练数据集的准确性没有变化，测试数据集有所改进。
 
@@ -433,13 +433,13 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例会创建列车的线形图，并在训练期间测试每个时期的模型精度。
+运行该示例会创建列车的线形图，并在训练期间测试每个时期的模型准确率。
 
 不出所料，我们看到测试数据集上的学习曲线先上升后平稳，这表明模型可能没有过度训练训练数据集。
 
 ![Line Plots of Accuracy on Train and Test Datasets While Training Without Overfitting](img/3032d5967882e23dc56dcc741cb2910d.png)
 
-在没有过拟合的情况下训练时训练和测试数据集上的精度线图
+在没有过拟合的情况下训练时训练和测试数据集上的准确率线图
 
 ### 网格搜索正则化超参数
 
@@ -510,9 +510,9 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例会打印每个评估模型在列车和测试集上的参数值和精度。
+运行该示例会打印每个评估模型在列车和测试集上的参数值和准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 结果表明，0.01 或 0.001 可能就足够了，并且可以为进一步的网格搜索提供良好的界限。
 
@@ -525,13 +525,13 @@ Param: 0.000010, Train: 1.000, Test: 0.929
 Param: 0.000001, Train: 1.000, Test: 0.914
 ```
 
-还创建了结果的线图，显示了随着更大的权重正则化参数值，测试精度的增加，至少在一点上。
+还创建了结果的线图，显示了随着更大的权重正则化参数值，测试准确率的增加，至少在一点上。
 
-我们可以看到，使用最大值 0.1 会导致列车和测试精度大幅下降。
+我们可以看到，使用最大值 0.1 会导致列车和测试准确率大幅下降。
 
 ![Line Plot of Model Accuracy on Train and Test Datasets With Different Weight Regularization Parameters](img/c2698e30699208e40259465987301a46.png)
 
-不同权重正则化参数下训练和测试数据集模型精度的线图
+不同权重正则化参数下训练和测试数据集模型准确率的线图
 
 ## 扩展ˌ扩张
 

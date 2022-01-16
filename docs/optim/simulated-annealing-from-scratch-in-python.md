@@ -467,7 +467,7 @@ print('f(%s) = %f' % (best, score))
 
 在搜索结束时，找到最佳解决方案并报告其评估。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到算法的 1000 次迭代中有大约 20 次改进，并且有一个非常接近最佳输入 0.0 的解，其计算结果为 f(0.0) = 0.0。
 

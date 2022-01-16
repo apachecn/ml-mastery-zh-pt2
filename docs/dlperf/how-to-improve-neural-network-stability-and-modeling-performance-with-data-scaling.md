@@ -486,7 +486,7 @@ pyplot.show()
 
 运行该示例符合模型，并计算列车和测试集的均方误差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，模型似乎确实学会了这个问题，并实现了接近零的均方误差，至少达到了小数点后三位。
 
@@ -703,7 +703,7 @@ pyplot.show()
 
 在三种配置中的每一种都被评估了 30 次之后，报告每种配置的平均误差。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，正如我们预期的那样，缩放输入变量确实会导致模型具有更好的表现。出乎意料的是，使用标准化输入代替标准化输入可以获得更好的表现。这可能与第一隐藏层中整流线性激活函数的选择有关。
 

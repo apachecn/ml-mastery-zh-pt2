@@ -92,9 +92,9 @@ Weka J48 算法在鸢尾花数据集上的结果
 
 只是在韦卡的鸢尾花数据集上的 J48 算法的结果
 
-首先注意[分类精度](https://en.wikipedia.org/wiki/Accuracy_and_precision)。您可以看到，该模型获得了 144/150 正确率或 96%的结果，这似乎比 33%的基线好得多。
+首先注意[分类准确率](https://en.wikipedia.org/wiki/Accuracy_and_precision)。您可以看到，该模型获得了 144/150 正确率或 96%的结果，这似乎比 33%的基线好得多。
 
-其次，看[混淆矩阵](https://machinelearningmastery.com/confusion-matrix-machine-learning/)。您可以看到一个实际类别与预测类别的比较表，您可以看到有 1 个错误将鸢尾分类为鸢尾色，2 个案例将鸢尾色分类为鸢尾色，3 个案例将鸢尾色分类为鸢尾色(总共 6 个错误)。此表有助于解释算法所达到的精度。
+其次，看[混淆矩阵](https://machinelearningmastery.com/confusion-matrix-machine-learning/)。您可以看到一个实际类别与预测类别的比较表，您可以看到有 1 个错误将鸢尾分类为鸢尾色，2 个案例将鸢尾色分类为鸢尾色，3 个案例将鸢尾色分类为鸢尾色(总共 6 个错误)。此表有助于解释算法所达到的准确率。
 
 ## 摘要
 

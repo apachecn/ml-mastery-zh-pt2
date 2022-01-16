@@ -39,7 +39,7 @@
 
 [模型选择](https://machinelearningmastery.com/a-gentle-introduction-to-model-selection-for-machine-learning/)是从预测建模项目的许多候选机器学习模型中选择一个的过程。
 
-根据模型的预期表现选择模型通常很简单，例如选择具有最高精度或最低预测误差的模型。
+根据模型的预期表现选择模型通常很简单，例如选择具有最高准确率或最低预测误差的模型。
 
 另一个重要的考虑是选择更简单的模型而不是复杂的模型。
 

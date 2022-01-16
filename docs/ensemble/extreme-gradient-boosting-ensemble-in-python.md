@@ -72,7 +72,7 @@
 
 从他的实验中，他评论道:
 
-> 我还尝试了 xgboost，这是一个流行的增强库，它也能构建随机森林。它速度快，内存效率高，精度高
+> 我还尝试了 xgboost，这是一个流行的增强库，它也能构建随机森林。它速度快，内存效率高，准确率高
 
 ——[基准测试随机森林实现，Szilard Pafka](http://datascience.la/benchmarking-random-forest-implementations/) ，2015 年。
 
@@ -165,7 +165,7 @@ print(X.shape, y.shape)
 
 接下来，我们可以在这个数据集上评估一个 XGBoost 模型。
 
-我们将使用重复的分层 k 折叠交叉验证来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
+我们将使用重复的分层 k 折叠交叉验证来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型准确率的平均值和标准偏差。
 
 ```py
 # evaluate xgboost algorithm for classification
@@ -186,11 +186,11 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到带有默认超参数的 XGBoost 集成在这个测试数据集上实现了大约 92.5%的分类精度。
+在这种情况下，我们可以看到带有默认超参数的 XGBoost 集成在这个测试数据集上实现了大约 92.5%的分类准确率。
 
 ```py
 Accuracy: 0.925 (0.028)
@@ -276,9 +276,9 @@ n_scores = cross_val_score(model, X, y, scoring='neg_mean_absolute_error', cv=cv
 print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会报告模型的均值和标准差精度。
+运行该示例会报告模型的均值和标准差准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到带有默认超参数的 XGBoost 集成实现了大约 76 的 MAE。
 
@@ -379,7 +379,7 @@ pyplot.show()
 
 运行该示例首先报告每个配置数量的决策树的平均准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到该数据集上的表现有所提高，直到大约 500 棵树，之后表现似乎趋于平稳或下降。
 
@@ -398,7 +398,7 @@ pyplot.show()
 
 ![Box Plots of XGBoost Ensemble Size vs. Classification Accuracy](img/dc3c3e8fcc2884001dacb9bc87b12a05.png)
 
-XGBoost 集合大小与分类精度的箱线图
+XGBoost 集合大小与分类准确率的箱线图
 
 ### 探索树的深度
 
@@ -456,9 +456,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个配置的树深度的平均精度。
+运行该示例首先报告每个配置的树深度的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到表现随着树的深度而提高，可能在 3 到 8 的深度附近窥视，之后更深、更专门化的树会导致更差的表现。
 
@@ -475,13 +475,13 @@ pyplot.show()
 >10 0.923 (0.035)
 ```
 
-为每个配置的树深度的精度分数分布创建一个方框和须图。
+为每个配置的树深度的准确率分数分布创建一个方框和须图。
 
 我们可以看到模型表现随着树的深度增加到一定程度的总体趋势，在此之后，表现开始持平或随着过度专门化的树而下降。
 
 ![Box Plots of XGBoost Ensemble Tree Depth vs. Classification Accuracy](img/9f373d46656b512547173cc025211b6d.png)
 
-XGBoost 集合树深度与分类精度的方框图
+XGBoost 集合树深度与分类准确率的方框图
 
 ### 探索学习率
 
@@ -541,7 +541,7 @@ pyplot.show()
 
 运行示例首先报告每个配置的学习率的平均准确性。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到，较大的学习率会在该数据集上产生更好的表现。我们预计，为较小的学习率向集合中添加更多的树将进一步提升表现。
 
@@ -561,7 +561,7 @@ pyplot.show()
 
 ![Box Plot of XGBoost Learning Rate vs. Classification Accuracy](img/9fd15911bf86566cebdac82b410d33f0.png)
 
-XGBoost 学习率与分类精度的箱线图
+XGBoost 学习率与分类准确率的箱线图
 
 ### 探索样本数量
 
@@ -621,7 +621,7 @@ pyplot.show()
 
 运行示例首先报告每个配置样本大小的平均准确度。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到平均表现对于覆盖大部分数据集的样本大小来说可能是最好的，例如 80%或更高。
 
@@ -644,7 +644,7 @@ pyplot.show()
 
 ![Box Plots of XGBoost Ensemble Sample Ratio vs. Classification Accuracy](img/df1efec9dbdf8c59ccf514af8658f935.png)
 
-XGBoost 集合样本比与分类精度的箱线图
+XGBoost 集合样本比与分类准确率的箱线图
 
 ### 探索功能数量
 
@@ -702,9 +702,9 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行该示例首先报告每个配置的列比率的平均精度。
+运行该示例首先报告每个配置的列比率的平均准确率。
 
-**注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
+**注**:考虑到算法或评估程序的随机性，或数值准确率的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
 在这种情况下，我们可以看到平均表现增加到功能数量的一半(50%)，之后保持在一定水平。令人惊讶的是，删除每棵树一半的输入变量收效甚微。
 
@@ -727,7 +727,7 @@ pyplot.show()
 
 ![Box Plots of XGBoost Ensemble Column Ratio vs. Classification Accuracy](img/4c7244bf9e98aa499f3b1f27c9a729f0.png)
 
-XGBoost 集合柱比率与分类精度的箱线图
+XGBoost 集合柱比率与分类准确率的箱线图
 
 ## 进一步阅读
 
