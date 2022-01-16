@@ -10,6 +10,19 @@
 * [在线阅读（Gitee）](https://apachecn.gitee.io/doc-template/)
 * [ApacheCN 学习资源](http://docs.apachecn.org/)
 
+## 目录
+
++   [计算机视觉教程](docs/cv/README.md)
++   [数据准备教程](docs/dataprep/README.md)
++   [深度学习表现教程](docs/dlperf/README.md)
++   [集成学习教程](docs/ensemble/README.md)
++   [生成对抗网络教程](docs/gan/README.md)
++   [不平衡数据教程](docs/imba/README.md)
++   [优化教程](docs/optim/README.md)
++   [概率教程](docs/prob/README.md)
++   [R 机器学习教程](docs/rml/README.md)
++   [Weka 教程](docs/weka/README.md)
+
 ## 贡献指南
 
 本项目需要校对，欢迎大家提交 Pull Request。
