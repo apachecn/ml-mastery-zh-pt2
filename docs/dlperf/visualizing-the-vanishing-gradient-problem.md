@@ -6,11 +6,11 @@
 
 深度学习是最近的发明。部分原因是由于计算能力的提高，允许我们在神经网络中使用更多层的感知器。但与此同时，只有在我们知道如何解决梯度消失问题后，我们才能训练一个深度网络。
 
-在本教程中，我们直观地考察了消失渐变问题存在的原因。
+在本教程中，我们直观地考察了消失梯度问题存在的原因。
 
 完成本教程后，您将知道
 
-*   什么是消失的渐变
+*   什么是消失的梯度
 *   神经网络的哪种配置容易受到梯度消失的影响
 *   如何在 Keras 中运行手动训练循环
 *   如何从 Keras 模型中提取权重和梯度
@@ -19,7 +19,7 @@
 
 ![Visualizing the vanishing gradient problem](img/5dd051bf842f8549a28b5562e796006b.png)
 
-可视化消失渐变问题
+可视化消失梯度问题
 图片由[亚里沙安东](https://unsplash.com/photos/Oy195xlTAMM)提供，保留部分权利。
 
 ## 教程概述
@@ -44,7 +44,7 @@ $
 
 ## 梯度消失问题示例
 
-为了说明渐变消失的问题，我们来举个例子试试。神经网络是一种非线性函数。因此它最适合非线性数据集的分类。我们利用 Sklearn 的`make_circle()`函数生成一些数据:
+为了说明梯度消失的问题，我们来举个例子试试。神经网络是一种非线性函数。因此它最适合非线性数据集的分类。我们利用 Sklearn 的`make_circle()`函数生成一些数据:
 
 ```py
 from sklearn.datasets import make_circles
@@ -315,13 +315,13 @@ def train_model(X, y, model, n_epochs=n_epochs, batch_size=batch_size):
 
 上面函数中的键是嵌套的 for 循环。其中，我们启动`tf.GradientTape()`并向模型传递一批数据以获得预测，然后使用损失函数对其进行评估。然后，我们可以通过比较损失和模型中的可训练重量，从磁带中拉出梯度。接下来，我们使用优化器更新权重，优化器将隐式处理梯度下降算法中的学习权重和动量。
 
-作为刷新，这里的渐变表示如下。对于计算的损失值$L$和权重为$W=[w_1，w_2，w_3，w_4，w_5]$(例如，在输出层上)的层，梯度就是矩阵
+作为刷新，这里的梯度表示如下。对于计算的损失值$L$和权重为$W=[w_1，w_2，w_3，w_4，w_5]$(例如，在输出层上)的层，梯度就是矩阵
 
 $
 \ frac { \ partial L } { partial W } = \ Big[\ frac { \ partial L } { partial W _ 1 }，\ frac { \ partial L } { \ partial w _ 2 }，\ frac { \ partial L } { \ partial w _ 3 }，\ frac { \ partial L } { \ partial w _ 4 }，\ frac { \ partial L } { partial W _ 5 } \ Big]
 $
 
-但是在我们开始下一次迭代训练之前，我们有机会进一步操作梯度:我们将梯度与权重进行匹配，以获得每个权重的名称，然后将梯度的副本保存为 numpy 数组。我们每个时期只对体重和体重减轻进行一次采样，但您可以将其更改为更高频率的采样。
+但是在我们开始下一次迭代训练之前，我们有机会进一步操作梯度:我们将梯度与权重进行匹配，以获得每个权重的名称，然后将梯度的副本保存为 numpy 数组。我们每个时期只对权重和权重减轻进行一次采样，但您可以将其更改为更高频率的采样。
 
 有了这些，我们可以绘制出不同时期的梯度。在下面，我们创建模型(但不调用`compile()`，因为我们以后不会调用`fit()`)并运行手动训练循环，然后绘制梯度以及梯度的标准差:
 
@@ -357,7 +357,7 @@ Before training: Accuracy 0.5
 After training: Accuracy 0.652
 ```
 
-我们得到的图显示渐变消失:
+我们得到的图显示梯度消失:
 
 ![](img/3b5afe2db510cee174bbd2e523dc32c1.png)
 
@@ -628,7 +628,7 @@ plot_gradient(gradhistory, losshistory)
 *   *深度学习*，作者:伊恩·古德费勒，约斯华·本吉奥，亚伦·库维尔，2016。
     ([https://www.amazon.com/dp/0262035618](https://www.amazon.com/dp/0262035618))
 
-之前我们有关于渐变消失和爆炸的帖子:
+之前我们有关于梯度消失和爆炸的帖子:
 
 *   [如何使用校正后的线性激活函数](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/)固定梯度消失
 *   [神经网络中的梯度爆炸](https://machinelearningmastery.com/exploding-gradients-in-neural-networks/)
@@ -640,7 +640,7 @@ plot_gradient(gradhistory, losshistory)
 
 ## 摘要
 
-在本教程中，您直观地看到了经过校正的线性单位(ReLU)如何帮助解决消失的渐变问题。
+在本教程中，您直观地看到了经过校正的线性单位(ReLU)如何帮助解决消失的梯度问题。
 
 具体来说，您了解到:
 

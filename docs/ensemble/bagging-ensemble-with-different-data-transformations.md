@@ -1,4 +1,4 @@
-# 开发具有不同数据转换的打包集成
+# 开发具有不同数据转换的装袋集成
 
 > 原文：<https://machinelearningmastery.com/bagging-ensemble-with-different-data-transformations/>
 
@@ -22,7 +22,7 @@ bagging 的思想可以推广到用于改变训练数据集和在数据的每个
 
 ![Develop a Bagging Ensemble with Different Data Transformations](img/5f3cd847f0004684998d53d1caf16a0e.png)
 
-开发具有不同数据转换的打包集成
+开发具有不同数据转换的装袋集成
 照片由[麦克杰·克劳斯](https://www.flickr.com/photos/138892959@N03/33278904900/)拍摄，保留部分权利。
 
 ## 教程概述
@@ -41,7 +41,7 @@ bagging 的思想可以推广到用于改变训练数据集和在数据的每个
 
 尽管它被设计为与决策树一起使用，并且每个数据样本都是使用 bootstrap 方法(用 rel-selection 进行选择)制作的，但是该方法已经产生了一个完整的研究子领域，对该方法有数百种变体。
 
-我们可以通过改变用于以新的和独特的方式训练每个贡献成员的数据集来构建我们自己的打包集成。
+我们可以通过改变用于以新的和独特的方式训练每个贡献成员的数据集来构建我们自己的装袋集成。
 
 一种方法是对每个有贡献的集合成员的数据集应用不同的数据准备转换。
 
@@ -93,7 +93,7 @@ print(X.shape, y.shape)
 (1000, 20) (1000,)
 ```
 
-接下来，我们使用我们打算在集合中使用的预测模型来建立问题的基线。标准做法是在打包集成中使用决策树，因此在这种情况下，我们将使用带有默认超参数的[决策树分类器](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)。
+接下来，我们使用我们打算在集合中使用的预测模型来建立问题的基线。标准做法是在装袋集成中使用决策树，因此在这种情况下，我们将使用带有默认超参数的[决策树分类器](https://Sklearn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)。
 
 我们将使用标准实践来评估模型，在这种情况下，使用三次重复和 10 次重复的重复分层 k-fold 交叉验证。将使用所有折叠和重复的分类准确度的平均值来报告表现。
 

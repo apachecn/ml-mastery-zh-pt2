@@ -260,7 +260,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 对于结构化或表格数据，这是一种非常成功的集成技术，尽管考虑到模型是按顺序添加的，拟合模型可能会很慢。已经开发了更有效的实现，例如流行的极限梯度增强(XGBoost)和光梯度增强机器(LightGBM)。
 
-梯度增强在 Sklearn 中通过[梯度增强分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)和[梯度增强回归器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)类提供，默认情况下，它们使用决策树作为基本模型。您可以通过“*n _ estimates*”参数指定要创建的树的数量，并通过默认为 0.1 的“ *learning_rate* ”参数指定控制每个树的贡献的学习速率。
+梯度增强在 Sklearn 中通过[梯度增强分类器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)和[梯度增强回归器](https://Sklearn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)类提供，默认情况下，它们使用决策树作为基本模型。您可以通过“*n _ estimates*”参数指定要创建的树的数量，并通过默认为 0.1 的“ *learning_rate* ”参数指定控制每个树的贡献的学习率。
 
 下面列出了评估用于分类的梯度增强集成的完整示例。
 
@@ -288,7 +288,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在本课中，您必须运行示例并查看评估模型的结果。
 
-对于加分，评估在集成中使用更多决策树的效果，或者尝试不同的学习速率值。
+对于加分，评估在集成中使用更多决策树的效果，或者尝试不同的学习率值。
 
 在下面的评论中发表你的答案。我想看看你有什么想法。
 
@@ -405,7 +405,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 你发现了:
 
 *   什么是集成学习，为什么要在预测建模项目中使用它。
-*   如何使用引导聚合或打包集成。
+*   如何使用引导聚合或装袋集成。
 *   如何使用随机森林集合作为套袋的延伸？
 *   如何使用自适应增强或 adaboost 集成？
 *   如何使用梯度增强系综？

@@ -8,7 +8,7 @@
 
 梯度下降的一个限制是，如果梯度变得平坦或曲率变大，搜索的进度会变慢。动量可以被添加到梯度下降，这结合了一些惯性更新。这可以通过结合预测的新位置而不是当前位置的梯度来进一步改善，称为内斯特罗夫加速梯度(NAG)或内斯特罗夫动量。
 
-梯度下降的另一个限制是对所有输入变量使用单一步长(学习速率)。对梯度下降的扩展，如[自适应运动估计(Adam)](https://machinelearningmastery.com/adam-optimization-from-scratch/) 算法，该算法对每个输入变量使用单独的步长，但可能导致步长迅速减小到非常小的值。
+梯度下降的另一个限制是对所有输入变量使用单一步长(学习率)。对梯度下降的扩展，如[自适应运动估计(Adam)](https://machinelearningmastery.com/adam-optimization-from-scratch/) 算法，该算法对每个输入变量使用单独的步长，但可能导致步长迅速减小到非常小的值。
 
 **内斯特罗夫加速自适应矩估计**，或**纳达姆**，是亚当算法的扩展，结合了内斯特罗夫动量，可以使优化算法表现更好。
 
@@ -64,7 +64,7 @@ Let’s get started.![Gradient Descent Optimization With Nadam From Scratch](img
 
 然后计算导数，并在输入空间中采取一个步骤，该步骤预计会导致目标函数的下坡运动，假设我们正在最小化目标函数。
 
-下坡移动是通过首先计算在输入空间中移动多远来实现的，计算方法是步长(称为 alpha 或学习速率)乘以梯度。然后从当前点减去这一点，确保我们逆着梯度或目标函数向下移动。
+下坡移动是通过首先计算在输入空间中移动多远来实现的，计算方法是步长(称为 alpha 或学习率)乘以梯度。然后从当前点减去这一点，确保我们逆着梯度或目标函数向下移动。
 
 *   x(t)= x(t-1)–步长* f'(x(t))
 
@@ -86,7 +86,7 @@ Let’s get started.![Gradient Descent Optimization With Nadam From Scratch](img
 
 动量将梯度的指数衰减移动平均值(第一矩)添加到梯度下降算法中。这具有平滑噪声目标函数和改善收敛性的影响。
 
-[Adam](https://machinelearningmastery.com/adam-optimization-from-scratch/) 是梯度下降的扩展，它增加了梯度的第一和第二个时刻，并自动为每个正在优化的参数调整学习速率。NAG 是动量的扩展，其中使用参数的预计更新的梯度而不是实际的当前变量值来执行更新。在某些情况下，当找到 optima 时，这具有减慢搜索的效果，而不是过冲。
+[Adam](https://machinelearningmastery.com/adam-optimization-from-scratch/) 是梯度下降的扩展，它增加了梯度的第一和第二个时刻，并自动为每个正在优化的参数调整学习率。NAG 是动量的扩展，其中使用参数的预计更新的梯度而不是实际的当前变量值来执行更新。在某些情况下，当找到 optima 时，这具有减慢搜索的效果，而不是过冲。
 
 纳达姆是亚当的延伸，用 NAG 动量代替经典动量。
 
@@ -234,7 +234,7 @@ pyplot.show()
 
 运行该示例会创建目标函数的二维等高线图。
 
-我们可以看到碗的形状被压缩成带有颜色渐变的轮廓。我们将使用此图来绘制搜索过程中探索的具体点。
+我们可以看到碗的形状被压缩成带有颜色梯度的轮廓。我们将使用此图来绘制搜索过程中探索的具体点。
 
 ![Two-Dimensional Contour Plot of the Test Objective Function](img/6d45ed0d01550999d609f23fb77ce685.png)
 

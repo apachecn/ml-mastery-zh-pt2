@@ -1,4 +1,4 @@
-# 如何提高深度学习成绩
+# 如何提高深度学习表现
 
 > 原文：<https://machinelearningmastery.com/improve-deep-learning-performance/>
 
@@ -33,7 +33,7 @@
 
 ![How To Improve Deep Learning Performance](img/f8df78ac6edb145deb8d65cb888cd858.png)
 
-如何提高深度学习成绩
+如何提高深度学习表现
 佩德罗·里贝罗·西莫斯摄，版权所有。
 
 ## 提高算法表现的思路
@@ -431,14 +431,14 @@
 
 ### 3)学习率
 
-调整[学习速率](https://machinelearningmastery.com/learning-rate-for-deep-learning-neural-networks/)通常是有回报的。
+调整[学习率](https://machinelearningmastery.com/learning-rate-for-deep-learning-neural-networks/)通常是有回报的。
 
 以下是一些值得探索的想法:
 
 *   用非常大和非常小的学习率进行实验。
 *   网格从文献中搜索常见的学习率值，看看你能把网络推多远。
 *   尝试一种随着时代而降低的学习速度。
-*   尝试一种学习速率，将每个固定数量的时代降低一个百分比。
+*   尝试一种学习率，将每个固定数量的时代降低一个百分比。
 *   尝试添加动量项，然后将网格搜索学习率和动量结合起来。
 
 更大的网络需要更多的训练，反之亦然。如果你增加更多的神经元或更多的层，增加你的学习率。
@@ -447,8 +447,8 @@
 
 相关:
 
-*   [用 Keras 在 Python 中为深度学习模型使用学习速率计划](https://machinelearningmastery.com/using-learning-rate-schedules-deep-learning-models-python-keras/)
-*   [反向钻取应该使用什么学习速率？](ftp://ftp.sas.com/pub/neural/FAQ2.html#A_learn_rate)
+*   [用 Keras 在 Python 中为深度学习模型使用学习率计划](https://machinelearningmastery.com/using-learning-rate-schedules-deep-learning-models-python-keras/)
+*   [反向钻取应该使用什么学习率？](ftp://ftp.sas.com/pub/neural/FAQ2.html#A_learn_rate)
 
 ### 4)激活功能
 
@@ -527,12 +527,12 @@
 
 热门的新正则化技术是[辍](https://machinelearningmastery.com/dropout-for-regularizing-deep-neural-networks/)，你试过吗？
 
-drop 在训练过程中随机跳过神经元，迫使层中的其他人捡起松弛部分。简单有效。从辍学开始。
+drop 在训练过程中随机跳过神经元，迫使层中的其他人捡起松弛部分。简单有效。从丢弃开始。
 
-*   网格搜索不同的辍学率。
+*   网格搜索不同的丢弃率。
 *   实验输入层、隐藏层和输出层的压降。
 
-辍学的想法也有延伸，你也可以玩像[下降连接](http://cs.nyu.edu/~wanli/dropc/)。
+丢弃的想法也有延伸，你也可以玩像[下降连接](http://cs.nyu.edu/~wanli/dropc/)。
 
 还要考虑其他更传统的神经网络正则化技术，例如:
 
@@ -543,7 +543,7 @@ drop 在训练过程中随机跳过神经元，迫使层中的其他人捡起松
 
 相关:
 
-*   [基于 Keras 的深度学习模型中的辍学正则化](https://machinelearningmastery.com/dropout-regularization-deep-learning-models-keras/)
+*   [基于 Keras 的深度学习模型中的丢弃正则化](https://machinelearningmastery.com/dropout-regularization-deep-learning-models-keras/)
 *   [什么是重量衰减？](ftp://ftp.sas.com/pub/neural/FAQ3.html#A_decay)
 
 ### 8)优化和损失
@@ -552,7 +552,7 @@ drop 在训练过程中随机跳过神经元，迫使层中的其他人捡起松
 
 你试验过不同的优化程序吗？
 
-默认为随机梯度下降。先充分利用它，有不同的学习速率、动力和学习速率时间表。
+默认为随机梯度下降。先充分利用它，有不同的学习率、动力和学习率时间表。
 
 许多更高级的优化方法提供了更多的参数、更多的复杂性和更快的收敛速度。这是好是坏，取决于你的问题。
 
@@ -587,7 +587,7 @@ drop 在训练过程中随机跳过神经元，迫使层中的其他人捡起松
 
 如果满足此条件(测量精度损失)，您也可以设置检查点来保存模型，并允许模型继续学习。
 
-Checkpointing 允许你在不停车的情况下提前停车，让你在跑步结束时有几个模型可以选择。
+Checkpointing 允许你在不停止的情况下提前停止，让你在跑步结束时有几个模型可以选择。
 
 相关:
 

@@ -1,6 +1,4 @@
-# 如何使用 ReLU
-
-修复渐变消失问题
+# 如何使用 ReLU 修复梯度消失问题
 
 > 原文：<https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/>
 
@@ -30,7 +28,7 @@
 
 ![How to Fix the Vanishing Gradient By Using the Rectified Linear Activation Function](img/bd2c68bf4b709c441f9152e573e84e7d.png)
 
-如何使用校正的线性激活功能来修复消失的渐变
+如何使用校正的线性激活功能来修复消失的梯度
 图片由[利亚姆·莫洛尼](https://www.flickr.com/photos/tir_na_nog/2930119078/)提供，版权所有。
 
 ## 教程概述
@@ -51,13 +49,13 @@
 
 期望训练具有许多层的神经网络，因为更多层的增加增加了网络的容量，使其能够学习大的训练数据集，并有效地表示从输入到输出的更复杂的映射函数。
 
-具有许多层的训练网络(例如深度神经网络)的一个问题是，当梯度通过网络向后传播时，梯度急剧减小。当误差到达接近模型输入的层时，误差可能非常小，以至于影响很小。因此，这个问题被称为“*消失渐变*”问题。
+具有许多层的训练网络(例如深度神经网络)的一个问题是，当梯度通过网络向后传播时，梯度急剧减小。当误差到达接近模型输入的层时，误差可能非常小，以至于影响很小。因此，这个问题被称为“*消失梯度*”问题。
 
 > 梯度消失使得很难知道参数应该向哪个方向移动来改善成本函数…
 
 —第 290 页，[深度学习](https://amzn.to/2RP7GW2)，2016。
 
-事实上，误差梯度在深度神经网络中可能是不稳定的，不仅会消失，还会爆炸，其中梯度随着它在网络中向后传播而呈指数级增加。这被称为“[爆炸渐变](https://machinelearningmastery.com/exploding-gradients-in-neural-networks/)”问题。
+事实上，误差梯度在深度神经网络中可能是不稳定的，不仅会消失，还会爆炸，其中梯度随着它在网络中向后传播而呈指数级增加。这被称为“[爆炸梯度](https://machinelearningmastery.com/exploding-gradients-in-neural-networks/)”问题。
 
 > 术语梯度消失指的是这样一个事实，即在前馈网络(FFN)中，反向传播的误差信号通常作为距最终层的距离的函数而指数地减小(或增大)。
 
@@ -439,7 +437,7 @@ ReLU 激活函数的使用使我们能够为这个简单的问题拟合一个更
 
 具有 20 个隐藏层的 ReLU 的深 MLP 超训练时期的训练和测试集精度的线图
 
-虽然 ReLU 的使用是有效的，但我们不能确信 tanh 函数的使用会因为渐变消失而失败，ReLU 会成功，因为它克服了这个问题。
+虽然 ReLU 的使用是有效的，但我们不能确信 tanh 函数的使用会因为梯度消失而失败，ReLU 会成功，因为它克服了这个问题。
 
 ## 查看培训期间的平均梯度大小
 
@@ -447,7 +445,7 @@ ReLU 激活函数的使用使我们能够为这个简单的问题拟合一个更
 
 在使用 tanh 激活函数的情况下，我们知道网络有足够的容量来学习问题，但是层数的增加阻止了它这样做。
 
-很难将渐变消失诊断为表现不佳的原因。一个可能的信号是查看每个训练时期每层梯度的平均大小。
+很难将梯度消失诊断为表现不佳的原因。一个可能的信号是查看每个训练时期每层梯度的平均大小。
 
 我们期望靠近输出的层比靠近输入的层具有更大的平均梯度。
 
@@ -525,7 +523,7 @@ python -m tensorboard.main --logdir=/code/logs/
 
 首先，为 6 个图层中的每一个图层创建线图(5 个隐藏，1 个输出)。地块名称表示图层，其中“ *dense_1* ”表示输入图层后的隐藏图层，“ *dense_6* ”表示输出图层。
 
-我们可以看到输出层在整个运行过程中有很多活动，每个时期的平均梯度在 0.05 到 0.1 左右。我们还可以在第一个隐藏层看到一些类似范围的活动。因此，渐变会穿透到第一个隐藏层，但最后一个层和最后一个隐藏层会看到大部分活动。
+我们可以看到输出层在整个运行过程中有很多活动，每个时期的平均梯度在 0.05 到 0.1 左右。我们还可以在第一个隐藏层看到一些类似范围的活动。因此，梯度会穿透到第一个隐藏层，但最后一个层和最后一个隐藏层会看到大部分活动。
 
 ![TensorBoard Line Plots of Average Gradients Per Layer for Deep MLP With Tanh](img/ab25a817df3a184468cac7f6dbcca831.png)
 
@@ -580,7 +578,7 @@ model.fit(trainX, trainy, validation_data=(testX, testy), epochs=500, verbose=0,
 
 与使用 tanh 的深度模型的梯度相比，每个训练时期的每层平均梯度图显示了不同的情况。
 
-我们可以看到，第一个隐藏层看到更多的梯度，更一致的更大的传播，可能是 0.2 到 0.4，而不是 0.05 和 0.1 看到的 tanh。我们还可以看到中间的隐藏层会看到很大的渐变。
+我们可以看到，第一个隐藏层看到更多的梯度，更一致的更大的传播，可能是 0.2 到 0.4，而不是 0.05 和 0.1 看到的 tanh。我们还可以看到中间的隐藏层会看到很大的梯度。
 
 ![TensorBoard Line Plots of Average Gradients Per Layer for Deep MLP With ReLU](img/53bf8911d5c0c4e828254fb5b0c44275.png)
 
@@ -598,7 +596,7 @@ ReLU 激活功能允许更多的梯度在训练过程中通过模型反向流动
 
 *   **重量初始化**。使用 tanh 激活更新深度 MLP，以使用 Xavier 均匀权重初始化并报告结果。
 *   **学习算法**。使用 tanh 激活更新深度 MLP，以使用自适应学习算法(如 Adam)并报告结果。
-*   **体重变化**。更新 tanh 和 relu 示例，以记录和绘制每个时期模型权重的 [L1 向量范数](https://machinelearningmastery.com/vector-norms-machine-learning/)，作为训练期间每个层改变多少的代理，并比较结果。
+*   **权重变化**。更新 tanh 和 relu 示例，以记录和绘制每个时期模型权重的 [L1 向量范数](https://machinelearningmastery.com/vector-norms-machine-learning/)，作为训练期间每个层改变多少的代理，并比较结果。
 *   **研究模型深度**。使用 tanh 激活的 MLP 创建一个实验，并报告模型的表现，因为隐藏层数从 1 增加到 10。
 *   **增加宽度**。将 tanh 激活的 MLP 隐藏层中的节点数量从 5 增加到 25，并在层数从 1 增加到 10 时报告表现。
 
@@ -631,7 +629,7 @@ ReLU 激活功能允许更多的梯度在训练过程中通过模型反向流动
 
 ### 文章
 
-*   [消失渐变问题，维基百科](https://en.wikipedia.org/wiki/Vanishing_gradient_problem)。
+*   [消失梯度问题，维基百科](https://en.wikipedia.org/wiki/Vanishing_gradient_problem)。
 
 ## 摘要
 

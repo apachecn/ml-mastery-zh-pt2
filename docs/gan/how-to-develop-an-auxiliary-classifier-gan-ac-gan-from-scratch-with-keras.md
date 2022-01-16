@@ -270,7 +270,7 @@ model = Model(in_image, [out1, out2])
 loss=['binary_crossentropy', 'sparse_categorical_crossentropy']
 ```
 
-该模型使用随机梯度下降的 [Adam 版本](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)进行拟合，学习速率小，动量适中，这是 DCGANs 推荐的。
+该模型使用随机梯度下降的 [Adam 版本](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)进行拟合，学习率小，动量适中，这是 DCGANs 推荐的。
 
 ```py
 ...

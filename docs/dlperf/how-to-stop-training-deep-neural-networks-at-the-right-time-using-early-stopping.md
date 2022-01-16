@@ -1,4 +1,4 @@
-# 适时使用提前停止停止神经网络的训练
+# 适时使用提前停止来停止神经网络的训练
 
 > 原文：<https://machinelearningmastery.com/how-to-stop-training-deep-neural-networks-at-the-right-time-using-early-stopping/>
 
@@ -444,7 +444,7 @@ pyplot.show()
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-我们还可以看到回调在 epoch 200 停止了训练。这还为时过早，因为我们预计早停会在 800 年前后。列车和测试集上的分类精度也凸显了这一点，这比不提前停车更糟糕。
+我们还可以看到回调在 epoch 200 停止了训练。这还为时过早，因为我们预计早停会在 800 年前后。列车和测试集上的分类精度也凸显了这一点，这比不提前停止更糟糕。
 
 ```py
 Epoch 00219: early stopping
@@ -455,9 +455,9 @@ Train: 0.967, Test: 0.814
 
 ![Line Plot of Train and Test Loss During Training With Simple Early Stopping](img/ff6ea2568c301b28f6b46ba0c32291b2.png)
 
-简单提前停车训练中列车和试验损失的线图
+简单提前停止训练中列车和试验损失的线图
 
-我们可以通过在停车前等待一段时间来提高提前停车的触发条件。
+我们可以通过在停止前等待一段时间来提高提前停止的触发条件。
 
 这可以通过设置“*耐心*”参数来实现。
 
@@ -518,7 +518,7 @@ Train: 1.000, Test: 0.943
 
 ![Line Plot of Train and Test Loss During Training With Patient Early Stopping](img/9ff8c9c53620d81fa0a04c560ba5b796.png)
 
-患者提前停车时训练和测试损失的线图
+患者提前停止时训练和测试损失的线图
 
 我们还可以看到，在过去大约 100 个时代，测试损失开始再次增加。
 

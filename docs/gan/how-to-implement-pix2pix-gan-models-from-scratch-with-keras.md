@@ -123,7 +123,7 @@ print(rf)
 
 Pix2Pix 论文的作者探索了不同的 PatchGAN 配置，包括一个称为 PixelGAN 的 1×1 感受野和一个与输入模型的 256×256 像素图像(重新采样为 286×286)匹配的感受野，称为 ImageGAN。他们发现，70×70 PatchGAN 在表现和图像质量之间取得了最佳平衡。
 
-> 70×70 的 PatchGAN […]成绩稍好。超出此范围，扩展到完整的 286×286 ImageGAN，似乎不会提高结果的视觉质量。
+> 70×70 的 PatchGAN […]表现稍好。超出此范围，扩展到完整的 286×286 ImageGAN，似乎不会提高结果的视觉质量。
 
 ——[条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2016。
 
@@ -324,9 +324,9 @@ g = Dropout(0.5)(g, training=True)
 
 与鉴别器模型一样，生成器模型的配置细节在论文的[附录中定义，并且可以在与官方火炬实现](https://arxiv.org/abs/1611.07004)中的 [defineG_unet()函数进行比较时进行确认。](https://github.com/phillipi/pix2pix/blob/master/models.lua#L47)
 
-编码器像鉴别器模型一样使用卷积-batchorm-LeakyReLU 块，而解码器模型使用卷积-batchorm-dropped-ReLU 块，辍学率为 50%。所有卷积层使用 4×4 的滤波器大小和 2×2 的步长。
+编码器像鉴别器模型一样使用卷积-batchorm-LeakyReLU 块，而解码器模型使用卷积-batchorm-dropped-ReLU 块，丢弃率为 50%。所有卷积层使用 4×4 的滤波器大小和 2×2 的步长。
 
-> 让 Ck 表示一个带有 k 个过滤器的卷积-batch ORM-ReLu 层。CDk 表示辍学率为 50%的卷积-batchnomdrop-ReLU 层。所有卷积都是 4× 4 空间滤波器，应用于步长 2。
+> 让 Ck 表示一个带有 k 个过滤器的卷积-batch ORM-ReLu 层。CDk 表示丢弃率为 50%的卷积-batchnomdrop-ReLU 层。所有卷积都是 4× 4 空间滤波器，应用于步长 2。
 
 ——[条件对抗网络下的图像到图像翻译](https://arxiv.org/abs/1611.07004)，2016。
 

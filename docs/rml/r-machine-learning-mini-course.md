@@ -368,7 +368,7 @@ print(fit)
 
 在今天的课程中，你将练习使用合奏法。
 
-1.  用 caret 中的随机森林和打包 CART 算法练习打包集成。
+1.  用 caret 中的随机森林和打包 CART 算法练习装袋集成。
 2.  在 caret 中使用梯度增强机器和 C5.0 算法练习增强集成。
 3.  使用*carestensemble*包和 *caretStack()* 功能练习堆叠套装。
 

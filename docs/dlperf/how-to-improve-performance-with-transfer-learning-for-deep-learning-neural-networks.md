@@ -1,4 +1,4 @@
-# 如何利用深度学习神经网络的迁移学习提高表现
+# 如何利用迁移学习来提高深度学习神经网络的表现
 
 > 原文：<https://machinelearningmastery.com/how-to-improve-performance-with-transfer-learning-for-deep-learning-neural-networks/>
 

@@ -65,7 +65,7 @@ WGAN 的好处是训练过程更稳定，对模型架构和超参数配置的选
 3.  用瓦瑟斯坦损失来训练批评家和发电机模型。
 4.  每次小批量更新后，将关键模型权重限制在有限的范围内(例如[-0.01，0.01])。
 5.  每次迭代更新批评模型的次数比生成器多(例如 5 次)。
-6.  使用 RMSProp 版本的梯度下降，学习速率小，没有动量(例如 0.00005)。
+6.  使用 RMSProp 版本的梯度下降，学习率小，没有动量(例如 0.00005)。
 
 使用标准的 DCGAN 模型作为起点，让我们依次看一下这些实现细节。
 
@@ -255,7 +255,7 @@ for i in range(n_steps):
 
 ### 6.使用随机梯度下降
 
-DCGAN 使用 [Adam 版本的随机梯度下降](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)，学习速率小，动量适中。
+DCGAN 使用 [Adam 版本的随机梯度下降](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)，学习率小，动量适中。
 
 WGAN 推荐使用 [RMSProp 代替](https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/)，学习率小 0.00005。
 

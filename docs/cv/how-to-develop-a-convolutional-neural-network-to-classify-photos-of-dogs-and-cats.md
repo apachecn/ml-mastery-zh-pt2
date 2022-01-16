@@ -666,7 +666,7 @@ Found 6303 images belonging to 2 classes.
 
 随着容量的增加，我们看到了表现提高的趋势，但在运行中也出现了越来越早的过拟合的类似情况。
 
-结果表明，该模型将可能受益于正则化技术。这可能包括技术，如辍学，体重下降，和数据增加。后者还可以通过扩展训练数据集来鼓励模型学习位置不变的特征，从而提高表现。
+结果表明，该模型将可能受益于正则化技术。这可能包括技术，如丢弃，权重下降，和数据增加。后者还可以通过扩展训练数据集来鼓励模型学习位置不变的特征，从而提高表现。
 
 ## 开发模型改进
 
@@ -674,19 +674,19 @@ Found 6303 images belonging to 2 classes.
 
 在本节中，我们将从具有三个 VGG 区块(即 VGG 3)的基线模型开始，并探索模型的一些简单改进。
 
-从训练期间查看模型的学习曲线来看，模型显示出强烈的过拟合迹象。我们可以探索两种方法来尝试解决这种过拟合的问题:[辍学正规化](https://machinelearningmastery.com/how-to-reduce-overfitting-with-dropout-regularization-in-keras/)和[数据增加](https://machinelearningmastery.com/image-augmentation-deep-learning-keras/)。
+从训练期间查看模型的学习曲线来看，模型显示出强烈的过拟合迹象。我们可以探索两种方法来尝试解决这种过拟合的问题:[丢弃正规化](https://machinelearningmastery.com/how-to-reduce-overfitting-with-dropout-regularization-in-keras/)和[数据增加](https://machinelearningmastery.com/image-augmentation-deep-learning-keras/)。
 
 这两种方法都有望减缓训练过程中的改进速度，并有望对抗训练数据集的[过拟合。因此，我们将训练阶段的数量从 20 个增加到 50 个，以给模型更多的细化空间。](https://machinelearningmastery.com/introduction-to-regularization-to-reduce-overfitting-and-improve-generalization-error/)
 
-## 辍学正规化
+## 丢弃正规化
 
 脱落正则化是一种计算量小的正则化深度神经网络的方法。
 
 丢弃的工作原理是从概率上移除，或者“T0”从“T1”中移除，输入到一个层，该层可以是数据样本中的输入变量或者来自前一层的激活。它具有模拟大量具有非常不同的网络结构的网络的效果，并且反过来使得网络中的节点通常对输入更加鲁棒。
 
-有关辍学的更多信息，请参阅帖子:
+有关丢弃的更多信息，请参阅帖子:
 
-*   [如何利用 Keras 中的下降正则化减少过拟合](https://machinelearningmastery.com/how-to-reduce-overfitting-with-dropout-regularization-in-keras/)
+*   [如何利用 Keras 中的丢弃正则化减少过拟合](https://machinelearningmastery.com/how-to-reduce-overfitting-with-dropout-regularization-in-keras/)
 
 通常，每个 VGG 模块后可以施加少量压降，更多压降施加于模型输出层附近的全连接层。
 
@@ -805,11 +805,11 @@ Found 6303 images belonging to 2 classes.
 > 81.279
 ```
 
-回顾学习曲线，我们可以看到辍学对模型在训练集和测试集上的改进速度都有影响。
+回顾学习曲线，我们可以看到丢弃对模型在训练集和测试集上的改进速度都有影响。
 
 过拟合已经减少或延迟，尽管表现可能在接近运行结束时开始停滞。
 
-结果表明，进一步的训练阶段可能导致模型的进一步改进。除了训练时期的增加之外，探索 VGG 街区之后稍高的辍学率也可能是有趣的。
+结果表明，进一步的训练阶段可能导致模型的进一步改进。除了训练时期的增加之外，探索 VGG 街区之后稍高的丢弃率也可能是有趣的。
 
 ![Line Plots of Loss and Accuracy Learning Curves for the Baseline Model With Dropout on the Dogs and Cats Dataset](img/693ab0987caee8ec0e9a5b879b40769d.png)
 
@@ -940,14 +940,14 @@ run_test_harness()
 
 结果可以总结如下，尽管我们必须假设这些结果中存在一些方差，因为算法具有随机性:
 
-*   **基线 VGG3** +辍学率:81.279%
+*   **基线 VGG3** +丢弃率:81.279%
 *   **基线 VGG3** +数据增加:85 816
 
 正如所怀疑的那样，正则化技术的加入减缓了学习算法的进程，减少了过拟合，从而提高了保持数据集的表现。这两种方法的结合以及训练时期数量的进一步增加很可能会导致进一步的改进。
 
 这只是可以在这个数据集上探索的改进类型的开始。除了对所描述的正则化方法进行调整之外，还可以探索其他正则化方法，例如[权重衰减](https://machinelearningmastery.com/how-to-reduce-overfitting-in-deep-learning-with-weight-regularization/)和[提前停止](https://machinelearningmastery.com/how-to-stop-training-deep-neural-networks-at-the-right-time-using-early-stopping/)。
 
-可能值得探索学习算法的变化，例如[学习速率](https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/)的变化，学习速率时间表的使用，或者自适应学习速率，例如[亚当](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)。
+可能值得探索学习算法的变化，例如[学习率](https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/)的变化，学习率时间表的使用，或者自适应学习率，例如[亚当](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)。
 
 替代模型架构也值得探索。所选的基准模型预计会提供比解决此问题所需的更多的容量，较小的模型可能会更快地进行训练，从而提高表现。
 
@@ -957,7 +957,7 @@ run_test_harness()
 
 Keras 提供了一系列预先训练好的模型，可以通过 [Keras 应用 API](https://keras.io/applications/) 全部或部分加载和使用。
 
-迁移学习的一个有用模型是 VGG 模型之一，例如 VGG-16，它有 16 层，在开发时，在 ImageNet 照片分类挑战中取得了顶级成绩。
+迁移学习的一个有用模型是 VGG 模型之一，例如 VGG-16，它有 16 层，在开发时，在 ImageNet 照片分类挑战中取得了顶级表现。
 
 该模型由两个主要部分组成，模型的特征提取器部分由 VGG 块组成，模型的分类器部分由完全连接的层和输出层组成。
 
@@ -1308,8 +1308,8 @@ run_example()
 
 本节列出了一些您可能希望探索的扩展教程的想法。
 
-*   **调整正则化**。探索基线模型中使用的正则化技术的微小变化，例如不同的辍学率和不同的图像扩充。
-*   **调整学习速率**。探索对用于训练基线模型的学习算法的更改，例如替代学习速率、学习速率计划或自适应学习速率算法，例如 Adam。
+*   **调整正则化**。探索基线模型中使用的正则化技术的微小变化，例如不同的丢弃率和不同的图像扩充。
+*   **调整学习率**。探索对用于训练基线模型的学习算法的更改，例如替代学习率、学习率计划或自适应学习率算法，例如 Adam。
 *   **交替预训练模型**。探索一种替代的预先训练的模型，用于问题的迁移学习，如Inception或 ResNet。
 
 如果你探索这些扩展，我很想知道。

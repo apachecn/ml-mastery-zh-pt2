@@ -49,7 +49,7 @@ LightGBM 通过添加一种自动特征选择以及关注具有更大梯度的�
 
 使用任意可微损失函数和梯度下降优化算法拟合模型。这给这项技术起了一个名字，“梯度增强”，因为随着模型的拟合，损失梯度被最小化，很像一个神经网络。
 
-有关渐变增强的更多信息，请参见教程:
+有关梯度增强的更多信息，请参见教程:
 
 *   [机器学习梯度增强算法的简单介绍](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
 
@@ -295,7 +295,7 @@ Prediction: 52
 
 在本节中，我们将仔细研究一些您应该考虑为 LightGBM 系综进行调整的超参数，以及它们对模型表现的影响。
 
-对于 LightGBM，我们可以查看许多超参数，尽管在这种情况下，我们将查看树的数量和树的深度、学习速率和提升类型。
+对于 LightGBM，我们可以查看许多超参数，尽管在这种情况下，我们将查看树的数量和树的深度、学习率和提升类型。
 
 有关调优 LightGBM 超参数的一般建议，请参见文档:
 
@@ -470,7 +470,7 @@ LightGBM 系综树深度与分类精度的箱线图
 
 较小的速率可能需要集合中更多的决策树。
 
-学习速率可以通过“ *learning_rate* ”参数控制，默认为 0.1。
+学习率可以通过“ *learning_rate* ”参数控制，默认为 0.1。
 
 下面的示例探讨了学习率，并比较了 0.0001 和 1.0 之间的值的效果。
 
@@ -520,7 +520,7 @@ pyplot.boxplot(results, labels=names, showmeans=True)
 pyplot.show()
 ```
 
-运行示例首先报告每个配置的学习速率的平均准确性。
+运行示例首先报告每个配置的学习率的平均准确性。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -549,16 +549,16 @@ LightGBM 的一个特点是它支持许多不同的提升算法，称为提升�
 可以通过“ *boosting_type* ”参数指定 boosting 类型，并取一个字符串来指定类型。这些选项包括:
 
 *   **gbdt** ':梯度提升决策树(GDBT)。
-*   **dart** ':辍学者遇到多重加性回归树(dart)。
+*   **dart** ':丢弃者遇到多重加性回归树(dart)。
 *   **goss** ':基于梯度的单侧采样(goss)。
 
 默认为 GDBT，是经典的梯度提升算法。
 
-DART 在 2015 年的一篇题为《 [DART:辍学生遇到多重加性回归树](https://arxiv.org/abs/1505.01866)》的论文中有所描述，顾名思义，它将[辍学生](https://machinelearningmastery.com/dropout-for-regularizing-deep-neural-networks/)的概念从深度学习添加到多重加性回归树(MART)算法中，这是梯度增强决策树的前身。
+DART 在 2015 年的一篇题为《 [DART:丢弃生遇到多重加性回归树](https://arxiv.org/abs/1505.01866)》的论文中有所描述，顾名思义，它将[丢弃生](https://machinelearningmastery.com/dropout-for-regularizing-deep-neural-networks/)的概念从深度学习添加到多重加性回归树(MART)算法中，这是梯度增强决策树的前身。
 
 > 这个算法有很多名字，包括梯度树增强、增强树和多重加性回归树(MART)。我们用后者来指代这个算法。
 
-——[DART:辍学者遇到多重加性回归树](https://arxiv.org/abs/1505.01866)，2015。
+——[DART:丢弃者遇到多重加性回归树](https://arxiv.org/abs/1505.01866)，2015。
 
 GOSS 是随着 LightGBM 纸和图书馆一起推出的。该方法试图仅使用导致较大误差梯度的实例来更新模型并丢弃其余的。
 
@@ -644,7 +644,7 @@ LightGBM 增强类型与分类精度的箱线图
 ### 报纸
 
 *   [LightGBM:一种高效的梯度提升决策树](https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree)，2017。
-*   [DART:辍学者遇到多重加性回归树](https://arxiv.org/abs/1505.01866)，2015。
+*   [DART:丢弃者遇到多重加性回归树](https://arxiv.org/abs/1505.01866)，2015。
 
 ### 蜜蜂
 

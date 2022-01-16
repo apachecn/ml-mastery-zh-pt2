@@ -1,4 +1,4 @@
-# 温和介绍训练深度学习神经网络模型的挑战
+# 训练深度学习神经网络模型的挑战的温和介绍
 
 > 原文：<https://machinelearningmastery.com/a-gentle-introduction-to-the-challenge-of-training-deep-learning-neural-network-models/>
 

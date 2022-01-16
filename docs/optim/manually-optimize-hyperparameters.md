@@ -132,7 +132,7 @@ Mean Accuracy: 0.786 (0.069)
 *   学习率( *eta0* )。
 *   正则化(*α*)。
 
-[学习速率](https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/)控制模型基于预测误差的更新量，并控制学习速度。eta 的默认值是 1.0。合理的值大于零(例如大于 1e-8 或 1e-10)并且可能小于 1.0
+[学习率](https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/)控制模型基于预测误差的更新量，并控制学习速度。eta 的默认值是 1.0。合理的值大于零(例如大于 1e-8 或 1e-10)并且可能小于 1.0
 
 默认情况下，感知器不使用任何正则化，但是我们将启用“*弹性网*”正则化，该正则化在学习过程中同时应用了 [L1 和 L2 正则化](https://machinelearningmastery.com/weight-regularization-to-reduce-overfitting-of-deep-learning-models/)。这将鼓励模型寻求更小的模型权重，并反过来通常获得更好的表现。
 
@@ -452,12 +452,12 @@ Mean Accuracy: 0.849 (0.040)
 
 我们将关注四个关键的超参数；它们是:
 
-*   学习速率(*学习 _ 速率*)
+*   学习率(*学习 _ 速率*)
 *   树的数量(*n _ 估计量*)
 *   子采样百分比(*子采样*)
 *   树深(*最大 _ 深度*)
 
-**学习速率**控制每棵树对集成的贡献。可感知值小于 1.0，略高于 0.0(例如 1e-8)。
+**学习率**控制每棵树对集成的贡献。可感知值小于 1.0，略高于 0.0(例如 1e-8)。
 
 **树的数量**控制着系综的大小，往往越多的树越好到收益递减的地步。可感知值介于 1 棵树和数百或数千棵树之间。
 

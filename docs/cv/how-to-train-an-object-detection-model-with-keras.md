@@ -1033,7 +1033,7 @@ model = MaskRCNN(mode='training', model_dir='./', config=config)
 model.load_weights('mask_rcnn_coco.h5', by_name=True, exclude=["mrcnn_class_logits", "mrcnn_bbox_fc",  "mrcnn_bbox", "mrcnn_mask"])
 ```
 
-接下来，可以通过调用 *train()* 函数并传入训练数据集和验证数据集来将模型拟合到训练数据集上。我们还可以在配置中将学习速率指定为默认学习速率(0.001)。
+接下来，可以通过调用 *train()* 函数并传入训练数据集和验证数据集来将模型拟合到训练数据集上。我们还可以在配置中将学习率指定为默认学习率(0.001)。
 
 我们还可以指定要训练哪些层。在这种情况下，我们将只训练头部，也就是模型的输出层。
 
@@ -1042,7 +1042,7 @@ model.load_weights('mask_rcnn_coco.h5', by_name=True, exclude=["mrcnn_class_logi
 model.train(train_set, test_set, learning_rate=config.LEARNING_RATE, epochs=5, layers='heads')
 ```
 
-我们可以在这个训练的基础上进一步调整模型中的所有权重。这可以通过使用较小的学习速率并将“层”参数从“头”更改为“全部”来实现。
+我们可以在这个训练的基础上进一步调整模型中的所有权重。这可以通过使用较小的学习率并将“层”参数从“头”更改为“全部”来实现。
 
 下面列出了在袋鼠数据集上训练面罩的完整示例。
 

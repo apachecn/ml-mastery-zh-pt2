@@ -33,7 +33,7 @@ Bagging 总体上表现良好，并为决策树算法的整个集成领域提供
 
 本教程分为五个部分；它们是:
 
-1.  打包集成算法
+1.  装袋集成算法
 2.  装袋科学工具包-学习应用编程接口
     1.  分类装袋
     2.  回归装袋
@@ -47,7 +47,7 @@ Bagging 总体上表现良好，并为决策树算法的整个集成领域提供
     3.  随机面片集合
 5.  常见问题
 
-## 打包集成算法
+## 装袋集成算法
 
 Bootstrap Aggregation，简称 Bagging，是一种集成机器学习算法。
 
@@ -482,7 +482,7 @@ pyplot.show()
 
 ### 探索替代算法
 
-决策树是打包集成中最常用的算法。
+决策树是装袋集成中最常用的算法。
 
 这样做的原因是它们易于配置，具有较高的差异，并且通常表现良好。
 
@@ -490,7 +490,7 @@ pyplot.show()
 
 集合中使用的算法是通过“ *base_estimator* ”参数指定的，并且必须设置为要使用的算法和算法配置的实例。
 
-下面的例子演示了使用一个[kneighgborcsclassifier](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)作为打包集成中使用的基本算法。这里，算法与默认超参数一起使用，其中 *k* 设置为 5。
+下面的例子演示了使用一个[kneighgborcsclassifier](https://Sklearn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)作为装袋集成中使用的基本算法。这里，算法与默认超参数一起使用，其中 *k* 设置为 5。
 
 ```py
 # evaluate bagging with knn algorithm for classification
@@ -889,7 +889,7 @@ Accuracy: 0.845 (0.036)
 
 *   [引导法的简单介绍](https://machinelearningmastery.com/a-gentle-introduction-to-the-bootstrap-method/)
 *   [如何用 Python 实现从零开始打包](https://machinelearningmastery.com/implement-bagging-scratch-python/)
-*   [如何在 Keras 创建深度学习模型的打包集成](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/)
+*   [如何在 Keras 创建深度学习模型的装袋集成](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/)
 *   [机器学习的套袋和随机森林集成算法](https://machinelearningmastery.com/bagging-and-random-forest-ensemble-algorithms-for-machine-learning/)
 
 ### 报纸

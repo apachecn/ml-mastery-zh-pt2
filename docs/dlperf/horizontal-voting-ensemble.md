@@ -1,4 +1,4 @@
-# 如何开发水平投票深度学习集成来减少差异
+# 如何开发水平投票深度学习集成来减少方差
 
 > 原文：<https://machinelearningmastery.com/horizontal-voting-ensemble/>
 

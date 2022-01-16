@@ -1,4 +1,4 @@
-# 如何利用权重衰减减少 Keras 中神经网络的过拟合
+# 如何在 Keras 中利用权重衰减减少神经网络的过拟合
 
 > 原文：<https://machinelearningmastery.com/how-to-reduce-overfitting-in-deep-learning-with-weight-regularization/>
 
@@ -37,7 +37,7 @@
 
 ## Keras 中的权重正则化应用编程接口
 
-Keras 提供了一个体重调整 API，允许你在[损失函数](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)中加入体重大小的惩罚。
+Keras 提供了一个权重调整 API，允许你在[损失函数](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)中加入权重大小的惩罚。
 
 提供了三个不同的正则化实例；它们是:
 
@@ -538,7 +538,7 @@ Param: 0.000001, Train: 1.000, Test: 0.914
 本节列出了一些您可能希望探索的扩展教程的想法。
 
 *   **尝试候补**。更新示例以使用 L1 或组合 L1L2 方法代替 L2 正则化。
-*   **报告体重定额**。更新示例以计算网络权重的大小，并证明正则化确实使大小变小。
+*   **报告权重定额**。更新示例以计算网络权重的大小，并证明正则化确实使大小变小。
 *   **正则化输出层**。更新示例以调整模型的输出层并比较结果。
 *   **规范偏差**。更新示例以调整偏差权重并比较结果。
 *   **重复模型评估**。更新示例以多次拟合和评估模型，并报告模型表现的平均值和标准差。

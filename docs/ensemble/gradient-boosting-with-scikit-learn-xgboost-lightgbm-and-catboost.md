@@ -26,7 +26,7 @@
 
 ![Gradient Boosting with Sklearn, XGBoost, LightGBM, and CatBoost](img/b874fe3e70b3ccb9ab98de9f992c11c1.png)
 
-使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行渐变增强
+使用 Sklearn、XGBoost、LightGBM 和 CatBoost 进行梯度增强
 图片由[约翰](https://flickr.com/photos/shebalso/441861081/)提供，保留部分权利。
 
 ## 教程概述
@@ -66,7 +66,7 @@
 
 **注**:在本教程中，我们将不讨论梯度增强算法背后的理论。
 
-有关渐变增强算法的更多信息，请参见教程:
+有关梯度增强算法的更多信息，请参见教程:
 
 *   [机器学习梯度增强算法的简单介绍](https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/)
 
@@ -282,7 +282,7 @@ Prediction: -80.661
 
 Sklearn 库提供了梯度增强算法的替代实现，称为基于直方图的梯度增强。
 
-这是一种实现渐变树增强的替代方法，灵感来自 LightGBM 库(稍后将详细描述)。这个实现是通过*历史梯度增强分类器*和*历史梯度增强回归器*类提供的。
+这是一种实现梯度树增强的替代方法，灵感来自 LightGBM 库(稍后将详细描述)。这个实现是通过*历史梯度增强分类器*和*历史梯度增强回归器*类提供的。
 
 基于直方图的梯度增强方法的主要优势是速度。这些实现旨在更快地适应训练数据。
 

@@ -1,4 +1,4 @@
-# 如何控制批量训练神经网络的稳定性
+# 如何使用批量大小控制神经网络训练的稳定性
 
 > 原文：<https://machinelearningmastery.com/how-to-control-the-speed-and-stability-of-training-neural-networks-with-gradient-descent-batch-size/>
 
@@ -367,7 +367,7 @@ Train: 0.612, Test: 0.606
 
 创建列车(蓝色)和测试(橙色)数据集上模型分类精度的线图。
 
-该图显示了所选配置的训练过程的不稳定性。表现不佳，模型变化剧烈，说明每次训练示例后用于更新权重的[学习速率](https://machinelearningmastery.com/learning-rate-for-deep-learning-neural-networks/)可能过大，较小的学习速率可能会使学习过程更加稳定。
+该图显示了所选配置的训练过程的不稳定性。表现不佳，模型变化剧烈，说明每次训练示例后用于更新权重的[学习率](https://machinelearningmastery.com/learning-rate-for-deep-learning-neural-networks/)可能过大，较小的学习率可能会使学习过程更加稳定。
 
 ![Line Plot of Classification Accuracy on Train and Tests Sets of an MLP Fit With Stochastic Gradient Descent](img/264aeb5ed0b3538b9e684a283c41b007.png)
 
@@ -441,18 +441,18 @@ Train: 0.816, Test: 0.824
 
 列车上分类精度的线图和具有随机梯度下降和较小学习率的 MLP 拟合的测试集
 
-这个例子强调了批量和学习率之间的重要关系。也就是说，对模型的噪声更大的更新需要更小的学习速率，而噪声更小的误差梯度的更精确的估计可以更自由地应用于模型。我们可以总结如下:
+这个例子强调了批量和学习率之间的重要关系。也就是说，对模型的噪声更大的更新需要更小的学习率，而噪声更小的误差梯度的更精确的估计可以更自由地应用于模型。我们可以总结如下:
 
-*   **批量梯度下降**:使用相对较大的学习速率和较多的训练时期。
-*   **随机梯度下降**:使用相对较小的学习速率和较少的训练时期。
+*   **批量梯度下降**:使用相对较大的学习率和较多的训练时期。
+*   **随机梯度下降**:使用相对较小的学习率和较少的训练时期。
 
 小批量梯度下降提供了一种替代方法。
 
 ## MLP 适合迷你批次梯度下降
 
-使用随机梯度下降和调整学习速率的另一种方法是保持学习速率不变并改变批量大小。
+使用随机梯度下降和调整学习率的另一种方法是保持学习率不变并改变批量大小。
 
-实际上，这意味着我们指定每次估计误差梯度时应用于权重的学习速率或变化量，但根据用于估计的样本数量来改变梯度的精度。
+实际上，这意味着我们指定每次估计误差梯度时应用于权重的学习率或变化量，但根据用于估计的样本数量来改变梯度的精度。
 
 将学习率保持在 0.01，就像我们使用批处理梯度下降一样，我们可以将批处理大小设置为 32，这是一个广泛采用的默认批处理大小。
 
@@ -511,7 +511,7 @@ Train: 0.832, Test: 0.812
 
 线形图显示了随机和分批梯度下降的动力学。具体来说，该模型学习速度快，有噪声更新，但在接近运行结束时更稳定，比随机梯度下降更稳定。
 
-保持学习速率不变并改变批量大小，可以让您在两种方法中选择最佳方法。
+保持学习率不变并改变批量大小，可以让您在两种方法中选择最佳方法。
 
 ![Line Plot of Classification Accuracy on Train and Tests Sets of an MLP Fit With Minibatch Gradient Descent](img/4f894e35573566ab22fce63b23a354de.png)
 
@@ -557,7 +557,7 @@ def fit_model(trainX, trainy, testX, testy, n_batch):
 	pyplot.title('batch='+str(n_batch), pad=-40)
 ```
 
-最后，我们可以用一组不同的批处理大小来评估模型行为，同时保持模型的其他一切不变，包括学习速率。
+最后，我们可以用一组不同的批处理大小来评估模型行为，同时保持模型的其他一切不变，包括学习率。
 
 ```py
 # prepare dataset

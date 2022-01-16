@@ -185,7 +185,7 @@ bootstrap 方法的预期效果是使数据集的每个样本都非常不同，�
 
 *   [如何用 Python 开发打包套装](https://machinelearningmastery.com/bagging-ensemble-with-python/)
 *   [套袋和随机森林不平衡分类](https://machinelearningmastery.com/bagging-and-random-forest-for-imbalanced-classification/)
-*   [如何在 Keras 创建深度学习模型的打包集成](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/)
+*   [如何在 Keras 创建深度学习模型的装袋集成](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/)
 *   [如何用 Python 实现从零开始打包](https://machinelearningmastery.com/implement-bagging-scratch-python/)
 *   [机器学习建模管道的温和介绍](https://machinelearningmastery.com/machine-learning-modeling-pipelines/)
 

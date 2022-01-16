@@ -72,7 +72,7 @@ sigmoid 和 tanh 函数的一个普遍问题是它们饱和。这意味着，对
 
 —第 290 页，[深度学习](https://amzn.to/2QHVWmW)，2016。
 
-有关 ReLU 如何修复渐变消失问题的示例，请参见教程:
+有关 ReLU 如何修复梯度消失问题的示例，请参见教程:
 
 *   [如何使用校正后的线性激活函数](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/)固定梯度消失
 
@@ -454,7 +454,7 @@ Maxout 是一种可选的分段线性函数，返回输入的最大值，设计�
 
 *   [神经网络常见问题](ftp://ftp.sas.com/pub/neural/FAQ.html)
 *   [激活功能，维基百科](https://en.wikipedia.org/wiki/Activation_function)。
-*   [消失渐变问题，维基百科](https://en.wikipedia.org/wiki/Vanishing_gradient_problem)。
+*   [消失梯度问题，维基百科](https://en.wikipedia.org/wiki/Vanishing_gradient_problem)。
 *   [整流器(神经网络)，维基百科](https://en.wikipedia.org/wiki/Rectifier_(neural_networks))。
 *   [分段线性函数，维基百科](https://en.wikipedia.org/wiki/Piecewise_linear_function)。
 

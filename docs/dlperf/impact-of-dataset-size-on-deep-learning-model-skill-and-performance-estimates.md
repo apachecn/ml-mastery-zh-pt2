@@ -1,4 +1,4 @@
-# 数据集大小对深度学习模型技能和表现评估的影响
+# 数据集大小对深度学习模型技巧和表现评估的影响
 
 > 原文：<https://machinelearningmastery.com/impact-of-dataset-size-on-deep-learning-model-skill-and-performance-estimates/>
 
@@ -254,7 +254,7 @@ pyplot.show()
 
 我们可以使用 [Keras 深度学习库](https://keras.io/)为该问题开发一个小 MLP，该库有两个输入、隐藏层中的 25 个节点和一个输出。修正的线性激活函数可以用于隐藏层中的节点。由于该问题是一个二元分类问题，因此该模型可以使用输出层上的 sigmoid 激活函数来预测样本属于类别 0 或 1 的概率。
 
-可以使用称为 [Adam](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/) 的小批量随机梯度下降的有效版本来训练模型，其中模型中的每个权重都有其自己的自适应学习速率。二元交叉熵损失函数可以用作优化的基础，其中较小的损失值表示更好的模型拟合。
+可以使用称为 [Adam](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/) 的小批量随机梯度下降的有效版本来训练模型，其中模型中的每个权重都有其自己的自适应学习率。二元交叉熵损失函数可以用作优化的基础，其中较小的损失值表示更好的模型拟合。
 
 ```py
 # define model
