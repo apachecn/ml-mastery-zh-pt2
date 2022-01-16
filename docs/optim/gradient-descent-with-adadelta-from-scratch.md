@@ -137,7 +137,7 @@ Adadelta 是 RMSProp 的进一步扩展，旨在提高算法的收敛性，并�
 
 然后对目标函数的每个变量重复该过程，然后重复整个过程以在搜索空间中导航固定次数的算法迭代。
 
-现在我们已经熟悉了 Adadelta 算法，让我们探索如何实现它并评估它的性能。
+现在我们已经熟悉了 Adadelta 算法，让我们探索如何实现它并评估它的表现。
 
 ## Adadelta 梯度下降
 
@@ -348,7 +348,7 @@ value = solution[i] - change
 new_solution.append(value)
 ```
 
-然后可以使用 objective()函数评估这个新的解决方案，并报告搜索的性能。
+然后可以使用 objective()函数评估这个新的解决方案，并报告搜索的表现。
 
 ```py
 ...
@@ -407,7 +407,7 @@ def adadelta(objective, derivative, bounds, n_iter, rho, ep=1e-3):
 	return [solution, solution_eval]
 ```
 
-**注**:为了可读性，我们特意使用了列表和命令式编码风格，而不是矢量化操作。请随意将该实现调整为使用 NumPy 数组的矢量化实现，以获得更好的性能。
+**注**:为了可读性，我们特意使用了列表和命令式编码风格，而不是矢量化操作。请随意将该实现调整为使用 NumPy 数组的矢量化实现，以获得更好的表现。
 
 然后我们可以定义我们的超参数，并调用 *adadelta()* 函数来优化我们的测试目标函数。
 
@@ -498,7 +498,7 @@ print('Done!')
 print('f(%s) = %f' % (best, score))
 ```
 
-运行该示例将 Adadelta 优化算法应用于我们的测试问题，并报告算法每次迭代的搜索性能。
+运行该示例将 Adadelta 优化算法应用于我们的测试问题，并报告算法每次迭代的搜索表现。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 

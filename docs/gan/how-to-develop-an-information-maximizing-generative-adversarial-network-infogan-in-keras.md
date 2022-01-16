@@ -239,7 +239,7 @@ def define_generator(gen_input_size):
 
 下面的 *define_discriminator()* 函数定义了鉴别器和辅助模型，并将分类变量的基数(例如数值的个数，如 10)作为输入。输入图像的形状也被参数化为函数参数，并设置为 MNIST 图像大小的默认值。
 
-特征提取层涉及两个下采样层，作为最佳实践，使用这两个下采样层代替[汇集层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)。同样遵循 DCGAN 模型的最佳实践，我们使用 LeakyReLU 激活和[批处理规范化](https://machinelearningmastery.com/batch-normalization-for-training-of-deep-neural-networks/)。
+特征提取层涉及两个下采样层，作为最佳实践，使用这两个下采样层代替[池化层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)。同样遵循 DCGAN 模型的最佳实践，我们使用 LeakyReLU 激活和[批处理规范化](https://machinelearningmastery.com/batch-normalization-for-training-of-deep-neural-networks/)。
 
 鉴别器模型(d)具有单个输出节点，并通过 sigmoid 激活函数预测输入图像真实的概率。该模型将独立使用，通过具有最佳实践学习率和动量的随机梯度下降的[亚当版本](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)优化[二元交叉熵函数](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)。
 

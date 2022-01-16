@@ -202,7 +202,7 @@ def generate_fake_samples(generator, latent_dim, n_samples):
 	return X, y
 ```
 
-我们需要记录模型的性能。评估 GAN 性能最可靠的方法可能是使用生成器生成图像，然后对其进行审查和主观评估。
+我们需要记录模型的表现。评估 GAN 表现最可靠的方法可能是使用生成器生成图像，然后对其进行审查和主观评估。
 
 下面的*summary _ performance()*函数在训练过程中获取给定点的生成器模型，并使用它在 10×10 的网格中生成 100 个图像，然后绘制并保存到文件中。这个模型现在也保存到文件中，以防我们以后想用它来生成更多的图像。
 
@@ -261,7 +261,7 @@ def plot_history(d1_hist, d2_hist, g_hist, a1_hist, a2_hist):
 
 下面的 *train()* 函数实现了这一点，将定义的模型、数据集和潜在维度的大小作为参数，并使用默认参数参数化纪元的数量和批处理大小。发电机模型在训练结束时保存。
 
-每次迭代都报告鉴别器和生成器模型的性能。样本图像在每个时期生成并保存，模型性能的线图在运行结束时创建并保存。
+每次迭代都报告鉴别器和生成器模型的表现。样本图像在每个时期生成并保存，模型表现的线图在运行结束时创建并保存。
 
 ```py
 # train the generator and discriminator
@@ -918,7 +918,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 在这种情况下，我们将更新示例，以便在更新鉴别器时结合真实和虚假样本。这个简单的改变会导致模型无法收敛。
 
-这个变化很简单，使用 [vstack() NumPy 函数](https://docs.scipy.org/doc/numpy/reference/generated/numpy.vstack.html)将真假样本结合，然后调用 *train_on_batch()* 函数更新鉴别器模型。结果也是单一的损失和准确性分数，这意味着模型性能的报告也必须更新。
+这个变化很简单，使用 [vstack() NumPy 函数](https://docs.scipy.org/doc/numpy/reference/generated/numpy.vstack.html)将真假样本结合，然后调用 *train_on_batch()* 函数更新鉴别器模型。结果也是单一的损失和准确性分数，这意味着模型表现的报告也必须更新。
 
 为了完整起见，下面提供了包含这些更改的完整代码列表。
 

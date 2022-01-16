@@ -109,6 +109,6 @@
 *   [用 Weka](http://weka.waikato.ac.nz/) 进行数据挖掘。你可以在 YouTube 上免费观看本课程的所有视频。
 *   [使用 Weka](https://weka.waikato.ac.nz/moredataminingwithweka) 进行更多数据挖掘。
 
-[Rushdi Shams](https://sites.google.com/site/rushdishams/) 有一个令人惊叹的 YouTube 视频频道，向您展示如何在 Weka 中完成许多特定任务。点击这里查看他的 [Weka YouTube 频道。](https://www.youtube.com/user/rushdishams/videos)
+[Rushdi Shams](https://sites.google.com/site/rushdishams/) 有一个令人惊叹的 YouTube 视频通道，向您展示如何在 Weka 中完成许多特定任务。点击这里查看他的 [Weka YouTube 通道。](https://www.youtube.com/user/rushdishams/videos)
 
 你用过韦卡吗？留下评论，分享你的经历。

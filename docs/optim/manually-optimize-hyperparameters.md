@@ -39,7 +39,7 @@ Let’s get started.![How to Manually Optimize Machine Learning Model Hyperparam
 
 通常，超参数对模型的一般影响是已知的，但是如何为给定数据集最佳地设置超参数和交互超参数的组合是具有挑战性的。
 
-一种更好的方法是客观地搜索模型超参数的不同值，并选择一个子集，该子集导致在给定数据集上获得最佳性能的模型。这被称为超参数优化，或超参数调整。
+一种更好的方法是客观地搜索模型超参数的不同值，并选择一个子集，该子集导致在给定数据集上获得最佳表现的模型。这被称为超参数优化，或超参数调整。
 
 可以使用一系列不同的优化算法，尽管最简单和最常见的两种方法是随机搜索和网格搜索。
 
@@ -52,9 +52,9 @@ Let’s get started.![How to Manually Optimize Machine Learning Model Hyperparam
 
 *   [随机搜索和网格搜索的超参数优化](https://machinelearningmastery.com/hyperparameter-optimization-with-random-search-and-grid-search/)
 
-网格和随机搜索是原始的优化算法，可以使用我们喜欢的任何优化来调整机器学习算法的性能。例如，可以使用随机优化算法。当需要良好或出色的性能，并且有足够的资源来调整模型时，这可能是可取的。
+网格和随机搜索是原始的优化算法，可以使用我们喜欢的任何优化来调整机器学习算法的表现。例如，可以使用随机优化算法。当需要良好或出色的表现，并且有足够的资源来调整模型时，这可能是可取的。
 
-接下来，让我们看看如何使用随机爬山算法来调整感知器算法的性能。
+接下来，让我们看看如何使用随机爬山算法来调整感知器算法的表现。
 
 ## 感知器超参数优化
 
@@ -87,7 +87,7 @@ print(X.shape, y.shape)
 
 scikit-learn 通过[感知器类](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html)提供感知器模型的实现。
 
-在我们调整模型的超参数之前，我们可以使用默认超参数建立性能基线。
+在我们调整模型的超参数之前，我们可以使用默认超参数建立表现基线。
 
 我们将通过[重复分层 k 重交叉验证类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)的良好实践来评估模型。
 
@@ -119,7 +119,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到具有默认超参数的模型实现了大约 78.5%的分类精度。
 
-我们希望通过优化超参数，我们可以获得比这更好的性能。
+我们希望通过优化超参数，我们可以获得比这更好的表现。
 
 ```py
 Mean Accuracy: 0.786 (0.069)
@@ -134,7 +134,7 @@ Mean Accuracy: 0.786 (0.069)
 
 [学习速率](https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/)控制模型基于预测误差的更新量，并控制学习速度。eta 的默认值是 1.0。合理的值大于零(例如大于 1e-8 或 1e-10)并且可能小于 1.0
 
-默认情况下，感知器不使用任何正则化，但是我们将启用“*弹性网*”正则化，该正则化在学习过程中同时应用了 [L1 和 L2 正则化](https://machinelearningmastery.com/weight-regularization-to-reduce-overfitting-of-deep-learning-models/)。这将鼓励模型寻求更小的模型权重，并反过来通常获得更好的性能。
+默认情况下，感知器不使用任何正则化，但是我们将启用“*弹性网*”正则化，该正则化在学习过程中同时应用了 [L1 和 L2 正则化](https://machinelearningmastery.com/weight-regularization-to-reduce-overfitting-of-deep-learning-models/)。这将鼓励模型寻求更小的模型权重，并反过来通常获得更好的表现。
 
 我们将调整控制正则化权重的“*α*”超参数，例如它影响学习的量。如果设置为 0.0，则好像没有使用正则化。合理的值介于 0.0 和 1.0 之间。
 
@@ -221,7 +221,7 @@ if candidate_eval >= solution_eval:
 	print('>%d, cfg=%s %.5f' % (i, solution, solution_eval))
 ```
 
-搜索结束后，将返回最佳解决方案及其性能。
+搜索结束后，将返回最佳解决方案及其表现。
 
 将这些联系在一起，下面的*爬山()*函数实现了随机爬山算法，用于调整感知器算法，将数据集、目标函数、迭代次数和步长作为参数。
 
@@ -404,11 +404,11 @@ xgboost 1.0.1
 model = XGBClassifier()
 ```
 
-在我们调整 XGBoost 的超参数之前，我们可以使用默认的超参数建立一个性能基线。
+在我们调整 XGBoost 的超参数之前，我们可以使用默认的超参数建立一个表现基线。
 
 我们将使用上一节中相同的合成二进制分类数据集和重复分层 k-fold 交叉验证的相同测试工具。
 
-下面列出了使用默认超参数评估 XGBoost 性能的完整示例。
+下面列出了使用默认超参数评估 XGBoost 表现的完整示例。
 
 ```py
 # xgboost with default hyperparameters for binary classification
@@ -436,7 +436,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到具有默认超参数的模型实现了大约 84.9%的分类精度。
 
-我们希望通过优化超参数，我们可以获得比这更好的性能。
+我们希望通过优化超参数，我们可以获得比这更好的表现。
 
 ```py
 Mean Accuracy: 0.849 (0.040)

@@ -1,6 +1,6 @@
 # 比较机器学习算法在 R
 
-中的性能
+中的表现
 
 > 原文：<https://machinelearningmastery.com/compare-the-performance-of-machine-learning-algorithms-in-r/>
 
@@ -19,13 +19,13 @@
 ![Compare The Performance of Machine Learning Algorithms in R](img/ef14b9bff4e3b199ed6fa403e2972d82.png)
 
 比较机器学习算法在 R
-中的性能。
+中的表现。
 
 ## 选择最佳机器学习模型
 
 你如何为你的问题选择最好的模型？
 
-当你在一个机器学习项目中工作时，你经常会有多个好的模型可供选择。每个型号将有不同的性能特征。
+当你在一个机器学习项目中工作时，你经常会有多个好的模型可供选择。每个型号将有不同的表现特征。
 
 使用像交叉验证这样的重采样方法，您可以估计每个模型在未看到的数据上的准确性。您需要能够使用估计值从您创建的模型套件中选择一个或两个最佳模型。
 

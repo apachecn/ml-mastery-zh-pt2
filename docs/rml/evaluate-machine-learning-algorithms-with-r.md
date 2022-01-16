@@ -98,7 +98,7 @@
 
 如果你有一个大数据集，取一些不同的随机样本和一个简单模型(glm)，看看训练需要多长时间。选择一个合适的样本量。
 
-我们可以稍后研究样本大小对我们的性能良好的算法的简短列表的影响。
+我们可以稍后研究样本大小对我们的表现良好的算法的简短列表的影响。
 
 此外，您可以稍后用更大的数据集重复这个实验，一旦您有了看起来有希望的更小的算法子集。
 
@@ -117,7 +117,7 @@ dataset <- PimaIndiansDiabetes
 
 只有 768 个实例，因此在本案例研究中，我们将使用所有这些数据来抽查我们的算法。
 
-请注意，在一个完整的端到端项目中，我建议保留一个验证数据集，以便对性能最好的模型进行客观的最终评估。
+请注意，在一个完整的端到端项目中，我建议保留一个验证数据集，以便对表现最好的模型进行客观的最终评估。
 
 #### 测试选项
 
@@ -174,7 +174,7 @@ metric <- "Accuracy"
 
 在帖子中了解更多关于测试指标的信息:
 
-*   [分类精度不够:可以使用更多性能指标](https://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/)
+*   [分类精度不够:可以使用更多表现指标](https://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/)
 
 ### 2.模型结构
 
@@ -283,7 +283,7 @@ fit.gbm <- train(diabetes~., data=dataset, method="gbm", metric=metric, trContro
 
 现阶段我们并不寻求最佳模式。算法还没有调整，可能比你现在看到的结果做得更好。
 
-现在的目标是选择几个，也许是 2 到 5 个多样且性能良好的算法来进一步研究。
+现在的目标是选择几个，也许是 2 到 5 个多样且表现良好的算法来进一步研究。
 
 ```py
 results <- resamples(list(lda=fit.lda, logistic=fit.glm, glmnet=fit.glmnet,
@@ -333,7 +333,7 @@ dotplot(results)
 
 在 r 点图中比较机器学习算法
 
-如果我有更多的数据，我可能会用一个大样本重复这个实验，看看这个大数据集是否提高了任何树方法的性能(这种情况经常发生)。
+如果我有更多的数据，我可能会用一个大样本重复这个实验，看看这个大数据集是否提高了任何树方法的表现(这种情况经常发生)。
 
 ## 优秀算法抽查技巧
 

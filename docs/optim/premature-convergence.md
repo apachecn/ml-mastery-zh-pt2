@@ -4,7 +4,7 @@
 
 最后更新于 2021 年 10 月 12 日
 
-收敛指的是过程的极限，在评估优化算法的预期性能时，它可能是一个有用的分析工具。
+收敛指的是过程的极限，在评估优化算法的预期表现时，它可能是一个有用的分析工具。
 
 当探索优化算法的学习动态以及使用优化算法训练的机器学习算法时，例如深度学习神经网络，它也可以是有用的经验工具。这激发了对学习曲线和技巧的研究，比如提前停止。
 
@@ -64,7 +64,7 @@ Let’s get started.![A Gentle Introduction to Premature Convergence](img/350d59
 
 过早收敛指的是过早发生的过程的收敛。
 
-在优化中，它指的是算法收敛到一个性能比预期差的稳定点。
+在优化中，它指的是算法收敛到一个表现比预期差的稳定点。
 
 过早收敛通常会影响复杂的优化任务，其中目标函数是非凸的，这意味着响应面包含许多不同的好解(稳定点)，可能有一个(或几个)最佳解。
 
@@ -104,7 +104,7 @@ Let’s get started.![A Gentle Introduction to Premature Convergence](img/350d59
 
 —第 153 页，[深度学习](https://amzn.to/3oxOwUA)，2016。
 
-拟合神经网络容易过早收敛的事实促使人们使用学习曲线等方法来监控和诊断训练数据集中模型的收敛问题，并使用正则化方法，如[提前停止](https://machinelearningmastery.com/early-stopping-to-avoid-overtraining-neural-network-models/)，在找到稳定点之前停止优化算法，但代价是保持数据集的性能较差。
+拟合神经网络容易过早收敛的事实促使人们使用学习曲线等方法来监控和诊断训练数据集中模型的收敛问题，并使用正则化方法，如[提前停止](https://machinelearningmastery.com/early-stopping-to-avoid-overtraining-neural-network-models/)，在找到稳定点之前停止优化算法，但代价是保持数据集的表现较差。
 
 因此，对深度学习神经网络的许多研究最终都是为了克服过早收敛。
 
@@ -126,7 +126,7 @@ Let’s get started.![A Gentle Introduction to Premature Convergence](img/350d59
 
 ### 教程
 
-*   [如何利用学习曲线诊断机器学习模型性能](https://machinelearningmastery.com/learning-curves-for-diagnosing-machine-learning-model-performance/)
+*   [如何利用学习曲线诊断机器学习模型表现](https://machinelearningmastery.com/learning-curves-for-diagnosing-machine-learning-model-performance/)
 
 ### 书
 

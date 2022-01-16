@@ -43,13 +43,13 @@ GAN 架构由一个生成器和一个鉴别器模型组成。生成器负责创�
 
 生成器通过从潜在空间中选取一个随机点作为输入，并以一次拍摄的方式输出完整的图像来工作。
 
-用于图像分类和相关任务的传统卷积神经网络将使用[汇集层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)对输入图像进行下采样。例如，平均池层或最大池层将在每个维度上将卷积图的特征图减少一半，从而产生四分之一输入面积的输出。
+用于图像分类和相关任务的传统卷积神经网络将使用[池化层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)对输入图像进行下采样。例如，平均池层或最大池层将在每个维度上将卷积图的特征图减少一半，从而产生四分之一输入面积的输出。
 
 卷积层本身也通过对输入图像或特征图应用每个滤波器来执行一种形式的下采样；生成的激活是一个输出特征图，由于边界效应，它变小了。通常[填充](https://machinelearningmastery.com/padding-and-stride-for-convolutional-neural-networks/)用来抵消这种效果。
 
 GAN 中的生成器模型需要传统卷积层中池层的反向操作。它需要一个层来从粗糙的显著特征转换成更密集和详细的输出。
 
-一个简单版本的非冷却或相反的汇集层被称为上采样层。它通过重复输入的行和列来工作。
+一个简单版本的非冷却或相反的池化层被称为上采样层。它通过重复输入的行和列来工作。
 
 一种更复杂的方法是执行反向卷积运算，最初称为反卷积，这是不正确的，但更常见的是称为分数卷积层或转置卷积层。
 
@@ -336,7 +336,7 @@ conv2d 转置或转置卷积层比简单的上采样层更复杂。
 
 转置卷积层很像普通卷积层。它要求您指定过滤器的数量和每个过滤器的内核大小。这一层的关键是步幅。
 
-典型地，卷积层的[步距是(1×1)，也就是说，对于从左到右的每次读取，滤波器沿着一个像素水平移动，然后对于下一行读取向下移动一个像素。正常卷积层上 2×2 的步长具有对输入进行下采样的效果，很像](https://machinelearningmastery.com/padding-and-stride-for-convolutional-neural-networks/)[汇集层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)。事实上，在鉴别器模型中，可以使用 2×2 步长来代替汇集层。
+典型地，卷积层的[步距是(1×1)，也就是说，对于从左到右的每次读取，滤波器沿着一个像素水平移动，然后对于下一行读取向下移动一个像素。正常卷积层上 2×2 的步长具有对输入进行下采样的效果，很像](https://machinelearningmastery.com/padding-and-stride-for-convolutional-neural-networks/)[池化层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)。事实上，在鉴别器模型中，可以使用 2×2 步长来代替池化层。
 
 转置卷积层类似于逆卷积层。因此，你会直觉地认为 2×2 的步幅会对输入进行上采样，而不是下采样，这正是发生的情况。
 
@@ -544,7 +544,7 @@ model.add(Conv2DTranspose(1, (3,3), strides=(2,2), padding='same', input_shape=(
 
 *conv2d 转置*比*upsmampling 2d*层更复杂，但在 GAN 模型中使用时也很有效，尤其是发电机模型。
 
-这两种方法都可以使用，尽管首选 *Conv2DTranspose* 层，这可能是因为更简单的生成器模型和可能更好的结果，尽管众所周知 GAN 的性能和技能很难量化。
+这两种方法都可以使用，尽管首选 *Conv2DTranspose* 层，这可能是因为更简单的生成器模型和可能更好的结果，尽管众所周知 GAN 的表现和技能很难量化。
 
 我们可以用另一个简单的例子来演示在生成器模型中使用*conv2d 转置*层。
 

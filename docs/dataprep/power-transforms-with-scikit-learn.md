@@ -8,7 +8,7 @@
 
 您的数据可能没有[高斯分布](https://machinelearningmastery.com/continuous-probability-distributions-for-machine-learning/)，而是可能有类似高斯的分布(例如接近高斯但有异常值或偏斜)或完全不同的分布(例如指数分布)。
 
-因此，通过将输入和/或输出变量转换为高斯或多高斯分布，您可能能够在各种机器学习算法上获得更好的性能。像 Box-Cox 变换和 Yeo-Johnson 变换这样的幂变换提供了一种对数据执行这些变换的自动方法，并且在 scikit-learn Python 机器学习库中提供。
+因此，通过将输入和/或输出变量转换为高斯或多高斯分布，您可能能够在各种机器学习算法上获得更好的表现。像 Box-Cox 变换和 Yeo-Johnson 变换这样的幂变换提供了一种对数据执行这些变换的自动方法，并且在 scikit-learn Python 机器学习库中提供。
 
 在本教程中，您将发现如何在 scikit 中使用幂变换-学习如何使变量更高斯化以进行建模。
 
@@ -39,7 +39,7 @@
 
 ## 让数据更高斯化
 
-当变量分布为高斯分布时，许多机器学习算法的性能更好。
+当变量分布为高斯分布时，许多机器学习算法的表现更好。
 
 回想一下，每个变量的观测值可能被认为是从概率分布中得出的。高斯分布是常见的钟形分布。常见到经常被称为“*正态*分布。
 
@@ -163,7 +163,7 @@ pyplot.show()
 
 它包括 60 个实值输入和一个 2 类目标变量。数据集中有 208 个示例，类别相当均衡。
 
-使用重复的分层 10 倍交叉验证，基线分类算法可以达到大约 53.4%的分类精度。[使用重复的分层 10 倍交叉验证，该数据集的最高性能](https://machinelearningmastery.com/results-for-standard-classification-and-regression-machine-learning-datasets/)约为 88%。
+使用重复的分层 10 倍交叉验证，基线分类算法可以达到大约 53.4%的分类精度。[使用重复的分层 10 倍交叉验证，该数据集的最高表现](https://machinelearningmastery.com/results-for-standard-classification-and-regression-machine-learning-datasets/)约为 88%。
 
 该数据集描述了岩石或模拟地雷的雷达回波。
 
@@ -411,7 +411,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-运行该示例，我们可以看到 Box-Cox 变换将性能从没有变换时的 79.7%提升到有变换时的 81.1%。
+运行该示例，我们可以看到 Box-Cox 变换将表现从没有变换时的 79.7%提升到有变换时的 81.1%。
 
 ```py
 Accuracy: 0.811 (0.085)
@@ -505,13 +505,13 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-运行该示例，我们可以看到 Yeo-Johnson 变换将性能从没有变换时的 79.7%提升到有变换时的约 80.8%，低于达到约 81.1%的 Box-Cox 变换。
+运行该示例，我们可以看到 Yeo-Johnson 变换将表现从没有变换时的 79.7%提升到有变换时的约 80.8%，低于达到约 81.1%的 Box-Cox 变换。
 
 ```py
 Accuracy: 0.808 (0.082)
 ```
 
-有时，通过在执行约-约翰逊变换之前首先标准化原始数据集，可以提高性能。
+有时，通过在执行约-约翰逊变换之前首先标准化原始数据集，可以提高表现。
 
 我们可以通过添加一个[标准缩放器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)来探索这一点，作为管道的第一步。
 
@@ -553,7 +553,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-运行该示例，我们可以看到，在 Yeo-Johnson 转换之前对数据进行标准化导致性能从约 80.8%小幅提升至约 81.6%，比 Box-Cox 转换的结果略有提升。
+运行该示例，我们可以看到，在 Yeo-Johnson 转换之前对数据进行标准化导致表现从约 80.8%小幅提升至约 81.6%，比 Box-Cox 转换的结果略有提升。
 
 ```py
 Accuracy: 0.816 (0.077)

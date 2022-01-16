@@ -1,4 +1,4 @@
-# 用计算机视觉模型在 Keras 中进行迁移学习
+# 在 Keras 中将计算机视觉模型用于迁移学习
 
 > 原文：<https://machinelearningmastery.com/how-to-use-transfer-learning-when-developing-convolutional-neural-network-models/>
 
@@ -6,7 +6,7 @@
 
 深度卷积神经网络模型在非常大的数据集上训练可能需要几天甚至几周的时间。
 
-简化这一过程的一种方法是重用为标准计算机视觉基准数据集(如 ImageNet 图像识别任务)开发的预训练模型的模型权重。性能最好的模型可以直接下载使用，也可以集成到新的模型中来解决你自己的计算机视觉问题。
+简化这一过程的一种方法是重用为标准计算机视觉基准数据集(如 ImageNet 图像识别任务)开发的预训练模型的模型权重。表现最好的模型可以直接下载使用，也可以集成到新的模型中来解决你自己的计算机视觉问题。
 
 在这篇文章中，你将发现在为计算机视觉应用开发卷积神经网络时，如何使用[转移学习](https://machinelearningmastery.com/transfer-learning-for-deep-learning/)。
 
@@ -57,7 +57,7 @@
 
 ## 图像识别中的迁移学习
 
-已经为图像分类开发了一系列高性能模型，并在年度 [ImageNet 大规模视觉识别挑战](http://www.image-net.org/challenges/LSVRC/)或 ILSVRC 上进行了演示。
+已经为图像分类开发了一系列高表现模型，并在年度 [ImageNet 大规模视觉识别挑战](http://www.image-net.org/challenges/LSVRC/)或 ILSVRC 上进行了演示。
 
 考虑到比赛中使用的图像来源，这一挑战通常简称为 [ImageNet](http://image-net.org/) ，在卷积神经网络的架构和训练方面带来了许多创新。此外，比赛中使用的许多模型已经在许可许可下发布。
 
@@ -66,7 +66,7 @@
 这是可取的，原因有很多，尤其是:
 
 *   **有用的学习特征**:模型已经学会了如何从照片中检测通用特征，假设它们是在 1000 个类别的 100 多万张图像上训练的。
-*   **最先进的性能**:模型实现了最先进的性能，并且在开发它们的特定图像识别任务中保持有效。
+*   **最先进的表现**:模型实现了最先进的表现，并且在开发它们的特定图像识别任务中保持有效。
 *   **易访问**:模型权重以免费下载文件的形式提供，很多库提供了方便的 API，可以直接下载使用模型。
 
 可以下载模型权重，并使用一系列不同的深度学习库(包括 Keras)在同一模型架构中使用。
@@ -108,9 +108,9 @@
 *   GoogLeNet(例如 inceptionv 3)。
 *   剩余网络(例如 ResNet50)。
 
-这些模型被广泛用于迁移学习，不仅因为它们的性能，还因为它们是引入特定架构创新的例子，即一致和重复结构(VGG)、初始模块(谷歌网)和剩余模块(ResNet)。
+这些模型被广泛用于迁移学习，不仅因为它们的表现，还因为它们是引入特定架构创新的例子，即一致和重复结构(VGG)、初始模块(谷歌网)和剩余模块(ResNet)。
 
-Keras 提供了许多为图像识别任务开发的性能最佳的预训练模型。
+Keras 提供了许多为图像识别任务开发的表现最佳的预训练模型。
 
 它们可通过[应用程序接口](https://keras.io/applications/)获得，包括加载具有或不具有预训练权重的模型的功能，以及以给定模型可能期望的方式准备数据的功能(例如，缩放尺寸和像素值)。
 
@@ -462,7 +462,7 @@ output = Dense(10, activation='softmax')(class1)
 model = Model(inputs=model.inputs, outputs=output)
 ```
 
-添加扁平化层的另一种方法是用平均池层定义 VGG16 模型，然后添加完全连接的层。也许在您的应用程序中尝试这两种方法，看看哪种方法的性能最好。
+添加扁平化层的另一种方法是用平均池层定义 VGG16 模型，然后添加完全连接的层。也许在您的应用程序中尝试这两种方法，看看哪种方法的表现最好。
 
 VGG16 模型的权重和新模型的权重将在新的数据集上一起训练。
 
@@ -579,7 +579,7 @@ model.get_layer('block2_conv2').trainable = False
 
 ### 邮件
 
-*   [如何利用深度学习神经网络的迁移学习提高性能](https://machinelearningmastery.com/how-to-improve-performance-with-transfer-learning-for-deep-learning-neural-networks/)
+*   [如何利用深度学习神经网络的迁移学习提高表现](https://machinelearningmastery.com/how-to-improve-performance-with-transfer-learning-for-deep-learning-neural-networks/)
 *   [深度学习迁移学习入门](https://machinelearningmastery.com/transfer-learning-for-deep-learning/)
 *   [如何使用预先训练好的 VGG 模型对照片中的对象进行分类](https://machinelearningmastery.com/use-pre-trained-vgg-model-classify-objects-photographs/)
 

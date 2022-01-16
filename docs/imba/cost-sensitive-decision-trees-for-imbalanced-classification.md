@@ -116,7 +116,7 @@ Counter({0: 9900, 1: 100})
 model = DecisionTreeClassifier()
 ```
 
-我们将使用重复交叉验证来评估模型，重复三次 [10 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)。模式性能将使用重复和所有折叠的平均曲线下面积来报告。
+我们将使用重复交叉验证来评估模型，重复三次 [10 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)。模式表现将使用重复和所有折叠的平均曲线下面积来报告。
 
 ```py
 ...
@@ -294,7 +294,7 @@ Mean ROC AUC: 0.759
 
 使用与训练数据成反比的类权重只是一种启发。
 
-使用不同的类权重可以获得更好的性能，这也将取决于用于评估模型的性能度量的选择。
+使用不同的类权重可以获得更好的表现，这也将取决于用于评估模型的表现度量的选择。
 
 在本节中，我们将网格搜索一系列不同的类别权重，以获得加权决策树，并发现哪一个导致最佳的 ROC AUC 分数。
 
@@ -315,7 +315,7 @@ balance = [{0:100,1:1}, {0:10,1:1}, {0:1,1:1}, {0:1,1:10}, {0:1,1:100}]
 param_grid = dict(class_weight=balance)
 ```
 
-我们可以使用重复交叉验证对这些参数执行网格搜索，并使用 ROC AUC 估计模型性能:
+我们可以使用重复交叉验证对这些参数执行网格搜索，并使用 ROC AUC 估计模型表现:
 
 ```py
 ...
@@ -341,7 +341,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 将这些联系在一起，下面的示例在不平衡的数据集上为决策树算法搜索五个不同的类权重。
 
-我们可能会认为启发式类加权是性能最好的配置。
+我们可能会认为启发式类加权是表现最好的配置。
 
 ```py
 # grid search class weights with decision tree for imbalance classification

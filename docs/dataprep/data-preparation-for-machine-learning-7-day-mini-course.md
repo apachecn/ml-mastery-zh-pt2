@@ -170,7 +170,7 @@ print('Missing: %d' % sum(isnan(Xtrans).flatten()))
 
 特征选择是在开发预测模型时减少输入变量数量的过程。
 
-希望减少输入变量的数量，以降低建模的计算成本，并在某些情况下提高模型的性能。
+希望减少输入变量的数量，以降低建模的计算成本，并在某些情况下提高模型的表现。
 
 递归特征消除，简称 RFE，是一种流行的特征选择算法。
 
@@ -316,7 +316,7 @@ print(X_oe[:3, :])
 
 一种方法是使用数值变量的变换来具有离散的概率分布，其中每个数值被分配一个标签，并且标签具有有序(序数)关系。
 
-这被称为离散化变换，通过使数值输入变量的概率分布离散化，可以提高一些机器学习模型对数据集的性能。
+这被称为离散化变换，通过使数值输入变量的概率分布离散化，可以提高一些机器学习模型对数据集的表现。
 
 离散化转换可通过[KBinsDistrictzer 类](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.KBinsDiscretizer.html)在 scikit-learn Python 机器学习库中获得。
 

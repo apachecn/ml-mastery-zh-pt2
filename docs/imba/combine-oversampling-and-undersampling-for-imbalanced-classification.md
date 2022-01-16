@@ -16,7 +16,7 @@
 
 *   如何定义要应用于训练数据集或评估分类器模型时的过采样和欠采样方法序列。
 *   如何手动结合过采样和欠采样方法进行不平衡分类？
-*   如何使用预定义且性能良好的重采样方法组合进行不平衡分类。
+*   如何使用预定义且表现良好的重采样方法组合进行不平衡分类。
 
 **用我的新书[Python 不平衡分类](https://machinelearningmastery.com/imbalanced-classification-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
@@ -115,7 +115,7 @@ model = DecisionTreeClassifier()
 
 我们可以使用[重复的分层 k 折叠交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估模型，重复 3 次，重复 10 次。
 
-[曲线下 ROC 面积(AUC)度量](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)可以用来估计模型的性能。对于严重不平衡的数据集，它可能是乐观的，尽管它确实正确地显示了模型性能的相对提高。
+[曲线下 ROC 面积(AUC)度量](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)可以用来估计模型的表现。对于严重不平衡的数据集，它可能是乐观的，尽管它确实正确地显示了模型表现的相对提高。
 
 ```py
 ...
@@ -288,11 +288,11 @@ scores = cross_val_score(pipeline, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f' % mean(scores))
 ```
 
-运行该示例评估转换系统和模型，并将性能总结为平均 ROC AUC。
+运行该示例评估转换系统和模型，并将表现总结为平均 ROC AUC。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到 ROC AUC 性能从无变换的 0.76 适度提升到随机过采样和欠采样的约 0.81。
+在这种情况下，我们可以看到 ROC AUC 表现从无变换的 0.76 适度提升到随机过采样和欠采样的约 0.81。
 
 ```py
 Mean ROC AUC: 0.814
@@ -356,11 +356,11 @@ scores = cross_val_score(pipeline, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f' % mean(scores))
 ```
 
-运行该示例评估转换系统和模型，并将性能总结为平均 ROC AUC。
+运行该示例评估转换系统和模型，并将表现总结为平均 ROC AUC。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到 ROC AUC 性能从大约 0.81 到大约 0.83 的另一个列表。
+在这种情况下，我们可以看到 ROC AUC 表现从大约 0.81 到大约 0.83 的另一个列表。
 
 ```py
 Mean ROC AUC: 0.833
@@ -445,7 +445,7 @@ scores = cross_val_score(pipeline, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f' % mean(scores))
 ```
 
-运行该示例评估转换系统和模型，并将性能总结为平均 ROC AUC。
+运行该示例评估转换系统和模型，并将表现总结为平均 ROC AUC。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -523,11 +523,11 @@ scores = cross_val_score(pipeline, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f' % mean(scores))
 ```
 
-运行该示例评估转换系统和模型，并将性能总结为平均 ROC AUC。
+运行该示例评估转换系统和模型，并将表现总结为平均 ROC AUC。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们看到随机欠采样方法的性能比 SMOTE 进一步提升，从约 0.81 提升到约 0.85。
+在这种情况下，我们看到随机欠采样方法的表现比 SMOTE 进一步提升，从约 0.81 提升到约 0.85。
 
 ```py
 Mean ROC AUC: 0.856
@@ -579,7 +579,7 @@ Mean ROC AUC: 0.856
 
 *   如何定义要应用于训练数据集或评估分类器模型时的过采样和欠采样方法序列。
 *   如何手动结合过采样和欠采样方法进行不平衡分类？
-*   如何使用预定义且性能良好的重采样方法组合进行不平衡分类。
+*   如何使用预定义且表现良好的重采样方法组合进行不平衡分类。
 
 你有什么问题吗？
 在下面的评论中提问，我会尽力回答。

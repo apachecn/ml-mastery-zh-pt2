@@ -8,7 +8,7 @@
 
 这是深度学习中的一种流行方法，在这种方法中，预先训练的模型被用作计算机视觉和自然语言处理任务的起点，因为开发这些问题的神经网络模型需要大量的计算和时间资源，并且它们在相关问题上提供了巨大的技能提升。
 
-在这篇文章中，您将发现如何使用迁移学习来加快培训并提高深度学习模型的性能。
+在这篇文章中，您将发现如何使用迁移学习来加快培训并提高深度学习模型的表现。
 
 看完这篇文章，你会知道:
 
@@ -37,7 +37,7 @@
 
 —第 526 页，[深度学习](https://amzn.to/2fwdoKR)，2016。
 
-迁移学习是一种优化，当对第二个任务建模时，它允许快速进步或提高性能。
+迁移学习是一种优化，当对第二个任务建模时，它允许快速进步或提高表现。
 
 > 迁移学习是通过从已经学习过的相关任务中转移知识来改进新任务中的学习。
 
@@ -170,7 +170,7 @@ Lisa Torrey 和 Jude Shavlik 在[他们关于迁移学习的章节](https://amzn
 
 *   [开发卷积神经网络模型时如何使用迁移学习](https://machinelearningmastery.com/how-to-use-transfer-learning-when-developing-convolutional-neural-network-models/)
 *   [如何使用预先训练好的 VGG 模型对照片中的对象进行分类](https://machinelearningmastery.com/use-pre-trained-vgg-model-classify-objects-photographs/)
-*   [如何利用深度学习神经网络的迁移学习提高性能](https://machinelearningmastery.com/how-to-improve-performance-with-transfer-learning-for-deep-learning-neural-networks/)
+*   [如何利用深度学习神经网络的迁移学习提高表现](https://machinelearningmastery.com/how-to-improve-performance-with-transfer-learning-for-deep-learning-neural-networks/)
 
 ### 书
 
@@ -201,7 +201,7 @@ Lisa Torrey 和 Jude Shavlik 在[他们关于迁移学习的章节](https://amzn
 
 ## 摘要
 
-在这篇文章中，您发现了如何使用迁移学习来加快培训并提高深度学习模型的性能。
+在这篇文章中，您发现了如何使用迁移学习来加快培训并提高深度学习模型的表现。
 
 具体来说，您了解到:
 

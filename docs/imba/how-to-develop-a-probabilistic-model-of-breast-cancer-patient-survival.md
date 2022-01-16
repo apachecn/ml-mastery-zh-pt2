@@ -15,7 +15,7 @@
 完成本教程后，您将知道:
 
 *   如何加载和探索数据集，并为数据准备和模型选择产生想法。
-*   如何评估一套概率模型，并通过适当的数据准备提高它们的性能。
+*   如何评估一套概率模型，并通过适当的数据准备提高它们的表现。
 *   如何拟合最终模型并使用它来预测特定情况下的概率。
 
 **用我的新书[Python 不平衡分类](https://machinelearningmastery.com/imbalanced-classification-with-python/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
@@ -239,7 +239,7 @@ Class=2, Count=81, Percentage=26.471%
 
 我们将使用重复的分层 k 折叠交叉验证来评估候选模型。
 
-[k 倍交叉验证程序](https://machinelearningmastery.com/k-fold-cross-validation/)提供了一个良好的模型性能的总体估计，至少与单个列车测试分割相比，不太乐观。我们将使用 k=10，这意味着每个折叠将包含 306/10 或大约 30 个示例。
+[k 倍交叉验证程序](https://machinelearningmastery.com/k-fold-cross-validation/)提供了一个良好的模型表现的总体估计，至少与单个列车测试分割相比，不太乐观。我们将使用 k=10，这意味着每个折叠将包含 306/10 或大约 30 个示例。
 
 分层意味着每一个折叠将包含相同的样本混合类，即大约 74%到 26%的存活率和非存活率。
 
@@ -249,7 +249,7 @@ Class=2, Count=81, Percentage=26.471%
 
 这可以通过使用[repeated stratifiedfold scikit-learn 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现。
 
-鉴于我们对预测生存概率感兴趣，我们需要一个基于预测概率评估模型技能的性能指标。在这种情况下，我们将使用 [Brier 评分](https://machinelearningmastery.com/how-to-score-probability-predictions-in-python/)，计算预测概率和预期概率之间的均方误差。
+鉴于我们对预测生存概率感兴趣，我们需要一个基于预测概率评估模型技能的表现指标。在这种情况下，我们将使用 [Brier 评分](https://machinelearningmastery.com/how-to-score-probability-predictions-in-python/)，计算预测概率和预期概率之间的均方误差。
 
 这可以使用[brier _ score _ loss()sci kit-learn 功能](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html)来计算。这个分数被最小化，满分为 0.0 分。我们可以通过将预测分数与参考分数进行比较来将分数反转为最大化，显示模型与 0.0 到 1.0 之间的参考分数相比有多好。任何得分低于 0.0 的模型都表示技能低于参考模型。这被称为 Brier 技能评分，简称 BSS。
 
@@ -279,7 +279,7 @@ def load_dataset(full_path):
 
 首先，我们需要一个 Brier 分数作为参考预测。我们预测概率的问题的参考预测是数据集内正类标签的概率。
 
-在这种情况下，正的类标签表示非存活，并且在数据集中出现大约 26%。因此，预测约 0.26471 代表此数据集上预测模型的最坏情况或基线性能。任何比这个布里埃得分高的模型都有一些技能，而任何比这个布里埃得分低的模型都没有技能。简明技能评分抓住了这一重要关系。我们可以在 k 重交叉验证过程中为每个训练集自动计算这个默认预测策略的 Brier 分数，然后将其用作给定模型的比较点。
+在这种情况下，正的类标签表示非存活，并且在数据集中出现大约 26%。因此，预测约 0.26471 代表此数据集上预测模型的最坏情况或基线表现。任何比这个布里埃得分高的模型都有一些技能，而任何比这个布里埃得分低的模型都没有技能。简明技能评分抓住了这一重要关系。我们可以在 k 重交叉验证过程中为每个训练集自动计算这个默认预测策略的 Brier 分数，然后将其用作给定模型的比较点。
 
 ```py
 ...
@@ -307,7 +307,7 @@ def brier_skill_score(y_true, y_prob):
 
 接下来，我们可以使用 *brier_skill_score()* 函数，使用重复的分层 k 重交叉验证来评估模型。
 
-要使用我们的自定义性能指标，我们可以使用 [make_scorer() scikit-learn 函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html)，该函数采用我们的自定义函数的名称，并创建一个指标，我们可以使用 scikit-learn API 来评估模型。我们将把 *needs_proba* 参数设置为 True，以确保被评估的模型使用 *predict_proba()* 函数进行预测，以确保它们给出概率而不是类标签。
+要使用我们的自定义表现指标，我们可以使用 [make_scorer() scikit-learn 函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html)，该函数采用我们的自定义函数的名称，并创建一个指标，我们可以使用 scikit-learn API 来评估模型。我们将把 *needs_proba* 参数设置为 True，以确保被评估的模型使用 *predict_proba()* 函数进行预测，以确保它们给出概率而不是类标签。
 
 ```py
 ...
@@ -435,7 +435,7 @@ print('Mean BSS: %.3f (%.3f)' % (mean(scores), std(scores)))
 Mean BSS: -0.000 (0.000)
 ```
 
-现在我们已经有了测试工具和性能基线，我们可以开始在这个数据集上评估一些模型了。
+现在我们已经有了测试工具和表现基线，我们可以开始在这个数据集上评估一些模型了。
 
 ## 评估概率模型
 
@@ -695,7 +695,7 @@ pyplot.show()
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到，除了高斯过程分类器(GPC)之外，标准化对算法没有太大影响。具有标准化的 GPC 的性能大幅提升，现在是性能最好的技术。这突出了准备数据以满足每个模型的期望的重要性。
+在这种情况下，我们可以看到，除了高斯过程分类器(GPC)之外，标准化对算法没有太大影响。具有标准化的 GPC 的表现大幅提升，现在是表现最好的技术。这突出了准备数据以满足每个模型的期望的重要性。
 
 ```py
 >Logisti 0.065 (0.121)
@@ -705,7 +705,7 @@ pyplot.show()
 >Gaussia 0.092 (0.106)
 ```
 
-为每种算法的结果创建方框图和须图，显示平均性能的差异(绿色三角形)和三种表现最好的方法之间相似的分数分布。
+为每种算法的结果创建方框图和须图，显示平均表现的差异(绿色三角形)和三种表现最好的方法之间相似的分数分布。
 
 这表明所有三种概率方法都在数据集中发现相同的输入到概率的一般映射。
 
@@ -957,7 +957,7 @@ data=[38, 69, 21], Survival=53.389%
 具体来说，您了解到:
 
 *   如何加载和探索数据集，并为数据准备和模型选择产生想法。
-*   如何评估一套概率模型，并通过适当的数据准备提高它们的性能。
+*   如何评估一套概率模型，并通过适当的数据准备提高它们的表现。
 *   如何拟合最终模型并使用它来预测特定情况下的概率。
 
 你有什么问题吗？

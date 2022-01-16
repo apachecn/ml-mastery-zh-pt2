@@ -43,7 +43,7 @@
 
 例如，一个变量可能以英尺为单位，另一个以米为单位，等等。
 
-如果所有变量都缩放到相同的范围，一些机器学习算法的性能会好得多，例如将所有变量缩放到 0 到 1 之间的值，称为归一化。
+如果所有变量都缩放到相同的范围，一些机器学习算法的表现会好得多，例如将所有变量缩放到 0 到 1 之间的值，称为归一化。
 
 这影响了使用输入加权和的算法，如线性模型和神经网络，以及使用距离度量的模型，如支持向量机和 k 近邻。
 
@@ -269,7 +269,7 @@ print('Mean MAE: %.3f' % (s_mean))
 Mean MAE: 3.191
 ```
 
-我们不限于使用缩放对象；例如，我们还可以探索对目标变量使用其他数据变换，如 [PowerTransformer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html) ，可以使每个变量更像高斯(使用 [Yeo-Johnson 变换](https://en.wikipedia.org/wiki/Power_transform))并提高线性模型的性能。
+我们不限于使用缩放对象；例如，我们还可以探索对目标变量使用其他数据变换，如 [PowerTransformer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html) ，可以使每个变量更像高斯(使用 [Yeo-Johnson 变换](https://en.wikipedia.org/wiki/Power_transform))并提高线性模型的表现。
 
 默认情况下，PowerTransformer 还会在执行转换后对每个变量进行标准化。
 

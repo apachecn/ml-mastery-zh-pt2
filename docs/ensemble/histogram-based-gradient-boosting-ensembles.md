@@ -135,7 +135,7 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会评估模型在合成数据集上的性能，并报告平均和标准偏差分类精度。
+运行该示例会评估模型在合成数据集上的表现，并报告平均和标准偏差分类精度。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -145,9 +145,9 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 Accuracy: 0.943 (0.007)
 ```
 
-我们还可以探索箱的数量对模型性能的影响。
+我们还可以探索箱的数量对模型表现的影响。
 
-下面的示例评估了模型的性能，每个连续输入要素的箱数从 50 到(大约)250 不等，增量为 50。
+下面的示例评估了模型的表现，每个连续输入要素的箱数从 50 到(大约)250 不等，增量为 50。
 
 下面列出了完整的示例。
 
@@ -222,7 +222,7 @@ pyplot.show()
 
 创建一个图形，使用方框图和触须图比较每种配置的准确度分数分布。
 
-在这种情况下，我们可以看到，增加直方图中的箱数似乎会减少分布的扩散，尽管这可能会降低模型的平均性能。
+在这种情况下，我们可以看到，增加直方图中的箱数似乎会减少分布的扩散，尽管这可能会降低模型的平均表现。
 
 ![Box and Whisker Plots of the Number of Bins for the Scikit-Learn Histogram Gradient Boosting Ensemble](img/728d260ed6c30a3970c94a49f6074872.png)
 
@@ -272,7 +272,7 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会评估模型在合成数据集上的性能，并报告平均和标准偏差分类精度。
+运行该示例会评估模型在合成数据集上的表现，并报告平均和标准偏差分类精度。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -326,7 +326,7 @@ n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 ```
 
-运行该示例会评估模型在合成数据集上的性能，并报告平均和标准偏差分类精度。
+运行该示例会评估模型在合成数据集上的表现，并报告平均和标准偏差分类精度。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 

@@ -89,7 +89,7 @@
 
 它涉及 60 个实值输入和一个两类目标变量。数据集中有 208 个示例，类别相当均衡。
 
-使用重复的分层 10 倍交叉验证，基线分类算法可以达到大约 53.4%的分类精度。[使用重复的分层 10 倍交叉验证，该数据集的最高性能](https://machinelearningmastery.com/results-for-standard-classification-and-regression-machine-learning-datasets/)约为 88%。
+使用重复的分层 10 倍交叉验证，基线分类算法可以达到大约 53.4%的分类精度。[使用重复的分层 10 倍交叉验证，该数据集的最高表现](https://machinelearningmastery.com/results-for-standard-classification-and-regression-machine-learning-datasets/)约为 88%。
 
 该数据集描述了岩石或模拟地雷的雷达回波。
 
@@ -295,7 +295,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-运行该示例，我们可以看到稳健的定标器变换将性能从无变换时的 79.7%提升到有变换时的约 81.9%。
+运行该示例，我们可以看到稳健的定标器变换将表现从无变换时的 79.7%提升到有变换时的约 81.9%。
 
 ```py
 Accuracy: 0.819 (0.076)
@@ -309,7 +309,7 @@ Accuracy: 0.819 (0.076)
 
 这由作为元组的“*分位数 _ 范围*”参数指定。
 
-可以指定其他值，这些值可能会提高模型的性能，例如更宽的范围允许更少的值被视为异常值，或者更窄的范围允许更多的值被视为异常值。
+可以指定其他值，这些值可能会提高模型的表现，例如更宽的范围允许更少的值被视为异常值，或者更窄的范围允许更多的值被视为异常值。
 
 下面的例子探讨了从第 1 到第 99 个百分点到第 30 到第 70 个百分点范围的不同定义的影响。
 

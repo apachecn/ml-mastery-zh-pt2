@@ -16,7 +16,7 @@
 
 *   当使用许多机器学习算法时，数据缩放是推荐的预处理步骤。
 *   数据缩放可以通过规范化或标准化实值输入和输出变量来实现。
-*   如何应用标准化和规范化提高预测建模算法的性能？
+*   如何应用标准化和规范化提高预测建模算法的表现？
 
 **用我的新书[机器学习的数据准备](https://machinelearningmastery.com/data-preparation-for-machine-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
@@ -254,7 +254,7 @@ print(scaled)
 
 它涉及 60 个实值输入和一个两类目标变量。数据集中有 208 个示例，类别相当均衡。
 
-使用[重复分层 10 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)，基线分类算法可以达到约 53.4%的分类准确率。使用重复的分层 10 倍交叉验证，该数据集的最高性能约为 88%。
+使用[重复分层 10 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)，基线分类算法可以达到约 53.4%的分类准确率。使用重复的分层 10 倍交叉验证，该数据集的最高表现约为 88%。
 
 该数据集描述了岩石或模拟地雷的雷达回波。
 
@@ -462,7 +462,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-运行该示例，我们可以看到，最小最大缩放器变换将性能从没有变换时的 79.7%提升到有变换时的 81.3%。
+运行该示例，我们可以看到，最小最大缩放器变换将表现从没有变换时的 79.7%提升到有变换时的 81.3%。
 
 ```py
 Accuracy: 0.813 (0.085)
@@ -575,7 +575,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-运行该示例，我们可以看到*标准缩放器*变换将性能从无变换时的 79.7%提升到有变换时的 81.0%，尽管比使用*最小最大缩放器*的结果略低。
+运行该示例，我们可以看到*标准缩放器*变换将表现从无变换时的 79.7%提升到有变换时的 81.0%，尽管比使用*最小最大缩放器*的结果略低。
 
 ```py
 Accuracy: 0.810 (0.080)
@@ -601,7 +601,7 @@ Accuracy: 0.810 (0.080)
 
 预测建模问题可能很复杂，并且可能不清楚如何最好地缩放输入数据。
 
-如果有疑问，标准化输入序列。如果您有资源，探索使用原始数据、标准化数据和规范化数据建模，并查看结果模型的性能是否有有益的差异。
+如果有疑问，标准化输入序列。如果您有资源，探索使用原始数据、标准化数据和规范化数据建模，并查看结果模型的表现是否有有益的差异。
 
 > 如果输入变量是线性组合的，如在 MLP[多层感知器]中，那么很少严格需要标准化输入，至少在理论上是这样。[……]然而，有各种各样的实际原因，为什么标准化输入可以使训练更快，并减少陷入局部最优的机会。
 
@@ -619,7 +619,7 @@ Accuracy: 0.810 (0.080)
 
 这是不可知的。
 
-根据每次转换准备的数据评估模型，并使用转换或转换组合，为模型上的数据集带来最佳性能。
+根据每次转换准备的数据评估模型，并使用转换或转换组合，为模型上的数据集带来最佳表现。
 
 #### 问:我如何处理越界值？
 
@@ -635,7 +635,7 @@ Accuracy: 0.810 (0.080)
 
 ### 教程
 
-*   [如何使用数据缩放提高深度学习模型的稳定性和性能](https://machinelearningmastery.com/how-to-improve-neural-network-stability-and-modeling-performance-with-data-scaling/)
+*   [如何使用数据缩放提高深度学习模型的稳定性和表现](https://machinelearningmastery.com/how-to-improve-neural-network-stability-and-modeling-performance-with-data-scaling/)
 *   [使用 Scikit-Learn 重新缩放 Python 中的机器学习数据](https://machinelearningmastery.com/rescaling-data-for-machine-learning-in-python-with-scikit-learn/)
 *   [4 时间序列预测的常用机器学习数据转换](https://machinelearningmastery.com/machine-learning-data-transforms-for-time-series-forecasting/)
 *   [如何在 Python 中扩展长短期记忆网络的数据](https://machinelearningmastery.com/how-to-scale-data-for-long-short-term-memory-networks-in-python/)
@@ -665,7 +665,7 @@ Accuracy: 0.810 (0.080)
 
 *   当使用许多机器学习算法时，数据缩放是推荐的预处理步骤。
 *   数据缩放可以通过规范化或标准化实值输入和输出变量来实现。
-*   如何应用标准化和规范化提高预测建模算法的性能？
+*   如何应用标准化和规范化提高预测建模算法的表现？
 
 **你有什么问题吗？**
 在下面的评论中提问，我会尽力回答。

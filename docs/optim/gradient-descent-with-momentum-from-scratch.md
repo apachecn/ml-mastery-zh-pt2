@@ -317,7 +317,7 @@ print('Done!')
 print('f(%s) = %f' % (best, score))
 ```
 
-运行该示例从搜索空间中的随机点开始，然后应用梯度下降算法，报告一路上的性能。
+运行该示例从搜索空间中的随机点开始，然后应用梯度下降算法，报告一路上的表现。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -614,7 +614,7 @@ print('Done!')
 print('f(%s) = %f' % (best, score))
 ```
 
-运行该示例从搜索空间中的随机点开始，然后应用带有动量的梯度下降算法，报告一路上的性能。
+运行该示例从搜索空间中的随机点开始，然后应用带有动量的梯度下降算法，报告一路上的表现。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 

@@ -27,7 +27,7 @@ caret R 包提供了自动报告数据中属性的相关性和重要性的工具
 
 ## 删除冗余特征
 
-数据可以包含彼此高度相关的属性。如果删除高度相关的属性，许多方法的性能会更好。
+数据可以包含彼此高度相关的属性。如果删除高度相关的属性，许多方法的表现会更好。
 
 插入符号 R 包提供了 findCorrelation，它将分析数据属性的[相关性](https://machinelearningmastery.com/how-to-use-correlation-to-understand-the-relationship-between-variables/)矩阵，报告可以删除的属性。
 

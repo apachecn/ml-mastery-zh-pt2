@@ -131,7 +131,7 @@ GANs 是一种训练生成模型的聪明方法，它通过两个子模型将问
 
 生成性对抗网络很难训练。
 
-这是因为该架构同时涉及一个生成器和一个鉴别器模型，它们在零和游戏中竞争。一个模型的改进是以另一个模型的性能下降为代价的。结果是一个非常不稳定的训练过程，经常会导致失败，例如，一个生成器总是生成相同的图像或生成无意义的图像。
+这是因为该架构同时涉及一个生成器和一个鉴别器模型，它们在零和游戏中竞争。一个模型的改进是以另一个模型的表现下降为代价的。结果是一个非常不稳定的训练过程，经常会导致失败，例如，一个生成器总是生成相同的图像或生成无意义的图像。
 
 因此，有许多试探法或最佳实践(称为“ [GAN 黑客](https://machinelearningmastery.com/how-to-code-generative-adversarial-network-hacks/)”)可以在配置和训练您的 GAN 模型时使用。
 
@@ -139,7 +139,7 @@ GANs 是一种训练生成模型的聪明方法，它通过两个子模型将问
 
 在实施您的 GAN 模型时，此体系结构涉及到七个要考虑的最佳实践:
 
-1.  使用条纹卷积进行下采样(例如，不要使用[汇集图层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/))。
+1.  使用条纹卷积进行下采样(例如，不要使用[池化图层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/))。
 2.  使用交错卷积进行上采样(例如，使用转置卷积层)。
 3.  使用 LeakyReLU(例如不要使用[标准 ReLU](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/) )。
 4.  使用[批量标准化](https://machinelearningmastery.com/how-to-accelerate-learning-of-deep-neural-networks-with-batch-normalization/)(例如激活后标准化图层输出)。

@@ -1,4 +1,4 @@
-# 人脸识别深度学习入门
+# 面向人脸识别的深度学习入门
 
 > 原文：<https://machinelearningmastery.com/introduction-to-deep-learning-for-face-recognition/>
 
@@ -178,13 +178,13 @@
 
 ——[深度人脸识别:一项调查](https://arxiv.org/abs/1804.06655)，2018。
 
-鉴于 AlexNet 在 2012 年对更简单的图像分类问题的突破，2014 年和 2015 年出现了一系列关于人脸识别深度学习方法的研究和出版物。功能很快达到接近人类水平的性能，然后在三年内超过标准人脸识别数据集的人类水平性能，考虑到之前几十年的努力，这是一个惊人的改进速度。
+鉴于 AlexNet 在 2012 年对更简单的图像分类问题的突破，2014 年和 2015 年出现了一系列关于人脸识别深度学习方法的研究和出版物。功能很快达到接近人类水平的表现，然后在三年内超过标准人脸识别数据集的人类水平表现，考虑到之前几十年的努力，这是一个惊人的改进速度。
 
 人脸识别深度学习可能有四个里程碑式的系统推动了这些创新；它们是:DeepFace、DeepID 系列系统、VGGFace 和 FaceNet。让我们简要地讨论一下每一个。
 
-DeepFace 是由 Yaniv Taigman 等人从[脸书 AI Research](https://research.fb.com/category/facebook-ai-research/) 和特拉维夫描述的基于深度卷积神经网络的系统。这在 2014 年的论文《T2 深度人脸:缩小人脸验证中与人类水平的差距》中有所描述这可能是使用深度学习进行人脸识别的第一次重大飞跃，在标准基准数据集上实现了接近人类水平的性能。
+DeepFace 是由 Yaniv Taigman 等人从[脸书 AI Research](https://research.fb.com/category/facebook-ai-research/) 和特拉维夫描述的基于深度卷积神经网络的系统。这在 2014 年的论文《T2 深度人脸:缩小人脸验证中与人类水平的差距》中有所描述这可能是使用深度学习进行人脸识别的第一次重大飞跃，在标准基准数据集上实现了接近人类水平的表现。
 
-> 我们的方法在野生(LFW)数据集中的标记人脸上达到 97.35%的准确率，将当前技术水平的误差降低了 27%以上，接近人类水平的性能。
+> 我们的方法在野生(LFW)数据集中的标记人脸上达到 97.35%的准确率，将当前技术水平的误差降低了 27%以上，接近人类水平的表现。
 
 ——[deep Face:缩小与人脸验证中人层面表现的差距](https://ieeexplore.ieee.org/document/6909616)，2014。
 
@@ -194,7 +194,7 @@ DeepID，或“T0”深藏身份特征，是一系列系统(如 DeepID、DeepID2
 
 ——[联合识别验证深度学习人脸表示](https://papers.nips.cc/paper/5416-deep-learning-face-representation-by-joint-identification-verification.pdf)，2014。
 
-DeepID 系统是第一批在任务中获得优于人类的性能的深度学习模型之一，例如 DeepID2 在野生(LFW)数据集中的[标记人脸上获得了 99.15%的性能，优于人类的性能为 97.53%。随后的系统，如 FaceNet 和 VGGFace，对这些结果进行了改进。](http://vis-www.cs.umass.edu/lfw/)
+DeepID 系统是第一批在任务中获得优于人类的表现的深度学习模型之一，例如 DeepID2 在野生(LFW)数据集中的[标记人脸上获得了 99.15%的表现，优于人类的表现为 97.53%。随后的系统，如 FaceNet 和 VGGFace，对这些结果进行了改进。](http://vis-www.cs.umass.edu/lfw/)
 
 谷歌的 Florian Schroff 等人在 2015 年发表的题为“ [FaceNet:人脸识别和聚类的统一嵌入”](https://arxiv.org/abs/1503.03832)的论文中描述了 FaceNet 他们的系统取得了当时最先进的成果，并提出了一种被称为“T2”三重损失“T3”的创新，允许图像被有效地编码为特征向量，从而允许通过距离计算进行快速相似度计算和匹配。
 
@@ -233,7 +233,7 @@ VGGFace(因为没有更好的名字)是由牛津大学视觉几何组(VGG)的 Om
 *   [人脸识别:文献综述](https://dl.acm.org/citation.cfm?id=954342)，2003。
 *   [人脸检测:一项调查](https://www.sciencedirect.com/science/article/pii/S107731420190921X)，2001。
 *   [人脸的人与机器识别:一项调查](https://ieeexplore.ieee.org/abstract/document/381842)，1995。
-*   [鲁棒实时目标检测](https://link.springer.com/article/10.1023/B:VISI.0000013087.49260.fb)，2004。
+*   [鲁棒实时对象检测](https://link.springer.com/article/10.1023/B:VISI.0000013087.49260.fb)，2004。
 *   [使用特征脸的人脸识别](https://www.computer.org/csdl/proceedings/cvpr/1991/2148/00/00139758.pdf)，1991。
 
 ### 深度学习人脸识别论文
@@ -246,7 +246,7 @@ VGGFace(因为没有更好的名字)是由牛津大学视觉几何组(VGG)的 Om
 *   [来自预测万类的深度学习人脸表征](https://dl.acm.org/citation.cfm?id=2679769)，2014。
 *   [使用深度卷积神经网络的多视角人脸检测](https://arxiv.org/abs/1502.02766)，2015。
 *   [从面部部位反应到人脸检测:深度学习方法](https://arxiv.org/abs/1509.06451)，2015。
-*   [用 GaussianFace](https://arxiv.org/abs/1404.3840) 超越 LFW 的人类级人脸验证性能，2014。
+*   [用 GaussianFace](https://arxiv.org/abs/1404.3840) 超越 LFW 的人类级人脸验证表现，2014。
 
 ### 文章
 

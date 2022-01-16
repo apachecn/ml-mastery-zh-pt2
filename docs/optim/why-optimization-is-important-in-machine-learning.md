@@ -148,7 +148,7 @@ Let’s get started.![Why Optimization Is Important in Machine Learning](img/bca
 
 机器学习算法具有超参数，这些超参数可以被配置为针对特定数据集定制算法。
 
-虽然许多超参数的动态是已知的，但是它们对给定数据集上的结果模型的性能的具体影响是未知的。因此，测试所选机器学习算法的关键算法超参数的一组值是标准做法。
+虽然许多超参数的动态是已知的，但是它们对给定数据集上的结果模型的表现的具体影响是未知的。因此，测试所选机器学习算法的关键算法超参数的一组值是标准做法。
 
 这被称为超参数调谐或[超参数优化](https://en.wikipedia.org/wiki/Hyperparameter_optimization)。
 

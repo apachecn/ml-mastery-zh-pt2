@@ -20,23 +20,23 @@
 
 [![diabetes boosting results accuracy](img/e02dd800f95b995f516fdaf8f8ab3aaa.png)](https://machinelearningmastery.com/wp-content/uploads/2014/04/diabetes-boosting-results-accuracy.png)
 
-提高了糖尿病数据集上的算法精度平均值和各种数据集上逻辑回归性能的散点图。原始结果为红色，而增强结果为蓝色。
+提高了糖尿病数据集上的算法精度平均值和各种数据集上逻辑回归表现的散点图。原始结果为红色，而增强结果为蓝色。
 
-很明显，boosting 对 LogisticRegression 没有影响，但是明显恶化了树算法的性能。根据韦卡实验者的结果，与增强的 C4.5、随机森林和增强的随机森林给出的结果相比，增强的物流出口的性能具有统计学上的显著差异。
+很明显，boosting 对 LogisticRegression 没有影响，但是明显恶化了树算法的表现。根据韦卡实验者的结果，与增强的 C4.5、随机森林和增强的随机森林给出的结果相比，增强的物流出口的表现具有统计学上的显著差异。
 
 由于 RandomForest 已经包含了一种集成方法，即装袋，增加助推可能会导致过度拟合，因此可以解释表现不佳的原因。
 
 [![diabetes boosting results accuracy weka](img/1d39bf537248e2c0095ed33a7c9d874a.png)](https://machinelearningmastery.com/wp-content/uploads/2014/04/diabetes-boosting-results-accuracy-weka.png)
 
-Weka Experimenter 输出将增强逻辑回归的性能与其他算法的性能进行比较。
+Weka Experimenter 输出将增强逻辑回归的表现与其他算法的表现进行比较。
 
-无论如何，我们仍然无法用性能最好的算法 LogisticRegression 超过 77.47%的准确率。这可能是由于数据的限制或交叉验证值低。我们发现，在某些情况下，例如使用 C4.5，执行 AdaBoost 后，准确率从 74.28%急剧下降到 71.4%。
+无论如何，我们仍然无法用表现最好的算法 LogisticRegression 超过 77.47%的准确率。这可能是由于数据的限制或交叉验证值低。我们发现，在某些情况下，例如使用 C4.5，执行 AdaBoost 后，准确率从 74.28%急剧下降到 71.4%。
 
 接下来，我们将看看每个增强算法的 ROC 区域。
 
 [![diabetes boosting results auc](img/d4a2fa65a8a4ac80fd804238530193aa.png)](https://machinelearningmastery.com/wp-content/uploads/2014/04/diabetes-boosting-results-auc.png)
 
-增强算法在糖尿病数据集上的 ROC 面积平均值和在各种数据集上的 logistic 回归性能散点图。原始结果为红色，而增强结果为蓝色。
+增强算法在糖尿病数据集上的 ROC 面积平均值和在各种数据集上的 logistic 回归表现散点图。原始结果为红色，而增强结果为蓝色。
 
 我们可以看到散点图上的点形成了比较平滑的趋势。换句话说，数据点之间的差异较小。我们在这里的结果非常有趣:除了 C4.5 之外的所有增强算法都显示 ROC 面积的较小值。这意味着与其他增强的算法相比，增强的 C4.5 给出的假阳性稍少，而真阳性稍多。
 
@@ -60,9 +60,9 @@ Weka Experimenter 输出将 Boosted Logistic 回归的 F1 分数与其他算法�
 
 ## 移除测试假设的属性
 
-我们可能也有兴趣改变研究，使其非侵入性，因此只分析算法在四个属性上的性能:质量、皮肤、年龄和 pedi。这可能有助于允许医疗专业人员进行更大规模的糖尿病测试，并使测试更快。当然，有了这些优势，我们可能会失去一些准确性。
+我们可能也有兴趣改变研究，使其非侵入性，因此只分析算法在四个属性上的表现:质量、皮肤、年龄和 pedi。这可能有助于允许医疗专业人员进行更大规模的糖尿病测试，并使测试更快。当然，有了这些优势，我们可能会失去一些准确性。
 
-基于我们在散点图中看到的数据，我相信我们的算法在数据集上会表现得很好，但不如标准数据集。创建一个新的数据集(并将其命名为 diabetes _ noninvasive.arff)是检验我们自己对糖尿病发病假设的一种方法，即风险随着肥胖和年龄的增长而增加。以类似的方式，我能够使用 Weka Explorer 移除属性，然后使用 Weka Experimenter 分析算法性能。结果如下所示:
+基于我们在散点图中看到的数据，我相信我们的算法在数据集上会表现得很好，但不如标准数据集。创建一个新的数据集(并将其命名为 diabetes _ noninvasive.arff)是检验我们自己对糖尿病发病假设的一种方法，即风险随着肥胖和年龄的增长而增加。以类似的方式，我能够使用 Weka Explorer 移除属性，然后使用 Weka Experimenter 分析算法表现。结果如下所示:
 
 [![diabetes less features results accuracy](img/318691853de6254ed25ca927f604188f.png)](https://machinelearningmastery.com/wp-content/uploads/2014/04/diabetes-less-features-results-accuracy.png)
 
@@ -70,7 +70,7 @@ Weka Experimenter 输出将 Boosted Logistic 回归的 F1 分数与其他算法�
 
 [![diabetes less features results accuracy weka](img/977f8c66fc81575d187f135f77c15d73.png)](https://machinelearningmastery.com/wp-content/uploads/2014/04/diabetes-less-features-results-accuracy-weka.png)
 
-Weka Experimenter 输出将逻辑回归的性能与其他算法的性能进行比较。
+Weka Experimenter 输出将逻辑回归的表现与其他算法的表现进行比较。
 
 通过所有指标，正如预测的那样，无创数据集没有提供非常准确的结果。我们发现类似的趋势，正如我们在早期的分析中所做的那样，即物流出口仍然表现得最准确。
 
@@ -94,8 +94,8 @@ Weka Experimenter 输出将 Boosted Logistic 回归的 F1 度量与其他算法�
 
 ## 结论
 
-在这项研究中，我们比较了各种算法的性能，发现逻辑回归在标准的、未改变的数据集上表现良好。我们试图了解不同的改变数据集如何影响我们的结果。
+在这项研究中，我们比较了各种算法的表现，发现逻辑回归在标准的、未改变的数据集上表现良好。我们试图了解不同的改变数据集如何影响我们的结果。
 
-此外，我们密切关注物流配送，并通过各种指标分析其性能。这里的工作让我对机器学习在医学诊断中的应用有了更好的理解。这也是关于数据转换和算法分析的重要一课。
+此外，我们密切关注物流配送，并通过各种指标分析其表现。这里的工作让我对机器学习在医学诊断中的应用有了更好的理解。这也是关于数据转换和算法分析的重要一课。
 
 有些不幸的是，许多医学数据集很小(这可能是由于患者的保密性)，因为更大的数据集会给我们分析带来更大的灵活性和鲁棒性。然而，我坚信这项研究是一个良好的开端，有助于建立帮助诊断患者的方法，并弥合医生和大数据集之间的差距。

@@ -18,7 +18,7 @@
 
 *   当数值变量具有高斯或标准概率分布时，许多机器学习算法更喜欢或表现得更好。
 *   分位数转换是一种将数值输入或输出变量转换为高斯或均匀概率分布的技术。
-*   如何利用 QuantileTransformer 改变数值变量的概率分布，提高预测模型的性能。
+*   如何利用 QuantileTransformer 改变数值变量的概率分布，提高预测模型的表现。
 
 **用我的新书[机器学习的数据准备](https://machinelearningmastery.com/data-preparation-for-machine-learning/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
@@ -40,7 +40,7 @@
 
 ## 更改数据分布
 
-当变量分布为高斯分布时，许多机器学习算法的性能更好。
+当变量分布为高斯分布时，许多机器学习算法的表现更好。
 
 回想一下，每个变量的观测值可能被认为是从概率分布中得出的。高斯分布是常见的钟形分布。常见到经常被称为“*正态*分布。
 
@@ -127,7 +127,7 @@ pyplot.show()
 
 它涉及 60 个实值输入和一个两类目标变量。数据集中有 208 个示例，类别相当均衡。
 
-使用重复的分层 10 倍交叉验证，基线分类算法可以达到大约 53.4%的分类精度。[使用重复的分层 10 倍交叉验证，该数据集的最高性能](https://machinelearningmastery.com/results-for-standard-classification-and-regression-machine-learning-datasets/)约为 88%。
+使用重复的分层 10 倍交叉验证，基线分类算法可以达到大约 53.4%的分类精度。[使用重复的分层 10 倍交叉验证，该数据集的最高表现](https://machinelearningmastery.com/results-for-standard-classification-and-regression-machine-learning-datasets/)约为 88%。
 
 该数据集描述了岩石或模拟地雷的声纳回波。
 
@@ -234,7 +234,7 @@ Accuracy: 0.797 (0.073)
 
 ## 正规分位数变换
 
-通常希望将输入变量转换为具有正态概率分布，以提高建模性能。
+通常希望将输入变量转换为具有正态概率分布，以提高建模表现。
 
 我们可以使用*quantilettransformer*类应用分位数转换，并将“*输出 _ 分布*参数设置为“*正常*”。我们还必须将“*n _ 分位数*”参数设置为小于训练数据集中观测值数量的值，在本例中为 100。
 
@@ -319,7 +319,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-运行该示例，我们可以看到正常的分位数变换将性能从没有变换时的 79.7%提升到有变换时的约 81.7%。
+运行该示例，我们可以看到正常的分位数变换将表现从没有变换时的 79.7%提升到有变换时的约 81.7%。
 
 ```py
 Accuracy: 0.817 (0.087)
@@ -412,7 +412,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-运行该示例，我们可以看到均匀变换将性能从没有变换时的 79.7%提升到有变换时的 84.5%，优于得分为 81.7%的正常变换。
+运行该示例，我们可以看到均匀变换将表现从没有变换时的 79.7%提升到有变换时的 84.5%，优于得分为 81.7%的正常变换。
 
 ```py
 Accuracy: 0.845 (0.074)
@@ -503,9 +503,9 @@ pyplot.show()
 
 会创建一个折线图，显示转换中使用的分位数与所得模型的分类精度。
 
-我们可以看到一个值小于 10 的凸起，之后性能下降并持平。
+我们可以看到一个值小于 10 的凸起，之后表现下降并持平。
 
-结果强调，探索不同的分布和分位数可能会有一些好处，看看是否可以实现更好的性能。
+结果强调，探索不同的分布和分位数可能会有一些好处，看看是否可以实现更好的表现。
 
 ![Line Plot of Number of Quantiles vs. Classification Accuracy of KNN on the Sonar Dataset](img/33dc7b3ce37b2b78ca64df27b59f6cc6.png)
 
@@ -542,7 +542,7 @@ pyplot.show()
 
 *   当数值变量具有高斯或标准概率分布时，许多机器学习算法更喜欢或表现得更好。
 *   分位数转换是一种将数值输入或输出变量转换为高斯或均匀概率分布的技术。
-*   如何利用 QuantileTransformer 改变数值变量的概率分布，提高预测模型的性能。
+*   如何利用 QuantileTransformer 改变数值变量的概率分布，提高预测模型的表现。
 
 **你有什么问题吗？**
 在下面的评论中提问，我会尽力回答。

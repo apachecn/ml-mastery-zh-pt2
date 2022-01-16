@@ -105,9 +105,9 @@ model.add(Dense(1))
 
 ### 美国有线电视新闻网辍学正规化
 
-丢弃可以在卷积层(如 Conv2D)之后和汇集层(如 MaxPooling2D)之后使用。
+丢弃可以在卷积层(如 Conv2D)之后和池化层(如 MaxPooling2D)之后使用。
 
-通常，仅在[汇集图层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)后才使用退出，但这只是一个粗略的启发。
+通常，仅在[池化图层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)后才使用退出，但这只是一个粗略的启发。
 
 ```py
 # example of dropout for a CNN
@@ -126,7 +126,7 @@ model.add(Dense(1))
 
 在这种情况下，删除将应用于要素图中的每个元素或单元。
 
-卷积神经网络使用丢弃的另一种方法是从卷积层中丢弃整个特征图，然后在汇集期间不使用这些特征图。这被称为空间脱落(或“*空间脱落*”)。
+卷积神经网络使用丢弃的另一种方法是从卷积层中丢弃整个特征图，然后在池化期间不使用这些特征图。这被称为空间脱落(或“*空间脱落*”)。
 
 > 相反，我们制定了一个新的退出方法，我们称之为空间退出。对于给定的卷积特征张量[…][我们]在整个特征映射中扩展缺失值。
 
@@ -256,7 +256,7 @@ pyplot.show()
 
 该模型将有一个隐藏层，该隐藏层的节点可能比解决该问题所需的节点更多，这为过度填充提供了机会。我们还将对模型进行比要求更长时间的训练，以确保模型溢出。
 
-在定义模型之前，我们将把数据集分成训练集和测试集，用 30 个例子训练模型，用 70 个例子评估拟合模型的性能。
+在定义模型之前，我们将把数据集分成训练集和测试集，用 30 个例子训练模型，用 70 个例子评估拟合模型的表现。
 
 ```py
 # generate 2d classification dataset
@@ -290,7 +290,7 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=4000, verbose=0)
 ```
 
-我们可以在测试数据集上评估模型的性能并报告结果。
+我们可以在测试数据集上评估模型的表现并报告结果。
 
 ```py
 # evaluate the model
@@ -299,7 +299,7 @@ _, test_acc = model.evaluate(testX, testy, verbose=0)
 print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 ```
 
-最后，我们将绘制模型在每个时期的列车和测试集上的性能。
+最后，我们将绘制模型在每个时期的列车和测试集上的表现。
 
 如果模型确实过度训练了训练数据集，那么随着模型学习训练数据集中的统计噪声，我们将期望训练集上的精度线图继续增加，并且测试集上升，然后再次下降。
 
@@ -343,9 +343,9 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例会报告列车和测试数据集上的模型性能。
+运行该示例会报告列车和测试数据集上的模型表现。
 
-我们可以看到，该模型在训练数据集上的性能优于测试数据集，这可能是过度拟合的一个迹象。
+我们可以看到，该模型在训练数据集上的表现优于测试数据集，这可能是过度拟合的一个迹象。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -412,7 +412,7 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例会报告列车和测试数据集上的模型性能。
+运行该示例会报告列车和测试数据集上的模型表现。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 

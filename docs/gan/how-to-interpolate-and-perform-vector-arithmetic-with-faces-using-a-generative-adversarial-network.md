@@ -617,7 +617,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
 
 下面定义了*summary _ performance()*和 *save_plot()* 功能。
 
-*summary _ performance()*函数生成样本，评估鉴别器在真样本和假样本上的性能。报告了分类精度，并可能提供对模型性能的洞察。调用 *save_plot()* 创建并保存生成的图像的图，然后将模型保存到文件中。
+*summary _ performance()*函数生成样本，评估鉴别器在真样本和假样本上的表现。报告了分类精度，并可能提供对模型表现的洞察。调用 *save_plot()* 创建并保存生成的图像的图，然后将模型保存到文件中。
 
 ```py
 # create and save a plot of generated images

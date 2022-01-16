@@ -467,7 +467,7 @@ class PixelNormalization(Layer):
 
 第一隐藏层是 1×1 卷积层。输出块包括一个*迷你 batchStdev* 、3×3 和 4×4 卷积层，以及一个输出预测的全连接层。[漏 ReLU 激活函数](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)在所有层和输出层使用线性激活函数后使用。
 
-该模型按正常间隔进行训练，然后经历一个 8×8 的增长阶段。这包括添加两个 3×3 卷积层的块和一个[平均汇集下采样层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)。输入图像通过具有新的 [1×1 卷积隐藏层](https://machinelearningmastery.com/introduction-to-1x1-convolutions-to-reduce-the-complexity-of-convolutional-neural-networks/)的新块。输入图像也通过下采样层和旧的 1×1 卷积隐藏层。旧的 1×1 卷积层和新块的输出然后通过*加权求和*层组合。
+该模型按正常间隔进行训练，然后经历一个 8×8 的增长阶段。这包括添加两个 3×3 卷积层的块和一个[平均池化下采样层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)。输入图像通过具有新的 [1×1 卷积隐藏层](https://machinelearningmastery.com/introduction-to-1x1-convolutions-to-reduce-the-complexity-of-convolutional-neural-networks/)的新块。输入图像也通过下采样层和旧的 1×1 卷积隐藏层。旧的 1×1 卷积层和新块的输出然后通过*加权求和*层组合。
 
 经过一段时间的训练，将*加权 Sum 的*α参数从 0.0(全部旧)转换为 1.0(全部新)，然后运行另一个训练阶段，在移除旧图层和路径的情况下调整新模型。
 
@@ -817,7 +817,7 @@ def update_fadein(models, step, n_steps):
 
 接下来，生成器模型通过具有合成模型的鉴别器被更新，指示所生成的图像实际上是真实的，并且更新生成器权重以更好地欺骗鉴别器。
 
-每次训练迭代结束时都会打印模型性能摘要，总结真实(d1)和虚假(d2)图像上鉴别器的损失以及生成器(g)的损失。
+每次训练迭代结束时都会打印模型表现摘要，总结真实(d1)和虚假(d2)图像上鉴别器的损失以及生成器(g)的损失。
 
 ```py
 # train a generator and discriminator

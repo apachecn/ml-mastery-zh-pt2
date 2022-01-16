@@ -1,4 +1,4 @@
-# 斯坦福卷积神经网络视觉识别课程(复习)
+# 斯坦福卷积神经网络视觉识别课程（复习）
 
 > 原文：<https://machinelearningmastery.com/stanford-convolutional-neural-networks-for-visual-recognition-course-review/>
 

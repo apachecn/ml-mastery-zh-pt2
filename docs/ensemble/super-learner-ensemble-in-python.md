@@ -49,7 +49,7 @@
 
 ——[超级学习者](https://www.degruyter.com/view/j/sagmb.2007.6.issue-1/sagmb.2007.6.1.1309/sagmb.2007.6.1.1309.xml)，2007 年。
 
-这包括选择可能适合您的回归或分类问题的许多不同算法，并使用重采样技术评估它们在数据集上的性能，例如 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)。
+这包括选择可能适合您的回归或分类问题的许多不同算法，并使用重采样技术评估它们在数据集上的表现，例如 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)。
 
 然后选择根据 k 倍交叉验证在数据集上表现最好的算法，适合所有可用数据，然后您可以开始使用它进行预测。
 
@@ -274,7 +274,7 @@ def evaluate_models(X, y, models):
 		print('%s: RMSE %.3f' % (model.__class__.__name__, sqrt(mse)))
 ```
 
-最后，使用超级学习器(基础和元模型)对保持数据集进行预测，并评估该方法的性能。
+最后，使用超级学习器(基础和元模型)对保持数据集进行预测，并评估该方法的表现。
 
 下面的 super_learner_predictions()函数将使用元模型对新数据进行预测。
 
@@ -408,7 +408,7 @@ print('Super Learner: RMSE %.3f' % (sqrt(mean_squared_error(y_val, yhat))))
 
 运行该示例首先报告准备好的数据集的形状，然后报告元模型的数据集的形状。
 
-接下来，在保持数据集上报告每个基本模型的性能，最后，在保持数据集上报告超级学习器的性能。
+接下来，在保持数据集上报告每个基本模型的表现，最后，在保持数据集上报告超级学习器的表现。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -508,7 +508,7 @@ def fit_meta_model(X, y):
 	return model
 ```
 
-分类精度将用于报告模型性能。
+分类精度将用于报告模型表现。
 
 下面列出了使用 scikit-learn 模型进行分类的超级学习器算法的完整示例。
 
@@ -616,11 +616,11 @@ yhat = super_learner_predictions(X_val, models, meta_model)
 print('Super Learner: %.3f' % (accuracy_score(y_val, yhat) * 100))
 ```
 
-像以前一样，报告数据集和准备好的元数据集的形状，然后是基础模型在保持数据集上的性能，最后是超级模型本身在保持数据集上的性能。
+像以前一样，报告数据集和准备好的元数据集的形状，然后是基础模型在保持数据集上的表现，最后是超级模型本身在保持数据集上的表现。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到超级学习器的性能比基本学习器算法稍好。
+在这种情况下，我们可以看到超级学习器的表现比基本学习器算法稍好。
 
 ```py
 Train (500, 100) (500,) Test (500, 100) (500,)
@@ -702,7 +702,7 @@ def get_super_learner(X):
 ensemble.fit(X, y)
 ```
 
-一旦拟合，我们可以通过访问模型上的“*数据*”属性，使用 k 倍交叉验证获得训练数据集中每个基础模型的性能的良好报告。
+一旦拟合，我们可以通过访问模型上的“*数据*”属性，使用 k 倍交叉验证获得训练数据集中每个基础模型的表现的良好报告。
 
 ```py
 ...
@@ -866,7 +866,7 @@ yhat = ensemble.predict(X_val)
 print('Super Learner: %.3f' % (accuracy_score(y_val, yhat) * 100))
 ```
 
-运行该示例总结了数据集的形状、基础模型的性能，以及超级学习者在保持数据集上的性能。
+运行该示例总结了数据集的形状、基础模型的表现，以及超级学习者在保持数据集上的表现。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 

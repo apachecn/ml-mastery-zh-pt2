@@ -20,11 +20,11 @@
 *   将每套分为两组:90%用于培训，10%用于测试。
 *   从 90%的标记数据中生成一个带有算法的分类器，并将其应用于集合 1 的 10%测试数据。
 *   继续第 2 集到第 10 集
-*   对从 10 个相同大小(训练和测试)的集合中产生的 10 个分类器的性能进行平均
+*   对从 10 个相同大小(训练和测试)的集合中产生的 10 个分类器的表现进行平均
 
 ## 算法
 
-在本研究中，我们将研究 4 种算法的性能:
+在本研究中，我们将研究 4 种算法的表现:
 
 *   逻辑回归
 *   朴素贝叶斯(约翰·T2·兰利，1995 年)
@@ -71,21 +71,21 @@ C4.5(在 Weka 中也称为“J48”)是一种用于生成分类决策树的算�
 
 在数据集上执行[交叉验证](https://machinelearningmastery.com/how-to-choose-the-right-test-options-when-evaluating-machine-learning-algorithms/ "How To Choose The Right Test Options When Evaluating Machine Learning Algorithms")后，我将通过三个指标的镜头重点分析算法:[精度、ROC 面积和 F1 度量](https://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/)。
 
-基于测试，准确性将决定算法正确分类的实例的百分比。这是我们分析的一个重要开始，因为它将为我们提供每种算法的性能基线。
+基于测试，准确性将决定算法正确分类的实例的百分比。这是我们分析的一个重要开始，因为它将为我们提供每种算法的表现基线。
 
 [ROC 曲线](https://en.wikipedia.org/wiki/Roc_curve)是通过绘制真阳性率与假阳性率的比值来创建的。最佳分类器的 ROC 面积值接近 1.0，0.5 相当于随机猜测。我相信，看看我们的算法如何在这个规模上进行预测将会非常有趣。
 
-最后，F1 测量将是分类的重要统计分析，因为它将测量测试精度。F1 measure 使用**精度**(真阳性数除以真阳性和假阳性数)和**召回**(真阳性数除以真阳性数和假阴性数)来输出 0 到 1 之间的值，其中值越高意味着性能越好。
+最后，F1 测量将是分类的重要统计分析，因为它将测量测试精度。F1 measure 使用**精度**(真阳性数除以真阳性和假阳性数)和**召回**(真阳性数除以真阳性数和假阴性数)来输出 0 到 1 之间的值，其中值越高意味着表现越好。
 
-我坚信，所有算法的性能都将相当相似，因为我们处理的是一个小数据集进行分类。然而，这 4 种算法都应该比给出大约 65%准确度的类基线预测表现得更好。
+我坚信，所有算法的表现都将相当相似，因为我们处理的是一个小数据集进行分类。然而，这 4 种算法都应该比给出大约 65%准确度的类基线预测表现得更好。
 
 ## 结果
 
-为了对各种算法进行严格的分析，我使用[韦卡实验者](https://machinelearningmastery.com/design-and-run-your-first-experiment-in-weka/ "Design and Run your First Experiment in Weka")对所有创建的数据集进行了性能评估。结果如下所示。
+为了对各种算法进行严格的分析，我使用[韦卡实验者](https://machinelearningmastery.com/design-and-run-your-first-experiment-in-weka/ "Design and Run your First Experiment in Weka")对所有创建的数据集进行了表现评估。结果如下所示。
 
 [![Summary of results](img/b5384f72a57063ead14f2f72706f4783.png)](https://machinelearningmastery.com/wp-content/uploads/2014/04/summary-of-results.png)
 
-糖尿病数据集上的算法分类精度平均值和各种数据集上逻辑回归性能的散点图。
+糖尿病数据集上的算法分类精度平均值和各种数据集上逻辑回归表现的散点图。
 
 这里的数据表明，逻辑回归在标准的、未改变的数据集上表现最好，而随机森林表现最差。然而，任何算法之间都没有明显的赢家。
 
@@ -93,7 +93,7 @@ C4.5(在 Weka 中也称为“J48”)是一种用于生成分类决策树的算�
 
 [![Results from weka experimenter](img/3b9bea585406ab3c88679547cef5f828.png)](https://machinelearningmastery.com/wp-content/uploads/2014/04/results-from-weka-experimenter.png)
 
-Weka Experimenter 输出将逻辑回归的性能与其他算法的性能进行比较。
+Weka Experimenter 输出将逻辑回归的表现与其他算法的表现进行比较。
 
 归一化数据集上的尺度调整可能会略微改善结果。然而，转换和重新调整数据并没有显著改善结果，因此可能没有暴露数据中的任何结构。
 
@@ -101,7 +101,7 @@ Weka Experimenter 输出将逻辑回归的性能与其他算法的性能进行�
 
 [![Summary of results area under roc](img/d8ddac0813aec7e6e1c205e879f68ca2.png)](https://machinelearningmastery.com/wp-content/uploads/2014/04/summary-of-results-area-under-roc.png)
 
-算法在糖尿病数据集上的 ROC 面积平均值和在不同数据集上的 logistic 回归性能散点图
+算法在糖尿病数据集上的 ROC 面积平均值和在不同数据集上的 logistic 回归表现散点图
 
 结果再次表明，物流出口表现最好，而 C4.5 表现最差。平均而言，校正缺失值的数据集表现最好，而离散数据集表现最差。
 
@@ -111,13 +111,13 @@ Weka Experimenter 输出将逻辑回归的性能与其他算法的性能进行�
 
 Weka Experimenter 输出将逻辑回归的 ROC 曲线面积与其他算法的 ROC 曲线面积进行比较。
 
-这种较差的性能可能是树算法复杂的结果。测量因变量和自变量之间的关系可能是一个优势。此外，C4.5 可能没有为其分析选择正确的属性，因此恶化了基于最高信息增益的预测。
+这种较差的表现可能是树算法复杂的结果。测量因变量和自变量之间的关系可能是一个优势。此外，C4.5 可能没有为其分析选择正确的属性，因此恶化了基于最高信息增益的预测。
 
 [![Summary of results f1 score](img/2199fce200097028b758c6e3e47906c9.png)](https://machinelearningmastery.com/wp-content/uploads/2014/04/summary-of-results-f1-score.png)
 
 糖尿病数据集上的 F1 测量值和各种数据集上的逻辑回归 F1 测量的散点图。
 
-在前两个分析中，我们发现朴素贝叶斯的性能紧跟在物流配送的性能之后。现在我们发现，除了一个结果之外，朴素贝叶斯的所有结果与逻辑推理给出的结果相比都有统计学上的显著差异。
+在前两个分析中，我们发现朴素贝叶斯的表现紧跟在物流配送的表现之后。现在我们发现，除了一个结果之外，朴素贝叶斯的所有结果与逻辑推理给出的结果相比都有统计学上的显著差异。
 
 [![Results from weka experimenter f1 score](img/7e2a5bad2861c98478f220b35ccbe66a.png)](https://machinelearningmastery.com/wp-content/uploads/2014/04/results-from-weka-experimenter-f1-score.png)
 
@@ -131,10 +131,10 @@ Weka Experimenter 输出将逻辑回归的 F1 分数与其他算法的 F1 分数
 
 其中 TP =真阳性，FP =假阳性，FN =假阴性。
 
-然后，我们的结果表明，物流分离最大化了真阳性率，最小化了假阴性率和假阳性率。至于糟糕的性能，我被引导相信朴素贝叶斯所做的预测只是太“天真”了，因此算法过于自由地使用独立性。
+然后，我们的结果表明，物流分离最大化了真阳性率，最小化了假阴性率和假阳性率。至于糟糕的表现，我被引导相信朴素贝叶斯所做的预测只是太“天真”了，因此算法过于自由地使用独立性。
 
 我们可能需要更多的数据来为特定事件的发生提供更多的证据，这应该更好地支持它的预测。在这种情况下，树算法可能会因为其复杂性，或者仅仅因为选择不正确的属性进行分析而受到影响。对于更大的数据集来说，这可能不是什么大问题。
 
-有趣的是，我们还发现，在*diabetes _ distributed . ARFF*数据集上，性能最好的算法 LogisticRegression 的性能最差。可以很有把握地假设，对于 LogisticRegression，所有的数据转换(除了*diabetes _ distributed . ARFF*)似乎都会产生更好的非常相似的结果，这一点通过每个散点图中的相似趋势非常明显！
+有趣的是，我们还发现，在*diabetes _ distributed . ARFF*数据集上，表现最好的算法 LogisticRegression 的表现最差。可以很有把握地假设，对于 LogisticRegression，所有的数据转换(除了*diabetes _ distributed . ARFF*)似乎都会产生更好的非常相似的结果，这一点通过每个散点图中的相似趋势非常明显！
 
 接下来在[第 3 部分中，我们将研究分类精度的改进和结果的最终呈现](https://machinelearningmastery.com/case-study-predicting-the-onset-of-diabetes-within-five-years-part-3-of-3/ "Case Study: Predicting the Onset of Diabetes Within Five Years (part 3 of 3)")。

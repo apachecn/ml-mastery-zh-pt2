@@ -6,7 +6,7 @@
 
 当训练神经网络以鼓励网络使用小权重时，权重正则化方法(如权重衰减)会对损失函数引入惩罚。
 
-神经网络中较小的权重可以导致模型更加稳定，并且不太可能[过度拟合训练数据集](https://machinelearningmastery.com/introduction-to-regularization-to-reduce-overfitting-and-improve-generalization-error/)，从而在对新数据进行预测时具有更好的性能。
+神经网络中较小的权重可以导致模型更加稳定，并且不太可能[过度拟合训练数据集](https://machinelearningmastery.com/introduction-to-regularization-to-reduce-overfitting-and-improve-generalization-error/)，从而在对新数据进行预测时具有更好的表现。
 
 与权重正则化不同，权重约束是一个触发器，它检查权重的大小或大小，并对它们进行缩放，使它们都低于预定义的阈值。该约束迫使权重变小，可以代替权重衰减，并与更积极的网络配置结合使用，例如[非常大的学习速率](https://machinelearningmastery.com/learning-rate-for-deep-learning-neural-networks/)。
 
@@ -39,7 +39,7 @@
 
 神经网络中的大权重是过度拟合的标志。
 
-具有大权重的网络很可能已经学会了训练数据中的统计噪声。这导致模型不稳定，并且对输入变量的变化非常敏感。反过来，当对新的未知数据进行预测时，overfit 网络的性能很差。
+具有大权重的网络很可能已经学会了训练数据中的统计噪声。这导致模型不稳定，并且对输入变量的变化非常敏感。反过来，当对新的未知数据进行预测时，overfit 网络的表现很差。
 
 解决该问题的一种流行且有效的技术是更新在训练期间优化的损失函数，以考虑权重的大小。
 
@@ -83,7 +83,7 @@
 
 最大范数，也称为 max-norm 或 maxnorm，是一种流行的约束，因为它比其他规范(如单位范数)不那么激进，只需设置一个上限。
 
-> 最大范数正则化以前已经被使用过……它典型地改善了深度神经网络的随机梯度下降训练的性能…
+> 最大范数正则化以前已经被使用过……它典型地改善了深度神经网络的随机梯度下降训练的表现…
 
 ——[辍学:防止神经网络过拟合的简单方法](http://jmlr.org/papers/v15/srivastava14a.html)，2014。
 

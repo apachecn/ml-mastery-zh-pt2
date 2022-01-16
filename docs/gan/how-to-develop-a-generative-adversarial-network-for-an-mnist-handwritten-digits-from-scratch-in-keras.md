@@ -16,7 +16,7 @@
 
 *   如何定义和训练独立的鉴别器模型来学习真假图像的区别。
 *   如何定义独立生成器模型和训练复合生成器和鉴别器模型。
-*   如何评估 GAN 的性能并使用最终的独立生成器模型生成新图像。
+*   如何评估 GAN 的表现并使用最终的独立生成器模型生成新图像。
 
 **用我的新书[Python 生成性对抗网络](https://machinelearningmastery.com/generative_adversarial_networks/)启动你的项目**，包括*分步教程*和所有示例的 *Python 源代码*文件。
 
@@ -34,7 +34,7 @@
 2.  如何定义和训练鉴别器模型
 3.  如何定义和使用生成器模型
 4.  如何训练发电机模型
-5.  如何评估 GAN 模型的性能
+5.  如何评估 GAN 模型的表现
 6.  MNIST 氮化镓完整范例
 7.  如何使用最终生成器模型生成图像
 
@@ -131,7 +131,7 @@ MNIST 数据集中前 25 个手写数字的绘图。
 *   **输入**:一个通道，28×28 像素大小的图像。
 *   **输出**:二进制分类，样本真实(或虚假)的可能性。
 
-鉴别器模型有两个[卷积层](https://machinelearningmastery.com/convolutional-layers-for-deep-learning-neural-networks/)，每个卷积层有 64 个滤波器，小内核大小为 3，比正常步长 2 大。该模型没有汇集层，在输出层只有一个节点，通过 sigmoid 激活函数来预测输入样本是真的还是假的。该模型被训练成最小化适用于二进制分类的[二进制交叉熵损失函数](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)。
+鉴别器模型有两个[卷积层](https://machinelearningmastery.com/convolutional-layers-for-deep-learning-neural-networks/)，每个卷积层有 64 个滤波器，小内核大小为 3，比正常步长 2 大。该模型没有池化层，在输出层只有一个节点，通过 sigmoid 激活函数来预测输入样本是真的还是假的。该模型被训练成最小化适用于二进制分类的[二进制交叉熵损失函数](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)。
 
 我们将使用一些最佳实践来定义鉴别器模型，例如使用 LeakyReLU 代替 [ReLU](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/) ，使用 [Dropout](https://machinelearningmastery.com/how-to-reduce-overfitting-with-dropout-regularization-in-keras/) ，以及使用 [Adam 版本的随机梯度下降](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)，学习率为 0.0002，动量为 0.5。
 
@@ -198,7 +198,7 @@ plot_model(model, to_file='discriminator_plot.png', show_shapes=True, show_layer
 
 我们可以看到，进取的 [2×2 步起到了对输入图像](https://machinelearningmastery.com/padding-and-stride-for-convolutional-neural-networks/)进行下采样的作用，先从 28×28 下降到 14×14，再下降到 7×7，然后模型再进行输出预测。
 
-这种模式是通过设计实现的，因为我们不使用汇集层，而是使用大跨度来实现类似的下采样效果。我们将在下一节的生成器模型中看到类似的模式，但方向相反。
+这种模式是通过设计实现的，因为我们不使用池化层，而是使用大跨度来实现类似的下采样效果。我们将在下一节的生成器模型中看到类似的模式，但方向相反。
 
 ```py
 _________________________________________________________________
@@ -490,7 +490,7 @@ model.add(Reshape((7, 7, 128)))
 
 这种上采样过程有两种常见方式，有时称为反卷积。
 
-一种方法是使用一个*upsmampling 2d*层(像一个反向汇集层)，然后是一个正常的 *Conv2D* 层。另一种或许更现代的方式是将这两种操作组合成一个单一的层，称为*conv2d 转置*。我们将把后一种方法用于我们的生成器。
+一种方法是使用一个*upsmampling 2d*层(像一个反向池化层)，然后是一个正常的 *Conv2D* 层。另一种或许更现代的方式是将这两种操作组合成一个单一的层，称为*conv2d 转置*。我们将把后一种方法用于我们的生成器。
 
 *conv2d 转置*图层可以配置为(2×2)的步幅，这将使输入要素地图的面积增加四倍(宽度和高度尺寸增加一倍)。使用作为步长因子的内核大小(例如双倍)来避免上采样时可能观察到的棋盘图案也是一种良好的做法。
 
@@ -725,7 +725,7 @@ pyplot.show()
 
 ## 如何训练发电机模型
 
-生成器模型中的权重根据鉴别器模型的性能进行更新。
+生成器模型中的权重根据鉴别器模型的表现进行更新。
 
 当鉴别器擅长检测假样本时，生成器更新较多，当鉴别器模型在检测假样本时相对较差或混乱时，生成器模型更新较少。
 
@@ -739,7 +739,7 @@ pyplot.show()
 
 只有鉴别器关心的是区分真实和虚假的例子，因此鉴别器模型可以以独立的方式对每个例子进行训练，就像我们在上面的鉴别器模型部分所做的那样。
 
-生成器模型只关心鉴别器在假例子上的性能。因此，当它是 GAN 模型的一部分时，我们将把鉴别器中的所有层标记为不可训练的，这样它们就不能被更新和过度训练在假的例子上。
+生成器模型只关心鉴别器在假例子上的表现。因此，当它是 GAN 模型的一部分时，我们将把鉴别器中的所有层标记为不可训练的，这样它们就不能被更新和过度训练在假的例子上。
 
 当通过这个逻辑 GAN 模型训练生成器时，还有一个更重要的变化。我们希望鉴别器认为生成器输出的样本是真实的，而不是伪造的。因此，当生成器被训练为 GAN 模型的一部分时，我们将把生成的样本标记为真实的(类 1)。
 
@@ -950,9 +950,9 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
 
 剩下的一个方面是对模型的评估。
 
-## 如何评估 GAN 模型的性能
+## 如何评估 GAN 模型的表现
 
-通常，没有客观的方法来评估 GAN 模型的性能。
+通常，没有客观的方法来评估 GAN 模型的表现。
 
 我们无法计算生成图像的客观误差分数。在 MNIST 图像的情况下，这可能是可能的，因为图像受到很好的约束，但总的来说，这是不可能的。
 
@@ -968,7 +968,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
 
 在许多时期，例如数百或数千个时期，训练 GAN 将产生模型的许多快照，这些快照可以被检查，并且可以从中挑选特定的输出和模型供以后使用。
 
-首先，我们可以定义一个名为*summary _ performance()*的函数，该函数将总结鉴别器模型的性能。它通过检索真实 MNIST 图像的样本，以及用生成器模型生成相同数量的假 MNIST 图像，然后在每个样本上评估鉴别器模型的分类精度并报告这些分数来实现这一点。
+首先，我们可以定义一个名为*summary _ performance()*的函数，该函数将总结鉴别器模型的表现。它通过检索真实 MNIST 图像的样本，以及用生成器模型生成相同数量的假 MNIST 图像，然后在每个样本上评估鉴别器模型的分类精度并报告这些分数来实现这一点。
 
 ```py
 # evaluate the discriminator, plot generated images, save generator model
@@ -1251,7 +1251,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 所选择的配置导致生成模型和判别模型的稳定训练。
 
-每批报告一次模型性能，包括区分模型( *d* )和生成模型( *g* )的损失。
+每批报告一次模型表现，包括区分模型( *d* )和生成模型( *g* )的损失。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -1276,7 +1276,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 在这种情况下，我们可以看到精度随着训练而波动。当查看鉴别器模型的准确度分数与生成的图像一致时，我们可以看到假例子的准确度与图像的主观质量没有很好的关联，但是真实例子的准确度可能有关联。
 
-这是一个粗略的、可能不可靠的氮化镓性能指标，还有损耗。
+这是一个粗略的、可能不可靠的氮化镓表现指标，还有损耗。
 
 ```py
 >Accuracy real: 51%, fake: 78%
@@ -1450,7 +1450,7 @@ pyplot.show()
 
 *   如何定义和训练独立的鉴别器模型来学习真假图像的区别。
 *   如何定义独立生成器模型和训练复合生成器和鉴别器模型。
-*   如何评估 GAN 的性能并使用最终的独立生成器模型生成新图像。
+*   如何评估 GAN 的表现并使用最终的独立生成器模型生成新图像。
 
 你有什么问题吗？
 在下面的评论中提问，我会尽力回答。

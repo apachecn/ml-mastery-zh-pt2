@@ -54,9 +54,9 @@ Bagging 是一种集成算法，它在训练数据集的不同子集上拟合多
 
 —第 192 页，[应用预测建模](https://amzn.to/2W8wnPS)，2013 年。
 
-创建新的引导样本以及对样本进行拟合和添加树的过程可以继续，直到在验证数据集上看不到集成性能的进一步提高。
+创建新的引导样本以及对样本进行拟合和添加树的过程可以继续，直到在验证数据集上看不到集成表现的进一步提高。
 
-这个简单的过程通常比单一配置良好的决策树算法产生更好的性能。
+这个简单的过程通常比单一配置良好的决策树算法产生更好的表现。
 
 按原样打包将创建[引导样本](https://machinelearningmastery.com/a-gentle-introduction-to-the-bootstrap-method/)，该样本将不考虑不平衡分类数据集的倾斜类分布。因此，尽管该技术总体上表现良好，但如果存在严重的类别不平衡，它可能表现不佳。
 
@@ -85,7 +85,7 @@ model = BaggingClassifier()
 
 然后，我们可以使用重复分层 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估该模型，重复 3 次，重复 10 次。
 
-我们将使用所有折叠和重复的平均值 [ROC AUC 评分](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)来评估模型的性能。
+我们将使用所有折叠和重复的平均值 [ROC AUC 评分](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)来评估模型的表现。
 
 ```py
 ...
@@ -151,7 +151,7 @@ model = BalancedBaggingClassifier()
 
 接下来，我们可以评估袋装决策树集成的修改版本，该版本在拟合每个决策树之前对多数类执行随机欠采样。
 
-我们期望随机欠采样的使用将改善整体的性能。
+我们期望随机欠采样的使用将改善整体的表现。
 
 该模型和前一模型的默认树数(*n _ estimates*)为 10。实际上，最好测试这个超参数的较大值，例如 100 或 1000。
 
@@ -201,9 +201,9 @@ Mean ROC AUC: 0.962
 
 —第 199 页，[应用预测建模](https://amzn.to/2W8wnPS)，2013 年。
 
-同样，随机森林在广泛的问题上非常有效，但是像 bagging 一样，标准算法在不平衡分类问题上的性能不是很好。
+同样，随机森林在广泛的问题上非常有效，但是像 bagging 一样，标准算法在不平衡分类问题上的表现不是很好。
 
-> 在学习极不平衡的数据时，很有可能一个自举样本包含很少或甚至没有少数类，导致预测少数类的树性能很差。
+> 在学习极不平衡的数据时，很有可能一个自举样本包含很少或甚至没有少数类，导致预测少数类的树表现很差。
 
 ——[利用随机森林学习不平衡数据](https://statistics.berkeley.edu/tech-reports/666)，2004。
 
@@ -359,7 +359,7 @@ Mean ROC AUC: 0.884
 model = BalancedRandomForestClassifier(n_estimators=10)
 ```
 
-鉴于数据重采样技术的广泛成功，我们预计这将对模型性能产生更显著的影响。
+鉴于数据重采样技术的广泛成功，我们预计这将对模型表现产生更显著的影响。
 
 我们可以在合成数据集上测试随机森林的这种修改，并比较结果。下面列出了完整的示例。
 

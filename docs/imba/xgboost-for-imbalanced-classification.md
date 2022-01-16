@@ -8,7 +8,7 @@ XGBoost 算法对于广泛的回归和分类预测建模问题是有效的。
 
 它是随机梯度增强算法的有效实现，并提供了一系列超参数，可对模型训练过程进行精细控制。尽管该算法总体上表现良好，即使在不平衡分类数据集上也是如此，但它提供了一种调整训练算法的方法，以更加关注具有倾斜类分布的数据集的少数类的误分类。
 
-XGBoost 的这个修改版本被称为类加权 XGBoost 或成本敏感 XGBoost，并且可以在具有严重类不平衡的二进制分类问题上提供更好的性能。
+XGBoost 的这个修改版本被称为类加权 XGBoost 或成本敏感 XGBoost，并且可以在具有严重类不平衡的二进制分类问题上提供更好的表现。
 
 在本教程中，您将发现用于不平衡分类的加权 XGBoost。
 
@@ -126,7 +126,7 @@ XGBoost 提供了随机梯度增强算法的高效实现，并提供了对一组
 
 XGBoost 是一种有效的机器学习模型，即使在类分布有偏差的数据集上也是如此。
 
-在对不平衡分类的 XGBoost 算法进行任何修改或调整之前，测试默认的 XGBoost 模型并建立性能基线是很重要的。
+在对不平衡分类的 XGBoost 算法进行任何修改或调整之前，测试默认的 XGBoost 模型并建立表现基线是很重要的。
 
 虽然 XGBoost 库有自己的 Python API，但是我们可以通过 [XGBClassifier 包装类](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier)将 XGBoost 模型与 scikit-learn API 一起使用。模型的一个实例可以像任何其他用于模型评估的 scikit-learn 类一样被实例化和使用。例如:
 
@@ -138,7 +138,7 @@ model = XGBClassifier()
 
 我们将使用重复交叉验证来评估模型，重复三次 [10 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)。
 
-模型性能将使用重复和所有折叠的平均值[曲线下的 ROC 面积](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/) (ROC AUC)来报告。
+模型表现将使用重复和所有折叠的平均值[曲线下的 ROC 面积](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/) (ROC AUC)来报告。
 
 ```py
 ...
@@ -201,7 +201,7 @@ XGBoost 被训练成最小化损失函数，梯度增强中的“*梯度*”指�
 
 *scale_pos_weight* 值用于缩放正类的梯度。
 
-这具有模型在正类训练期间产生的缩放误差的影响，并且鼓励模型过度校正它们。反过来，这可以帮助模型在对正类进行预测时获得更好的性能。推得太远，可能会导致模型过度拟合正类，代价是负类或两个类的性能都变差。
+这具有模型在正类训练期间产生的缩放误差的影响，并且鼓励模型过度校正它们。反过来，这可以帮助模型在对正类进行预测时获得更好的表现。推得太远，可能会导致模型过度拟合正类，代价是负类或两个类的表现都变差。
 
 因此， *scale_pos_weight* 可以用来训练一个类加权或成本敏感版本的 XGBoost 进行不平衡分类。
 
@@ -252,7 +252,7 @@ print('Estimate: %.3f' % estimate)
 Estimate: 99.000
 ```
 
-我们将在 XGBoost 模型的配置中直接使用这个值，并使用重复的 k 倍交叉验证来评估它在数据集上的性能。
+我们将在 XGBoost 模型的配置中直接使用这个值，并使用重复的 k 倍交叉验证来评估它在数据集上的表现。
 
 我们预计 ROC AUC 会有一些改进，尽管根据数据集的难度和所选的 XGBoost 模型配置，这并不能保证。
 
@@ -282,7 +282,7 @@ print('Mean ROC AUC: %.5f' % mean(scores))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们可以看到性能的适度提升，从上一节中 *scale_pos_weight=1* 时的约 0.95724 的 ROC AUC 提升到 *scale_pos_weight=99* 时的 0.95990 的值。
+在这种情况下，我们可以看到表现的适度提升，从上一节中 *scale_pos_weight=1* 时的约 0.95724 的 ROC AUC 提升到 *scale_pos_weight=99* 时的 0.95990 的值。
 
 ```py
 Mean ROC AUC: 0.95990
@@ -292,7 +292,7 @@ Mean ROC AUC: 0.95990
 
 设置*刻度 _ 位置 _ 重量*的启发式方法在许多情况下都是有效的。
 
-然而，使用不同的类权重可以获得更好的性能，这也将取决于用于评估模型的性能度量的选择。
+然而，使用不同的类权重可以获得更好的表现，这也将取决于用于评估模型的表现度量的选择。
 
 在本节中，我们将网格搜索一系列不同的类权重，以获得类加权的 XGBoost，并发现哪一个导致最佳的 ROC AUC 分数。
 
@@ -316,7 +316,7 @@ weights = [1, 10, 25, 50, 75, 99, 100, 1000]
 param_grid = dict(scale_pos_weight=weights)
 ```
 
-我们可以使用重复交叉验证对这些参数执行网格搜索，并使用 ROC AUC 估计模型性能:
+我们可以使用重复交叉验证对这些参数执行网格搜索，并使用 ROC AUC 估计模型表现:
 
 ```py
 ...
@@ -342,7 +342,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 将这些联系在一起，下面的例子在不平衡的数据集上为 XGBoost 算法搜索八个不同的正类权重。
 
-我们可能会认为启发式类加权是性能最好的配置。
+我们可能会认为启发式类加权是表现最好的配置。
 
 ```py
 # grid search positive class weights with xgboost for imbalance classification

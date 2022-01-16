@@ -41,13 +41,13 @@ FID 分数用于评估生成性对抗网络生成的图像质量，较低的分�
 
 ## 什么是弗雷切特Inception距离？
 
-弗雷切特初始距离，简称 FID，是一种评估生成图像质量的指标，专门用于评估生成性对抗网络的性能。
+弗雷切特初始距离，简称 FID，是一种评估生成图像质量的指标，专门用于评估生成性对抗网络的表现。
 
 FID 分数是由[Martin heussel](https://www.linkedin.com/in/mheusel/)等人在他们 2017 年的论文中提出并使用的，该论文的标题为“[通过两时间尺度更新规则训练的 GANs 收敛到局部纳什均衡](https://arxiv.org/abs/1706.08500017)
 
 该分数是作为对现有初始分数(即 IS)的改进而提出的。
 
-> 为了评估 GANs 在图像生成方面的性能，我们引入了“弗雷切特初始距离”(FID)，它比初始分数更好地捕捉了生成图像与真实图像的相似性。
+> 为了评估 GANs 在图像生成方面的表现，我们引入了“弗雷切特初始距离”(FID)，它比初始分数更好地捕捉了生成图像与真实图像的相似性。
 
 ——[通过两时间尺度更新规则训练的 GANs 收敛到局部纳什均衡，2017](https://arxiv.org/abs/1706.08500) 。
 
@@ -59,7 +59,7 @@ FID 分数是由[Martin heussel](https://www.linkedin.com/in/mheusel/)等人在�
 
 ——[通过两时间尺度更新规则训练的 GANs 收敛到局部纳什均衡](https://arxiv.org/abs/1706.08500)，2017。
 
-与初始分数一样，FID 分数使用初始 v3 模型。具体而言，模型的编码层(图像输出分类之前的最后一个汇集层)用于捕获输入图像的计算机视觉特定特征。这些激活是为真实和生成的图像集合计算的。
+与初始分数一样，FID 分数使用初始 v3 模型。具体而言，模型的编码层(图像输出分类之前的最后一个池化层)用于捕获输入图像的计算机视觉特定特征。这些激活是为真实和生成的图像集合计算的。
 
 通过计算图像的[平均值和协方差](https://machinelearningmastery.com/introduction-to-expected-value-variance-and-covariance/)，激活被总结为多元高斯。然后计算真实和生成图像集合中激活的统计数据。
 
@@ -84,7 +84,7 @@ FID 分数是由[Martin heussel](https://www.linkedin.com/in/mheusel/)等人在�
 
 FID 分数是通过首先加载一个预先训练好的Inception v3 模型来计算的。
 
-移除模型的输出层，并将输出作为来自最后一个汇集层的激活，即[全局空间汇集层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)。
+移除模型的输出层，并将输出作为来自最后一个池化层的激活，即[全局空间池化层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)。
 
 该输出层有 2，048 个激活，因此，每个图像被预测为 2，048 个激活特征。这被称为图像的编码向量或特征向量。
 

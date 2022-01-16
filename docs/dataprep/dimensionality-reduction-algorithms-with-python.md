@@ -269,7 +269,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们看不到使用主成分分析变换对模型性能有任何提升。
+在这种情况下，我们看不到使用主成分分析变换对模型表现有任何提升。
 
 ```py
 Accuracy: 0.824 (0.034)
@@ -313,7 +313,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，我们看不到使用奇异值分解变换对模型性能有任何提升。
+在这种情况下，我们看不到使用奇异值分解变换对模型表现有任何提升。
 
 ```py
 Accuracy: 0.824 (0.034)
@@ -359,7 +359,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，与原始数据的基线拟合相比，我们可以看到性能略有提升。
+在这种情况下，与原始数据的基线拟合相比，我们可以看到表现略有提升。
 
 ```py
 Accuracy: 0.825 (0.034)
@@ -399,7 +399,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，与原始数据的基线拟合相比，我们可以看到 Isomap 数据转换的性能有所提升。
+在这种情况下，与原始数据的基线拟合相比，我们可以看到 Isomap 数据转换的表现有所提升。
 
 ```py
 Accuracy: 0.888 (0.029)
@@ -439,7 +439,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，与原始数据的基线拟合相比，我们可以看到 LLE 数据转换的性能提升。
+在这种情况下，与原始数据的基线拟合相比，我们可以看到 LLE 数据转换的表现提升。
 
 ```py
 Accuracy: 0.886 (0.028)
@@ -479,7 +479,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
-在这种情况下，与原始数据的基线拟合相比，我们可以看到修改后的 LLE 数据转换的性能有所提升。
+在这种情况下，与原始数据的基线拟合相比，我们可以看到修改后的 LLE 数据转换的表现有所提升。
 
 ```py
 Accuracy: 0.846 (0.036)

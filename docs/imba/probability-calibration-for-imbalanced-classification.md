@@ -6,11 +6,11 @@
 
 许多机器学习模型能够预测类成员的概率或类似概率的分数。
 
-概率为评估和比较模型提供了所需的粒度级别，特别是在不平衡分类问题上，像 [ROC 曲线](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)这样的工具用于解释预测，ROC AUC 度量用于比较模型性能，两者都使用概率。
+概率为评估和比较模型提供了所需的粒度级别，特别是在不平衡分类问题上，像 [ROC 曲线](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)这样的工具用于解释预测，ROC AUC 度量用于比较模型表现，两者都使用概率。
 
 不幸的是，许多模型预测的概率或类似概率的分数没有被校准。这意味着他们在某些情况下可能过于自信，而在其他情况下则信心不足。更糟糕的是，不平衡分类任务中存在的严重倾斜的类分布可能导致预测概率中甚至更多的偏差，因为它们过度倾向于预测多数类。
 
-因此，在评估非线性机器学习模型的性能之前，校准其预测概率通常是一个好主意。此外，在处理不平衡的数据集时，通常校准概率是一种好的做法，即使是像逻辑回归这样的模型，当类标签平衡时，也可以预测校准良好的概率。
+因此，在评估非线性机器学习模型的表现之前，校准其预测概率通常是一个好主意。此外，在处理不平衡的数据集时，通常校准概率是一种好的做法，即使是像逻辑回归这样的模型，当类标签平衡时，也可以预测校准良好的概率。
 
 在本教程中，您将发现如何校准不平衡分类的预测概率。
 
@@ -425,7 +425,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 Mean ROC AUC: 0.864
 ```
 
-知道概率依赖于邻域大小并且是未校准的，我们期望一些校准将使用 ROC AUC 提高模型的性能。
+知道概率依赖于邻域大小并且是未校准的，我们期望一些校准将使用 ROC AUC 提高模型的表现。
 
 我们将使用[网格搜索不同的配置，而不是抽查*校准分类器*类的一个配置。](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
 

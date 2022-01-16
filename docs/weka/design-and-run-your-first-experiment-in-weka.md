@@ -71,7 +71,7 @@ Weka Experimenter 允许您设计自己的在数据集上运行算法的实验�
 2.  点击 ***选择*** 按钮。
 3.  点击“ ***”下的 ZeroR******规则*** ”选择。
 
-ZeroR 是我们能运行的最简单的算法。它选择数据集中占大多数的类值，并为所有预测给出该值。假设所有三个类值具有相等的份额(50 个实例)，它选择第一个类值“setosa”，并将其作为所有预测的答案。不出所料，我们知道 ZeroR 能给出的最好结果是 33.33% (50/150)。这是一个很好的基线，我们要求算法的性能超过它。
+ZeroR 是我们能运行的最简单的算法。它选择数据集中占大多数的类值，并为所有预测给出该值。假设所有三个类值具有相等的份额(50 个实例)，它选择第一个类值“setosa”，并将其作为所有预测的答案。不出所料，我们知道 ZeroR 能给出的最好结果是 33.33% (50/150)。这是一个很好的基线，我们要求算法的表现超过它。
 
 ### 无比的人
 
@@ -138,7 +138,7 @@ J48 是决策树算法。它是 C4.8 算法在 Java 中的实现(“J”代表 J
 
 排名表显示了每种算法相对于数据集中所有其他算法的[统计显著](https://machinelearningmastery.com/how-to-choose-the-right-test-options-when-evaluating-machine-learning-algorithms/ "How To Choose The Right Test Options When Evaluating Machine Learning Algorithms")获胜次数。一次胜利意味着比另一种算法的精度更高的精度，并且差异具有统计学意义。
 
-我们可以看到，J48 和 OneR 都各有一胜，ZeroR 有两负。这很好，这意味着 OneR 和 J48 都是潜在的竞争者，其性能超过了 ZeroR 的基线。
+我们可以看到，J48 和 OneR 都各有一胜，ZeroR 有两负。这很好，这意味着 OneR 和 J48 都是潜在的竞争者，其表现超过了 ZeroR 的基线。
 
 ### 算法精度
 

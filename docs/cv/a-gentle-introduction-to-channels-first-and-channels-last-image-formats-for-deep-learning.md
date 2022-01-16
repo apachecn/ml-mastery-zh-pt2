@@ -1,4 +1,4 @@
-# 对通道-第一个和通道-最后一个图像格式的温和介绍
+# 通道在前和通道在后图像格式的温和介绍
 
 > 原文：<https://machinelearningmastery.com/a-gentle-introduction-to-channels-first-and-channels-last-image-formats-for-deep-learning/>
 
@@ -6,11 +6,11 @@
 
 彩色图像具有高度、宽度和颜色通道尺寸。
 
-当表示为[三维阵列](https://machinelearningmastery.com/index-slice-reshape-numpy-arrays-machine-learning-python/)时，图像数据的通道维度默认是最后一个，但可能会移动到第一个维度，通常是出于性能调整的原因。
+当表示为[三维阵列](https://machinelearningmastery.com/index-slice-reshape-numpy-arrays-machine-learning-python/)时，图像数据的通道维度默认是最后一个，但可能会移动到第一个维度，通常是出于表现调整的原因。
 
-使用这两种“*频道排序格式*”并准备数据以满足特定的首选频道排序可能会让初学者感到困惑。
+使用这两种“*通道排序格式*”并准备数据以满足特定的首选通道排序可能会让初学者感到困惑。
 
-在本教程中，您将发现频道排序格式，如何准备和操作图像数据以满足格式，以及如何为不同的频道排序配置 Keras 深度学习库。
+在本教程中，您将发现通道排序格式，如何准备和操作图像数据以满足格式，以及如何为不同的通道排序配置 Keras 深度学习库。
 
 完成本教程后，您将知道:
 
@@ -31,7 +31,7 @@
 
 1.  作为三维阵列的图像
 2.  操纵图像通道
-3.  Keras 频道排序
+3.  Keras 通道排序
 
 ## 作为三维阵列的图像
 
@@ -52,7 +52,7 @@
 *   **通道最后**。图像数据以三维阵列表示，其中最后一个通道表示彩色通道，例如*【行】【列】【通道】*。
 *   **通道优先**。图像数据以三维阵列表示，其中第一通道表示彩色通道，例如*【通道】【行】【列】*。
 
-一些图像处理和深度学习库更喜欢频道优先排序，一些更喜欢频道最后排序。因此，熟悉这两种表示图像的方法非常重要。
+一些图像处理和深度学习库更喜欢通道优先排序，一些更喜欢通道最后排序。因此，熟悉这两种表示图像的方法非常重要。
 
 ## 操纵图像通道
 
@@ -125,7 +125,7 @@ print(data_last.shape)
 data = data.reshape((424, 640, 1))
 ```
 
-### 如何更改图像频道排序
+### 如何更改图像通道排序
 
 将彩色图像加载为三维阵列后，可以更改通道顺序。
 
@@ -133,7 +133,7 @@ data = data.reshape((424, 640, 1))
 
 此功能可用于将通道最后格式的数组(如*【行】【列】【通道】*)更改为通道第一格式(如*【通道】【行】【列】*)或相反。
 
-以下示例以频道最后格式加载企鹅游行照片，并使用 *moveaxis()* 功能将其更改为频道第一格式。
+以下示例以通道最后格式加载企鹅游行照片，并使用 *moveaxis()* 功能将其更改为通道第一格式。
 
 ```py
 # change image from channels last to channels first format
@@ -163,7 +163,7 @@ print(data.shape)
 (424, 640, 3)
 ```
 
-## Keras 频道排序
+## Keras 通道排序
 
 Keras 深度学习库不知道您希望如何以通道优先或最后一种格式表示图像，但是在使用该库时，必须指定并遵守首选项。
 
@@ -173,19 +173,19 @@ Keras 包装了许多数学库，每个库都有一个首选的通道排序。�
 *   **安诺**:通道一阶。
 *   **CNTK** :通道最后顺序。
 
-默认情况下，Keras 被配置为使用 TensorFlow，并且频道排序也默认为最后一个频道。您可以将任一渠道订购用于任何库和 Keras 库。
+默认情况下，Keras 被配置为使用 TensorFlow，并且通道排序也默认为最后一个通道。您可以将任一渠道订购用于任何库和 Keras 库。
 
-一些库声称首选频道排序会导致性能的巨大差异。例如，使用 MXNet 数学库作为 Keras 的后端，建议使用通道优先排序以获得更好的性能。
+一些库声称首选通道排序会导致表现的巨大差异。例如，使用 MXNet 数学库作为 Keras 的后端，建议使用通道优先排序以获得更好的表现。
 
 > 我们强烈建议将 image_data_format 更改为 channels _ first。MXNet 在 channels _ first 数据上要快得多。
 
-— [带 MXNet 后端的性能调优 Keras，Apache MXNet](https://github.com/awslabs/keras-apache-mxnet/wiki/Performance-Tuning---Keras-with-MXNet-Backend)
+— [带 MXNet 后端的表现调优 Keras，Apache MXNet](https://github.com/awslabs/keras-apache-mxnet/wiki/Performance-Tuning---Keras-with-MXNet-Backend)
 
-### 默认频道排序
+### 默认通道排序
 
-库和首选频道排序列在 Keras 配置文件中，存储在您的主目录下 *~/。keras/keras.json* 。
+库和首选通道排序列在 Keras 配置文件中，存储在您的主目录下 *~/。keras/keras.json* 。
 
-首选频道排序存储在“ *image_data_format* ”配置设置中，可以设置为“*频道 _ 最后一个*”或“*频道 _ 第一个*”。
+首选通道排序存储在“ *image_data_format* ”配置设置中，可以设置为“*通道 _ 最后一个*”或“*通道 _ 第一个*”。
 
 例如，下面是一个 *keras.json* 配置文件的内容。在其中，可以看到系统配置为使用张量流和*通道 _last* 顺序。
 
@@ -198,7 +198,7 @@ Keras 包装了许多数学库，每个库都有一个首选的通道排序。�
 }
 ```
 
-根据您首选的频道排序，您必须准备图像数据以匹配首选排序。
+根据您首选的通道排序，您必须准备图像数据以匹配首选排序。
 
 具体而言，这将包括以下任务:
 
@@ -218,9 +218,9 @@ model.add(Conv2D(..., data_format='channels_first'))
 
 当加载一个用于传输学习的模型，该模型的通道排序不同于您的首选通道排序时，这将非常有用。
 
-### 查询频道排序
+### 查询通道排序
 
-您可以通过打印 *image_data_format()* 功能的结果来确认您当前的首选频道订购。下面的例子演示了。
+您可以通过打印 *image_data_format()* 功能的结果来确认您当前的首选通道订购。下面的例子演示了。
 
 ```py
 # show preferred channel order
@@ -228,7 +228,7 @@ from keras import backend
 print(backend.image_data_format())
 ```
 
-运行该示例将打印您在 Keras 配置文件中配置的首选频道排序。在这种情况下，使用通道最后一种格式。
+运行该示例将打印您在 Keras 配置文件中配置的首选通道排序。在这种情况下，使用通道最后一种格式。
 
 ```py
 channels_last
@@ -243,9 +243,9 @@ else:
 	...
 ```
 
-### 强制频道排序
+### 强制通道排序
 
-最后，可以针对特定节目强制进行频道排序。
+最后，可以针对特定节目强制进行通道排序。
 
 这可以通过调用 Keras 后端的 *set_image_data_format()* 函数来实现，对于通道优先排序，调用“*channel _ first*”(an ano)或者对于通道最后排序，调用“*channel _ last*”(tensorflow)。
 
@@ -282,7 +282,7 @@ channels_last
 
 ## 摘要
 
-在本教程中，您发现了频道排序格式，如何准备和操作图像数据以满足格式要求，以及如何为不同的频道排序配置 Keras 深度学习库。
+在本教程中，您发现了通道排序格式，如何准备和操作图像数据以满足格式要求，以及如何为不同的通道排序配置 Keras 深度学习库。
 
 具体来说，您了解到:
 

@@ -42,7 +42,7 @@ scikit-learn 库提供了一种以标准方式包装这些**自定义数据转�
 
 scikit-learn Python 机器学习库直接提供了许多不同的数据准备技术，例如缩放数值输入变量和改变变量概率分布的技术。
 
-这些变换可以拟合，然后应用于数据集或用作预测建模管道的一部分，从而允许在使用数据采样技术(如 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/))评估模型性能时，正确应用一系列变换，而不会出现数据泄漏。
+这些变换可以拟合，然后应用于数据集或用作预测建模管道的一部分，从而允许在使用数据采样技术(如 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/))评估模型表现时，正确应用一系列变换，而不会出现数据泄漏。
 
 尽管 scikit-learn 中可用的数据准备技术非常广泛，但可能还需要额外的数据准备步骤。
 
@@ -122,7 +122,7 @@ print(X.shape, y.shape)
 
 几乎没有唯一值的列可能对预测目标值没有任何帮助。
 
-这并不是绝对正确的，但是您应该在删除了这种类型的列的数据集上测试模型拟合的性能，这是足够正确的。
+这并不是绝对正确的，但是您应该在删除了这种类型的列的数据集上测试模型拟合的表现，这是足够正确的。
 
 这是一种类型的[数据清理](https://machinelearningmastery.com/basic-data-cleaning-for-machine-learning/)，scikit-learn 中提供了一种称为[变量阈值](https://machinelearningmastery.com/basic-data-cleaning-for-machine-learning/)的数据转换，试图利用每一列的方差来解决这个问题。
 

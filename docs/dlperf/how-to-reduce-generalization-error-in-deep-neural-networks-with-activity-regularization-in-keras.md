@@ -187,7 +187,7 @@ pyplot.show()
 
 该模型将有一个隐藏层，其中可能需要更多的节点来解决这个问题，从而提供了一个过度填充的机会。我们还将对模型进行比要求更长时间的训练，以确保模型溢出。
 
-在定义模型之前，我们将把数据集分成训练集和测试集，用 30 个例子训练模型，用 70 个例子评估拟合模型的性能。
+在定义模型之前，我们将把数据集分成训练集和测试集，用 30 个例子训练模型，用 70 个例子评估拟合模型的表现。
 
 ```py
 # generate 2d classification dataset
@@ -221,7 +221,7 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=4000, verbose=0)
 ```
 
-我们可以在测试数据集上评估模型的性能并报告结果。
+我们可以在测试数据集上评估模型的表现并报告结果。
 
 ```py
 # evaluate the model
@@ -230,7 +230,7 @@ _, test_acc = model.evaluate(testX, testy, verbose=0)
 print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 ```
 
-最后，我们将绘制模型在每个时期的列车和测试集上的性能。
+最后，我们将绘制模型在每个时期的列车和测试集上的表现。
 
 如果模型确实过度训练了训练数据集，那么随着模型学习训练数据集中的统计噪声，我们将期望训练集上的精度线图继续增加，并且测试集上升，然后再次下降。
 
@@ -274,9 +274,9 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例会报告列车和测试数据集上的模型性能。
+运行该示例会报告列车和测试数据集上的模型表现。
 
-我们可以看到，该模型在训练数据集上的性能优于测试数据集，这可能是过度拟合的一个迹象。
+我们可以看到，该模型在训练数据集上的表现优于测试数据集，这可能是过度拟合的一个迹象。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -346,7 +346,7 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例会报告列车和测试数据集上的模型性能。
+运行该示例会报告列车和测试数据集上的模型表现。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -403,7 +403,7 @@ pyplot.legend()
 pyplot.show()
 ```
 
-运行该示例会报告列车和测试数据集上的模型性能。
+运行该示例会报告列车和测试数据集上的模型表现。
 
 **注**:考虑到算法或评估程序的随机性，或数值精度的差异，您的[结果可能会有所不同](https://machinelearningmastery.com/different-results-each-time-in-machine-learning/)。考虑运行该示例几次，并比较平均结果。
 
@@ -428,7 +428,7 @@ Train: 1.000, Test: 0.743
 *   **报告激活平均值**。更新示例以计算正则层的平均激活，并确认激活确实变得更加稀疏。
 *   **网格搜索**。更新示例以网格搜索正则化超参数的不同值。
 *   **替代定额**。更新示例以评估 L2 或 layer 向量范数，从而调整隐藏层输出。
-*   **重复评估**。更新示例以多次拟合和评估模型，并报告模型性能的平均值和标准差。
+*   **重复评估**。更新示例以多次拟合和评估模型，并报告模型表现的平均值和标准差。
 
 如果你探索这些扩展，我很想知道。
 
