@@ -87,7 +87,7 @@
 
 下面的示例从这个分布中采样并打印了 10 个数字。
 
-```
+```py
 # sample a normal distribution
 from numpy.random import normal
 # define the distribution
@@ -101,7 +101,7 @@ print(sample)
 
 运行该示例将打印从定义的正态分布中随机采样的 10 个数字。
 
-```
+```py
 [48.71009029 49.36970461 45.58247748 51.96846616 46.05793544 40.3903483
  48.39189421 50.08693721 46.85896352 44.83757824]
 ```
@@ -114,7 +114,7 @@ print(sample)
 
 下面的示例计算我们的分布中 30 到 70 之间的整数值的概率，并绘制结果，然后对累积概率进行同样的操作。
 
-```
+```py
 # pdf and cdf for a normal distribution
 from scipy.stats import norm
 from matplotlib import pyplot
@@ -158,7 +158,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # calculate the values that define the middle 95%
 from scipy.stats import norm
 # define distribution parameters
@@ -173,7 +173,7 @@ print('Middle 95%% between %.1f and %.1f' % (low_end, high_end))
 
 运行这个例子给出了精确的结果，定义了中间 95%的预期结果，非常接近我们基于标准偏差的启发式算法 40 和 60。
 
-```
+```py
 Middle 95% between 40.2 and 59.8
 ```
 
@@ -203,7 +203,7 @@ Middle 95% between 40.2 and 59.8
 
 下面的示例从这个分布中采样并打印了 10 个数字。
 
-```
+```py
 # sample an exponential distribution
 from numpy.random import exponential
 # define the distribution
@@ -216,7 +216,7 @@ print(sample)
 
 运行该示例将打印从定义的分布中随机抽样的 10 个数字。
 
-```
+```py
 [  3.32742946  39.10165624  41.86856606  85.0030387   28.18425491
   68.20434637 106.34826579  19.63637359  17.13805423  15.91135881]
 ```
@@ -225,7 +225,7 @@ print(sample)
 
 下面的例子定义了一个介于 50 和 70 之间的观测值范围，计算了每个观测值的概率和累积概率，并绘制了结果图。
 
-```
+```py
 # pdf and cdf for an exponential distribution
 from scipy.stats import expon
 from matplotlib import pyplot
@@ -280,7 +280,7 @@ pyplot.show()
 
 我们可以定义一个形状为 1.1 的分布，并从这个分布中抽取随机数。我们可以使用 [pareto() NumPy 函数](https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.pareto.html)来实现。
 
-```
+```py
 # sample a pareto distribution
 from numpy.random import pareto
 # define the distribution
@@ -293,7 +293,7 @@ print(sample)
 
 运行该示例将打印从定义的分布中随机抽样的 10 个数字。
 
-```
+```py
 [0.5049704  0.0140647  2.13105224 3.10991217 2.87575892 1.06602639
  0.22776379 0.37405415 0.96618778 3.94789299]
 ```
@@ -302,7 +302,7 @@ print(sample)
 
 下面的例子定义了一个介于 1 到 10 之间的观测值范围，计算了每个观测值的概率和累积概率，并绘制了结果图。
 
-```
+```py
 # pdf and cdf for a pareto distribution
 from scipy.stats import pareto
 from matplotlib import pyplot

@@ -102,7 +102,7 @@
 
 首先，让我们加载并总结数据集。下面列出了完整的示例。
 
-```
+```py
 # load and summarize the sonar dataset
 from pandas import read_csv
 from pandas.plotting import scatter_matrix
@@ -125,7 +125,7 @@ pyplot.show()
 
 提供了输入变量的统计摘要，显示值是数值，范围大约从 0 到 1。
 
-```
+```py
 (208, 61)
                0           1           2   ...          57          58          59
 count  208.000000  208.000000  208.000000  ...  208.000000  208.000000  208.000000
@@ -154,7 +154,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 我们将使用带有默认超参数的 k 近邻算法，并使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)对其进行评估。下面列出了完整的示例。
 
-```
+```py
 # evaluate knn on the raw sonar dataset
 from numpy import mean
 from numpy import std
@@ -186,7 +186,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 我们可以看到，该模型实现了大约 79.7%的平均分类准确率，表明它具有技巧性(优于 53.4%)，并且处于良好表现的球园区(88%)。
 
-```
+```py
 Accuracy: 0.797 (0.073)
 ```
 
@@ -198,7 +198,7 @@ Accuracy: 0.797 (0.073)
 
 我们将使用默认配置并将值缩放到 IQR。首先，用默认超参数定义一个鲁棒定标器实例。一旦定义，我们就可以调用 *fit_transform()* 函数，并将其传递给我们的数据集，以创建数据集的分位数转换版本。
 
-```
+```py
 ...
 # perform a robust scaler transform of the dataset
 trans = RobustScaler()
@@ -209,7 +209,7 @@ data = trans.fit_transform(data)
 
 下面列出了创建声纳数据集的鲁棒定标器变换和绘制结果直方图的完整示例。
 
-```
+```py
 # visualize a robust scaler transform of the sonar dataset
 from pandas import read_csv
 from pandas import DataFrame
@@ -237,7 +237,7 @@ pyplot.show()
 
 我们可以看到分布已经调整。中值现在为零，标准偏差值现在接近 1.0。
 
-```
+```py
                0           1   ...            58          59
 count  208.000000  208.000000  ...  2.080000e+02  208.000000
 mean     0.286664    0.242430  ...  2.317814e-01    0.222527
@@ -261,7 +261,7 @@ max      5.148649    6.447619  ...  4.511278e+00    7.115207
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate knn on the sonar dataset with robust scaler transform
 from numpy import mean
 from numpy import std
@@ -297,7 +297,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例，我们可以看到稳健的定标器变换将性能从无变换时的 79.7%提升到有变换时的约 81.9%。
 
-```
+```py
 Accuracy: 0.819 (0.076)
 ```
 
@@ -315,7 +315,7 @@ Accuracy: 0.819 (0.076)
 
 下面列出了完整的示例。
 
-```
+```py
 # explore the scaling range of the robust scaler transform
 from numpy import mean
 from numpy import std
@@ -379,7 +379,7 @@ pyplot.show()
 
 我们可以看到，默认的第 25 到第 75 百分位达到了最好的结果，尽管 20-80 和 30-70 的值达到了非常相似的结果。
 
-```
+```py
 >1 0.818 (0.069)
 >5 0.813 (0.085)
 >10 0.812 (0.076)

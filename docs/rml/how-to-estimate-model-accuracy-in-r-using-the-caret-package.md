@@ -44,7 +44,7 @@
 
 以下示例分割虹膜数据集，以便 80%用于训练朴素贝叶斯模型，20%用于评估模型性能。
 
-```
+```py
 # load the libraries
 library(caret)
 library(klaR)
@@ -71,7 +71,7 @@ confusionMatrix(predictions$class, y_test)
 
 以下示例使用带有 10 个重采样的引导程序来准备朴素贝叶斯模型。
 
-```
+```py
 # load the library
 library(caret)
 # load the iris dataset
@@ -92,7 +92,7 @@ print(model)
 
 以下示例使用 10 倍交叉验证来估计虹膜数据集上的朴素贝叶斯。
 
-```
+```py
 # load the library
 library(caret)
 # load the iris dataset
@@ -113,7 +113,7 @@ print(model)
 
 以下示例使用具有 3 次重复的 10 倍交叉验证来估计虹膜数据集上的朴素贝叶斯。
 
-```
+```py
 # load the library
 library(caret)
 # load the iris dataset
@@ -132,7 +132,7 @@ print(model)
 
 以下示例演示了 LOOCV 如何在虹膜数据集上估计朴素贝叶斯。
 
-```
+```py
 # load the library
 library(caret)
 # load the iris dataset

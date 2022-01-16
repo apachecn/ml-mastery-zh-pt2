@@ -63,7 +63,7 @@
 
 我们可以定义我们的支付函数如下:
 
-```
+```py
 # transform function
 def payoff(x):
 	return x * 0.5
@@ -71,7 +71,7 @@ def payoff(x):
 
 接下来，我们可以定义可能掷骰子的范围和每个值的变换:
 
-```
+```py
 # each possible roll of the dice
 outcomes = [1, 2, 3, 4, 5, 6]
 # payoff for each roll
@@ -80,7 +80,7 @@ payoffs = [payoff(value) for value in outcomes]
 
 接下来，我们可以计算支付值的平均值，例如转换后的观测值的平均值。
 
-```
+```py
 # mean of the payoffs of the outcomes
 v1 = mean(payoffs)
 print(v1)
@@ -88,7 +88,7 @@ print(v1)
 
 最后，我们可以比较平均掷骰子的收益，例如平均观测值的变换。
 
-```
+```py
 # payoff of the mean outcome
 v2 = payoff(mean(outcomes))
 print(v2)
@@ -98,7 +98,7 @@ print(v2)
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # example comparing mean linear transform vs linear transform for mean value
 from numpy import mean
 
@@ -120,7 +120,7 @@ print(v2)
 
 运行该示例计算两个平均值(例如，线性收益的平均值和平均值的线性收益)，并确认它们在我们的示例中确实是等价的。
 
-```
+```py
 1.75
 1.75
 ```
@@ -157,7 +157,7 @@ print(v2)
 
 在这种情况下，我们可以使用 *x^2* 凸函数来支付每次掷骰子的结果。例如，掷骰子三次的结果将有回报 *3^2* 或 9。更新后的*支付()*功能如下。
 
-```
+```py
 # transform function
 def payoff(x):
 	return x**2
@@ -169,7 +169,7 @@ def payoff(x):
 
 下面列出了完整的示例。
 
-```
+```py
 # plot of convex payoff function
 from matplotlib import pyplot
 
@@ -203,7 +203,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # example comparing mean convex transform vs convex transform for mean value
 from numpy import mean
 
@@ -231,7 +231,7 @@ print(v2)
 
 直觉告诉我们，因为函数是凸的，所以平均来说，转换后的值总是大于原始结果值，或者我们想要使用的任何其他求和类型的运算。
 
-```
+```py
 15.166666666666666
 12.25
 ```
@@ -242,7 +242,7 @@ print(v2)
 
 我们可以通过多次掷骰子来实现这一点，例如 50 次，并计算每个结果的收益，然后将平均收益与平均结果的收益进行比较。
 
-```
+```py
 ...
 # roll the dice [1,6] many times (e.g. 50)
 outcomes = randint(1, 7, 50)
@@ -254,7 +254,7 @@ outcomes = randint(1, 7, 50)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of repeated trials of Jensen's Inequality
 from numpy.random import randint
 from numpy import mean
@@ -289,7 +289,7 @@ for i in range(n_trials):
 
 然而，对于任何一个实验，詹森不等式都成立。
 
-```
+```py
 >0: 12.20 >= 9.73
 >1: 14.14 >= 10.37
 >2: 16.88 >= 13.84
@@ -360,7 +360,7 @@ for i in range(n_trials):
 
 下面列出了完整的示例。
 
-```
+```py
 # example comparing the log geometric mean and the log arithmetic mean
 from numpy import mean
 from numpy import log
@@ -387,7 +387,7 @@ pyplot.show()
 
 运行该示例证实了我们的预期，即对数算术平均值大于对数几何平均值。
 
-```
+```py
 Log AM 1.25 >= Log GM 1.10
 ```
 

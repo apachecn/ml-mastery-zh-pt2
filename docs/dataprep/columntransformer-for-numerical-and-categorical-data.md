@@ -48,7 +48,7 @@
 
 例如:
 
-```
+```py
 ...
 # prepare transform
 scaler = MinMaxScaler()
@@ -62,7 +62,7 @@ train_X = scaler.transform(train_X)
 
 例如:
 
-```
+```py
 ...
 # define pipeline
 pipeline = Pipeline(steps=[('i', SimpleImputer(strategy='median')), ('s', MinMaxScaler())])
@@ -92,14 +92,14 @@ train_X = pipeline.fit_transform(train_X)
 
 例如，下面的 ColumnTransformer 对第 0 列和第 1 列应用了一个 OneHotEncoder。
 
-```
+```py
 ...
 transformer = ColumnTransformer(transformers=[('cat', OneHotEncoder(), [0, 1])])
 ```
 
 以下示例对数值列 0 和 1 应用中值输入的简单估算器，对分类列 2 和 3 应用最频繁输入的简单估算器。
 
-```
+```py
 ...
 t = [('num', SimpleImputer(strategy='median'), [0, 1]), ('cat', SimpleImputer(strategy='most_frequent'), [2, 3])]
 transformer = ColumnTransformer(transformers=t)
@@ -111,7 +111,7 @@ transformer = ColumnTransformer(transformers=t)
 
 例如，如果第 0 列和第 1 列是数字的，第 2 列和第 3 列是分类的，并且我们只想转换分类数据并不变地通过数字列，那么我们可以如下定义 ColumnTransformer:
 
-```
+```py
 ...
 transformer = ColumnTransformer(transformers=[('cat', OneHotEncoder(), [2, 3])], remainder='passthrough')
 ```
@@ -120,7 +120,7 @@ transformer = ColumnTransformer(transformers=[('cat', OneHotEncoder(), [2, 3])],
 
 例如:
 
-```
+```py
 ...
 transformer = ColumnTransformer(transformers=[('cat', OneHotEncoder(), [0, 1])])
 # transform training data
@@ -133,7 +133,7 @@ ColumnTransformer 也可以在管道中使用，以便在对转换后的数据�
 
 例如:
 
-```
+```py
 ...
 # define model
 model = LogisticRegression()
@@ -166,7 +166,7 @@ yhat = pipeline.predict(test_X)
 
 查看数据，您可以看到前几行如下:
 
-```
+```py
 M,0.455,0.365,0.095,0.514,0.2245,0.101,0.15,15
 M,0.35,0.265,0.09,0.2255,0.0995,0.0485,0.07,7
 F,0.53,0.42,0.135,0.677,0.2565,0.1415,0.21,9
@@ -183,7 +183,7 @@ I,0.33,0.255,0.08,0.205,0.0895,0.0395,0.055,7
 
 下面列出了加载数据集的完整示例。
 
-```
+```py
 # load the dataset
 from pandas import read_csv
 # load dataset
@@ -197,14 +197,14 @@ print(X.shape, y.shape)
 
 **注意**:如果在从 URL 加载数据集时遇到问题，可以下载名为“*鲍鱼. csv* 的 CSV 文件，并将其放在与您的 Python 文件相同的目录中，并将调用更改为 *read_csv()* ，如下所示:
 
-```
+```py
 ...
 dataframe = read_csv('abalone.csv', header=None)
 ```
 
 运行该示例，我们可以看到数据集被正确加载，并被分成八个输入列和一个目标列。
 
-```
+```py
 (4177, 8) (4177,)
 ```
 
@@ -212,7 +212,7 @@ dataframe = read_csv('abalone.csv', header=None)
 
 我们感兴趣的是熊猫中标记为“ *float64* 或“ *int64* 的数字列列表，以及熊猫中标记为“ *object* 或“ *bool* 类型的分类列列表。
 
-```
+```py
 ...
 # determine categorical and numerical features
 numerical_ix = X.select_dtypes(include=['int64', 'float64']).columns
@@ -223,7 +223,7 @@ categorical_ix = X.select_dtypes(include=['object', 'bool']).columns
 
 我们还可以使用数字列列表来规范化剩余的数据。
 
-```
+```py
 ...
 # define the data preparation for the columns
 t = [('cat', OneHotEncoder(), categorical_ix), ('num', MinMaxScaler(), numerical_ix)]
@@ -232,7 +232,7 @@ col_transform = ColumnTransformer(transformers=t)
 
 接下来，我们可以定义我们的 SVR 模型，并定义一个管道，该管道首先使用 ColumnTransformer，然后在准备好的数据集上拟合模型。
 
-```
+```py
 ...
 # define the model
 model = SVR(kernel='rbf',gamma='scale',C=100)
@@ -242,7 +242,7 @@ pipeline = Pipeline(steps=[('prep',col_transform), ('m', model)])
 
 最后，我们可以使用 10 倍交叉验证来评估模型，并计算管道的所有 10 次评估的平均绝对误差。
 
-```
+```py
 ...
 # define the model cross-validation configuration
 cv = KFold(n_splits=10, shuffle=True, random_state=1)
@@ -256,7 +256,7 @@ print('MAE: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # example of using the ColumnTransformer for the Abalone dataset
 from numpy import mean
 from numpy import std
@@ -303,7 +303,7 @@ print('MAE: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们实现了大约 1.4 的平均 MAE，这比基线分数 2.3 要好。
 
-```
+```py
 (4177, 8) (4177,)
 MAE: 1.465 (0.047)
 ```

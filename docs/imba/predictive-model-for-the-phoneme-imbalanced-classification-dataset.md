@@ -80,7 +80,7 @@
 
 文件的前几行应该如下所示:
 
-```
+```py
 1.24,0.875,-0.205,-0.078,0.067,0
 0.268,1.352,1.035,-0.332,0.217,0
 1.567,0.867,1.3,1.041,0.559,0
@@ -93,7 +93,7 @@
 
 可以使用 [read_csv()熊猫函数](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)将数据集加载为数据帧，指定位置和没有标题行的事实。
 
-```
+```py
 ...
 # define the dataset location
 filename = 'phoneme.csv'
@@ -103,7 +103,7 @@ dataframe = read_csv(filename, header=None)
 
 加载后，我们可以通过打印[数据框](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)的形状来总结行数和列数。
 
-```
+```py
 ...
 # summarize the shape of the dataset
 print(dataframe.shape)
@@ -111,7 +111,7 @@ print(dataframe.shape)
 
 我们还可以使用 [Counter](https://docs.python.org/3/library/collections.html#collections.Counter) 对象总结每个类中的示例数量。
 
-```
+```py
 ...
 # summarize the class distribution
 target = dataframe.values[:,-1]
@@ -123,7 +123,7 @@ for k,v in counter.items():
 
 将这些联系在一起，下面列出了加载和汇总数据集的完整示例。
 
-```
+```py
 # load and summarize the dataset
 from pandas import read_csv
 from collections import Counter
@@ -145,7 +145,7 @@ for k,v in counter.items():
 
 然后总结阶级分布，确认适度的阶级不平衡，多数阶级大约 70%(*鼻*)少数阶级大约 30%(*口*)。
 
-```
+```py
 (5404, 6)
 Class=0.0, Count=3818, Percentage=70.651%
 Class=1.0, Count=1586, Percentage=29.349%
@@ -155,7 +155,7 @@ Class=1.0, Count=1586, Percentage=29.349%
 
 下面列出了完整的示例。
 
-```
+```py
 # create histograms of numeric input variables
 from pandas import read_csv
 from matplotlib import pyplot
@@ -186,7 +186,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # create pairwise scatter plots of numeric input variables
 from pandas import read_csv
 from pandas import DataFrame
@@ -246,7 +246,7 @@ G 均值寻求这些分数的平衡，即[几何均值](https://en.wikipedia.org
 
 我们可以定义一个函数来加载数据集，并将列分成输入和输出变量。下面的 *load_dataset()* 函数实现了这一点。
 
-```
+```py
 # load the dataset
 def load_dataset(full_path):
 	# load the dataset as a numpy array
@@ -260,7 +260,7 @@ def load_dataset(full_path):
 
 然后，我们可以定义一个函数来评估数据集上的给定模型，并返回每次折叠和重复的 G 均值分数列表。下面的 *evaluate_model()* 函数实现了这一点，将数据集和模型作为参数，返回分数列表。
 
-```
+```py
 # evaluate a model
 def evaluate_model(X, y, model):
 	# define evaluation procedure
@@ -278,7 +278,7 @@ def evaluate_model(X, y, model):
 
 这可以通过使用 scikit-learn 库中的 [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类并将“*策略*”参数设置为“*制服*”来实现。
 
-```
+```py
 ...
 # define the reference model
 model = DummyClassifier(strategy='uniform')
@@ -286,7 +286,7 @@ model = DummyClassifier(strategy='uniform')
 
 一旦模型得到评估，我们就可以直接报告 G 均值分数的均值和标准差。
 
-```
+```py
 ...
 # evaluate the model
 scores = evaluate_model(X, y, model)
@@ -296,7 +296,7 @@ print('Mean G-Mean: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 将这些结合起来，下面列出了加载数据集、评估基线模型和报告性能的完整示例。
 
-```
+```py
 # test harness and baseline model evaluation
 from collections import Counter
 from numpy import mean
@@ -350,7 +350,7 @@ print('Mean G-Mean: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到基线算法获得的 G 均值约为 0.509，接近理论最大值 0.5。这个分数提供了模特技能的下限；任何平均 G 均值高于约 0.509(或真正高于 0.5)的模型都有技能，而得分低于该值的模型在该数据集上没有技能。
 
-```
+```py
 (5404, 5) (5404,) Counter({0.0: 3818, 1.0: 1586})
 Mean G-Mean: 0.509 (0.020)
 ```
@@ -385,7 +385,7 @@ Mean G-Mean: 0.509 (0.020)
 
 我们将依次定义每个模型，并将它们添加到一个列表中，以便我们可以顺序评估它们。下面的 *get_models()* 函数定义了用于评估的模型列表，以及用于以后绘制结果的模型简称列表。
 
-```
+```py
 # define models to test
 def get_models():
 	models, names = list(), list()
@@ -409,7 +409,7 @@ def get_models():
 
 然后，我们可以依次列举模型列表，并对每个模型进行评估，报告平均 G 均值，并存储分数以供以后绘制。
 
-```
+```py
 ...
 # define models
 models, names = get_models()
@@ -425,7 +425,7 @@ for i in range(len(models)):
 
 在运行结束时，我们可以将每个分数样本绘制成一个方框，并用相同的比例绘制晶须图，这样我们就可以直接比较分布。
 
-```
+```py
 ...
 # plot the results
 pyplot.boxplot(results, labels=names, showmeans=True)
@@ -434,7 +434,7 @@ pyplot.show()
 
 将所有这些结合在一起，下面列出了在音素数据集上评估一套机器学习算法的完整示例。
 
-```
+```py
 # spot check machine learning algorithms on the phoneme dataset
 from numpy import mean
 from numpy import std
@@ -515,7 +515,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到所有测试的算法都有技巧，实现了高于默认值 0.5 的 G 均值。结果表明，决策树算法的集成在这个数据集上表现更好，可能额外树(et)在 G 均值约为 0.896 时表现最好。
 
-```
+```py
 >LR 0.637 (0.023)
 >SVM 0.801 (0.022)
 >BAG 0.888 (0.017)
@@ -555,7 +555,7 @@ pyplot.show()
 
 我们可以更新 *get_models()* 函数，返回要评估的过采样算法列表；例如:
 
-```
+```py
 # define oversampling models to test
 def get_models():
 	models, names = list(), list()
@@ -581,7 +581,7 @@ def get_models():
 
 首先，我们将对输入变量进行归一化，因为大多数过采样技术将使用最近邻算法，使用该技术时，所有变量具有相同的比例非常重要。接下来是给定的过采样算法，然后是适合过采样训练数据集的额外树算法。
 
-```
+```py
 ...
 # define the model
 model = ExtraTreesClassifier(n_estimators=1000)
@@ -595,7 +595,7 @@ scores = evaluate_model(X, y, pipeline)
 
 将这些联系在一起，下面列出了在音素数据集上使用额外树评估过采样算法的完整示例。
 
-```
+```py
 # data oversampling algorithms on the phoneme imbalanced dataset
 from numpy import mean
 from numpy import std
@@ -687,7 +687,7 @@ pyplot.show()
 
 结果表明，改进版本的 SMOTE 和 ADASN 比默认 SMOTE 表现更好，在这种情况下，ADASN 获得了 0.910 的最佳 G 均值分数。
 
-```
+```py
 >ROS 0.894 (0.018)
 >SMOTE 0.906 (0.015)
 >BLSMOTE 0.909 (0.013)
@@ -713,7 +713,7 @@ pyplot.show()
 
 首先，我们可以将模型定义为管道。
 
-```
+```py
 ...
 # define the model
 model = ExtraTreesClassifier(n_estimators=1000)
@@ -725,7 +725,7 @@ pipeline = Pipeline(steps=steps)
 
 一旦定义好了，我们就可以在整个训练数据集中使用它。
 
-```
+```py
 ...
 # fit the model
 pipeline.fit(X, y)
@@ -735,7 +735,7 @@ pipeline.fit(X, y)
 
 例如:
 
-```
+```py
 ...
 # define a row of data
 row = [...]
@@ -747,7 +747,7 @@ yhat = pipeline.predict([row])
 
 下面列出了完整的示例。
 
-```
+```py
 # fit a model and make predictions for the on the phoneme dataset
 from pandas import read_csv
 from sklearn.preprocessing import MinMaxScaler
@@ -809,7 +809,7 @@ for row in data:
 
 然后将一些口腔病例作为模型的输入，并对标签进行预测。正如我们所希望的那样，所有情况下都能预测到正确的标签。
 
-```
+```py
 Nasal:
 >Predicted=0 (expected 0)
 >Predicted=0 (expected 0)

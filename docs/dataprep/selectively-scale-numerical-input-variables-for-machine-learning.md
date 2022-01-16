@@ -53,7 +53,7 @@
 
 查看数据，我们可以看到所有九个输入变量都是数值。
 
-```
+```py
 6,148,72,35,0,33.6,0.627,50,1
 1,85,66,29,0,26.6,0.351,31,0
 8,183,64,0,0,23.3,0.672,32,1
@@ -66,7 +66,7 @@
 
 以下示例下载并总结了糖尿病数据集。
 
-```
+```py
 # load and summarize the diabetes dataset
 from pandas import read_csv
 from pandas.plotting import scatter_matrix
@@ -85,7 +85,7 @@ pyplot.show()
 
 打印数据集的形状，确认行数、九个变量、八个输入和一个目标。
 
-```
+```py
 (768, 9)
 ```
 
@@ -103,7 +103,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate a logistic regression model on the raw diabetes dataset
 from numpy import mean
 from numpy import std
@@ -137,7 +137,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(m_scores), std(m_scores)))
 
 在这种情况下，我们可以看到模型达到了大约 76.8%的准确率。
 
-```
+```py
 Accuracy: 0.768 (0.040)
 ```
 
@@ -169,7 +169,7 @@ Accuracy: 0.768 (0.040)
 
 这可以使用 pipeline 类来实现，在 Pipeline 类中，管道中的每个步骤都被定义为一个元组，该元组具有要使用的转换或模型的名称和实例。
 
-```
+```py
 ...
 # define the modeling pipeline
 scaler = MinMaxScaler()
@@ -179,7 +179,7 @@ pipeline = Pipeline([('s',scaler),('m',model)])
 
 将这些联系在一起，下面列出了在糖尿病数据集上评估逻辑回归的完整示例，其中所有输入变量都进行了标准化。
 
-```
+```py
 # evaluate a logistic regression model on the normalized diabetes dataset
 from numpy import mean
 from numpy import std
@@ -217,7 +217,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(m_scores), std(m_scores)))
 
 在这种情况下，我们可以看到，输入变量的标准化导致平均分类精度从原始数据模型拟合的 76.8%下降到标准化管道的 76.4%。
 
-```
+```py
 Accuracy: 0.764 (0.045)
 ```
 
@@ -229,7 +229,7 @@ Accuracy: 0.764 (0.045)
 
 这可能是对具有类似高斯分布的输入变量的适当转换，但可能不是对其他变量的转换。
 
-```
+```py
 ...
 # define the modeling pipeline
 scaler = StandardScaler()
@@ -239,7 +239,7 @@ pipeline = Pipeline([('s',scaler),('m',model)])
 
 将这些联系在一起，下面列出了在糖尿病数据集上评估逻辑回归模型的完整示例，其中所有输入变量都已标准化。
 
-```
+```py
 # evaluate a logistic regression model on the standardized diabetes dataset
 from numpy import mean
 from numpy import std
@@ -277,7 +277,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(m_scores), std(m_scores)))
 
 在这种情况下，我们可以看到，标准化所有数字输入变量已导致平均分类精度从原始数据集上评估的模型的 76.8%提升到标准化输入变量数据集上评估的模型的约 77.2%。
 
-```
+```py
 Accuracy: 0.772 (0.043)
 ```
 
@@ -303,7 +303,7 @@ Accuracy: 0.772 (0.043)
 
 我们可以使用列索引定义两组输入变量，一组用于高斯分布的变量，另一组用于指数分布的输入变量。
 
-```
+```py
 ...
 # define column indexes for the variables with "normal" and "exponential" distributions
 norm_ix = [1, 2, 5]
@@ -312,7 +312,7 @@ exp_ix = [0, 3, 4, 6, 7]
 
 然后，我们可以有选择地规范化“ *exp_ix* ”组，让其他输入变量通过，而无需任何数据准备。
 
-```
+```py
 ...
 # define the selective transforms
 t = [('e', MinMaxScaler(), exp_ix)]
@@ -321,7 +321,7 @@ selective = ColumnTransformer(transformers=t, remainder='passthrough')
 
 然后，选择性转换可以用作我们的建模管道的一部分。
 
-```
+```py
 ...
 # define the modeling pipeline
 model = LogisticRegression(solver='liblinear')
@@ -330,7 +330,7 @@ pipeline = Pipeline([('s',selective),('m',model)])
 
 将这些联系在一起，下面列出了对一些输入变量进行选择性标准化的数据进行逻辑回归模型评估的完整示例。
 
-```
+```py
 # evaluate a logistic regression model on the diabetes dataset with selective normalization
 from numpy import mean
 from numpy import std
@@ -376,7 +376,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(m_scores), std(m_scores)))
 
 结果不如标准化所有的输入变量。
 
-```
+```py
 Accuracy: 0.769 (0.043)
 ```
 
@@ -384,7 +384,7 @@ Accuracy: 0.769 (0.043)
 
 我们可以重复上一节的实验，尽管在这种情况下，有选择地标准化那些具有类似高斯分布的输入变量，而保持剩余的输入变量不变。
 
-```
+```py
 ...
 # define the selective transforms
 t = [('n', StandardScaler(), norm_ix)]
@@ -393,7 +393,7 @@ selective = ColumnTransformer(transformers=t, remainder='passthrough')
 
 将这些联系在一起，下面列出了在对一些输入变量进行选择性标准化的数据上评估逻辑回归模型的完整示例。
 
-```
+```py
 # evaluate a logistic regression model on the diabetes dataset with selective standardization
 from numpy import mean
 from numpy import std
@@ -437,7 +437,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(m_scores), std(m_scores)))
 
 在这种情况下，我们可以看到，我们的性能提升了 76.8%，超过了原始数据集上基线模型拟合的 76.8%，也超过了所有输入变量标准化的 77.2%。通过选择性标准化，我们实现了大约 77.3%的平均准确率，这是一个适度但可测量的提升。
 
-```
+```py
 Accuracy: 0.773 (0.041)
 ```
 
@@ -447,7 +447,7 @@ Accuracy: 0.773 (0.041)
 
 这可以通过为 ColumnTransformer 类定义转换和它们各自的列索引来实现，并且不传递任何剩余的变量。
 
-```
+```py
 ...
 # define the selective transforms
 t = [('e', MinMaxScaler(), exp_ix), ('n', StandardScaler(), norm_ix)]
@@ -456,7 +456,7 @@ selective = ColumnTransformer(transformers=t)
 
 将这些联系在一起，下面列出了对输入变量进行选择性规范化和标准化的数据进行逻辑回归模型评估的完整示例。
 
-```
+```py
 # evaluate a logistic regression model on the diabetes dataset with selective scaling
 from numpy import mean
 from numpy import std
@@ -505,7 +505,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(m_scores), std(m_scores)))
 
 我不会猜到这个发现，它强调了仔细实验的重要性。
 
-```
+```py
 Accuracy: 0.772 (0.040)
 ```
 

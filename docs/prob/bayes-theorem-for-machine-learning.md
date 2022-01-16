@@ -293,7 +293,7 @@
 
 下面的示例在普通 Python 中执行相同的计算(没有库)，允许您使用参数并测试不同的场景。
 
-```
+```py
 # calculate the probability of cancer patient and diagnostic test
 
 # calculate P(A|B) given P(A), P(B|A), P(B|not A)
@@ -320,7 +320,7 @@ print('P(A|B) = %.3f%%' % (result * 100))
 
 运行该示例计算患者患癌症的概率，给出的测试结果为阳性，与我们的手动计算相匹配。
 
-```
+```py
 P(A|B) = 0.339%
 ```
 
@@ -336,7 +336,7 @@ P(A|B) = 0.339%
 
 首先，我们来定义一个[混淆矩阵](https://machinelearningmastery.com/confusion-matrix-machine-learning/):
 
-```
+```py
                     | Positive Class      | Negative Class
 Positive Prediction | True Positive (TP)  | False Positive (FP)
 Negative Prediction | False Negative (FN) | True Negative (TN)

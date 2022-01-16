@@ -168,7 +168,7 @@
 
 我们将分割数据，以便 50%用于训练模型，50%用于评估最终的超级模型和基础模型。
 
-```
+```py
 ...
 # create the inputs and outputs
 X, y = make_regression(n_samples=1000, n_features=100, noise=0.5)
@@ -183,7 +183,7 @@ print('Train', X.shape, y.shape, 'Test', X_val.shape, y_val.shape)
 
 下面的 *get_models()* 函数定义了所有的模型，并将它们作为一个列表返回。
 
-```
+```py
 # create a list of base-models
 def get_models():
 	models = list()
@@ -207,7 +207,7 @@ def get_models():
 
 下面的*get _ out _ of _ fold _ predictions()*函数对给定的测试数据集和模型列表执行此操作；它将返回训练元模型所需的输入和输出数据集。
 
-```
+```py
 # collect out of fold predictions form k-fold cross validation
 def get_out_of_fold_predictions(X, y, models):
 	meta_X, meta_y = list(), list()
@@ -233,7 +233,7 @@ def get_out_of_fold_predictions(X, y, models):
 
 然后，我们可以调用函数来获取模型，调用函数来准备元模型数据集。
 
-```
+```py
 ...
 # get models
 models = get_models()
@@ -244,7 +244,7 @@ print('Meta ', meta_X.shape, meta_y.shape)
 
 接下来，我们可以在整个训练数据集上拟合所有的基础模型。
 
-```
+```py
 # fit all base models on the training dataset
 def fit_base_models(X, y, models):
 	for model in models:
@@ -255,7 +255,7 @@ def fit_base_models(X, y, models):
 
 在这种情况下，我们将使用线性回归模型作为元模型，就像在原始论文中使用的那样。
 
-```
+```py
 # fit a meta model
 def fit_meta_model(X, y):
 	model = LinearRegression()
@@ -265,7 +265,7 @@ def fit_meta_model(X, y):
 
 接下来，我们可以在保持数据集上评估基础模型。
 
-```
+```py
 # evaluate a list of models on a dataset
 def evaluate_models(X, y, models):
 	for model in models:
@@ -278,7 +278,7 @@ def evaluate_models(X, y, models):
 
 下面的 super_learner_predictions()函数将使用元模型对新数据进行预测。
 
-```
+```py
 # make predictions with stacked model
 def super_learner_predictions(X, models, meta_model):
 	meta_X = list()
@@ -292,7 +292,7 @@ def super_learner_predictions(X, models, meta_model):
 
 我们可以调用这个函数并评估结果。
 
-```
+```py
 ...
 # evaluate meta model
 yhat = super_learner_predictions(X_val, models, meta_model)
@@ -301,7 +301,7 @@ print('Super Learner: RMSE %.3f' % (sqrt(mean_squared_error(y_val, yhat))))
 
 将所有这些结合起来，下面列出了使用 scikit-learn 模型进行回归的超级学习器算法的完整示例。
 
-```
+```py
 # example of a super learner model for regression
 from math import sqrt
 from numpy import hstack
@@ -416,7 +416,7 @@ print('Super Learner: RMSE %.3f' % (sqrt(mean_squared_error(y_val, yhat))))
 
 我们还可以看到，超级学习者超越了所有的基础模型。
 
-```
+```py
 Train (500, 100) (500,) Test (500, 100) (500,)
 Meta  (500, 9) (500,)
 
@@ -445,7 +445,7 @@ Super Learner: RMSE 0.546
 
 在这个问题中，我们将使用 [make_blobs()测试分类问题](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)，并使用 100 个输入变量和两个类标签的 1000 个示例。
 
-```
+```py
 ...
 # create the inputs and outputs
 X, y = make_blobs(n_samples=1000, centers=2, n_features=100, cluster_std=20)
@@ -456,7 +456,7 @@ print('Train', X.shape, y.shape, 'Test', X_val.shape, y_val.shape)
 
 接下来，我们可以更改 *get_models()* 函数来定义一套线性和非线性分类算法。
 
-```
+```py
 # create a list of base-models
 def get_models():
 	models = list()
@@ -474,7 +474,7 @@ def get_models():
 
 接下来，我们可以通过调用 *predict_proba()* 函数来更改*get _ out _ of _ fold _ predictions()*函数来预测概率。
 
-```
+```py
 # collect out of fold predictions form k-fold cross validation
 def get_out_of_fold_predictions(X, y, models):
 	meta_X, meta_y = list(), list()
@@ -500,7 +500,7 @@ def get_out_of_fold_predictions(X, y, models):
 
 在 *fit_meta_model()* 函数中，将使用逻辑回归算法而不是线性回归算法作为元算法。
 
-```
+```py
 # fit a meta model
 def fit_meta_model(X, y):
 	model = LogisticRegression(solver='liblinear')
@@ -512,7 +512,7 @@ def fit_meta_model(X, y):
 
 下面列出了使用 scikit-learn 模型进行分类的超级学习器算法的完整示例。
 
-```
+```py
 # example of a super learner model for binary classification
 from numpy import hstack
 from numpy import vstack
@@ -622,7 +622,7 @@ print('Super Learner: %.3f' % (accuracy_score(y_val, yhat) * 100))
 
 在这种情况下，我们可以看到超级学习器的性能比基本学习器算法稍好。
 
-```
+```py
 Train (500, 100) (500,) Test (500, 100) (500,)
 Meta (500, 18) (500,)
 
@@ -649,13 +649,13 @@ Super Learner: 98.000
 
 首先，必须安装库，这可以通过 pip 实现，如下所示:
 
-```
+```py
 sudo pip install mlens
 ```
 
 接下来，可以定义一个超级学习者类，通过调用 *add()* 函数添加模型，通过调用 *add_meta()* 函数添加元学习者，然后像其他 scikit-learn 模型一样使用模型。
 
-```
+```py
 ...
 # configure model
 ensemble = SuperLearner(...)
@@ -672,7 +672,7 @@ ensemble.add_meta(...)
 
 首先，我们可以为我们的问题定义一个计算 RMSE 的函数，超级学习者可以用它来评估基本模型。
 
-```
+```py
 # cost function for base models
 def rmse(yreal, yhat):
 	return sqrt(mean_squared_error(yreal, yhat))
@@ -682,7 +682,7 @@ def rmse(yreal, yhat):
 
 下面的*get _ super _ leaner()*函数实现了这一点。
 
-```
+```py
 # create the super learner
 def get_super_learner(X):
 	ensemble = SuperLearner(scorer=rmse, folds=10, shuffle=True, sample_size=len(X))
@@ -696,7 +696,7 @@ def get_super_learner(X):
 
 然后，我们可以在训练数据集上拟合模型。
 
-```
+```py
 ...
 # fit the super learner
 ensemble.fit(X, y)
@@ -704,7 +704,7 @@ ensemble.fit(X, y)
 
 一旦拟合，我们可以通过访问模型上的“*数据*”属性，使用 k 倍交叉验证获得训练数据集中每个基础模型的性能的良好报告。
 
-```
+```py
 ...
 # summarize base learners
 print(ensemble.data)
@@ -714,7 +714,7 @@ print(ensemble.data)
 
 将这些联系在一起，下面列出了使用 mlens 回归库评估超级学习者的完整示例。
 
-```
+```py
 # example of a super learner for regression using the mlens library
 from math import sqrt
 from sklearn.datasets import make_regression
@@ -785,7 +785,7 @@ print('Super Learner: RMSE %.3f' % (rmse(y_val, yhat)))
 
 请注意，我们无法将表中的基本学习者分数与超级学习者进行比较，因为基本学习者仅在训练数据集上进行评估，而不是在保持数据集上进行评估。
 
-```
+```py
 [MLENS] backend: threading
 Train (500, 100) (500,) Test (500, 100) (500,)
                                   score-m  score-s  ft-m  ft-s  pt-m  pt-s
@@ -810,7 +810,7 @@ ML-系综也很容易用于分类问题，遵循相同的一般模式。
 
 下面列出了使用 mlens 库为测试分类问题拟合和评估超级学习者模型的完整示例。
 
-```
+```py
 # example of a super learner using the mlens library
 from sklearn.datasets import make_blobs
 from sklearn.model_selection import train_test_split
@@ -872,7 +872,7 @@ print('Super Learner: %.3f' % (accuracy_score(y_val, yhat) * 100))
 
 同样，我们可以看到超级学习者在这个测试问题上表现良好，更重要的是，与上一节中的手动示例相比，非常快速地适应和评估。
 
-```
+```py
 [MLENS] backend: threading
 Train (500, 100) (500,) Test (500, 100) (500,)
                                    score-m  score-s  ft-m  ft-s  pt-m  pt-s

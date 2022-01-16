@@ -63,7 +63,7 @@ Keras 深度学习库中并没有提供测试时增强，但是可以轻松实�
 
 [ImageDataGenerator 类](https://keras.io/preprocessing/image/)可用于配置测试时间增加的选择。例如，下面的数据生成器被配置用于水平翻转图像数据增强。
 
-```
+```py
 # configure image data augmentation
 datagen = ImageDataGenerator(horizontal_flip=True)
 ```
@@ -72,21 +72,21 @@ datagen = ImageDataGenerator(horizontal_flip=True)
 
 首先，对于单个图像，单个图像的维度可以从*【行】【列】【通道】*扩展到*【样本】【行】【列】【通道】*，其中样本数为 1。这将图像的数组转换为包含一个图像的样本数组。
 
-```
+```py
 # convert image into dataset
 samples = expand_dims(image, 0)
 ```
 
 接下来，可以为样本创建一个迭代器，批量大小可以用来指定要生成的增强图像的数量，例如 10 个。
 
-```
+```py
 # prepare iterator
 it = datagen.flow(samples, batch_size=10)
 ```
 
 迭代器然后可以传递给模型的 *predict_generator()* 函数，以便进行预测。具体来说，将生成一批 10 幅增强图像，模型将对每幅图像进行预测。
 
-```
+```py
 # make predictions for each augmented image
 yhats = model.predict_generator(it, steps=10, verbose=0)
 ```
@@ -95,7 +95,7 @@ yhats = model.predict_generator(it, steps=10, verbose=0)
 
 可以使用[软投票](https://machinelearningmastery.com/weighted-average-ensemble-for-deep-learning-neural-networks/)进行集成预测，其中在预测中对每个类别的概率求和，并且通过计算求和预测的 [argmax()](https://machinelearningmastery.com/argmax-in-machine-learning/) 来进行类别预测，返回最大求和概率的指数或类别号。
 
-```
+```py
 # sum across predictions
 summed = numpy.sum(yhats, axis=0)
 # argmax across classes
@@ -104,7 +104,7 @@ return argmax(summed)
 
 我们可以将这些元素绑定到一个函数中，该函数将采用一个已配置的数据生成器、拟合模型和单个图像，并将使用测试时间增强返回一个类预测(整数)。
 
-```
+```py
 # make a prediction using test-time augmentation
 def tta_prediction(datagen, model, image, n_examples):
 	# convert image into dataset
@@ -133,14 +133,14 @@ def tta_prediction(datagen, model, image, n_examples):
 
 通过调用 *cifar10.load_data()* 函数，可以通过 Keras API 轻松加载 CIFAR-10 数据集，该函数返回一个元组，其中训练和测试数据集被拆分为输入(图像)和输出(类标签)组件。
 
-```
+```py
 # load dataset
 (trainX, trainY), (testX, testY) = load_data()
 ```
 
 在建模之前，最好将像素值从 0-255 范围归一化到 0-1 范围。这确保了输入很小并且接近于零，并且反过来意味着模型的权重将保持很小，从而导致更快和更好的学习。
 
-```
+```py
 # normalize pixel values
 trainX = trainX.astype('float32') / 255
 testX = testX.astype('float32') / 255
@@ -150,7 +150,7 @@ testX = testX.astype('float32') / 255
 
 这可以使用*到 _ classic()*Keras 效用函数来实现。
 
-```
+```py
 # one hot encode target values
 trainY = to_categorical(trainY)
 testY = to_categorical(testY)
@@ -162,7 +162,7 @@ testY = to_categorical(testY)
 
 尽管滤波器的数量增加到了 64 个，但这种模式在卷积层、批量范数层和最大池层重复使用。然后，输出在被密集层解释之前被展平，并最终被提供给输出层以进行预测。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Conv2D(32, (3, 3), activation='relu', padding='same', kernel_initializer='he_uniform', input_shape=(32, 32, 3)))
@@ -181,21 +181,21 @@ model.add(Dense(10, activation='softmax'))
 
 使用[分类交叉熵损失函数](https://machinelearningmastery.com/loss-and-loss-functions-for-training-deep-learning-neural-networks/)，多类分类需要，训练时监控分类精度。
 
-```
+```py
 # compile model
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 ```
 
 该模型适用于三个训练时期，并且使用了 128 幅图像的大批量。
 
-```
+```py
 # fit model
 model.fit(trainX, trainY, epochs=3, batch_size=128)
 ```
 
 一旦拟合，就在测试数据集上评估模型。
 
-```
+```py
 # evaluate model
 _, acc = model.evaluate(testX, testY, verbose=0)
 print(acc)
@@ -203,7 +203,7 @@ print(acc)
 
 下面列出了完整的示例，几分钟后就可以在 CPU 上轻松运行。
 
-```
+```py
 # baseline cnn model for the cifar10 problem
 from keras.datasets.cifar10 import load_data
 from keras.utils import to_categorical
@@ -246,7 +246,7 @@ print(acc)
 
 测试集的准确率达到了 66%左右，这是可以的，但并不可怕。所选择的模型配置已经开始过度调整，并且可以受益于[正则化](https://machinelearningmastery.com/introduction-to-regularization-to-reduce-overfitting-and-improve-generalization-error/)的使用和进一步的调整。然而，这为演示测试时间增加提供了一个很好的起点。
 
-```
+```py
 Epoch 1/3
 50000/50000 [==============================] - 64s 1ms/step - loss: 1.2135 - acc: 0.5766
 Epoch 2/3
@@ -262,7 +262,7 @@ Epoch 3/3
 
 首先，我们可以定义一个名为 *load_dataset()* 的函数，该函数将加载 CIFAR-10 数据集并为建模做准备。
 
-```
+```py
 # load and return the cifar10 dataset ready for modeling
 def load_dataset():
 	# load dataset
@@ -278,7 +278,7 @@ def load_dataset():
 
 接下来，我们可以定义一个名为 define_model()的函数，该函数将为 CIFAR-10 数据集定义一个模型，准备进行拟合，然后进行评估。
 
-```
+```py
 # define the cnn model for the cifar10 dataset
 def define_model():
 	# define model
@@ -300,7 +300,7 @@ def define_model():
 
 接下来，定义 *evaluate_model()* 函数，该函数将在训练数据集上拟合定义的模型，然后在测试数据集上对其进行评估，返回运行的估计分类精度。
 
-```
+```py
 # fit and evaluate a defined model
 def evaluate_model(model, trainX, trainY, testX, testY):
 	# fit model
@@ -314,7 +314,7 @@ def evaluate_model(model, trainX, trainY, testX, testY):
 
 下面的*repeat _ evaluation()*函数实现了这一点，取数据集，默认为 10 次重复评估。
 
-```
+```py
 # repeatedly evaluate model, return distribution of scores
 def repeated_evaluation(trainX, trainY, testX, testY, repeats=10):
 	scores = list()
@@ -331,7 +331,7 @@ def repeated_evaluation(trainX, trainY, testX, testY, repeats=10):
 
 最后，我们可以调用 *load_dataset()* 函数来准备数据集，然后*repeat _ evaluation()*得到一个精度分数的分布，可以通过报告均值和标准差来总结。
 
-```
+```py
 # load dataset
 trainX, trainY, testX, testY = load_dataset()
 # evaluate model
@@ -342,7 +342,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 将所有这些联系在一起，下面列出了在 MNIST 数据集上重复评估 CNN 模型的完整代码示例。
 
-```
+```py
 # baseline cnn model for the cifar10 problem, repeated evaluation
 from numpy import mean
 from numpy import std
@@ -420,7 +420,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到所选模型配置的平均精度约为 68%，接近单次模型运行的估计值。
 
-```
+```py
 > 0.690
 > 0.662
 > 0.698
@@ -442,7 +442,7 @@ Accuracy: 0.686 (0.010)
 
 可以直接使用上面关于如何在 Keras 中实现测试时间增加的部分中开发的 *tta_prediction()* 函数。
 
-```
+```py
 # make a prediction using test-time augmentation
 def tta_prediction(datagen, model, image, n_examples):
 	# convert image into dataset
@@ -463,7 +463,7 @@ def tta_prediction(datagen, model, image, n_examples):
 
 在这个例子中，我们将只使用水平翻转。
 
-```
+```py
 # configure image data augmentation
 datagen = ImageDataGenerator(horizontal_flip=True)
 ```
@@ -472,7 +472,7 @@ datagen = ImageDataGenerator(horizontal_flip=True)
 
 下面的 *tta_evaluate_model()* 函数配置 *ImageDataGenerator* 然后枚举测试数据集，对测试数据集中的每个图像进行类标签预测。然后通过将预测的类别标签与测试数据集中的类别标签进行比较来计算准确度。这要求我们通过使用 *argmax()* 来反转在 *load_dataset()* 中执行的一个热编码。
 
-```
+```py
 # evaluate a model on a dataset using test-time augmentation
 def tta_evaluate_model(model, testX, testY):
 	# configure image data augmentation
@@ -493,7 +493,7 @@ def tta_evaluate_model(model, testX, testY):
 
 然后可以更新 *evaluate_model()* 函数来调用 *tta_evaluate_model()* ，以获得模型精度分数。
 
-```
+```py
 # fit and evaluate a defined model
 def evaluate_model(model, trainX, trainY, testX, testY):
 	# fit model
@@ -505,7 +505,7 @@ def evaluate_model(model, trainX, trainY, testX, testY):
 
 将所有这些联系在一起，下面列出了一个完整的例子，它重复评估了美国有线电视新闻网对 CIFAR-10 的测试时间增加。
 
-```
+```py
 # cnn model for the cifar10 problem with test-time augmentation
 import numpy
 from numpy import argmax
@@ -616,7 +616,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到性能从没有测试时间增加的测试集的大约 68.6%适度提升到有测试时间增加的测试集的大约 69.8%的准确性。
 
-```
+```py
 > 0.719
 > 0.716
 > 0.709
@@ -638,7 +638,7 @@ Accuracy: 0.698 (0.013)
 
 相反，我建议拟合模型一次并保存到文件中。例如:
 
-```
+```py
 # save model
 model.save('model.h5')
 ```
@@ -647,7 +647,7 @@ model.save('model.h5')
 
 例如:
 
-```
+```py
 ...
 # load model
 model = load_model('model.h5')

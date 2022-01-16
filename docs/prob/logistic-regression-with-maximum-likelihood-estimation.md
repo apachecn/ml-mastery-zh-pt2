@@ -145,7 +145,7 @@
 
 下面列出了完整的示例。
 
-```
+```py
 # example of converting between probability and odds
 from math import log
 from math import exp
@@ -162,7 +162,7 @@ print('Probability %.1f' % prob)
 
 运行该示例显示，0.8 被转换为成功概率 4，并再次回到正确的概率。
 
-```
+```py
 Probability 0.8
 Odds 4.0
 Probability 0.8
@@ -172,7 +172,7 @@ Probability 0.8
 
 下面列出了完整的示例。
 
-```
+```py
 # example of converting between probability and log-odds
 from math import log
 from math import exp
@@ -192,7 +192,7 @@ print('Probability %.1f' % prob)
 
 运行该示例，我们可以看到我们的赔率被转换为大约 1.4 的对数赔率，然后被正确地转换回 0.8 的成功概率。
 
-```
+```py
 Probability 0.8
 Odds 4.0
 Log-Odds 1.4
@@ -272,7 +272,7 @@ Probability 0.8
 
 下面列出了完整的示例。
 
-```
+```py
 # test of Bernoulli likelihood function
 
 # likelihood function for Bernoulli distribution
@@ -295,7 +295,7 @@ print('y=%.1f, yhat=%.1f, likelihood: %.3f' % (y, yhat, likelihood(y, yhat)))
 
 我们可以看到，似然函数在返回模型达到预期结果的概率方面是一致的。
 
-```
+```py
 y=1.0, yhat=0.9, likelihood: 0.900
 y=1.0, yhat=0.1, likelihood: 0.100
 y=0.0, yhat=0.1, likelihood: 0.900

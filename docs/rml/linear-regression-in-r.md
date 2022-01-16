@@ -23,7 +23,7 @@
 
 普通最小二乘(OLS)回归是一种线性模型，它寻求为直线/超平面找到一组系数，使平方误差之和最小。
 
-```
+```py
 # load data
 data(longley)
 # fit model
@@ -43,7 +43,7 @@ print(mse)
 
 逐步线性回归是一种利用线性回归来发现数据集中哪个属性子集导致最佳性能模型的方法。这是逐步的，因为方法的每次迭代都会对属性集进行更改，并创建一个模型来评估属性集的性能。
 
-```
+```py
 # load data
 data(longley)
 # fit model
@@ -67,7 +67,7 @@ print(mse)
 
 主成分回归(PCR)使用主成分分析(PCA)的输出来估计模型的系数，从而创建线性回归模型。当数据具有高度相关的预测因子时，聚合酶链反应是有用的。
 
-```
+```py
 # load the package
 library(pls)
 # load data
@@ -89,7 +89,7 @@ print(mse)
 
 偏最小二乘回归在问题空间的变换投影中创建了数据的线性模型。像聚合酶链反应一样，偏最小二乘法适用于预测因子高度相关的数据。
 
-```
+```py
 # load the package
 library(pls)
 # load data

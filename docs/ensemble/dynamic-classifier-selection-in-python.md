@@ -106,13 +106,13 @@ DESlib 是一个易于使用的集成学习库，专注于实现动态分类器�
 
 首先，我们可以使用 pip 包管理器来安装 DESlib 库。
 
-```
+```py
 sudo pip install deslib
 ```
 
 安装后，我们可以通过加载库并打印已安装的版本来确认库安装正确并准备好使用。
 
-```
+```py
 # check deslib version
 import deslib
 print(deslib.__version__)
@@ -122,7 +122,7 @@ print(deslib.__version__)
 
 您的版本应该相同或更高。如果没有，您必须升级您的 DESlib 库版本。
 
-```
+```py
 0.3
 ```
 
@@ -136,7 +136,7 @@ DESlib 分别通过 [OLA](https://deslib.readthedocs.io/en/latest/modules/dcs/ol
 
 我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例和 20 个输入特征的合成二进制分类问题。
 
-```
+```py
 # synthetic binary classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -147,7 +147,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (10000, 20) (10000,)
 ```
 
@@ -163,7 +163,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate dynamic classifier selection DCS-LA with overall local accuracy
 from numpy import mean
 from numpy import std
@@ -189,7 +189,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到带有 OLA 和默认超参数的 DCS-LA 达到了大约 88.3%的分类准确率。
 
-```
+```py
 Mean Accuracy: 0.883 (0.012)
 ```
 
@@ -199,7 +199,7 @@ Mean Accuracy: 0.883 (0.012)
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make a prediction with DCS-LA using overall local accuracy
 from sklearn.datasets import make_classification
 from deslib.dcs.ola import OLA
@@ -217,7 +217,7 @@ print('Predicted Class: %d' % yhat[0])
 
 运行该示例使 DCS-LA 与 OLA 模型在整个数据集上匹配，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Class: 0
 ```
 
@@ -233,7 +233,7 @@ Predicted Class: 0
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate dynamic classifier selection DCS-LA using local class accuracy
 from numpy import mean
 from numpy import std
@@ -259,7 +259,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到带有生命周期评价和默认超参数的分布式控制系统达到了大约 92.2%的分类精度。
 
-```
+```py
 Mean Accuracy: 0.922 (0.007)
 ```
 
@@ -269,7 +269,7 @@ Mean Accuracy: 0.922 (0.007)
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make a prediction with DCS-LA using local class accuracy
 from sklearn.datasets import make_classification
 from deslib.dcs.lca import LCA
@@ -287,7 +287,7 @@ print('Predicted Class: %d' % yhat[0])
 
 运行该示例使 DCS-LA 与 LCA 模型在整个数据集上匹配，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Class: 0
 ```
 
@@ -309,7 +309,7 @@ k-最近邻算法的配置对 DCS-LA 模型至关重要，因为它定义了考�
 
 下面的例子探索了 k 值从 2 到 21 的带有 OLA 的 DCS-LA 的分类精度。
 
-```
+```py
 # explore k in knn for DCS-LA with overall local accuracy
 from numpy import mean
 from numpy import std
@@ -359,7 +359,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到精度会随着邻域大小的增加而增加，可能会增加到 k=13 或 k=14，在这种情况下精度会趋于平稳。
 
-```
+```py
 >2 0.873 (0.009)
 >3 0.874 (0.013)
 >4 0.880 (0.009)
@@ -402,7 +402,7 @@ pyplot.show()
 
 下面列出了使用 OLA 和合成数据集上的一组自定义分类器评估 DCS-LA 的完整示例。
 
-```
+```py
 # evaluate DCS-LA using OLA with a custom pool of algorithms
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -439,7 +439,7 @@ print('Accuracy: %.3f' % (score))
 
 在这种情况下，我们可以看到模型达到了大约 91.2%的准确率。
 
-```
+```py
 Accuracy: 0.913
 ```
 
@@ -447,7 +447,7 @@ Accuracy: 0.913
 
 我们可以通过评估测试集中每个有贡献的分类器的性能来检查这一点。
 
-```
+```py
 ...
 # evaluate contributing models
 for c in classifiers:
@@ -458,7 +458,7 @@ for c in classifiers:
 
 下面列出了 DCS-LA 的更新示例，它具有一个定制的分类器池，这些分类器也是独立评估的。
 
-```
+```py
 # evaluate DCS-LA using OLA with a custom pool of algorithms
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -501,7 +501,7 @@ for c in classifiers:
 
 在这种情况下，我们可以再次看到，分布式控制系统-洛杉矶实现了约 91.3%的准确性，这优于任何贡献模型。
 
-```
+```py
 Accuracy: 0.913
 >LogisticRegression: 0.878
 >DecisionTreeClassifier: 0.884

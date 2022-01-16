@@ -81,7 +81,7 @@
 
 文件的前几行应该如下所示:
 
-```
+```py
 1,2558,1506.09,456.63,90,6395000,40.88,7.89,29780,0.19,214.7,0.21,0.26,0.49,0.1,0.4,99.59,32.19,1.84,0.16,0.2,87.65,0,0.47,132.78,-0.01,3.78,0.22,3.2,-3.71,-0.18,2.19,0,2.19,310,16110,0,138.68,89,69,2850,1000,763.16,135.46,3.73,0,33243.19,65.74,7.95,1
 2,22325,79.11,841.03,180,55812500,51.11,1.21,61900,0.02,901.7,0.02,0.03,0.11,0.01,0.11,6058.23,4061.15,2.3,0.02,0.02,87.65,0,0.58,132.78,-0.01,3.78,0.84,7.09,-2.21,0,0,0,0,704,40140,0,68.65,89,69,5750,11500,9593.48,1648.8,0.6,0,51572.04,65.73,6.26,0
 3,115,1449.85,608.43,88,287500,40.42,7.34,3340,0.18,86.1,0.21,0.32,0.5,0.17,0.34,71.2,16.73,1.82,0.19,0.29,87.65,0,0.46,132.78,-0.01,3.78,0.7,4.79,-3.36,-0.23,1.95,0,1.95,29,1530,0.01,38.8,89,69,1400,250,150,45.13,9.33,1,31692.84,65.81,7.84,1
@@ -111,7 +111,7 @@
 
 文件的前几行应该如下所示:
 
-```
+```py
 5.1,3.5,1.4,0.2,Iris-setosa
 4.9,3.0,1.4,0.2,Iris-setosa
 4.7,3.2,1.3,0.2,Iris-setosa
@@ -136,7 +136,7 @@
 
 这里，单个值意味着该列的每一行都有相同的值。例如，列 *X1* 对于数据集中的所有行都具有值 1.0:
 
-```
+```py
 X1
 1.0
 1.0
@@ -154,7 +154,7 @@ X1
 
 以下示例加载了包含 50 个变量的溢油分类数据集，并总结了每列的唯一值的数量。
 
-```
+```py
 # summarize the number of unique values for each column using numpy
 from urllib.request import urlopen
 from numpy import loadtxt
@@ -172,7 +172,7 @@ for i in range(data.shape[1]):
 
 我们可以看到，列索引 22 只有一个值，应该删除。
 
-```
+```py
 0 238
 1 297
 2 927
@@ -229,7 +229,7 @@ for i in range(data.shape[1]):
 
 下面是使用熊猫函数的同一个例子。
 
-```
+```py
 # summarize the number of unique values for each column using numpy
 from pandas import read_csv
 # define the location of the dataset
@@ -242,7 +242,7 @@ print(df.nunique())
 
 运行该示例，我们得到相同的结果，列索引，以及每列的唯一值的数量。
 
-```
+```py
 0     238
 1     297
 2     927
@@ -310,7 +310,7 @@ dtype: int64
 
 下面列出了完整的示例。
 
-```
+```py
 # delete columns with a single unique value
 from pandas import read_csv
 # define the location of the dataset
@@ -334,7 +334,7 @@ print(df.shape)
 
 然后从数据框中删除已识别的列，并报告数据框中的行数和列数以确认更改。
 
-```
+```py
 (937, 50)
 [22]
 (937, 49)
@@ -364,7 +364,7 @@ print(df.shape)
 
 让我们使用 NumPy 手动完成这项工作。下面列出了完整的示例。
 
-```
+```py
 # summarize the percentage of unique values for each column using numpy
 from urllib.request import urlopen
 from numpy import loadtxt
@@ -384,7 +384,7 @@ for i in range(data.shape[1]):
 
 在这里，我们可以看到一些列的唯一值百分比非常低，例如低于 1%。
 
-```
+```py
 0, 238, 25.4%
 1, 297, 31.7%
 2, 927, 98.9%
@@ -439,7 +439,7 @@ for i in range(data.shape[1]):
 
 我们可以更新示例，只汇总那些唯一值小于行数 1%的变量。
 
-```
+```py
 # summarize the percentage of unique values for each column using numpy
 from urllib.request import urlopen
 from numpy import loadtxt
@@ -466,7 +466,7 @@ for i in range(data.shape[1]):
 *   也许唯一的值可以被编码为分类值？
 *   也许将模型技能与从数据集中移除的每个变量进行比较？
 
-```
+```py
 21, 9, 1.0%
 22, 1, 0.1%
 24, 9, 1.0%
@@ -482,7 +482,7 @@ for i in range(data.shape[1]):
 
 例如，如果我们想删除唯一值小于 1%行的所有 11 列；下面的例子演示了这一点。
 
-```
+```py
 # delete columns where number of unique values is less than 1% of the rows
 from pandas import read_csv
 # define the location of the dataset
@@ -506,7 +506,7 @@ print(df.shape)
 
 然后从数据框中删除已识别的列，并报告数据框中的行数和列数以确认更改。
 
-```
+```py
 (937, 50)
 [21, 22, 24, 25, 26, 32, 36, 38, 39, 45, 49]
 (937, 39)
@@ -524,7 +524,7 @@ scikit-learn 库中的 [VarianceThreshold](https://scikit-learn.org/stable/modul
 
 然后，可以通过调用 *fit_transform()* 函数来拟合数据集并将其应用于数据集，以创建数据集的转换版本，其中方差低于阈值的列已被自动移除。
 
-```
+```py
 ...
 # define the transform
 transform = VarianceThreshold()
@@ -534,7 +534,7 @@ X_sel = transform.fit_transform(X)
 
 我们可以在溢油数据集上对此进行如下演示:
 
-```
+```py
 # example of apply the variance threshold
 from pandas import read_csv
 from sklearn.feature_selection import VarianceThreshold
@@ -558,7 +558,7 @@ print(X_sel.shape)
 
 数据集的形状是在转换前后报告的，我们可以看到所有值都相同的单个列已经被移除。
 
-```
+```py
 (937, 49) (937,)
 (937, 48)
 ```
@@ -567,7 +567,7 @@ print(X_sel.shape)
 
 我们可以定义从 0.0 到 0.5 的阈值序列，步长为 0.05，例如 0.0、0.05、0.1 等。
 
-```
+```py
 ...
 # define thresholds to check
 thresholds = arange(0.0, 0.55, 0.05)
@@ -575,7 +575,7 @@ thresholds = arange(0.0, 0.55, 0.05)
 
 然后，我们可以报告每个给定阈值的转换数据集中的要素数量。
 
-```
+```py
 ...
 # apply transform with each threshold
 results = list()
@@ -595,7 +595,7 @@ for t in thresholds:
 
 将这些联系在一起，下面列出了将方差阈值与所选特征的数量进行比较的完整示例。
 
-```
+```py
 # explore the effect of the variance thresholds on the number of selected features
 from numpy import arange
 from pandas import read_csv
@@ -635,7 +635,7 @@ pyplot.show()
 
 我们可以看到，数据集中的要素数量从未更改数据中的 49 个快速下降到阈值为 0.15 的 35 个。后来下降到 31 个(删除了 18 列)，阈值为 0.5。
 
-```
+```py
 (937, 49) (937,)
 >Threshold=0.00, Features=48
 >Threshold=0.05, Features=37
@@ -682,7 +682,7 @@ pyplot.show()
 
 以下示例检查重复项。
 
-```
+```py
 # locate rows of duplicate data
 from pandas import read_csv
 # define the location of the dataset
@@ -703,7 +703,7 @@ print(df[dups])
 
 然后报告所有重复的行。在这种情况下，我们可以看到打印了三个重复的行。
 
-```
+```py
 True
        0    1    2    3               4
 34   4.9  3.1  1.5  0.1     Iris-setosa
@@ -723,7 +723,7 @@ True
 
 下面的示例演示了如何从数据集中删除重复的行。
 
-```
+```py
 # delete rows of duplicate data from the dataset
 from pandas import read_csv
 # define the location of the dataset
@@ -740,7 +740,7 @@ print(df.shape)
 
 接下来，识别重复数据行，并将其从数据框中删除。然后报告数据框的形状以确认更改。
 
-```
+```py
 (150, 5)
 (147, 5)
 ```

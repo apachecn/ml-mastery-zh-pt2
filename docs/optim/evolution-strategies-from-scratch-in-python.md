@@ -79,7 +79,7 @@ mu 和 lambda 参数的加号(+)分隔表示子代和父代将一起定义下一
 
 下面的示例实现了 Ackley，并创建了一个显示全局最优值和多个局部最优值的三维曲面图。
 
-```
+```py
 # ackley multimodal function
 from numpy import arange
 from numpy import exp
@@ -124,7 +124,7 @@ pyplot.show()
 
 下面的 *in_bounds()* 函数将获取一个候选解(点)和搜索空间边界的定义(边界)，如果解在搜索的边界内，则返回真，否则返回假。
 
-```
+```py
 # check if a point is within the bounds of the search
 def in_bounds(point, bounds):
 	# enumerate all dimensions of the point
@@ -139,7 +139,7 @@ def in_bounds(point, bounds):
 
 例如:
 
-```
+```py
 ...
 # initial population
 population = list()
@@ -154,7 +154,7 @@ for _ in range(lam):
 
 我们将计算分数并将它们存储在单独的平行列表中。
 
-```
+```py
 ...
 # evaluate fitness for the population
 scores = [objective(c) for c in population]
@@ -166,7 +166,7 @@ scores = [objective(c) for c in population]
 
 然后我们将使用等级并选择那些等级低于值“ *mu* ”的父母这意味着，如果将 mu 设置为 5 以选择 5 个父代，则只会选择等级在 0 到 4 之间的那些父代。
 
-```
+```py
 ...
 # rank scores in ascending order
 ranks = argsort(argsort(scores))
@@ -178,7 +178,7 @@ selected = [i for i,_ in enumerate(ranks) if ranks[i] < mu]
 
 首先，我们必须计算每个父代要创建的子代总数。
 
-```
+```py
 ...
 # calculate the number of children per parent
 n_children = int(lam / mu)
@@ -188,7 +188,7 @@ n_children = int(lam / mu)
 
 我们将使用随机爬山中使用的类似技术来创造孩子。具体来说，将使用高斯分布对每个变量进行采样，当前值作为平均值，标准偏差作为“*步长*”超参数。
 
-```
+```py
 ...
 # create children for parent
 for _ in range(n_children):
@@ -199,7 +199,7 @@ for _ in range(n_children):
 
 我们还可以检查每个选定的父项是否优于迄今为止看到的最佳解决方案，以便我们可以在搜索结束时返回最佳解决方案。
 
-```
+```py
 ...
 # check if this parent is the best solution ever seen
 if scores[i] < best_eval:
@@ -209,7 +209,7 @@ if scores[i] < best_eval:
 
 可以将创建的子代添加到列表中，我们可以在算法迭代结束时用子代列表替换人口。
 
-```
+```py
 ...
 # replace population with children
 population = children
@@ -219,7 +219,7 @@ population = children
 
 该函数采用目标函数的名称、搜索空间的边界、迭代次数、步长以及 mu 和 lambda 超参数，并返回在搜索和评估过程中找到的最佳解。
 
-```
+```py
 # evolution strategy (mu, lambda) algorithm
 def es_comma(objective, bounds, n_iter, step_size, mu, lam):
 	best, best_eval = None, 1e+10
@@ -264,7 +264,7 @@ def es_comma(objective, bounds, n_iter, step_size, mu, lam):
 
 在搜索结束时，我们将报告在搜索过程中找到的最佳候选解决方案。
 
-```
+```py
 ...
 # seed the pseudorandom number generator
 seed(1)
@@ -286,7 +286,7 @@ print('f(%s) = %f' % (best, score))
 
 下面列出了将进化策略算法的逗号版本应用于阿克利目标函数的完整示例。
 
-```
+```py
 # evolution strategy (mu, lambda) of the ackley objective function
 from numpy import asarray
 from numpy import exp
@@ -376,7 +376,7 @@ print('f(%s) = %f' % (best, score))
 
 毫无疑问，这个解决方案可以作为一个起点提供给一个局部搜索算法来进一步细化，这是使用像 ES 这样的全局优化算法时的一个常见做法。
 
-```
+```py
 0, Best: f([-0.82977995 2.20324493]) = 6.91249
 0, Best: f([-1.03232526 0.38816734]) = 4.49240
 1, Best: f([-1.02971385 0.21986453]) = 3.68954
@@ -415,7 +415,7 @@ f([ 0.00032757 -0.00023643]) = 0.001147
 
 我们可以通过修改函数来实现算法的 plus 版本，以便在创建子代时将父代添加到群体中。
 
-```
+```py
 ...
 # keep the parent
 children.append(population[i])
@@ -423,7 +423,7 @@ children.append(population[i])
 
 添加了该功能的更新版本以及新名称 *es_plus()* ，如下所示。
 
-```
+```py
 # evolution strategy (mu + lambda) algorithm
 def es_plus(objective, bounds, n_iter, step_size, mu, lam):
 	best, best_eval = None, 1e+10
@@ -468,7 +468,7 @@ def es_plus(objective, bounds, n_iter, step_size, mu, lam):
 
 下面列出了完整的示例。
 
-```
+```py
 # evolution strategy (mu + lambda) of the ackley objective function
 from numpy import asarray
 from numpy import exp
@@ -558,7 +558,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以看到在搜索过程中大约有 24 项性能改进。我们还可以看到，在评估值为 0.000532 时，找到了更好的最终解决方案，而在此目标函数上，逗号版本的评估值为 0.001147。
 
-```
+```py
 0, Best: f([-0.82977995 2.20324493]) = 6.91249
 0, Best: f([-1.03232526 0.38816734]) = 4.49240
 1, Best: f([-1.02971385 0.21986453]) = 3.68954

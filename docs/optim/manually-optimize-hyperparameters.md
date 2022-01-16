@@ -70,7 +70,7 @@ Let’s get started.![How to Manually Optimize Machine Learning Model Hyperparam
 
 下面的示例创建数据集并总结数据的形状。
 
-```
+```py
 # define a binary classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -81,7 +81,7 @@ print(X.shape, y.shape)
 
 运行该示例会打印出创建的数据集的形状，这证实了我们的预期。
 
-```
+```py
 (1000, 5) (1000,)
 ```
 
@@ -93,7 +93,7 @@ scikit-learn 通过[感知器类](https://scikit-learn.org/stable/modules/genera
 
 下面列出了在我们的合成二进制分类数据集上使用默认超参数评估感知器模型的完整示例。
 
-```
+```py
 # perceptron default hyperparameters for binary classification
 from numpy import mean
 from numpy import std
@@ -121,7 +121,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 我们希望通过优化超参数，我们可以获得比这更好的性能。
 
-```
+```py
 Mean Accuracy: 0.786 (0.069)
 ```
 
@@ -142,7 +142,7 @@ Mean Accuracy: 0.786 (0.069)
 
 下面的*目标()*函数实现了这一点，获取数据集和配置值列表。配置值(学习率和正则化权重)被解包，用于配置模型，然后对模型进行评估，并返回平均精度。
 
-```
+```py
 # objective function
 def objective(X, y, cfg):
 	# unpack config
@@ -168,7 +168,7 @@ def objective(X, y, cfg):
 
 下面的 *step()* 函数实现了这一点，并将在搜索空间中迈出一步，并使用现有配置生成新配置。
 
-```
+```py
 # take a step in the search space
 def step(cfg, step_size):
 	# unpack the configuration
@@ -191,7 +191,7 @@ def step(cfg, step_size):
 
 搜索首先生成一个随机的初始解，在这种情况下，eta 和 alpha 值在 0 和 1 的范围内。然后评估初始解决方案，并将其作为当前最佳工作解决方案。
 
-```
+```py
 ...
 # starting point for the search
 solution = [rand(), rand()]
@@ -201,7 +201,7 @@ solution_eval = objective(X, y, solution)
 
 接下来，该算法迭代固定次数的迭代，作为搜索的超参数。每次迭代都包括采取一个步骤并评估新的候选解决方案。
 
-```
+```py
 ...
 # take a step
 candidate = step(solution, step_size)
@@ -211,7 +211,7 @@ candidate_eval = objective(X, y, candidate)
 
 如果新方案优于当前工作方案，则作为新的当前工作方案。
 
-```
+```py
 ...
 # check if we should keep the new point
 if candidate_eval >= solution_eval:
@@ -225,7 +225,7 @@ if candidate_eval >= solution_eval:
 
 将这些联系在一起，下面的*爬山()*函数实现了随机爬山算法，用于调整感知器算法，将数据集、目标函数、迭代次数和步长作为参数。
 
-```
+```py
 # hill climbing local search algorithm
 def hillclimbing(X, y, objective, n_iter, step_size):
 	# starting point for the search
@@ -251,7 +251,7 @@ def hillclimbing(X, y, objective, n_iter, step_size):
 
 在这种情况下，我们将运行该算法 100 次迭代，并使用 0.1 的步长，这是经过一点反复试验后选择的。
 
-```
+```py
 ...
 # define the total iterations
 n_iter = 100
@@ -265,7 +265,7 @@ print('cfg=%s: Mean Accuracy: %f' % (cfg, score))
 
 将这些联系在一起，手动调整感知器算法的完整示例如下所示。
 
-```
+```py
 # manually search perceptron hyperparameters for binary classification
 from numpy import mean
 from numpy.random import randn
@@ -347,7 +347,7 @@ print('cfg=%s: Mean Accuracy: %f' % (cfg, score))
 **能不能得到更好的结果？**
 在下面的评论里告诉我。
 
-```
+```py
 >0, cfg=[0.5827274503894747, 0.260872709578015] 0.70533
 >4, cfg=[0.5449820307807399, 0.3017271170801444] 0.70567
 >6, cfg=[0.6286475606495414, 0.17499090243915086] 0.71933
@@ -376,13 +376,13 @@ XGBoost 是[极限梯度提升](https://machinelearningmastery.com/extreme-gradi
 
 您可以使用 pip 安装它，如下所示:
 
-```
+```py
 sudo pip install xgboost
 ```
 
 安装完成后，您可以通过运行以下代码来确认安装成功，并且您使用的是现代版本:
 
-```
+```py
 # xgboost
 import xgboost
 print("xgboost", xgboost.__version__)
@@ -390,7 +390,7 @@ print("xgboost", xgboost.__version__)
 
 运行代码时，您应该会看到以下版本号或更高的版本号。
 
-```
+```py
 xgboost 1.0.1
 ```
 
@@ -398,7 +398,7 @@ xgboost 1.0.1
 
 模型的一个实例可以像任何其他用于模型评估的 scikit-learn 类一样被实例化和使用。例如:
 
-```
+```py
 ...
 # define model
 model = XGBClassifier()
@@ -410,7 +410,7 @@ model = XGBClassifier()
 
 下面列出了使用默认超参数评估 XGBoost 性能的完整示例。
 
-```
+```py
 # xgboost with default hyperparameters for binary classification
 from numpy import mean
 from numpy import std
@@ -438,7 +438,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 我们希望通过优化超参数，我们可以获得比这更好的性能。
 
-```
+```py
 Mean Accuracy: 0.849 (0.040)
 ```
 
@@ -467,7 +467,7 @@ Mean Accuracy: 0.849 (0.040)
 
 首先，我们必须更新 *objective()* 函数来解包 XGBoost 模型的超参数，对其进行配置，然后评估平均分类精度。
 
-```
+```py
 # objective function
 def objective(X, y, cfg):
 	# unpack config
@@ -493,7 +493,7 @@ def objective(X, y, cfg):
 
 更新后的阶跃函数如下所示。
 
-```
+```py
 # take a step in the search space
 def step(cfg):
 	# unpack config
@@ -526,7 +526,7 @@ def step(cfg):
 
 在这种情况下，我们将用合理的缺省值定义初始解，匹配缺省超参数，或者接近它们。
 
-```
+```py
 ...
 # starting point for the search
 solution = step([0.1, 100, 1.0, 7])
@@ -534,7 +534,7 @@ solution = step([0.1, 100, 1.0, 7])
 
 将这些联系在一起，下面列出了使用随机爬山算法手动调整 XGBoost 算法的超参数的完整示例。
 
-```
+```py
 # xgboost manual hyperparameter optimization for binary classification
 from numpy import mean
 from numpy.random import randn
@@ -627,7 +627,7 @@ print('cfg=[%s]: Mean Accuracy: %f' % (cfg, score))
 **能不能得到更好的结果？**
 在下面的评论里告诉我。
 
-```
+```py
 >0, cfg=[[0.1058242692126418, 67, 0.9228490731610172, 12]] 0.85933
 >1, cfg=[[0.11060813799692253, 51, 0.859353656735739, 13]] 0.86100
 >4, cfg=[[0.11890247679234153, 58, 0.7135275461723894, 12]] 0.86167

@@ -45,7 +45,7 @@ Weka
 
 它是一个. jar 文件，是一种压缩的 Java 档案。你应该可以用大多数现代的解压程序来解压。如果您安装了 Java(很可能使用 Weka)，您也可以解压缩。在下载 jar 的目录中，使用以下命令在命令行上手动创建 jar 文件:
 
-```
+```py
 jar -xvf datasets-numeric.jar
 ```
 
@@ -143,13 +143,13 @@ Weka 波士顿房价属性数据类型
 
 将 CHAS 属性的定义从:
 
-```
+```py
 @attribute CHAS { 0, 1}
 ```
 
 到
 
-```
+```py
 @attribute CHAS real
 ```
 
@@ -256,7 +256,7 @@ Weka 波士顿房价数据集负载算法对比实验结果
 
 11.单击“执行测试”按钮，执行成对测试，将所有结果与 ZeroR 的结果进行比较。
 
-```
+```py
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 2 -stddev-prec 2 -col-name-width 0 -row-name-width 25 -mean-width 3 -stddev-width 2 -sig-width 1 -count-width 5 -print-col-names -print-row-names -enum-col-names"
 Analysing:  Root_mean_squared_error
 Datasets:   4
@@ -296,7 +296,7 @@ Key:
 
 13.单击“执行测试”按钮重新运行分析。
 
-```
+```py
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 2 -stddev-prec 2 -col-name-width 0 -row-name-width 25 -mean-width 2 -stddev-width 2 -sig-width 1 -count-width 5 -print-col-names -print-row-names -enum-col-names"
 Analysing:  Root_mean_squared_error
 Datasets:   4
@@ -363,7 +363,7 @@ Weka 波士顿房价数据集调整 k 近邻算法
 
 9.单击“执行测试”按钮执行成对测试。
 
-```
+```py
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 2 -stddev-prec 2 -col-name-width 0 -row-name-width 25 -mean-width 0 -stddev-width 0 -sig-width 0 -count-width 5 -print-col-names -print-row-names -enum-col-names"
 Analysing:  Root_mean_squared_error
 Datasets:   1
@@ -392,7 +392,7 @@ Key:
 
 11.单击“执行测试”按钮重新运行分析。
 
-```
+```py
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 2 -stddev-prec 2 -col-name-width 0 -row-name-width 25 -mean-width 2 -stddev-width 2 -sig-width 1 -count-width 5 -print-col-names -print-row-names -enum-col-names"
 Analysing:  Root_mean_squared_error
 Datasets:   1
@@ -448,7 +448,7 @@ Weka 波士顿房价数据集调整支持向量回归算法
 
 9.单击“执行测试”按钮执行成对测试。
 
-```
+```py
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 2 -stddev-prec 2 -col-name-width 0 -row-name-width 25 -mean-width 2 -stddev-width 2 -sig-width 1 -count-width 5 -print-col-names -print-row-names -enum-col-names"
 Analysing:  Root_mean_squared_error
 Datasets:   1
@@ -471,7 +471,7 @@ Key:
 
 看起来指数=3 的内核达到了最好的结果。将其设置为“测试基准”，然后重新运行分析。
 
-```
+```py
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 2 -stddev-prec 2 -col-name-width 0 -row-name-width 25 -mean-width 2 -stddev-width 2 -sig-width 1 -count-width 5 -print-col-names -print-row-names -enum-col-names"
 Analysing:  Root_mean_squared_error
 Datasets:   1
@@ -526,7 +526,7 @@ Weka 波士顿房价数据集集成实验设计
 
 9.单击“执行测试”按钮执行成对测试。
 
-```
+```py
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 2 -stddev-prec 2 -col-name-width 0 -row-name-width 25 -mean-width 2 -stddev-width 2 -sig-width 1 -count-width 5 -print-col-names -print-row-names -enum-col-names"
 Analysing:  Root_mean_squared_error
 Datasets:   1
@@ -549,7 +549,7 @@ Key:
 
 10.结果表明，随机森林可能具有最好的性能。选择树。随机森林作为“测试基地”，重新运行分析。
 
-```
+```py
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 2 -stddev-prec 2 -col-name-width 0 -row-name-width 25 -mean-width 2 -stddev-width 2 -sig-width 1 -count-width 5 -print-col-names -print-row-names -enum-col-names"
 Analysing:  Root_mean_squared_error
 Datasets:   1
@@ -584,7 +584,7 @@ Key:
 
 我们现在有了一个可以用来描述我们模型的最终结果。
 
-```
+```py
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -V -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 2 -stddev-prec 2 -col-name-width 0 -row-name-width 25 -mean-width 2 -stddev-width 2 -sig-width 1 -count-width 5 -show-stddev -print-col-names -print-row-names -enum-col-names"
 Analysing:  Root_mean_squared_error
 Datasets:   1

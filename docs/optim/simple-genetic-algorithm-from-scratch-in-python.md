@@ -102,7 +102,7 @@ Python 中从头开始的简单遗传算法
 
 随机位串的初始群体可以如下创建，其中“ *n_pop* ”是控制群体大小的超参数，“ *n_bits* ”是定义单个候选解决方案中的位数的超参数:
 
-```
+```py
 ...
 # initial population of random bitstring
 pop = [randint(0, 2, n_bits).tolist() for _ in range(n_pop)]
@@ -110,7 +110,7 @@ pop = [randint(0, 2, n_bits).tolist() for _ in range(n_pop)]
 
 接下来，我们可以枚举固定次数的算法迭代，在这种情况下，由名为“ *n_iter* ”的超参数控制。
 
-```
+```py
 ...
 # enumerate generations
 	for gen in range(n_iter):
@@ -121,7 +121,7 @@ pop = [randint(0, 2, n_bits).tolist() for _ in range(n_pop)]
 
 我们将使用一个名为 *objective()* 的函数作为通用目标函数，并调用它来获得一个适应度得分，我们将最小化该得分。
 
-```
+```py
 ...
 # evaluate all candidates in the population
 scores = [objective(c) for c in pop]
@@ -131,7 +131,7 @@ scores = [objective(c) for c in pop]
 
 锦标赛选择过程可以实现为一个函数，该函数接受人口并返回一个选定的父代。 *k* 值用默认参数固定为 3，但是如果您愿意，可以尝试不同的值。
 
-```
+```py
 # tournament selection
 def selection(pop, scores, k=3):
 	# first random selection
@@ -145,7 +145,7 @@ def selection(pop, scores, k=3):
 
 然后，我们可以为群体中的每个位置调用这个函数一次，以创建一个父代列表。
 
-```
+```py
 ...
 # select parents
 selected = [selection(pop, scores) for _ in range(n_pop)]
@@ -157,7 +157,7 @@ selected = [selection(pop, scores) for _ in range(n_pop)]
 
 下面的*交叉()*函数使用在范围[0，1]内抽取一个随机数来确定是否执行交叉，然后选择一个有效的分割点来执行交叉。
 
-```
+```py
 # crossover two parents to create two children
 def crossover(p1, p2, r_cross):
 	# children are copies of parents by default
@@ -176,7 +176,7 @@ def crossover(p1, p2, r_cross):
 
 该过程只是以由“ *r_mut* ”超参数控制的低概率翻转位。
 
-```
+```py
 # mutation operator
 def mutation(bitstring, r_mut):
 	for i in range(len(bitstring)):
@@ -188,7 +188,7 @@ def mutation(bitstring, r_mut):
 
 然后，我们可以遍历父代列表，创建一个子代列表作为下一代，根据需要调用交叉和变异函数。
 
-```
+```py
 ...
 # create the next generation
 children = list()
@@ -205,7 +205,7 @@ for i in range(0, n_pop, 2):
 
 我们可以将所有这些联系到一个名为 *genetic_algorithm()* 的函数中，该函数采用目标函数的名称和搜索的超参数，并返回搜索过程中找到的最佳解。
 
-```
+```py
 # genetic algorithm
 def genetic_algorithm(objective, n_bits, n_iter, n_pop, r_cross, r_mut):
 	# initial population of random bitstring
@@ -251,7 +251,7 @@ def genetic_algorithm(objective, n_bits, n_iter, n_pop, r_cross, r_mut):
 
 下面的 *onemax()* 函数实现了这一点，它将整数值的位串作为输入，并返回这些值的负和。
 
-```
+```py
 # objective function
 def onemax(x):
 	return -sum(x)
@@ -263,7 +263,7 @@ def onemax(x):
 
 种群规模将为 100，我们将使用 90%的交叉率和 5%的变异率。这种配置是经过反复试验后选择的。
 
-```
+```py
 ...
 # define the total iterations
 n_iter = 100
@@ -279,7 +279,7 @@ r_mut = 1.0 / float(n_bits)
 
 然后可以调用搜索并报告最佳结果。
 
-```
+```py
 ...
 # perform the genetic algorithm search
 best, score = genetic_algorithm(onemax, n_bits, n_iter, n_pop, r_cross, r_mut)
@@ -289,7 +289,7 @@ print('f(%s) = %f' % (best, score))
 
 将这些联系在一起，下面列出了将遗传算法应用于 OneMax 目标函数的完整示例。
 
-```
+```py
 # genetic algorithm search of the one max optimization problem
 from numpy.random import randint
 from numpy.random import rand
@@ -383,7 +383,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以看到搜索在大约八代之后找到了最优解。
 
-```
+```py
 >0, new best f([1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1]) = -14.000
 >0, new best f([1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0]) = -15.000
 >1, new best f([1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1]) = -16.000
@@ -400,7 +400,7 @@ f([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) = -20.000000
 
 例如，我们可以定义 x^2 最小化函数，该函数接受输入变量，并且在 f(0，0) = 0.0 时具有最优值。
 
-```
+```py
 # objective function
 def objective(x):
 	return x[0]**2.0 + x[1]**2.0
@@ -410,7 +410,7 @@ def objective(x):
 
 首先，我们必须定义每个输入变量的界限。
 
-```
+```py
 ...
 # define range for input
 bounds = [[-5.0, 5.0], [-5.0, 5.0]]
@@ -418,7 +418,7 @@ bounds = [[-5.0, 5.0], [-5.0, 5.0]]
 
 我们将把“ *n_bits* ”超参数作为目标函数的每个输入变量的位数，并将其设置为 16 位。
 
-```
+```py
 ...
 # bits per variable
 n_bits = 16
@@ -428,7 +428,7 @@ n_bits = 16
 
 我们必须相应地更新我们的突变率。
 
-```
+```py
 ...
 # mutation rate
 r_mut = 1.0 / (float(n_bits) * len(bounds))
@@ -436,7 +436,7 @@ r_mut = 1.0 / (float(n_bits) * len(bounds))
 
 接下来，我们需要确保初始群体创建足够大的随机位串。
 
-```
+```py
 ...
 # initial population of random bitstring
 pop = [randint(0, 2, n_bits*len(bounds)).tolist() for _ in range(n_pop)]
@@ -448,7 +448,7 @@ pop = [randint(0, 2, n_bits*len(bounds)).tolist() for _ in range(n_pop)]
 
 下面的 *decode()* 函数实现了这一点，将函数的边界、每个变量的位数和一个位串作为输入，并返回一个解码实值列表。
 
-```
+```py
 # decode bitstring to numbers
 def decode(bounds, n_bits, bitstring):
 	decoded = list()
@@ -470,7 +470,7 @@ def decode(bounds, n_bits, bitstring):
 
 然后，我们可以在算法循环的开始调用它来解码种群，然后评估种群的解码版本。
 
-```
+```py
 ...
 # decode population
 decoded = [decode(bounds, n_bits, p) for p in pop]
@@ -480,7 +480,7 @@ scores = [objective(d) for d in decoded]
 
 将这些联系在一起，下面列出了用于连续函数优化的遗传算法的完整示例。
 
-```
+```py
 # genetic algorithm search for continuous function optimization
 from numpy.random import randint
 from numpy.random import rand
@@ -597,7 +597,7 @@ print('f(%s) = %f' % (decoded, score))
 
 在这种情况下，我们可以看到算法发现一个非常接近 f(0.0，0.0) = 0.0 的输入。
 
-```
+```py
 >0, new best f([-0.785064697265625, -0.807647705078125]) = 1.268621
 >0, new best f([0.385894775390625, 0.342864990234375]) = 0.266471
 >1, new best f([-0.342559814453125, -0.1068115234375]) = 0.128756

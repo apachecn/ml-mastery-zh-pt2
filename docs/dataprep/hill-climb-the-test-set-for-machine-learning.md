@@ -83,7 +83,7 @@
 
 下面列出了完整的示例。
 
-```
+```py
 # example of a synthetic dataset.
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -99,7 +99,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
 
 然后将数据集分成训练集和测试集，约 3300 个用于训练，约 1600 个用于测试。
 
-```
+```py
 (5000, 20) (5000,)
 (3350, 20) (1650, 20) (3350,) (1650,)
 ```
@@ -108,7 +108,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
 
 首先，我们可以创建一个函数来加载，或者在这种情况下，定义数据集。我们可以在以后想要更改数据集时更新这个函数。
 
-```
+```py
 # load or prepare the classification dataset
 def load_dataset():
 	return make_classification(n_samples=5000, n_features=20, n_informative=15, n_redundant=5, random_state=1)
@@ -118,7 +118,7 @@ def load_dataset():
 
 我们将使用分类精度，其中对于最差的可能解决方案，得分在 0 到 1 之间，对于一组完美的预测。
 
-```
+```py
 # evaluate a set of predictions
 def evaluate_predictions(y_test, yhat):
 	return accuracy_score(y_test, yhat)
@@ -130,7 +130,7 @@ def evaluate_predictions(y_test, yhat):
 
 我们可以使用 [randint()函数](https://docs.python.org/3/library/random.html#random.randint)生成 0 和 1 的随机值。
 
-```
+```py
 # create a random set of predictions
 def random_predictions(n_examples):
 	return [randint(0, 1) for _ in range(n_examples)]
@@ -142,7 +142,7 @@ def random_predictions(n_examples):
 
 通常，在爬山过程中，我们会对每个新的候选解决方案进行一次更改，但是我已经对该函数进行了参数化，因此如果您愿意，您可以尝试进行多次更改。
 
-```
+```py
 # modify the current set of predictions
 def modify_predictions(current, n_changes=1):
 	# copy current solution
@@ -167,7 +167,7 @@ def modify_predictions(current, n_changes=1):
 
 下面的函数*hill _ climp _ testset()*实现了这一点，将测试集作为输入，并返回在爬山过程中找到的最佳预测集。
 
-```
+```py
 # run a hill climb for a set of predictions
 def hill_climb_testset(X_test, y_test, max_iterations):
 	scores = list()
@@ -198,7 +198,7 @@ def hill_climb_testset(X_test, y_test, max_iterations):
 
 下面列出了爬坡测试集的完整示例。
 
-```
+```py
 # example of hill climbing the test set for a classification task
 from random import randint
 from sklearn.datasets import make_classification
@@ -277,7 +277,7 @@ pyplot.show()
 
 这里的教训是，针对测试集重复评估建模管道会做同样的事情，使用你作为爬山优化算法。解决方案将会被测试集覆盖。
 
-```
+```py
 ...
 >8092, score=0.996
 >8886, score=0.997
@@ -311,7 +311,7 @@ pyplot.show()
 
 下面提供了数据集前五行的示例。
 
-```
+```py
 6,148,72,35,0,33.6,0.627,50,1
 1,85,66,29,0,26.6,0.351,31,0
 8,183,64,0,0,23.3,0.672,32,1
@@ -322,7 +322,7 @@ pyplot.show()
 
 我们可以直接使用 Pandas 加载数据集，如下所示。
 
-```
+```py
 # load or prepare the classification dataset
 def load_dataset():
 	url = 'https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.csv'
@@ -337,7 +337,7 @@ def load_dataset():
 
 下面列出了完整的示例。
 
-```
+```py
 # example of hill climbing the test set for the diabetes dataset
 from random import randint
 from pandas import read_csv
@@ -417,7 +417,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到我们在大约 1500 次迭代中达到了完美的精度。
 
-```
+```py
 ...
 >617, score=0.961
 >627, score=0.965
@@ -451,7 +451,7 @@ pyplot.show()
 
 下面列出了前五行的示例。
 
-```
+```py
 0.00632,18.00,2.310,0,0.5380,6.5750,65.20,4.0900,1,296.0,15.30,396.90,4.98,24.00
 0.02731,0.00,7.070,0,0.4690,6.4210,78.90,4.9671,2,242.0,17.80,396.90,9.14,21.60
 0.02729,0.00,7.070,0,0.4690,7.1850,61.10,4.9671,2,242.0,17.80,392.83,4.03,34.70
@@ -466,7 +466,7 @@ pyplot.show()
 
 这通常不是必需的，只是这里为简化搜索算法而采取的方法。
 
-```
+```py
 # load or prepare the classification dataset
 def load_dataset():
 	url = 'https://raw.githubusercontent.com/jbrownlee/Datasets/master/housing.csv'
@@ -482,7 +482,7 @@ def load_dataset():
 
 接下来，我们可以更新评分函数，以使用期望值和预测值之间的平均绝对误差。
 
-```
+```py
 # evaluate a set of predictions
 def evaluate_predictions(y_test, yhat):
 	return mean_absolute_error(y_test, yhat)
@@ -492,7 +492,7 @@ def evaluate_predictions(y_test, yhat):
 
 必须更改初始候选解的生成，以创建随机浮动列表。
 
-```
+```py
 # create a random set of predictions
 def random_predictions(n_examples):
 	return [random() for _ in range(n_examples)]
@@ -502,7 +502,7 @@ def random_predictions(n_examples):
 
 我选择这个是因为它很简单。
 
-```
+```py
 # modify the current set of predictions
 def modify_predictions(current, n_changes=1):
 	# copy current solution
@@ -519,7 +519,7 @@ def modify_predictions(current, n_changes=1):
 
 例如:
 
-```
+```py
 ...
 # add gaussian noise
 updated[ix] += gauss(0, 0.1)
@@ -529,7 +529,7 @@ updated[ix] += gauss(0, 0.1)
 
 最佳值现在是 0.0，用于在找到时停止搜索。
 
-```
+```py
 ...
 # stop once we achieve the best score
 if score == 0.0:
@@ -538,7 +538,7 @@ if score == 0.0:
 
 我们还需要将搜索从最大化分数改为现在最小化分数。
 
-```
+```py
 ...
 # check if it is as good or better
 if value <= score:
@@ -548,7 +548,7 @@ if value <= score:
 
 下面列出了这两项更改的更新搜索功能。
 
-```
+```py
 # run a hill climb for a set of predictions
 def hill_climb_testset(X_test, y_test, max_iterations):
 	scores = list()
@@ -577,7 +577,7 @@ def hill_climb_testset(X_test, y_test, max_iterations):
 
 将这些联系在一起，下面列出了爬山回归任务测试集的完整示例。
 
-```
+```py
 # example of hill climbing the test set for the housing dataset
 from random import random
 from random import randint
@@ -664,7 +664,7 @@ pyplot.show()
 
 例如:
 
-```
+```py
 ...
 # stop once we achieve a good enough
 if score <= 1e-7:
@@ -675,7 +675,7 @@ if score <= 1e-7:
 
 在这种情况下，我们可以看到，在运行结束时，我们实现了一个很好的错误。
 
-```
+```py
 ...
 >95991, score=0.001
 >96011, score=0.001

@@ -87,7 +87,7 @@ scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/mo
 
 该问题有两个输入变量(表示点的 *x* 和 *y* 坐标)和每组内点的标准偏差 2.0。我们将使用相同的随机状态(伪随机数发生器的种子)来确保我们总是获得相同的数据点。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random_state=2)
 ```
@@ -98,7 +98,7 @@ X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random
 
 下面列出了完整的示例。
 
-```
+```py
 # scatter plot of blobs dataset
 from sklearn.datasets import make_blobs
 from matplotlib import pyplot
@@ -133,7 +133,7 @@ pyplot.show()
 
 该问题是一个多类分类问题，我们将在输出层使用 softmax 激活函数对其进行建模。这意味着模型将以样本属于三类中每一类的概率来预测具有三个元素的向量。因此，在将行分割成训练和测试数据集之前，我们必须对类值进行热编码。我们可以使用 Keras *到 _ classic()*函数来实现这一点。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1100, centers=3, n_features=2, cluster_std=2, random_state=2)
 # one hot encode output variable
@@ -150,7 +150,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 由于问题是多类的，我们将使用分类交叉熵损失函数来优化模型和具有小学习率和动量的[随机梯度下降](https://keras.io/optimizers/#sgd)。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(25, input_dim=2, activation='relu'))
@@ -161,14 +161,14 @@ model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy
 
 该模型适合 200 个训练时期，我们将在测试集上评估每个时期的模型，使用测试集作为验证集。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=200, verbose=0)
 ```
 
 在运行结束时，我们将评估模型在列车和测试集上的性能。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -177,7 +177,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 最后，我们将在训练和验证数据集上绘制每个训练时期的模型精度的学习曲线。
 
-```
+```py
 # learning curves of model accuracy
 pyplot.plot(history.history['accuracy'], label='train')
 pyplot.plot(history.history['val_accuracy'], label='test')
@@ -187,7 +187,7 @@ pyplot.show()
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # develop an mlp for blobs dataset
 from sklearn.datasets import make_blobs
 from keras.utils import to_categorical
@@ -228,7 +228,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到该模型在训练数据集上获得了大约 84%的准确率，我们知道这是乐观的，在测试数据集上获得了大约 79%的准确率，我们预计这将更加真实。
 
-```
+```py
 Train: 0.840, Test: 0.796
 ```
 
@@ -258,7 +258,7 @@ Train: 0.840, Test: 0.796
 
 下面的函数*余弦 _ 退火()*实现了这个等式。
 
-```
+```py
 # cosine annealing learning rate schedule
 def cosine_annealing(epoch, n_epochs, n_cycles, lrate_max):
 	epochs_per_cycle = floor(n_epochs/n_cycles)
@@ -268,7 +268,7 @@ def cosine_annealing(epoch, n_epochs, n_cycles, lrate_max):
 
 我们可以通过绘制具有五个周期(例如 20 个时期长)的 100 个时期的学习率和 0.01 的最大学习率来测试这种实现。下面列出了完整的示例。
 
-```
+```py
 # example of a cosine annealing learning rate schedule
 from matplotlib import pyplot
 from math import pi
@@ -311,7 +311,7 @@ pyplot.show()
 
 完整的自定义回调定义如下。
 
-```
+```py
 # define custom learning rate schedule
 class CosineAnnealingLearningRateSchedule(Callback):
 	# constructor
@@ -351,7 +351,7 @@ class CosineAnnealingLearningRateSchedule(Callback):
 
 一旦回调被实例化和配置，我们可以将其指定为回调列表的一部分，以调用 *fit()* 函数来训练模型。
 
-```
+```py
 # define learning rate callback
 n_epochs = 400
 n_cycles = n_epochs / 50
@@ -362,7 +362,7 @@ history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=n_epo
 
 在运行结束时，我们可以通过绘制*列表和*列表的内容来确认学习率计划的执行。
 
-```
+```py
 # plot learning rate
 pyplot.plot(ca.lrates)
 pyplot.show()
@@ -370,7 +370,7 @@ pyplot.show()
 
 将这些元素结合在一起，下面列出了用余弦退火学习速率训练 MLP 的完整例子。
 
-```
+```py
 # mlp with cosine annealing learning rate schedule on blobs problem
 from sklearn.datasets import make_blobs
 from keras.utils import to_categorical
@@ -448,7 +448,7 @@ pyplot.show()
 
 在这种情况下，与前一部分相比，我们看不出最终模型的性能有多大差异。
 
-```
+```py
 Train: 0.850, Test: 0.806
 ```
 
@@ -482,7 +482,7 @@ Train: 0.850, Test: 0.806
 
 每次保存模型时都会打印一条调试消息，以确认模型保存的时间是正确的。例如，对于 50 个周期的长周期，我们希望在 49、99 等周期保存一个模型。并且在时期 50、100 等重置学习速率。
 
-```
+```py
 # snapshot ensemble with custom learning rate schedule
 class SnapshotEnsemble(Callback):
 	# constructor
@@ -522,7 +522,7 @@ class SnapshotEnsemble(Callback):
 
 下面列出了使用这种新的快照集成将模型保存到文件中的完整示例。
 
-```
+```py
 # example of saving models for a snapshot ensemble
 from sklearn.datasets import make_blobs
 from keras.utils import to_categorical
@@ -593,7 +593,7 @@ model.fit(trainX, trainy, validation_data=(testX, testy), epochs=n_epochs, verbo
 
 运行该示例报告，余弦退火学习速率计划的 10 端保存了 10 个模型。
 
-```
+```py
 >saved snapshot snapshot_model_1.h5, epoch 49
 >saved snapshot snapshot_model_2.h5, epoch 99
 >saved snapshot snapshot_model_3.h5, epoch 149
@@ -612,7 +612,7 @@ model.fit(trainX, trainy, validation_data=(testX, testy), epochs=n_epochs, verbo
 
 第一步是将模型载入内存。对于大型模型，这可以一次一个模型来完成，进行预测，并在组合预测之前继续下一个模型。在这种情况下，模型相对较小，我们可以从文件中以列表的形式加载所有 10 个模型。
 
-```
+```py
 # load models from file
 def load_all_models(n_models):
 	all_models = list()
@@ -629,7 +629,7 @@ def load_all_models(n_models):
 
 我们预计在运行结束时保存的模型可能比运行早期保存的模型具有更好的性能。因此，我们可以颠倒加载模型的列表，以便旧模型是第一个。
 
-```
+```py
 # reverse loaded models so we build the ensemble with the last models first
 members = list(reversed(members))
 ```
@@ -638,7 +638,7 @@ members = list(reversed(members))
 
 首先，我们需要一个函数在给定一系列模型的情况下进行预测。给定每个模型预测每个输出类的概率，我们可以对模型的预测概率求和，并通过 [argmax()函数](https://machinelearningmastery.com/argmax-in-machine-learning/)选择支持度最高的类。下面的*集合 _ 预测()*函数实现了这个功能。
 
-```
+```py
 # make an ensemble prediction for multi-class classification
 def ensemble_predictions(members, testX):
 	# make predictions
@@ -653,7 +653,7 @@ def ensemble_predictions(members, testX):
 
 然后，我们可以通过从模型列表中选择前 n 个成员来评估给定大小的系综，通过调用*系综 _ 预测()*函数进行预测，然后计算并返回预测的精度。下面的 *evaluate_n_members()* 函数实现了这个行为。
 
-```
+```py
 # evaluate a specific number of members in an ensemble
 def evaluate_n_members(members, n_members, testX, testy):
 	# select a subset of members
@@ -666,7 +666,7 @@ def evaluate_n_members(members, n_members, testX, testy):
 
 每个集合的性能也可以与每个独立模型的性能和所有独立模型的平均性能进行对比。
 
-```
+```py
 # evaluate different numbers of ensembles on hold out set
 single_scores, ensemble_scores = list(), list()
 for i in range(1, len(members)+1):
@@ -685,7 +685,7 @@ print('Accuracy %.3f (%.3f)' % (mean(single_scores), std(single_scores)))
 
 最后，我们可以将每个单个快照模型(蓝点)的性能与包括所有模型直到每个单个模型(橙色线)的集合的性能进行比较。
 
-```
+```py
 # plot score vs number of ensemble members
 x_axis = [i for i in range(1, len(members)+1)]
 pyplot.plot(x_axis, single_scores, marker='o', linestyle='None')
@@ -695,7 +695,7 @@ pyplot.show()
 
 下面列出了使用不同大小的系综进行快照系综预测的完整示例。
 
-```
+```py
 # load models and make a snapshot ensemble prediction
 from sklearn.datasets import make_blobs
 from sklearn.metrics import accuracy_score
@@ -778,7 +778,7 @@ pyplot.show()
 
 运行该示例首先将所有 10 个模型加载到内存中。
 
-```
+```py
 >loaded snapshot_model_1.h5
 >loaded snapshot_model_2.h5
 >loaded snapshot_model_3.h5
@@ -800,7 +800,7 @@ Loaded 10 models
 
 将快照模型组合成一个集合表明，性能提高到包括最后 3 到 5 个模型，达到大约 82%。这可以与大约 80%测试集准确度的快照模型的平均性能相比较。
 
-```
+```py
 > 1: single=0.813, ensemble=0.813
 > 2: single=0.814, ensemble=0.813
 > 3: single=0.822, ensemble=0.822

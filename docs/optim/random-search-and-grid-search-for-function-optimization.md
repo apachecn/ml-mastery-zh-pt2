@@ -74,7 +74,7 @@ Let’s get started.![Random Search and Grid Search for Function Optimization](i
 
 下面的例子给出了一个简单的一维最小化目标函数的例子，并生成然后评估 100 个输入的随机样本。然后报告具有最佳性能的输入。
 
-```
+```py
 # example of random search for function optimization
 from numpy.random import rand
 
@@ -103,13 +103,13 @@ print('Best: f(%.5f) = %.5f' % (sample[best_ix], sample_eval[best_ix]))
 
 在这种情况下，我们可以看到结果非常接近 0.0 的最佳输入。
 
-```
+```py
 Best: f(-0.01762) = 0.00031
 ```
 
 我们可以更新示例来绘制目标函数，并显示样本和最佳结果。下面列出了完整的示例。
 
-```
+```py
 # example of random search for function optimization with plot
 from numpy import arange
 from numpy.random import rand
@@ -148,7 +148,7 @@ pyplot.show()
 
 再次运行该示例会生成随机样本并报告最佳结果。
 
-```
+```py
 Best: f(0.01934) = 0.00037
 ```
 
@@ -178,7 +178,7 @@ Best: f(0.01934) = 0.00037
 
 下面的示例给出了一个简单的二维最小化目标函数的示例，然后生成并评估两个输入变量间距为 0.1 的网格样本。然后报告具有最佳性能的输入。
 
-```
+```py
 # example of grid search for function optimization
 from numpy import arange
 from numpy.random import rand
@@ -212,13 +212,13 @@ print('Best: f(%.5f,%.5f) = %.5f' % (sample[best_ix][0], sample[best_ix][1], sam
 
 在这种情况下，我们可以看到结果准确地找到了最优解。
 
-```
+```py
 Best: f(-0.00000,-0.00000) = 0.00000
 ```
 
 我们可以更新示例来绘制目标函数，并显示样本和最佳结果。下面列出了完整的示例。
 
-```
+```py
 # example of grid search for function optimization with plot
 from numpy import arange
 from numpy import meshgrid
@@ -265,7 +265,7 @@ pyplot.show()
 
 再次运行该示例会生成网格示例并报告最佳结果。
 
-```
+```py
 Best: f(0.00000,0.00000) = 0.00000
 ```
 

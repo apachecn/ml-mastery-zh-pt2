@@ -71,13 +71,13 @@ XGBoost 通过引入大量技术来解决梯度提升的速度问题，这些技
 
 我建议使用 pip 包管理器，从命令行使用以下命令:
 
-```
+```py
 sudo pip install xgboost
 ```
 
 安装后，我们可以加载库，并在 Python 脚本中打印版本，以确认它安装正确。
 
-```
+```py
 # check xgboost version
 import xgboost
 # display version
@@ -88,7 +88,7 @@ print(xgboost.__version__)
 
 您的版本号应该相同或更高。
 
-```
+```py
 1.0.2
 ```
 
@@ -96,7 +96,7 @@ XGBoost 库提供了两个包装类，允许该库提供的随机森林实现与
 
 它们分别是用于分类和回归的 [XGBRFClassifier](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBRFClassifier) 和[xgbrfreversor](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBRFRegressor)类。
 
-```
+```py
 ...
 # define the model
 model = XGBRFClassifier()
@@ -104,7 +104,7 @@ model = XGBRFClassifier()
 
 系综中使用的树的数量可以通过“*n _ estimator*”参数来设置，通常，这是增加的，直到模型没有观察到性能的进一步提高。通常使用成百上千棵树。
 
-```
+```py
 ...
 # define the model
 model = XGBRFClassifier(n_estimators=100)
@@ -114,7 +114,7 @@ XGBoost 不支持为每个决策树绘制引导样本。这是图书馆的一个
 
 相反，可以通过“*子样本*”参数将训练数据集的子样本指定为 0.0 到 1.0 之间的百分比(训练数据集中的 100%行)。建议使用 0.8 或 0.9 的值，以确保数据集足够大，可以训练出熟练的模型，但又足够不同，可以在集成中引入一些多样性。
 
-```
+```py
 ...
 # define the model
 model = XGBRFClassifier(n_estimators=100, subsample=0.9)
@@ -124,7 +124,7 @@ model = XGBRFClassifier(n_estimators=100, subsample=0.9)
 
 如果我们的训练数据集中有 20 个输入变量，并且分类问题的启发式方法是特征数量的平方根，那么这可以设置为 sqrt(20) / 20，或者大约 4 / 20 或 0.2。
 
-```
+```py
 ...
 # define the model
 model = XGBRFClassifier(n_estimators=100, subsample=0.9, colsample_bynode=0.2)
@@ -144,7 +144,7 @@ model = XGBRFClassifier(n_estimators=100, subsample=0.9, colsample_bynode=0.2)
 
 下面列出了完整的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -155,7 +155,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -163,7 +163,7 @@ print(X.shape, y.shape)
 
 我们将使用[重复分层 k 折叠交叉验证](https://machinelearningmastery.com/cross-validation-for-imbalanced-classification/)来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
 
-```
+```py
 # evaluate xgboost random forest algorithm for classification
 from numpy import mean
 from numpy import std
@@ -189,7 +189,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到 XGBoost 随机森林集成实现了大约 89.1%的分类准确率。
 
-```
+```py
 Mean Accuracy: 0.891 (0.036)
 ```
 
@@ -199,7 +199,7 @@ Mean Accuracy: 0.891 (0.036)
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make predictions using xgboost random forest for classification
 from numpy import asarray
 from sklearn.datasets import make_classification
@@ -221,7 +221,7 @@ print('Predicted Class: %d' % yhat[0])
 
 运行该示例使 XGBoost 随机森林集成模型适用于整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Class: 1
 ```
 
@@ -235,7 +235,7 @@ Predicted Class: 1
 
 下面列出了完整的示例。
 
-```
+```py
 # test regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -246,7 +246,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -258,7 +258,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate xgboost random forest ensemble for regression
 from numpy import mean
 from numpy import std
@@ -284,7 +284,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到具有默认超参数的随机森林集合达到了大约 108 的 MAE。
 
-```
+```py
 MAE: -108.290 (5.647)
 ```
 
@@ -294,7 +294,7 @@ MAE: -108.290 (5.647)
 
 下面的例子在我们的回归数据集上演示了这一点。
 
-```
+```py
 # gradient xgboost random forest for making predictions for regression
 from numpy import asarray
 from sklearn.datasets import make_regression
@@ -316,7 +316,7 @@ print('Prediction: %d' % yhat[0])
 
 运行该示例使 XGBoost 随机森林集成模型适用于整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Prediction: 17
 ```
 
@@ -336,7 +336,7 @@ Prediction: 17
 
 下面的示例探讨了值在 10 到 1000 之间的树的数量的影响。
 
-```
+```py
 # explore xgboost random forest number of trees effect on performance
 from numpy import mean
 from numpy import std
@@ -393,7 +393,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到大约 500 棵树后，性能会上升并保持不变。平均准确度分数在 500、1000 和 5000 棵树之间波动，这可能是统计噪声。
 
-```
+```py
 >10 0.868 (0.030)
 >50 0.887 (0.034)
 >100 0.891 (0.036)
@@ -416,7 +416,7 @@ XGBoost 随机森林集合大小与分类精度的箱线图
 
 以下示例探讨了在每个分割点随机选择的特征数量对模型精度的影响。我们将尝试从 0.0 到 1.0 的值，增量为 0.1，尽管我们预计低于 0.2 或 0.3 的值会产生良好或最佳的性能，因为这相当于输入特征数量的平方根，这是一种常见的启发式方法。
 
-```
+```py
 # explore xgboost random forest number of features effect on performance
 from numpy import mean
 from numpy import std
@@ -475,7 +475,7 @@ pyplot.show()
 
 结果表明，在这种情况下，推荐值 0.2 将是一个不错的选择。
 
-```
+```py
 >0.1 0.889 (0.032)
 >0.2 0.891 (0.036)
 >0.3 0.887 (0.032)

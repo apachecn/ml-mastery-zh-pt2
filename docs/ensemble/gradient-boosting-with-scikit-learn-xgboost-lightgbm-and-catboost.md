@@ -116,7 +116,7 @@ Python 中有许多梯度增强算法的实现。也许最常用的实现是 sci
 
 您可以使用 pip Python 安装程序安装 scikit-learn 库，如下所示:
 
-```
+```py
 sudo pip install scikit-learn
 ```
 
@@ -128,7 +128,7 @@ sudo pip install scikit-learn
 
 运行以下脚本打印库版本号。
 
-```
+```py
 # check scikit-learn version
 import sklearn
 print(sklearn.__version__)
@@ -136,7 +136,7 @@ print(sklearn.__version__)
 
 运行该示例时，您应该会看到以下版本号或更高版本号。
 
-```
+```py
 0.22.1
 ```
 
@@ -154,7 +154,7 @@ print(sklearn.__version__)
 
 下面列出了创建和汇总数据集的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -165,7 +165,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集，并确认样本和要素的预期数量。
 
-```
+```py
 (1000, 10) (1000,)
 ```
 
@@ -175,7 +175,7 @@ print(X.shape, y.shape)
 
 与分类数据集一样，回归数据集将有 1，000 个示例，有 10 个输入要素，其中 5 个是信息性的，其余 5 个是冗余的。
 
-```
+```py
 # test regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -186,7 +186,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集，并确认样本和要素的预期数量。
 
-```
+```py
 (1000, 10) (1000,)
 ```
 
@@ -204,7 +204,7 @@ scikit-learn 库通过*GradientBoostingClassifier*和*gradientboostingretriever*
 
 下面列出了完整的示例。
 
-```
+```py
 # gradient boosting for classification in scikit-learn
 from numpy import mean
 from numpy import std
@@ -233,7 +233,7 @@ print('Prediction: %d' % yhat[0])
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
-```
+```py
 Accuracy: 0.915 (0.025)
 Prediction: 1
 ```
@@ -244,7 +244,7 @@ Prediction: 1
 
 下面列出了完整的示例。
 
-```
+```py
 # gradient boosting for regression in scikit-learn
 from numpy import mean
 from numpy import std
@@ -273,7 +273,7 @@ print('Prediction: %.3f' % yhat[0])
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
-```
+```py
 MAE: -11.854 (1.121)
 Prediction: -80.661
 ```
@@ -288,19 +288,19 @@ scikit-learn 库提供了梯度增强算法的替代实现，称为基于直方�
 
 在编写本文时，这是一个实验性的实现，需要在代码中添加以下代码行，以便能够访问这些类。
 
-```
+```py
 from sklearn.experimental import enable_hist_gradient_boosting
 ```
 
 如果没有这一行，您将看到如下错误:
 
-```
+```py
 ImportError: cannot import name 'HistGradientBoostingClassifier'
 ```
 
 或者
 
-```
+```py
 ImportError: cannot import name 'HistGradientBoostingRegressor'
 ```
 
@@ -312,7 +312,7 @@ ImportError: cannot import name 'HistGradientBoostingRegressor'
 
 下面列出了完整的示例。
 
-```
+```py
 # histogram-based gradient boosting for classification in scikit-learn
 from numpy import mean
 from numpy import std
@@ -342,7 +342,7 @@ print('Prediction: %d' % yhat[0])
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
-```
+```py
 Accuracy: 0.935 (0.024)
 Prediction: 1
 ```
@@ -353,7 +353,7 @@ Prediction: 1
 
 下面列出了完整的示例。
 
-```
+```py
 # histogram-based gradient boosting for regression in scikit-learn
 from numpy import mean
 from numpy import std
@@ -383,7 +383,7 @@ print('Prediction: %.3f' % yhat[0])
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
-```
+```py
 MAE: -12.723 (1.540)
 Prediction: -77.837
 ```
@@ -402,7 +402,7 @@ XGBoost 实现的主要好处是计算效率和更好的模型性能。
 
 您可以使用 pip Python 安装程序安装 XGBoost 库，如下所示:
 
-```
+```py
 sudo pip install xgboost
 ```
 
@@ -414,7 +414,7 @@ sudo pip install xgboost
 
 运行以下脚本打印库版本号。
 
-```
+```py
 # check xgboost version
 import xgboost
 print(xgboost.__version__)
@@ -422,7 +422,7 @@ print(xgboost.__version__)
 
 运行该示例时，您应该会看到以下版本号或更高版本号。
 
-```
+```py
 1.0.1
 ```
 
@@ -436,7 +436,7 @@ XGBoost 库提供了包装器类，因此高效的算法实现可以与 scikit-l
 
 下面列出了完整的示例。
 
-```
+```py
 # xgboost for classification
 from numpy import asarray
 from numpy import mean
@@ -467,7 +467,7 @@ print('Prediction: %d' % yhat[0])
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
-```
+```py
 Accuracy: 0.936 (0.019)
 Prediction: 1
 ```
@@ -478,7 +478,7 @@ Prediction: 1
 
 下面列出了完整的示例。
 
-```
+```py
 # xgboost for regression
 from numpy import asarray
 from numpy import mean
@@ -509,7 +509,7 @@ print('Prediction: %.3f' % yhat[0])
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
-```
+```py
 MAE: -15.048 (1.316)
 Prediction: -93.434
 ```
@@ -528,7 +528,7 @@ LightGBM 的主要好处是对训练算法的改变，这使得过程大大加�
 
 您可以使用 pip Python 安装程序安装 LightGBM 库，如下所示:
 
-```
+```py
 sudo pip install lightgbm
 ```
 
@@ -540,7 +540,7 @@ sudo pip install lightgbm
 
 运行以下脚本打印库版本号。
 
-```
+```py
 # check lightgbm version
 import lightgbm
 print(lightgbm.__version__)
@@ -548,7 +548,7 @@ print(lightgbm.__version__)
 
 运行该示例时，您应该会看到以下版本号或更高版本号。
 
-```
+```py
 2.3.1
 ```
 
@@ -562,7 +562,7 @@ LightGBM 库提供了包装类，因此高效的算法实现可以与 scikit-lea
 
 下面列出了完整的示例。
 
-```
+```py
 # lightgbm for classification
 from numpy import mean
 from numpy import std
@@ -591,7 +591,7 @@ print('Prediction: %d' % yhat[0])
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
-```
+```py
 Accuracy: 0.934 (0.021)
 Prediction: 1
 ```
@@ -602,7 +602,7 @@ Prediction: 1
 
 下面列出了完整的示例。
 
-```
+```py
 # lightgbm for regression
 from numpy import mean
 from numpy import std
@@ -631,7 +631,7 @@ print('Prediction: %.3f' % yhat[0])
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
-```
+```py
 MAE: -12.739 (1.408)
 Prediction: -82.040
 ```
@@ -650,7 +650,7 @@ CatBoost 的主要好处(除了计算速度的提高)是支持分类输入变量
 
 您可以使用 pip Python 安装程序安装 CatBoost 库，如下所示:
 
-```
+```py
 sudo pip install catboost
 ```
 
@@ -662,7 +662,7 @@ sudo pip install catboost
 
 运行以下脚本打印库版本号。
 
-```
+```py
 # check catboost version
 import catboost
 print(catboost.__version__)
@@ -670,7 +670,7 @@ print(catboost.__version__)
 
 运行该示例时，您应该会看到以下版本号或更高版本号。
 
-```
+```py
 0.21
 ```
 
@@ -684,7 +684,7 @@ CatBoost 库提供了包装器类，因此高效的算法实现可以与 scikit-
 
 下面列出了完整的示例。
 
-```
+```py
 # catboost for classification
 from numpy import mean
 from numpy import std
@@ -713,7 +713,7 @@ print('Prediction: %d' % yhat[0])
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
-```
+```py
 Accuracy: 0.931 (0.026)
 Prediction: 1
 ```
@@ -724,7 +724,7 @@ Prediction: 1
 
 下面列出了完整的示例。
 
-```
+```py
 # catboost for regression
 from numpy import mean
 from numpy import std
@@ -753,7 +753,7 @@ print('Prediction: %.3f' % yhat[0])
 
 运行该示例首先使用重复的 k 倍交叉验证报告模型的评估，然后使用模型对整个数据集进行单次预测的结果。
 
-```
+```py
 MAE: -9.281 (0.951)
 Prediction: -74.212
 ```

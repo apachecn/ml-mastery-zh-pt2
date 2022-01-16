@@ -80,7 +80,7 @@
 
 文件的前几行应该如下所示:
 
-```
+```py
 1,2558,1506.09,456.63,90,6395000,40.88,7.89,29780,0.19,214.7,0.21,0.26,0.49,0.1,0.4,99.59,32.19,1.84,0.16,0.2,87.65,0,0.47,132.78,-0.01,3.78,0.22,3.2,-3.71,-0.18,2.19,0,2.19,310,16110,0,138.68,89,69,2850,1000,763.16,135.46,3.73,0,33243.19,65.74,7.95,1
 2,22325,79.11,841.03,180,55812500,51.11,1.21,61900,0.02,901.7,0.02,0.03,0.11,0.01,0.11,6058.23,4061.15,2.3,0.02,0.02,87.65,0,0.58,132.78,-0.01,3.78,0.84,7.09,-2.21,0,0,0,0,704,40140,0,68.65,89,69,5750,11500,9593.48,1648.8,0.6,0,51572.04,65.73,6.26,0
 3,115,1449.85,608.43,88,287500,40.42,7.34,3340,0.18,86.1,0.21,0.32,0.5,0.17,0.34,71.2,16.73,1.82,0.19,0.29,87.65,0,0.46,132.78,-0.01,3.78,0.7,4.79,-3.36,-0.23,1.95,0,1.95,29,1530,0.01,38.8,89,69,1400,250,150,45.13,9.33,1,31692.84,65.81,7.84,1
@@ -97,7 +97,7 @@
 
 可以使用 [read_csv()熊猫函数](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)将数据集加载为数据帧，指定位置和没有标题行的事实。
 
-```
+```py
 ...
 # define the dataset location
 filename = 'oil-spill.csv'
@@ -107,7 +107,7 @@ dataframe = read_csv(filename, header=None)
 
 加载后，我们可以通过打印[数据框](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)的形状来总结行数和列数。
 
-```
+```py
 ...
 # summarize the shape of the dataset
 print(dataframe.shape)
@@ -115,7 +115,7 @@ print(dataframe.shape)
 
 我们还可以使用 [Counter](https://docs.python.org/3/library/collections.html) 对象总结每个类中的示例数量。
 
-```
+```py
 ...
 # summarize the class distribution
 target = dataframe.values[:,-1]
@@ -127,7 +127,7 @@ for k,v in counter.items():
 
 将这些联系在一起，下面列出了加载和汇总数据集的完整示例。
 
-```
+```py
 # load and summarize the dataset
 from pandas import read_csv
 from collections import Counter
@@ -149,7 +149,7 @@ for k,v in counter.items():
 
 然后总结了类别分布，确认了溢油和非溢油的数量以及少数和多数类别中的案例百分比。
 
-```
+```py
 (937, 50)
 Class=1, Count=41, Percentage=4.376%
 Class=0, Count=896, Percentage=95.624%
@@ -159,7 +159,7 @@ Class=0, Count=896, Percentage=95.624%
 
 有 50 个变量，有很多情节，但我们可能会发现一些有趣的模式。另外，有这么多的图，我们必须关闭轴标签和图标题，以减少混乱。下面列出了完整的示例。
 
-```
+```py
 # create histograms of each variable
 from pandas import read_csv
 from matplotlib import pyplot
@@ -220,7 +220,7 @@ G 均值寻求这些分数的平衡，即[几何均值](https://en.wikipedia.org
 
 首先，我们可以定义一个函数来加载数据集，并将列分成输入和输出变量。我们还将删除第 22 列，因为该列包含一个值，第一列定义了图像补丁号。下面的 *load_dataset()* 函数实现了这一点。
 
-```
+```py
 # load the dataset
 def load_dataset(full_path):
 	# load the dataset as a numpy array
@@ -241,7 +241,7 @@ def load_dataset(full_path):
 
 下面的 *evaluate_model()* 函数实现了这一点，将数据集和模型作为参数，返回分数列表。
 
-```
+```py
 # evaluate a model
 def evaluate_model(X, y, model):
 	# define evaluation procedure
@@ -259,7 +259,7 @@ def evaluate_model(X, y, model):
 
 这可以通过使用 scikit-learn 库中的 [DummyClassifier 类](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)并将“*策略*”参数设置为“*制服*”来实现。
 
-```
+```py
 ...
 # define the reference model
 model = DummyClassifier(strategy='uniform')
@@ -267,7 +267,7 @@ model = DummyClassifier(strategy='uniform')
 
 一旦模型得到评估，我们就可以直接报告 G 均值分数的均值和标准差。
 
-```
+```py
 ...
 # evaluate the model
 result_m, result_s = evaluate_model(X, y, model)
@@ -277,7 +277,7 @@ print('Mean G-Mean: %.3f (%.3f)' % (result_m, result_s))
 
 将这些结合起来，下面列出了加载数据集、评估基线模型和报告性能的完整示例。
 
-```
+```py
 # test harness and baseline model evaluation
 from collections import Counter
 from numpy import mean
@@ -339,7 +339,7 @@ print('Mean G-Mean: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到基线算法实现了约 0.47 的 G 均值，接近理论最大值 0.5。这个分数提供了模特技能的下限；任何平均 G 均值高于约 0.47(或真正高于 0.5)的模型都有技能，而得分低于该值的模型在该数据集上没有技能。
 
-```
+```py
 (937, 47) (937,) Counter({0: 896, 1: 41})
 Mean G-Mean: 0.478 (0.143)
 ```
@@ -376,7 +376,7 @@ LR 和 LDA 都对输入变量的规模敏感，并且通常期望和/或执行�
 
 我们可以定义一个模型列表来评估我们的测试工具，如下所示:
 
-```
+```py
 ...
 # define models
 models, names, results = list(), list(), list()
@@ -395,7 +395,7 @@ names.append('NB')
 
 算法可以直接根据它们的平均 G 均值分数进行比较。
 
-```
+```py
 ...
 # evaluate each model
 for i in range(len(models)):
@@ -410,7 +410,7 @@ for i in range(len(models)):
 
 并排创建图可以比较平均得分的分布，也可以比较第 25 和第 75 个百分点之间的中间 50%的分布。
 
-```
+```py
 ...
 # plot the results
 pyplot.boxplot(results, labels=names, showmeans=True)
@@ -419,7 +419,7 @@ pyplot.show()
 
 将这些联系在一起，下面列出了使用测试工具对溢油数据集上的三个概率模型进行比较的完整示例。
 
-```
+```py
 # compare probabilistic model on the oil spill dataset
 from numpy import mean
 from numpy import std
@@ -496,7 +496,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到每个算法都有技巧，实现了 0.5 以上的平均 G 均值。结果表明，线性判别分析可能是测试模型中表现最好的。
 
-```
+```py
 >LR 0.621 (0.261)
 >LDA 0.741 (0.220)
 >NB 0.721 (0.197)
@@ -518,7 +518,7 @@ G 均值分数的分布通过每个算法的方框图和触须图进行总结。
 
 这允许模型更好地学习有利于少数类的类边界，这可能有助于整体 G 均值性能。我们可以通过将[物流配送](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)的“*类权重*参数设置为“*平衡*来实现这一点。
 
-```
+```py
 ...
 LogisticRegression(solver='liblinear', class_weight='balanced')
 ```
@@ -529,7 +529,7 @@ power transom 将使用支持正输入和负输入的 Yeo-Johnson 方法，但�
 
 我们将使用三种不同的数据准备方案，特别是归一化、标准化和幂变换，将具有平衡类权重的*逻辑推理*与相同算法进行比较。
 
-```
+```py
 ...
 # define models
 models, names, results = list(), list(), list()
@@ -549,7 +549,7 @@ names.append('Balanced-Power')
 
 将这些联系在一起，下面列出了平衡逻辑回归与不同数据准备方案的比较。
 
-```
+```py
 # compare balanced logistic regression on the oil spill dataset
 from numpy import mean
 from numpy import std
@@ -631,7 +631,7 @@ pyplot.show()
 
 结果表明，也许使用平衡的 LR 和数据归一化进行预处理在这个数据集上表现最好，平均 G 均值得分约为 0.852。这在 1998 年论文报告的结果的范围内或更好。
 
-```
+```py
 >Balanced 0.846 (0.142)
 >Balanced-Norm 0.852 (0.119)
 >Balanced-Std 0.843 (0.124)
@@ -656,7 +656,7 @@ pyplot.show()
 
 这种组合被称为 SMOTE-ENN，可以使用不平衡学习库中的 [SMOTEENN](https://imbalanced-learn.org/stable/generated/imblearn.combine.SMOTEENN.html) 类来实现；例如:
 
-```
+```py
 ...
 # define SMOTE-ENN data sampling method
 e = SMOTEENN(enn=EditedNearestNeighbours(sampling_strategy='majority')))
@@ -677,7 +677,7 @@ e = SMOTEENN(enn=EditedNearestNeighbours(sampling_strategy='majority')))
 
 这些组合可以定义如下:
 
-```
+```py
 ...
 # SMOTEENN
 models.append(Pipeline(steps=[('e', SMOTEENN(enn=EditedNearestNeighbours(sampling_strategy='majority'))), ('m', LogisticRegression(solver='liblinear'))]))
@@ -695,7 +695,7 @@ names.append('Power')
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # compare data sampling with logistic regression on the oil spill dataset
 from numpy import mean
 from numpy import std
@@ -777,7 +777,7 @@ pyplot.show()
 
 结果表明，标准化、幂变换和标准化的最终组合可能比 SMOTEENN 的默认 LR 得分略高，G 均值约为 0.873，尽管警告消息暗示了一些需要解决的问题。
 
-```
+```py
 >LR 0.852 (0.105)
 >Norm 0.838 (0.130)
 >Std 0.849 (0.113)
@@ -800,7 +800,7 @@ pyplot.show()
 
 首先，我们可以将模型定义为管道。
 
-```
+```py
 ...
 # define the model
 smoteenn = SMOTEENN(enn=EditedNearestNeighbours(sampling_strategy='majority'))
@@ -810,7 +810,7 @@ pipeline = Pipeline(steps=[('e', smoteenn), ('m', model)])
 
 一旦定义好了，我们就可以在整个训练数据集中使用它。
 
-```
+```py
 ...
 # fit the model
 pipeline.fit(X, y)
@@ -820,7 +820,7 @@ pipeline.fit(X, y)
 
 例如:
 
-```
+```py
 ...
 # define a row of data
 row = [...]
@@ -834,7 +834,7 @@ label = yhat[0]
 
 下面列出了完整的示例。
 
-```
+```py
 # fit a model and make predictions for the on the oil spill dataset
 from pandas import read_csv
 from sklearn.preprocessing import LabelEncoder
@@ -897,7 +897,7 @@ for row in data:
 
 然后将实际溢油的一些情况用作模型的输入，并对标签进行预测。正如我们所希望的，正确的标签再次被预测。
 
-```
+```py
 Non-Spill Cases:
 >Predicted=0 (expected 0)
 >Predicted=0 (expected 0)

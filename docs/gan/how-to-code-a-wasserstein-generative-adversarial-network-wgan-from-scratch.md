@@ -77,7 +77,7 @@ DCGAN 使用鉴别器输出层的 sigmoid 激活函数来预测给定图像真�
 
 这可以通过在批评模型的输出层中将“*激活*”参数设置为“*线性*”来实现。
 
-```
+```py
 # define output layer of the critic model
 ...
 model.add(Dense(1, activation='linear'))
@@ -85,7 +85,7 @@ model.add(Dense(1, activation='linear'))
 
 线性激活是图层的默认激活，因此我们可以不指定激活来获得相同的结果。
 
-```
+```py
 # define output layer of the critic model
 ...
 model.add(Dense(1))
@@ -105,7 +105,7 @@ DCGAN 对假图像使用类 0，对真图像使用类 1，这些类标签用于�
 
 例如:
 
-```
+```py
 ...
 # generate class labels, -1 for 'real'
 y = -ones((n_samples, 1))
@@ -128,7 +128,7 @@ WGAN 模型的主要贡献是使用了一个新的损失函数，该函数鼓励
 
 下面列出了 Keras 的这种损失函数的有效实现。
 
-```
+```py
 from keras import backend
 
 # implementation of wasserstein loss
@@ -140,7 +140,7 @@ def wasserstein_loss(y_true, y_pred):
 
 例如:
 
-```
+```py
 ...
 # compile the model
 model.compile(loss=wasserstein_loss, ...)
@@ -158,7 +158,7 @@ DCGAN 不使用任何梯度剪裁，尽管 WGAN 要求对批评模型进行梯�
 
 下面定义了*剪辑约束*类。
 
-```
+```py
 # clip model weights to a given hypercube
 class ClipConstraint(Constraint):
 	# set clip value when initialized
@@ -176,7 +176,7 @@ class ClipConstraint(Constraint):
 
 要使用约束，可以构造类，然后通过设置 *kernel_constraint* 参数在图层中使用；例如:
 
-```
+```py
 ...
 # define the constraint
 const = ClipConstraint(0.01)
@@ -195,7 +195,7 @@ model.add(Conv2D(..., kernel_constraint=const))
 
 例如:
 
-```
+```py
 ...
 # main gan training loop
 for i in range(n_steps):
@@ -227,7 +227,7 @@ for i in range(n_steps):
 
 这可以作为主 GAN 更新循环内的新循环来实现；例如:
 
-```
+```py
 ...
 # main gan training loop
 for i in range(n_steps):
@@ -261,7 +261,7 @@ WGAN 推荐使用 [RMSProp 代替](https://machinelearningmastery.com/understand
 
 这可以在编译模型时在 Keras 中实现。例如:
 
-```
+```py
 ...
 # compile model
 opt = RMSprop(lr=0.00005)
@@ -282,7 +282,7 @@ model.compile(loss=wasserstein_loss, optimizer=opt)
 
 下面的*define _ critical()*函数实现了这一点，定义和编译了 critical 模型并返回。图像的输入形状被参数化为默认函数参数，以使其清晰。
 
-```
+```py
 # define the standalone critic model
 def define_critic(in_shape=(28,28,1)):
 	# weight initialization
@@ -316,7 +316,7 @@ def define_critic(in_shape=(28,28,1)):
 
 下面的 *define_generator()* 函数定义了生成器模型，但由于没有直接训练，所以故意不编译，然后返回模型。潜在空间的大小被参数化为函数参数。
 
-```
+```py
 # define the standalone generator model
 def define_generator(latent_dim):
 	# weight initialization
@@ -349,7 +349,7 @@ def define_generator(latent_dim):
 
 下面的 *define_gan()* 函数实现了这一点，将已经定义的生成器和评论模型作为输入。
 
-```
+```py
 # define the combined generator and critic model, for updating the generator
 def define_gan(generator, critic):
 	# make weights in the critic not trainable
@@ -374,7 +374,7 @@ def define_gan(generator, critic):
 
 下面的 *load_real_samples()* 函数实现了这一点，返回 MNIST 训练数据集的加载和缩放子集，为建模做好准备。
 
-```
+```py
 # load images
 def load_real_samples():
 	# load dataset
@@ -395,7 +395,7 @@ def load_real_samples():
 
 下面的 *generate_real_samples()* 函数实现了这一点，以准备好的数据集为自变量，为评论家选择并返回一个图像的随机样本及其对应的标签，具体为 target=-1 表示它们是真实图像。
 
-```
+```py
 # select real samples
 def generate_real_samples(dataset, n_samples):
 	# choose random instances
@@ -411,7 +411,7 @@ def generate_real_samples(dataset, n_samples):
 
 *generate _ 潜伏 _points()* 函数实现了这一点，将潜伏空间的大小作为自变量和所需的点数，作为生成器模型的一批输入样本返回。
 
-```
+```py
 # generate points in latent space as input for the generator
 def generate_latent_points(latent_dim, n_samples):
 	# generate points in the latent space
@@ -427,7 +427,7 @@ def generate_latent_points(latent_dim, n_samples):
 
 该函数返回生成的图像及其对应的评论家模型标签，具体来说，target=1 表示它们是伪造的或生成的。
 
-```
+```py
 # use the generator to generate n fake examples, with class labels
 def generate_fake_samples(generator, latent_dim, n_samples):
 	# generate points in latent space
@@ -443,7 +443,7 @@ def generate_fake_samples(generator, latent_dim, n_samples):
 
 下面的*summary _ performance()*函数在训练过程中获取给定点的生成器模型，并使用它在 10×10 的网格中生成 100 个图像，然后绘制并保存到文件中。这个模型现在也保存到文件中，以防我们以后想用它来生成更多的图像。
 
-```
+```py
 # generate samples and save as a plot and save the model
 def summarize_performance(step, g_model, latent_dim, n_samples=100):
 	# prepare fake examples
@@ -472,7 +472,7 @@ def summarize_performance(step, g_model, latent_dim, n_samples=100):
 
 对于每个模型更新，可以跟踪真实和虚假样本的批评者的损失，对于每个更新，生成器的损失也是如此。然后，这些数据可用于在训练结束时创建损失线图。下面的 *plot_history()* 函数实现了这一点，并将结果保存到文件中。
 
-```
+```py
 # create a line plot of loss for the gan and save to file
 def plot_history(d1_hist, d2_hist, g_hist):
 	# plot history
@@ -496,7 +496,7 @@ def plot_history(d1_hist, d2_hist, g_hist):
 
 在每次迭代中都会报告批评模型和生成器模型的性能。样本图像在每个时期生成并保存，模型性能的线图在运行结束时创建并保存。
 
-```
+```py
 # train the generator and critic
 def train(g_model, c_model, gan_model, dataset, latent_dim, n_epochs=10, n_batch=64, n_critic=5):
 	# calculate the number of batches per training epoch
@@ -543,7 +543,7 @@ def train(g_model, c_model, gan_model, dataset, latent_dim, n_epochs=10, n_batch
 
 既然已经定义了所有的函数，我们就可以创建模型，加载数据集，并开始训练过程。
 
-```
+```py
 # size of the latent space
 latent_dim = 50
 # create the critic
@@ -561,7 +561,7 @@ train(generator, critic, gan_model, dataset, latent_dim)
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # example of a wgan for generating handwritten digits
 from numpy import expand_dims
 from numpy import mean
@@ -811,7 +811,7 @@ c1 分数作为损失函数的一部分被反转；这意味着如果他们被�
 
 我们还可以看到，在这种情况下，模型将发电机的损失评分为 20 分左右。同样，回想一下，我们通过批评模型更新生成器，并将生成的示例视为真实的，目标为-1，因此分数可以解释为-20 左右的值，接近假样本的损失。
 
-```
+```py
 ...
 >961, c1=5.110, c2=-15.388 g=19.579
 >962, c1=6.116, c2=-15.222 g=20.054

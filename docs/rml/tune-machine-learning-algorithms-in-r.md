@@ -75,7 +75,7 @@
 
 让我们从 *mlbench* 包加载所需的库和数据集。
 
-```
+```py
 library(randomForest)
 library(mlbench)
 library(caret)
@@ -104,7 +104,7 @@ y <- dataset[,61]
 
 让我们通过使用每个参数的推荐默认值和*mtry = floor(sqrt(ncol(x)))*或 mtry=7 和 ntree=500 来创建一个比较基线。
 
-```
+```py
 # Create model with default paramters
 control <- trainControl(method="repeatedcv", number=10, repeats=3)
 seed <- 7
@@ -118,7 +118,7 @@ print(rf_default)
 
 我们可以看到我们的估计准确率为 81.3%。
 
-```
+```py
 Resampling results
 
   Accuracy   Kappa      Accuracy SD  Kappa SD 
@@ -143,7 +143,7 @@ R 中的脱字符号包为调整机器学习算法参数提供了极好的工具
 
 让我们尝试使用插入符号随机搜索 *mtry* :
 
-```
+```py
 # Random Search
 control <- trainControl(method="repeatedcv", number=10, repeats=3, search="random")
 set.seed(seed)
@@ -155,7 +155,7 @@ plot(rf_random)
 
 注意，我们使用的测试工具类似于我们用来抽查算法的工具。10 倍交叉验证和 3 次重复都会减慢搜索过程，但目的是限制和减少训练集的过度拟合。它不会完全消除过度拟合。如果你有多余的数据，保留一个用于最终检查的验证集是个好主意。
 
-```
+```py
 Resampling results across tuning parameters:
 
   mtry  Accuracy   Kappa      Accuracy SD  Kappa SD 
@@ -184,7 +184,7 @@ Resampling results across tuning parameters:
 
 网格的每个轴都是一个算法参数，网格中的点是参数的特定组合。因为我们只调整一个参数，所以网格搜索是通过候选值向量的线性搜索。
 
-```
+```py
 control <- trainControl(method="repeatedcv", number=10, repeats=3, search="grid")
 set.seed(seed)
 tunegrid <- expand.grid(.mtry=c(1:15))
@@ -195,7 +195,7 @@ plot(rf_gridsearch)
 
 我们可以看到，mtry 的最准确值是 2，准确率为 83.78%。
 
-```
+```py
 Resampling results across tuning parameters:
 
   mtry  Accuracy   Kappa      Accuracy SD  Kappa SD 
@@ -226,7 +226,7 @@ Resampling results across tuning parameters:
 
 例如，random forest 包中的随机森林算法实现提供了 *tuneRF()* 函数，该函数在给定数据的情况下搜索最佳 *mtry* 值。
 
-```
+```py
 # Algorithm Tune (tuneRF)
 set.seed(seed)
 bestmtry <- tuneRF(x, y, stepFactor=1.5, improve=1e-5, ntree=500)
@@ -237,7 +237,7 @@ print(bestmtry)
 
 这与我们在上面的插入符号重复交叉验证实验中看到的不太匹配，其中 *mtry=10* 给出的准确率为 82.04%。然而，这是调整算法的另一种方法。
 
-```
+```py
        mtry  OOBError
 5.OOB     5 0.1538462
 7.OOB     7 0.1538462
@@ -266,7 +266,7 @@ print(bestmtry)
 
 一种方法是为我们的算法创建许多插入符号模型，并手动将不同的参数直接传递给算法。让我们看一个例子，在保持 *mtry* 不变的情况下，这样做是为了评估 *ntree* 的不同值。
 
-```
+```py
 # Manual Search
 control <- trainControl(method="repeatedcv", number=10, repeats=3, search="grid")
 tunegrid <- expand.grid(.mtry=c(sqrt(ncol(x))))
@@ -287,7 +287,7 @@ dotplot(results)
 
 这个结果也许暗示了 ntree 在 2000 到 2500 之间的最佳值。还要注意，我们将 mtry 保持在默认值。我们可以用上面实验中可能更好的 *mtry=2* 重复实验，或者尝试 ntree 和 mtry 的组合，以防它们有交互作用。
 
-```
+```py
 Models: 1000, 1500, 2000, 2500 
 Number of resamples: 30 
 
@@ -313,7 +313,7 @@ Accuracy
 
 我们可以通过定义一个列表来定义自己的算法，以便在脱字符号中使用，该列表包含脱字符号包要查找的许多自定义命名元素，例如如何适应和如何预测。下面是自定义随机森林算法的定义，该算法与同时接受 mtry 和 ntree 参数的脱字符号一起使用。
 
-```
+```py
 customRF <- list(type = "Classification", library = "randomForest", loop = NULL)
 customRF$parameters <- data.frame(parameter = c("mtry", "ntree"), class = rep("numeric", 2), label = c("mtry", "ntree"))
 customRF$grid <- function(x, y, len = NULL, search = "grid") {}
@@ -330,7 +330,7 @@ customRF$levels <- function(x) x$classes
 
 现在，让我们在对插入符号训练函数的调用中使用这个自定义列表，并尝试为 ntree 和 mtry 调整不同的值。
 
-```
+```py
 # train model
 control <- trainControl(method="repeatedcv", number=10, repeats=3)
 tunegrid <- expand.grid(.mtry=c(1:15), .ntree=c(1000, 1500, 2000, 2500))
@@ -346,7 +346,7 @@ plot(custom)
 
 我们也许确实看到了树的数量和树的价值之间的一些交互作用。然而，如果我们选择了使用网格搜索 2 找到的最佳值 *mtry* (上图)和使用网格搜索 2000 找到的最佳值 *ntree* (上图)，在这种情况下，我们将会达到在这个组合搜索中找到的相同的调优水平。这是一个很好的证实。
 
-```
+```py
   mtry  ntree  Accuracy   Kappa      Accuracy SD  Kappa SD 
    1    1000   0.8442424  0.6828299  0.06505226   0.1352640
    1    1500   0.8394805  0.6730868  0.05797828   0.1215990

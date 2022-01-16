@@ -74,7 +74,7 @@ Alpha 是方向的比例因子，因此在搜索中只考虑 0.0 到 1.0 之间�
 
 因此，你必须知道目标函数的一阶导数。您还必须知道从哪里开始搜索以及执行搜索的范围。回想一下，您可以使用不同的方向(符号和幅度)多次执行搜索。
 
-```
+```py
 ...
 result = line_search(objective, gradient, point, direction)
 ```
@@ -83,7 +83,7 @@ result = line_search(objective, gradient, point, direction)
 
 结果元组中的第一个元素包含 alpha。如果搜索未能收敛，阿尔法将具有值*无*。
 
-```
+```py
 ...
 # retrieve the alpha value found as part of the line search
 alpha = result[0]
@@ -91,7 +91,7 @@ alpha = result[0]
 
 *α*、起点和*方向*可用于构建单线搜索的终点。
 
-```
+```py
 ...
 # construct the end point of a line search
 end = point + alpha * direction
@@ -121,7 +121,7 @@ end = point + alpha * direction
 
 下面列出了该功能的实现。
 
-```
+```py
 # objective function
 def objective(x):
 	return (-5.0 + x)**2.0
@@ -133,7 +133,7 @@ def objective(x):
 
 每个输入值的梯度仅指示每个点处朝向最优值的斜率。下面列出了该功能的实现。
 
-```
+```py
 # gradient for the objective function
 def gradient(x):
 	return 2.0 * (-5.0 + x)
@@ -141,7 +141,7 @@ def gradient(x):
 
 我们可以为 x 定义一个从-10 到 20 的输入范围，并计算每个输入的目标值。
 
-```
+```py
 ...
 # define range
 r_min, r_max = -10.0, 20.0
@@ -153,7 +153,7 @@ targets = [objective(x) for x in inputs]
 
 然后，我们可以绘制输入值与目标值的关系图，以了解函数的形状。
 
-```
+```py
 ...
 # plot inputs vs objective
 pyplot.plot(inputs, targets, '-', label='objective')
@@ -163,7 +163,7 @@ pyplot.show()
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # plot a convex objective function
 from numpy import arange
 from matplotlib import pyplot
@@ -206,7 +206,7 @@ pyplot.show()
 
 回想方向就像步长，搜索将缩放步长以找到最优值。
 
-```
+```py
 ...
 # define the starting point
 point = -5.0
@@ -222,7 +222,7 @@ result = line_search(objective, gradient, point, direction)
 
 我们可以从结果中检索 alpha，以及执行的函数评估的数量。
 
-```
+```py
 ...
 # summarize the result
 alpha = result[0]
@@ -232,7 +232,7 @@ print('Function evaluations: %d' % result[1])
 
 我们可以使用α，以及我们的起点和步长来计算最优值的位置，并计算该点的目标函数(我们希望该值等于 0.0)。
 
-```
+```py
 ...
 # define objective function minima 
 end = point + alpha * direction
@@ -242,7 +242,7 @@ print('f(end) = %.3f' % objective(end))
 
 然后，为了好玩，我们可以再次绘制函数，并将起点显示为绿色正方形，终点显示为红色正方形。
 
-```
+```py
 ...
 # define range
 r_min, r_max = -10.0, 20.0
@@ -261,7 +261,7 @@ pyplot.show()
 
 将这些联系在一起，下面列出了对凸目标函数执行线搜索的完整示例。
 
-```
+```py
 # perform a line search on a convex objective function
 from numpy import arange
 from scipy.optimize import line_search
@@ -312,7 +312,7 @@ pyplot.show()
 
 optima 的点位于 5.0，如预期的那样，评估为 0.0。
 
-```
+```py
 start=-5.0, direction=100.0
 Alpha: 0.100
 Function evaluations: 3
@@ -333,7 +333,7 @@ f(end) = f(5.000) = 0.000
 
 例如，如果我们使用三个方向，那么搜索将无法找到最优值。我们可以用下面列出的一个完整的例子来演示这一点。
 
-```
+```py
 # perform a line search on a convex objective function with a direction that is too small
 from numpy import arange
 from scipy.optimize import line_search
@@ -366,7 +366,7 @@ print('f(end) = f(%.3f) = %.3f' % (end, objective(end)))
 
 运行该示例时，搜索达到了 1.0 的α极限，这使得-2 的端点评估为 49。f(5) = 0.0 时，距离最优值很远。
 
-```
+```py
 start=-5.0, direction=3.0
 Alpha: 1.000
 f(end) = f(-2.000) = 49.000
@@ -376,7 +376,7 @@ f(end) = f(-2.000) = 49.000
 
 在这种情况下，错误的方向将是远离最佳方向的负方向，例如从起点开始的所有上坡。
 
-```
+```py
 ...
 # define the starting point
 point = -5.0
@@ -388,7 +388,7 @@ direction = -3.0
 
 下面列出了未能收敛的搜索的完整示例。
 
-```
+```py
 # perform a line search on a convex objective function that does not converge
 from numpy import arange
 from scipy.optimize import line_search
@@ -418,7 +418,7 @@ print('Alpha: %s' % result[0])
 
 搜索返回的 alpha 值为“无”。
 
-```
+```py
 start=-5.0, direction=-3.0
 LineSearchWarning: The line search algorithm did not converge
 warn('The line search algorithm did not converge', LineSearchWarning)

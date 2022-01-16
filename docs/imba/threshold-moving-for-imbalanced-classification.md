@@ -141,7 +141,7 @@ ROC 曲线是一个有用的诊断工具，用于了解不同阈值之间的权�
 
 我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例(行)的合成二进制分类问题，其中 99%属于多数类，1%属于少数类。
 
-```
+```py
 ...
 # generate dataset
 X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
@@ -150,7 +150,7 @@ X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
 
 然后，我们可以使用 [train_test_split()函数](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)分割数据集，并将一半用于训练集，另一半用于测试集。
 
-```
+```py
 ...
 # split into train/test sets
 trainX, testX, trainy, testy = train_test_split(X, y, test_size=0.5, random_state=2, stratify=y)
@@ -158,7 +158,7 @@ trainX, testX, trainy, testy = train_test_split(X, y, test_size=0.5, random_stat
 
 然后，我们可以拟合一个[逻辑推理模型](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)，并使用它对测试集进行概率预测，只保留少数类的概率预测。
 
-```
+```py
 ...
 # fit a model
 model = LogisticRegression(solver='lbfgs')
@@ -171,7 +171,7 @@ lr_probs = lr_probs[:, 1]
 
 然后，我们可以使用 [roc_auc_score()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html)使用一组阈值计算预测的真阳性率和假阳性率，然后使用这些阈值创建 roc 曲线图。
 
-```
+```py
 ...
 # calculate scores
 lr_auc = roc_auc_score(testy, lr_probs)
@@ -179,7 +179,7 @@ lr_auc = roc_auc_score(testy, lr_probs)
 
 我们可以将这些联系在一起，定义数据集，拟合模型，并创建 ROC 曲线图。下面列出了完整的示例。
 
-```
+```py
 # roc curve for logistic regression model
 from sklearn.datasets import make_classification
 from sklearn.linear_model import LogisticRegression
@@ -241,7 +241,7 @@ pyplot.show()
 
 假设我们在计算 ROC 曲线时已经计算了敏感性(TPR)和特异性的补充，我们可以直接计算每个阈值的 G 均值。
 
-```
+```py
 ...
 # calculate the g-mean for each threshold
 gmeans = sqrt(tpr * (1-fpr))
@@ -249,7 +249,7 @@ gmeans = sqrt(tpr * (1-fpr))
 
 一旦计算出来，我们就可以找到最大 G 均值分数的指数，并使用该指数来确定使用哪个阈值。
 
-```
+```py
 ...
 # locate the index of the largest g-mean
 ix = argmax(gmeans)
@@ -260,7 +260,7 @@ print('Best Threshold=%f, G-Mean=%.3f' % (thresholds[ix], gmeans[ix]))
 
 下面列出了完整的示例。
 
-```
+```py
 # roc curve for logistic regression model with optimal threshold
 from numpy import sqrt
 from numpy import argmax
@@ -306,7 +306,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到最佳阈值约为 0.016153。
 
-```
+```py
 Best Threshold=0.016153, G-Mean=0.933
 ```
 
@@ -334,7 +334,7 @@ Best Threshold=0.016153, G-Mean=0.933
 
 然后我们可以选择具有最大 J 统计值的阈值。例如:
 
-```
+```py
 ...
 # calculate roc curves
 fpr, tpr, thresholds = roc_curve(testy, yhat)
@@ -347,7 +347,7 @@ print('Best Threshold=%f' % (best_thresh))
 
 插上这个，完整的例子如下。
 
-```
+```py
 # roc curve for logistic regression model with optimal threshold
 from numpy import argmax
 from sklearn.datasets import make_classification
@@ -377,7 +377,7 @@ print('Best Threshold=%f' % (best_thresh))
 
 我们可以看到，这种更简单的方法直接计算最优统计量。
 
-```
+```py
 Best Threshold=0.016153
 ```
 
@@ -393,7 +393,7 @@ Best Threshold=0.016153
 
 我们可以使用上一节中的相同模型和数据集，并使用精度-召回曲线评估逻辑回归模型的概率预测。[精度 _ 召回 _ 曲线()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)可用于计算曲线，返回每个阈值的精度和召回分数以及使用的阈值。
 
-```
+```py
 ...
 # calculate pr-curve
 precision, recall, thresholds = precision_recall_curve(testy, yhat)
@@ -401,7 +401,7 @@ precision, recall, thresholds = precision_recall_curve(testy, yhat)
 
 将这些联系在一起，下面列出了为不平衡分类问题上的逻辑回归计算精度-召回率曲线的完整示例。
 
-```
+```py
 # pr curve for logistic regression model
 from sklearn.datasets import make_classification
 from sklearn.linear_model import LogisticRegression
@@ -448,7 +448,7 @@ pyplot.show()
 
 如前一节所述，寻找最佳阈值的简单方法是计算每个阈值的 F 测度。我们可以通过将精度和召回率直接转换为 F-measure 来达到同样的效果；例如:
 
-```
+```py
 ...
 # convert to f score
 fscore = (2 * precision * recall) / (precision + recall)
@@ -461,7 +461,7 @@ print('Best Threshold=%f, F-Score=%.3f' % (thresholds[ix], fscore[ix]))
 
 下面列出了完整的示例。
 
-```
+```py
 # optimal threshold for precision-recall curve with logistic regression model
 from numpy import argmax
 from sklearn.datasets import make_classification
@@ -507,7 +507,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到最佳的 F 值是 0.756，阈值约为 0.25。
 
-```
+```py
 Best Threshold=0.256036, F-Score=0.756
 ```
 
@@ -533,7 +533,7 @@ Best Threshold=0.256036, F-Score=0.756
 
 下面列出了完整的示例。
 
-```
+```py
 # logistic regression for imbalanced classification
 from sklearn.datasets import make_classification
 from sklearn.linear_model import LogisticRegression
@@ -558,13 +558,13 @@ print('F-Score: %.5f' % score)
 
 运行该示例，我们可以看到该模型在测试数据集上实现了大约 0.70 的 F-Measure。
 
-```
+```py
 F-Score: 0.70130
 ```
 
 现在我们可以在相同的数据集上使用相同的模型，而不是直接预测类标签，我们可以预测概率。
 
-```
+```py
 ...
 # predict probabilities
 yhat = model.predict_proba(testX)
@@ -572,7 +572,7 @@ yhat = model.predict_proba(testX)
 
 我们只需要正类的概率。
 
-```
+```py
 ...
 # keep probabilities for the positive outcome only
 probs = yhat[:, 1]
@@ -580,7 +580,7 @@ probs = yhat[:, 1]
 
 接下来，我们可以定义一组阈值来评估概率。在这种情况下，我们将测试 0.0 到 1.0 之间的所有阈值，步长为 0.001，也就是说，我们将测试 0.0、0.001、0.002、0.003，以此类推到 0.999。
 
-```
+```py
 ...
 # define thresholds
 thresholds = arange(0, 1, 0.001)
@@ -590,7 +590,7 @@ thresholds = arange(0, 1, 0.001)
 
 这可以通过将等于或大于阈值的所有值映射为 1 并将小于阈值的所有值映射为 0 来实现。我们将定义一个*到 _labels()* 函数来实现这一点，该函数将概率和阈值作为参数，并返回{0，1}中的整数数组。
 
-```
+```py
 # apply threshold to positive probabilities to create labels
 def to_labels(pos_probs, threshold):
 	return (pos_probs >= threshold).astype('int')
@@ -600,7 +600,7 @@ def to_labels(pos_probs, threshold):
 
 我们可以在一行中完成，如下所示:
 
-```
+```py
 ...
 # evaluate each threshold
 scores = [f1_score(testy, to_labels(probs, t)) for t in thresholds]
@@ -610,7 +610,7 @@ scores = [f1_score(testy, to_labels(probs, t)) for t in thresholds]
 
 我们现在需要做的就是找到得分最大的数组索引(最好的 F-Measure)，我们将得到最佳阈值及其评估。
 
-```
+```py
 ...
 # get best threshold
 ix = argmax(scores)
@@ -619,7 +619,7 @@ print('Threshold=%.3f, F-Score=%.5f' % (thresholds[ix], scores[ix]))
 
 将所有这些结合起来，下面列出了在综合不平衡分类数据集上调整逻辑回归模型阈值的完整示例。
 
-```
+```py
 # search thresholds for imbalanced classification
 from numpy import arange
 from numpy import argmax
@@ -659,7 +659,7 @@ print('Threshold=%.3f, F-Score=%.5f' % (thresholds[ix], scores[ix]))
 
 当您根据自己的问题调整阈值时，可以使用此示例作为模板，允许您替换自己的模型、度量，甚至是要评估的阈值的分辨率。
 
-```
+```py
 Threshold=0.251, F-Score=0.75556
 ```
 

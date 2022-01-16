@@ -112,7 +112,7 @@
 
 值标准化如下:
 
-```
+```py
 y = (x - min) / (max - min)
 ```
 
@@ -120,7 +120,7 @@ y = (x - min) / (max - min)
 
 例如，对于数据集，我们可以将最小和最大可观察值估计为 30 和-10。然后，我们可以对任何值进行归一化，如 18.8，如下所示:
 
-```
+```py
 y = (x - min) / (max - min)
 y = (18.8 - (-10)) / (30 - (-10))
 y = 28.8 / 40
@@ -139,7 +139,7 @@ y = 0.72
 
 *最小最大缩放器*的默认比例是将变量重新缩放到范围[0，1]，尽管可以通过“*特征 _ 范围*参数指定首选比例，并为所有变量指定包含最小值和最大值的元组。
 
-```
+```py
 # create scaler
 scaler = MinMaxScaler(feature_range=(-1,1))
 ```
@@ -148,7 +148,7 @@ scaler = MinMaxScaler(feature_range=(-1,1))
 
 以下示例提供了使用*最小最大缩放器*来规范化数据的一般演示。
 
-```
+```py
 # demonstrate data normalization with sklearn
 from sklearn.preprocessing import MinMaxScaler
 # load data
@@ -165,7 +165,7 @@ inverse = scaler.inverse_transform(normalized)
 
 也可以使用 *fit_transform()* 功能，一步完成拟合和变换；例如:
 
-```
+```py
 # demonstrate data normalization with sklearn
 from sklearn.preprocessing import MinMaxScaler
 # load data
@@ -192,25 +192,25 @@ inverse = scaler.inverse_transform(normalized)
 
 值标准化如下:
 
-```
+```py
 y = (x - mean) / standard_deviation
 ```
 
 其中*表示*计算如下:
 
-```
+```py
 mean = sum(x) / count(x)
 ```
 
 *标准偏差*计算如下:
 
-```
+```py
 standard_deviation = sqrt( sum( (x - mean)^2 ) / count(x))
 ```
 
 我们可以推测平均值为 10，标准偏差约为 5。使用这些值，我们可以将第一个值 20.7 标准化如下:
 
-```
+```py
 y = (x - mean) / standard_deviation
 y = (20.7 - 10) / 5
 y = (10.7) / 5
@@ -221,7 +221,7 @@ y = 2.14
 
 您可以使用 scikit-learn 对象[标准缩放器](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)来标准化数据集。
 
-```
+```py
 # demonstrate data standardization with sklearn
 from sklearn.preprocessing import StandardScaler
 # load data
@@ -238,7 +238,7 @@ inverse = scaler.inverse_transform(standardized)
 
 也可以使用 *fit_transform()* 功能，一步完成拟合和变换；例如:
 
-```
+```py
 # demonstrate data standardization with sklearn
 from sklearn.preprocessing import StandardScaler
 # load data
@@ -259,7 +259,7 @@ inverse = scaler.inverse_transform(standardized)
 
 我们将使用这个函数来定义一个有 20 个输入特征的问题；其中 10 个功能将是有意义的，10 个将不相关。总共将随机生成 1000 个示例。[伪随机数发生器](https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/)将被固定，以确保我们每次运行代码时都能得到相同的 1000 个例子。
 
-```
+```py
 # generate regression dataset
 X, y = make_regression(n_samples=1000, n_features=20, noise=0.1, random_state=1)
 ```
@@ -268,7 +268,7 @@ X, y = make_regression(n_samples=1000, n_features=20, noise=0.1, random_state=1)
 
 我们可以通过创建一些输入变量和输出变量的直方图来演示这一点。
 
-```
+```py
 # regression predictive modeling problem
 from sklearn.datasets import make_regression
 from matplotlib import pyplot
@@ -309,7 +309,7 @@ pyplot.show()
 
 第一步是将数据分成训练集和测试集，这样我们就可以拟合和评估模型。我们将从域中生成 1，000 个示例，并将数据集分成两半，为训练和测试数据集使用 500 个示例。
 
-```
+```py
 # split into train and test
 n_train = 500
 trainX, testX = X[:n_train, :], X[n_train:, :]
@@ -320,7 +320,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 单个隐藏层将使用 25 个节点和一个校正的线性激活函数。输出层有一个单目标变量节点和一个线性激活函数来直接预测真实值。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(25, input_dim=20, activation='relu', kernel_initializer='he_uniform'))
@@ -329,7 +329,7 @@ model.add(Dense(1, activation='linear'))
 
 均方误差损失函数将用于优化模型，随机梯度下降优化算法将用于学习率为 0.01、动量为 0.9 的合理默认配置。
 
-```
+```py
 # compile model
 model.compile(loss='mean_squared_error', optimizer=SGD(lr=0.01, momentum=0.9))
 ```
@@ -338,7 +338,7 @@ model.compile(loss='mean_squared_error', optimizer=SGD(lr=0.01, momentum=0.9))
 
 训练结束时，在训练和测试数据集上计算均方误差，以了解模型学习问题的程度。
 
-```
+```py
 # evaluate the model
 train_mse = model.evaluate(trainX, trainy, verbose=0)
 test_mse = model.evaluate(testX, testy, verbose=0)
@@ -346,7 +346,7 @@ test_mse = model.evaluate(testX, testy, verbose=0)
 
 最后，在每个训练周期结束时，训练集和测试集的均方误差的学习曲线用线图表示，在学习问题的同时，提供学习曲线以获得模型的动力学概念。
 
-```
+```py
 # plot loss during training
 pyplot.title('Mean Squared Error')
 pyplot.plot(history.history['loss'], label='train')
@@ -357,7 +357,7 @@ pyplot.show()
 
 将这些元素结合在一起，下面列出了完整的示例。
 
-```
+```py
 # mlp with unscaled data for the regression problem
 from sklearn.datasets import make_regression
 from keras.layers import Dense
@@ -394,7 +394,7 @@ pyplot.show()
 
 在这种情况下，模型无法学习问题，导致对 NaN 值的预测。在训练期间，[模型权重爆炸](https://machinelearningmastery.com/exploding-gradients-in-neural-networks/)给出了非常大的误差，反过来，为权重更新计算误差梯度。
 
-```
+```py
 Train: nan, Test: nan
 ```
 
@@ -414,7 +414,7 @@ Train: nan, Test: nan
 
 scikit-learn 转换器期望输入数据是行和列的矩阵，因此在转换之前，目标变量的 1D 数组必须被重新整形为 2D 数组。
 
-```
+```py
 # reshape 1d arrays to 2d arrays
 trainy = trainy.reshape(len(trainy), 1)
 testy = testy.reshape(len(trainy), 1)
@@ -422,7 +422,7 @@ testy = testy.reshape(len(trainy), 1)
 
 然后我们可以创建并应用*标准缩放器*来重新缩放目标变量。
 
-```
+```py
 # created scaler
 scaler = StandardScaler()
 # fit scaler on training dataset
@@ -439,7 +439,7 @@ testy = scaler.transform(testy)
 
 下面列出了回归问题中标准化 MLP 目标变量的完整示例。
 
-```
+```py
 # mlp with scaled outputs on the regression problem
 from sklearn.datasets import make_regression
 from sklearn.preprocessing import StandardScaler
@@ -490,7 +490,7 @@ pyplot.show()
 
 在这种情况下，模型似乎确实学会了这个问题，并实现了接近零的均方误差，至少达到了小数点后三位。
 
-```
+```py
 Train: 0.003, Test: 0.007
 ```
 
@@ -518,7 +518,7 @@ Train: 0.003, Test: 0.007
 
 第一步是定义一个函数来创建相同的 1000 个数据样本，将它们分成训练集和测试集，并应用通过输入参数指定的数据缩放方法。下面的 *get_dataset()* 函数实现了这一点，要求为输入和目标变量提供定标器，并返回分割成输入和输出组件的训练和测试数据集，准备训练和评估模型。
 
-```
+```py
 # prepare dataset with input and output scalers, can be none
 def get_dataset(input_scaler, output_scaler):
 	# generate dataset
@@ -552,7 +552,7 @@ def get_dataset(input_scaler, output_scaler):
 
 下面的 *evaluate_model()* 函数实现了这个行为。
 
-```
+```py
 # fit and evaluate mse of model on test set
 def evaluate_model(trainX, trainy, testX, testy):
 	# define model
@@ -574,7 +574,7 @@ def evaluate_model(trainX, trainy, testX, testy):
 
 下面的*repeat _ evaluation()*函数实现了这一点，将输入和输出变量的定标器作为参数，用这些定标器对一个模型进行 30 次评估，一路上打印错误分数，并返回每次运行计算出的错误分数列表。
 
-```
+```py
 # evaluate model multiple times with given input and output scalers
 def repeated_evaluation(input_scaler, output_scaler, n_repeats=30):
 	# get dataset
@@ -596,7 +596,7 @@ def repeated_evaluation(input_scaler, output_scaler, n_repeats=30):
 
 报告每种配置的误差平均值和标准偏差，然后创建方框图和须图来总结每种配置的误差分数。
 
-```
+```py
 # unscaled inputs
 results_unscaled_inputs = repeated_evaluation(None, StandardScaler())
 # normalized inputs
@@ -616,7 +616,7 @@ pyplot.show()
 
 将这些元素结合在一起，下面列出了完整的示例。
 
-```
+```py
 # compare scaling methods for mlp inputs on regression problem
 from sklearn.datasets import make_regression
 from sklearn.preprocessing import StandardScaler
@@ -707,7 +707,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到，正如我们预期的那样，缩放输入变量确实会导致模型具有更好的性能。出乎意料的是，使用标准化输入代替标准化输入可以获得更好的性能。这可能与第一隐藏层中整流线性激活函数的选择有关。
 
-```
+```py
 ...
 >0.010
 >0.012

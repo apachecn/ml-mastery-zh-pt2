@@ -50,7 +50,7 @@
 
 例如，我们可以用两个输入变量和 1:100 的类分布创建 10，000 个示例，如下所示:
 
-```
+```py
 ...
 # define dataset
 X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
@@ -59,7 +59,7 @@ X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
 
 然后，我们可以通过[散点图()Matplotlib 函数](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.scatter.html)创建数据集的散点图，以了解每个类中示例的空间关系及其不平衡。
 
-```
+```py
 ...
 # scatter plot of examples by class label
 for label, _ in counter.items():
@@ -71,7 +71,7 @@ pyplot.show()
 
 将这些联系在一起，下面列出了创建不平衡分类数据集并绘制示例的完整示例。
 
-```
+```py
 # Generate and plot a synthetic imbalanced classification dataset
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -93,7 +93,7 @@ pyplot.show()
 
 运行该示例首先总结了类分布，显示了大约 1:100 的类分布，其中大约 10，000 个示例包含类 0，100 个示例包含类 1。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 ```
 
@@ -107,7 +107,7 @@ Counter({0: 9900, 1: 100})
 
 我们可以在这个数据集上拟合一个[决策树分类器模型](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)。这是一个很好的测试模型，因为它对训练数据集中的类分布很敏感。
 
-```
+```py
 ...
 # define model
 model = DecisionTreeClassifier()
@@ -117,7 +117,7 @@ model = DecisionTreeClassifier()
 
 [曲线下 ROC 面积(AUC)度量](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)可以用来估计模型的性能。对于严重不平衡的数据集，它可能是乐观的，尽管它确实正确地显示了模型性能的相对提高。
 
-```
+```py
 ...
 # define evaluation procedure
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -129,7 +129,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 将这些联系在一起，下面的例子评估了不平衡分类数据集上的决策树模型。
 
-```
+```py
 # evaluates a decision tree model on the imbalanced dataset
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -155,7 +155,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这个例子中，你可以看到模型实现了大约 0.76 的 ROC AUC。这为这个数据集提供了一个基线，我们可以用它来比较训练数据集中过采样和欠采样方法的不同组合。
 
-```
+```py
 Mean ROC AUC: 0.762
 ```
 
@@ -165,13 +165,13 @@ Mean ROC AUC: 0.762
 
 在这些例子中，我们将使用[不平衡学习 Python 库](https://github.com/scikit-learn-contrib/imbalanced-learn)提供的实现，可以通过 pip 安装如下:
 
-```
+```py
 sudo pip install imbalanced-learn
 ```
 
 您可以通过打印已安装库的版本来确认安装成功:
 
-```
+```py
 # check version number
 import imblearn
 print(imblearn.__version__)
@@ -179,7 +179,7 @@ print(imblearn.__version__)
 
 运行该示例将打印已安装库的版本号；例如:
 
-```
+```py
 0.5.0
 ```
 
@@ -189,7 +189,7 @@ print(imblearn.__version__)
 
 我们可以使用[管道](https://imbalanced-learn.org/stable/generated/imblearn.pipeline.Pipeline.html)构建一系列过采样和欠采样技术来应用于数据集。例如:
 
-```
+```py
 # define resampling
 over = ...
 under = ...
@@ -201,7 +201,7 @@ pipeline = Pipeline(steps=[('o', over), ('u', under)])
 
 然后可以使用管道来转换数据集；例如:
 
-```
+```py
 # fit and apply the pipeline
 X_resampled, y_resampled = pipeline.fit_resample(X, y)
 ```
@@ -210,7 +210,7 @@ X_resampled, y_resampled = pipeline.fit_resample(X, y)
 
 这允许管道被视为一个模型。当在训练数据集上拟合时，首先将变换应用于训练数据集，然后将变换后的数据集提供给模型，以便它可以进行拟合。
 
-```
+```py
 ...
 # define model
 model = ...
@@ -225,7 +225,7 @@ pipeline = Pipeline(steps=[('o', over), ('u', under), ('m', model)])
 
 当在 [k 折叠交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)中使用时，整个变换和拟合序列应用于由交叉验证折叠组成的每个训练数据集。这很重要，因为变换和拟合都是在不知道保持集的情况下执行的，这避免了[数据泄露](https://machinelearningmastery.com/data-leakage-machine-learning/)。例如:
 
-```
+```py
 ...
 # define evaluation procedure
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -247,7 +247,7 @@ scores = cross_val_score(pipeline, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 
 下面的示例定义了一个管道，该管道首先将少数类过采样到多数类的 10%，将多数类采样到比少数类多 50%，然后拟合决策树模型。
 
-```
+```py
 ...
 # define model
 model = DecisionTreeClassifier()
@@ -260,7 +260,7 @@ pipeline = Pipeline(steps=[('o', over), ('u', under), ('m', model)])
 
 下面列出了在二元分类问题上评估这种组合的完整示例。
 
-```
+```py
 # combination of random oversampling and undersampling for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -294,7 +294,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到 ROC AUC 性能从无变换的 0.76 适度提升到随机过采样和欠采样的约 0.81。
 
-```
+```py
 Mean ROC AUC: 0.814
 ```
 
@@ -316,7 +316,7 @@ SMOTE 的工作方式是选择特征空间中靠近的示例，在特征空间�
 
 下面的管道实现了这种组合，首先应用 SMOTE 使少数类分布达到多数类的 10%，然后使用*随机欠采样*使多数类比少数类多 50%，然后拟合[决策树分类器](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)。
 
-```
+```py
 ...
 # define model
 model = DecisionTreeClassifier()
@@ -328,7 +328,7 @@ steps = [('o', over), ('u', under), ('m', model)]
 
 下面的例子在我们的不平衡二进制分类问题上评估了这个组合。
 
-```
+```py
 # combination of SMOTE and random undersampling for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -362,7 +362,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到 ROC AUC 性能从大约 0.81 到大约 0.83 的另一个列表。
 
-```
+```py
 Mean ROC AUC: 0.833
 ```
 
@@ -392,7 +392,7 @@ Gustavo Batista 等人在他们 2003 年发表的题为“平衡训练数据以�
 
 我们可以使用[smottomek 类](https://imbalanced-learn.org/stable/generated/imblearn.combine.SMOTETomek.html)来实现这个组合。
 
-```
+```py
 ...
 # define resampling
 resample = SMOTETomek()
@@ -408,7 +408,7 @@ SMOTE 配置可以通过“ *smote* ”参数设置，并采用已配置的 [SMO
 
 或者，我们可以将组合配置为仅从多数类中移除链接，如 2003 年的论文中所述，方法是用实例*指定“ *tomek* ”参数，将“ *sampling_strategy* ”参数设置为仅欠采样“*多数*类；例如:*
 
-```
+```py
 ...
 # define resampling
 resample = SMOTETomek(tomek=TomekLinks(sampling_strategy='majority'))
@@ -418,7 +418,7 @@ resample = SMOTETomek(tomek=TomekLinks(sampling_strategy='majority'))
 
 下面列出了完整的示例。
 
-```
+```py
 # combined SMOTE and Tomek Links resampling for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -451,7 +451,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，这种组合的重采样策略似乎没有为该数据集上的模型提供好处。
 
-```
+```py
 Mean ROC AUC: 0.815
 ```
 
@@ -477,7 +477,7 @@ Gustavo Batista 等人在他们 2004 年的论文《几种平衡机器学习训�
 
 这可以通过不平衡学习库中的[SMOTENN 类](https://imbalanced-learn.org/stable/generated/imblearn.combine.SMOTEENN.html)来实现。
 
-```
+```py
 ...
 # define resampling
 resample = SMOTEENN()
@@ -487,7 +487,7 @@ SMOTE 配置可以通过“ *smote* 参数设置为 SMOTE 对象，ENN 配置可
 
 我们可以通过将“ *enn* ”参数设置为一个*edited nearest neighbores*实例，并将 *sampling_strategy* 参数设置为“*more*”来更改 ENN，只从多数类中移除示例。
 
-```
+```py
 ...
 # define resampling
 resample = SMOTEENN(enn=EditedNearestNeighbours(sampling_strategy='majority'))
@@ -497,7 +497,7 @@ resample = SMOTEENN(enn=EditedNearestNeighbours(sampling_strategy='majority'))
 
 下面列出了完整的示例。
 
-```
+```py
 # combined SMOTE and Edited Nearest Neighbors resampling for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -529,7 +529,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们看到随机欠采样方法的性能比 SMOTE 进一步提升，从约 0.81 提升到约 0.85。
 
-```
+```py
 Mean ROC AUC: 0.856
 ```
 

@@ -65,7 +65,7 @@ CIFAR-10 是一个众所周知的数据集，广泛用于机器学习领域的�
 
 下面的示例使用 Keras API 加载 CIFAR-10 数据集，并创建训练数据集中前九个图像的图。
 
-```
+```py
 # example of loading the cifar10 dataset
 from matplotlib import pyplot
 from keras.datasets import cifar10
@@ -88,7 +88,7 @@ pyplot.show()
 
 我们可以看到训练数据集中有 50000 个例子，测试数据集中有 10000 个例子，图像确实是 32×32 像素、彩色的正方形，有三个通道。
 
-```
+```py
 Train: X=(50000, 32, 32, 3), y=(50000, 1)
 Test: X=(10000, 32, 32, 3), y=(10000, 1)
 ```
@@ -119,7 +119,7 @@ CIFAR-10 数据集可以成为开发和实践使用卷积神经网络解决图�
 
 例如，我们知道图像都是预分割的(例如，每个图像包含单个对象)，图像都具有相同的 32×32 像素的正方形大小，并且图像是彩色的。因此，我们几乎可以立即加载图像并将其用于建模。
 
-```
+```py
 # load dataset
 (trainX, trainY), (testX, testY) = cifar10.load_data()
 ```
@@ -128,7 +128,7 @@ CIFAR-10 数据集可以成为开发和实践使用卷积神经网络解决图�
 
 因此，我们可以对每个样本的类元素使用[一热编码](https://machinelearningmastery.com/why-one-hot-encode-data-in-machine-learning/)，将整数转换为 10 元素二进制向量，类值的索引为 1。我们可以通过*to _ classic()*效用函数来实现。
 
-```
+```py
 # one hot encode target values
 trainY = to_categorical(trainY)
 testY = to_categorical(testY)
@@ -136,7 +136,7 @@ testY = to_categorical(testY)
 
 *load_dataset()* 函数实现了这些行为，可以用来加载数据集。
 
-```
+```py
 # load train and test dataset
 def load_dataset():
 	# load dataset
@@ -155,7 +155,7 @@ def load_dataset():
 
 一个好的起点是归一化像素值，例如将它们重新缩放到范围[0，1]。这包括首先将数据类型从无符号整数转换为浮点数，然后将像素值除以最大值。
 
-```
+```py
 # convert from integers to floats
 train_norm = train.astype('float32')
 test_norm = test.astype('float32')
@@ -166,7 +166,7 @@ test_norm = test_norm / 255.0
 
 下面的 *prep_pixels()* 函数实现了这些行为，并提供了需要缩放的训练和测试数据集的像素值。
 
-```
+```py
 # scale pixels
 def prep_pixels(train, test):
 	# convert from integers to floats
@@ -187,7 +187,7 @@ def prep_pixels(train, test):
 
 下面的 *define_model()* 函数将定义并返回该模型，并且可以为我们希望稍后评估的给定模型配置进行填充或替换。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -205,14 +205,14 @@ def define_model():
 
 测试数据集可以像验证数据集一样使用，并在每个训练周期结束时进行评估。这将在每个时期的训练和测试数据集上产生模型评估分数的轨迹，该轨迹可以在以后绘制。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainY, epochs=100, batch_size=64, validation_data=(testX, testY), verbose=0)
 ```
 
 一旦模型合适，我们就可以直接在测试数据集上对其进行评估。
 
-```
+```py
 # evaluate model
 _, acc = model.evaluate(testX, testY, verbose=0)
 ```
@@ -227,7 +227,7 @@ _, acc = model.evaluate(testX, testY, verbose=0)
 
 我们将创建一个有两个支线剧情的单一人物，一个是损失，一个是准确性。蓝色线将指示训练数据集上的模型性能，橙色线将指示等待测试数据集上的性能。下面的*summary _ diagnostics()*函数在给定收集的训练历史的情况下创建并显示该图。剧情保存到文件中，特别是与脚本同名的文件，扩展名为“ *png* ”。
 
-```
+```py
 # plot diagnostic learning curves
 def summarize_diagnostics(history):
 	# plot loss
@@ -250,7 +250,7 @@ def summarize_diagnostics(history):
 
 这可以通过直接打印分类精度来实现。
 
-```
+```py
 print('> %.3f' % (acc * 100.0))
 ```
 
@@ -260,7 +260,7 @@ print('> %.3f' % (acc * 100.0))
 
 这包括调用所有的定义函数。下面的*run _ test _ 线束()*函数实现了这一点，并且可以被调用来启动给定模型的评估。
 
-```
+```py
 # run the test harness for evaluating a model
 def run_test_harness():
 	# load dataset
@@ -282,7 +282,7 @@ def run_test_harness():
 
 下面列出了 CIFAR-10 数据集测试工具的完整代码示例。
 
-```
+```py
 # test harness for evaluating models on the cifar10 dataset
 import sys
 from matplotlib import pyplot
@@ -378,7 +378,7 @@ run_test_harness()
 
 每层将使用 [ReLU 激活功能](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)和 he 权重初始化，这通常是最佳实践。例如，3 块 VGG 风格的架构可以在 Keras 中定义如下:
 
-```
+```py
 # example of a 3-block vgg style architecture
 model = Sequential()
 model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same', input_shape=(32, 32, 3)))
@@ -397,7 +397,7 @@ model.add(MaxPooling2D((2, 2)))
 
 对于我们研究的每个模型，这都是固定的。首先，从模型的特征提取部分输出的特征图必须展平。然后，我们可以用一个或多个完全连接的层来解释它们，然后输出预测。对于 10 个类，输出层必须有 10 个节点，并使用 softmax 激活功能。
 
-```
+```py
 # example output part of the model
 model.add(Flatten())
 model.add(Dense(128, activation='relu', kernel_initializer='he_uniform'))
@@ -409,7 +409,7 @@ model.add(Dense(10, activation='softmax'))
 
 我们将使用 0.001 的适度学习率和 0.9 的大动量，这两者都是很好的一般起点。该模型将优化多类分类所需的[分类交叉熵损失函数](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)，并将监控分类精度。
 
-```
+```py
 # compile model
 opt = SGD(lr=0.001, momentum=0.9)
 model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
@@ -425,7 +425,7 @@ model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy
 
 下面列出了一个 VGG 区块的 *define_model()* 功能。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -447,7 +447,7 @@ def define_model():
 
 在这种情况下，我们可以看到该模型实现了不到 70%的分类准确率。
 
-```
+```py
 > 67.070
 ```
 
@@ -463,7 +463,7 @@ CIFAR-10 数据集上 VGG 1 基线的学习曲线线图
 
 下面列出了两个 VGG 区块的 *define_model()* 函数。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -488,7 +488,7 @@ def define_model():
 
 在这种情况下，我们可以看到具有两个块的模型比具有单个块的模型表现更好:这是一个好迹象。
 
-```
+```py
 > 71.080
 ```
 
@@ -502,7 +502,7 @@ CIFAR-10 数据集上 VGG 2 基线的学习曲线线图
 
 下面列出了三个 VGG 区块的 *define_model()* 功能。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -530,7 +530,7 @@ def define_model():
 
 在这种情况下，随着模型深度的增加，性能又有了适度的提高。
 
-```
+```py
 > 73.500
 ```
 
@@ -586,7 +586,7 @@ CIFAR-10 数据集上 VGG 3 基线的学习曲线线图
 
 下面列出了更新后的 VGG 3 基线辍学模型。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -614,7 +614,7 @@ def define_model():
 
 为了完整起见，下面提供了完整的代码列表。
 
-```
+```py
 # baseline model with dropout on the cifar10 dataset
 import sys
 from matplotlib import pyplot
@@ -715,7 +715,7 @@ run_test_harness()
 
 在这种情况下，我们可以看到分类准确率提高了约 10%，从没有辍学的约 73%提高到辍学的约 83%。
 
-```
+```py
 > 83.450
 ```
 
@@ -745,7 +745,7 @@ CIFAR-10 数据集上缺失基线模型的学习曲线线图
 
 下面列出了带有重量衰减的更新基线模型。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -769,7 +769,7 @@ def define_model():
 
 为了完整起见，下面提供了完整的代码列表。
 
-```
+```py
 # baseline model with weight decay on the cifar10 dataset
 import sys
 from matplotlib import pyplot
@@ -866,7 +866,7 @@ run_test_harness()
 
 在这种情况下，我们在测试集上看不到模型性能的改善；事实上，我们看到分类准确率从大约 73%下降到大约 72%。
 
-```
+```py
 > 72.550
 ```
 
@@ -892,7 +892,7 @@ CIFAR-10 数据集上权重衰减基线模型的学习曲线线图
 
 这可以在 Keras 中使用 [ImageDataGenerator 类](https://keras.io/preprocessing/image/)实现；例如:
 
-```
+```py
 # create data generator
 datagen = ImageDataGenerator(width_shift_range=0.1, height_shift_range=0.1, horizontal_flip=True)
 # prepare iterator
@@ -901,7 +901,7 @@ it_train = datagen.flow(trainX, trainY, batch_size=64)
 
 这可以在训练期间通过将迭代器传递给 *model.fit_generator()* 函数并定义单个时期内的批次数量来使用。
 
-```
+```py
 # fit model
 steps = int(trainX.shape[0] / 64)
 history = model.fit_generator(it_train, steps_per_epoch=steps, epochs=100, validation_data=(testX, testY), verbose=0)
@@ -911,7 +911,7 @@ history = model.fit_generator(it_train, steps_per_epoch=steps, epochs=100, valid
 
 支持数据扩充的*run _ test _ 线束()*功能的更新版本如下。
 
-```
+```py
 # run the test harness for evaluating a model
 def run_test_harness():
 	# load dataset
@@ -936,7 +936,7 @@ def run_test_harness():
 
 为了完整起见，下面提供了完整的代码列表。
 
-```
+```py
 # baseline model with data augmentation on the cifar10 dataset
 import sys
 from matplotlib import pyplot
@@ -1038,7 +1038,7 @@ run_test_harness()
 
 在这种情况下，我们看到了模型性能的另一个大的改进，很像我们看到的辍学。在这种情况下，从基线模型的约 73%提高到约 84%，提高了约 11%。
 
-```
+```py
 > 84.470
 ```
 
@@ -1082,7 +1082,7 @@ run_test_harness()
 
 下面定义了根据模型深度增加辍学率百分比的模式更新的辍学基线模型。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -1110,7 +1110,7 @@ def define_model():
 
 为了完整起见，下面提供了包含此更改的完整代码列表。
 
-```
+```py
 # baseline model with increasing dropout on the cifar10 dataset
 import sys
 from matplotlib import pyplot
@@ -1211,7 +1211,7 @@ run_test_harness()
 
 在这种情况下，我们可以看到从大约 83%的固定辍学率到大约 84%的增加辍学率的适度提升。
 
-```
+```py
 > 84.690
 ```
 
@@ -1231,7 +1231,7 @@ run_test_harness()
 
 为了完整起见，下面提供了具有固定丢失和数据增加的模型的完整代码列表。
 
-```
+```py
 # baseline model with dropout and data augmentation on the cifar10 dataset
 import sys
 from matplotlib import pyplot
@@ -1338,7 +1338,7 @@ run_test_harness()
 
 在这种情况下，我们可以看到，正如我们所希望的那样，同时使用这两种正则化技术已经在测试集上进一步提升了模型性能。在这种情况下，将大约 83%的固定丢失率和大约 84%的数据增加率相结合，已经导致分类准确率提高到大约 85%。
 
-```
+```py
 > 85.880
 ```
 
@@ -1362,7 +1362,7 @@ run_test_harness()
 
 更新后的模型定义如下所示。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -1397,7 +1397,7 @@ def define_model():
 
 为了完整起见，下面提供了一个模型的完整代码列表，该模型具有越来越多的丢失、数据增加、批处理规范化和 400 个训练时期。
 
-```
+```py
 # baseline model with dropout and data augmentation on the cifar10 dataset
 import sys
 from matplotlib import pyplot
@@ -1512,7 +1512,7 @@ run_test_harness()
 
 在这种情况下，我们可以看到，我们实现了模型性能的进一步提升，达到约 88%的准确率，仅在丢失和数据增加方面就提高了约 84%，仅在丢失增加方面就提高了约 85%。
 
-```
+```py
 > 88.620
 ```
 
@@ -1556,14 +1556,14 @@ run_test_harness()
 
 第一步是在整个训练数据集上拟合最终模型。
 
-```
+```py
 # fit model
 model.fit(trainX, trainY, epochs=100, batch_size=64, verbose=0)
 ```
 
 一旦合适，我们可以通过调用模型上的 *save()* 函数将最终模型保存到一个 H5 文件中，并传入选择的文件名。
 
-```
+```py
 # save model
 model.save('final_model.h5')
 ```
@@ -1572,7 +1572,7 @@ model.save('final_model.h5')
 
 下面列出了在训练数据集上拟合最终模型并将其保存到文件中的完整示例。
 
-```
+```py
 # save the final model to file
 from keras.datasets import cifar10
 from keras.utils import to_categorical
@@ -1654,7 +1654,7 @@ run_test_harness()
 
 下面列出了加载保存的模型并在测试数据集上对其进行评估的完整示例。
 
-```
+```py
 # evaluate the deep model on the test dataset
 from keras.datasets import cifar10
 from keras.models import load_model
@@ -1704,7 +1704,7 @@ run_test_harness()
 
 在这种情况下，我们可以看到模型达到了大约 73%的精度，非常接近我们在评估模型作为测试工具的一部分时看到的精度。
 
-```
+```py
 73.750
 ```
 
@@ -1730,7 +1730,7 @@ run_test_harness()
 
 重要的是，像素值的准备方式与在拟合最终模型时为训练数据集准备像素值的方式相同，在这种情况下，最终模型是归一化的。
 
-```
+```py
 # load and prepare the image
 def load_image(filename):
 	# load the image
@@ -1747,14 +1747,14 @@ def load_image(filename):
 
 接下来，我们可以像上一节一样加载模型，并调用*predict _ class()*函数来预测图像中的对象。
 
-```
+```py
 # predict the class
 result = model.predict_classes(img)
 ```
 
 下面列出了完整的示例。
 
-```
+```py
 # make a prediction for a new image.
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -1789,7 +1789,7 @@ run_example()
 
 运行该示例首先加载和准备图像，加载模型，然后正确预测加载的图像代表“*鹿*或类“ *4* ”。
 
-```
+```py
 4
 ```
 

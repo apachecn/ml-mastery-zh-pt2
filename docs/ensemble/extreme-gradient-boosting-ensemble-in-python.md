@@ -90,13 +90,13 @@ xboost 可以作为一个独立的库安装，并且可以使用 scikit-learn AP
 
 第一步是安装尚未安装的 XGBoost 库。这可以在大多数平台上使用 pip python 包管理器来实现；例如:
 
-```
+```py
 sudo pip install xgboost
 ```
 
 然后，您可以通过运行以下脚本来确认 XGBoost 库安装正确，并且可以使用。
 
-```
+```py
 # check xgboost version
 import xgboost
 print(xgboost.__version__)
@@ -106,7 +106,7 @@ print(xgboost.__version__)
 
 您的版本应该相同或更高。如果没有，您必须升级 XGBoost 库的版本。
 
-```
+```py
 1.1.1
 ```
 
@@ -116,13 +116,13 @@ print(xgboost.__version__)
 
 如果您在尝试运行上述脚本时确实有错误，我建议降级到 1.0.1 版(或更低版本)。这可以通过指定要安装到 pip 命令的版本来实现，如下所示:
 
-```
+```py
 sudo pip install xgboost==1.0.1
 ```
 
 如果您看到一条警告消息，您可以暂时忽略它。例如，下面是一个警告消息示例，您可能会看到它，但可以忽略它:
 
-```
+```py
 FutureWarning: pandas.util.testing is deprecated. Use the functions in the public API at pandas.testing instead.
 ```
 
@@ -148,7 +148,7 @@ FutureWarning: pandas.util.testing is deprecated. Use the functions in the publi
 
 下面列出了完整的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -159,7 +159,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -167,7 +167,7 @@ print(X.shape, y.shape)
 
 我们将使用重复的分层 k 折叠交叉验证来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
 
-```
+```py
 # evaluate xgboost algorithm for classification
 from numpy import mean
 from numpy import std
@@ -192,7 +192,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到带有默认超参数的 XGBoost 集成在这个测试数据集上实现了大约 92.5%的分类精度。
 
-```
+```py
 Accuracy: 0.925 (0.028)
 ```
 
@@ -202,7 +202,7 @@ Accuracy: 0.925 (0.028)
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make predictions using xgboost for classification
 from numpy import asarray
 from sklearn.datasets import make_classification
@@ -222,7 +222,7 @@ print('Predicted Class: %d' % yhat[0])
 
 运行该示例使 XGBoost 集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Class: 1
 ```
 
@@ -236,7 +236,7 @@ Predicted Class: 1
 
 下面列出了完整的示例。
 
-```
+```py
 # test regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -247,7 +247,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -257,7 +257,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate xgboost ensemble for regression
 from numpy import mean
 from numpy import std
@@ -282,7 +282,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到带有默认超参数的 XGBoost 集成实现了大约 76 的 MAE。
 
-```
+```py
 MAE: -76.447 (3.859)
 ```
 
@@ -292,7 +292,7 @@ MAE: -76.447 (3.859)
 
 下面的例子在我们的回归数据集上演示了这一点。
 
-```
+```py
 # gradient xgboost for making predictions for regression
 from numpy import asarray
 from sklearn.datasets import make_regression
@@ -312,7 +312,7 @@ print('Prediction: %d' % yhat[0])
 
 运行该示例使 XGBoost 集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Prediction: 50
 ```
 
@@ -332,7 +332,7 @@ XGBoost 集成算法的一个重要超参数是集成中使用的决策树的数
 
 下面的示例探讨了值在 10 到 5，000 之间的树的数量的影响。
 
-```
+```py
 # explore xgboost number of trees effect on performance
 from numpy import mean
 from numpy import std
@@ -383,7 +383,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到该数据集上的性能有所提高，直到大约 500 棵树，之后性能似乎趋于平稳或下降。
 
-```
+```py
 >10 0.885 (0.029)
 >50 0.915 (0.029)
 >100 0.925 (0.028)
@@ -412,7 +412,7 @@ XGBoost 集合大小与分类精度的箱线图
 
 下面的示例探讨了 1 到 10 之间的树深度以及对模型性能的影响。
 
-```
+```py
 # explore xgboost tree depth effect on performance
 from numpy import mean
 from numpy import std
@@ -462,7 +462,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到性能随着树的深度而提高，可能在 3 到 8 的深度附近窥视，之后更深、更专门化的树会导致更差的性能。
 
-```
+```py
 >1 0.849 (0.028)
 >2 0.906 (0.032)
 >3 0.926 (0.027)
@@ -493,7 +493,7 @@ XGBoost 集合树深度与分类精度的方框图
 
 下面的示例探讨了学习率，并比较了 0.0001 和 1.0 之间的值的效果。
 
-```
+```py
 # explore xgboost learning rate effect on performance
 from numpy import mean
 from numpy import std
@@ -547,7 +547,7 @@ pyplot.show()
 
 这突出了树的数量(训练速度)和学习率之间的权衡，例如，我们可以通过使用更少的树和更大的学习率来更快地拟合模型。
 
-```
+```py
 >0.0001 0.804 (0.039)
 >0.0010 0.814 (0.037)
 >0.0100 0.867 (0.027)
@@ -573,7 +573,7 @@ XGBoost 学习率与分类精度的箱线图
 
 下面的示例演示了样本大小对模型性能的影响，比率从 10%到 100%以 10%的增量变化。
 
-```
+```py
 # explore xgboost subsample ratio effect on performance
 from numpy import arange
 from numpy import mean
@@ -625,7 +625,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到平均性能对于覆盖大部分数据集的样本大小来说可能是最好的，例如 80%或更高。
 
-```
+```py
 >0.1 0.876 (0.027)
 >0.2 0.912 (0.033)
 >0.3 0.917 (0.032)
@@ -656,7 +656,7 @@ XGBoost 集合样本比与分类精度的箱线图
 
 下面的示例探讨了特征数量对模型性能的影响，比率从 10%到 100%以 10%的增量变化。
 
-```
+```py
 # explore xgboost column ratio per tree effect on performance
 from numpy import arange
 from numpy import mean
@@ -708,7 +708,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到平均性能增加到功能数量的一半(50%)，之后保持在一定水平。令人惊讶的是，删除每棵树一半的输入变量收效甚微。
 
-```
+```py
 >0.1 0.861 (0.033)
 >0.2 0.906 (0.027)
 >0.3 0.923 (0.029)

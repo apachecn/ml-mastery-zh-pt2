@@ -125,13 +125,13 @@ Weka 安装目录
 
 1.将目录更改为您的 weka 安装目录。例如
 
-```
+```py
 cd /Applications/weka-3-8-0
 ```
 
 2.用 *weka.jar* 文件启动 Java 虚拟机。例如:
 
-```
+```py
 java -jar weka.jar
 ```
 
@@ -155,13 +155,13 @@ Weka 安装文件
 
 1.将目录更改为您的 Weka 安装目录。例如
 
-```
+```py
 cd /Applications/weka-3-8-0
 ```
 
 2.用 *weka 启动 Java 虚拟机。* jar 文件，例如:
 
-```
+```py
 java -jar weka.jar
 ```
 

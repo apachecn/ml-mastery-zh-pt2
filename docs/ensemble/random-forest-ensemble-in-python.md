@@ -111,7 +111,7 @@ scikit-learn Python 机器学习库为机器学习提供了一个随机森林的
 
 首先，通过运行以下脚本来确认您使用的是现代版本的库:
 
-```
+```py
 # check scikit-learn version
 import sklearn
 print(sklearn.__version__)
@@ -121,7 +121,7 @@ print(sklearn.__version__)
 
 您的版本应该相同或更高。如果没有，您必须升级 scikit-learn 库的版本。
 
-```
+```py
 0.22.1
 ```
 
@@ -143,7 +143,7 @@ print(sklearn.__version__)
 
 下面列出了完整的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -154,7 +154,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -162,7 +162,7 @@ print(X.shape, y.shape)
 
 我们将使用[重复分层 k 折叠交叉验证](https://machinelearningmastery.com/cross-validation-for-imbalanced-classification/)来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
 
-```
+```py
 # evaluate random forest algorithm for classification
 from numpy import mean
 from numpy import std
@@ -187,7 +187,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到带有默认超参数的随机森林集成达到了大约 90.5%的分类精度。
 
-```
+```py
 Accuracy: 0.905 (0.025)
 ```
 
@@ -197,7 +197,7 @@ Accuracy: 0.905 (0.025)
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make predictions using random forest for classification
 from sklearn.datasets import make_classification
 from sklearn.ensemble import RandomForestClassifier
@@ -215,7 +215,7 @@ print('Predicted Class: %d' % yhat[0])
 
 运行该示例使随机森林集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Class: 0
 ```
 
@@ -229,7 +229,7 @@ Predicted Class: 0
 
 下面列出了完整的示例。
 
-```
+```py
 # test regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -240,7 +240,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -250,7 +250,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate random forest ensemble for regression
 from numpy import mean
 from numpy import std
@@ -275,7 +275,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到具有默认超参数的随机森林集合达到了大约 90 的 MAE。
 
-```
+```py
 MAE: -90.149 (7.924)
 ```
 
@@ -285,7 +285,7 @@ MAE: -90.149 (7.924)
 
 下面的例子在我们的回归数据集上演示了这一点。
 
-```
+```py
 # random forest for making predictions for regression
 from sklearn.datasets import make_regression
 from sklearn.ensemble import RandomForestRegressor
@@ -303,7 +303,7 @@ print('Prediction: %d' % yhat[0])
 
 运行该示例使随机森林集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Prediction: -173
 ```
 
@@ -327,7 +327,7 @@ Prediction: -173
 
 下面的示例演示了 10%到 100%的不同引导样本大小对随机森林算法的影响。
 
-```
+```py
 # explore random forest bootstrap sample size on performance
 from numpy import mean
 from numpy import std
@@ -390,7 +390,7 @@ pyplot.show()
 
 这是默认设置，在大多数情况下应该使用。
 
-```
+```py
 >10 0.856 (0.031)
 >20 0.873 (0.029)
 >30 0.881 (0.021)
@@ -421,7 +421,7 @@ pyplot.show()
 
 以下示例探讨了在每个分割点随机选择的特征数量对模型精度的影响。我们将尝试从 1 到 7 的值，并期望一个小的值，大约 4，在启发式的基础上表现良好。
 
-```
+```py
 # explore random forest number of features effect on performance
 from numpy import mean
 from numpy import std
@@ -477,7 +477,7 @@ pyplot.show()
 
 在这种情况下，结果表明介于 3 和 5 之间的值是合适的，这证实了在这个数据集上 4 是合理的默认值。如果分类准确度的标准偏差小于三或四，则五的值可能更好。
 
-```
+```py
 >1 0.897 (0.023)
 >2 0.900 (0.028)
 >3 0.903 (0.027)
@@ -505,7 +505,7 @@ pyplot.show()
 
 下面的示例探讨了值在 10 到 1000 之间的树的数量的影响。
 
-```
+```py
 # explore random forest number of trees effect on performance
 from numpy import mean
 from numpy import std
@@ -562,7 +562,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到大约 100 棵树后，性能会上升并保持不变。平均准确度分数在 100、500 和 1000 棵树之间波动，这可能是统计噪声。
 
-```
+```py
 >10 0.870 (0.036)
 >50 0.900 (0.028)
 >100 0.910 (0.024)
@@ -586,7 +586,7 @@ pyplot.show()
 
 下面的例子探讨了随机森林最大树深对模型性能的影响。
 
-```
+```py
 # explore random forest tree depth effect on performance
 from numpy import mean
 from numpy import std
@@ -643,7 +643,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到更大的深度会带来更好的模型性能，默认的无最大深度会在这个数据集上获得最佳性能。
 
-```
+```py
 >1 0.771 (0.040)
 >2 0.807 (0.037)
 >3 0.834 (0.034)

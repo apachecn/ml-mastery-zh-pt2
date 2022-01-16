@@ -43,7 +43,7 @@ R 中机器学习项目的第一步是将您的数据作为矩阵或数据框加
 
 此示例显示了从 CSV 文件加载 iris 数据集。该方法将把当前目录中没有标题(例如列名)的 CSV 文件作为数据帧加载到 R 中。
 
-```
+```py
 # define the filename
 filename <- "iris.csv"
 # load the CSV file from the local directory
@@ -54,7 +54,7 @@ head(dataset)
 
 运行此配方，您将看到:
 
-```
+```py
    V1  V2  V3  V4          V5
 1 5.1 3.5 1.4 0.2 Iris-setosa
 2 4.9 3.0 1.4 0.2 Iris-setosa
@@ -75,7 +75,7 @@ head(dataset)
 
 此示例显示了从位于 [UCI 机器学习存储库](https://machinelearningmastery.com/practice-machine-learning-with-small-in-memory-datasets-from-the-uci-machine-learning-repository/)上的 CSV 文件加载 iris 数据。这个方法将把一个没有标题的 CSV 文件从一个网址加载到 R 中作为数据帧。
 
-```
+```py
 # load the library
 library(RCurl)
 # specify the URL for the Iris data CSV
@@ -92,7 +92,7 @@ head(dataset)
 
 运行此配方，您将看到:
 
-```
+```py
    V1  V2  V3  V4          V5
 1 5.1 3.5 1.4 0.2 Iris-setosa
 2 4.9 3.0 1.4 0.2 Iris-setosa

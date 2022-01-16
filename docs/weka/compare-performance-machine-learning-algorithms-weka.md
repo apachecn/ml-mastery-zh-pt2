@@ -198,7 +198,7 @@ Weka 图形用户界面选择器
 
 单击“操作”窗格中的“执行测试”按钮，执行统计测试并生成一些我们可以查看的输出。您应该会看到如下所示的结果。
 
-```
+```py
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 2 -stddev-prec 2 -col-name-width 0 -row-name-width 25 -mean-width 0 -stddev-width 0 -sig-width 0 -count-width 5 -print-col-names -print-row-names -enum-col-names"
 Analysing:  Percent_correct
 Datasets:   1

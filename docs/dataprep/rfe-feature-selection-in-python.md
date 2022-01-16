@@ -83,7 +83,7 @@ scikit-learn Python 机器学习库为机器学习提供了 RFE 的实现。
 
 首先，通过运行以下脚本来确认您使用的是现代版本的库:
 
-```
+```py
 # check scikit-learn version
 import sklearn
 print(sklearn.__version__)
@@ -93,7 +93,7 @@ print(sklearn.__version__)
 
 您的版本应该相同或更高。如果没有，您必须升级 scikit-learn 库的版本。
 
-```
+```py
 0.22.1
 ```
 
@@ -107,7 +107,7 @@ RFE 是一个转变。要使用它，首先用通过“*估计器*参数指定�
 
 然后可以通过调用*变换()*函数将其应用于训练和测试数据集。
 
-```
+```py
 ...
 # define the method
 rfe = RFE(estimator=DecisionTreeClassifier(), n_features_to_select=3)
@@ -129,7 +129,7 @@ X, y = rfe.transform(X, y)
 
 下面列出了完整的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -140,7 +140,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 10) (1000,)
 ```
 
@@ -150,7 +150,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate RFE for classification
 from numpy import mean
 from numpy import std
@@ -179,7 +179,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到使用决策树并选择五个特征，然后将决策树拟合到所选特征上的 RFE 分类准确率约为 88.6%。
 
-```
+```py
 Accuracy: 0.886 (0.030)
 ```
 
@@ -189,7 +189,7 @@ Accuracy: 0.886 (0.030)
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make a prediction with an RFE pipeline
 from numpy import mean
 from numpy import std
@@ -213,7 +213,7 @@ print('Predicted Class: %d' % (yhat))
 
 运行该示例使 RFE 管道适用于整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用模型时可能做的那样。
 
-```
+```py
 Predicted Class: 1
 ```
 
@@ -227,7 +227,7 @@ Predicted Class: 1
 
 下面列出了完整的示例。
 
-```
+```py
 # test regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -238,7 +238,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 10) (1000,)
 ```
 
@@ -250,7 +250,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate RFE for regression
 from numpy import mean
 from numpy import std
@@ -279,7 +279,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到具有决策树模型的 RFE 管道实现了大约 26 的 MAE。
 
-```
+```py
 MAE: -26.853 (2.696)
 ```
 
@@ -289,7 +289,7 @@ MAE: -26.853 (2.696)
 
 下面的例子在我们的回归数据集上演示了这一点。
 
-```
+```py
 # make a regression prediction with an RFE pipeline
 from numpy import mean
 from numpy import std
@@ -313,7 +313,7 @@ print('Predicted: %.3f' % (yhat))
 
 运行该示例使 RFE 管道适用于整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用模型时可能做的那样。
 
-```
+```py
 Predicted: -84.288
 ```
 
@@ -331,7 +331,7 @@ RFE 算法的一个重要超参数是要选择的特征数量。
 
 下面的示例演示了在合成二进制分类数据集上选择 2 到 10 个不同数量的要素。
 
-```
+```py
 # explore the number of selected features for RFE
 from numpy import mean
 from numpy import std
@@ -385,7 +385,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到性能随着特征数量的增加而提高，并且可能在 4-7 左右达到峰值，正如我们可能预期的那样，假设只有五个特征与目标变量相关。
 
-```
+```py
 >2 0.715 (0.044)
 >3 0.825 (0.031)
 >4 0.876 (0.033)
@@ -412,7 +412,7 @@ pyplot.show()
 
 *RFECV* 的配置就像 RFE 类一样，涉及到所包装算法的选择。此外，可以通过“ *min_features_to_select* ”参数(默认为 1)指定要考虑的最小特征数量，我们还可以通过“ *cv* ”(默认为 5)和“*评分*”参数(使用准确性进行分类)指定要使用的交叉验证和评分类型。
 
-```
+```py
 ...
 # automatically choose the number of features
 rfe = RFECV(estimator=DecisionTreeClassifier())
@@ -422,7 +422,7 @@ rfe = RFECV(estimator=DecisionTreeClassifier())
 
 下面列出了完整的示例。
 
-```
+```py
 # automatically select the number of features for RFE
 from numpy import mean
 from numpy import std
@@ -451,7 +451,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到使用决策树并自动选择多个特征，然后将决策树拟合到所选特征上的 RFE 分类准确率约为 88.6%。
 
-```
+```py
 Accuracy: 0.886 (0.026)
 ```
 
@@ -463,7 +463,7 @@ Accuracy: 0.886 (0.026)
 
 下面的示例在整个数据集上拟合一个 RFE 模型并选择五个要素，然后报告每个要素列索引(0 到 9)、是否被选择(*真*或*假*)以及相对要素排名。
 
-```
+```py
 # report which features were selected by RFE
 from sklearn.datasets import make_classification
 from sklearn.feature_selection import RFE
@@ -483,7 +483,7 @@ for i in range(X.shape[1]):
 
 运行 10 个输入特征的示例列表，以及它们是否被选中以及它们的相对重要性排名。
 
-```
+```py
 Column: 0, Selected False, Rank: 5.000
 Column: 1, Selected False, Rank: 4.000
 Column: 2, Selected True, Rank: 1.000
@@ -504,7 +504,7 @@ Column: 9, Selected False, Rank: 2.000
 
 下面的示例演示了如何探索这个配置选项。
 
-```
+```py
 # explore the algorithm wrapped by RFE
 from numpy import mean
 from numpy import std
@@ -578,7 +578,7 @@ pyplot.show()
 
 在这种情况下，结果表明，像逻辑回归这样的线性算法可能比所选择的决策树和决策树算法的集成更可靠地选择更好的特征。
 
-```
+```py
 >lr 0.893 (0.030)
 >per 0.843 (0.040)
 >cart 0.887 (0.033)

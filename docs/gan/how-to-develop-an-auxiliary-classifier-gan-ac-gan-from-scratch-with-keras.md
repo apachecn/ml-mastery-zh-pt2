@@ -113,7 +113,7 @@ Keras 通过 [fashion_mnist.load_dataset()函数](https://keras.io/datasets/#fas
 
 **注意**:第一次加载数据集时，Keras 会自动下载图片的压缩版本，保存在*的主目录下~/。keras/数据集/* 。下载速度很快，因为压缩形式的数据集只有大约 25 兆字节。
 
-```
+```py
 # example of loading the fashion_mnist dataset
 from keras.datasets.fashion_mnist import load_data
 # load the images into memory
@@ -127,7 +127,7 @@ print('Test', testX.shape, testy.shape)
 
 我们可以看到训练集中有 60K 个例子，测试集中有 10K，每个图像都是 28 乘 28 像素的正方形。
 
-```
+```py
 Train (60000, 28, 28) (60000,)
 Test (10000, 28, 28) (10000,)
 ```
@@ -136,7 +136,7 @@ Test (10000, 28, 28) (10000,)
 
 我们可以使用带有 [imshow()函数](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.imshow.html)的 matplotlib 库绘制训练数据集中的一些图像，并通过“ *cmap* ”参数将颜色映射指定为“*灰色*，以正确显示像素值。
 
-```
+```py
 # plot raw pixel data
 pyplot.imshow(trainX[i], cmap='gray')
 ```
@@ -145,14 +145,14 @@ pyplot.imshow(trainX[i], cmap='gray')
 
 它们更容易观看，因为大部分图像现在是白色的，而感兴趣的区域是黑色的。这可以通过使用反向灰度色图来实现，如下所示:
 
-```
+```py
 # plot raw pixel data
 pyplot.imshow(trainX[i], cmap='gray_r')
 ```
 
 以下示例将训练数据集中的前 100 幅图像绘制成 10 乘 10 的正方形。
 
-```
+```py
 # example of loading the fashion_mnist dataset
 from keras.datasets.fashion_mnist import load_data
 from matplotlib import pyplot
@@ -204,7 +204,7 @@ pyplot.show()
 
 例如，下面是使用 [Keras 函数 API](https://machinelearningmastery.com/keras-functional-api-deep-learning/) 定义的鉴别器模型的主体。
 
-```
+```py
 ...
 # weight initialization
 init = RandomNormal(stddev=0.02)
@@ -238,7 +238,7 @@ fe = Flatten()(fe)
 
 第一个是单个节点，具有 sigmoid 激活，用于预测图像的真实性。
 
-```
+```py
 ...
 # real/fake output
 out1 = Dense(1, activation='sigmoid')(fe)
@@ -246,7 +246,7 @@ out1 = Dense(1, activation='sigmoid')(fe)
 
 第二种是多个节点，每个类一个，使用 softmax 激活函数来预测给定图像的类标签。
 
-```
+```py
 ...
 # class label output
 out2 = Dense(n_classes, activation='softmax')(fe)
@@ -254,7 +254,7 @@ out2 = Dense(n_classes, activation='softmax')(fe)
 
 然后，我们可以用一个输入和两个输出来构建图像。
 
-```
+```py
 ...
 # define model
 model = Model(in_image, [out1, out2])
@@ -266,13 +266,13 @@ model = Model(in_image, [out1, out2])
 
 在编译模型时，我们可以通过将函数名列表指定为字符串来通知 Keras 对两个输出层使用两个不同的损失函数；例如:
 
-```
+```py
 loss=['binary_crossentropy', 'sparse_categorical_crossentropy']
 ```
 
 该模型使用随机梯度下降的 [Adam 版本](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)进行拟合，学习速率小，动量适中，这是 DCGANs 推荐的。
 
-```
+```py
 ...
 # compile model
 opt = Adam(lr=0.0002, beta_1=0.5)
@@ -283,7 +283,7 @@ model.compile(loss=['binary_crossentropy', 'sparse_categorical_crossentropy'], o
 
 输入图像的形状和类的数量是参数化的，并使用默认值进行设置，允许它们在将来为您自己的项目轻松更改。
 
-```
+```py
 # define the standalone discriminator model
 def define_discriminator(in_shape=(28,28,1), n_classes=10):
 	# weight initialization
@@ -327,7 +327,7 @@ def define_discriminator(in_shape=(28,28,1), n_classes=10):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of defining the discriminator model
 from keras.models import Model
 from keras.layers import Input
@@ -391,7 +391,7 @@ plot_model(model, to_file='discriminator_plot.png', show_shapes=True, show_layer
 
 这确认了输入图像和两个输出层的预期形状，尽管线性组织确实使两个独立的输出层清晰。
 
-```
+```py
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to
 ==================================================================================================
@@ -457,7 +457,7 @@ AC-GAN 论文描述了 AC-GAN 生成器模型，该模型采用矢量输入，�
 
 这可以通过使用具有任意维数(例如 50)的学习嵌入来实现，其输出可以由具有线性激活的完全连接的层来解释，从而产生一个额外的 7×7 特征图。
 
-```
+```py
 ...
 # label input
 in_label = Input(shape=(1,))
@@ -474,7 +474,7 @@ li = Reshape((7, 7, 1))(li)
 
 类别标签的 7×7 单要素地图解释然后可以按通道连接，从而产生 385 个要素地图。
 
-```
+```py
 ...
 # image generator input
 in_lat = Input(shape=(latent_dim,))
@@ -491,7 +491,7 @@ merge = Concatenate()([gen, li])
 
 发生器的输出是一个单一的特征图或灰度图像，形状为 28×28，像素值在范围[-1，1]内，给定 tanh 激活函数的选择。我们使用 [ReLU 激活](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)来升级图层，而不是 AC-GAN 论文中给出的 LeakyReLU。
 
-```
+```py
 # upsample to 14x14
 gen = Conv2DTranspose(192, (5,5), strides=(2,2), padding='same', kernel_initializer=init)(merge)
 gen = BatchNormalization()(gen)
@@ -505,7 +505,7 @@ out_layer = Activation('tanh')(gen)
 
 模型不是直接训练的，所以故意不编译；相反，它是通过鉴别器模型训练的。
 
-```
+```py
 # define the standalone generator model
 def define_generator(latent_dim, n_classes=10):
 	# weight initialization
@@ -544,7 +544,7 @@ def define_generator(latent_dim, n_classes=10):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of defining the generator model
 from keras.models import Model
 from keras.layers import Input
@@ -607,7 +607,7 @@ plot_model(model, to_file='generator_plot.png', show_shapes=True, show_layer_nam
 
 总结还确认了单个灰度 28×28 图像的预期输出形状。
 
-```
+```py
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to
 ==================================================================================================
@@ -670,7 +670,7 @@ ________________________________________________________________________________
 
 下面的 *define_gan()* 函数实现了这一点，将已经定义的生成器和鉴别器模型作为输入，并定义了一个新的复合模型，该模型只能用于更新生成器模型。
 
-```
+```py
 # define the combined generator and discriminator model, for updating the generator
 def define_gan(g_model, d_model):
 	# make weights in the discriminator not trainable
@@ -697,7 +697,7 @@ def define_gan(g_model, d_model):
 
 下面的 *load_real_samples()* 函数实现了这一点，返回加载并缩放的时尚 MNIST 训练数据集，准备建模。
 
-```
+```py
 # load images
 def load_real_samples():
 	# load dataset
@@ -718,7 +718,7 @@ def load_real_samples():
 
 提供给函数的“*数据集*”参数是由从 *load_real_samples()* 函数返回的图像和类标签组成的列表。该函数还为鉴别器返回它们对应的类标签，特别是 class=1，表示它们是真实图像。
 
-```
+```py
 # select real samples
 def generate_real_samples(dataset, n_samples):
 	# split into images and labels
@@ -738,7 +738,7 @@ def generate_real_samples(dataset, n_samples):
 
 *generate _ 潜伏 _points()* 函数实现了这一点，将潜伏空间的大小作为自变量和所需的点数，作为生成器模型的一批输入样本返回。该函数还为时尚 MNIST 数据集中的 10 个类别标签返回随机选择的整数[0，9]。
 
-```
+```py
 # generate points in latent space as input for the generator
 def generate_latent_points(latent_dim, n_samples, n_classes=10):
 	# generate points in the latent space
@@ -756,7 +756,7 @@ def generate_latent_points(latent_dim, n_samples, n_classes=10):
 
 该函数返回生成的图像、它们对应的服装类别标签和它们的鉴别器类别标签，具体来说，class=0 表示它们是伪造的或生成的。
 
-```
+```py
 # use the generator to generate n fake examples, with class labels
 def generate_fake_samples(generator, latent_dim, n_samples):
 	# generate points in latent space
@@ -772,7 +772,7 @@ def generate_fake_samples(generator, latent_dim, n_samples):
 
 因此，我们可以定期使用生成器模型生成图像样本，并将生成器模型保存到文件中以备后用。下面的*summary _ performance()*函数实现了这一点，生成 100 幅图像，对它们进行绘图，并将绘图和生成器保存到一个文件名中，该文件名包含训练“*步骤*”编号。
 
-```
+```py
 # generate samples and save as a plot and save the model
 def summarize_performance(step, g_model, latent_dim, n_samples=100):
 	# prepare fake examples
@@ -807,7 +807,7 @@ def summarize_performance(step, g_model, latent_dim, n_samples=100):
 
 下面的 *train()* 函数实现了这一点，将定义的模型、数据集和潜在维度的大小作为参数，并使用默认参数参数化纪元的数量和批处理大小。发电机模型在训练结束时保存。
 
-```
+```py
 # train the generator and discriminator
 def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batch=64):
 	# calculate the number of batches per training epoch
@@ -841,7 +841,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
 
 然后，我们可以定义潜在空间的大小，定义所有三个模型，并在加载的时尚 MNIST 数据集上训练它们。
 
-```
+```py
 # size of the latent space
 latent_dim = 100
 # create the discriminator
@@ -858,7 +858,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # example of fitting an auxiliary classifier gan (ac-gan) on fashion mnsit
 from numpy import zeros
 from numpy import ones
@@ -1087,7 +1087,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 在每次训练迭代中报告损失，包括真实示例上鉴别器(dr)、虚假示例上鉴别器(df)的真实/虚假和类别损失，以及生成图像时通过合成模型更新的生成器(g)。
 
-```
+```py
 >1, dr[0.934,2.967], df[1.310,3.006], g[0.878,3.368]
 >2, dr[0.711,2.836], df[0.939,3.262], g[0.947,2.751]
 >3, dr[0.649,2.980], df[1.001,3.147], g[0.844,3.226]
@@ -1124,7 +1124,7 @@ AC-GAN 在技术上不会根据类别标签有条件地生成图像，至少不�
 
 以下示例从跑步结束时加载模型(任何保存的模型都可以)，并生成 100 个第 7 类(运动鞋)的示例。
 
-```
+```py
 # example of loading the generator model and generating images
 from math import sqrt
 from numpy import asarray

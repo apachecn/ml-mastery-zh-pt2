@@ -89,7 +89,7 @@
 
 下面的例子演示了这个简单的模型。
 
-```
+```py
 # example of simple cnn model
 from keras.models import Sequential
 from keras.layers import Conv2D
@@ -104,7 +104,7 @@ model.summary()
 
 没有惊喜；第一个隐藏层的输出是一组三维形状为 256x256x512 的要素图。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -122,7 +122,7 @@ _________________________________________________________________
 
 创建的要素地图的数量将是相同的，并且效果可能是对已提取的要素的细化。这通常被称为通道池，与传统的每个通道上的功能池相反。它可以如下实现:
 
-```
+```py
 model.add(Conv2D(512, (1,1), activation='relu'))
 ```
 
@@ -130,7 +130,7 @@ model.add(Conv2D(512, (1,1), activation='relu'))
 
 下面列出了完整的示例。
 
-```
+```py
 # example of a 1x1 filter for projection
 from keras.models import Sequential
 from keras.layers import Conv2D
@@ -146,7 +146,7 @@ model.summary()
 
 我们可以看到，要素地图的宽度或高度没有变化，通过设计，要素地图的数量通过应用简单的投影操作保持不变。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -168,7 +168,7 @@ _________________________________________________________________
 
 在本例中，我们可以将深度(或通道)从 512 减少到 64。如果我们要添加到模型中的后续层是另一个带有 7×7 滤波器的卷积层，这可能会很有用。这些过滤器仅适用于深度 64，而不是 512。
 
-```
+```py
 model.add(Conv2D(64, (1,1), activation='relu'))
 ```
 
@@ -178,7 +178,7 @@ model.add(Conv2D(64, (1,1), activation='relu'))
 
 下面列出了使用 1×1 滤波器进行降维的完整示例。
 
-```
+```py
 # example of a 1x1 filter for dimensionality reduction
 from keras.models import Sequential
 from keras.layers import Conv2D
@@ -194,7 +194,7 @@ model.summary()
 
 我们可以看到，特征地图的宽度和高度没有变化，但特征地图的数量从 512 个减少到 64 个。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -218,13 +218,13 @@ _________________________________________________________________
 
 我们可以将要素地图的数量从第一个隐藏图层的 512 个输入增加到 1，024 个要素地图的两倍。
 
-```
+```py
 model.add(Conv2D(1024, (1,1), activation='relu'))
 ```
 
 下面列出了完整的示例。
 
-```
+```py
 # example of a 1x1 filter to increase dimensionality
 from keras.models import Sequential
 from keras.layers import Conv2D
@@ -240,7 +240,7 @@ model.summary()
 
 我们可以看到，要素地图的宽度和高度保持不变，要素地图的数量从 512 个增加到两倍，达到 1024 个。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================

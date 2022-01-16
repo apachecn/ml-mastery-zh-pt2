@@ -122,7 +122,7 @@
 
 OpenCV 可以由你的平台上的包管理器系统安装，或者通过 pip 例如:
 
-```
+```py
 sudo pip install opencv-python
 ```
 
@@ -130,7 +130,7 @@ sudo pip install opencv-python
 
 这可以通过导入库并检查版本号来实现；例如:
 
-```
+```py
 # check opencv version
 import cv2
 # print version number
@@ -139,7 +139,7 @@ print(cv2.__version__)
 
 运行该示例将导入库并打印版本。在这种情况下，我们使用的是库的版本 4。
 
-```
+```py
 4.1.1
 ```
 
@@ -153,7 +153,7 @@ OpenCV 提供了[级联分类器类](https://docs.opencv.org/3.4.3/d1/de5/classc
 
 下载后，我们可以按如下方式加载模型:
 
-```
+```py
 # load the pre-trained model
 classifier = CascadeClassifier('haarcascade_frontalface_default.xml')
 ```
@@ -162,7 +162,7 @@ classifier = CascadeClassifier('haarcascade_frontalface_default.xml')
 
 该功能将返回照片中检测到的所有人脸的边界框列表。
 
-```
+```py
 # perform face detection
 bboxes = classifier.detectMultiScale(pixels)
 # print bounding box for each detected face
@@ -174,14 +174,14 @@ for box in bboxes:
 
 可以通过 *imread()* 功能使用 OpenCV 加载照片。
 
-```
+```py
 # load the photograph
 pixels = imread('test1.jpg')
 ```
 
 下面列出了在 OpenCV 中用预先训练好的级联分类器对大学生照片进行人脸检测的完整例子。
 
-```
+```py
 # example of face detection with opencv cascade classifier
 from cv2 import imread
 from cv2 import CascadeClassifier
@@ -200,7 +200,7 @@ for box in bboxes:
 
 每个框列出了边界框左下角的 *x* 和 *y* 坐标，以及宽度和高度。结果表明检测到两个边界框。
 
-```
+```py
 [174  75 107 107]
 [360 102 101 101]
 ```
@@ -209,7 +209,7 @@ for box in bboxes:
 
 这可以通过使用取两点的*矩形()*函数在加载图像的像素正上方为每个框绘制一个矩形来实现。
 
-```
+```py
 # extract
 x, y, width, height = box
 x2, y2 = x + width, y + height
@@ -219,7 +219,7 @@ rectangle(pixels, (x, y), (x2, y2), (0,0,255), 1)
 
 然后，我们可以绘制照片，并保持窗口打开，直到我们按下一个键关闭它。
 
-```
+```py
 # show the image
 imshow('face detection', pixels)
 # keep the window open until we press a key
@@ -230,7 +230,7 @@ destroyAllWindows()
 
 下面列出了完整的示例。
 
-```
+```py
 # plot photo with detected faces using opencv cascade classifier
 from cv2 import imread
 from cv2 import imshow
@@ -267,7 +267,7 @@ destroyAllWindows()
 
 我们可以在游泳队的第二张照片上尝试相同的代码，特别是“*test2.jpg*”。
 
-```
+```py
 # load the photograph
 pixels = imread('test2.jpg')
 ```
@@ -284,7 +284,7 @@ pixels = imread('test2.jpg')
 
 *检测多尺度()*函数提供了一些参数来帮助调整分类器的使用。值得注意的两个参数是*比例因子*和*明尼阿波利斯*；例如:
 
-```
+```py
 # perform face detection
 bboxes = classifier.detectMultiScale(pixels, 1.1, 3)
 ```
@@ -299,7 +299,7 @@ bboxes = classifier.detectMultiScale(pixels, 1.1, 3)
 
 经过一些调优，我发现 1.05 的 *scaleFactor* 成功检测到了所有的人脸，但是检测为人脸的背景直到 8 的 *minNeighbors* 才消失，之后中间一排的三张人脸不再被检测到。
 
-```
+```py
 # perform face detection
 bboxes = classifier.detectMultiScale(pixels, 1.05, 8)
 ```
@@ -342,25 +342,25 @@ MTCNN 项目，我们将称之为 *ipazc/MTCNN* 以区别于网络名称，提�
 
 可以通过 pip 安装库；例如:
 
-```
+```py
 sudo pip install mtcnn
 ```
 
 成功安装后，您应该会看到如下消息:
 
-```
+```py
 Successfully installed mtcnn-0.1.0
 ```
 
 然后，您可以通过 pip 确认库安装正确；例如:
 
-```
+```py
 sudo pip show mtcnn
 ```
 
 您应该会看到如下所示的输出。在这种情况下，您可以看到我们使用的是 0.0.8 版本的库。
 
-```
+```py
 Name: mtcnn
 Version: 0.1.0
 Summary: Multi-task Cascaded Convolutional Neural Networks for Face Detection, based on TensorFlow
@@ -375,7 +375,7 @@ Required-by:
 
 您还可以通过 Python 确认库安装正确，如下所示:
 
-```
+```py
 # confirm mtcnn was installed correctly
 import mtcnn
 # print version
@@ -384,7 +384,7 @@ print(mtcnn.__version__)
 
 运行该示例将加载库，确认它安装正确；并打印版本。
 
-```
+```py
 0.1.0
 ```
 
@@ -394,7 +394,7 @@ print(mtcnn.__version__)
 
 默认情况下，库将使用预训练的模型，尽管您可以通过“*权重 _ 文件*”参数指定自己的模型，并指定路径或网址，例如:
 
-```
+```py
 model = MTCNN(weights_file='filename.npy')
 ```
 
@@ -410,7 +410,7 @@ model = MTCNN(weights_file='filename.npy')
 
 例如，我们可以对大学生照片执行人脸检测，如下所示:
 
-```
+```py
 # face detection with mtcnn on a photograph
 from matplotlib import pyplot
 from mtcnn.mtcnn import MTCNN
@@ -427,14 +427,14 @@ for face in faces:
 
 运行该示例加载照片、加载模型、执行人脸检测，并打印检测到的每个人脸的列表。
 
-```
+```py
 {'box': [186, 71, 87, 115], 'confidence': 0.9994562268257141, 'keypoints': {'left_eye': (207, 110), 'right_eye': (252, 119), 'nose': (220, 143), 'mouth_left': (200, 148), 'mouth_right': (244, 159)}}
 {'box': [368, 75, 108, 138], 'confidence': 0.998593270778656, 'keypoints': {'left_eye': (392, 133), 'right_eye': (441, 140), 'nose': (407, 170), 'mouth_left': (388, 180), 'mouth_right': (438, 185)}}
 ```
 
 我们可以先用 matplotlib 绘制图像，然后使用给定边界框的 *x* 、 *y* 和*宽度*和*高度*创建[矩形对象](https://matplotlib.org/api/_as_gen/matplotlib.patches.Rectangle.html)来绘制图像上的框；例如:
 
-```
+```py
 # get coordinates
 x, y, width, height = result['box']
 # create the shape
@@ -443,7 +443,7 @@ rect = Rectangle((x, y), width, height, fill=False, color='red')
 
 下面是一个名为*draw _ image _ with _ box()*的函数，它显示照片，然后为每个检测到的边界框绘制一个框。
 
-```
+```py
 # draw an image with detected objects
 def draw_image_with_boxes(filename, result_list):
 	# load the image
@@ -466,7 +466,7 @@ def draw_image_with_boxes(filename, result_list):
 
 下面列出了使用该函数的完整示例。
 
-```
+```py
 # face detection with mtcnn on a photograph
 from matplotlib import pyplot
 from matplotlib.patches import Rectangle
@@ -512,7 +512,7 @@ draw_image_with_boxes(filename, faces)
 
 我们可以通过[圆类](https://matplotlib.org/api/_as_gen/matplotlib.patches.Circle.html)为眼睛、鼻子和嘴巴画一个圆；例如
 
-```
+```py
 # draw the dots
 for key, value in result['keypoints'].items():
 	# create and draw dot
@@ -522,7 +522,7 @@ for key, value in result['keypoints'].items():
 
 下面列出了添加到*draw _ image _ with _ box()*功能的完整示例。
 
-```
+```py
 # face detection with mtcnn on a photograph
 from matplotlib import pyplot
 from matplotlib.patches import Rectangle
@@ -584,7 +584,7 @@ draw_image_with_boxes(filename, faces)
 
 这可以通过直接从照片中提取像素数据来实现；例如:
 
-```
+```py
 # get coordinates
 x1, y1, width, height = result['box']
 x2, y2 = x1 + width, y1 + height
@@ -594,7 +594,7 @@ face = data[y1:y2, x1:x2]
 
 我们可以通过提取每个人脸并将其绘制为单独的子情节来演示这一点。你可以很容易地将它们保存到文件中。下面的*draw _ face()*提取并绘制照片中每个检测到的人脸。
 
-```
+```py
 # draw each face separately
 def draw_faces(filename, result_list):
 	# load the image
@@ -615,7 +615,7 @@ def draw_faces(filename, result_list):
 
 下面列出了为游泳队照片演示该功能的完整示例。
 
-```
+```py
 # extract and plot each detected face in a photograph
 from matplotlib import pyplot
 from matplotlib.patches import Rectangle

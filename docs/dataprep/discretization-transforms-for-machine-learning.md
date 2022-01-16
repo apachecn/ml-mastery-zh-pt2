@@ -98,7 +98,7 @@
 
 下面列出了完整的示例。
 
-```
+```py
 # demonstration of the discretization transform
 from numpy.random import randn
 from sklearn.preprocessing import KBinsDiscretizer
@@ -130,7 +130,7 @@ pyplot.show()
 
 打印转换数据的样本，清楚地显示数据的整数格式。
 
-```
+```py
 [[5.]
  [3.]
  [2.]
@@ -172,7 +172,7 @@ pyplot.show()
 
 首先，让我们加载并总结数据集。下面列出了完整的示例。
 
-```
+```py
 # load and summarize the sonar dataset
 from pandas import read_csv
 from pandas.plotting import scatter_matrix
@@ -195,7 +195,7 @@ pyplot.show()
 
 提供了输入变量的统计摘要，显示值是数值，范围大约从 0 到 1。
 
-```
+```py
 (208, 61)
                0           1           2   ...          57          58          59
 count  208.000000  208.000000  208.000000  ...  208.000000  208.000000  208.000000
@@ -224,7 +224,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate knn on the raw sonar dataset
 from numpy import mean
 from numpy import std
@@ -258,7 +258,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 我们可以看到，该模型实现了大约 79.7%的平均分类准确率，表明它具有技巧性(优于 53.4%)，并且处于良好表现的球园区(88%)。
 
-```
+```py
 Accuracy: 0.797 (0.073)
 ```
 
@@ -272,7 +272,7 @@ Accuracy: 0.797 (0.073)
 
 一旦定义，我们就可以调用 *fit_transform()* 函数，并将其传递给我们的数据集，以创建数据集的分位数转换版本。
 
-```
+```py
 ...
 # perform a uniform discretization transform of the dataset
 trans = KBinsDiscretizer(n_bins=10, encode='ordinal', strategy='uniform')
@@ -283,7 +283,7 @@ data = trans.fit_transform(data)
 
 下面列出了创建声纳数据集的统一离散化变换并绘制结果直方图的完整示例。
 
-```
+```py
 # visualize a uniform ordinal discretization transform of the sonar dataset
 from pandas import read_csv
 from pandas import DataFrame
@@ -317,7 +317,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate knn on the sonar dataset with uniform ordinal discretization transform
 from numpy import mean
 from numpy import std
@@ -353,7 +353,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例，我们可以看到均匀离散化变换将性能从没有变换时的 79.7%提升到有变换时的 82.7%。
 
-```
+```py
 Accuracy: 0.827 (0.082)
 ```
 
@@ -369,7 +369,7 @@ K 均值离散化变换将尝试为每个输入变量拟合 K 个聚类，然后
 
 一旦定义，我们就可以调用 *fit_transform()* 函数，并将其传递给我们的数据集，以创建数据集的分位数转换版本。
 
-```
+```py
 ...
 # perform a k-means discretization transform of the dataset
 trans = KBinsDiscretizer(n_bins=3, encode='ordinal', strategy='kmeans')
@@ -380,7 +380,7 @@ data = trans.fit_transform(data)
 
 下面列出了创建声纳数据集的 K 均值离散化变换并绘制结果直方图的完整示例。
 
-```
+```py
 # visualize a k-means ordinal discretization transform of the sonar dataset
 from pandas import read_csv
 from pandas import DataFrame
@@ -414,7 +414,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate knn on the sonar dataset with k-means ordinal discretization transform
 from numpy import mean
 from numpy import std
@@ -450,7 +450,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例，我们可以看到 K-means 离散化变换将性能从没有变换时的 79.7%提升到有变换时的 81.4%，尽管略低于上一节中的均匀分布。
 
-```
+```py
 Accuracy: 0.814 (0.088)
 ```
 
@@ -464,7 +464,7 @@ Accuracy: 0.814 (0.088)
 
 我们可以使用*kbins 离散化器*类应用分位数离散化变换，并将“*策略*参数设置为“*分位数*”我们还必须通过“*n _ bin*参数设置所需的箱数；在这种情况下，我们将使用 10。
 
-```
+```py
 ...
 # perform a quantile discretization transform of the dataset
 trans = KBinsDiscretizer(n_bins=10, encode='ordinal', strategy='quantile')
@@ -473,7 +473,7 @@ data = trans.fit_transform(data)
 
 下面的示例应用分位数离散化变换，并创建每个变换变量的直方图。
 
-```
+```py
 # visualize a quantile ordinal discretization transform of the sonar dataset
 from pandas import read_csv
 from pandas import DataFrame
@@ -507,7 +507,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate knn on the sonar dataset with quantile ordinal discretization transform
 from numpy import mean
 from numpy import std
@@ -543,7 +543,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例，我们可以看到均匀变换将性能从没有变换时的 79.7%提升到有变换时的 84.0%，优于前面部分的均匀和 K-means 方法。
 
-```
+```py
 Accuracy: 0.840 (0.072)
 ```
 
@@ -553,7 +553,7 @@ Accuracy: 0.840 (0.072)
 
 下面的示例执行了该实验，并绘制了从 2 到 10 的不同“*n _ bin*”值的平均精度。
 
-```
+```py
 # explore number of discrete bins on classification accuracy
 from numpy import mean
 from numpy import std
@@ -617,7 +617,7 @@ pyplot.show()
 
 我们可以看到，令人惊讶的是，较小的值导致了更好的准确性，例如三个值达到了大约 86.7%的准确性。
 
-```
+```py
 >2 0.806 (0.080)
 >3 0.867 (0.070)
 >4 0.835 (0.083)

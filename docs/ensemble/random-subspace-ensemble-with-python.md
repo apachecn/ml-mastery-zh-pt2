@@ -106,7 +106,7 @@
 
 下面列出了完整的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -117,7 +117,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -125,7 +125,7 @@ print(X.shape, y.shape)
 
 每一个模型都适合于一个随机的子空间，这个子空间由 10 个任意选择的输入特征组成。
 
-```
+```py
 ...
 # define the random subspace ensemble model
 model = BaggingClassifier(bootstrap=False, max_features=10)
@@ -133,7 +133,7 @@ model = BaggingClassifier(bootstrap=False, max_features=10)
 
 我们将使用重复的分层 k 折叠交叉验证来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
 
-```
+```py
 # evaluate random subspace ensemble via bagging for classification
 from numpy import mean
 from numpy import std
@@ -159,7 +159,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到具有默认超参数的随机子空间集成在这个测试数据集上实现了大约 85.4%的分类精度。
 
-```
+```py
 Mean Accuracy: 0.854 (0.039)
 ```
 
@@ -169,7 +169,7 @@ Mean Accuracy: 0.854 (0.039)
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make predictions using random subspace ensemble via bagging for classification
 from sklearn.datasets import make_classification
 from sklearn.ensemble import BaggingClassifier
@@ -187,7 +187,7 @@ print('Predicted Class: %d' % yhat[0])
 
 运行该示例使随机子空间集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Class: 1
 ```
 
@@ -201,7 +201,7 @@ Predicted Class: 1
 
 下面列出了完整的示例。
 
-```
+```py
 # test regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -212,7 +212,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -220,7 +220,7 @@ print(X.shape, y.shape)
 
 和前面一样，我们必须配置 bagging 来使用训练数据集的所有行，并指定要随机选择的输入要素的数量。
 
-```
+```py
 ...
 # define the model
 model = BaggingRegressor(bootstrap=False, max_features=10)
@@ -230,7 +230,7 @@ model = BaggingRegressor(bootstrap=False, max_features=10)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate random subspace ensemble via bagging for regression
 from numpy import mean
 from numpy import std
@@ -256,7 +256,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到具有默认超参数的 bagging 集成实现了大约 114 的 MAE。
 
-```
+```py
 MAE: -114.630 (10.920)
 ```
 
@@ -266,7 +266,7 @@ MAE: -114.630 (10.920)
 
 下面的例子在我们的回归数据集上演示了这一点。
 
-```
+```py
 # random subspace ensemble via bagging for making predictions for regression
 from sklearn.datasets import make_regression
 from sklearn.ensemble import BaggingRegressor
@@ -284,7 +284,7 @@ print('Prediction: %d' % yhat[0])
 
 运行该示例使随机子空间集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Prediction: -157
 ```
 
@@ -302,7 +302,7 @@ Prediction: -157
 
 下面的示例探讨了值在 10 到 5，000 之间的树的数量的影响。
 
-```
+```py
 # explore random subspace ensemble number of trees effect on performance
 from numpy import mean
 from numpy import std
@@ -353,7 +353,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到，随着合奏成员的数量增加到 5000 人，这种表现似乎在继续改善。
 
-```
+```py
 >10 0.853 (0.030)
 >50 0.885 (0.038)
 >100 0.891 (0.034)
@@ -380,7 +380,7 @@ pyplot.show()
 
 下面的示例使用系综中固定数量的树将值从 1 更改为 20。
 
-```
+```py
 # explore random subspace ensemble number of features effect on performance
 from numpy import mean
 from numpy import std
@@ -430,7 +430,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到，当使用 100 棵决策树时，在随机子空间中使用 8 到 11 个特征可能适合这个数据集。这可能建议首先将树的数量增加到一个较大的值，然后调整在每个子集中选择的特征的数量。
 
-```
+```py
 >1 0.607 (0.036)
 >2 0.771 (0.042)
 >3 0.837 (0.036)
@@ -473,7 +473,7 @@ pyplot.show()
 
 下面的例子演示了使用一个[kneighgborcsclassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)作为通过 bagging 类在随机子空间集成中使用的基本算法。这里，算法与默认超参数一起使用，其中 k 设置为 5。
 
-```
+```py
 ...
 # define the model
 model = BaggingClassifier(base_estimator=KNeighborsClassifier(), bootstrap=False, max_features=10)
@@ -481,7 +481,7 @@ model = BaggingClassifier(base_estimator=KNeighborsClassifier(), bootstrap=False
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate random subspace ensemble with knn algorithm for classification
 from numpy import mean
 from numpy import std
@@ -508,7 +508,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到具有 KNN 和默认超参数的随机子空间集成在这个测试数据集上实现了大约 90%的分类精度。
 
-```
+```py
 Accuracy: 0.901 (0.032)
 ```
 

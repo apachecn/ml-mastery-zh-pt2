@@ -104,7 +104,7 @@ scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/mo
 
 该问题有两个输入变量(表示点的 *x* 和 *y* 坐标)和每组内点的标准偏差 2.0。我们将使用相同的随机状态(用于[伪随机数发生器](https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/)的种子)来确保我们总是获得相同的数据点。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random_state=2)
 ```
@@ -115,7 +115,7 @@ X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random
 
 下面列出了完整的示例。
 
-```
+```py
 # scatter plot of blobs dataset
 from sklearn.datasets import make_blobs
 from matplotlib import pyplot
@@ -150,7 +150,7 @@ pyplot.show()
 
 该问题是一个多类分类问题，我们将在输出层使用 softmax 激活函数对其进行建模。这意味着模型将以样本属于三类中每一类的概率来预测具有三个元素的向量。因此，在将行分割成训练和测试数据集之前，我们必须对类值进行热编码。我们可以使用 Keras *到 _ classic()*函数来实现这一点。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1100, centers=3, n_features=2, cluster_std=2, random_state=2)
 # one hot encode output variable
@@ -168,7 +168,7 @@ print(trainX.shape, testX.shape)
 
 由于问题是多类的，我们将使用分类交叉熵损失函数来优化模型和随机梯度下降的有效[亚当味](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(25, input_dim=2, activation='relu'))
@@ -178,14 +178,14 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 
 该模型适用于 500 个训练时期，我们将使用测试集作为验证集，在测试集上评估每个时期的模型。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=500, verbose=0)
 ```
 
 在运行结束时，我们将评估模型在列车和测试集上的性能。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -194,7 +194,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 最后，我们将在训练和验证数据集上绘制每个训练时期的模型精度的学习曲线。
 
-```
+```py
 # learning curves of model accuracy
 pyplot.plot(history.history['accuracy'], label='train')
 pyplot.plot(history.history['val_accuracy'], label='test')
@@ -204,7 +204,7 @@ pyplot.show()
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # develop an mlp for blobs dataset
 from sklearn.datasets import make_blobs
 from keras.utils import to_categorical
@@ -244,7 +244,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到该模型在训练数据集上实现了大约 85%的准确率，我们知道这是乐观的，在测试数据集上实现了大约 80%的准确率，我们预计这将更加真实。
 
-```
+```py
 (100, 2) (1000, 2)
 Train: 0.850, Test: 0.809
 ```
@@ -271,7 +271,7 @@ Train: 0.850, Test: 0.809
 
 第一步是创建一个函数，该函数将在训练数据集上定义和拟合 MLP 模型。
 
-```
+```py
 # fit model on dataset
 def fit_model(trainX, trainy):
 	# define model
@@ -288,7 +288,7 @@ def fit_model(trainX, trainy):
 
 注意，如果目录已经存在，您可能必须在重新运行此代码时删除它。
 
-```
+```py
 # create directory for models
 makedirs('models')
 ```
@@ -297,7 +297,7 @@ makedirs('models')
 
 在这种情况下，我们将创建五个子模型，但是您可以用不同数量的模型进行实验，看看它如何影响模型性能。
 
-```
+```py
 # fit and save models
 n_members = 5
 for i in range(n_members):
@@ -311,7 +311,7 @@ for i in range(n_members):
 
 我们可以把所有这些元素联系在一起；下面列出了训练子模型并将它们保存到文件中的完整示例。
 
-```
+```py
 # example of saving sub-models for later use in a stacking ensemble
 from sklearn.datasets import make_blobs
 from keras.utils import to_categorical
@@ -355,7 +355,7 @@ for i in range(n_members):
 
 运行该示例会创建“*模型/* ”子文件夹，并用唯一的文件名保存五个训练好的模型。
 
-```
+```py
 (100, 2) (1000, 2)
 >Saved models/model_1.h5
 >Saved models/model_2.h5
@@ -374,7 +374,7 @@ for i in range(n_members):
 
 我们可以使用 *load_model()* Keras 函数，创建一个 Python 加载模型列表。
 
-```
+```py
 # load models from file
 def load_all_models(n_models):
 	all_models = list()
@@ -391,7 +391,7 @@ def load_all_models(n_models):
 
 我们可以调用这个函数从“*模型/* ”子目录中加载我们保存的五个模型。
 
-```
+```py
 # load all models
 n_members = 5
 members = load_all_models(n_members)
@@ -402,7 +402,7 @@ print('Loaded %d models' % len(members))
 
 我们可以轻松评估训练数据集中的每个模型，并建立性能基线。
 
-```
+```py
 # evaluate standalone models on test dataset
 for model in members:
 	testy_enc = to_categorical(testy)
@@ -421,7 +421,7 @@ for model in members:
 
 作为一个新模型的输入，我们将需要 1000 个具有一些特征的例子。假设我们有五个模型，每个模型对每个示例进行三次预测，那么每个示例将有 15 (3 x 5)个特征提供给子模型。我们可以将子模型中*【1000，5，3】*形状的预测转换为*【1000，15】*形状的数组，用于使用[重塑()NumPy 函数](https://machinelearningmastery.com/index-slice-reshape-numpy-arrays-machine-learning-python/)训练元学习者，并展平最终的两个维度。 *stacked_dataset()* 函数实现这一步。
 
-```
+```py
 # create stacked model input dataset as outputs from the ensemble
 def stacked_dataset(members, inputX):
 	stackX = None
@@ -444,7 +444,7 @@ def stacked_dataset(members, inputX):
 
 [逻辑回归](https://machinelearningmastery.com/logistic-regression-for-machine-learning/)只支持二进制分类，虽然[逻辑回归类](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)在 scikit-learn 中的逻辑回归的实现使用一对多的方案支持多类分类(两类以上)。下面的函数 *fit_stacked_model()* 将通过调用 *stacked_dataset()* 函数为元学习者准备训练数据集，然后拟合逻辑回归模型，然后返回。
 
-```
+```py
 # fit a model based on the outputs from the ensemble members
 def fit_stacked_model(members, inputX, inputy):
 	# create dataset using ensemble
@@ -457,7 +457,7 @@ def fit_stacked_model(members, inputX, inputy):
 
 我们可以调用这个函数，并传入加载的模型列表和训练数据集。
 
-```
+```py
 # fit stacked model using the ensemble
 model = fit_stacked_model(members, testX, testy)
 ```
@@ -466,7 +466,7 @@ model = fit_stacked_model(members, testX, testy)
 
 这可以通过首先使用子模型为元学习器制作输入数据集来实现，例如通过调用*stagged _ dataset()*函数，然后与元学习器一起进行预测。下面的*堆叠预测()*函数实现了这一点。
 
-```
+```py
 # make a prediction with the stacked model
 def stacked_prediction(members, model, inputX):
 	# create dataset using ensemble
@@ -478,7 +478,7 @@ def stacked_prediction(members, model, inputX):
 
 我们可以用这个函数对新数据进行预测；在这种情况下，我们可以通过对测试集进行预测来证明这一点。
 
-```
+```py
 # evaluate model on test set
 yhat = stacked_prediction(members, model, testX)
 acc = accuracy_score(testy, yhat)
@@ -487,7 +487,7 @@ print('Stacked Test Accuracy: %.3f' % acc)
 
 将所有这些元素结合在一起，下面列出了为 MLP 子模型的堆叠集合拟合线性元学习器的完整示例。
 
-```
+```py
 # stacked generalization with linear meta model on blobs dataset
 from sklearn.datasets import make_blobs
 from sklearn.metrics import accuracy_score
@@ -571,7 +571,7 @@ print('Stacked Test Accuracy: %.3f' % acc)
 
 我们可以看到，性能最好的模型是最终模型，准确率约为 81.3%。
 
-```
+```py
 (100, 2) (1000, 2)
 >loaded models/model_1.h5
 >loaded models/model_2.h5
@@ -590,7 +590,7 @@ Model Accuracy: 0.813
 
 我们可以看到，在这种情况下，元学习器在测试集上执行了每个子模型，达到了大约 82.4%的准确率。
 
-```
+```py
 Stacked Test Accuracy: 0.824
 ```
 
@@ -606,7 +606,7 @@ Stacked Test Accuracy: 0.824
 
 在模型作为列表加载之后，可以定义更大的堆叠集合模型，其中每个加载的模型被用作模型的独立输入头。这要求每个加载模型中的所有层都被标记为不可训练，以便在训练新的更大模型时权重不能被更新。Keras 还要求每个层都有一个唯一的名称，因此每个加载模型中每个层的名称都必须更新，以指示它们属于哪个集合成员。
 
-```
+```py
 # update all layers in all models to not be trainable
 for i in range(len(members)):
 	model = members[i]
@@ -625,7 +625,7 @@ for i in range(len(members)):
 
 然后，我们将定义一个隐藏层来解释元学习者的输入*，并定义一个输出层来进行自己的概率预测。下面的 *define_stacked_model()* 函数实现了这一点，并将返回一个给定训练子模型列表的堆叠泛化神经网络模型。*
 
- *```
+```py
 # define stacked model from multiple member input models
 def define_stacked_model(members):
 	# update all layers in all models to not be trainable
@@ -653,7 +653,7 @@ def define_stacked_model(members):
 
 当调用这个函数给出集合模型如何配合在一起的想法时，网络图的图被创建。
 
-```
+```py
 # define ensemble model
 stacked_model = define_stacked_model(members)
 ```
@@ -670,7 +670,7 @@ stacked_model = define_stacked_model(members)
 
 因为子模型是不可训练的，所以在训练过程中不会更新它们的权重，只会更新新隐藏层和输出层的权重。下面的 *fit_stacked_model()* 函数将在 300 个时期内拟合堆叠神经网络模型。
 
-```
+```py
 # fit a stacked model
 def fit_stacked_model(model, inputX, inputy):
 	# prepare input data
@@ -683,7 +683,7 @@ def fit_stacked_model(model, inputX, inputy):
 
 我们可以通过提供定义的堆叠模型和测试数据集来调用这个函数。
 
-```
+```py
 # fit stacked model on test dataset
 fit_stacked_model(stacked_model, testX, testy)
 ```
@@ -692,7 +692,7 @@ fit_stacked_model(stacked_model, testX, testy)
 
 这就像在模型上调用 *predict()* 函数一样简单。一个小的变化是，我们要求将列表中的输入数据的 *k* 副本提供给每个 *k* 子模型的模型。下面的 *predict_stacked_model()* 函数简化了使用堆叠模型进行预测的过程。
 
-```
+```py
 # make a prediction with a stacked model
 def predict_stacked_model(model, inputX):
 	# prepare input data
@@ -705,7 +705,7 @@ def predict_stacked_model(model, inputX):
 
 我们期望神经网络学习器的性能优于任何单独的子模型，并且可能与上一节中使用的线性元学习器相竞争。
 
-```
+```py
 # make predictions and evaluate
 yhat = predict_stacked_model(stacked_model, testX)
 yhat = argmax(yhat, axis=1)
@@ -715,7 +715,7 @@ print('Stacked Test Accuracy: %.3f' % acc)
 
 将所有这些元素结合在一起，下面列出了完整的示例。
 
-```
+```py
 # stacked generalization with neural net meta model on blobs dataset
 from sklearn.datasets import make_blobs
 from sklearn.metrics import accuracy_score
@@ -809,7 +809,7 @@ print('Stacked Test Accuracy: %.3f' % acc)
 
 定义了一个更大的叠加集成神经网络，并将其拟合到测试数据集上，然后利用新模型对测试数据集进行预测。我们可以看到，在这种情况下，模型达到了大约 83.3%的精度，超过了前面部分的线性模型。
 
-```
+```py
 (100, 2) (1000, 2)
 >loaded models/model_1.h5
 >loaded models/model_2.h5

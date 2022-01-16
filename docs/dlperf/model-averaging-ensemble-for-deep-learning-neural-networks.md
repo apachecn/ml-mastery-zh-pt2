@@ -67,7 +67,7 @@
 
 对于小模型，您可以按顺序训练模型，并将它们保存在内存中，以便在实验中使用。例如:
 
-```
+```py
 ...
 # train models and keep them in memory
 n_members = 10
@@ -82,7 +82,7 @@ for _ in range(n_members):
 
 对于大型模型，也许是在不同的硬件上训练的，你可以[将每个模型保存到文件](https://machinelearningmastery.com/save-load-keras-deep-learning-models/)中。
 
-```
+```py
 ...
 # train models and keep them to file
 n_members = 10
@@ -100,7 +100,7 @@ for i in range(n_members):
 
 小模型可以同时加载到内存中，而非常大的模型可能需要一次加载一个来进行预测，然后再进行组合。
 
-```
+```py
 from keras.models import load_model
 ...
 # load pre-trained ensemble members
@@ -121,7 +121,7 @@ for i in range(n_members):
 
 在回归问题的情况下，每个模型都在预测实值输出，可以收集值并计算平均值。
 
-```
+```py
 ...
 # make predictions
 yhats = [model.predict(testX) for model in models]
@@ -134,7 +134,7 @@ outcomes = mean(yhats)
 
 首先是计算预测整数类值的[模式](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mode.html)。
 
-```
+```py
 ...
 # make predictions
 yhats = [model.predict_classes(testX) for model in models]
@@ -149,7 +149,7 @@ outcomes, _ = mode(yhats)
 
 在具有两个以上类别的多类别分类问题的情况下，在输出层上使用 softmax 激活函数，并且在取 [argmax](https://docs.scipy.org/doc/numpy/reference/generated/numpy.argmax.html) 以获得类别值之前，可以计算每个预测类别的概率之和。
 
-```
+```py
 ...
 # make predictions
 yhats = [model.predict(testX) for model in models]
@@ -172,7 +172,7 @@ scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/mo
 
 我们用 500 个例子来说明这个问题，输入变量(代表点的 x 和 y 坐标)和每个组内点的标准偏差为 2.0。我们将使用相同的随机状态(伪随机数发生器的种子)来确保我们总是获得相同的 500 分。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=500, centers=3, n_features=2, cluster_std=2, random_state=2)
 ```
@@ -183,7 +183,7 @@ X, y = make_blobs(n_samples=500, centers=3, n_features=2, cluster_std=2, random_
 
 下面列出了完整的示例。
 
-```
+```py
 # scatter plot of blobs dataset
 from sklearn.datasets import make_blobs
 from matplotlib import pyplot
@@ -216,7 +216,7 @@ pyplot.show()
 
 该问题是一个多类分类问题，我们将在输出层使用 softmax 激活函数对其进行建模。这意味着该模型将以样本属于 3 类中每一类的概率来预测具有 3 个元素的向量。因此，第一步是对类值进行热编码。
 
-```
+```py
 y = to_categorical(y)
 ```
 
@@ -224,7 +224,7 @@ y = to_categorical(y)
 
 这是一个具有挑战性的问题的例子，在这个问题中，我们没有标记的例子比有标记的例子多。
 
-```
+```py
 # split into train and test
 n_train = int(0.3 * X.shape[0])
 trainX, testX = X[:n_train, :], X[n_train:, :]
@@ -237,7 +237,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 由于问题是多类的，我们将使用分类交叉熵损失函数来优化模型和随机梯度下降的有效[亚当味](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(15, input_dim=2, activation='relu'))
@@ -247,14 +247,14 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 
 该模型适合 200 个训练时期，我们将在测试集上评估每个时期的模型，使用测试集作为验证集。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=200, verbose=0)
 ```
 
 在运行结束时，我们将评估模型在列车和测试集上的性能。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -263,7 +263,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 最后，我们将在训练和测试数据集上绘制每个训练时期的模型精度的学习曲线。
 
-```
+```py
 # plot history
 pyplot.plot(history.history['accuracy'], label='train')
 pyplot.plot(history.history['val_accuracy'], label='test')
@@ -273,7 +273,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # fit high variance mlp on blobs classification problem
 from sklearn.datasets import make_blobs
 from keras.utils import to_categorical
@@ -311,7 +311,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到该模型在训练数据集上实现了约 84%的准确率，在测试数据集上实现了约 76%的准确率；不可怕。
 
-```
+```py
 Train: 0.847, Test: 0.766
 ```
 
@@ -331,7 +331,7 @@ Train: 0.847, Test: 0.766
 
 为此，我们首先将模型的拟合和评估拆分为一个可以重复调用的函数。下面的 evaluate_model()函数获取训练和测试数据集，拟合一个模型，然后对其进行评估，在测试数据集上重新调整模型的精度。
 
-```
+```py
 # fit and evaluate a neural net model on the dataset
 def evaluate_model(trainX, trainy, testX, testy):
 	# define model
@@ -348,7 +348,7 @@ def evaluate_model(trainX, trainy, testX, testy):
 
 我们可以调用这个函数 30 次，节省了测试的准确率分数。
 
-```
+```py
 # repeated evaluation
 n_repeats = 30
 scores = list()
@@ -360,14 +360,14 @@ for _ in range(n_repeats):
 
 一旦收集到，我们可以总结分布分数，首先根据平均值和标准差，假设分布是高斯的，这是非常合理的。
 
-```
+```py
 # summarize the distribution of scores
 print('Scores Mean: %.3f, Standard Deviation: %.3f' % (mean(scores), std(scores)))
 ```
 
 然后，我们可以将分布总结为直方图以显示分布的形状，以及方框和须状图以显示分布的范围和主体。
 
-```
+```py
 # histogram of distribution
 pyplot.hist(scores, bins=10)
 pyplot.show()
@@ -378,7 +378,7 @@ pyplot.show()
 
 下面列出了在所选斑点数据集上总结 MLP 模型方差的完整示例。
 
-```
+```py
 # demonstrate high variance of mlp model on blobs classification problem
 from sklearn.datasets import make_blobs
 from keras.utils import to_categorical
@@ -433,7 +433,7 @@ pyplot.show()
 
 我们可以将模型在测试集上的准确度的标准偏差作为模型所做预测的方差的估计。
 
-```
+```py
 > 0.749
 > 0.771
 > 0.763
@@ -493,7 +493,7 @@ Scores Mean: 0.770, Standard Deviation: 0.014
 
 首先，我们必须开发一个函数来准备和返回训练数据集上的拟合模型。
 
-```
+```py
 # fit model on dataset
 def fit_model(trainX, trainy):
 	# define model
@@ -510,7 +510,7 @@ def fit_model(trainX, trainy):
 
 **提示**:你可以自己使用这个函数来测试集合，以及用集合对新数据进行预测。
 
-```
+```py
 # make an ensemble prediction for multi-class classification
 def ensemble_predictions(members, testX):
 	# make predictions
@@ -527,7 +527,7 @@ def ensemble_predictions(members, testX):
 
 因此，我们可以对集合成员的数量及其如何影响测试精度进行敏感性分析。这意味着我们需要一个函数来评估指定数量的集合成员，并返回这些成员组合的预测的准确性。
 
-```
+```py
 # evaluate a specific number of members in an ensemble
 def evaluate_n_members(members, n_members, testX, testy):
 	# select a subset of members
@@ -541,7 +541,7 @@ def evaluate_n_members(members, n_members, testX, testy):
 
 最后，我们可以创建系综成员数量(x 轴)与测试数据集(y 轴)上许多成员的平均预测精度的线图。
 
-```
+```py
 # plot score vs number of ensemble members
 x_axis = [i for i in range(1, n_members+1)]
 pyplot.plot(x_axis, scores)
@@ -550,7 +550,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # model averaging ensemble and a study of ensemble size on test accuracy
 from sklearn.datasets import make_blobs
 from keras.utils import to_categorical
@@ -622,7 +622,7 @@ pyplot.show()
 
 然后，从 1 个成员到所有 20 个成员测试不同大小的系综，并打印每个系综大小的测试精度结果。
 
-```
+```py
 1
 > 0.740
 2
@@ -677,7 +677,7 @@ pyplot.show()
 
 下面列出了一个完整的重复评估的五个成员的斑点数据集集合的例子。
 
-```
+```py
 # repeated evaluation of model averaging ensemble on blobs dataset
 from sklearn.datasets import make_blobs
 from keras.utils import to_categorical
@@ -749,7 +749,7 @@ print('Scores Mean: %.3f, Standard Deviation: %.3f' % (mean(scores), std(scores)
 
 模型性能的平均值和标准偏差在运行结束时打印。
 
-```
+```py
 > 0.769
 > 0.757
 > 0.754

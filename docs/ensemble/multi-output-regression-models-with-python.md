@@ -71,7 +71,7 @@
 
 您可以使用下面的代码示例检查库的版本:
 
-```
+```py
 # check scikit-learn version
 import sklearn
 print(sklearn.__version__)
@@ -81,7 +81,7 @@ print(sklearn.__version__)
 
 在撰写本文时，这大约是 0.22 版本。您需要使用 scikit-learn 或更高版本。
 
-```
+```py
 0.22.1
 ```
 
@@ -96,7 +96,7 @@ print(sklearn.__version__)
 
 下面的示例生成数据集并总结形状。
 
-```
+```py
 # example of multioutput regression test problem
 from sklearn.datasets import make_regression
 # create datasets
@@ -107,7 +107,7 @@ print(X.shape, y.shape)
 
 运行该示例会创建数据集，并总结数据集的输入和输出元素的形状以进行建模，从而确认所选的配置。
 
-```
+```py
 (1000, 10) (1000, 2)
 ```
 
@@ -130,7 +130,7 @@ print(X.shape, y.shape)
 
 以下示例在多输出回归数据集上拟合线性回归模型，然后使用拟合模型进行单次预测。
 
-```
+```py
 # linear regression for multioutput regression
 from sklearn.datasets import make_regression
 from sklearn.linear_model import LinearRegression
@@ -149,7 +149,7 @@ print(yhat[0])
 
 运行该示例符合模型，然后对一个输入进行预测，确认模型预测了两个所需值。
 
-```
+```py
 [-11.73511093  52.78406297]
 ```
 
@@ -157,7 +157,7 @@ print(yhat[0])
 
 以下示例在多输出回归数据集上拟合 k 近邻模型，然后用拟合模型进行单次预测。
 
-```
+```py
 # k-nearest neighbors for multioutput regression
 from sklearn.datasets import make_regression
 from sklearn.neighbors import KNeighborsRegressor
@@ -176,7 +176,7 @@ print(yhat[0])
 
 运行该示例符合模型，然后对一个输入进行预测，确认模型预测了两个所需值。
 
-```
+```py
 [-11.73511093  52.78406297]
 ```
 
@@ -184,7 +184,7 @@ print(yhat[0])
 
 以下示例在多输出回归数据集上拟合决策树模型，然后使用拟合模型进行单次预测。
 
-```
+```py
 # decision tree for multioutput regression
 from sklearn.datasets import make_regression
 from sklearn.tree import DecisionTreeRegressor
@@ -203,7 +203,7 @@ print(yhat[0])
 
 运行该示例符合模型，然后对一个输入进行预测，确认模型预测了两个所需值。
 
-```
+```py
 [49.93137149 64.08484989]
 ```
 
@@ -217,7 +217,7 @@ print(yhat[0])
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate multioutput regression model with k-fold cross-validation
 from numpy import absolute
 from numpy import mean
@@ -246,7 +246,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 重要的是，误差是跨两个输出变量报告的，而不是每个输出变量单独的误差分数。
 
-```
+```py
 MAE: 51.817 (2.863)
 ```
 
@@ -258,7 +258,7 @@ MAE: 51.817 (2.863)
 
 此算法不支持回归问题的多个输出，并且会产生错误。我们可以用下面列出的例子来证明这一点。
 
-```
+```py
 # failure of support vector regression for multioutput regression (causes an error)
 from sklearn.datasets import make_regression
 from sklearn.svm import LinearSVR
@@ -273,7 +273,7 @@ model.fit(X, y)
 
 运行该示例会报告一条错误消息，指示模型不支持多输出回归。
 
-```
+```py
 ValueError: bad input shape (1000, 2)
 ```
 
@@ -310,7 +310,7 @@ ValueError: bad input shape (1000, 2)
 
 下面的例子演示了我们如何首先创建一个单输出回归模型，然后使用*multi outputerrors*类包装回归模型并添加对多输出回归的支持。
 
-```
+```py
 ...
 # define base model
 model = LinearSVR()
@@ -324,7 +324,7 @@ wrapper = MultiOutputRegressor(model)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of evaluating direct multioutput regression with an SVM model
 from numpy import mean
 from numpy import std
@@ -356,7 +356,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到由直接多输出回归策略包装的线性支持向量回归模型实现了大约 0.419 的 MAE。
 
-```
+```py
 MAE: 0.419 (0.024)
 ```
 
@@ -366,7 +366,7 @@ MAE: 0.419 (0.024)
 
 下面的示例在我们的合成多输出回归数据集上演示了这一点。
 
-```
+```py
 # example of making a prediction with the direct multioutput regression model
 from sklearn.datasets import make_regression
 from sklearn.multioutput import MultiOutputRegressor
@@ -388,7 +388,7 @@ print('Predicted: %s' % yhat[0])
 
 运行该示例使直接包装模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted: [50.01932887 64.49432991]
 ```
 
@@ -412,7 +412,7 @@ Predicted: [50.01932887 64.49432991]
 
 下面的例子演示了我们如何首先创建单输出回归模型，然后使用*回归链*类包装回归模型并添加对多输出回归的支持。
 
-```
+```py
 ...
 # define base model
 model = LinearSVR()
@@ -426,7 +426,7 @@ wrapper = RegressorChain(model, order=[0,1])
 
 下面列出了完整的示例。
 
-```
+```py
 # example of evaluating chained multioutput regression with an SVM model
 from numpy import mean
 from numpy import std
@@ -459,7 +459,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到由链式多输出回归策略包装的线性支持向量回归模型实现了大约 0.643 的 MAE。
 
-```
+```py
 MAE: 0.643 (0.313)
 ```
 
@@ -469,7 +469,7 @@ MAE: 0.643 (0.313)
 
 下面的示例在我们的合成多输出回归数据集上演示了这一点。
 
-```
+```py
 # example of making a prediction with the chained multioutput regression model
 from sklearn.datasets import make_regression
 from sklearn.multioutput import RegressorChain
@@ -491,7 +491,7 @@ print('Predicted: %s' % yhat[0])
 
 运行该示例使链式包装模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted: [50.03206    64.73673318]
 ```
 

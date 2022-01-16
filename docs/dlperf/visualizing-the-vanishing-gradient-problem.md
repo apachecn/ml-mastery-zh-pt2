@@ -46,7 +46,7 @@ $
 
 为了说明渐变消失的问题，我们来举个例子试试。神经网络是一种非线性函数。因此它最适合非线性数据集的分类。我们利用 scikit-learn 的`make_circle()`函数生成一些数据:
 
-```
+```py
 from sklearn.datasets import make_circles
 import matplotlib.pyplot as plt
 
@@ -62,7 +62,7 @@ plt.show()
 
 这不难分类。一种天真的方法是构建一个 3 层神经网络，它可以给出一个相当好的结果:
 
-```
+```py
 from tensorflow.keras.layers import Dense, Input
 from tensorflow.keras import Sequential
 
@@ -76,14 +76,14 @@ model.fit(X, y, batch_size=32, epochs=100, verbose=0)
 print(model.evaluate(X,y))
 ```
 
-```
+```py
 32/32 [==============================] - 0s 1ms/step - loss: 0.2404 - acc: 0.9730
 [0.24042171239852905, 0.9729999899864197]
 ```
 
 请注意，我们在上面的隐藏层中使用了整流线性单位(ReLU)。默认情况下，Keras 中的密集层将使用线性激活(即无激活)，这通常是无用的。我们通常在现代神经网络中使用 ReLU。但我们也可以像 20 年前的所有人一样，尝试传统的方式:
 
-```
+```py
 model = Sequential([
     Input(shape=(2,)),
     Dense(5, "sigmoid"),
@@ -94,14 +94,14 @@ model.fit(X, y, batch_size=32, epochs=100, verbose=0)
 print(model.evaluate(X,y))
 ```
 
-```
+```py
 32/32 [==============================] - 0s 1ms/step - loss: 0.6927 - acc: 0.6540
 [0.6926590800285339, 0.6539999842643738]
 ```
 
 准确度差很多。事实证明，增加更多的层会更糟(至少在我的实验中是这样):
 
-```
+```py
 model = Sequential([
     Input(shape=(2,)),
     Dense(5, "sigmoid"),
@@ -114,7 +114,7 @@ model.fit(X, y, batch_size=32, epochs=100, verbose=0)
 print(model.evaluate(X,y))
 ```
 
-```
+```py
 32/32 [==============================] - 0s 1ms/step - loss: 0.6922 - acc: 0.5330
 [0.6921834349632263, 0.5329999923706055]
 ```
@@ -129,7 +129,7 @@ print(model.evaluate(X,y))
 
 在 Keras 中，我们可以在训练过程中插入一个回调函数。我们将创建自己的回调对象，以截取并记录每个时期结束时多层感知器(MLP)模型的每一层的权重。
 
-```
+```py
 from tensorflow.keras.callbacks import Callback
 
 class WeightCapture(Callback):
@@ -155,7 +155,7 @@ class WeightCapture(Callback):
 
 为了方便实验创建 MLP 的不同方法，我们制作了一个辅助函数来建立神经网络模型:
 
-```
+```py
 def make_mlp(activation, initializer, name):
     "Create a model with specified activation and initalizer"
     model = Sequential([
@@ -173,7 +173,7 @@ def make_mlp(activation, initializer, name):
 
 然后我们可以`compile()`模型来提供评估指标，并在`fit()`调用中传递回调来训练模型:
 
-```
+```py
 initializer = RandomNormal(mean=0.0, stddev=1.0)
 batch_size = 32
 n_epochs = 100
@@ -189,12 +189,12 @@ model.fit(X, y, batch_size=batch_size, epochs=n_epochs, callbacks=[capture_cb], 
 
 拟合模型后，我们可以用整个数据集对其进行评估:
 
-```
+```py
 ...
 print(model.evaluate(X,y))
 ```
 
-```
+```py
 [0.6649572253227234, 0.5879999995231628]
 ```
 
@@ -202,7 +202,7 @@ print(model.evaluate(X,y))
 
 我们可以进一步研究的是权重如何随着训练的迭代而变化。除了第一层和最后一层之外，所有层的权重都是 5×5 矩阵。我们可以检查权重的平均值和标准偏差，以了解权重的外观:
 
-```
+```py
 def plotweight(capture_cb):
     "Plot the weights' mean and s.d. across epochs"
     fig, ax = plt.subplots(2, 1, sharex=True, constrained_layout=True, figsize=(8, 10))
@@ -225,7 +225,7 @@ plotweight(capture_cb)
 
 我们可以在相同的过程中重新启动双曲正切(tanh)激活:
 
-```
+```py
 # tanh activation, large variance gaussian initialization
 model = make_mlp("tanh", initializer, "tanh")
 capture_cb = WeightCapture(model)
@@ -236,7 +236,7 @@ print(model.evaluate(X,y))
 plotweight(capture_cb)
 ```
 
-```
+```py
 [0.012918001972138882, 0.9929999709129333]
 ```
 
@@ -246,7 +246,7 @@ plotweight(capture_cb)
 
 在 ReLU 激活中可以看到类似的情况:
 
-```
+```py
 # relu activation, large variance gaussian initialization
 model = make_mlp("relu", initializer, "relu")
 capture_cb = WeightCapture(model)
@@ -257,7 +257,7 @@ print(model.evaluate(X,y))
 plotweight(capture_cb)
 ```
 
-```
+```py
 [0.016895903274416924, 0.9940000176429749]
 ```
 
@@ -277,7 +277,7 @@ plotweight(capture_cb)
 
 因为梯度很容易在这个循环中获得，所以我们可以复制它。以下是我们如何实现训练循环，同时保留梯度的副本:
 
-```
+```py
 optimizer = tf.keras.optimizers.RMSprop()
 loss_fn = tf.keras.losses.BinaryCrossentropy()
 
@@ -325,7 +325,7 @@ $
 
 有了这些，我们可以绘制出不同时期的梯度。在下面，我们创建模型(但不调用`compile()`，因为我们以后不会调用`fit()`)并运行手动训练循环，然后绘制梯度以及梯度的标准差:
 
-```
+```py
 from sklearn.metrics import accuracy_score
 
 def plot_gradient(gradhistory, losshistory):
@@ -352,7 +352,7 @@ plot_gradient(gradhistory, losshistory)
 
 它报告了一个弱分类结果:
 
-```
+```py
 Before training: Accuracy 0.5
 After training: Accuracy 0.652
 ```
@@ -365,7 +365,7 @@ After training: Accuracy 0.652
 
 使用 tanh 激活重复此操作，我们会看到不同的结果，这解释了为什么性能更好:
 
-```
+```py
 model = make_mlp("tanh", initializer, "tanh")
 print("Before training: Accuracy", accuracy_score(y, (model(X) > 0.5)))
 gradhistory, losshistory = train_model(X, y, model)
@@ -373,7 +373,7 @@ print("After training: Accuracy", accuracy_score(y, (model(X) > 0.5)))
 plot_gradient(gradhistory, losshistory)
 ```
 
-```
+```py
 Before training: Accuracy 0.502
 After training: Accuracy 0.994
 ```
@@ -384,7 +384,7 @@ After training: Accuracy 0.994
 
 最后，我们还可以在整流线性单元(ReLU)激活中看到类似的情况。在这种情况下，损失迅速下降，因此我们将其视为神经网络中更有效的激活:
 
-```
+```py
 model = make_mlp("relu", initializer, "relu")
 print("Before training: Accuracy", accuracy_score(y, (model(X) > 0.5)))
 gradhistory, losshistory = train_model(X, y, model)
@@ -392,7 +392,7 @@ print("After training: Accuracy", accuracy_score(y, (model(X) > 0.5)))
 plot_gradient(gradhistory, losshistory)
 ```
 
-```
+```py
 Before training: Accuracy 0.503
 After training: Accuracy 0.995
 ```
@@ -401,7 +401,7 @@ After training: Accuracy 0.995
 
 以下是完整的代码:
 
-```
+```py
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.callbacks import Callback

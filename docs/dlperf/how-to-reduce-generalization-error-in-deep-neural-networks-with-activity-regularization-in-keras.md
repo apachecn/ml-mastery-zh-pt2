@@ -48,7 +48,7 @@ Keras 支持活动正规化。
 
 正则化类必须被导入，然后被实例化；例如:
 
-```
+```py
 # import regularizer
 from keras.regularizers import l1
 # instantiate regularizer
@@ -65,7 +65,7 @@ reg = l1(0.001)
 
 例如，可以在图层上指定函数和正则化，在这种情况下，激活正则化应用于激活函数的输出，在这种情况下，[校正线性激活函数或 ReLU](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/) 。
 
-```
+```py
 ...
 model.add(Dense(32, activation='relu', activity_regularizer=l1(0.001)))
 ...
@@ -73,7 +73,7 @@ model.add(Dense(32, activation='relu', activity_regularizer=l1(0.001)))
 
 或者，您可以指定线性激活函数(默认值，不执行任何转换)，这意味着激活正则化应用于原始输出，然后，激活函数可以作为后续层添加。
 
-```
+```py
 ...
 model.add(Dense(32, activation='linear', activity_regularizer=l1(0.001)))
 model.add(Activation('relu'))
@@ -88,7 +88,7 @@ model.add(Activation('relu'))
 
 下面的示例在稠密全连通层上设置 l1 范数活动正则化。
 
-```
+```py
 # example of l1 norm on activity from a dense layer
 from keras.layers import Dense
 from keras.regularizers import l1
@@ -101,7 +101,7 @@ model.add(Dense(32, activity_regularizer=l1(0.001)))
 
 以下示例在 Conv2D 卷积层上设置 l1 范数活动正则化。
 
-```
+```py
 # example of l1 norm on activity from a cnn layer
 from keras.layers import Conv2D
 from keras.regularizers import l1
@@ -114,7 +114,7 @@ model.add(Conv2D(32, (3,3), activity_regularizer=l1(0.001)))
 
 以下示例在 LSTM 递归层上设置 l1 范数活动正则化。
 
-```
+```py
 # example of l1 norm on activity from an lstm layer
 from keras.layers import LSTM
 from keras.regularizers import l1
@@ -141,7 +141,7 @@ model.add(LSTM(32, activity_regularizer=l1(0.001)))
 
 我们可以使用 [make_circles()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_circles.html)从这个问题中生成观察值。我们将向数据中添加噪声，并为随机数生成器播种，这样每次运行代码时都会生成相同的样本。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_circles(n_samples=100, noise=0.1, random_state=1)
 ```
@@ -150,7 +150,7 @@ X, y = make_circles(n_samples=100, noise=0.1, random_state=1)
 
 下面列出了生成数据集并绘制它的完整示例。
 
-```
+```py
 # generate two circles dataset
 from sklearn.datasets import make_circles
 from matplotlib import pyplot
@@ -189,7 +189,7 @@ pyplot.show()
 
 在定义模型之前，我们将把数据集分成训练集和测试集，用 30 个例子训练模型，用 70 个例子评估拟合模型的性能。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_circles(n_samples=100, noise=0.1, random_state=1)
 # split into train and test
@@ -204,7 +204,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 该模型采用二元交叉熵损失函数进行优化，适用于二元分类问题和高效的 [Adam 版本梯度下降](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(500, input_dim=2, activation='relu'))
@@ -216,14 +216,14 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 
 我们还将使用测试数据集作为验证数据集。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=4000, verbose=0)
 ```
 
 我们可以在测试数据集上评估模型的性能并报告结果。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -234,7 +234,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 如果模型确实过度训练了训练数据集，那么随着模型学习训练数据集中的统计噪声，我们将期望训练集上的精度线图继续增加，并且测试集上升，然后再次下降。
 
-```
+```py
 # plot history
 pyplot.plot(history.history['accuracy'], label='train')
 pyplot.plot(history.history['val_accuracy'], label='test')
@@ -244,7 +244,7 @@ pyplot.show()
 
 我们可以将所有这些部分绑在一起，完整的例子如下。
 
-```
+```py
 # mlp overfit on the two circles dataset
 from sklearn.datasets import make_circles
 from keras.layers import Dense
@@ -282,7 +282,7 @@ pyplot.show()
 
 因为模型被严重过度拟合，我们通常不会期望模型在同一数据集上重复运行时的精度有太大差异。
 
-```
+```py
 Train: 1.000, Test: 0.786
 ```
 
@@ -306,14 +306,14 @@ Train: 1.000, Test: 0.786
 
 我们将配置图层使用线性激活函数，以便我们可以正则化原始输出，然后在图层的正则化输出后添加 relu 激活图层。我们将正则化超参数设置为 1E-4 或 0.0001，稍微试错一下就发现了。
 
-```
+```py
 model.add(Dense(500, input_dim=2, activation='linear', activity_regularizer=l1(0.0001)))
 model.add(Activation('relu'))
 ```
 
 下面列出了具有 L1 范数约束的完整更新示例:
 
-```
+```py
 # mlp overfit on the two circles dataset with activation regularization
 from sklearn.datasets import make_circles
 from keras.layers import Dense
@@ -352,7 +352,7 @@ pyplot.show()
 
 我们可以看到，活动正则化导致训练数据集的准确率从 100%下降到 96%，测试集的准确率从 78%提升到 82%。
 
-```
+```py
 Train: 0.967, Test: 0.829
 ```
 
@@ -366,13 +366,13 @@ Train: 0.967, Test: 0.829
 
 为了完整起见，我们可以将结果与模型的一个版本进行比较，其中在 relu 激活函数之后应用了活动正则化。
 
-```
+```py
 model.add(Dense(500, input_dim=2, activation='relu', activity_regularizer=l1(0.0001)))
 ```
 
 下面列出了完整的示例。
 
-```
+```py
 # mlp overfit on the two circles dataset with activation regularization
 from sklearn.datasets import make_circles
 from keras.layers import Dense
@@ -409,7 +409,7 @@ pyplot.show()
 
 我们可以看到，至少在这个问题上以及用这个模型，激活函数后的激活正则化并没有改善泛化误差；事实上，这让事情变得更糟。
 
-```
+```py
 Train: 1.000, Test: 0.743
 ```
 

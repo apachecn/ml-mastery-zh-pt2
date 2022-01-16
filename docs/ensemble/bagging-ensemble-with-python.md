@@ -103,7 +103,7 @@ scikit-learn Python 机器学习库为机器学习提供了 Bagging 集成的实
 
 首先，通过运行以下脚本来确认您使用的是现代版本的库:
 
-```
+```py
 # check scikit-learn version
 import sklearn
 print(sklearn.__version__)
@@ -113,7 +113,7 @@ print(sklearn.__version__)
 
 您的版本应该相同或更高。如果没有，您必须升级 scikit-learn 库的版本。
 
-```
+```py
 0.22.1
 ```
 
@@ -135,7 +135,7 @@ print(sklearn.__version__)
 
 下面列出了完整的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -146,7 +146,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -154,7 +154,7 @@ print(X.shape, y.shape)
 
 我们将使用[重复分层 k 折叠交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
 
-```
+```py
 # evaluate bagging algorithm for classification
 from numpy import mean
 from numpy import std
@@ -179,7 +179,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到具有默认超参数的 Bagging 集成在这个测试数据集上实现了大约 85%的分类精度。
 
-```
+```py
 Accuracy: 0.856 (0.037)
 ```
 
@@ -189,7 +189,7 @@ Accuracy: 0.856 (0.037)
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make predictions using bagging for classification
 from sklearn.datasets import make_classification
 from sklearn.ensemble import BaggingClassifier
@@ -207,7 +207,7 @@ print('Predicted Class: %d' % yhat[0])
 
 运行该示例使 Bagging 集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Class: 1
 ```
 
@@ -221,7 +221,7 @@ Predicted Class: 1
 
 下面列出了完整的示例。
 
-```
+```py
 # test regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -232,7 +232,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -242,7 +242,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate bagging ensemble for regression
 from numpy import mean
 from numpy import std
@@ -267,7 +267,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到具有默认超参数的 Bagging 集成实现了大约 100 的 MAE。
 
-```
+```py
 MAE: -101.133 (9.757)
 ```
 
@@ -277,7 +277,7 @@ MAE: -101.133 (9.757)
 
 下面的例子在我们的回归数据集上演示了这一点。
 
-```
+```py
 # bagging ensemble for making predictions for regression
 from sklearn.datasets import make_regression
 from sklearn.ensemble import BaggingRegressor
@@ -295,7 +295,7 @@ print('Prediction: %d' % yhat[0])
 
 运行该示例使 Bagging 集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Prediction: -134
 ```
 
@@ -315,7 +315,7 @@ Bagging 算法的一个重要超参数是集成中使用的决策树的数量。
 
 下面的示例探讨了值在 10 到 5，000 之间的树的数量的影响。
 
-```
+```py
 # explore bagging ensemble number of trees effect on performance
 from numpy import mean
 from numpy import std
@@ -372,7 +372,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到在这个数据集上的性能有所提高，直到大约 100 棵树，之后保持不变。
 
-```
+```py
 >10 0.855 (0.037)
 >50 0.876 (0.035)
 >100 0.882 (0.037)
@@ -399,7 +399,7 @@ pyplot.show()
 
 下面的示例将不同大小的样本作为原始数据集的 10%到 100%(默认值)的比率进行探索。
 
-```
+```py
 # explore bagging ensemble number of samples effect on performance
 from numpy import mean
 from numpy import std
@@ -459,7 +459,7 @@ pyplot.show()
 
 探索一个更小的样本量，并相应增加树的数量，以减少单个模型的方差，这可能也是有趣的。
 
-```
+```py
 >0.1 0.810 (0.036)
 >0.2 0.836 (0.044)
 >0.3 0.844 (0.043)
@@ -492,7 +492,7 @@ pyplot.show()
 
 下面的例子演示了使用一个[kneighgborcsclassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)作为打包集成中使用的基本算法。这里，算法与默认超参数一起使用，其中 *k* 设置为 5。
 
-```
+```py
 # evaluate bagging with knn algorithm for classification
 from numpy import mean
 from numpy import std
@@ -518,7 +518,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到具有 KNN 和默认超参数的 Bagging 集成在这个测试数据集上实现了大约 88%的分类精度。
 
-```
+```py
 Accuracy: 0.888 (0.036)
 ```
 
@@ -526,7 +526,7 @@ Accuracy: 0.888 (0.036)
 
 以下示例测试的袋装 KNN 模型的 *k* 值介于 1 和 20 之间。
 
-```
+```py
 # explore bagging ensemble k for knn effect on performance
 from numpy import mean
 from numpy import std
@@ -586,7 +586,7 @@ pyplot.show()
 
 在这种情况下，结果表明，当在 bagging 集合中使用时，较小的 k 值(例如 2 到 4)导致最佳的平均精度。
 
-```
+```py
 >1 0.884 (0.025)
 >2 0.890 (0.029)
 >3 0.886 (0.035)
@@ -641,7 +641,7 @@ pyplot.show()
 
 下面的示例演示了粘贴集合，方法是将“ *bootstrap* ”参数设置为“ *False* ”，并将通过“ *max_samples* ”在训练数据集中使用的样本数量设置为适中的值，在本例中为训练数据集大小的 50%。
 
-```
+```py
 # evaluate pasting ensemble algorithm for classification
 from numpy import mean
 from numpy import std
@@ -666,7 +666,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到粘贴集成在这个数据集上实现了大约 84%的分类准确率。
 
-```
+```py
 Accuracy: 0.848 (0.039)
 ```
 
@@ -682,7 +682,7 @@ Accuracy: 0.848 (0.039)
 
 下面的示例演示了随机子空间集成，方法是将“ *bootstrap* ”参数设置为“ *False* ”，并将通过“ *max_features* ”在训练数据集中使用的特征数量设置为适中的值，在本例中为 10。
 
-```
+```py
 # evaluate random subspace ensemble algorithm for classification
 from numpy import mean
 from numpy import std
@@ -707,7 +707,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到随机子空间集成在这个数据集上实现了大约 86%的分类准确率。
 
-```
+```py
 Accuracy: 0.862 (0.040)
 ```
 
@@ -715,7 +715,7 @@ Accuracy: 0.862 (0.040)
 
 下面的例子演示了在从 1 到 20 的随机子空间集合中使用不同数量的特征的效果。
 
-```
+```py
 # explore random subspace ensemble ensemble number of features effect on performance
 from numpy import mean
 from numpy import std
@@ -763,7 +763,7 @@ pyplot.show()
 
 在这种情况下，结果表明使用数据集中大约一半数量的特征(例如，在 9 和 13 之间)可能给出该数据集上随机子空间集成的最佳结果。
 
-```
+```py
 >1 0.583 (0.047)
 >2 0.659 (0.048)
 >3 0.731 (0.038)
@@ -806,7 +806,7 @@ pyplot.show()
 
 下面的示例演示了随机面片集合，其中决策树是从训练数据集的随机样本创建的，样本大小限制为训练数据集的 50%，随机子集包含 10 个要素。
 
-```
+```py
 # evaluate random patches ensemble algorithm for classification
 from numpy import mean
 from numpy import std
@@ -831,7 +831,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到随机补丁集成在这个数据集上实现了大约 84%的分类准确率。
 
-```
+```py
 Accuracy: 0.845 (0.036)
 ```
 

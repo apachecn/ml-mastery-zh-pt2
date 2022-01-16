@@ -84,7 +84,7 @@
 
 文件的前几行应该如下所示:
 
-```
+```py
 30,64,1,1
 30,62,3,1
 30,65,0,1
@@ -106,7 +106,7 @@
 
 首先，我们可以加载 CSV 数据集，并使用五个数字的摘要来总结每一列。可以使用 [read_csv()熊猫函数](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)将数据集加载为*数据框*，指定列的位置和名称，因为没有标题行。
 
-```
+```py
 ...
 # define the dataset location
 filename = 'haberman.csv'
@@ -120,7 +120,7 @@ dataframe = read_csv(filename, header=None, names=columns)
 
 一列的[五个数汇总](https://machinelearningmastery.com/how-to-calculate-the-5-number-summary-for-your-data-in-python/)包括有用的细节，如最小值和最大值，如果变量具有[高斯分布](https://machinelearningmastery.com/continuous-probability-distributions-for-machine-learning/)，则平均值和标准偏差有用，如果变量不具有高斯分布，则第 25、50 和 75 四分位数有用。
 
-```
+```py
 ...
 # summarize each column
 report = dataframe.describe()
@@ -129,7 +129,7 @@ print(report)
 
 将这些联系在一起，下面列出了加载和汇总数据集列的完整示例。
 
-```
+```py
 # load and summarize the dataset
 from pandas import read_csv
 # define the dataset location
@@ -151,7 +151,7 @@ print(report)
 
 我们可以看到节点的值在 0 到 52 之间。这可能是与淋巴结相关的癌症诊断。
 
-```
+```py
               age        year       nodes       class
 count  306.000000  306.000000  306.000000  306.000000
 mean    52.457516   62.852941    4.026144    1.264706
@@ -171,7 +171,7 @@ max     83.000000   69.000000   52.000000    2.000000
 
 下面列出了完整的示例。
 
-```
+```py
 # create histograms of each variable
 from pandas import read_csv
 from matplotlib import pyplot
@@ -204,7 +204,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # summarize the class ratio
 from pandas import read_csv
 from collections import Counter
@@ -228,7 +228,7 @@ for k,v in counter.items():
 
 阶级分布是倾斜的，但并不严重不平衡。
 
-```
+```py
 Class=1, Count=225, Percentage=73.529%
 Class=2, Count=81, Percentage=26.471%
 ```
@@ -261,7 +261,7 @@ Class=2, Count=81, Percentage=26.471%
 
 例如下面的 *load_dataset()* 函数将加载数据集，将变量列拆分为输入和输出，然后将目标变量编码为 0 和 1 值。
 
-```
+```py
 # load the dataset
 def load_dataset(full_path):
 	# load the dataset as a numpy array
@@ -281,7 +281,7 @@ def load_dataset(full_path):
 
 在这种情况下，正的类标签表示非存活，并且在数据集中出现大约 26%。因此，预测约 0.26471 代表此数据集上预测模型的最坏情况或基线性能。任何比这个布里埃得分高的模型都有一些技能，而任何比这个布里埃得分低的模型都没有技能。简明技能评分抓住了这一重要关系。我们可以在 k 重交叉验证过程中为每个训练集自动计算这个默认预测策略的 Brier 分数，然后将其用作给定模型的比较点。
 
-```
+```py
 ...
 # calculate reference brier score
 ref_probs = [0.26471 for _ in range(len(y_true))]
@@ -292,7 +292,7 @@ bs_ref = brier_score_loss(y_true, ref_probs)
 
 下面的 *brier_skill_score()* 函数实现了这一点，并为同一测试集上给定的一组真实标签和预测计算 Brier Skill Score。任何达到 0.0 以上的 BSS 的模型都意味着它在这个数据集上显示了技能。
 
-```
+```py
 # calculate brier skill score (BSS)
 def brier_skill_score(y_true, y_prob):
 	# calculate reference brier score
@@ -309,7 +309,7 @@ def brier_skill_score(y_true, y_prob):
 
 要使用我们的自定义性能指标，我们可以使用 [make_scorer() scikit-learn 函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html)，该函数采用我们的自定义函数的名称，并创建一个指标，我们可以使用 scikit-learn API 来评估模型。我们将把 *needs_proba* 参数设置为 True，以确保被评估的模型使用 *predict_proba()* 函数进行预测，以确保它们给出概率而不是类标签。
 
-```
+```py
 ...
 # define the model evaluation the metric
 metric = make_scorer(brier_skill_score, needs_proba=True)
@@ -317,7 +317,7 @@ metric = make_scorer(brier_skill_score, needs_proba=True)
 
 下面的 *evaluate_model()* 函数使用我们的自定义评估指标定义评估过程，将整个训练数据集和模型作为输入，然后返回每个折叠和每个重复的分数样本。
 
-```
+```py
 # evaluate a model
 def evaluate_model(X, y, model):
 	# define evaluation procedure
@@ -333,7 +333,7 @@ def evaluate_model(X, y, model):
 
 首先，我们可以加载数据集并总结输入和输出数组，以确认它们被正确加载。
 
-```
+```py
 ...
 # define the location of the dataset
 full_path = 'haberman.csv'
@@ -347,7 +347,7 @@ print(X.shape, y.shape, Counter(y))
 
 这可以通过使用 DummyCollector 类并设置“*策略*”为“*先验*”来自动实现，该策略将预测训练数据集中每个类的先验概率，对于正类，我们知道该概率约为 0.26471。
 
-```
+```py
 ...
 # define the reference model
 model = DummyClassifier(strategy='prior')
@@ -355,7 +355,7 @@ model = DummyClassifier(strategy='prior')
 
 然后，我们可以通过调用我们的 *evaluate_model()* 函数来评估模型，并报告结果的平均值和标准差。
 
-```
+```py
 ...
 # evaluate the model
 scores = evaluate_model(X, y, model)
@@ -367,7 +367,7 @@ print('Mean BSS: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 我们期望基线模型达到 0.0 的 BSS，例如与参考模型相同，因为它是参考模型。
 
-```
+```py
 # baseline model and test harness for the haberman dataset
 from collections import Counter
 from numpy import mean
@@ -430,7 +430,7 @@ print('Mean BSS: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 然后使用重复的分层 k 倍交叉验证来评估带有我们默认策略的 *DummyClassifier* ，Brier 技能评分的平均值和标准偏差报告为 0.0。这正如我们所料，因为我们正在使用测试工具来评估参考策略。
 
-```
+```py
 (306, 3) (306,) Counter({0: 225, 1: 81})
 Mean BSS: -0.000 (0.000)
 ```
@@ -460,7 +460,7 @@ Mean BSS: -0.000 (0.000)
 
 我们可以定义一个我们想要评估的模型列表，每个模型都有它们的默认配置或者被配置为不产生警告。
 
-```
+```py
 ...
 # define models
 models = [LogisticRegression(solver='lbfgs'), LinearDiscriminantAnalysis(),
@@ -470,7 +470,7 @@ models = [LogisticRegression(solver='lbfgs'), LinearDiscriminantAnalysis(),
 
 然后，我们可以枚举每个模型，记录模型的唯一名称，对其进行评估，并报告平均 BSS，并将结果存储到运行结束时。
 
-```
+```py
 ...
 names, values = list(), list()
 # evaluate each model
@@ -487,7 +487,7 @@ for model in models:
 
 在运行结束时，我们可以创建一个方框和触须图，显示每个算法的结果分布，其中方框显示分数的第 25、50 和 75 个百分点，三角形显示平均结果。每幅图的触须都给出了每种分布的极端情况。
 
-```
+```py
 ...
 # plot the results
 pyplot.boxplot(values, labels=names, showmeans=True)
@@ -496,7 +496,7 @@ pyplot.show()
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # compare probabilistic model on the haberman dataset
 from numpy import mean
 from numpy import std
@@ -576,7 +576,7 @@ pyplot.show()
 
 在这种情况下，结果表明，只有两种算法不熟练，显示出负分数，也许逻辑推理(LR)和线性判别分析(LDA)算法表现最好。
 
-```
+```py
 >Logisti 0.064 (0.123)
 >LinearD 0.067 (0.136)
 >Quadrat 0.027 (0.212)
@@ -605,7 +605,7 @@ pyplot.show()
 
 我们可以通过将每个模型包装在[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)中来实现这一点，其中第一步是[标准缩放器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)，它将正确地适合训练数据集，并应用于每个 k 倍交叉验证评估中的测试数据集，防止任何[数据泄漏](https://machinelearningmastery.com/data-leakage-machine-learning/)。
 
-```
+```py
 ...
 # create a pipeline
 pip = Pipeline(steps=[('t', StandardScaler()),('m',model)])
@@ -615,7 +615,7 @@ scores = evaluate_model(X, y, pip)
 
 下面列出了使用标准化输入数据评估其余五种算法的完整示例。
 
-```
+```py
 # compare probabilistic models with standardized input on the haberman dataset
 from numpy import mean
 from numpy import std
@@ -697,7 +697,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到，除了高斯过程分类器(GPC)之外，标准化对算法没有太大影响。具有标准化的 GPC 的性能大幅提升，现在是性能最好的技术。这突出了准备数据以满足每个模型的期望的重要性。
 
-```
+```py
 >Logisti 0.065 (0.121)
 >LinearD 0.067 (0.136)
 >Quadrat 0.027 (0.212)
@@ -727,7 +727,7 @@ pyplot.show()
 
 同样，我们可以在管道中使用这种转换，以确保它适合训练数据集，并正确应用于训练和测试数据集，而不会出现数据泄漏。
 
-```
+```py
 ...
 # create a pipeline
 pip = Pipeline(steps=[('t1', MinMaxScaler()), ('t2', PowerTransformer()),('m',model)])
@@ -739,7 +739,7 @@ scores = evaluate_model(X, y, pip)
 
 下面列出了完整的示例。
 
-```
+```py
 # compare probabilistic models with power transforms on the haberman dataset
 from numpy import mean
 from numpy import std
@@ -821,7 +821,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到被评估的三个模型的模型技能进一步提升。我们可以看到 LR 似乎已经超过了其他两种方法。
 
-```
+```py
 >Logisti 0.111 (0.123)
 >LinearD 0.106 (0.147)
 >Gaussia 0.103 (0.096)
@@ -841,7 +841,7 @@ pyplot.show()
 
 我们可以在整个训练数据集上定义和拟合这个模型。
 
-```
+```py
 ...
 # fit the model
 model = Pipeline(steps=[('t1', MinMaxScaler()), ('t2', PowerTransformer()),('m',LogisticRegression(solver='lbfgs'))])
@@ -852,7 +852,7 @@ model.fit(X, y)
 
 例如:
 
-```
+```py
 ...
 row = [31,59,2]
 yhat = model.predict_proba([row])
@@ -864,7 +864,7 @@ p_survive = yhat[0, 0] * 100
 
 下面列出了完整的示例。
 
-```
+```py
 # fit a model and make predictions for the on the haberman dataset
 from pandas import read_csv
 from sklearn.preprocessing import LabelEncoder
@@ -920,7 +920,7 @@ for row in data:
 
 然后将一些非存活的情况作为模型的输入，并预测存活的概率。正如我们可能希望的那样，存活的概率不大，在 53%到 63%之间徘徊。
 
-```
+```py
 Survival Cases:
 >data=[31, 59, 2], Survival=83.597%
 >data=[31, 65, 4], Survival=77.264%

@@ -23,7 +23,7 @@
 
 多元自适应回归样条(MARS)是一种非参数回归方法，它使用铰链函数(其中带有扭结的函数)对数据中的多种非线性进行建模。
 
-```
+```py
 # load the package
 library(earth)
 # load data
@@ -47,7 +47,7 @@ print(mse)
 
 [支持向量机(SVM)](https://machinelearningmastery.com/support-vector-machines-for-machine-learning/) 是一类方法，最初是为分类而开发的，它可以找到最好地分离类别的支持点。用于回归的 SVM 称为支持向量回归(SVM)。
 
-```
+```py
 # load the package
 library(kernlab)
 # load data
@@ -69,7 +69,7 @@ print(mse)
 
 k-近邻(kNN)并不创建模型，而是在需要预测时，根据需要从接近的数据创建预测。相似性度量(如欧几里德距离)用于定位接近的数据，以便进行预测。
 
-```
+```py
 # load the package
 library(caret)
 # load data
@@ -91,7 +91,7 @@ print(mse)
 
 神经网络(NN)是一个计算单元的图形，它接收输入并将结果转换成输出并传递出去。这些单元被排序成层，以将输入向量的特征连接到输出向量的特征。通过训练，例如反向传播算法，可以设计和训练神经网络来模拟数据中的潜在关系。
 
-```
+```py
 # load the package
 library(nnet)
 # load data

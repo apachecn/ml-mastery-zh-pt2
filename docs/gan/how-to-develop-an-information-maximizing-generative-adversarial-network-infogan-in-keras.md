@@ -199,7 +199,7 @@ MNIST 训练信息网的发生器、鉴别器和辅助模型配置总结。
 
 好的生成器配置试探法如下，包括随机高斯权重初始化、[隐藏层中的 ReLU 激活](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)，以及使用批量归一化。
 
-```
+```py
 # define the standalone generator model
 def define_generator(gen_input_size):
 	# weight initialization
@@ -245,7 +245,7 @@ def define_generator(gen_input_size):
 
 辅助模型(q)对于分类变量中的每个值都有一个节点输出，并使用 softmax 激活函数。像 InfoGAN 论文中使用的那样，在特征提取层和输出层之间添加了一个完全连接的层。模型不会被编译，因为它不是以独立的方式形成或使用的。
 
-```
+```py
 # define the standalone discriminator model
 def define_discriminator(n_cat, in_shape=(28,28,1)):
 	# weight initialization
@@ -294,7 +294,7 @@ def define_discriminator(n_cat, in_shape=(28,28,1)):
 
 该模型有两个输出层，需要用不同的损失函数进行训练。二进制交叉熵损失用于鉴别器输出，正如我们在编译独立使用的鉴别器时所做的那样，互信息损失用于辅助模型，在这种情况下，辅助模型可以直接实现为分类交叉熵，并获得期望的结果。
 
-```
+```py
 # define the combined discriminator, generator and q network model
 def define_gan(g_model, d_model, q_model):
 	# make weights in the discriminator (some shared with the q model) as not trainable
@@ -317,7 +317,7 @@ def define_gan(g_model, d_model, q_model):
 
 下面列出了完整的示例。
 
-```
+```py
 # create and plot the infogan model for mnist
 from keras.optimizers import Adam
 from keras.models import Model
@@ -446,7 +446,7 @@ plot_model(gan_model, to_file='gan_plot.png', show_shapes=True, show_layer_names
 
 下面的*generate _ 潜伏 _points()* 函数实现了这一点，将潜伏空间的大小、分类值的数量和要生成的样本数量作为参数作为输入。该函数返回输入串联矢量作为发电机模型的输入，以及独立控制代码。当通过复合 GAN 模型更新发电机和辅助模型时，将需要独立的控制代码，特别是用于计算辅助模型的相互信息损失。
 
-```
+```py
 # generate points in latent space as input for the generator
 def generate_latent_points(latent_dim, n_cat, n_samples):
 	# generate points in the latent space
@@ -470,7 +470,7 @@ def generate_latent_points(latent_dim, n_cat, n_samples):
 
 鉴别器还需要通过生成器生成成批的假样本，使用来自*generate _ 潜伏 _points()* 函数的向量作为输入。下面的 *generate_fake_samples()* 函数实现了这一点，返回生成的图像以及类标签 0，以向鉴别器指示它们是假图像。
 
-```
+```py
 # load images
 def load_real_samples():
 	# load dataset
@@ -513,7 +513,7 @@ def generate_fake_samples(generator, latent_dim, n_cat, n_samples):
 
 生成器和复合 GAN 模型也保存到文件中，并根据训练迭代号使用唯一的文件名。
 
-```
+```py
 # generate samples and save as a plot and save the model
 def summarize_performance(step, g_model, gan_model, latent_dim, n_cat, n_samples=100):
 	# prepare fake examples
@@ -549,7 +549,7 @@ def summarize_performance(step, g_model, gan_model, latent_dim, n_cat, n_samples
 
 每次训练迭代都包括首先用半批真实样本和半批伪样本更新鉴别器，以在每次迭代中形成一批有价值的权重更新，即 64。接下来，基于一批有价值的噪声和控制代码输入来更新复合 GAN 模型。在每次训练迭代中报告真假图像鉴别器的损失以及生成器和辅助模型的损失。
 
-```
+```py
 # train the generator and discriminator
 def train(g_model, d_model, gan_model, dataset, latent_dim, n_cat, n_epochs=100, n_batch=64):
 	# calculate the number of batches per training epoch
@@ -585,7 +585,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_cat, n_epochs=100,
 
 我们将使用单个分类变量的 10 个值来匹配 MNIST 数据集中的 10 个已知类。我们将使用 64 维的潜在空间来匹配 InfoGAN 论文，这意味着，在这种情况下，生成器模型的每个输入向量将是 64(随机高斯变量)+ 10(一个热编码控制变量)或 72 个元素的长度。
 
-```
+```py
 # number of values for the categorical control code
 n_cat = 10
 # size of the latent space
@@ -605,7 +605,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim, n_cat)
 
 将这些联系在一起，下面列出了在 MNIST 数据集上使用单个分类控制变量训练 InfoGAN 模型的完整示例。
 
-```
+```py
 # example of training an infogan on mnist
 from numpy import zeros
 from numpy import ones
@@ -837,7 +837,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim, n_cat)
 
 辅助模型的损失可能会为零，因为它完美地预测了分类变量。生成器和鉴别器模型的损失最终可能会在 1.0 左右徘徊，以证明两个模型的训练过程稳定或平衡。
 
-```
+```py
 >1, d[0.924,0.758], g[0.448] q[2.909]
 >2, d[0.000,2.699], g[0.547] q[2.704]
 >3, d[0.000,1.557], g[1.175] q[2.820]
@@ -880,7 +880,7 @@ InfoGAN 在 100 个训练时期后生成的 100 幅随机图像的绘图
 
 更改模型文件名，使其与训练运行期间生成最佳图像的模型文件名相匹配。
 
-```
+```py
 # example of loading the generator model and generating images
 from math import sqrt
 from numpy import hstack
@@ -944,7 +944,7 @@ create_plot(X, n_samples)
 
 我们可以更新*generate _ 潜伏 _points()* 函数，获取[0，9]中分类值的参数值，对其进行编码，并将其与噪声向量一起用作输入。
 
-```
+```py
 # generate points in latent space as input for the generator
 def generate_latent_points(latent_dim, n_cat, n_samples, digit):
 	# generate points in the latent space
@@ -964,7 +964,7 @@ def generate_latent_points(latent_dim, n_cat, n_samples, digit):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of testing different values of the categorical control variable
 from math import sqrt
 from numpy import asarray

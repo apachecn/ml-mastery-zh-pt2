@@ -212,7 +212,7 @@
 
 下面的 Python 函数提供了一个类似伪代码的函数工作实现，用于计算一系列实际值和一系列预测实值量的均方误差。
 
-```
+```py
 # calculate mean squared error
 def mean_squared_error(actual, predicted):
 	sum_square_error = 0.0
@@ -236,7 +236,7 @@ def mean_squared_error(actual, predicted):
 
 下面的 Python 函数提供了一个类似伪代码的函数工作实现，用于计算实际 0 和 1 值列表与类 1 预测概率的交叉熵。
 
-```
+```py
 from math import log
 
 # calculate binary cross entropy
@@ -254,7 +254,7 @@ def binary_cross_entropy(actual, predicted):
 
 下面的 Python 函数提供了一个类似伪代码的函数工作实现，用于计算一系列实际的热编码值与每个类的预测概率的交叉熵。
 
-```
+```py
 from math import log
 
 # calculate categorical cross entropy

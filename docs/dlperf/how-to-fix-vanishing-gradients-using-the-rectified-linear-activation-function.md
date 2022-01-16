@@ -87,7 +87,7 @@ scikit-learn 类提供了 [make_circles()函数](http://scikit-learn.org/stable/
 
 下面的示例从两个带有噪声且值为 1 的圆生成 1，000 个示例来播种伪随机数发生器。
 
-```
+```py
 # generate circles
 X, y = make_circles(n_samples=1000, noise=0.1, random_state=1)
 ```
@@ -96,7 +96,7 @@ X, y = make_circles(n_samples=1000, noise=0.1, random_state=1)
 
 下面列出了完整的示例。
 
-```
+```py
 # scatter plot of the circles dataset with points colored by class
 from sklearn.datasets import make_circles
 from numpy import where
@@ -133,7 +133,7 @@ pyplot.show()
 
 通常，我们会使用训练数据集准备数据缩放，并将其应用于测试数据集。为了在本教程中保持简单，我们将在将数据分割成训练集和测试集之前，将所有数据一起缩放。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_circles(n_samples=1000, noise=0.1, random_state=1)
 # scale input data to [-1,1]
@@ -145,7 +145,7 @@ X = scaler.fit_transform(X)
 
 一半的数据将用于训练，剩下的 500 个例子将用作测试集。在本教程中，测试集也将作为验证数据集，因此我们可以了解模型在训练期间如何在保持集上执行。
 
-```
+```py
 # split into train and test
 n_train = 500
 trainX, testX = X[:n_train, :], X[n_train:, :]
@@ -158,7 +158,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 在隐藏层中使用双曲正切激活函数是 20 世纪 90 年代和 2000 年代的最佳实践，当在隐藏层中使用时，其性能通常优于逻辑函数。将网络权重从均匀分布初始化为小的随机值也是一种好的做法。这里，我们将从范围[0.0，1.0]中随机初始化权重。
 
-```
+```py
 # define model
 model = Sequential()
 init = RandomUniform(minval=0, maxval=1)
@@ -168,7 +168,7 @@ model.add(Dense(1, activation='sigmoid', kernel_initializer=init))
 
 该模型使用二元交叉熵损失函数，并使用随机梯度下降进行优化，学习率为 0.01，大动量为 0.9。
 
-```
+```py
 # compile model
 opt = SGD(lr=0.01, momentum=0.9)
 model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
@@ -176,14 +176,14 @@ model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
 
 该模型针对 500 个训练时期进行训练，并且在每个时期结束时与训练数据集一起评估测试数据集。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=500, verbose=0)
 ```
 
 模型拟合后，在训练和测试数据集上对其进行评估，并显示准确度分数。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -192,7 +192,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 最后，模型在每一步训练中的准确性被绘制成线图，显示了模型在学习问题时的动态。
 
-```
+```py
 # plot training history
 pyplot.plot(history.history['accuracy'], label='train')
 pyplot.plot(history.history['val_accuracy'], label='test')
@@ -202,7 +202,7 @@ pyplot.show()
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # mlp for the two circles classification problem
 from sklearn.datasets import make_circles
 from sklearn.preprocessing import MinMaxScaler
@@ -247,7 +247,7 @@ pyplot.show()
 
 我们可以看到，在这种情况下，模型很好地学习了问题，在训练数据集和测试数据集上都达到了大约 81.6%的准确率。
 
-```
+```py
 Train: 0.816, Test: 0.816
 ```
 
@@ -271,7 +271,7 @@ MLP 在两个圆问题中训练和测试集精度在训练时期的线图
 
 隐藏层数可以从 1 层增加到 5 层；例如:
 
-```
+```py
 # define model
 init = RandomUniform(minval=0, maxval=1)
 model = Sequential()
@@ -287,7 +287,7 @@ model.add(Dense(1, activation='sigmoid', kernel_initializer=init))
 
 下面列出了更深的 MLP 的完整例子。
 
-```
+```py
 # deeper mlp for the two circles classification problem
 from sklearn.datasets import make_circles
 from sklearn.preprocessing import MinMaxScaler
@@ -335,7 +335,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到，在达到大约 50%准确率的训练集和测试集上，性能都很差。这表明所配置的模型不能了解问题，也不能概括解决方案。
 
-```
+```py
 Train: 0.530, Test: 0.468
 ```
 
@@ -353,7 +353,7 @@ Train: 0.530, Test: 0.468
 
 使用[整流线性激活函数(或简称 ReLU)](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)时，最好使用 he 权重初始化方案。我们可以使用 ReLU 和何初始化定义的五个隐藏层，如下所示。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(5, input_dim=2, activation='relu', kernel_initializer='he_uniform'))
@@ -366,7 +366,7 @@ model.add(Dense(1, activation='sigmoid'))
 
 将这些结合在一起，下面列出了完整的代码示例。
 
-```
+```py
 # deeper mlp with relu for the two circles classification problem
 from sklearn.datasets import make_circles
 from sklearn.preprocessing import MinMaxScaler
@@ -413,7 +413,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到，这一小小的改变已经允许模型学习问题，在两个数据集上实现了大约 84%的准确率，优于使用 tanh 激活函数的单层模型。
 
-```
+```py
 Train: 0.836, Test: 0.840
 ```
 
@@ -455,7 +455,7 @@ Keras 提供了 [TensorBoard 回调](https://keras.io/callbacks/#tensorboard)，
 
 我们可以配置这个回调来记录每层每训练时期的平均梯度，然后确保回调被用作训练模型的一部分。
 
-```
+```py
 # prepare callback
 tb = TensorBoard(histogram_freq=1, write_grads=True)
 # fit model
@@ -466,7 +466,7 @@ model.fit(trainX, trainy, validation_data=(testX, testy), epochs=500, verbose=0,
 
 首先，下面列出了使用 tanh 和 TensorBoard 回调的深度 MLP 模型的完整示例。
 
-```
+```py
 # deeper mlp for the two circles classification problem with callback
 from sklearn.datasets import make_circles
 from sklearn.preprocessing import MinMaxScaler
@@ -509,7 +509,7 @@ model.fit(trainX, trainy, validation_data=(testX, testy), epochs=500, verbose=0,
 
 下面是启动要在命令行(命令提示符)上执行的 TensorBoard 界面的命令。请务必更改日志目录的路径。
 
-```
+```py
 python -m tensorboard.main --logdir=/code/logs/
 ```
 
@@ -539,7 +539,7 @@ python -m tensorboard.main --logdir=/code/logs/
 
 下面列出了完整的示例。
 
-```
+```py
 # deeper mlp with relu for the two circles classification problem with callback
 from sklearn.datasets import make_circles
 from sklearn.preprocessing import MinMaxScaler

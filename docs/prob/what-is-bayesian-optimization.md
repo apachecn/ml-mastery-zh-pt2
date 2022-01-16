@@ -148,7 +148,7 @@
 
 下面的*目标()*函数实现了这一点。
 
-```
+```py
 # objective function
 def objective(x, noise=0.1):
 	noise = normal(loc=0, scale=noise)
@@ -157,7 +157,7 @@ def objective(x, noise=0.1):
 
 我们可以测试这个函数，首先定义一个基于网格的输入样本，从 0 到 1，在整个域中步长为 0.01。
 
-```
+```py
 ...
 # grid-based sample of the domain [0,1]
 X = arange(0, 1, 0.01)
@@ -165,7 +165,7 @@ X = arange(0, 1, 0.01)
 
 然后，我们可以在没有任何噪声的情况下使用目标函数评估这些样本，以了解真实的目标函数是什么样子的。
 
-```
+```py
 ...
 # sample the domain without noise
 y = [objective(x, 0) for x in X]
@@ -173,7 +173,7 @@ y = [objective(x, 0) for x in X]
 
 然后，我们可以用噪声评估这些相同的点，看看优化目标函数时它会是什么样子。
 
-```
+```py
 ...
 # sample the domain with noise
 ynoise = [objective(x) for x in X]
@@ -183,7 +183,7 @@ ynoise = [objective(x) for x in X]
 
 我们在实践中不会知道这一点，但是对于我们的测试问题，最好知道函数的真正最佳输入和输出，看看贝叶斯优化算法是否能找到它。
 
-```
+```py
 ...
 # find best result
 ix = argmax(y)
@@ -192,7 +192,7 @@ print('Optima: x=%.3f, y=%.3f' % (X[ix], y[ix]))
 
 最后，我们可以创建一个图，首先将有噪声的评估显示为散点图，x 轴为输入，y 轴为分数，然后是没有任何噪声的分数线图。
 
-```
+```py
 ...
 # plot the points with noise
 pyplot.scatter(X, ynoise)
@@ -204,7 +204,7 @@ pyplot.show()
 
 下面列出了查看我们希望优化的测试功能的完整示例。
 
-```
+```py
 # example of the test problem
 from math import sin
 from math import pi
@@ -237,7 +237,7 @@ pyplot.show()
 
 运行该示例首先报告全局 optima 作为输入，值为 0.9，得分为 0.81。
 
-```
+```py
 Optima: x=0.900, y=0.810
 ```
 
@@ -271,7 +271,7 @@ Optima: x=0.900, y=0.810
 
 默认情况下，使用一个能够很好工作的[径向基函数](https://en.wikipedia.org/wiki/Radial_basis_function)，或者径向基函数。
 
-```
+```py
 ...
 # define the model
 model = GaussianProcessRegressor()
@@ -281,7 +281,7 @@ model = GaussianProcessRegressor()
 
 通过对 *fit()* 的另一次调用，定义的模型可以在任何时候用连接到现有数据的更新数据再次拟合。
 
-```
+```py
 ...
 # fit the model
 model.fit(X, y)
@@ -291,7 +291,7 @@ model.fit(X, y)
 
 通过调用 *predict()* 函数来使用该模型。给定样本的结果将是该点分布的平均值。我们也可以通过指定参数 *return_std=True* 得到函数中该点的分布的标准差；例如:
 
-```
+```py
 ...
 yhat = model.predict(X, return_std=True)
 ```
@@ -300,7 +300,7 @@ yhat = model.predict(X, return_std=True)
 
 因此，在做预测时，我们可以沉默所有的警告。下面的*代理()*函数获取拟合模型和一个或多个样本，并返回估计成本的平均值和标准偏差，同时不打印任何警告。
 
-```
+```py
 # surrogate or approximation for the objective function
 def surrogate(model, X):
 	# catch any warning generated when making a prediction
@@ -320,7 +320,7 @@ def surrogate(model, X):
 
 给定真实噪声目标函数的随机数据样本和拟合模型，下面的*图()*函数创建该图。
 
-```
+```py
 # plot real observations vs surrogate function
 def plot(X, y, model):
 	# scatter plot of inputs and real objective function
@@ -336,7 +336,7 @@ def plot(X, y, model):
 
 将这些联系在一起，下面列出了在噪声样本上拟合高斯过程回归模型并绘制样本与替代函数的关系的完整示例。
 
-```
+```py
 # example of a gaussian process surrogate function
 from math import sin
 from math import pi
@@ -414,7 +414,7 @@ plot(X, y, model)
 
 这包括首先从域中抽取候选样本的随机样本，用获取函数对其进行评估，然后最大化获取函数或选择给出最佳分数的候选样本。下面的 *opt_acquisition()* 函数实现了这一点。
 
-```
+```py
 # optimize the acquisition function
 def opt_acquisition(X, y, model):
 	# random search, generate random samples
@@ -451,7 +451,7 @@ def opt_acquisition(X, y, model):
 
 下面的*采集()*函数在给定输入样本的当前训练数据集、一组新的候选样本和拟合 GP 模型的情况下实现了这一点。
 
-```
+```py
 # probability of improvement acquisition function
 def acquisition(X, Xsamples, model):
 	# calculate the best surrogate score found so far
@@ -471,7 +471,7 @@ def acquisition(X, Xsamples, model):
 
 主要算法包括选择候选样本、用目标函数评估它们、然后更新 GP 模型的循环。
 
-```
+```py
 ...
 # perform the optimization process
 for i in range(100):
@@ -491,7 +491,7 @@ for i in range(100):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of bayesian optimization for a 1d function from scratch
 from math import sin
 from math import pi
@@ -603,7 +603,7 @@ print('Best Result: x=%.3f, y=%.3f' % (X[ix], y[ix]))
 
 每个周期报告选定的输入值、代理函数的估计分数和实际分数。理想情况下，随着算法收敛到搜索空间的一个区域，这些分数会越来越接近。
 
-```
+```py
 ...
 >x=0.922, f()=0.661501, actual=0.682
 >x=0.895, f()=0.661668, actual=0.905
@@ -626,7 +626,7 @@ print('Best Result: x=%.3f, y=%.3f' % (X[ix], y[ix]))
 
 给定采样噪声，优化算法在这种情况下变得接近，建议输入为 0.905。
 
-```
+```py
 Best Result: x=0.905, y=1.150
 ```
 
@@ -646,7 +646,7 @@ Best Result: x=0.905, y=1.150
 
 首先，必须安装库，这可以使用 pip 轻松实现；例如:
 
-```
+```py
 sudo pip install scikit-optimize
 ```
 
@@ -658,7 +658,7 @@ sudo pip install scikit-optimize
 
 第一步是准备数据和定义模型。我们将通过 [make_blobs()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)使用一个简单的测试分类问题，有 500 个例子，每个例子有两个特征和三个类标签。然后我们将使用一个[kneighgborcsclassifier 算法](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)。
 
-```
+```py
 ...
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=500, centers=3, n_features=2)
@@ -670,7 +670,7 @@ model = KNeighborsClassifier()
 
 在这种情况下，我们将调整邻居的数量( *n_neighbors* )和邻居函数的形状( *p* )。这要求为给定的数据类型定义范围。在这种情况下，它们是整数，用最小、最大和 scikit-learn 模型的参数名称来定义。对于您的算法，您可以同样轻松地优化*真实()*和*分类()*数据类型。
 
-```
+```py
 ...
 # define the space of hyperparameters to search
 search_space = [Integer(1, 5, name='n_neighbors'), Integer(1, 2, name='p')]
@@ -686,7 +686,7 @@ search_space = [Integer(1, 5, name='n_neighbors'), Integer(1, 2, name='p')]
 
 这个函数是在我们加载数据集并定义模型之后定义的，这样数据集和模型都在范围内，可以直接使用。
 
-```
+```py
 # define the function used to evaluate a given configuration
 @use_named_args(search_space)
 def evaluate_model(**params):
@@ -705,7 +705,7 @@ def evaluate_model(**params):
 
 默认情况下，该函数将使用“ *gp_hedge* ”获取函数来尝试找出最佳策略，但这可以通过 *acq_func* 参数进行配置。默认情况下，优化也将运行 100 次迭代，但是这可以通过 *n_calls* 参数来控制。
 
-```
+```py
 ...
 # perform optimization
 result = gp_minimize(evaluate_model, search_space)
@@ -713,7 +713,7 @@ result = gp_minimize(evaluate_model, search_space)
 
 一旦运行，我们就可以通过“有趣”属性获得最佳分数，并通过“ *x* ”数组属性获得最佳超参数集。
 
-```
+```py
 ...
 # summarizing finding:
 print('Best Accuracy: %.3f' % (1.0 - result.fun))
@@ -722,7 +722,7 @@ print('Best Parameters: n_neighbors=%d, p=%d' % (result.x[0], result.x[1]))
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # example of bayesian optimization with scikit-optimize
 from numpy import mean
 from sklearn.datasets import make_blobs
@@ -761,7 +761,7 @@ print('Best Parameters: n_neighbors=%d, p=%d' % (result.x[0], result.x[1]))
 
 该代码可能会报告许多警告消息，例如:
 
-```
+```py
 UserWarning: The objective has been evaluated at this point before.
 ```
 
@@ -771,7 +771,7 @@ UserWarning: The objective has been evaluated at this point before.
 
 在这种情况下，该模型通过与 3 个邻居和 p 值为 2 的平均 5 倍交叉验证获得了约 97%的准确性。
 
-```
+```py
 Best Accuracy: 0.976
 Best Parameters: n_neighbors=3, p=2
 ```

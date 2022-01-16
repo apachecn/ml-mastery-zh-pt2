@@ -87,7 +87,7 @@ Let’s get started.![Differential Evolution Global Optimization With Python](im
 
 该函数将目标函数的名称和每个输入变量的边界作为搜索的最小参数。
 
-```
+```py
 ...
 # perform the differential evolution search
 result = differential_evolution(objective, bounds)
@@ -123,7 +123,7 @@ result = differential_evolution(objective, bounds)
 
 下面的示例实现了 Ackley，并创建了一个显示全局最优值和多个局部最优值的三维曲面图。
 
-```
+```py
 # ackley multimodal function
 from numpy import arange
 from numpy import exp
@@ -166,7 +166,7 @@ pyplot.show()
 
 首先，我们可以将搜索空间的边界定义为函数在每个维度上的极限。
 
-```
+```py
 ...
 # define the bounds on the search
 bounds = [[r_min, r_max], [r_min, r_max]]
@@ -174,7 +174,7 @@ bounds = [[r_min, r_max], [r_min, r_max]]
 
 然后，我们可以通过指定目标函数的名称和搜索范围来应用搜索。在这种情况下，我们将使用默认的超参数。
 
-```
+```py
 ...
 # perform the differential evolution search
 result = differential_evolution(objective, bounds)
@@ -182,7 +182,7 @@ result = differential_evolution(objective, bounds)
 
 搜索完成后，它将报告搜索状态和执行的迭代次数，以及通过评估找到的最佳结果。
 
-```
+```py
 ...
 # summarize the result
 print('Status : %s' % result['message'])
@@ -195,7 +195,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 将这些联系在一起，下面列出了将差分进化应用于阿克利目标函数的完整示例。
 
-```
+```py
 # differential evolution global optimization for the ackley multimodal objective function
 from scipy.optimize import differential_evolution
 from numpy.random import rand
@@ -233,7 +233,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 我们可以看到总共进行了 3063 次功能评估。
 
-```
+```py
 Status: Optimization terminated successfully.
 Total Evaluations: 3063
 Solution: f([0\. 0.]) = 0.00000

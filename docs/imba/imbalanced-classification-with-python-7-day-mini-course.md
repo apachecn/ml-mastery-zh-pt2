@@ -113,7 +113,7 @@
 
 [make _ classification()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)sci kit-learn 函数可用于定义具有所需类别不平衡的合成数据集。“*权重*参数指定了负类中示例的比例，例如[0.99，0.01]表示 99%的示例属于多数类，其余 1%属于少数类。
 
-```
+```py
 ...
 # define dataset
 X, y = make_classification(n_samples=1000, n_features=2, n_redundant=0, n_clusters_per_class=1, weights=[0.99], flip_y=0)
@@ -121,7 +121,7 @@ X, y = make_classification(n_samples=1000, n_features=2, n_redundant=0, n_cluste
 
 一旦定义，我们就可以使用 [Counter](https://docs.python.org/3/library/collections.html#collections.Counter) 对象来总结类分布，以了解每个类到底有多少个示例。
 
-```
+```py
 ...
 # summarize class distribution
 counter = Counter(y)
@@ -132,7 +132,7 @@ print(counter)
 
 下面列出了创建和总结不平衡分类数据集的完整示例。
 
-```
+```py
 # plot imbalanced classification problem
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -187,7 +187,7 @@ pyplot.show()
 
 以下示例将逻辑回归模型应用于不平衡分类问题，并计算精度，然后可以将其与[精度](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)、[召回](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)和 [F-measure](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html) 进行比较。
 
-```
+```py
 # evaluate imbalanced classification model with different metrics
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -233,7 +233,7 @@ print('F-measure: %.3f' % f1_score(testy, yhat))
 
 [不平衡学习库](https://imbalanced-learn.org)提供了许多欠采样算法的例子。可以使用 pip 轻松安装此库；例如:
 
-```
+```py
 pip install imbalanced-learn
 ```
 
@@ -241,7 +241,7 @@ pip install imbalanced-learn
 
 下面的例子创建了一个合成的不平衡分类数据，然后使用[随机欠采样](https://imbalanced-learn.org/stable/generated/imblearn.under_sampling.RandomUnderSampler.html)类将类分布从 1:100 的少数类更改为多数类，再更改为不太严重的 1:2。
 
-```
+```py
 # example of undersampling the majority class
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -280,7 +280,7 @@ print(Counter(y_under))
 
 下面的例子演示了在合成数据集上使用不平衡学习库提供的 [SMOTE](https://imbalanced-learn.org/stable/generated/imblearn.over_sampling.SMOTE.html) 类。初始类别分布为 1:100，少数类别被过采样为 1:2 分布。
 
-```
+```py
 # example of oversampling the minority class
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -323,7 +323,7 @@ print(Counter(y_over))
 
 下面的例子演示了如何使用 [SMOTEENN](https://imbalanced-learn.org/stable/generated/imblearn.combine.SMOTEENN.html) ，它结合了少数类的 SMOTE 过采样和多数类的编辑最近邻欠采样。
 
-```
+```py
 # example of both undersampling and oversampling
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -366,7 +366,7 @@ scikit-learn 库通过定义模型时指定的 *class_weight* 属性为一系列
 
 下面的示例演示了如何在不平衡的分类数据集上定义和拟合成本敏感的逻辑回归模型。
 
-```
+```py
 # example of cost sensitive logistic regression for imbalanced classification
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split

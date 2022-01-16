@@ -59,7 +59,7 @@
 
 我们可以使用该模型进行预测，方法是使用自动使用最终模型的训练拟合调用预测。我们必须通过 *newdata* 参数指定要进行预测的数据。
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -84,7 +84,7 @@ confusionMatrix(predictions, validation$diabetes)
 
 运行该示例，我们可以看到训练数据集上的估计精度为 76.91%。在拟合中使用 finalModel，我们可以看到搁置验证数据集的准确率为 77.78%，与我们的估计非常相似。
 
-```
+```py
 Resampling results
 
   Accuracy   Kappa    Accuracy SD  Kappa SD 
@@ -127,7 +127,7 @@ Prediction neg pos
 
 该示例直接创建一个新模型，并使用它对新数据进行预测，这种情况下模拟为验证数据集。
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -155,7 +155,7 @@ confusionMatrix(final_predictions, validation$Class)
 
 我们可以看到，最优配置的估计精度为 85.07%。我们可以看到，在所有训练数据集上训练的最终独立模型和对验证数据集的预测的准确率为 82.93%。
 
-```
+```py
 Random Forest 
 
 167 samples
@@ -228,7 +228,7 @@ Prediction  M  R
 
 模型是序列化的。可以在以后通过调用 readRDS()并将加载的对象(在本例中是随机的林拟合)分配给变量名来加载它。然后，加载的随机森林用于对新数据进行预测，在本例中是验证数据集。
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -260,7 +260,7 @@ confusionMatrix(final_predictions, validation$Class)
 
 我们可以看到验证数据集的准确率为 82.93%。
 
-```
+```py
 Confusion Matrix and Statistics
 
           Reference

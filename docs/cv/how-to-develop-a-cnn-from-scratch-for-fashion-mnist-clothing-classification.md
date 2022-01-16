@@ -59,7 +59,7 @@
 
 以下示例使用 Keras API 加载时尚 MNIST 数据集，并创建训练数据集中前九幅图像的图。
 
-```
+```py
 # example of loading the fashion mnist dataset
 from matplotlib import pyplot
 from keras.datasets import fashion_mnist
@@ -82,7 +82,7 @@ pyplot.show()
 
 我们可以看到训练数据集中有 6 万个例子，测试数据集中有 1 万个例子，图像确实是 28×28 像素的正方形。
 
-```
+```py
 Train: X=(60000, 28, 28), y=(60000,)
 Test: X=(10000, 28, 28), y=(10000,)
 ```
@@ -107,7 +107,7 @@ Test: X=(10000, 28, 28), y=(10000,)
 
 Keras API 通过在训练模型时为 *model.fit()* 函数指定“ *validation_data* ”参数来支持这一点，该函数将返回一个对象，该对象描述所选损失的模型性能和每个训练时期的度量。
 
-```
+```py
 # record model performance on a validation dataset during training
 history = model.fit(..., validation_data=(valX, valY))
 ```
@@ -116,7 +116,7 @@ history = model.fit(..., validation_data=(valX, valY))
 
 我们可以使用 scikit-learn API 中的 [KFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html) 类来实现给定神经网络模型的 k 重交叉验证评估。有许多方法可以实现这一点，尽管我们可以选择一种灵活的方法，其中 KFold 仅用于指定用于每个拆分的行索引。
 
-```
+```py
 # example of k-fold cv for a neural net
 data = ...
 # prepare cross validation
@@ -145,7 +145,7 @@ for train_ix, test_ix in kfold.split(data):
 
 例如，我们知道图像都是预分割的(例如，每个图像包含一件衣服)，图像都具有相同的 28×28 像素的正方形大小，并且图像是灰度的。因此，我们可以加载图像并重塑数据阵列，使其具有单一颜色通道。
 
-```
+```py
 # load dataset
 (trainX, trainY), (testX, testY) = fashion_mnist.load_data()
 # reshape dataset to have a single channel
@@ -157,7 +157,7 @@ testX = testX.reshape((testX.shape[0], 28, 28, 1))
 
 因此，我们可以对每个样本的类元素使用[一热编码](https://machinelearningmastery.com/why-one-hot-encode-data-in-machine-learning/)，将整数转换为 10 元素二进制向量，类值的索引为 1。我们可以通过*to _ classic()*效用函数来实现。
 
-```
+```py
 # one hot encode target values
 trainY = to_categorical(trainY)
 testY = to_categorical(testY)
@@ -165,7 +165,7 @@ testY = to_categorical(testY)
 
 *load_dataset()* 函数实现了这些行为，可以用来加载数据集。
 
-```
+```py
 # load train and test dataset
 def load_dataset():
 	# load dataset
@@ -187,7 +187,7 @@ def load_dataset():
 
 一个好的起点是归一化灰度图像的像素值，例如将它们重新缩放到范围[0，1]。这包括首先将数据类型从无符号整数转换为浮点数，然后将像素值除以最大值。
 
-```
+```py
 # convert from integers to floats
 train_norm = train.astype('float32')
 test_norm = test.astype('float32')
@@ -198,7 +198,7 @@ test_norm = test_norm / 255.0
 
 下面的 *prep_pixels()* 函数实现了这些行为，并提供了需要缩放的训练和测试数据集的像素值。
 
-```
+```py
 # scale pixels
 def prep_pixels(train, test):
 	# convert from integers to floats
@@ -229,7 +229,7 @@ def prep_pixels(train, test):
 
 下面的 *define_model()* 函数将定义并返回这个模型。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -256,7 +256,7 @@ def define_model():
 
 下面的 *evaluate_model()* 函数实现了这些行为，将训练数据集作为参数，并返回一个准确性分数和训练历史的列表，稍后可以对其进行总结。
 
-```
+```py
 # evaluate a model using k-fold cross-validation
 def evaluate_model(dataX, dataY, n_folds=5):
 	scores, histories = list(), list()
@@ -289,7 +289,7 @@ def evaluate_model(dataX, dataY, n_folds=5):
 
 我们将创建一个有两个支线剧情的单一人物，一个是损失，一个是准确性。蓝色线将指示训练数据集上的模型性能，橙色线将指示等待测试数据集上的性能。下面的*summary _ diagnostics()*函数在给定收集的训练历史的情况下创建并显示该图。
 
-```
+```py
 # plot diagnostic learning curves
 def summarize_diagnostics(histories):
 	for i in range(len(histories)):
@@ -310,7 +310,7 @@ def summarize_diagnostics(histories):
 
 下面的*summary _ performance()*函数为模型评估期间收集的给定分数列表实现了这一点。
 
-```
+```py
 # summarize model performance
 def summarize_performance(scores):
 	# print summary
@@ -326,7 +326,7 @@ def summarize_performance(scores):
 
 这包括调用所有的定义函数。
 
-```
+```py
 # run the test harness for evaluating a model
 def run_test_harness():
 	# load dataset
@@ -343,7 +343,7 @@ def run_test_harness():
 
 我们现在拥有我们需要的一切；下面列出了 MNIST 数据集上基线卷积神经网络模型的完整代码示例。
 
-```
+```py
 # baseline cnn model for fashion mnist
 from numpy import mean
 from numpy import std
@@ -461,7 +461,7 @@ run_test_harness()
 
 我们可以看到，对于每个折叠，基线模型实现了低于 10%的错误率，并且在两种情况下实现了 98%和 99%的准确性。这些都是好结果。
 
-```
+```py
 > 91.200
 > 91.217
 > 90.958
@@ -479,7 +479,7 @@ run_test_harness()
 
 接下来，计算模型性能的总结。我们可以看到，在这种情况下，模型的估计技能约为 96%，这令人印象深刻。
 
-```
+```py
 Accuracy: mean=91.187 std=0.121, n=5
 ```
 
@@ -505,14 +505,14 @@ Accuracy: mean=91.187 std=0.121, n=5
 
 默认情况下，卷积运算使用“*有效的*”填充，这意味着卷积仅在可能的情况下应用。这可以更改为“*相同的*”填充，以便在输入周围添加零值，从而使输出具有与输入相同的大小。
 
-```
+```py
 ...
 model.add(Conv2D(32, (3, 3), padding='same', activation='relu', kernel_initializer='he_uniform', input_shape=(28, 28, 1)))
 ```
 
 为了完整起见，下面提供了完整的代码列表，包括对填充的更改。
 
-```
+```py
 # model with padded convolutions for the fashion mnist dataset
 from numpy import mean
 from numpy import std
@@ -630,7 +630,7 @@ run_test_harness()
 
 与跨交叉验证折叠的基线相比，我们可以看到模型性能可能有一点改进。
 
-```
+```py
 > 90.875
 > 91.442
 > 91.242
@@ -648,7 +648,7 @@ run_test_harness()
 
 这可能是也可能不是真正的影响，因为它在标准偏差的范围内。也许更多的重复实验可以梳理出这个事实。
 
-```
+```py
 Accuracy: mean=91.257 std=0.209, n=5
 ```
 
@@ -664,14 +664,14 @@ Accuracy: mean=91.257 std=0.209, n=5
 
 在这个变化中，我们可以将卷积层的滤波器数量从 32 个增加到 64 个的两倍。我们还将通过使用“*”相同的“*”填充来建立可能的改进。
 
-```
+```py
 ...
 model.add(Conv2D(64, (3, 3), padding='same', activation='relu', kernel_initializer='he_uniform', input_shape=(28, 28, 1)))
 ```
 
 为了完整起见，下面提供了完整的代码列表，包括对填充的更改。
 
-```
+```py
 # model with double the filters for the fashion mnist dataset
 from numpy import mean
 from numpy import std
@@ -789,7 +789,7 @@ run_test_harness()
 
 每倍分数可能表明比基线和单独使用相同的填充有一些进一步的改进。
 
-```
+```py
 > 90.917
 > 90.908
 > 90.175
@@ -807,7 +807,7 @@ run_test_harness()
 
 同样，变化仍然在标准差的范围内，不清楚效果是否真实。
 
-```
+```py
 Accuracy: mean=90.913 std=0.412, n=5
 ```
 
@@ -825,14 +825,14 @@ Accuracy: mean=90.913 std=0.412, n=5
 
 在本教程中，我们有意保留一个测试数据集，以便我们可以估计最终模型的性能，这在实践中可能是一个好主意。因此，我们将只在训练数据集上拟合我们的模型。
 
-```
+```py
 # fit model
 model.fit(trainX, trainY, epochs=10, batch_size=32, verbose=0)
 ```
 
 一旦合适，我们可以通过调用模型上的 *save()* 函数将最终模型保存到一个 h5 文件中，并传入选择的文件名。
 
-```
+```py
 # save model
 model.save('final_model.h5')
 ```
@@ -841,7 +841,7 @@ model.save('final_model.h5')
 
 下面列出了在训练数据集上拟合最终模型并将其保存到文件中的完整示例。
 
-```
+```py
 # save the final model to file
 from keras.datasets import fashion_mnist
 from keras.utils import to_categorical
@@ -917,7 +917,7 @@ run_test_harness()
 
 下面列出了加载保存的模型并在测试数据集上对其进行评估的完整示例。
 
-```
+```py
 # evaluate the deep model on the test dataset
 from keras.datasets import fashion_mnist
 from keras.models import load_model
@@ -970,7 +970,7 @@ run_test_harness()
 
 在这种情况下，我们可以看到模型达到了 90.990%的准确率，或者说仅仅是不到 10%的分类误差，这还不错。
 
-```
+```py
 > 90.990
 ```
 
@@ -994,7 +994,7 @@ run_test_harness()
 
 重要的是，像素值的准备方式与在拟合最终模型时为训练数据集准备像素值的方式相同，在这种情况下，最终模型是归一化的。
 
-```
+```py
 # load and prepare the image
 def load_image(filename):
 	# load the image
@@ -1011,14 +1011,14 @@ def load_image(filename):
 
 接下来，我们可以像上一节一样加载模型，并调用*predict _ class()*函数来预测图像中的服装。
 
-```
+```py
 # predict the class
 result = model.predict_classes(img)
 ```
 
 下面列出了完整的示例。
 
-```
+```py
 # make a prediction for a new image.
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -1053,7 +1053,7 @@ run_example()
 
 运行该示例首先加载和准备图像，加载模型，然后正确预测加载的图像代表套头衫或“2”类。
 
-```
+```py
 2
 ```
 

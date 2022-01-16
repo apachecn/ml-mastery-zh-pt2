@@ -117,7 +117,7 @@ scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/mo
 
 该问题将配置两个输入变量(代表点的 *x* 和 *y* 坐标)和每组内点的标准偏差 2.0。我们将使用相同的随机状态(伪随机数发生器的种子)来确保我们总是获得相同的数据点。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random_state=2)
 ```
@@ -128,7 +128,7 @@ X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random
 
 下面列出了完整的示例。
 
-```
+```py
 # scatter plot of blobs dataset
 from sklearn.datasets import make_blobs
 from matplotlib import pyplot
@@ -161,7 +161,7 @@ pyplot.show()
 
 作为第一步，我们可以开发一个函数，从问题中创建 1000 个样本，并将它们平均分成训练和测试数据集。下面的 *prepare_data()* 函数实现了这一点，并根据输入和输出组件返回训练和测试集。
 
-```
+```py
 # prepare the dataset
 def prepare_data():
 	# generate 2d classification dataset
@@ -177,7 +177,7 @@ def prepare_data():
 
 我们可以调用这个函数来准备数据。
 
-```
+```py
 # prepare data
 trainX, testX, trainy, testy = prepare_data()
 ```
@@ -186,7 +186,7 @@ trainX, testX, trainy, testy = prepare_data()
 
 这将是一个 MLP，期望数据集中的两个输入变量有两个输入，并且有一个包含 10 个节点的隐藏层，并使用校正的线性激活函数。输出层有三个节点，以便预测三个类别中每个类别的概率，并使用 softmax 激活函数。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(10, input_dim=2, activation='relu', kernel_initializer='he_uniform'))
@@ -195,7 +195,7 @@ model.add(Dense(3, activation='softmax'))
 
 该模型使用随机梯度下降进行拟合，合理默认学习率为 0.01，高动量值为 0.9。利用交叉熵损失对模型进行优化。
 
-```
+```py
 # compile model
 opt = SGD(lr=0.01, momentum=0.9)
 model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
@@ -203,14 +203,14 @@ model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy
 
 然后，该模型适用于 100 个时期的训练数据集，默认批次大小为 32 个示例。
 
-```
+```py
 # fit model
 model.fit(trainX, trainy, epochs=100, verbose=0)
 ```
 
 下面的 *get_base_model()* 函数将这些元素联系在一起，将训练数据集作为参数并返回拟合基线模型。
 
-```
+```py
 # define and fit the base model
 def get_base_model(trainX, trainy):
 	# define model
@@ -227,7 +227,7 @@ def get_base_model(trainX, trainy):
 
 我们可以调用这个函数来准备基础模型，之后我们可以一次向其中添加一个层。
 
-```
+```py
 # get the base model
 model = get_base_model(trainX, trainy)
 ```
@@ -236,7 +236,7 @@ model = get_base_model(trainX, trainy)
 
 下面的 *evaluate_model()* 函数将训练集和测试集作为参数和模型，并返回两个数据集的精度。
 
-```
+```py
 # evaluate a fit model
 def evaluate_model(model, trainX, testX, trainy, testy):
 	_, train_acc = model.evaluate(trainX, trainy, verbose=0)
@@ -246,7 +246,7 @@ def evaluate_model(model, trainX, testX, trainy, testy):
 
 我们可以调用这个函数来计算和报告基础模型的准确性，并将分数与模型中的层数(目前是两层，一个隐藏层和一个输出层)存储在字典中，这样我们以后就可以绘制层和准确性之间的关系。
 
-```
+```py
 # evaluate the base model
 scores = dict()
 train_acc, test_acc = evaluate_model(model, trainX, testX, trainy, testy)
@@ -259,21 +259,21 @@ print('> layers=%d, train=%.3f, test=%.3f' % (len(model.layers), train_acc, test
 
 这需要首先存储当前输出层，包括其配置和当前权重集。
 
-```
+```py
 # remember the current output layer
 output_layer = model.layers[-1]
 ```
 
 然后从模型的层堆栈中移除输出层。
 
-```
+```py
 # remove the output layer
 model.pop()
 ```
 
 然后，模型中的所有剩余层都可以标记为不可训练，这意味着当再次调用 *fit()* 函数时，它们的权重不能更新。
 
-```
+```py
 # mark all remaining layers as non-trainable
 for layer in model.layers:
 	layer.trainable = False
@@ -281,14 +281,14 @@ for layer in model.layers:
 
 然后，我们可以添加一个新的隐藏层，在这种情况下，其配置与基础模型中添加的第一个隐藏层相同。
 
-```
+```py
 # add a new hidden layer
 model.add(Dense(10, activation='relu', kernel_initializer='he_uniform'))
 ```
 
 最后，可以将输出图层添加回来，并在训练数据集上重新调整模型。
 
-```
+```py
 # re-add the output layer
 model.add(output_layer)
 # fit model
@@ -297,7 +297,7 @@ model.fit(trainX, trainy, epochs=100, verbose=0)
 
 我们可以将所有这些元素绑定到一个名为 *add_layer()* 的函数中，该函数将模型和训练数据集作为参数。
 
-```
+```py
 # add one new layer and re-train only the new layer
 def add_layer(model, trainX, trainy):
 	# remember the current output layer
@@ -321,7 +321,7 @@ def add_layer(model, trainX, trainy):
 
 训练和测试准确度分数根据模型中的层数存储在字典中。
 
-```
+```py
 # add layers and evaluate the updated model
 n_layers = 10
 for i in range(n_layers):
@@ -338,7 +338,7 @@ for i in range(n_layers):
 
 我们希望增加层可以提高模型在训练数据集上甚至测试数据集上的性能。
 
-```
+```py
 # plot number of added layers vs accuracy
 pyplot.plot(list(scores.keys()), [scores[k][0] for k in scores.keys()], label='train', marker='.')
 pyplot.plot(list(scores.keys()), [scores[k][1] for k in scores.keys()], label='test', marker='.')
@@ -348,7 +348,7 @@ pyplot.show()
 
 将所有这些元素结合在一起，下面列出了完整的示例。
 
-```
+```py
 # supervised greedy layer-wise pretraining for blobs classification problem
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -436,7 +436,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到基线模型在这个问题上做得相当好。随着图层的增加，我们可以大致看到模型在训练数据集上的准确性有所提高，这可能是因为它开始过度填充数据。我们在测试数据集上看到分类精度的粗略下降，可能是因为过度拟合。
 
-```
+```py
 > layers=2, train=0.816, test=0.830
 > layers=3, train=0.834, test=0.830
 > layers=4, train=0.836, test=0.824
@@ -472,7 +472,7 @@ pyplot.show()
 
 下面的 *base_autoencoder()* 函数实现了这一点，以训练集和测试集为自变量，然后定义、拟合和评估基本无监督自动编码器模型，在训练集和测试集上打印重构误差并返回模型。
 
-```
+```py
 # define, fit and evaluate the base autoencoder
 def base_autoencoder(trainX, testX):
 	# define model
@@ -492,7 +492,7 @@ def base_autoencoder(trainX, testX):
 
 我们可以调用这个函数来准备我们的基本自动编码器，我们可以添加并贪婪地训练层。
 
-```
+```py
 # get the base autoencoder
 model = base_autoencoder(trainX, testX)
 ```
@@ -503,7 +503,7 @@ model = base_autoencoder(trainX, testX)
 
 第一步是引用，然后移除自动编码器模型的输出层。
 
-```
+```py
 # remember the current output layer
 output_layer = model.layers[-1]
 # remove the output layer
@@ -512,7 +512,7 @@ model.pop()
 
 自动编码器中所有剩余的隐藏层必须标记为不可训练，以便在我们训练新的输出层时权重不会改变。
 
-```
+```py
 # mark all remaining layers as non-trainable
 for layer in model.layers:
 layer.trainable = False
@@ -520,7 +520,7 @@ layer.trainable = False
 
 我们现在可以添加一个新的输出层，它预测一个示例属于三个类的可能性。还必须使用适用于多类分类的新损失函数重新编译模型。
 
-```
+```py
 # add new output layer
 model.add(Dense(3, activation='softmax'))
 # compile model
@@ -531,7 +531,7 @@ model.compile(loss='categorical_crossentropy', optimizer=SGD(lr=0.01, momentum=0
 
 然后可以在训练和测试数据集上评估拟合模型的分类精度。
 
-```
+```py
 # fit model
 model.fit(trainX, trainy, epochs=100, verbose=0)
 # evaluate model
@@ -541,7 +541,7 @@ _, test_acc = model.evaluate(testX, testy, verbose=0)
 
 最后，我们可以将自动编码器放回一起，但移除分类输出层，将原始自动编码器输出层添加回来，并使用适当的损失函数重新编译模型以进行重建。
 
-```
+```py
 # put the model back together
 model.pop()
 model.add(output_layer)
@@ -550,7 +550,7 @@ model.compile(loss='mse', optimizer=SGD(lr=0.01, momentum=0.9))
 
 我们可以将它绑定到一个*evaluate _ auto encoder _ as _ classifier()*函数中，该函数获取模型以及训练集和测试集，然后返回训练集和测试集的分类精度。
 
-```
+```py
 # evaluate the autoencoder as a classifier
 def evaluate_autoencoder_as_classifier(model, trainX, trainy, testX, testy):
 	# remember the current output layer
@@ -578,7 +578,7 @@ def evaluate_autoencoder_as_classifier(model, trainX, trainy, testX, testy):
 
 可以调用该函数来评估基线自动编码器模型，然后根据模型中的层数(在本例中为两层)将精度分数存储在字典中。
 
-```
+```py
 # evaluate the base model
 scores = dict()
 train_acc, test_acc = evaluate_autoencoder_as_classifier(model, trainX, trainy, testX, testy)
@@ -592,7 +592,7 @@ scores[len(model.layers)] = (train_acc, test_acc)
 
 下面的*add _ layer _ to _ autoencoder()*函数向 auto encoder 模型中添加一个新的隐藏层，更新新层和隐藏层的权重，然后报告列车上的重建错误并测试输入数据的集合。该函数确实将所有先前的层重新标记为不可训练的，这是多余的，因为我们已经在*evaluate _ auto encoder _ as _ classifier()*函数中这样做了，但我将其留在了中，以防您决定在自己的项目中重用该函数。
 
-```
+```py
 # add one new layer and re-train only the new layer
 def add_layer_to_autoencoder(model, trainX, testX):
 	# remember the current output layer
@@ -616,7 +616,7 @@ def add_layer_to_autoencoder(model, trainX, testX):
 
 我们现在可以重复调用这个函数，添加层，并通过使用自动编码器作为评估新分类器的基础来评估效果。
 
-```
+```py
 # add layers and evaluate the updated model
 n_layers = 5
 for _ in range(n_layers):
@@ -631,7 +631,7 @@ for _ in range(n_layers):
 
 像以前一样，收集所有的准确性分数，我们可以使用它们来创建模型层数与训练和测试集准确性的折线图。
 
-```
+```py
 # plot number of added layers vs accuracy
 keys = list(scores.keys())
 pyplot.plot(keys, [scores[k][0] for k in keys], label='train', marker='.')
@@ -642,7 +642,7 @@ pyplot.show()
 
 将所有这些结合在一起，下面列出了针对斑点多类分类问题的无监督贪婪分层预处理的完整示例。
 
-```
+```py
 # unsupervised greedy layer-wise pretraining for blobs classification problem
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -756,7 +756,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到重建误差从低开始，实际上接近完美，然后在训练过程中慢慢增加。随着层被添加到编码器中，训练数据集上的精度似乎会降低，尽管精度测试似乎会随着层的添加而提高，至少在模型有五层之前是这样，之后性能似乎会崩溃。
 
-```
+```py
 > reconstruction error train=0.000, test=0.000
 > classifier accuracy layers=2, train=0.830, test=0.832
 > reconstruction error train=0.001, test=0.002

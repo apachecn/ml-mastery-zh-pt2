@@ -85,7 +85,7 @@ R 中的插入符号包提供了许多有用的数据转换。
 
 比例变换计算属性的标准偏差，并将每个值除以该标准偏差。
 
-```
+```py
 # load libraries
 library(caret)
 # load the dataset
@@ -104,7 +104,7 @@ summary(transformed)
 
 运行配方，您将看到:
 
-```
+```py
   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
@@ -132,7 +132,7 @@ Pre-processing:
 
 中心变换计算属性的平均值，并从每个值中减去它。
 
-```
+```py
 # load libraries
 library(caret)
 # load the dataset
@@ -151,7 +151,7 @@ summary(transformed)
 
 运行配方，您将看到:
 
-```
+```py
   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
@@ -179,7 +179,7 @@ Pre-processing:
 
 将规模和中心转换结合起来将使您的数据标准化。属性的平均值为 0，标准偏差为 1。
 
-```
+```py
 # load libraries
 library(caret)
 # load the dataset
@@ -198,7 +198,7 @@ summary(transformed)
 
 请注意，当在脱字符号中定义 PRofile 过程时，我们如何在列表中列出多个方法。运行配方，您将看到:
 
-```
+```py
   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
@@ -227,7 +227,7 @@ Pre-processing:
 
 数据值可以缩放到[0，1]的范围内，这称为规范化。
 
-```
+```py
 # load libraries
 library(caret)
 # load the dataset
@@ -246,7 +246,7 @@ summary(transformed)
 
 运行配方，您将看到:
 
-```
+```py
   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
@@ -274,7 +274,7 @@ Pre-processing:
 
 当一个属性具有类似高斯的分布但被移动时，这被称为偏斜。属性的分布可以移动，以减少偏斜，使其更具高斯性。BoxCox 转换可以执行此操作(假设所有值都是正数)。
 
-```
+```py
 # load libraries
 library(mlbench)
 library(caret)
@@ -294,7 +294,7 @@ summary(transformed)
 
 注意，我们只对两个看起来有倾斜的属性应用了转换。运行配方，您将看到:
 
-```
+```py
     pedigree           age       
  Min.   :0.0780   Min.   :21.00  
  1st Qu.:0.2437   1st Qu.:24.00  
@@ -327,7 +327,7 @@ Lambda estimates for Box-Cox transformation:
 
 另一种幂变换，如 Box-Cox 变换，但它支持等于零和负值的原始值。
 
-```
+```py
 # load libraries
 library(mlbench)
 library(caret)
@@ -347,7 +347,7 @@ summary(transformed)
 
 运行配方，您将看到:
 
-```
+```py
     pedigree           age       
  Min.   :0.0780   Min.   :21.00  
  1st Qu.:0.2437   1st Qu.:24.00  
@@ -378,7 +378,7 @@ Lambda estimates for Yeo-Johnson transformation:
 
 将数据转换成主成分。变换使分量保持在方差阈值以上(默认值=0.95)，或者可以指定分量的数量(pcaComp)。结果是属性是不相关的，对于像线性和广义线性回归这样的算法很有用。
 
-```
+```py
 # load the libraries
 library(mlbench)
 # load the dataset
@@ -397,7 +397,7 @@ summary(transformed)
 
 请注意，当我们运行配方时，只选择了两个主要成分。
 
-```
+```py
   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width          Species  
  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100   setosa    :50  
  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300   versicolor:50  
@@ -428,7 +428,7 @@ PCA needed 2 components to capture 95 percent of the variance
 
 将数据转换为独立的组件。与主成分分析不同，独立成分分析保留了那些独立的成分。您必须使用 *n.comp* 参数指定所需独立组件的数量。对朴素贝叶斯等算法有用。
 
-```
+```py
 # load libraries
 library(mlbench)
 library(caret)
@@ -448,7 +448,7 @@ summary(transformed)
 
 运行配方，您将看到:
 
-```
+```py
     pregnant         glucose         pressure         triceps         insulin           mass          pedigree     
  Min.   : 0.000   Min.   :  0.0   Min.   :  0.00   Min.   : 0.00   Min.   :  0.0   Min.   : 0.00   Min.   :0.0780  
  1st Qu.: 1.000   1st Qu.: 99.0   1st Qu.: 62.00   1st Qu.: 0.00   1st Qu.:  0.0   1st Qu.:27.30   1st Qu.:0.2437  

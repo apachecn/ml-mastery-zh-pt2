@@ -87,7 +87,7 @@
 
 文件的前几行应该如下所示:
 
-```
+```py
 0.23001961,5.0725783,-0.27606055,0.83244412,-0.37786573,0.4803223,'-1'
 0.15549112,-0.16939038,0.67065219,-0.85955255,-0.37786573,-0.94572324,'-1'
 -0.78441482,-0.44365372,5.6747053,-0.85955255,-0.37786573,-0.94572324,'-1'
@@ -102,7 +102,7 @@
 
 可以使用 [read_csv()熊猫函数](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)将数据集加载为数据帧，指定位置和没有标题行的事实。
 
-```
+```py
 ...
 # define the dataset location
 filename = 'mammography.csv'
@@ -112,7 +112,7 @@ dataframe = read_csv(filename, header=None)
 
 加载后，我们可以通过打印[数据框](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)的形状来总结行数和列数。
 
-```
+```py
 ...
 # summarize the shape of the dataset
 print(dataframe.shape)
@@ -120,7 +120,7 @@ print(dataframe.shape)
 
 我们还可以使用 [Counter](https://docs.python.org/3/library/collections.html#collections.Counter) 对象总结每个类中的示例数量。
 
-```
+```py
 ...
 # summarize the class distribution
 target = dataframe.values[:,-1]
@@ -132,7 +132,7 @@ for k,v in counter.items():
 
 将这些联系在一起，下面列出了加载和汇总数据集的完整示例。
 
-```
+```py
 # load and summarize the dataset
 from pandas import read_csv
 from collections import Counter
@@ -154,7 +154,7 @@ for k,v in counter.items():
 
 然后总结阶级分布，确认严重的阶级不平衡，多数阶级(无癌症)大约 98%，少数阶级(癌症)大约 2%。
 
-```
+```py
 (11183, 7)
 Class='-1', Count=10923, Percentage=97.675%
 Class='1', Count=260, Percentage=2.325%
@@ -178,7 +178,7 @@ Class='1', Count=260, Percentage=2.325%
 
 下面列出了完整的示例。
 
-```
+```py
 # create histograms of numeric input variables
 from pandas import read_csv
 from matplotlib import pyplot
@@ -209,7 +209,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # create pairwise scatter plots of numeric input variables
 from pandas import read_csv
 from pandas.plotting import scatter_matrix
@@ -255,7 +255,7 @@ pyplot.show()
 
 我们可以定义一个函数来加载数据集，并将列分成输入和输出变量。我们将正确地将类标签编码为 0 和 1。下面的 *load_dataset()* 函数实现了这一点。
 
-```
+```py
 # load the dataset
 def load_dataset(full_path):
 	# load the dataset as a numpy array
@@ -273,7 +273,7 @@ def load_dataset(full_path):
 
 下面的 *evaluate_model()* 函数实现了这一点，将数据集和模型作为参数，返回分数列表。
 
-```
+```py
 # evaluate a model
 def evaluate_model(X, y, model):
 	# define evaluation procedure
@@ -289,7 +289,7 @@ def evaluate_model(X, y, model):
 
 这可以通过使用 scikit-learn 库中的 [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类并将“*策略*”参数设置为“*分层*”来实现。
 
-```
+```py
 ...
 # define the reference model
 model = DummyClassifier(strategy='stratified')
@@ -297,7 +297,7 @@ model = DummyClassifier(strategy='stratified')
 
 一旦模型被评估，我们可以直接报告 ROC AUC 评分的平均值和标准差。
 
-```
+```py
 ...
 # evaluate the model
 scores = evaluate_model(X, y, model)
@@ -307,7 +307,7 @@ print('Mean ROC AUC: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 将这些结合起来，下面列出了加载数据集、评估基线模型和报告性能的完整示例。
 
-```
+```py
 # test harness and baseline model evaluation
 from collections import Counter
 from numpy import mean
@@ -360,7 +360,7 @@ print('Mean ROC AUC: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 不出所料，无技能分类器实现了平均 ROC AUC 约为 0.5 的最坏情况性能。这提供了一个性能基线，在这个基线之上，模型在这个数据集上可以被认为是熟练的。
 
-```
+```py
 (11183, 6) (11183,) Counter({0: 10923, 1: 260})
 Mean ROC AUC: 0.503 (0.016)
 ```
@@ -395,7 +395,7 @@ Mean ROC AUC: 0.503 (0.016)
 
 我们将依次定义每个模型，并将它们添加到一个列表中，以便我们可以顺序评估它们。下面的 *get_models()* 函数定义了用于评估的模型列表，以及用于以后绘制结果的模型简称列表。
 
-```
+```py
 # define models to test
 def get_models():
 	models, names = list(), list()
@@ -419,7 +419,7 @@ def get_models():
 
 然后，我们可以依次列举模型列表，并对每个模型进行评估，报告平均 ROC AUC，并存储分数以供以后绘制。
 
-```
+```py
 ...
 # define models
 models, names = get_models()
@@ -435,7 +435,7 @@ for i in range(len(models)):
 
 在运行结束时，我们可以将每个分数样本绘制成一个方框，并用相同的比例绘制晶须图，这样我们就可以直接比较分布。
 
-```
+```py
 ...
 # plot the results
 pyplot.boxplot(results, labels=names, showmeans=True)
@@ -444,7 +444,7 @@ pyplot.show()
 
 将所有这些结合起来，下面列出了在乳腺摄影数据集上评估一套机器学习算法的完整示例。
 
-```
+```py
 # spot check machine learning algorithms on the mammography dataset
 from numpy import mean
 from numpy import std
@@ -530,7 +530,7 @@ pyplot.show()
 
 该评估对 LR 和 SVM 算法有点不公平，因为我们在拟合模型之前没有缩放输入变量。我们可以在下一节探讨这一点。
 
-```
+```py
 >LR 0.919 (0.040)
 >SVM 0.880 (0.049)
 >BAG 0.941 (0.041)
@@ -564,7 +564,7 @@ pyplot.show()
 
 例如，下面更新的 *get_models()* 函数定义了要在我们的数据集上评估的这三个算法的成本敏感版本。
 
-```
+```py
 # define models to test
 def get_models():
 	models, names = list(), list()
@@ -584,7 +584,7 @@ def get_models():
 
 我们可以使用[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)在交叉验证模型评估过程的每个折叠中实现这一点。第一步将学习训练套摺上的[电力变压器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html)，并将其应用于训练和测试套摺。第二步将是我们正在评估的模型。然后可以使用我们的*评估 _ 模型()*函数直接评估管道，例如:
 
-```
+```py
 ...
 # defines pipeline steps
 steps = [('p', PowerTransformer()), ('m',models[i])]
@@ -596,7 +596,7 @@ scores = evaluate_model(X, y, pipeline)
 
 将这些结合起来，下面列出了在乳腺摄影数据集上评估功率转换的成本敏感型机器学习算法的完整示例。
 
-```
+```py
 # cost-sensitive machine learning algorithms on the mammography dataset
 from numpy import mean
 from numpy import std
@@ -676,7 +676,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到 SVM 获得了最佳性能，在本节和上一节中表现优于射频，平均 ROC AUC 约为 0.957。
 
-```
+```py
 >LR 0.922 (0.036)
 >SVM 0.957 (0.024)
 >RF 0.951 (0.035)
@@ -700,7 +700,7 @@ pyplot.show()
 
 首先，我们可以将模型定义为管道。
 
-```
+```py
 ...
 # define model to evaluate
 model = SVC(gamma='scale', class_weight='balanced')
@@ -710,7 +710,7 @@ pipeline = Pipeline(steps=[('t',PowerTransformer()), ('m',model)])
 
 一旦定义好了，我们就可以在整个训练数据集中使用它。
 
-```
+```py
 ...
 # fit the model
 pipeline.fit(X, y)
@@ -720,7 +720,7 @@ pipeline.fit(X, y)
 
 例如:
 
-```
+```py
 ...
 # define a row of data
 row = [...]
@@ -732,7 +732,7 @@ yhat = model.predict([row])
 
 下面列出了完整的示例。
 
-```
+```py
 # fit a model and make predictions for the on the mammography dataset
 from pandas import read_csv
 from sklearn.preprocessing import LabelEncoder
@@ -794,7 +794,7 @@ for row in data:
 
 然后将一些实际癌症病例用作模型的输入，并预测标签。正如我们所希望的那样，所有情况下都能预测到正确的标签。
 
-```
+```py
 No Cancer:
 >Predicted=0 (expected 0)
 >Predicted=0 (expected 0)

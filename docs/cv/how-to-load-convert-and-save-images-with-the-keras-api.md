@@ -68,7 +68,7 @@ Keras 提供了 *load_img()* 功能，用于将文件中的图像作为 PIL 图�
 
 以下示例将邦迪海滩照片从文件中加载为 PIL 图像，并报告了加载图像的详细信息。
 
-```
+```py
 # example of loading an image with the Keras API
 from keras.preprocessing.image import load_img
 # load the image
@@ -86,7 +86,7 @@ img.show()
 
 我们可以确认该图像是以 JPEG 格式加载的 PIL 图像，具有 RGB 通道，大小为 640×427 像素。
 
-```
+```py
 <class 'PIL.JpegImagePlugin.JpegImageFile'>
 JPEG
 RGB
@@ -109,7 +109,7 @@ Keras 提供了 *img_to_array()* 功能，用于将 PIL 格式的加载图像转
 
 下面的示例加载测试图像，将其转换为 NumPy 数组，然后将其转换回 PIL 图像。
 
-```
+```py
 # example of converting an image with the Keras API
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -130,7 +130,7 @@ print(type(img))
 
 我们可以看到，像素值由无符号整数转换为 32 位浮点值，在这种情况下，转换为数组格式[ *高度、宽度、通道* ]。最后，图像被转换回 PIL 格式。
 
-```
+```py
 <class 'PIL.JpegImagePlugin.JpegImageFile'>
 float32
 (427, 640, 3)
@@ -147,7 +147,7 @@ Keras API 还提供了 *save_img()* 功能，将图像保存到文件中。
 
 以下示例加载灰度格式的照片图像，将其转换为 NumPy 数组，并将其保存为新文件名。
 
-```
+```py
 # example of saving an image with the Keras API
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import save_img
@@ -173,7 +173,7 @@ img.show()
 
 为确认文件保存正确，它将作为 PIL 图像再次加载，并报告图像的详细信息。
 
-```
+```py
 <class 'PIL.Image.Image'>
 None
 RGB

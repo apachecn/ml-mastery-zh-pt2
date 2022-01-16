@@ -26,7 +26,7 @@
 
 下面的例子提供了一个代码清单黄金分割搜索方法在解决一维非线性无约束优化函数。
 
-```
+```py
 # define a 1D basin function, optima at f(0)=0
 basin <- function(x) {
 x[1]^2
@@ -79,7 +79,7 @@ rect(result$minimum-0.3, result$objective-0.7, result$minimum+0.3, result$object
 
 以下示例提供了求解二维非线性优化函数的内尔德-米德方法的代码列表。
 
-```
+```py
 # definition of the 2D Rosenbrock function, optima is at (1,1)
 rosenbrock <- function(v) { 
 (1 - v[1])^2 + 100 * (v[2] - v[1]*v[1])^2
@@ -141,7 +141,7 @@ rect(result$par[1]-0.2, result$par[2]-0.2, result$par[1]+0.2, result$par[2]+0.2,
 
 该示例提供了求解二维非线性优化函数的梯度下降算法的代码列表。
 
-```
+```py
 # define a 2D basin function, optima is at (0,0)
 basin <- function(x) {
 x[1]^2 + x[2]^2
@@ -212,7 +212,7 @@ rect(result[1]-0.2, result[2]-0.2, result[1]+0.2, result[2]+0.2, lwd=2)
 
 该示例提供了求解二维非线性优化函数的共轭梯度法的代码列表。
 
-```
+```py
 # definition of the 2D Rosenbrock function, optima is at (1,1)
 rosenbrock <- function(v) { 
 (1 - v[1])^2 + 100 * (v[2] - v[1]*v[1])^2
@@ -282,7 +282,7 @@ BFGS 方法的信息处理目标是定位函数的极值。
 
 该示例提供了求解二维非线性优化函数的 BFGS 方法的代码列表。
 
-```
+```py
 # definition of the 2D Rosenbrock function, optima is at (1,1)
 rosenbrock <- function(v) { 
 (1 - v[1])^2 + 100 * (v[2] - v[1]*v[1])^2

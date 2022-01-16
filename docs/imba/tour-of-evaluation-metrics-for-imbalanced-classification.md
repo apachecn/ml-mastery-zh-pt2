@@ -128,7 +128,7 @@
 
 混淆矩阵不仅能更深入地了解预测模型的性能，还能更深入地了解哪些类被正确预测，哪些被错误预测，以及出现了什么类型的错误。在这种类型的混淆矩阵中，表中的每个单元格都有一个具体且易于理解的名称，总结如下:
 
-```
+```py
                | Positive Prediction | Negative Prediction
 Positive Class | True Positive (TP)  | False Negative (FN)
 Negative Class | False Positive (FP) | True Negative (TN)

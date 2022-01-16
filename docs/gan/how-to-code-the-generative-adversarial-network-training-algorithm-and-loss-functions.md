@@ -61,7 +61,7 @@ GAN 训练算法包括并行训练鉴别器和生成器模型。
 
 例如:
 
-```
+```py
 ...
 batches_per_epoch = floor(dataset_size / batch_size)
 total_iterations = batches_per_epoch * total_epochs
@@ -77,7 +77,7 @@ total_iterations = batches_per_epoch * total_epochs
 
 因此，我们可以用 Python 伪代码将训练算法总结如下:
 
-```
+```py
 # gan training algorithm
 def train_gan(dataset, n_epochs, n_batch):
 	# calculate the number of batches per epoch
@@ -104,7 +104,7 @@ def train_gan(dataset, n_epochs, n_batch):
 
 接下来，我们必须从潜在空间生成点，然后使用当前形式的生成器模型来生成一些假图像。例如:
 
-```
+```py
 ...
 # generate points in the latent space
 z = randn(latent_dim * n_batch)
@@ -118,7 +118,7 @@ fake = generator.predict(z)
 
 然后我们必须选择一批真实的样本，这也将被包装成一个函数。
 
-```
+```py
 ...
 # select a batch of random real images
 ix = randint(0, len(dataset), n_batch)
@@ -128,7 +128,7 @@ real = dataset[ix]
 
 然后，鉴别器模型必须对每个生成的和真实的图像进行预测，并且权重必须更新。
 
-```
+```py
 # gan training algorithm
 def train_gan(generator, discriminator, dataset, latent_dim, n_epochs, n_batch):
 	# calculate the number of batches per epoch
@@ -158,7 +158,7 @@ def train_gan(generator, discriminator, dataset, latent_dim, n_epochs, n_batch):
 
 同样，必须从潜在空间中选择一批随机点，并传递给生成器以生成假图像，然后传递给鉴别器以进行分类。
 
-```
+```py
 ...
 # generate points in the latent space
 z = randn(latent_dim * n_batch)
@@ -172,7 +172,7 @@ result = discriminator.predict(fake)
 
 然后，该响应可用于更新发电机模型的权重。
 
-```
+```py
 # gan training algorithm
 def train_gan(generator, discriminator, dataset, latent_dim, n_epochs, n_batch):
 	# calculate the number of batches per epoch
@@ -261,7 +261,7 @@ GAN 损耗函数和模型更新的实际实现非常简单。
 
 例如，我们的模型定义的一个片段，带有用于鉴别器的 Keras，对于输出层和具有适当损失函数的模型编译可能如下所示。
 
-```
+```py
 ...
 # output layer
 model.add(Dense(1, activation='sigmoid'))
@@ -273,7 +273,7 @@ model.compile(loss='binary_crossentropy', ...)
 
 可以使用[1()](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html)和[0()](https://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros.html)NumPy 函数来创建这些目标标签，可以使用 Keras 函数 *train_on_batch()* 来更新每批样本的模型。
 
-```
+```py
 ...
 X_fake = ...
 X_real = ...
@@ -299,7 +299,7 @@ discriminator.train_on_batch(X_real, y_real)
 
 例如:
 
-```
+```py
 # define a composite gan model for the generator and discriminator
 def define_gan(generator, discriminator):
 	# make weights in the discriminator not trainable
@@ -317,7 +317,7 @@ def define_gan(generator, discriminator):
 
 然后可以使用假图像和真实类别标签更新复合模型。
 
-```
+```py
 ...
 # generate points in the latent space
 z = randn(latent_dim * n_batch)

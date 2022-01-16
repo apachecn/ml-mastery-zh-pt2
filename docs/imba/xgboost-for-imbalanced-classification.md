@@ -42,7 +42,7 @@ XGBoost 的这个修改版本被称为类加权 XGBoost 或成本敏感 XGBoost�
 
 我们可以使用[make _ classification()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)sci kit-learn 函数定义一个合成的不平衡两类分类数据集。我们将生成 10，000 个少数与多数类比例大约为 1:100 的示例。
 
-```
+```py
 ...
 # define dataset
 X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
@@ -51,7 +51,7 @@ X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
 
 生成后，我们可以总结类分布，以确认数据集是按照我们的预期创建的。
 
-```
+```py
 ...
 # summarize class distribution
 counter = Counter(y)
@@ -60,7 +60,7 @@ print(counter)
 
 最后，我们可以创建示例的散点图，并按类别标签对它们进行着色，以帮助理解从该数据集中对示例进行分类的挑战。
 
-```
+```py
 ...
 # scatter plot of examples by class label
 for label, _ in counter.items():
@@ -72,7 +72,7 @@ pyplot.show()
 
 将这些联系在一起，下面列出了生成合成数据集和绘制示例的完整示例。
 
-```
+```py
 # Generate and plot a synthetic imbalanced classification dataset
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -96,7 +96,7 @@ pyplot.show()
 
 我们可以看到，数据集具有大约 1:100 的类分布，多数类中的示例不到 10，000 个，少数类中的示例不到 100 个。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 ```
 
@@ -130,7 +130,7 @@ XGBoost 是一种有效的机器学习模型，即使在类分布有偏差的数
 
 虽然 XGBoost 库有自己的 Python API，但是我们可以通过 [XGBClassifier 包装类](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier)将 XGBoost 模型与 scikit-learn API 一起使用。模型的一个实例可以像任何其他用于模型评估的 scikit-learn 类一样被实例化和使用。例如:
 
-```
+```py
 ...
 # define model
 model = XGBClassifier()
@@ -140,7 +140,7 @@ model = XGBClassifier()
 
 模型性能将使用重复和所有折叠的平均值[曲线下的 ROC 面积](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/) (ROC AUC)来报告。
 
-```
+```py
 ...
 # define evaluation procedure
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -152,7 +152,7 @@ print('Mean ROC AUC: %.5f' % mean(scores))
 
 将这些联系在一起，下面列出了在不平衡分类问题上定义和评估默认 XGBoost 模型的完整示例。
 
-```
+```py
 # fit xgboost on an imbalanced classification dataset
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -178,7 +178,7 @@ print('Mean ROC AUC: %.5f' % mean(scores))
 
 我们可以看到模型有技巧，实现了大于 0.5 的 ROC AUC，在这种情况下实现了 0.95724 的平均得分。
 
-```
+```py
 Mean ROC AUC: 0.95724
 ```
 
@@ -209,7 +209,7 @@ XGBoost 被训练成最小化损失函数，梯度增强中的“*梯度*”指�
 
 例如:
 
-```
+```py
 ...
 # define model
 model = XGBClassifier(scale_pos_weight=100)
@@ -221,7 +221,7 @@ XGBoost 文档提出了一种快速估算该值的方法，该方法使用训练
 
 例如，我们可以为我们的合成分类数据集计算这个值。考虑到我们用来定义数据集的权重，我们预计该值约为 100，或者更准确地说，99。
 
-```
+```py
 ...
 # count examples in each class
 counter = Counter(y)
@@ -232,7 +232,7 @@ print('Estimate: %.3f' % estimate)
 
 下面列出了估算*刻度 _ 位置 _ 重量* XGBoost 超参数值的完整示例。
 
-```
+```py
 # estimate a value for the scale_pos_weight xgboost hyperparameter
 from sklearn.datasets import make_classification
 from collections import Counter
@@ -248,7 +248,7 @@ print('Estimate: %.3f' % estimate)
 
 运行该示例会创建数据集，并将 *scale_pos_weight* 超参数的值估计为 99，如我们所料。
 
-```
+```py
 Estimate: 99.000
 ```
 
@@ -258,7 +258,7 @@ Estimate: 99.000
 
 下面列出了完整的示例。
 
-```
+```py
 # fit balanced xgboost on an imbalanced classification dataset
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -284,7 +284,7 @@ print('Mean ROC AUC: %.5f' % mean(scores))
 
 在这种情况下，我们可以看到性能的适度提升，从上一节中 *scale_pos_weight=1* 时的约 0.95724 的 ROC AUC 提升到 *scale_pos_weight=99* 时的 0.95990 的值。
 
-```
+```py
 Mean ROC AUC: 0.95990
 ```
 
@@ -309,7 +309,7 @@ Mean ROC AUC: 0.95990
 
 这些可以定义为[网格搜索参数，如下所示:](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
 
-```
+```py
 ...
 # define grid
 weights = [1, 10, 25, 50, 75, 99, 100, 1000]
@@ -318,7 +318,7 @@ param_grid = dict(scale_pos_weight=weights)
 
 我们可以使用重复交叉验证对这些参数执行网格搜索，并使用 ROC AUC 估计模型性能:
 
-```
+```py
 ...
 # define evaluation procedure
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -328,7 +328,7 @@ grid = GridSearchCV(estimator=model, param_grid=param_grid, n_jobs=-1, cv=cv, sc
 
 一旦执行，我们可以将最佳配置以及所有结果总结如下:
 
-```
+```py
 ...
 # report the best configuration
 print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
@@ -344,7 +344,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 我们可能会认为启发式类加权是性能最好的配置。
 
-```
+```py
 # grid search positive class weights with xgboost for imbalance classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -383,7 +383,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 有趣的是，几乎所有大于默认值 1 的值都有更好的平均 ROC AUC，即使是激进的值 1000。有趣的是，99 的值比 100 的值表现得更好，如果我没有按照 XGBoost 文档中的建议计算启发式方法，我可能会使用 100。
 
-```
+```py
 Best: 0.959901 using {'scale_pos_weight': 99}
 0.957239 (0.031619) with: {'scale_pos_weight': 1}
 0.958219 (0.027315) with: {'scale_pos_weight': 10}

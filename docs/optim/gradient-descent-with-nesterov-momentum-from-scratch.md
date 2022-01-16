@@ -172,7 +172,7 @@ Yuri nesterov 在他 1983 年发表的题为“[一种求解具有收敛速度 O
 
 下面的 objective()函数实现了这个功能。
 
-```
+```py
 # objective function
 def objective(x, y):
 	return x**2.0 + y**2.0
@@ -182,7 +182,7 @@ def objective(x, y):
 
 下面列出了绘制目标函数的完整示例。
 
-```
+```py
 # 3d plot of the test function
 from numpy import arange
 from numpy import meshgrid
@@ -221,7 +221,7 @@ pyplot.show()
 
 以下示例创建了目标函数的等高线图。
 
-```
+```py
 # contour plot of the test function
 from numpy import asarray
 from numpy import arange
@@ -265,7 +265,7 @@ pyplot.show()
 
 x^2 的导数在每个维度上都是 x * 2，下面的*导数()*函数实现了这一点。
 
-```
+```py
 # derivative of objective function
 def derivative(x, y):
 	return asarray([x * 2.0, y * 2.0])
@@ -277,7 +277,7 @@ def derivative(x, y):
 
 这假设我们有一个定义搜索范围的数组，每个维度有一行，第一列定义维度的最小值，第二列定义维度的最大值。
 
-```
+```py
 ...
 # generate an initial point
 solution = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
@@ -285,7 +285,7 @@ solution = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
 
 接下来，我们需要从当前位置计算投影点，并计算其导数。
 
-```
+```py
 ...
 # calculate the projected solution
 projected = [solution[i] + momentum * change[i] for i in range(solution.shape[0])]
@@ -297,7 +297,7 @@ gradient = derivative(projected[0], projected[1])
 
 首先，使用偏导数和学习率以及变量上一次变化的动量来计算变量的变化。该变化被存储用于算法的下一次迭代。然后，该变化用于计算变量的新值。
 
-```
+```py
 ...
 # build a solution one variable at a time
 new_solution = list()
@@ -314,7 +314,7 @@ for i in range(solution.shape[0]):
 
 然后，可以使用*客观()*函数来评估这个新的解决方案，并且可以报告搜索的性能。
 
-```
+```py
 ...
 # evaluate candidate point
 solution = asarray(new_solution)
@@ -329,7 +329,7 @@ print('>%d f(%s) = %.5f' % (it, solution, solution_eval))
 
 下面列出了完整的功能。
 
-```
+```py
 # gradient descent algorithm with nesterov momentum
 def nesterov(objective, derivative, bounds, n_iter, step_size, momentum):
 	# generate an initial point
@@ -365,7 +365,7 @@ def nesterov(objective, derivative, bounds, n_iter, step_size, momentum):
 
 在这种情况下，我们将使用算法的 30 次迭代，学习率为 0.1，动量为 0.3。这些超参数值是经过一点点反复试验后发现的。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -385,7 +385,7 @@ print('f(%s) = %f' % (best, score))
 
 将所有这些联系在一起，下面列出了使用内斯特罗夫动量进行梯度下降优化的完整示例。
 
-```
+```py
 # gradient descent optimization with nesterov momentum for a two-dimensional test function
 from math import sqrt
 from numpy import asarray
@@ -450,7 +450,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以看到，在大约 15 次搜索迭代后，找到了一个接近最优的解，输入值接近 0.0 和 0.0，评估为 0.0。
 
-```
+```py
 >0 f([-0.13276479 0.35251919]) = 0.14190
 >1 f([-0.09824595 0.2608642 ]) = 0.07770
 >2 f([-0.07031223 0.18669416]) = 0.03980
@@ -495,7 +495,7 @@ f([-3.82285090e-06 1.01504945e-05]) = 0.000000
 
 下面列出了带有这些更改的功能的更新版本。
 
-```
+```py
 # gradient descent algorithm with nesterov momentum
 def nesterov(objective, derivative, bounds, n_iter, step_size, momentum):
 	# track all solutions
@@ -531,7 +531,7 @@ def nesterov(objective, derivative, bounds, n_iter, step_size, momentum):
 
 然后，我们可以像以前一样执行搜索，这次检索解决方案列表，而不是最佳最终解决方案。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -549,7 +549,7 @@ solutions = nesterov(objective, derivative, bounds, n_iter, step_size, momentum)
 
 然后，我们可以像以前一样创建目标函数的等高线图。
 
-```
+```py
 ...
 # sample input range uniformly at 0.1 increments
 xaxis = arange(bounds[0,0], bounds[0,1], 0.1)
@@ -564,7 +564,7 @@ pyplot.contourf(x, y, results, levels=50, cmap='jet')
 
 最后，我们可以将搜索过程中找到的每个解决方案绘制成由一条线连接的白点。
 
-```
+```py
 ...
 # plot the sample as black circles
 solutions = asarray(solutions)
@@ -573,7 +573,7 @@ pyplot.plot(solutions[:, 0], solutions[:, 1], '.-', color='w')
 
 将所有这些联系在一起，下面列出了对测试问题执行内斯特罗夫动量优化并将结果绘制在等高线图上的完整示例。
 
-```
+```py
 # example of plotting the nesterov momentum search on a contour plot of the test function
 from math import sqrt
 from numpy import asarray

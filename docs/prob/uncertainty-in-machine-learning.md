@@ -74,7 +74,7 @@
 
 一个例子可能是在训练数据的情况下测量的一个[鸢尾花和花的种类](https://en.wikipedia.org/wiki/Iris_flower_data_set)的一组测量值。
 
-```
+```py
 Sepal length: 	5.1 cm
 Sepal width: 	3.5 cm
 Petal length: 	1.4 cm
@@ -84,7 +84,7 @@ Species: 		Iris setosa
 
 在需要预测的新数据的情况下，这只是没有花的种类的测量。
 
-```
+```py
 Sepal length: 	5.1 cm
 Sepal width: 	3.5 cm
 Petal length: 	1.4 cm

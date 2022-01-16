@@ -91,7 +91,7 @@
 
 文件的前几行应该如下所示:
 
-```
+```py
 39,State-gov,77516,Bachelors,13,Never-married,Adm-clerical,Not-in-family,White,Male,2174,0,40,United-States,<=50K
 50,Self-emp-not-inc,83311,Bachelors,13,Married-civ-spouse,Exec-managerial,Husband,White,Male,0,0,13,United-States,<=50K
 38,Private,215646,HS-grad,9,Divorced,Handlers-cleaners,Not-in-family,White,Male,0,0,40,United-States,<=50K
@@ -108,7 +108,7 @@
 
 可以使用 [read_csv()熊猫函数](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)将数据集加载为*数据帧*，指定文件名、没有标题行以及像“*这样的字符串？*'应解析为 *NaN* (缺失)值。
 
-```
+```py
 ...
 # define the dataset location
 filename = 'adult-all.csv'
@@ -118,7 +118,7 @@ dataframe = read_csv(filename, header=None, na_values='?')
 
 加载后，我们可以删除包含一个或多个缺失值的行。
 
-```
+```py
 ...
 # drop rows with missing
 dataframe = dataframe.dropna()
@@ -126,7 +126,7 @@ dataframe = dataframe.dropna()
 
 我们可以通过打印数据框的形状来总结行数和列数。
 
-```
+```py
 ...
 # summarize the shape of the dataset
 print(dataframe.shape)
@@ -134,7 +134,7 @@ print(dataframe.shape)
 
 我们也可以使用 [Counter 对象](https://docs.python.org/3/library/collections.html#collections.Counter)总结每个类中的例子数量。
 
-```
+```py
 ...
 # summarize the class distribution
 target = dataframe.values[:,-1]
@@ -146,7 +146,7 @@ for k,v in counter.items():
 
 将这些联系在一起，下面列出了加载和汇总数据集的完整示例。
 
-```
+```py
 # load and summarize the dataset
 from pandas import read_csv
 from collections import Counter
@@ -170,7 +170,7 @@ for k,v in counter.items():
 
 然后总结了班级分布，确认了中等程度的班级不平衡，大多数班级大约为 75%(<=50K) and approximately 25 percent for the minority class (>50K)。
 
-```
+```py
 (45222, 15)
 Class= <=50K, Count=34014, Percentage=75.216%
 Class= >50K, Count=11208, Percentage=24.784%
@@ -180,7 +180,7 @@ Class= >50K, Count=11208, Percentage=24.784%
 
 首先，我们可以通过调用 DataFrame 上的 [select_dtypes()函数](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.select_dtypes.html)来选择带有数值变量的列。然后，我们可以从数据框中选择这些列。
 
-```
+```py
 ...
 # select columns with numerical data types
 num_ix = df.select_dtypes(include=['int64', 'float64']).columns
@@ -190,7 +190,7 @@ subset = df[num_ix]
 
 然后，我们可以创建每个数字输入变量的直方图。下面列出了完整的示例。
 
-```
+```py
 # create histograms of numeric input variables
 from pandas import read_csv
 from matplotlib import pyplot
@@ -237,7 +237,7 @@ pyplot.show()
 
 下面的 *evaluate_model()* 函数将获取加载的数据集和定义的模型，并使用重复的分层 k 倍交叉验证对其进行评估，然后返回一个准确性分数列表，稍后可以对其进行汇总。
 
-```
+```py
 # evaluate a model
 def evaluate_model(X, y, model):
 	# define evaluation procedure
@@ -251,7 +251,7 @@ def evaluate_model(X, y, model):
 
 我们还将返回一个分类和数字列的列表，以防我们决定以后在拟合模型时转换它们。
 
-```
+```py
 # load the dataset
 def load_dataset(full_path):
 	# load the dataset as a numpy array
@@ -275,7 +275,7 @@ def load_dataset(full_path):
 
 这可以通过使用 scikit-learn 库中的 [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类并将“*策略*”参数设置为“*最频繁*”来实现。
 
-```
+```py
 ...
 # define the reference model
 model = DummyClassifier(strategy='most_frequent')
@@ -283,7 +283,7 @@ model = DummyClassifier(strategy='most_frequent')
 
 一旦模型被评估，我们可以直接报告准确性分数的平均值和标准偏差。
 
-```
+```py
 ...
 # evaluate the model
 scores = evaluate_model(X, y, model)
@@ -293,7 +293,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 将这些结合起来，下面列出了加载成人数据集、评估基线模型和报告性能的完整示例。
 
-```
+```py
 # test harness and baseline model evaluation for the adult dataset
 from collections import Counter
 from numpy import mean
@@ -351,7 +351,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到基线算法达到了大约 75.2%的准确率。这个分数提供了模特技能的下限；任何平均准确率高于约 75.2%的模型都有技能，而得分低于此值的模型在此数据集上没有技能。
 
-```
+```py
 (45222, 14) (45222,) Counter({0: 34014, 1: 11208})
 Mean Accuracy: 0.752 (0.000)
 ```
@@ -386,7 +386,7 @@ Mean Accuracy: 0.752 (0.000)
 
 我们将依次定义每个模型，并将它们添加到一个列表中，以便我们可以顺序评估它们。下面的 *get_models()* 函数定义了用于评估的模型列表，以及用于以后绘制结果的模型简称列表。
 
-```
+```py
 # define models to test
 def get_models():
 	models, names = list(), list()
@@ -416,7 +416,7 @@ def get_models():
 
 我们在上一节中定义的 *load_dataset()* 函数加载并返回数据集和具有分类和数字数据类型的列列表。这可用于在评估前准备一个*管道*来包装每个模型。首先，定义*列转换器*，它指定要应用于每种类型列的转换，然后这被用作*管道*的第一步，该管道以将要拟合和评估的特定模型结束。
 
-```
+```py
 ...
 # define steps
 steps = [('c',OneHotEncoder(handle_unknown='ignore'),cat_ix), ('n',MinMaxScaler(),num_ix)]
@@ -430,7 +430,7 @@ scores = evaluate_model(X, y, pipeline)
 
 我们可以总结每个算法的平均精度，这将有助于直接比较算法。
 
-```
+```py
 ...
 # summarize performance
 print('>%s %.3f (%.3f)' % (names[i], mean(scores), std(scores)))
@@ -438,7 +438,7 @@ print('>%s %.3f (%.3f)' % (names[i], mean(scores), std(scores)))
 
 在运行结束时，我们将为每个算法的结果样本创建一个单独的方框和触须图。这些图将使用相同的 y 轴比例，因此我们可以直接比较结果的分布。
 
-```
+```py
 ...
 # plot the results
 pyplot.boxplot(results, labels=names, showmeans=True)
@@ -447,7 +447,7 @@ pyplot.show()
 
 将所有这些结合起来，下面列出了在成人不平衡数据集上评估一套机器学习算法的完整示例。
 
-```
+```py
 # spot check machine learning algorithms on the adult imbalanced dataset
 from numpy import mean
 from numpy import std
@@ -546,7 +546,7 @@ pyplot.show()
 
 这比原始论文中报告的结果稍好，尽管采用了不同的模型评估程序。
 
-```
+```py
 >CART 0.812 (0.005)
 >SVM 0.837 (0.005)
 >BAG 0.852 (0.004)
@@ -574,7 +574,7 @@ pyplot.show()
 
 首先，我们可以将模型定义为管道。
 
-```
+```py
 ...
 # define model to evaluate
 model = GradientBoostingClassifier(n_estimators=100)
@@ -586,7 +586,7 @@ pipeline = Pipeline(steps=[('t',ct), ('m',model)])
 
 一旦定义好了，我们就可以在整个训练数据集中使用它。
 
-```
+```py
 ...
 # fit the model
 pipeline.fit(X, y)
@@ -598,7 +598,7 @@ pipeline.fit(X, y)
 
 例如:
 
-```
+```py
 ...
 # define a row of data
 row = [...]
@@ -610,7 +610,7 @@ yhat = pipeline.predict([row])
 
 下面列出了完整的示例。
 
-```
+```py
 # fit a model and make predictions for the on the adult dataset
 from pandas import read_csv
 from sklearn.preprocessing import LabelEncoder
@@ -678,7 +678,7 @@ for row in data:
 
 然后将用于预测<=50K cases is chosen from the dataset file. We can see that all cases are correctly predicted. Then some > 50K 例标签的拟合模型作为模型的输入，并对标签进行预测。正如我们所希望的，正确的标签是可以预测的。
 
-```
+```py
 <=50K cases:
 >Predicted=0 (expected 0)
 >Predicted=0 (expected 0)

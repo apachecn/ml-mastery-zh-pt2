@@ -79,14 +79,14 @@
 
 这可以通过使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建合成数据集来实现，指定示例数(1，000)、类数(2)和每个类的权重(99%和 1%)。
 
-```
+```py
 # generate 2 class dataset
 X, y = make_classification(n_samples=1000, n_classes=2, weights=[0.99, 0.01], flip_y=0, random_state=1)
 ```
 
 下面的示例生成了合成二进制分类数据集，并总结了类别分布。
 
-```
+```py
 # create a binary classification dataset
 from numpy import unique
 from sklearn.datasets import make_classification
@@ -105,7 +105,7 @@ for c in classes:
 
 通过设置 *random_state* 参数，它确保我们每次运行代码时都能得到相同的随机生成的例子。
 
-```
+```py
 > Class=0 : 990/1000 (99.0%)
 > Class=1 : 10/1000 (1.0%)
 ```
@@ -116,7 +116,7 @@ for c in classes:
 
 首先，我们将使用 [KFold 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html)将数据集随机拆分为 5 倍，并检查每个训练和测试集的组成。下面列出了完整的示例。
 
-```
+```py
 # example of k-fold cross-validation with an imbalanced dataset
 from sklearn.datasets import make_classification
 from sklearn.model_selection import KFold
@@ -140,7 +140,7 @@ for train_ix, test_ix in kfold.split(X):
 
 在这些数据分割的基础上评估一个模型不会给出一个可靠的性能估计。
 
-```
+```py
 >Train: 0=791, 1=9, Test: 0=199, 1=1
 >Train: 0=793, 1=7, Test: 0=197, 1=3
 >Train: 0=794, 1=6, Test: 0=196, 1=4
@@ -154,7 +154,7 @@ for train_ix, test_ix in kfold.split(X):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of train/test split with an imbalanced dataset
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -174,7 +174,7 @@ print('>Train: 0=%d, 1=%d, Test: 0=%d, 1=%d' % (train_0, train_1, test_0, test_1
 
 以这种方式评估模型不会给他们提供足够多的可以学习的例子，太多的可以评估的例子，并且很可能会给出很差的表现。你可以想象，如果随机吐槽更严重，情况会变得更糟。
 
-```
+```py
 >Train: 0=497, 1=3, Test: 0=493, 1=7
 ```
 
@@ -196,7 +196,7 @@ print('>Train: 0=%d, 1=%d, Test: 0=%d, 1=%d' % (train_0, train_1, test_0, test_1
 
 下面是相同的数据集和相同的交叉验证分层版本的示例。
 
-```
+```py
 # example of stratified k-fold cross-validation with an imbalanced dataset
 from sklearn.datasets import make_classification
 from sklearn.model_selection import StratifiedKFold
@@ -220,7 +220,7 @@ for train_ix, test_ix in kfold.split(X, y):
 
 少数类中的每个示例都有一次机会在测试集中使用，并且每个数据分割的每个训练和测试集都有相同的类分布。
 
-```
+```py
 >Train: 0=792, 1=8, Test: 0=198, 1=2
 >Train: 0=792, 1=8, Test: 0=198, 1=2
 >Train: 0=792, 1=8, Test: 0=198, 1=2
@@ -238,7 +238,7 @@ for train_ix, test_ix in kfold.split(X, y):
 
 我们可以用下面列出的一个工作示例来演示这一点。
 
-```
+```py
 # example of stratified train/test split with an imbalanced dataset
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -254,7 +254,7 @@ print('>Train: 0=%d, 1=%d, Test: 0=%d, 1=%d' % (train_0, train_1, test_0, test_1
 
 运行该示例会将数据集随机拆分为训练集和测试集，从而确保类分布得到保留，在这种情况下，每个数据集中会留下五个示例。
 
-```
+```py
 >Train: 0=495, 1=5, Test: 0=495, 1=5
 ```
 

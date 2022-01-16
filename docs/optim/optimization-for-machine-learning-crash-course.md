@@ -116,7 +116,7 @@
 
 不看 *f* ( *x* 、 *y* )是什么，我们可以先假设 *x* 和 *y* 在某个有界区域，比如说-5 到+5。然后我们可以在这个范围内检查 *x* 和 *y* 的每个组合。如果我们记住 *f* ( *x* ， *y* )的值，并跟踪我们见过的最少的，那么我们可以在耗尽该区域后找到它的最小值。在 Python 代码中，它是这样的:
 
-```
+```py
 from numpy import arange, inf
 
 # objective function
@@ -165,7 +165,7 @@ print('Best: f(%.5f,%.5f) = %.5f' % (best_x, best_y, best_eval))
 
 我们可以利用 SciPy 中的一些预定义算法来找到它的最小值。可能最简单的是内尔德-米德算法。该算法基于一系列规则来确定如何探索函数的表面。无需赘述，我们可以简单地调用 SciPy 并应用 Nelder-Mead 算法来寻找函数的最小值:
 
-```
+```py
 from scipy.optimize import minimize
 from numpy.random import rand
 
@@ -200,7 +200,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 在本课中，您应该用以下内容替换上面示例代码中的目标函数:
 
-```
+```py
 from numpy import e, pi, cos, sqrt, exp
 def objective(v):
     x, y = v
@@ -236,7 +236,7 @@ def objective(v):
 
 如果我们为一阶导数创建一个新函数，我们可以调用 SciPy 并应用 BFGS 算法:
 
-```
+```py
 from scipy.optimize import minimize
 from numpy.random import rand
 
@@ -267,7 +267,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 除了 BFGS，还有 L-BFGS-B。它是前者的一个版本，使用较少的内存(“L”)，并且域被限制在一个区域(“B”)。要使用这个变体，我们只需替换方法的名称:
 
-```
+```py
 ...
 result = minimize(objective, pt, method='L-BFGS-B', jac=derivative)
 ```
@@ -286,7 +286,7 @@ result = minimize(objective, pt, method='L-BFGS-B', jac=derivative)
 
 在 Python 中，我们可以将上面的最小化爬山算法写成一个函数:
 
-```
+```py
 from numpy.random import randn
 
 def in_bounds(point, bounds):
@@ -323,7 +323,7 @@ def hillclimbing(objective, bounds, n_iterations, step_size):
 
 这个函数允许传递任何目标函数，只要它接受一个向量并返回一个标量值。“界限”参数应该是 *n* ×2 维的 numpy 数组，其中 *n* 是目标函数期望的向量大小。它告诉我们应该寻找最小值的范围的下限和上限。例如，对于期望二维向量(像上一课中的向量)和向量的分量在-5 到+5 之间的目标函数，我们可以如下设置界限:
 
-```
+```py
 bounds = np.asarray([[-5.0, 5.0], [-5.0, 5.0]])
 ```
 
@@ -345,7 +345,7 @@ bounds = np.asarray([[-5.0, 5.0], [-5.0, 5.0]])
 
 以下是模拟退火作为 Python 函数的实现:
 
-```
+```py
 from numpy.random import randn, rand
 
 def simulated_annealing(objective, bounds, n_iterations, step_size, temp):
@@ -402,7 +402,7 @@ def simulated_annealing(objective, bounds, n_iterations, step_size, temp):
 
  **会比 *x* 更接近最小值。现在让我们尝试在 Python 中实现这一点。重复使用我们在第 4 天学习的样本目标函数及其导数，这是梯度下降算法及其用于寻找目标函数最小值的用法:
 
-```
+```py
 from numpy import asarray
 from numpy import arange
 from numpy.random import rand

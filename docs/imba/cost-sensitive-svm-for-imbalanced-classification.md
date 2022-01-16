@@ -42,7 +42,7 @@ SVM 的这种将边际与阶级重要性成正比的修正通常被称为加权 
 
 我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个合成的不平衡两类分类数据集。我们将生成 10，000 个少数与多数类比例大约为 1:100 的示例。
 
-```
+```py
 ...
 # define dataset
 X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
@@ -51,7 +51,7 @@ X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
 
 生成后，我们可以总结类分布，以确认数据集是按照我们的预期创建的。
 
-```
+```py
 ...
 # summarize class distribution
 counter = Counter(y)
@@ -60,7 +60,7 @@ print(counter)
 
 最后，我们可以创建示例的散点图，并按类别标签对它们进行着色，以帮助理解从该数据集中对示例进行分类的挑战。
 
-```
+```py
 ...
 # scatter plot of examples by class label
 for label, _ in counter.items():
@@ -72,7 +72,7 @@ pyplot.show()
 
 将这些联系在一起，下面列出了生成合成数据集和绘制示例的完整示例。
 
-```
+```py
 # Generate and plot a synthetic imbalanced classification dataset
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -96,7 +96,7 @@ pyplot.show()
 
 我们可以看到，数据集具有大约 1:100 的类分布，多数类中的示例不到 10，000 个，少数类中的示例不到 100 个。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 ```
 
@@ -110,7 +110,7 @@ Counter({0: 9900, 1: 100})
 
 可以使用 scikit-learn 库中的 SVC 类来定义 SVM。
 
-```
+```py
 ...
 # define model
 model = SVC(gamma='scale')
@@ -118,7 +118,7 @@ model = SVC(gamma='scale')
 
 我们将使用重复交叉验证来评估模型，重复三次 [10 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)。模式性能将使用重复和所有折叠的平均[曲线下面积(ROC AUC)](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/) 来报告。
 
-```
+```py
 ...
 # define evaluation procedure
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -132,7 +132,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 支持向量机是二进制分类任务的有效模型，尽管默认情况下，它们在不平衡分类方面无效。
 
-```
+```py
 # fit a svm on an imbalanced classification dataset
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -158,7 +158,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 我们可以看到模型有技巧，实现了 0.5 以上的 ROC AUC，在这种情况下实现了 0.804 的平均得分。
 
-```
+```py
 Mean ROC AUC: 0.804
 ```
 
@@ -237,7 +237,7 @@ scikit-learn Python 机器学习库提供了支持类加权的 SVM 算法的实�
 
 例如，每个类别 0 和 1 的 1 比 1 权重可以定义如下:
 
-```
+```py
 ...
 # define model
 weights = {0:1.0, 1:1.0}
@@ -254,7 +254,7 @@ model = SVC(gamma='scale', class_weight=weights)
 
 例如，测试数据集的类分布是少数类与多数类的比例为 1:100。该比率的倒数可以用于多数类的 1 和少数类的 100；例如:
 
-```
+```py
 ...
 # define model
 weights = {0:1.0, 1:100.0}
@@ -263,7 +263,7 @@ model = SVC(gamma='scale', class_weight=weights)
 
 我们也可以使用分数来定义相同的比率，并获得相同的结果；例如:
 
-```
+```py
 ...
 # define model
 weights = {0:0.01, 1:1.0}
@@ -272,7 +272,7 @@ model = SVC(gamma='scale', class_weight=weights)
 
 通过将*类权重*设置为“*平衡*，可以直接使用该启发式算法。例如:
 
-```
+```py
 ...
 # define model
 model = SVC(gamma='scale', class_weight='balanced')
@@ -284,7 +284,7 @@ model = SVC(gamma='scale', class_weight='balanced')
 
 下面列出了完整的示例。
 
-```
+```py
 # svm with class weight on an imbalanced classification dataset
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -310,7 +310,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，报告的平均 ROC AUC 分数比 SVM 算法的未加权版本显示更好的分数，0.964 比 0.804。
 
-```
+```py
 Mean ROC AUC: 0.964
 ```
 
@@ -332,7 +332,7 @@ Mean ROC AUC: 0.964
 
 这些可以定义为 [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) 类的网格搜索参数，如下所示:
 
-```
+```py
 ...
 # define grid
 balance = [{0:100,1:1}, {0:10,1:1}, {0:1,1:1}, {0:1,1:10}, {0:1,1:100}]
@@ -341,7 +341,7 @@ param_grid = dict(class_weight=balance)
 
 我们可以使用重复交叉验证对这些参数执行网格搜索，并使用 ROC AUC 估计模型性能:
 
-```
+```py
 ...
 # define evaluation procedure
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -351,7 +351,7 @@ grid = GridSearchCV(estimator=model, param_grid=param_grid, n_jobs=-1, cv=cv, sc
 
 一旦执行，我们可以将最佳配置以及所有结果总结如下:
 
-```
+```py
 ...
 # report the best configuration
 print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
@@ -367,7 +367,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 我们可能会认为启发式类加权是性能最好的配置。
 
-```
+```py
 # grid search class weights with svm for imbalance classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -406,7 +406,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 探索更严格的类别权重，看看它们对平均 ROC AUC 评分的影响，可能会很有趣。
 
-```
+```py
 Best: 0.966189 using {'class_weight': {0: 1, 1: 100}}
 0.745249 (0.129002) with: {'class_weight': {0: 100, 1: 1}}
 0.748407 (0.128049) with: {'class_weight': {0: 10, 1: 1}}

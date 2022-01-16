@@ -71,7 +71,7 @@
 
 我们可以使用 scikit-learn 库中的 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个合成的二进制分类数据集。例如，我们可以创建 10，000 个具有两个输入变量和 1:100 分布的示例，如下所示:
 
-```
+```py
 ...
 # define dataset
 X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
@@ -80,7 +80,7 @@ n_clusters_per_class=1, weights=[0.99], flip_y=0, random_state=1)
 
 然后，我们可以通过[散点图()Matplotlib 函数](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.scatter.html)创建数据集的散点图，以了解每个类中示例的空间关系及其不平衡。
 
-```
+```py
 ...
 # scatter plot of examples by class label
 for label, _ in counter.items():
@@ -92,7 +92,7 @@ pyplot.show()
 
 将这些联系在一起，下面列出了创建不平衡分类数据集并绘制示例的完整示例。
 
-```
+```py
 # Generate and plot a synthetic imbalanced classification dataset
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -114,7 +114,7 @@ pyplot.show()
 
 运行该示例首先总结了类分布，显示了大约 1:100 的类分布，其中大约 10，000 个示例包含类 0，100 个示例包含类 1。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 ```
 
@@ -134,13 +134,13 @@ Counter({0: 9900, 1: 100})
 
 在这些例子中，我们将使用[不平衡学习 Python 库](https://github.com/scikit-learn-contrib/imbalanced-learn)提供的实现，可以通过 pip 安装如下:
 
-```
+```py
 sudo pip install imbalanced-learn
 ```
 
 您可以通过打印已安装库的版本来确认安装成功:
 
-```
+```py
 # check version number
 import imblearn
 print(imblearn.__version__)
@@ -148,7 +148,7 @@ print(imblearn.__version__)
 
 运行该示例将打印已安装库的版本号；例如:
 
-```
+```py
 0.5.0
 ```
 
@@ -178,7 +178,7 @@ NearMiss-3 似乎是可取的，因为它将只保留决策边界上的那些多
 
 所使用的接近未命中策略的类型由“*版本*”参数定义，默认情况下，该参数对于接近未命中-1 设置为 1，但是对于其他两种方法可以设置为 2 或 3。
 
-```
+```py
 ...
 # define the undersampling method
 undersample = NearMiss(version=1)
@@ -192,7 +192,7 @@ undersample = NearMiss(version=1)
 
 下面列出了完整的示例。
 
-```
+```py
 # Undersample imbalanced dataset with NearMiss-1
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -234,7 +234,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # Undersample imbalanced dataset with NearMiss-2
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -274,7 +274,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # Undersample imbalanced dataset with NearMiss-3
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -324,7 +324,7 @@ pyplot.show()
 
 在此过程中，KNN 算法用于对点进行分类，以确定它们是否要添加到商店中。k 值通过 *n_neighbors* 参数设置，默认为 1。
 
-```
+```py
 ...
 # define the undersampling method
 undersample = CondensedNearestNeighbour(n_neighbors=1)
@@ -334,7 +334,7 @@ undersample = CondensedNearestNeighbour(n_neighbors=1)
 
 下面列出了演示欠采样的压缩最近邻规则的完整示例。
 
-```
+```py
 # Undersample and plot imbalanced dataset with the Condensed Nearest Neighbor Rule
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -366,7 +366,7 @@ pyplot.show()
 
 我们可以看到，最终的分布是少数与多数的比例大约为 1:2。这强调了尽管 *sampling_strategy* 参数试图平衡类分布，但算法将继续向存储(转换后的数据集)添加错误分类的示例。这是一个理想的属性。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 Counter({0: 188, 1: 100})
 ```
@@ -413,7 +413,7 @@ Counter({0: 188, 1: 100})
 
 我们可以使用[TomeLinks 不平衡学习类](https://imbalanced-learn.org/stable/generated/imblearn.under_sampling.TomekLinks.html)实现 Tomek Links 欠采样方法。
 
-```
+```py
 ...
 # define the undersampling method
 undersample = TomekLinks()
@@ -423,7 +423,7 @@ undersample = TomekLinks()
 
 因为该过程只移除所谓的“ *Tomek Links* ”，所以我们不会期望得到的转换数据集是平衡的，只是沿着类边界不那么模糊。
 
-```
+```py
 # Undersample and plot imbalanced dataset with Tomek Links
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -455,7 +455,7 @@ pyplot.show()
 
 我们可以看到，只有 26 个来自多数派的例子被删除。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 Counter({0: 9874, 1: 100})
 ```
@@ -494,7 +494,7 @@ Counter({0: 9874, 1: 100})
 
 *n_neighbors* 参数控制编辑规则中使用的邻居数量，默认为三个，如本文中所示。
 
-```
+```py
 ...
 # define the undersampling method
 undersample = EditedNearestNeighbours(n_neighbors=3)
@@ -504,7 +504,7 @@ undersample = EditedNearestNeighbours(n_neighbors=3)
 
 像 Tomek Links 一样，该过程只移除类边界上有噪声和不明确的点。因此，我们不会期望得到的转换数据集是平衡的。
 
-```
+```py
 # Undersample and plot imbalanced dataset with the Edited Nearest Neighbor rule
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -536,7 +536,7 @@ pyplot.show()
 
 我们可以看到，多数派中只有 94 个例子被删除。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 Counter({0: 9806, 1: 100})
 ```
@@ -590,7 +590,7 @@ Tomek Links 的开发者 Ivan Tomek 在他 1976 年的论文《T0:编辑最近�
 
 考虑到 CNN 过程发生在一个块中，为了有效地去除冗余的例子，具有更大的多数类的种子样本更有用。在这种情况下，我们将使用值 200。
 
-```
+```py
 ...
 # define the undersampling method
 undersample = OneSidedSelection(n_neighbors=1, n_seeds_S=200)
@@ -600,7 +600,7 @@ undersample = OneSidedSelection(n_neighbors=1, n_seeds_S=200)
 
 我们可能期望从分布的内部(例如，远离类边界)移除多数类的大量冗余示例。
 
-```
+```py
 # Undersample and plot imbalanced dataset with One-Sided Selection
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -632,7 +632,7 @@ pyplot.show()
 
 我们可以看到，多数类中的大量示例被移除，包括冗余示例(通过 CNN 移除)和模糊示例(通过 Tomek Links 移除)。该数据集的比率现在约为 1:10。从 1:100 开始下降。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 Counter({0: 940, 1: 100})
 ```
@@ -672,7 +672,7 @@ Counter({0: 940, 1: 100})
 
 考虑到数据清理比删除冗余示例更为重要，我们预计多数类中的示例数量只会适度减少。
 
-```
+```py
 # Undersample and plot imbalanced dataset with the neighborhood cleaning rule
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -704,7 +704,7 @@ pyplot.show()
 
 我们可以看到，只有 114 个来自多数派的例子被删除。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 Counter({0: 9786, 1: 100})
 ```

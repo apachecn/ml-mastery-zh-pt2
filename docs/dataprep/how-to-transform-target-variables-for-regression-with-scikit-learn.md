@@ -59,7 +59,7 @@
 
 例如:
 
-```
+```py
 ...
 # prepare the model with input scaling
 pipeline = Pipeline(steps=[('normalize', MinMaxScaler()), ('model', LinearRegression())])
@@ -93,7 +93,7 @@ yhat = pipeline.predict(test_x)
 
 例如，如果我们想要规范化一个目标变量，我们将首先定义并训练一个[最小最大缩放器对象](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html):
 
-```
+```py
 ...
 # create target scaler object
 target_scaler = MinMaxScaler()
@@ -102,7 +102,7 @@ target_scaler.fit(train_y)
 
 然后，我们将转换列车并测试目标变量数据。
 
-```
+```py
 ...
 # transform target variables
 train_y = target_scaler.transform(train_y)
@@ -113,7 +113,7 @@ test_y = target_scaler.transform(test_y)
 
 在用误差度量来使用或评估预测之前，我们必须反转变换。
 
-```
+```py
 ...
 # invert transform on predictions
 yhat = model.predict(test_X)
@@ -132,7 +132,7 @@ yhat = target_scaler.inverse_transform(yhat)
 
 要使用 TransformedTargetRegressor，它是通过指定要在目标上使用的模型和转换对象来定义的；例如:
 
-```
+```py
 ...
 # define the target transform wrapper
 wrapped_model = TransformedTargetRegressor(regressor=model, transformer=MinMaxScaler())
@@ -140,7 +140,7 @@ wrapped_model = TransformedTargetRegressor(regressor=model, transformer=MinMaxSc
 
 稍后，TransformedTargetRegressor 实例可以像任何其他模型一样通过调用 fit()函数进行拟合，并通过调用 predict()函数进行预测。
 
-```
+```py
 ...
 # use the target transform wrapper
 wrapped_model.fit(train_X, train_y)
@@ -165,7 +165,7 @@ yhat = wrapped_model.predict(test_X)
 
 在数据集中，您应该看到所有变量都是数字。
 
-```
+```py
 0.00632,18.00,2.310,0,0.5380,6.5750,65.20,4.0900,1,296.0,15.30,396.90,4.98,24.00
 0.02731,0.00,7.070,0,0.4690,6.4210,78.90,4.9671,2,242.0,17.80,396.90,9.14,21.60
 0.02729,0.00,7.070,0,0.4690,7.1850,61.10,4.9671,2,242.0,17.80,392.83,4.03,34.70
@@ -182,7 +182,7 @@ yhat = wrapped_model.predict(test_X)
 
 下面列出了完整的示例。
 
-```
+```py
 # load and summarize the dataset
 from numpy import loadtxt
 # load data
@@ -195,7 +195,7 @@ print(X.shape, y.shape)
 
 运行该示例会打印数据集输入和输出部分的形状，显示 13 个输入变量、一个输出变量和 506 行数据。
 
-```
+```py
 (506, 13) (506,)
 ```
 
@@ -205,7 +205,7 @@ print(X.shape, y.shape)
 
 在这个例子中，我们将拟合一个[huberrelater](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.HuberRegressor.html)对象，并使用一个管道来规范化输入变量。
 
-```
+```py
 ...
 # prepare the model with input scaling
 pipeline = Pipeline(steps=[('normalize', MinMaxScaler()), ('model', HuberRegressor())])
@@ -213,7 +213,7 @@ pipeline = Pipeline(steps=[('normalize', MinMaxScaler()), ('model', HuberRegress
 
 接下来，我们将定义一个 TransformedTargetRegressor 实例，并将回归器设置为管道，将转换器设置为一个 MinMaxScaler 对象的实例。
 
-```
+```py
 ...
 # prepare the model with target scaling
 model = TransformedTargetRegressor(regressor=pipeline, transformer=MinMaxScaler())
@@ -221,7 +221,7 @@ model = TransformedTargetRegressor(regressor=pipeline, transformer=MinMaxScaler(
 
 然后，我们可以使用 10 倍交叉验证对输入和输出变量进行标准化来评估模型。
 
-```
+```py
 ...
 # evaluate model
 cv = KFold(n_splits=10, shuffle=True, random_state=1)
@@ -230,7 +230,7 @@ scores = cross_val_score(model, X, y, scoring='neg_mean_absolute_error', cv=cv, 
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # example of normalizing input and output variables for regression.
 from numpy import mean
 from numpy import absolute
@@ -265,7 +265,7 @@ print('Mean MAE: %.3f' % (s_mean))
 
 在这种情况下，我们实现了大约 3.1 的 MAE，比实现了大约 6.6 的天真模型好得多。
 
-```
+```py
 Mean MAE: 3.191
 ```
 
@@ -275,7 +275,7 @@ Mean MAE: 3.191
 
 下面列出了在房屋数据集的输入和目标变量上使用电力变压器的完整示例。
 
-```
+```py
 # example of power transform input and output variables for regression.
 from numpy import mean
 from numpy import absolute
@@ -310,7 +310,7 @@ print('Mean MAE: %.3f' % (s_mean))
 
 在这种情况下，我们看到 MAE 进一步提高到大约 2.9。
 
-```
+```py
 Mean MAE: 2.926
 ```
 

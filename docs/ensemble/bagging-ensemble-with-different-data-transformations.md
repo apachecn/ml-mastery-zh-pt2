@@ -78,7 +78,7 @@ bagging 的思想可以推广到用于改变训练数据集和在数据的每个
 
 下面的示例创建了一个包含 1，000 个示例的数据集，每个示例包含 20 个输入要素，其中 15 个包含预测目标的信息。
 
-```
+```py
 # synthetic classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -89,7 +89,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结数据数组的形状，这证实了我们的预期。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -99,7 +99,7 @@ print(X.shape, y.shape)
 
 下面列出了在综合分类数据集上评估决策树的完整示例。
 
-```
+```py
 # evaluate decision tree on synthetic classification dataset
 from numpy import mean
 from numpy import std
@@ -127,7 +127,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 这个分数提供了一个性能基线，我们期望数据转换集成能够在此基础上有所改进。
 
-```
+```py
 Mean Accuracy: 0.823 (0.039)
 ```
 
@@ -137,7 +137,7 @@ Mean Accuracy: 0.823 (0.039)
 
 例如，带有[最小最大缩放器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)类的规范化转换的管道如下所示:
 
-```
+```py
 ...
 # normalization
 norm = Pipeline([('s', MinMaxScaler()), ('m', DecisionTreeClassifier())])
@@ -147,7 +147,7 @@ norm = Pipeline([('s', MinMaxScaler()), ('m', DecisionTreeClassifier())])
 
 [VotingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html) 类可用于组合所有模型的预测。这个类接受一个“*估值器*”参数，它是一个元组列表，其中每个元组都有一个名称和模型或建模管道。例如:
 
-```
+```py
 ...
 # normalization
 norm = Pipeline([('s', MinMaxScaler()), ('m', DecisionTreeClassifier())])
@@ -159,7 +159,7 @@ ensemble = VotingClassifier(estimators=models, voting='hard')
 
 为了使代码更容易阅读，我们可以定义一个函数 *get_ensemble()* 来创建成员和数据转换 ensemble 本身。
 
-```
+```py
 # get a voting ensemble of models
 def get_ensemble():
 	# define the base models
@@ -191,7 +191,7 @@ def get_ensemble():
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # evaluate data transform bagging ensemble on a classification dataset
 from numpy import mean
 from numpy import std
@@ -252,7 +252,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到数据转换集成实现了大约 83.8%的分类准确率，这比单独使用决策树实现了大约 82.3%的准确率有所提升。
 
-```
+```py
 Mean Accuracy: 0.838 (0.042)
 ```
 
@@ -264,7 +264,7 @@ Mean Accuracy: 0.838 (0.042)
 
 首先，我们可以更新 *get_ensemble()* 函数，返回一个由单个系综成员以及系综本身组成的待评估模型列表。
 
-```
+```py
 # get a voting ensemble of models
 def get_ensemble():
 	# define the base models
@@ -295,7 +295,7 @@ def get_ensemble():
 
 我们可以调用这个函数，枚举每个模型，评估它，报告性能，并存储结果。
 
-```
+```py
 ...
 # get models
 models = get_ensemble()
@@ -315,7 +315,7 @@ for name,model in models:
 
 从视觉上看，我们希望整体分数的分布比任何单个成员都偏高，并且分布的中心趋势(平均值和中值)也比任何成员都高。
 
-```
+```py
 ...
 # plot the results for comparison
 pyplot.boxplot(results, labels=[n for n,_ in models], showmeans=True)
@@ -324,7 +324,7 @@ pyplot.show()
 
 将这些联系在一起，下面列出了将贡献成员的性能与数据转换集成的性能进行比较的完整示例。
 
-```
+```py
 # comparison of data transform ensemble to each contributing member for classification
 from numpy import mean
 from numpy import std
@@ -394,7 +394,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到许多单个成员表现良好，例如准确率约为 83.3%的“T0”kbins，准确率约为 83.1%的“T2”STD。我们还可以看到，与任何贡献成员相比，该集成实现了更好的整体性能，准确率约为 83.4%。
 
-```
+```py
 >norm: 0.821 (0.041)
 >std: 0.831 (0.045)
 >robust: 0.826 (0.044)
@@ -422,7 +422,7 @@ pyplot.show()
 
 下面的示例创建了一个数据集，其中 100 个输入要素各有 1，000 个示例，其中 10 个包含预测目标的信息。
 
-```
+```py
 # synthetic regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -433,7 +433,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集，并确认数据具有预期的形状。
 
-```
+```py
 (1000, 100) (1000,)
 ```
 
@@ -443,7 +443,7 @@ print(X.shape, y.shape)
 
 下面的示例评估了合成回归数据集上的决策树。
 
-```
+```py
 # evaluate decision tree on synthetic regression dataset
 from numpy import mean
 from numpy import std
@@ -469,7 +469,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到模型实现了大约 139.817 的 MAE。这提供了一个我们期望集合模型改进的性能下限。
 
-```
+```py
 MAE: -139.817 (12.449)
 ```
 
@@ -479,7 +479,7 @@ MAE: -139.817 (12.449)
 
 下面定义的 get_ensemble()函数创建单个模型和系综模型，并将所有模型组合成元组列表进行评估。
 
-```
+```py
 # get a voting ensemble of models
 def get_ensemble():
 	# define the base models
@@ -514,7 +514,7 @@ def get_ensemble():
 
 将这些联系在一起，下面列出了评估回归数据集的数据转换集成的完整示例。
 
-```
+```py
 # comparison of data transform ensemble to each contributing member for regression
 from numpy import mean
 from numpy import std
@@ -586,7 +586,7 @@ pyplot.show()
 
 这个结果表明，虽然每个管道的性能比没有转换的单个树差，但是每个管道都产生不同的错误，并且模型的平均值能够利用这些差异来降低错误。
 
-```
+```py
 >norm: -140.559 (11.783)
 >std: -140.582 (11.996)
 >robust: -140.813 (11.827)

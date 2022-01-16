@@ -70,7 +70,7 @@
 
 下面列出了完整的示例。
 
-```
+```py
 # synthetic classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -81,7 +81,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -91,7 +91,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate a decision tree on the classification dataset
 from numpy import mean
 from numpy import std
@@ -117,7 +117,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到单个决策树模型实现了大约 79.4%的分类准确率。我们可以将此作为性能的基准，看看我们的功能选择集成是否能够实现更好的性能。
 
-```
+```py
 Mean Accuracy: 0.794 (0.046)
 ```
 
@@ -141,7 +141,7 @@ Mean Accuracy: 0.794 (0.046)
 
 因此，我们可以定义一个名为 *get_ensemble()* 的辅助函数，为给定数量的输入特征创建一个具有基于特征选择的成员的投票集成。然后，我们可以使用这个函数作为模板来探索使用不同的特征选择方法。
 
-```
+```py
 # get a voting ensemble of models
 def get_ensemble(n_features):
 	# define the base models
@@ -177,7 +177,7 @@ f 统计或 f 检验是一类统计检验，用于计算方差值之间的比率
 
 scikit-learn 机器库提供了 [f_classif()函数](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_classif.html)中方差分析 F-检验的实现。该功能可用于特征选择策略，例如通过[选择最相关的特征(最大值)选择最相关的 *k* 类](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html)。
 
-```
+```py
 # get a voting ensemble of models
 def get_ensemble(n_features):
 	# define the base models
@@ -199,7 +199,7 @@ def get_ensemble(n_features):
 
 将这些联系在一起，下面的例子评估了一个由模型组成的投票集合，这些模型适合于由方差分析统计选择的特征子空间。
 
-```
+```py
 # example of an ensemble created from features selected with the anova f-statistic
 from numpy import mean
 from numpy import std
@@ -249,7 +249,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到单个模型的性能有所提升，使用基于方差分析统计选择的特征的模型集合，该模型的准确率达到了约 79.4%至约 83.2%。
 
-```
+```py
 Mean Accuracy: 0.832 (0.043)
 ```
 
@@ -263,7 +263,7 @@ Mean Accuracy: 0.832 (0.043)
 
 scikit-learn 机器学习库通过 [mutual_info_classif()函数](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html)为特征选择提供了数字输入和分类输出变量的互信息实现。和 *f_classif()* 一样，可以在 *SelectKBest* 特征选择策略(和其他策略)中使用。
 
-```
+```py
 # get a voting ensemble of models
 def get_ensemble(n_features):
 	# define the base models
@@ -285,7 +285,7 @@ def get_ensemble(n_features):
 
 将这些联系在一起，下面的例子评估了一个由模型组成的投票集合，这些模型适合由互信息选择的特征子空间。
 
-```
+```py
 # example of an ensemble created from features selected with mutual information
 from numpy import mean
 from numpy import std
@@ -335,7 +335,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到性能比使用单一模型有所提升，尽管比选择的特征子空间略少，方差分析的平均准确率约为 82.7%。
 
-```
+```py
 Mean Accuracy: 0.827 (0.048)
 ```
 
@@ -353,7 +353,7 @@ Mean Accuracy: 0.827 (0.048)
 
 RFE 方法可通过 scikit-learn 中的 [RFE 类](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html)获得，并可直接用于特征选择。不需要和*选择测试*类结合。
 
-```
+```py
 # get a voting ensemble of models
 def get_ensemble(n_features):
 	# define the base models
@@ -375,7 +375,7 @@ def get_ensemble(n_features):
 
 将这些联系在一起，下面的例子评估了由适合 RFE 选择的特征子空间的模型组成的投票集合。
 
-```
+```py
 # example of an ensemble created from features selected with RFE
 from numpy import mean
 from numpy import std
@@ -424,7 +424,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到平均精度与互信息特征选择相似，得分约为 82.3%。
 
-```
+```py
 Mean Accuracy: 0.823 (0.045)
 ```
 
@@ -450,7 +450,7 @@ Mean Accuracy: 0.823 (0.045)
 
 下面的 *get_ensemble()* 函数实现了这一点，将每个方法要选择的指定数量的特征作为参数。希望通过每种方法选择的特征足够不同，足够熟练，以产生有效的集成。
 
-```
+```py
 # get a voting ensemble of models
 def get_ensemble(n_features):
 	# define the base models
@@ -474,7 +474,7 @@ def get_ensemble(n_features):
 
 将这些联系在一起，下面的例子评估了使用不同特征选择方法选择的固定数量的特征的集合。
 
-```
+```py
 # ensemble of a fixed number features selected by different feature selection methods
 from numpy import mean
 from numpy import std
@@ -528,7 +528,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到性能相对于上一节中考虑的技术有适度的提升，导致平均分类准确率约为 83.9%。
 
-```
+```py
 Mean Accuracy: 0.839 (0.044)
 ```
 
@@ -536,7 +536,7 @@ Mean Accuracy: 0.839 (0.044)
 
 更新后的示例恰好执行了这种比较。
 
-```
+```py
 # comparison of ensemble of a fixed number features to single models fit on each set of features
 from numpy import mean
 from numpy import std
@@ -601,7 +601,7 @@ pyplot.show()
 
 在这种情况下，结果表明，如我们所希望的那样，适合所选特征的模型集合比集合中的任何单个模型表现得更好。
 
-```
+```py
 >anova: 0.811 (0.048)
 >mutinfo: 0.807 (0.041)
 >rfe: 0.825 (0.043)
@@ -626,7 +626,7 @@ pyplot.show()
 
 在这种情况下，我们将选择子空间，就像我们在上一节中从 1 到数据集中的列数一样，尽管在这种情况下，用每个特征选择方法重复这个过程。
 
-```
+```py
 # get a voting ensemble of models
 def get_ensemble(n_features_start, n_features_end):
 	# define the base models
@@ -653,7 +653,7 @@ def get_ensemble(n_features_start, n_features_end):
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # ensemble of many subsets of features selected by multiple feature selection methods
 from numpy import mean
 from numpy import std
@@ -708,7 +708,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到性能的进一步提升，正如我们所希望的那样，组合集成导致平均分类准确率约为 86.0%。
 
-```
+```py
 Mean Accuracy: 0.860 (0.036)
 ```
 

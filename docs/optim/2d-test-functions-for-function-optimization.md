@@ -64,7 +64,7 @@ Let’s get started.![Two-Dimensional (2D) Test Functions for Function Optimizat
 
 该范围被限制在-5.0 和 5.0，一个全局最优值在[0.0，0.0]。
 
-```
+```py
 # unimodal test function
 from numpy import arange
 from numpy import meshgrid
@@ -102,7 +102,7 @@ pyplot.show()
 
 该范围被限制在-10.0 和 10.0，一个全局最优值在[0.0，0.0]。
 
-```
+```py
 # unimodal test function
 from numpy import arange
 from numpy import meshgrid
@@ -140,7 +140,7 @@ pyplot.show()
 
 该范围被限制在-10.0 和 10.0，并且在[pi，pi]处有一个全局最优值。这个函数被称为 Easom 的函数。
 
-```
+```py
 # unimodal test function
 from numpy import cos
 from numpy import exp
@@ -191,7 +191,7 @@ A [多模态功能](https://en.wikipedia.org/wiki/Multimodal_distribution)是指
 
 该范围被限制在-5.0 和 5.0，一个全局最优值在[0.0，0.0]。这个函数被称为[阿克利函数](https://en.wikipedia.org/wiki/Ackley_function)。
 
-```
+```py
 # multimodal test function
 from numpy import arange
 from numpy import exp
@@ -234,7 +234,7 @@ pyplot.show()
 
 该范围以-5.0 和 5.0 为界，并在[3.0，2.0]，[-2.805118，3.131312]，[-3.779310，-3.283186]，[3.584428，-1.848126]处作为四个全局最优。这个功能被称为 [Himmelblau 的功能](https://en.wikipedia.org/wiki/Himmelblau%27s_function)。
 
-```
+```py
 # multimodal test function
 from numpy import arange
 from numpy import meshgrid
@@ -272,7 +272,7 @@ pyplot.show()
 
 范围以-10.0 和 10.0 为界，函数为四个全局最优值，分别为[8.05502，9.66459]，[-8.05502，9.66459]，[8.05502，-9.66459]，[-8.05502，-9.66459]。这个函数被称为霍尔德表函数。
 
-```
+```py
 # multimodal test function
 from numpy import arange
 from numpy import exp

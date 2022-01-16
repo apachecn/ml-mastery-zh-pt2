@@ -138,13 +138,13 @@ PatchGAN 具有预测输入图像中每个 70×70 的面片是真的还是假的
 
 keras-contrib 库可以通过 *pip* 安装，如下所示:
 
-```
+```py
 sudo pip install git+https://www.github.com/keras-team/keras-contrib.git
 ```
 
 或者，如果您使用的是 Anaconda 虚拟环境，[如 EC2 上的](https://machinelearningmastery.com/develop-evaluate-large-deep-learning-models-keras-amazon-web-services/):
 
-```
+```py
 git clone https://www.github.com/keras-team/keras-contrib.git
 cd keras-contrib
 sudo ~/anaconda3/envs/tensorflow_p36/bin/python setup.py install
@@ -152,7 +152,7 @@ sudo ~/anaconda3/envs/tensorflow_p36/bin/python setup.py install
 
 新的*实例化*层可以如下使用:
 
-```
+```py
 ...
 from keras_contrib.layers.normalization.instancenormalization import InstanceNormalization
 # define layer
@@ -186,7 +186,7 @@ layer = InstanceNormalization(axis=-1)
 
 在下面的例子中，我们可以用定义 PatchGAN 鉴别器的 *define_discriminator()* 函数将所有这些联系在一起。模型配置与本文附录中的描述相匹配，附加详细信息来自[Definited _ n _ layers()函数](https://github.com/junyanz/CycleGAN/blob/master/models/architectures.lua#L338)中定义的官方 Torch 实现。
 
-```
+```py
 # example of defining a 70x70 patchgan discriminator model
 from keras.optimizers import Adam
 from keras.initializers import RandomNormal
@@ -247,7 +247,7 @@ plot_model(model, to_file='discriminator_model_plot.png', show_shapes=True, show
 
 运行该示例总结了显示每个层的大小输入和输出的模型。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -313,7 +313,7 @@ CycleGAN 生成器模型将图像作为输入，并生成翻译后的图像作�
 
 这在 *resnet_block()* 函数中实现，该函数在第二个块之后创建了两个具有 3×3 过滤器和 1×1 步长的 conv-实例化块，并且没有 [ReLU 激活](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)，与 [build_conv_block()函数](https://github.com/junyanz/CycleGAN/blob/master/models/architectures.lua#L197)中的官方 Torch 实现相匹配。[为了简单起见，使用相同的填充](https://machinelearningmastery.com/padding-and-stride-for-convolutional-neural-networks/)代替文中推荐的反射填充。
 
-```
+```py
 # generator a resnet block
 def resnet_block(n_filters, input_layer):
 	# weight initialization
@@ -334,7 +334,7 @@ def resnet_block(n_filters, input_layer):
 
 重要的是，该模型输出的像素值与输入的形状相同，并且像素值在[-1，1]的范围内，这是氮化镓发生器模型的典型情况。
 
-```
+```py
 # define the standalone generator model
 def define_generator(image_shape=(256,256,3), n_resnet=9):
 	# weight initialization
@@ -377,7 +377,7 @@ def define_generator(image_shape=(256,256,3), n_resnet=9):
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # example of an encoder-decoder generator for the cyclegan
 from keras.optimizers import Adam
 from keras.models import Model
@@ -452,7 +452,7 @@ plot_model(model, to_file='generator_model_plot.png', show_shapes=True, show_lay
 
 运行示例首先总结模型。
 
-```
+```py
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to
 ==================================================================================================
@@ -638,7 +638,7 @@ ________________________________________________________________________________
 
 首先，我们可以使用我们的函数来定义 CycleGAN 中使用的两个生成器和两个鉴别器。
 
-```
+```py
 ...
 # input shape
 image_shape = (256,256,3)
@@ -656,7 +656,7 @@ d_model_B = define_discriminator(image_shape)
 
 这可以通过在复合模型的上下文中将其他模型的权重标记为不可训练来实现，以确保我们只更新预期的生成器。
 
-```
+```py
 ...
 # ensure the model we're updating is trainable
 g_model_1.trainable = True
@@ -670,7 +670,7 @@ g_model_2.trainable = False
 
 第一步是从源域定义真实图像的输入，通过我们的生成器模型，然后将生成器的输出连接到鉴别器，并将其分类为真实或虚假。
 
-```
+```py
 ...
 # discriminator element
 input_gen = Input(shape=image_shape)
@@ -680,7 +680,7 @@ output_d = d_model(gen1_out)
 
 接下来，我们可以将身份映射元素与来自目标域的真实图像的新输入连接起来，通过我们的生成器模型传递它，并直接输出(希望)未翻译的图像。
 
-```
+```py
 ...
 # identity element
 input_id = Input(shape=image_shape)
@@ -691,7 +691,7 @@ output_id = g_model_1(input_id)
 
 正向循环可以通过将我们的发电机的输出连接到另一个发电机来实现，另一个发电机的输出可以与我们的发电机的输入进行比较，并且应该相同。
 
-```
+```py
 ...
 # forward cycle
 output_f = g_model_2(gen1_out)
@@ -699,7 +699,7 @@ output_f = g_model_2(gen1_out)
 
 后向循环更复杂，涉及来自目标域的真实图像的输入通过另一个生成器，然后通过我们的生成器，该生成器应该匹配来自目标域的真实图像。
 
-```
+```py
 ...
 # backward cycle
 gen2_out = g_model_2(input_id)
@@ -710,7 +710,7 @@ output_b = g_model_1(gen2_out)
 
 然后，我们可以用两个输入定义这个复合模型:一个真实图像用于源域和目标域，四个输出，一个用于鉴别器，一个用于身份映射生成器，一个用于正向循环的另一个生成器，一个来自反向循环的生成器。
 
-```
+```py
 ...
 # define model graph
 model = Model([input_gen, input_id], [output_d, output_id, output_f, output_b])
@@ -720,7 +720,7 @@ model = Model([input_gen, input_id], [output_d, output_id, output_f, output_b])
 
 生成器被更新为四个损失值的加权平均值。对抗损失通常被加权，而前向和后向循环损失使用称为*λ*的参数加权，并被设置为 10，例如比对抗损失重要 10 倍。身份丢失也作为 lambda 参数的一部分进行加权，在官方 Torch 实现中设置为 0.5 * 10 或 5。
 
-```
+```py
 ...
 # compile model with weighting of least squares loss and L1 loss
 model.compile(loss=['mse', 'mae', 'mae', 'mae'], loss_weights=[1, 5, 10, 10], optimizer=opt)
@@ -728,7 +728,7 @@ model.compile(loss=['mse', 'mae', 'mae', 'mae'], loss_weights=[1, 5, 10, 10], op
 
 我们可以将所有这些联系在一起，并定义函数 *define_composite_model()* 来创建一个复合模型，用于训练给定的生成器模型。
 
-```
+```py
 # define a composite model for updating generators by adversarial and cycle loss
 def define_composite_model(g_model_1, d_model, g_model_2, image_shape):
 	# ensure the model we're updating is trainable
@@ -760,7 +760,7 @@ def define_composite_model(g_model_1, d_model, g_model_2, image_shape):
 
 然后可以调用该函数来准备一个复合模型，用于训练 *g_model_AtoB* 发电机模型和 *g_model_BtoA* 模型；例如:
 
-```
+```py
 ...
 # composite: A -> B -> [real/fake, A]
 c_model_AtoBtoA = define_composite_model(g_model_AtoB, d_model_B, g_model_BtoA, image_shape)
@@ -792,7 +792,7 @@ c_model_BtoAtoB = define_composite_model(g_model_BtoA, d_model_A, g_model_AtoB, 
 
 为了完整起见，下面列出了创建所有模型的完整示例。
 
-```
+```py
 # example of defining composite models for training cyclegan generators
 from keras.optimizers import Adam
 from keras.models import Model
@@ -942,7 +942,7 @@ c_model_BtoA = define_composite_model(g_model_BtoA, d_model_A, g_model_AtoB, ima
 
 首先，我们必须定义一个助手函数，它将选择一批真实图像和相关的目标(1.0)。
 
-```
+```py
 # select a batch of random samples, returns images and target
 def generate_real_samples(dataset, n_samples, patch_shape):
 	# choose random instances
@@ -956,7 +956,7 @@ def generate_real_samples(dataset, n_samples, patch_shape):
 
 同样，我们需要一个函数来生成一批假图像和相关的目标(0.0)。
 
-```
+```py
 # generate a batch of images, returns images and targets
 def generate_fake_samples(g_model, dataset, patch_shape):
 	# generate fake instance
@@ -977,7 +977,7 @@ def generate_fake_samples(g_model, dataset, patch_shape):
 
 通常，批次大小( *n_batch* )设置为 1。在这种情况下，我们将假设 256×256 个输入图像，这意味着用于 PatchGAN 鉴别器的 *n_patch* 将是 16。
 
-```
+```py
 ...
 # select a batch of real samples
 X_realA, y_realA = generate_real_samples(trainA, n_batch, n_patch)
@@ -986,7 +986,7 @@ X_realB, y_realB = generate_real_samples(trainB, n_batch, n_patch)
 
 接下来，我们可以使用所选的真实图像批次来生成相应批次的生成图像或假图像。
 
-```
+```py
 ...
 # generate a batch of fake samples
 X_fakeA, y_fakeA = generate_fake_samples(g_model_BtoA, X_realB, n_patch)
@@ -1003,7 +1003,7 @@ X_fakeB, y_fakeB = generate_fake_samples(g_model_AtoB, X_realA, n_patch)
 
 下面的 *update_image_pool()* 功能是基于 [image_pool.lua](https://github.com/junyanz/CycleGAN/blob/master/util/image_pool.lua) 中的官方 Torch 实现实现的。
 
-```
+```py
 # update image pool for fake images
 def update_image_pool(pool, images, max_size=50):
 	selected = list()
@@ -1025,7 +1025,7 @@ def update_image_pool(pool, images, max_size=50):
 
 然后，我们可以用生成的假图像更新我们的图像池，其结果可以用来训练鉴别器模型。
 
-```
+```py
 ...
 # update fakes from pool
 X_fakeA = update_image_pool(poolA, X_fakeA)
@@ -1036,7 +1036,7 @@ X_fakeB = update_image_pool(poolB, X_fakeB)
 
 *train_on_batch()* 函数将为四个损失函数中的每一个返回一个值，每个输出一个值，以及用于更新我们感兴趣的模型权重的加权和(第一个值)。
 
-```
+```py
 ...
 # update generator B->A via adversarial and cycle loss
 g_loss2, _, _, _, _  = c_model_BtoA.train_on_batch([X_realB, X_realA], [y_realA, X_realA, X_realB, X_realA])
@@ -1044,7 +1044,7 @@ g_loss2, _, _, _, _  = c_model_BtoA.train_on_batch([X_realB, X_realA], [y_realA,
 
 然后，我们可以使用可能来自或可能不来自图像池的假图像来更新鉴别器模型。
 
-```
+```py
 ...
 # update discriminator for A -> [real/fake]
 dA_loss1 = d_model_A.train_on_batch(X_realA, y_realA)
@@ -1053,7 +1053,7 @@ dA_loss2 = d_model_A.train_on_batch(X_fakeA, y_fakeA)
 
 然后，我们可以对其他生成器和鉴别器模型进行同样的操作。
 
-```
+```py
 ...
 # update generator A->B via adversarial and cycle loss
 g_loss1, _, _, _, _ = c_model_AtoB.train_on_batch([X_realA, X_realB], [y_realB, X_realB, X_realA, X_realB])
@@ -1064,7 +1064,7 @@ dB_loss2 = d_model_B.train_on_batch(X_fakeB, y_fakeB)
 
 在训练运行结束时，我们可以报告真实和虚假图像上的鉴别器模型以及每个生成器模型的当前损失。
 
-```
+```py
 ...
 # summarize performance
 print('>%d, dA[%.3f,%.3f] dB[%.3f,%.3f] g[%.3f,%.3f]' % (i+1, dA_loss1,dA_loss2, dB_loss1,dB_loss2, g_loss1,g_loss2))
@@ -1074,7 +1074,7 @@ print('>%d, dA[%.3f,%.3f] dB[%.3f,%.3f] g[%.3f,%.3f]' % (i+1, dA_loss1,dA_loss2,
 
 如本文所述，使用批量 1，模型适合 100 个训练时期。
 
-```
+```py
 # train cyclegan models
 def train(d_model_A, d_model_B, g_model_AtoB, g_model_BtoA, c_model_AtoB, c_model_BtoA, dataset):
 	# define properties of the training run
@@ -1116,7 +1116,7 @@ def train(d_model_A, d_model_B, g_model_AtoB, g_model_BtoA, c_model_AtoB, c_mode
 
 然后可以用我们定义的模型和加载的数据集直接调用训练函数。
 
-```
+```py
 ...
 # load a dataset as a list of two numpy arrays
 dataset = ...

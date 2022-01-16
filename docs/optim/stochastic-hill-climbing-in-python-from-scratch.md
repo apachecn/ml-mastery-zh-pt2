@@ -79,7 +79,7 @@ Let’s get started.![Stochastic Hill Climbing in Python from Scratch](img/28479
 
 例如，一维目标函数和边界可以定义如下:
 
-```
+```py
 # objective function
 def objective(x):
 	return 0
@@ -90,7 +90,7 @@ bounds = asarray([[-5.0, 5.0]])
 
 接下来，我们可以将初始解生成为问题边界内的随机点，然后使用目标函数对其进行评估。
 
-```
+```py
 ...
 # generate an initial point
 solution = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
@@ -100,7 +100,7 @@ solution_eval = objective(solution)
 
 现在，我们可以循环定义为“ *n_iterations* ”的算法的预定义迭代次数，例如 100 或 1000 次。
 
-```
+```py
 ...
 # run the hill climb
 for i in range(n_iterations):
@@ -111,7 +111,7 @@ for i in range(n_iterations):
 
 这需要一个预定义的“*步长*”参数，该参数与搜索空间的边界相关。我们将采用高斯分布的随机步长，其中平均值是当前点，标准偏差由“*步长*定义。这意味着大约 99%的步骤将在当前点的(3 *步长)以内。
 
-```
+```py
 ...
 # take a step
 candidate = solution + randn(len(bounds)) * step_size
@@ -119,7 +119,7 @@ candidate = solution + randn(len(bounds)) * step_size
 
 我们没有必要以这种方式采取措施。您可能希望在 0 和步长之间使用均匀分布。例如:
 
-```
+```py
 ...
 # take a step
 candidate = solution + rand(len(bounds)) * step_size
@@ -127,7 +127,7 @@ candidate = solution + rand(len(bounds)) * step_size
 
 接下来我们需要用目标函数评估新的候选解。
 
-```
+```py
 ...
 # evaluate candidate point
 candidte_eval = objective(candidate)
@@ -135,7 +135,7 @@ candidte_eval = objective(candidate)
 
 然后，我们需要检查这个新点的评估是否与当前最佳点一样好或更好，如果是，用这个新点替换我们当前的最佳点。
 
-```
+```py
 ...
 # check if we should keep the new point
 if candidte_eval <= solution_eval:
@@ -149,7 +149,7 @@ if candidte_eval <= solution_eval:
 
 我们可以将这个爬山算法实现为一个可重用的函数，该函数以目标函数的名称、每个输入变量的界限、总迭代次数和步骤作为参数，并返回找到的最佳解及其评估。
 
-```
+```py
 # hill climbing local search algorithm
 def hillclimbing(objective, bounds, n_iterations, step_size):
 	# generate an initial point
@@ -183,7 +183,7 @@ def hillclimbing(objective, bounds, n_iterations, step_size):
 
 下面的示例定义了函数，然后为输入值网格创建了函数响应面的线图，并用红线标记 f(0.0) = 0.0 处的 optima。
 
-```
+```py
 # convex unimodal optimization function
 from numpy import arange
 from matplotlib import pyplot
@@ -218,7 +218,7 @@ pyplot.show()
 
 首先，我们将播种伪随机数发生器。一般来说，这不是必需的，但是在这种情况下，我希望确保每次运行算法时都得到相同的结果(相同的随机数序列)，这样我们就可以在以后绘制结果。
 
-```
+```py
 ...
 # seed the pseudorandom number generator
 seed(5)
@@ -228,7 +228,7 @@ seed(5)
 
 在这种情况下，我们将搜索算法的 1000 次迭代，并使用 0.1 的步长。假设我们使用高斯函数来生成步长，这意味着大约 99%的所有步长将在给定点的(0.1 * 3)距离内，例如三个标准偏差。
 
-```
+```py
 ...
 n_iterations = 1000
 # define the maximum step size
@@ -237,7 +237,7 @@ step_size = 0.1
 
 接下来，我们可以执行搜索并报告结果。
 
-```
+```py
 ...
 # perform the hill climbing search
 best, score = hillclimbing(objective, bounds, n_iterations, step_size)
@@ -247,7 +247,7 @@ print('f(%s) = %f' % (best, score))
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # hill climbing search of a one-dimensional objective function
 from numpy import asarray
 from numpy.random import randn
@@ -298,7 +298,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以看到算法的 1000 次迭代中有大约 36 次改进，并且有一个非常接近 0.0 的最优输入的解，其计算结果为 f(0.0) = 0.0。
 
-```
+```py
 >1 f([-2.74290923]) = 7.52355
 >3 f([-2.65873147]) = 7.06885
 >4 f([-2.52197291]) = 6.36035
@@ -343,7 +343,7 @@ f([-0.00017051]) = 0.000000
 
 我们可以更新*爬山()*来跟踪每次有改进的目标函数评估，并返回这个分数列表。
 
-```
+```py
 # hill climbing local search algorithm
 def hillclimbing(objective, bounds, n_iterations, step_size):
 	# generate an initial point
@@ -371,7 +371,7 @@ def hillclimbing(objective, bounds, n_iterations, step_size):
 
 然后，我们可以创建这些分数的折线图，以查看搜索过程中发现的每个改进的目标函数的相对变化。
 
-```
+```py
 ...
 # line plot of best scores
 pyplot.plot(scores, '.-')
@@ -382,7 +382,7 @@ pyplot.show()
 
 将这些联系在一起，下面列出了在搜索过程中执行搜索并绘制改进解决方案的目标函数分数的完整示例。
 
-```
+```py
 # hill climbing search of a one-dimensional objective function
 from numpy import asarray
 from numpy.random import randn
@@ -451,7 +451,7 @@ pyplot.show()
 
 这可以通过首先更新*爬山()*功能来跟踪每个最佳候选解在搜索过程中的位置，然后返回最佳解列表来实现。
 
-```
+```py
 # hill climbing local search algorithm
 def hillclimbing(objective, bounds, n_iterations, step_size):
 	# generate an initial point
@@ -479,7 +479,7 @@ def hillclimbing(objective, bounds, n_iterations, step_size):
 
 然后，我们可以创建目标函数响应面的图，并像以前一样标记 optima。
 
-```
+```py
 ...
 # sample input range uniformly at 0.1 increments
 inputs = arange(bounds[0,0], bounds[0,1], 0.1)
@@ -491,7 +491,7 @@ pyplot.axvline(x=[0.0], ls='--', color='red')
 
 最后，我们可以将通过搜索找到的候选解决方案的顺序绘制为黑点。
 
-```
+```py
 ...
 # plot the sample as black circles
 pyplot.plot(solutions, [objective(x) for x in solutions], 'o', color='black')
@@ -499,7 +499,7 @@ pyplot.plot(solutions, [objective(x) for x in solutions], 'o', color='black')
 
 将这些联系在一起，下面列出了在目标函数的响应面上绘制改进解决方案序列的完整示例。
 
-```
+```py
 # hill climbing search of a one-dimensional objective function
 from numpy import asarray
 from numpy import arange

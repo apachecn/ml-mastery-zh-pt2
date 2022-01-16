@@ -104,7 +104,7 @@ Keras 允许您使用随机、批量或小批量梯度下降来训练模型。
 
 下面的示例将随机梯度下降的 batch_size 参数设置为 1。
 
-```
+```py
 ...
 model.fit(trainX, trainy, batch_size=1)
 ```
@@ -113,7 +113,7 @@ model.fit(trainX, trainy, batch_size=1)
 
 下面的示例将 batch_size 参数设置为批处理梯度下降训练数据集中的样本数。
 
-```
+```py
 ...
 model.fit(trainX, trainy, batch_size=len(trainX))
 ```
@@ -122,14 +122,14 @@ model.fit(trainX, trainy, batch_size=len(trainX))
 
 以下示例对 *batch_size* 参数使用默认的批处理大小 32，对于随机梯度下降，该值大于 1，对于批处理梯度下降，该值小于训练数据集的大小。
 
-```
+```py
 ...
 model.fit(trainX, trainy)
 ```
 
 或者，可以将 batch_size 指定为 1 或训练数据集中的样本数之外的值，例如 64。
 
-```
+```py
 ...
 model.fit(trainX, trainy, batch_size=64)
 ```
@@ -142,7 +142,7 @@ scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/mo
 
 该问题可以配置为具有两个输入变量(表示点的 *x* 和 *y* 坐标)和每组内点的标准偏差 2.0。我们将使用相同的随机状态(伪随机数发生器的种子)来确保我们总是获得相同的数据点。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random_state=2)
 ```
@@ -153,7 +153,7 @@ X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random
 
 下面列出了完整的示例。
 
-```
+```py
 # scatter plot of blobs dataset
 from sklearn.datasets import make_blobs
 from matplotlib import pyplot
@@ -184,7 +184,7 @@ pyplot.show()
 
 首先，我们需要对目标变量进行热编码，将整数类值转换为二进制向量。这将允许模型预测每个例子属于三个类别中的每一个的概率，在训练模型时在预测和上下文中提供更多的细微差别。
 
-```
+```py
 # one hot encode output variable
 y = to_categorical(y)
 ```
@@ -193,7 +193,7 @@ y = to_categorical(y)
 
 这种均匀分割将允许我们评估和比较模型上不同批量配置的性能及其性能。
 
-```
+```py
 # split into train and test
 n_train = 500
 trainX, testX = X[:n_train, :], X[n_train:, :]
@@ -204,7 +204,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 该模型将有一个单一的 50 个节点的隐藏层和一个校正的线性激活函数和何随机权重初始化。最后，输出层有 3 个节点，以便对三个类和一个 softmax 激活函数进行预测。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(50, input_dim=2, activation='relu', kernel_initializer='he_uniform'))
@@ -217,7 +217,7 @@ model.add(Dense(3, activation='softmax'))
 
 效果将是权重更新之间的时间更长，并且我们期望比其他批量更快的训练，以及更稳定的梯度估计，这将导致模型在训练期间更稳定的性能。
 
-```
+```py
 # compile model
 opt = SGD(lr=0.01, momentum=0.9)
 model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
@@ -227,7 +227,7 @@ history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=200, 
 
 一旦模型合适，就在训练和测试数据集上评估和报告性能。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -238,7 +238,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 这些学习曲线提供了三个指标:模型学习问题的速度，学习问题的效果，以及在训练过程中模型更新的噪音。
 
-```
+```py
 # plot training history
 pyplot.plot(history.history['accuracy'], label='train')
 pyplot.plot(history.history['val_accuracy'], label='test')
@@ -248,7 +248,7 @@ pyplot.show()
 
 将这些元素结合在一起，下面列出了完整的示例。
 
-```
+```py
 # mlp for the blobs problem with batch gradient descent
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -290,7 +290,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到训练集和测试集的性能相似，分别为 81%和 83%。
 
-```
+```py
 Train: 0.816, Test: 0.830
 ```
 
@@ -306,7 +306,7 @@ Train: 0.816, Test: 0.830
 
 这需要将批处理大小从训练数据集的大小更改为 1。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=200, verbose=0, batch_size=1)
 ```
@@ -317,7 +317,7 @@ history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=200, 
 
 下面列出了此更改的完整示例。
 
-```
+```py
 # mlp for the blobs problem with stochastic gradient descent
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -361,7 +361,7 @@ pyplot.show()
 
 至少对于这个问题和所选择的模型和模型配置，随机(在线)梯度下降是不合适的。
 
-```
+```py
 Train: 0.612, Test: 0.606
 ```
 
@@ -375,7 +375,7 @@ Train: 0.612, Test: 0.606
 
 我们可以通过用随机梯度下降和较小的学习率重新运行模型拟合来测试这一点。例如，我们可以将学习率降低一个数量级，从 0.01 到 0.001。
 
-```
+```py
 # compile model
 opt = SGD(lr=0.001, momentum=0.9)
 model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
@@ -383,7 +383,7 @@ model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy
 
 为了完整起见，下面提供了包含此更改的完整代码列表。
 
-```
+```py
 # mlp for the blobs problem with stochastic gradient descent
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -425,7 +425,7 @@ pyplot.show()
 
 报告的性能大大提高，在列车和测试集上实现了与使用批量梯度下降的拟合相当的分类精度。
 
-```
+```py
 Train: 0.816, Test: 0.824
 ```
 
@@ -456,7 +456,7 @@ Train: 0.816, Test: 0.824
 
 将学习率保持在 0.01，就像我们使用批处理梯度下降一样，我们可以将批处理大小设置为 32，这是一个广泛采用的默认批处理大小。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=200, verbose=0, batch_size=32)
 ```
@@ -465,7 +465,7 @@ history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=200, 
 
 下面列出了这种修改的完整示例。
 
-```
+```py
 # mlp for the blobs problem with minibatch gradient descent
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -505,7 +505,7 @@ pyplot.show()
 
 运行该示例在训练集和测试集上都报告了相似的性能，在我们降低学习率之后，可以与批处理梯度下降和随机梯度下降相媲美。
 
-```
+```py
 Train: 0.832, Test: 0.812
 ```
 
@@ -523,7 +523,7 @@ Train: 0.832, Test: 0.812
 
 首先，我们可以清理代码并创建一个函数来准备数据集。
 
-```
+```py
 # prepare train and test dataset
 def prepare_data():
 	# generate 2d classification dataset
@@ -539,7 +539,7 @@ def prepare_data():
 
 接下来，我们可以创建一个函数来拟合给定批量的问题模型，并在训练和测试数据集上绘制分类精度的学习曲线。
 
-```
+```py
 # fit a model and plot learning curve
 def fit_model(trainX, trainy, testX, testy, n_batch):
 	# define model
@@ -559,7 +559,7 @@ def fit_model(trainX, trainy, testX, testy, n_batch):
 
 最后，我们可以用一组不同的批处理大小来评估模型行为，同时保持模型的其他一切不变，包括学习速率。
 
-```
+```py
 # prepare dataset
 trainX, trainy, testX, testy = prepare_data()
 # create learning curves for different batch sizes
@@ -578,7 +578,7 @@ pyplot.show()
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # mlp for the blobs problem with minibatch gradient descent with varied batch size
 from sklearn.datasets import make_blobs
 from keras.layers import Dense

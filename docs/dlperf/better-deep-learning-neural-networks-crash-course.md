@@ -131,14 +131,14 @@
 
 Keras 允许您通过 *fit()* 函数的 *batch_size* 参数来配置批次大小，例如:
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, epochs=1000, batch_size=len(trainX))
 ```
 
 下面的例子演示了一个多层感知器，它在二进制分类问题上具有批量梯度下降。
 
-```
+```py
 # example of batch gradient descent
 from sklearn.datasets import make_circles
 from keras.layers import Dense
@@ -199,7 +199,7 @@ pyplot.show()
 
 Keras 提供了*reduce lronplateaau*学习速率计划，当检测到模型性能平稳时，例如，给定数量的训练时期没有变化，该计划将调整学习速率。例如:
 
-```
+```py
 # define learning rate schedule
 rlrp = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=5, min_delta=1E-7, verbose=1)
 ```
@@ -208,7 +208,7 @@ rlrp = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=5, min_delta=1
 
 下面的示例演示了一个多层感知器，该感知器在二进制分类问题上有一个学习速率计划，如果在 5 个训练时期内没有检测到验证损失的变化，学习速率将降低一个数量级。
 
-```
+```py
 # example of a learning rate schedule
 from sklearn.datasets import make_circles
 from keras.layers import Dense
@@ -272,13 +272,13 @@ pyplot.show()
 
 Keras 通过单独的*批处理规范化*层支持批处理规范化，该层可以添加到模型的隐藏层之间。例如:
 
-```
+```py
 model.add(BatchNormalization())
 ```
 
 下面的例子演示了一个多层感知器模型，它对二进制分类问题进行了批量规范化。
 
-```
+```py
 # example of batch normalization
 from sklearn.datasets import make_circles
 from keras.models import Sequential
@@ -343,13 +343,13 @@ pyplot.show()
 
 Keras 通过图层上的*核正则化器*参数支持权重正则化，可以配置为使用 [L1 或 L2 向量范数](https://machinelearningmastery.com/vector-norms-machine-learning/)，例如:
 
-```
+```py
 model.add(Dense(500, input_dim=2, activation='relu', kernel_regularizer=l2(0.01)))
 ```
 
 下面的例子演示了一个多层感知器模型，它在二元分类问题上具有权重衰减。
 
-```
+```py
 # example of weight decay
 from sklearn.datasets import make_circles
 from keras.models import Sequential
@@ -411,7 +411,7 @@ pyplot.show()
 
 噪声可以通过*高斯噪声*层添加到你的模型中。例如:
 
-```
+```py
 model.add(GaussianNoise(0.1))
 ```
 
@@ -419,7 +419,7 @@ model.add(GaussianNoise(0.1))
 
 下面的例子演示了一个多层感知器模型，在二进制分类问题上隐藏层之间增加了噪声。
 
-```
+```py
 # example of adding noise
 from sklearn.datasets import make_circles
 from keras.models import Sequential
@@ -482,14 +482,14 @@ pyplot.show()
 
 Keras 支持通过*提前停止*回调来提前停止，该回调允许您指定训练期间要监控的指标。
 
-```
+```py
 # patient early stopping
 es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=200)
 ```
 
 下面的示例演示了一个多层感知器，它在二进制分类问题上提前停止，当验证损失在 200 个训练时期内没有改善时，它将停止。
 
-```
+```py
 # example of early stopping
 from sklearn.datasets import make_circles
 from keras.models import Sequential

@@ -173,21 +173,21 @@ WGAN 的好处是训练过程更稳定，对模型架构和超参数配置的选
 
 损失函数可以通过将每个样本的预期标签乘以预测分数(元素方式)然后计算平均值来实现。
 
-```
+```py
 def wasserstein_loss(y_true, y_pred):
 	return mean(y_true * y_pred)
 ```
 
 上述函数是实现损失函数的优雅方式；可能更直观的另一种不太优雅的实现如下:
 
-```
+```py
 def wasserstein_loss(y_true, y_pred):
  	return mean(y_true) * mean(y_pred)
 ```
 
 在 Keras 中，可以使用 [Keras 后端 API](https://keras.io/backend/) 实现均值函数，以确保在提供的张量中跨样本计算均值；例如:
 
-```
+```py
 from keras import backend
 
 # implementation of wasserstein loss

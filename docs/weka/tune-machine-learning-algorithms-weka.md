@@ -151,7 +151,7 @@ Weka 加载算法调优实验结果
 
 您将看到如下所示的结果表:
 
-```
+```py
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 2 -stddev-prec 2 -col-name-width 0 -row-name-width 25 -mean-width 0 -stddev-width 0 -sig-width 0 -count-width 5 -print-col-names -print-row-names -enum-col-names"
 Analysing:  Percent_correct
 Datasets:   1
@@ -196,7 +196,7 @@ Weka 选择新的测试基地进行结果分析
 
 您将看到如下所示的结果表。
 
-```
+```py
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 2 -stddev-prec 2 -col-name-width 0 -row-name-width 25 -mean-width 2 -stddev-width 2 -sig-width 1 -count-width 5 -print-col-names -print-row-names -enum-col-names"
 Analysing:  Percent_correct
 Datasets:   1

@@ -126,7 +126,7 @@ Python 集成机器学习(7 天迷你课程)
 
 下面列出了评估打包集合进行分类的完整示例。
 
-```
+```py
 # example of evaluating a bagging ensemble for classification
 from numpy import mean
 from numpy import std
@@ -172,7 +172,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 下面列出了评估随机森林集合进行分类的完整示例。
 
-```
+```py
 # example of evaluating a random forest ensemble for classification
 from numpy import mean
 from numpy import std
@@ -218,7 +218,7 @@ AdaBoost 在 scikit-learn 中通过[adaboosttclassifier](https://scikit-learn.or
 
 下面列出了评估 AdaBoost 集成进行分类的完整示例。
 
-```
+```py
 # example of evaluating an adaboost ensemble for classification
 from numpy import mean
 from numpy import std
@@ -264,7 +264,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 下面列出了评估用于分类的梯度增强集成的完整示例。
 
-```
+```py
 # example of evaluating a gradient boosting ensemble for classification
 from numpy import mean
 from numpy import std
@@ -308,7 +308,7 @@ scikit-learn 中的投票组合可通过 [VotingClassifier](https://scikit-learn
 
 下面列出了评估投票集合进行分类的完整示例。
 
-```
+```py
 # example of evaluating a voting ensemble for classification
 from numpy import mean
 from numpy import std
@@ -360,7 +360,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 下面列出了评估堆叠集合进行分类的完整示例。
 
-```
+```py
 # example of evaluating a stacking ensemble for classification
 from numpy import mean
 from numpy import std

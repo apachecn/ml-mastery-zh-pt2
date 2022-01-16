@@ -48,7 +48,7 @@ scikit-learn 库中的[make _ revolution()函数](https://scikit-learn.org/stabl
 
 在这种情况下，我们将定义一个包含 1000 个样本的数据集，每个样本包含 100 个输入要素，其中 10 个是信息性的，其余 90 个是冗余的。
 
-```
+```py
 ...
 # generate regression dataset
 X, y = make_regression(n_samples=1000, n_features=100, n_informative=10, noise=0.1, random_state=1)
@@ -60,7 +60,7 @@ X, y = make_regression(n_samples=1000, n_features=100, n_informative=10, noise=0
 
 我们将使用 [train_test_split()函数](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)形成 scikit-learn，并将 67%的数据用于训练，33%的数据用于测试。
 
-```
+```py
 ...
 # split into train and test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=1)
@@ -68,7 +68,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random
 
 将这些元素结合在一起，下面列出了定义、拆分和汇总原始回归数据集的完整示例。
 
-```
+```py
 # load and summarize the dataset
 from sklearn.datasets import make_regression
 from sklearn.model_selection import train_test_split
@@ -85,7 +85,7 @@ print('Test', X_test.shape, y_test.shape)
 
 我们可以看到，我们有 670 个示例用于培训，330 个示例用于测试。
 
-```
+```py
 Train (670, 100) (670,)
 Test (330, 100) (330,)
 ```
@@ -121,7 +121,7 @@ scikit-learn 机器库提供了相关统计在[f _ revolution()函数](https://s
 
 例如，我们可以定义 *SelectKBest* 类来使用*f _ revolution()*函数并选择所有特征，然后转换火车和测试集。
 
-```
+```py
 ...
 # configure to select all features
 fs = SelectKBest(score_func=f_regression, k='all')
@@ -136,7 +136,7 @@ return X_train_fs, X_test_fs, fs
 
 然后，我们可以打印每个变量的分数(越大越好)，并将每个变量的分数绘制成条形图，以了解我们应该选择多少特征。
 
-```
+```py
 ...
 # what are scores for the features
 for i in range(len(fs.scores_)):
@@ -148,7 +148,7 @@ pyplot.show()
 
 将此与上一节中的数据集数据准备结合起来，下面列出了完整的示例。
 
-```
+```py
 # example of correlation feature selection for numerical data
 from sklearn.datasets import make_regression
 from sklearn.model_selection import train_test_split
@@ -188,7 +188,7 @@ pyplot.show()
 
 我们不会列出所有 100 个输入变量的分数，因为这会占用太多空间。然而，我们可以看到一些变量比其他变量得分更高，例如小于 1 比 5，而其他变量得分更高，例如特征 9 的得分为 101。
 
-```
+```py
 Feature 0: 0.009419
 Feature 1: 1.018881
 Feature 2: 1.205187
@@ -230,7 +230,7 @@ scikit-learn 机器学习库通过[mutual _ info _ revolution()函数](https://s
 
 和*f _ revolution()*一样，可以在 *SelectKBest* 特征选择策略(和其他策略)中使用。
 
-```
+```py
 ...
 # configure to select all features
 fs = SelectKBest(score_func=mutual_info_regression, k='all')
@@ -247,7 +247,7 @@ return X_train_fs, X_test_fs, fs
 
 下面列出了使用互信息进行数字特征选择的完整示例。
 
-```
+```py
 # example of mutual information feature selection for numerical input data
 from sklearn.datasets import make_regression
 from sklearn.model_selection import train_test_split
@@ -287,7 +287,7 @@ pyplot.show()
 
 同样，我们不会列出所有 100 个输入变量的分数。我们可以看到许多特性的得分为 0.0，而这项技术已经识别了更多可能与目标相关的特性。
 
-```
+```py
 Feature 0: 0.045484
 Feature 1: 0.000000
 Feature 2: 0.000000
@@ -329,7 +329,7 @@ Feature 9: 0.074320
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluation of a model using all input features
 from sklearn.datasets import make_regression
 from sklearn.model_selection import train_test_split
@@ -357,7 +357,7 @@ print('MAE: %.3f' % mae)
 
 我们更喜欢使用一个特征子集，它能达到和这个一样好或者更好的误差。
 
-```
+```py
 MAE: 0.086
 ```
 
@@ -367,7 +367,7 @@ MAE: 0.086
 
 下面的 *select_features()* 功能被更新以实现这一点。
 
-```
+```py
 # feature selection
 def select_features(X_train, y_train, X_test):
 	# configure to select a subset of features
@@ -383,7 +383,7 @@ def select_features(X_train, y_train, X_test):
 
 下面列出了使用此特征选择方法评估线性回归模型拟合和评估数据的完整示例。
 
-```
+```py
 # evaluation of a model using 10 features chosen with correlation
 from sklearn.datasets import make_regression
 from sklearn.model_selection import train_test_split
@@ -428,7 +428,7 @@ print('MAE: %.3f' % mae)
 
 这表明，尽管该方法对于选择什么特征有很强的想法，但是仅从这些特征构建模型并不能产生更熟练的模型。这可能是因为对目标很重要的特征被忽略了，这意味着方法在什么是重要的问题上被欺骗了。
 
-```
+```py
 MAE: 2.740
 ```
 
@@ -438,7 +438,7 @@ MAE: 2.740
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluation of a model using 88 features chosen with correlation
 from sklearn.datasets import make_regression
 from sklearn.model_selection import train_test_split
@@ -481,7 +481,7 @@ print('MAE: %.3f' % mae)
 
 在这种情况下，我们可以看到，删除一些冗余功能导致了性能的小幅提升，与实现约 0.086 误差的基线相比，误差约为 0.085。
 
-```
+```py
 MAE: 0.085
 ```
 
@@ -491,7 +491,7 @@ MAE: 0.085
 
 下面列出了实现此功能的 *select_features()* 功能的更新版本。
 
-```
+```py
 # feature selection
 def select_features(X_train, y_train, X_test):
 	# configure to select a subset of features
@@ -507,7 +507,7 @@ def select_features(X_train, y_train, X_test):
 
 下面列出了使用互信息进行特征选择以拟合线性回归模型的完整示例。
 
-```
+```py
 # evaluation of a model using 88 features chosen with mutual information
 from sklearn.datasets import make_regression
 from sklearn.model_selection import train_test_split
@@ -550,7 +550,7 @@ print('MAE: %.3f' % mae)
 
 在这种情况下，与相关统计相比，我们可以看到误差进一步减小，在这种情况下，与上一节中的 0.085 相比，MAE 约为 0.084。
 
-```
+```py
 MAE: 0.084
 ```
 
@@ -562,7 +562,7 @@ MAE: 0.084
 
 使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估回归任务的模型配置是一个很好的实践。我们将通过 [RepeatedKFold 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedKFold.html)使用三次重复的 10 倍交叉验证。
 
-```
+```py
 ...
 # define the evaluation method
 cv = RepeatedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -572,7 +572,7 @@ cv = RepeatedKFold(n_splits=10, n_repeats=3, random_state=1)
 
 在这种情况下，我们将使用互信息统计方法来选择特征。
 
-```
+```py
 ...
 # define the pipeline to evaluate
 model = LinearRegression()
@@ -584,7 +584,7 @@ pipeline = Pipeline(steps=[('sel',fs), ('lr', model)])
 
 请注意，网格是要搜索的参数到值的字典映射，假设我们使用的是*管道*，我们可以通过我们给它起的名称“ *sel* ”来访问 *SelectKBest* 对象，然后是由两个下划线分隔的参数名称“ *k* ，或者“ *sel__k* ”。
 
-```
+```py
 ...
 # define the grid
 grid = dict()
@@ -595,7 +595,7 @@ grid['sel__k'] = [i for i in range(X.shape[1]-20, X.shape[1]+1)]
 
 在这种情况下，我们将使用负平均绝对误差( *neg_mean_absolute_error* )来评估模型。它是负的，因为 scikit-learn 要求分数最大化，所以 MAE 是负的，这意味着分数从-无穷大到 0(最佳)。
 
-```
+```py
 ...
 # define the grid search
 search = GridSearchCV(pipeline, grid, scoring='neg_mean_absolure_error', n_jobs=-1, cv=cv)
@@ -605,7 +605,7 @@ results = search.fit(X, y)
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # compare different numbers of features selected using mutual information
 from sklearn.datasets import make_regression
 from sklearn.model_selection import RepeatedKFold
@@ -645,7 +645,7 @@ for mean, param in zip(means, params):
 
 在这种情况下，我们可以看到所选特征的最佳数量是 81，这实现了大约 0.082 的 MAE(忽略符号)。
 
-```
+```py
 Best MAE: -0.082
 Best Config: {'sel__k': 81}
 >-1.100 with: {'sel__k': 80}
@@ -679,7 +679,7 @@ Best Config: {'sel__k': 81}
 
 下面列出了实现这一点的完整示例。
 
-```
+```py
 # compare different numbers of features selected using mutual information
 from numpy import mean
 from numpy import std
@@ -719,7 +719,7 @@ pyplot.show()
 
 在这种情况下，报告 MAE 的平均值和标准差不是很有趣，除了 80 年代的 k 值比 90 年代的 k 值更好。
 
-```
+```py
 >81 -0.082 (0.006)
 >82 -0.082 (0.006)
 >83 -0.082 (0.006)

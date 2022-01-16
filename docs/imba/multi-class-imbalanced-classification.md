@@ -98,7 +98,7 @@
 
 下面是前几行数据的示例。
 
-```
+```py
 1.52101,13.64,4.49,1.10,71.78,0.06,8.75,0.00,0.00,1
 1.51761,13.89,3.60,1.36,72.73,0.48,7.83,0.00,0.00,1
 1.51618,13.53,3.55,1.54,72.99,0.39,7.78,0.00,0.00,1
@@ -133,7 +133,7 @@ sudo pip 安装不平衡-学习
 
 我们可以通过打印已安装库的版本来确认安装成功:
 
-```
+```py
 # check version number
 import imblearn
 print(imblearn.__version__)
@@ -141,13 +141,13 @@ print(imblearn.__version__)
 
 运行该示例将打印已安装库的版本号；例如:
 
-```
+```py
 0.6.2
 ```
 
 在应用 SMOTE 之前，让我们首先加载数据集，并确认每个类中的示例数量。
 
-```
+```py
 # load and summarize the dataset
 from pandas import read_csv
 from collections import Counter
@@ -176,7 +176,7 @@ pyplot.show()
 
 然后报告每个类中的行数，确认某些类(如 0 和 1)比其他类(如 3 和 4(小于 15))有更多的示例(超过 70 个)。
 
-```
+```py
 Class=0, n=70 (32.710%)
 Class=1, n=76 (35.514%)
 Class=2, n=17 (7.944%)
@@ -201,7 +201,7 @@ Class=5, n=29 (13.551%)
 
 下面列出了使用 SMOTE 对玻璃数据集进行过采样的完整示例。
 
-```
+```py
 # example of oversampling a multi-class classification dataset
 from pandas import read_csv
 from imblearn.over_sampling import SMOTE
@@ -234,7 +234,7 @@ pyplot.show()
 
 然后报告每个班级中的例子分布，确认每个班级现在有 76 个例子，正如我们所期望的。
 
-```
+```py
 Class=0, n=76 (16.667%)
 Class=1, n=76 (16.667%)
 Class=2, n=76 (16.667%)
@@ -253,7 +253,7 @@ Class=5, n=76 (16.667%)
 
 例如，我们可以在类 0 和 1 中对 100 个示例进行过采样，在其余类中对 200 个示例进行过采样。这可以通过创建一个字典来实现，该字典将类标签映射到每个类中所需的示例数量，然后通过 SMOTE 类的“ *sampling_strategy* ”参数来指定。
 
-```
+```py
 ...
 # transform the dataset
 strategy = {0:100, 1:100, 2:200, 3:200, 4:200, 5:200}
@@ -263,7 +263,7 @@ X, y = oversample.fit_resample(X, y)
 
 综上所述，下面列出了对 SMOTE 使用定制过采样策略的完整示例。
 
-```
+```py
 # example of oversampling a multi-class classification dataset with a custom strategy
 from pandas import read_csv
 from imblearn.over_sampling import SMOTE
@@ -295,7 +295,7 @@ pyplot.show()
 
 运行该示例会创建所需的采样并总结对数据集的影响，从而确认预期的结果。
 
-```
+```py
 Class=0, n=100 (10.000%)
 Class=1, n=100 (10.000%)
 Class=2, n=200 (20.000%)
@@ -306,7 +306,7 @@ Class=5, n=200 (20.000%)
 
 注意:对于本示例，您可能会看到可以安全忽略的警告，例如:
 
-```
+```py
 UserWarning: After over-sampling, the number of samples (200) in class 5 will be larger than the number of samples in the majority class (class #1 -> 76)
 ```
 
@@ -340,7 +340,7 @@ scikit-learn 中的 [RandomForestClassifier 类](https://scikit-learn.org/stable
 
 下面列出了完整的示例。
 
-```
+```py
 # baseline model and test harness for the glass identification dataset
 from numpy import mean
 from numpy import std
@@ -390,13 +390,13 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到默认模型实现了大约 79.6%的分类准确率。
 
-```
+```py
 Mean Accuracy: 0.796 (0.047)
 ```
 
 我们可以将“ *class_weight* ”参数指定为值“ *balanced* ”，该值将自动计算类权重，以确保每个类在模型训练期间获得相等的权重。
 
-```
+```py
 ...
 # define the model
 model = RandomForestClassifier(n_estimators=1000, class_weight='balanced')
@@ -404,7 +404,7 @@ model = RandomForestClassifier(n_estimators=1000, class_weight='balanced')
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # cost sensitive random forest with default class weights
 from numpy import mean
 from numpy import std
@@ -452,7 +452,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到默认模型在分类精度上比成本不敏感的算法版本有所提高，分类精度为 80.2%，而不是 79.6%。
 
-```
+```py
 Mean Accuracy: 0.802 (0.044)
 ```
 
@@ -460,7 +460,7 @@ Mean Accuracy: 0.802 (0.044)
 
 我们可以用它来指定一个自定义的权重，比如有很多例子的类 0 和 1.0 的默认权重，以及其他类的双类权重 2.0。
 
-```
+```py
 ...
 # define the model
 weights = {0:1.0, 1:1.0, 2:2.0, 3:2.0, 4:2.0, 5:2.0}
@@ -469,7 +469,7 @@ model = RandomForestClassifier(n_estimators=1000, class_weight=weights)
 
 将这些联系在一起，下面列出了在玻璃多类不平衡分类问题上使用自定义类权重进行成本敏感学习的完整示例。
 
-```
+```py
 # cost sensitive random forest with custom class weightings
 from numpy import mean
 from numpy import std
@@ -518,7 +518,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到，我们实现了准确性的进一步提升，从平衡类权重的 80.2%提升到更偏向类权重的 80.8%。
 
-```
+```py
 Mean Accuracy: 0.808 (0.059)
 ```
 

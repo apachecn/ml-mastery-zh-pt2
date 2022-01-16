@@ -80,13 +80,13 @@ SMOTE 的工作方式是选择特征空间中靠近的示例，在特征空间�
 
 在这些例子中，我们将使用[不平衡学习 Python 库](https://github.com/scikit-learn-contrib/imbalanced-learn)提供的实现，可以通过 pip 安装如下:
 
-```
+```py
 sudo pip install imbalanced-learn
 ```
 
 您可以通过打印已安装库的版本来确认安装成功:
 
-```
+```py
 # check version number
 import imblearn
 print(imblearn.__version__)
@@ -94,7 +94,7 @@ print(imblearn.__version__)
 
 运行该示例将打印已安装库的版本号；例如:
 
-```
+```py
 0.5.0
 ```
 
@@ -104,7 +104,7 @@ print(imblearn.__version__)
 
 首先，我们可以使用[make _ classification()sci kit-learn 函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例和 1:100 类分布的合成二进制分类数据集。
 
-```
+```py
 ...
 # define dataset
 X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
@@ -113,7 +113,7 @@ X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
 
 我们可以使用[计数器对象](https://docs.python.org/3/library/collections.html#collections.Counter)来总结每个类中的示例数量，以确认数据集创建正确。
 
-```
+```py
 ...
 # summarize class distribution
 counter = Counter(y)
@@ -122,7 +122,7 @@ print(counter)
 
 最后，我们可以创建数据集的散点图，并为每个类的示例涂上不同的颜色，以清楚地看到类不平衡的空间性质。
 
-```
+```py
 ...
 # scatter plot of examples by class label
 for label, _ in counter.items():
@@ -134,7 +134,7 @@ pyplot.show()
 
 将所有这些联系在一起，下面列出了生成和绘制合成二元分类问题的完整示例。
 
-```
+```py
 # Generate and plot a synthetic imbalanced classification dataset
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -156,7 +156,7 @@ pyplot.show()
 
 运行示例首先总结了类分布，确认了 1:100 的比例，在本例中，多数类中有大约 9900 个示例，少数类中有 100 个示例。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 ```
 
@@ -174,7 +174,7 @@ SMOTE 类的作用类似于 scikit-learn 中的数据转换对象，因为它必
 
 例如，我们可以用默认参数定义一个 SMOTE 实例，该实例将平衡少数类，然后一步适应并应用它来创建数据集的转换版本。
 
-```
+```py
 ...
 # transform the dataset
 oversample = SMOTE()
@@ -183,7 +183,7 @@ X, y = oversample.fit_resample(X, y)
 
 转换后，我们可以总结新转换数据集的类分布，现在可以通过在少数类中创建许多新的合成示例来平衡这种分布。
 
-```
+```py
 ...
 # summarize the new class distribution
 counter = Counter(y)
@@ -194,7 +194,7 @@ print(counter)
 
 将这些联系在一起，下面列出了将 SMOTE 应用于合成数据集，然后汇总并绘制转换结果的完整示例。
 
-```
+```py
 # Oversample and plot imbalanced dataset with SMOTE
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -225,7 +225,7 @@ pyplot.show()
 
 然后使用 SMOTE 对数据集进行转换，并总结出新的类分布，现在显示了一个平衡的分布，少数类中有 9900 个示例。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 Counter({0: 9900, 1: 9900})
 ```
@@ -246,7 +246,7 @@ Counter({0: 9900, 1: 9900})
 
 为了实现这一点，我们可以指定期望的比率作为 SMOTE 和*随机欠采样*类的参数；例如:
 
-```
+```py
 ...
 over = SMOTE(sampling_strategy=0.1)
 under = RandomUnderSampler(sampling_strategy=0.5)
@@ -256,7 +256,7 @@ under = RandomUnderSampler(sampling_strategy=0.5)
 
 然后，可以将管道应用于数据集，依次执行每个变换，并返回一个最终数据集，该数据集带有应用于该数据集的变换的累积，在这种情况下，先过采样，然后欠采样。
 
-```
+```py
 ...
 steps = [('o', over), ('u', under)]
 pipeline = Pipeline(steps=steps)
@@ -264,7 +264,7 @@ pipeline = Pipeline(steps=steps)
 
 然后，管道可以像单个转换一样适合并应用于我们的数据集:
 
-```
+```py
 ...
 # transform the dataset
 X, y = pipeline.fit_resample(X, y)
@@ -276,7 +276,7 @@ X, y = pipeline.fit_resample(X, y)
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # Oversample with SMOTE and random undersample for imbalanced dataset
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -313,7 +313,7 @@ pyplot.show()
 
 接下来，对数据集进行变换，首先对少数类进行过采样，然后对多数类进行欠采样。经过这一系列转换后的最终类分布与我们的预期相符，在多数类中有 1:2 的比例，即大约 2000 个示例，在少数类中有大约 1000 个示例。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 Counter({0: 1980, 1: 990})
 ```
@@ -336,7 +336,7 @@ Counter({0: 1980, 1: 990})
 
 数据集是分层的，这意味着交叉验证拆分的每个折叠都将具有与原始数据集相同的类分布，在本例中，比率为 1:100。我们将使用[曲线下 ROC 面积(AUC)度量](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)来评估模型。对于严重不平衡的数据集来说，这可能是乐观的，但对于性能更好的模型来说，这仍然会显示出相对的变化。
 
-```
+```py
 ...
 # define model
 model = DecisionTreeClassifier()
@@ -347,7 +347,7 @@ scores = cross_val_score(model, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 
 一旦适合，我们可以计算和报告跨越折叠和重复的分数的平均值。
 
-```
+```py
 ...
 print('Mean ROC AUC: %.3f' % mean(scores))
 ```
@@ -356,7 +356,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # decision tree evaluated on imbalanced dataset
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -380,7 +380,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到报告了大约 0.76 的 ROC AUC。
 
-```
+```py
 Mean ROC AUC: 0.761
 ```
 
@@ -390,7 +390,7 @@ Mean ROC AUC: 0.761
 
 这可以通过定义一个管道来实现，该管道首先用 SMOTE 转换训练数据集，然后拟合模型。
 
-```
+```py
 ...
 # define pipeline
 steps = [('over', SMOTE()), ('model', DecisionTreeClassifier())]
@@ -401,7 +401,7 @@ pipeline = Pipeline(steps=steps)
 
 将这些联系在一起，下面列出了在训练数据集上使用 SMOTE 过采样评估决策树的完整示例。
 
-```
+```py
 # decision tree evaluated on imbalanced dataset with SMOTE oversampling
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -428,7 +428,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到从大约 0.76 到大约 0.80 的 ROC AUC 在性能上的适度改善。
 
-```
+```py
 Mean ROC AUC: 0.809
 ```
 
@@ -438,7 +438,7 @@ Mean ROC AUC: 0.809
 
 与上一节一样，我们将首先使用 SMOTE 对少数类进行过采样，使其达到约 1:10 的比例，然后对多数类进行欠采样，使其达到约 1:2 的比例。
 
-```
+```py
 ...
 # define pipeline
 model = DecisionTreeClassifier()
@@ -450,7 +450,7 @@ pipeline = Pipeline(steps=steps)
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # decision tree  on imbalanced dataset with SMOTE oversampling and random undersampling
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -481,7 +481,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到报告的 ROC AUC 显示额外的提升至约 0.83。
 
-```
+```py
 Mean ROC AUC: 0.834
 ```
 
@@ -491,7 +491,7 @@ Mean ROC AUC: 0.834
 
 例如，我们可以网格搜索 *k* 的一系列值，例如从 1 到 7 的值，并为每个值评估管道。
 
-```
+```py
 ...
 # values to evaluate
 k_values = [1, 2, 3, 4, 5, 6, 7]
@@ -502,7 +502,7 @@ for k in k_values:
 
 下面列出了完整的示例。
 
-```
+```py
 # grid search k value for SMOTE oversampling for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -541,7 +541,7 @@ for k in k_values:
 
 这突出显示了所执行的过采样和欠采样的数量(sampling_strategy 参数)以及从中选择合作伙伴来创建合成示例的示例数量( *k_neighbors* )可能是为数据集选择和调整的重要参数。
 
-```
+```py
 > k=1, Mean ROC AUC: 0.827
 > k=2, Mean ROC AUC: 0.823
 > k=3, Mean ROC AUC: 0.834
@@ -585,7 +585,7 @@ SMOTE 的一个流行扩展包括选择那些被错误分类的少数类的实�
 
 下面列出了使用边界扫描对二进制分类数据集进行过采样的完整示例。
 
-```
+```py
 # borderline-SMOTE for imbalanced dataset
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -616,7 +616,7 @@ pyplot.show()
 
 边界-SMOTE 应用于平衡班级分布，并通过打印的班级总结进行确认。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 Counter({0: 9900, 1: 9900})
 ```
@@ -649,7 +649,7 @@ Hien Nguyen 等人建议使用边界线-SMOTE 的替代方案，其中使用 SVM
 
 下面的示例演示了在相同的不平衡数据集上使用边界线分割的替代方法。
 
-```
+```py
 # borderline-SMOTE with SVM for imbalanced dataset
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -678,7 +678,7 @@ pyplot.show()
 
 运行该示例首先总结了原始的类分布，然后在使用 SVM 模型应用了边界线-SMOTE 之后总结了平衡的类分布。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 Counter({0: 9900, 1: 9900})
 ```
@@ -713,7 +713,7 @@ Counter({0: 9900, 1: 9900})
 
 下面的示例演示了在不平衡二进制分类数据集上进行过采样的替代方法。
 
-```
+```py
 # Oversample and plot imbalanced dataset with ADASYN
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -742,7 +742,7 @@ pyplot.show()
 
 运行该示例首先创建数据集并总结初始类分布，然后在执行过采样后更新类分布。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 Counter({0: 9900, 1: 9899})
 ```

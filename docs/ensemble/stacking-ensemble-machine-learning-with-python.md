@@ -107,7 +107,7 @@ scikit-learn Python 机器学习库为机器学习提供了堆栈的实现。
 
 首先，通过运行以下脚本来确认您使用的是现代版本的库:
 
-```
+```py
 # check scikit-learn version
 import sklearn
 print(sklearn.__version__)
@@ -117,7 +117,7 @@ print(sklearn.__version__)
 
 您的版本应该相同或更高。如果没有，您必须升级 scikit-learn 库的版本。
 
-```
+```py
 0.22.1
 ```
 
@@ -129,7 +129,7 @@ print(sklearn.__version__)
 
 例如，下面定义了两个 0 级模型:
 
-```
+```py
 ...
 models = [('lr',LogisticRegression()),('svm',SVC())
 stacking = StackingClassifier(estimators=models)
@@ -137,7 +137,7 @@ stacking = StackingClassifier(estimators=models)
 
 列表中的每个模型也可以是[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，包括模型在训练数据集中拟合模型之前所需的任何数据准备。例如:
 
-```
+```py
 ...
 models = [('lr',LogisticRegression()),('svm',make_pipeline(StandardScaler(),SVC()))
 stacking = StackingClassifier(estimators=models)
@@ -159,7 +159,7 @@ stacking = StackingClassifier(estimators=models)
 
 下面列出了完整的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -170,7 +170,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -186,7 +186,7 @@ print(X.shape, y.shape)
 
 将使用默认模型超参数评估每个算法。下面的函数 *get_models()* 创建我们想要评估的模型。
 
-```
+```py
 # get a list of models to evaluate
 def get_models():
 	models = dict()
@@ -202,7 +202,7 @@ def get_models():
 
 下面的 *evaluate_model()* 函数获取一个模型实例，并从三次重复的分层 10 倍交叉验证中返回一个分数列表。
 
-```
+```py
 # evaluate a given model using cross-validation
 def evaluate_model(model, X, y):
 	cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -214,7 +214,7 @@ def evaluate_model(model, X, y):
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # compare standalone models for binary classification
 from numpy import mean
 from numpy import std
@@ -271,7 +271,7 @@ pyplot.show()
 
 我们可以看到，在这种情况下，SVM 表现最好，平均准确率约为 95.7%。
 
-```
+```py
 >lr 0.866 (0.029)
 >knn 0.931 (0.025)
 >cart 0.821 (0.050)
@@ -293,7 +293,7 @@ pyplot.show()
 
 下面的 *get_stacking()* 函数定义了 [StackingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html) 模型，首先定义了五个基本模型的元组列表，然后定义了逻辑回归元模型，使用 5 重交叉验证来组合来自基本模型的预测。
 
-```
+```py
 # get a stacking ensemble of models
 def get_stacking():
 	# define the base models
@@ -312,7 +312,7 @@ def get_stacking():
 
 我们可以在要评估的模型列表中包含堆叠集合，以及独立的模型。
 
-```
+```py
 # get a list of models to evaluate
 def get_models():
 	models = dict()
@@ -331,7 +331,7 @@ def get_models():
 
 下面列出了评估堆叠集合模型和独立模型的完整示例。
 
-```
+```py
 # compare ensemble to each baseline classifier
 from numpy import mean
 from numpy import std
@@ -405,7 +405,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到叠加系综的平均表现似乎比任何单个模型都好，达到了大约 96.4%的准确率。
 
-```
+```py
 >lr 0.866 (0.029)
 >knn 0.931 (0.025)
 >cart 0.820 (0.044)
@@ -428,7 +428,7 @@ pyplot.show()
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make a prediction with a stacking ensemble
 from sklearn.datasets import make_classification
 from sklearn.ensemble import StackingClassifier
@@ -460,7 +460,7 @@ print('Predicted Class: %d' % (yhat))
 
 运行该示例使堆叠集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Class: 0
 ```
 
@@ -472,7 +472,7 @@ Predicted Class: 0
 
 下面列出了完整的示例。
 
-```
+```py
 # test regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -483,7 +483,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -499,7 +499,7 @@ print(X.shape, y.shape)
 
 将使用默认模型超参数评估每个算法。下面的函数 *get_models()* 创建我们想要评估的模型。
 
-```
+```py
 # get a list of models to evaluate
 def get_models():
 	models = dict()
@@ -511,7 +511,7 @@ def get_models():
 
 每个模型将使用重复的 k 倍交叉验证进行评估。下面的 *evaluate_model()* 函数获取一个模型实例，并返回三次重复 10 倍交叉验证的分数列表。
 
-```
+```py
 # evaluate a given model using cross-validation
 def evaluate_model(model, X, y):
 	cv = RepeatedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -525,7 +525,7 @@ def evaluate_model(model, X, y):
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # compare machine learning models for regression
 from numpy import mean
 from numpy import std
@@ -579,7 +579,7 @@ pyplot.show()
 
 我们可以看到，在这种情况下，KNN 表现最好，平均负 MAE 约为-100。
 
-```
+```py
 >knn -101.019 (7.161)
 >cart -148.100 (11.039)
 >svm -162.419 (12.565)
@@ -599,7 +599,7 @@ pyplot.show()
 
 下面的 *get_stacking()* 函数定义了[stackingreductor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingRegressor.html)模型，首先定义三个基本模型的元组列表，然后定义线性回归元模型，使用 5 重交叉验证来组合来自基本模型的预测。
 
-```
+```py
 # get a stacking ensemble of models
 def get_stacking():
 	# define the base models
@@ -616,7 +616,7 @@ def get_stacking():
 
 我们可以在要评估的模型列表中包含堆叠集合，以及独立的模型。
 
-```
+```py
 # get a list of models to evaluate
 def get_models():
 	models = dict()
@@ -633,7 +633,7 @@ def get_models():
 
 下面列出了评估堆叠集合模型和独立模型的完整示例。
 
-```
+```py
 # compare ensemble to each standalone models for regression
 from numpy import mean
 from numpy import std
@@ -702,7 +702,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到叠加系综的平均性能似乎比任何单个模型都好，平均负 MAE 约为-56。
 
-```
+```py
 >knn -101.019 (7.161)
 >cart -148.017 (10.635)
 >svm -162.419 (12.565)
@@ -721,7 +721,7 @@ pyplot.show()
 
 下面的例子在我们的回归数据集上演示了这一点。
 
-```
+```py
 # make a prediction with a stacking ensemble
 from sklearn.datasets import make_regression
 from sklearn.linear_model import LinearRegression
@@ -750,7 +750,7 @@ print('Predicted Value: %.3f' % (yhat))
 
 运行该示例使堆叠集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Value: 556.264
 ```
 

@@ -86,7 +86,7 @@ scikit-learn 机器学习库提供了一个支持直方图技术的梯度增强�
 
 为了使用这些类，您必须在项目中添加一行，表明您很乐意使用这些实验技术，并且它们的行为可能会随着库的后续发布而改变。
 
-```
+```py
 ...
 # explicitly require this experimental feature
 from sklearn.experimental import enable_hist_gradient_boosting
@@ -104,7 +104,7 @@ scikit-learn 文档声称，这些基于直方图的梯度增强实现比库提�
 
 树的数量可以通过“ *max_iter* ”参数设置，默认为 100。
 
-```
+```py
 ...
 # define the model
 model = HistGradientBoostingClassifier(max_bins=255, max_iter=100)
@@ -114,7 +114,7 @@ model = HistGradientBoostingClassifier(max_bins=255, max_iter=100)
 
 使用重复分层 k 折叠交叉验证评估模型，并报告所有折叠和重复的平均准确性。
 
-```
+```py
 # evaluate sklearn histogram gradient boosting algorithm for classification
 from numpy import mean
 from numpy import std
@@ -141,7 +141,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到 scikit-learn 直方图梯度增强算法在合成数据集上实现了大约 94.3%的平均精度。
 
-```
+```py
 Accuracy: 0.943 (0.007)
 ```
 
@@ -151,7 +151,7 @@ Accuracy: 0.943 (0.007)
 
 下面列出了完整的示例。
 
-```
+```py
 # compare number of bins for sklearn histogram gradient boosting
 from numpy import mean
 from numpy import std
@@ -211,7 +211,7 @@ pyplot.show()
 
 重要的是，拟合一个集合，其中每个变量使用 10 或 50 个箱，比每个输入变量使用 255 个箱要快得多。
 
-```
+```py
 >10 0.945 (0.009)
 >50 0.944 (0.007)
 >100 0.944 (0.008)
@@ -236,7 +236,7 @@ Scikit-Learn 直方图梯度增强集成的箱数和须图
 
 XGBoost 库可以用你喜欢的 Python 包管理器安装，比如 Pip 例如:
 
-```
+```py
 sudo pip install xgboost
 ```
 
@@ -244,7 +244,7 @@ sudo pip install xgboost
 
 通过将“ *tree_method* ”参数设置为“*近似*，可以将训练算法配置为使用直方图方法，并且可以通过“ *max_bin* ”参数设置箱数。
 
-```
+```py
 ...
 # define the model
 model = XGBClassifier(tree_method='approx', max_bin=255, n_estimators=100)
@@ -252,7 +252,7 @@ model = XGBClassifier(tree_method='approx', max_bin=255, n_estimators=100)
 
 下面的示例演示了如何评估一个 XGBoost 模型，该模型被配置为使用直方图或近似技术来构建每个连续输入要素有 255 个面元的树以及模型中有 100 棵树。
 
-```
+```py
 # evaluate xgboost histogram gradient boosting algorithm for classification
 from numpy import mean
 from numpy import std
@@ -278,7 +278,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到 XGBoost 直方图梯度提升算法在合成数据集上实现了大约 95.7%的平均精度。
 
-```
+```py
 Accuracy: 0.957 (0.007)
 ```
 
@@ -290,7 +290,7 @@ Light Gradient Boosting Machine(简称 LightGBM)是另一个像 XGBoost 一样�
 
 LightGBM 库可以用你喜欢的 Python 包管理器安装，比如 Pip 例如:
 
-```
+```py
 sudo pip install lightgbm
 ```
 
@@ -298,7 +298,7 @@ sudo pip install lightgbm
 
 默认情况下，训练算法使用直方图。每个连续输入变量的最大箱数可以通过“ *max_bin* ”参数设置。
 
-```
+```py
 ...
 # define the model
 model = LGBMClassifier(max_bin=255, n_estimators=100)
@@ -306,7 +306,7 @@ model = LGBMClassifier(max_bin=255, n_estimators=100)
 
 下面的示例演示了如何评估 LightGBM 模型，该模型被配置为使用直方图或近似技术来构建每个连续输入要素有 255 个面元的树和模型中的 100 棵树。
 
-```
+```py
 # evaluate lightgbm histogram gradient boosting algorithm for classification
 from numpy import mean
 from numpy import std
@@ -332,7 +332,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到 LightGBM 直方图梯度增强算法在合成数据集上实现了大约 94.2%的平均精度。
 
-```
+```py
 Accuracy: 0.942 (0.006)
 ```
 

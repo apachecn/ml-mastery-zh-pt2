@@ -88,7 +88,7 @@ CycleGAN 模型的好处是可以在没有成对例子的情况下进行训练�
 
 您将看到以下目录结构:
 
-```
+```py
 horse2zebra
 ├── testA
 ├── testB
@@ -104,7 +104,7 @@ horse2zebra
 
 然后，两个数组都以压缩的 NumPy 数组格式保存到一个新文件中。
 
-```
+```py
 # example of preparing the horses and zebra dataset
 from os import listdir
 from numpy import asarray
@@ -148,7 +148,7 @@ print('Saved dataset: ', filename)
 
 然后，数组以压缩的 NumPy 格式保存，文件名为“ *horse2zebra_256.npz* ”。注意:这个数据文件大约 570 兆字节，比原始图像大，因为我们将像素值存储为 32 位浮点值。
 
-```
+```py
 Loaded dataA:  (1187, 256, 256, 3)
 Loaded dataB:  (1474, 256, 256, 3)
 Saved dataset:  horse2zebra_256.npz
@@ -158,7 +158,7 @@ Saved dataset:  horse2zebra_256.npz
 
 下面列出了完整的示例。
 
-```
+```py
 # load and plot the prepared dataset
 from numpy import load
 from matplotlib import pyplot
@@ -182,7 +182,7 @@ pyplot.show()
 
 运行示例首先加载数据集，确认示例的数量和彩色图像的形状符合我们的预期。
 
-```
+```py
 Loaded: (1187, 256, 256, 3) (1474, 256, 256, 3)
 ```
 
@@ -216,13 +216,13 @@ Loaded: (1187, 256, 256, 3) (1474, 256, 256, 3)
 
 keras-contrib 库可以通过 pip 安装，如下所示:
 
-```
+```py
 sudo pip install git+https://www.github.com/keras-team/keras-contrib.git
 ```
 
 或者，如果您使用的是 [Anaconda](https://machinelearningmastery.com/setup-python-environment-machine-learning-deep-learning-anaconda/) 虚拟环境，[如在 EC2](https://machinelearningmastery.com/develop-evaluate-large-deep-learning-models-keras-amazon-web-services/) 上:
 
-```
+```py
 git clone https://www.github.com/keras-team/keras-contrib.git
 cd keras-contrib
 sudo ~/anaconda3/envs/tensorflow_p36/bin/python setup.py install
@@ -230,7 +230,7 @@ sudo ~/anaconda3/envs/tensorflow_p36/bin/python setup.py install
 
 新的*实例化*层可以如下使用:
 
-```
+```py
 ...
 from keras_contrib.layers.normalization.instancenormalization import InstanceNormalization
 # define layer
@@ -242,7 +242,7 @@ layer = InstanceNormalization(axis=-1)
 
 下面的 *define_discriminator()* 函数按照文中模型的设计实现了 70×70 的 PatchGAN 鉴别器模型。该模型以 256×256 大小的图像作为输入，并输出一个预测补丁。使用最小二乘损失(L2)优化模型，最小二乘损失()实现为均方误差，并使用权重，以便模型的更新具有通常效果的一半(0.5)。CycleGAN 论文的作者推荐这种模型更新的权重，以减缓训练期间相对于生成器模型的鉴别器的变化。
 
-```
+```py
 # define the discriminator model
 def define_discriminator(image_shape):
 	# weight initialization
@@ -285,7 +285,7 @@ def define_discriminator(image_shape):
 
 这是在 *resnet_block()* 函数中实现的，该函数在第二个块之后创建了两个带有 3×3 过滤器的*卷积-实例化*块和 [1×1 步长](https://machinelearningmastery.com/padding-and-stride-for-convolutional-neural-networks/)块，并且没有 [ReLU 激活](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)，与 [build_conv_block()函数](https://github.com/junyanz/CycleGAN/blob/master/models/architectures.lua#L197)中的官方 Torch 实现相匹配。为了简单起见，使用相同的填充，而不是文中推荐的反射填充。
 
-```
+```py
 # generator a resnet block
 def resnet_block(n_filters, input_layer):
 	# weight initialization
@@ -306,7 +306,7 @@ def resnet_block(n_filters, input_layer):
 
 重要的是，该模型输出的像素值与输入的形状相同，并且像素值在[-1，1]的范围内，这是氮化镓发生器模型的典型情况。
 
-```
+```py
 # define the standalone generator model
 def define_generator(image_shape, n_resnet=9):
 	# weight initialization
@@ -368,7 +368,7 @@ def define_generator(image_shape, n_resnet=9):
 
 对于复合模型，只有第一个或主发电机模型的权重被更新，这是通过所有损失函数的加权和来完成的。循环损失的权重(10 倍)大于论文中描述的对抗性损失，身份损失的权重始终是循环损失的一半(5 倍)，与官方实现源代码相匹配。
 
-```
+```py
 # define a composite model for updating generators by adversarial and cycle loss
 def define_composite_model(g_model_1, d_model, g_model_2, image_shape):
 	# ensure the model we're updating is trainable
@@ -434,7 +434,7 @@ def define_composite_model(g_model_1, d_model, g_model_2, image_shape):
 
 接下来，我们可以以压缩的 NumPy 数组格式加载我们的配对图像数据集。这将返回两个 NumPy 数组的列表:第一个用于源图像，第二个用于对应的目标图像。
 
-```
+```py
 # load and prepare training images
 def load_real_samples(filename):
 	# load the dataset
@@ -451,7 +451,7 @@ def load_real_samples(filename):
 
 下面的 *generate_real_samples()* 函数实现了这一点，将一个域的 [NumPy 数组](https://machinelearningmastery.com/gentle-introduction-n-dimensional-arrays-python-numpy/)作为输入，并返回随机选择的图像的请求数量，以及表示图像是真实的 PatchGAN 鉴别器模型的目标(*目标=1.0* )。因此，还提供了 PatchgAN 输出的形状，在 256×256 图像的情况下，这将是 16，或 16x16x1 激活图，由 patch_shape 函数参数定义。
 
-```
+```py
 # select a batch of random samples, returns images and target
 def generate_real_samples(dataset, n_samples, patch_shape):
 	# choose random instances
@@ -467,7 +467,7 @@ def generate_real_samples(dataset, n_samples, patch_shape):
 
 下面的 *generate_fake_samples()* 函数在给定生成器模型和来自源域的真实图像样本的情况下生成该样本。同样，为每个生成的图像的目标值提供了 PatchGAN 的正确形状，表明它们是假的或生成的(*目标=0.0* )。
 
-```
+```py
 # generate a batch of images, returns images and targets
 def generate_fake_samples(g_model, dataset, patch_shape):
 	# generate fake instance
@@ -483,7 +483,7 @@ def generate_fake_samples(g_model, dataset, patch_shape):
 
 下面的 *save_models()* 功能将[以 H5 格式将每个发电机模型](https://machinelearningmastery.com/save-load-keras-deep-learning-models/)保存到当前目录，包括文件名中的训练迭代编号。这需要安装 [h5py 库](https://www.h5py.org/)。
 
-```
+```py
 # save the generator models to file
 def save_models(step, g_model_AtoB, g_model_BtoA):
 	# save the first generator model
@@ -499,7 +499,7 @@ def save_models(step, g_model_AtoB, g_model_BtoA):
 
 源图像绘制在第一行，生成的图像绘制在第二行。同样，绘图文件名包括训练迭代号。
 
-```
+```py
 # generate samples and save as a plot and save the model
 def summarize_performance(step, g_model, trainX, name, n_samples=5):
 	# select a sample of input images
@@ -531,7 +531,7 @@ def summarize_performance(step, g_model, trainX, name, n_samples=5):
 
 本文为每个鉴别器模型定义了一个由 50 个生成图像组成的图像池，首先填充该图像池，然后通过替换现有图像或直接使用生成的图像来增加新图像。我们可以将其实现为每个鉴别器的 Python 图像列表，并使用下面的 *update_image_pool()* 函数来维护每个池列表。
 
-```
+```py
 # update image pool for fake images
 def update_image_pool(pool, images, max_size=50):
 	selected = list()
@@ -563,7 +563,7 @@ def update_image_pool(pool, images, max_size=50):
 
 然后在训练迭代结束时报告每个更新模型的损失。重要的是，仅报告用于更新每个发电机的加权平均损失。
 
-```
+```py
 # train cyclegan models
 def train(d_model_A, d_model_B, g_model_AtoB, g_model_BtoA, c_model_AtoB, c_model_BtoA, dataset):
 	# define properties of the training run
@@ -614,7 +614,7 @@ def train(d_model_A, d_model_B, g_model_AtoB, g_model_BtoA, c_model_AtoB, c_mode
 
 将所有这些结合在一起，下面列出了训练 CycleGAN 模型将马的照片翻译成斑马并将斑马的照片翻译成马的完整示例。
 
-```
+```py
 # example of training a cyclegan on the horse2zebra dataset
 from random import random
 from numpy import load
@@ -910,7 +910,7 @@ train(d_model_A, d_model_B, g_model_AtoB, g_model_BtoA, c_model_AtoB, c_model_Bt
 
 如果鉴别器的损耗变为零并在那里停留很长时间，考虑重新开始训练，因为这是训练失败的一个例子。
 
-```
+```py
 >1, dA[2.284,0.678] dB[1.422,0.918] g[18.747,18.452]
 >2, dA[2.129,1.226] dB[1.039,1.331] g[19.469,22.831]
 >3, dA[1.644,3.909] dB[1.097,1.680] g[19.192,23.757]
@@ -927,7 +927,7 @@ train(d_model_A, d_model_B, g_model_AtoB, g_model_BtoA, c_model_AtoB, c_model_Bt
 
 生成的图像图在每个时期结束时或每 1，187 次训练迭代后保存，迭代号用在文件名中。
 
-```
+```py
 AtoB_generated_plot_001187.png
 AtoB_generated_plot_002374.png
 ...
@@ -937,7 +937,7 @@ BtoA_generated_plot_002374.png
 
 每五个纪元或(1187 * 5) 5，935 次训练迭代后保存模型，并且在文件名中再次使用迭代编号。
 
-```
+```py
 g_model_AtoB_053415.h5
 g_model_AtoB_059350.h5
 ...
@@ -969,7 +969,7 @@ g_model_BtoA_059350.h5
 
 第一步是加载数据集。我们可以使用与上一节中开发的相同的 *load_real_samples()* 函数。
 
-```
+```py
 ...
 # load dataset
 A_data, B_data = load_real_samples('horse2zebra_256.npz')
@@ -980,7 +980,7 @@ print('Loaded', A_data.shape, B_data.shape)
 
 这可以通过指定图层名称到对象的字典映射并将其作为参数传递给 *load_model()* keras 函数来实现。
 
-```
+```py
 ...
 # load the models
 cust = {'InstanceNormalization': InstanceNormalization}
@@ -990,7 +990,7 @@ model_BtoA = load_model('g_model_BtoA_089025.h5', cust)
 
 我们可以使用上一节中开发的 *select_sample()* 函数从数据集中选择一张随机照片。
 
-```
+```py
 # select a random sample of images from the dataset
 def select_sample(dataset, n_samples):
 	# choose random instances
@@ -1002,7 +1002,7 @@ def select_sample(dataset, n_samples):
 
 接下来，我们可以使用 Generator-AtoB 模型，首先从 Domain-A(马)中选择一幅随机图像作为输入，使用 Generator-AtoB 将其翻译成 Domain-B(斑马)，然后使用 Generator-BtoA 模型重建原始图像(马)。
 
-```
+```py
 # plot A->B->A
 A_real = select_sample(A_data, 1)
 B_generated  = model_AtoB.predict(A_real)
@@ -1011,7 +1011,7 @@ A_reconstructed = model_BtoA.predict(B_generated)
 
 然后，我们可以将这三张照片并排绘制为原始照片或真实照片、翻译后的照片以及原始照片的重建。下面的 *show_plot()* 函数实现了这一点。
 
-```
+```py
 # plot the image, the translation, and the reconstruction
 def show_plot(imagesX, imagesY1, imagesY2):
 	images = vstack((imagesX, imagesY1, imagesY2))
@@ -1033,7 +1033,7 @@ def show_plot(imagesX, imagesY1, imagesY2):
 
 然后我们可以调用这个函数来绘制真实的和生成的照片。
 
-```
+```py
 ...
 show_plot(A_real, B_generated, A_reconstructed)
 ```
@@ -1042,7 +1042,7 @@ show_plot(A_real, B_generated, A_reconstructed)
 
 具体来说，一张来自域 B(斑马)的真实照片被翻译成域 A(马)，然后被重建为域 B(斑马)。
 
-```
+```py
 # plot B->A->B
 B_real = select_sample(B_data, 1)
 A_generated  = model_BtoA.predict(B_real)
@@ -1052,7 +1052,7 @@ show_plot(B_real, A_generated, B_reconstructed)
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # example of using saved cyclegan models for image translation
 from keras.models import load_model
 from numpy import load
@@ -1147,7 +1147,7 @@ show_plot(B_real, A_generated, B_reconstructed)
 
 下面的 *load_image()* 函数实现了这一点。
 
-```
+```py
 def load_image(filename, size=(256,256)):
 	# load and resize the image
 	pixels = load_img(filename, target_size=size)
@@ -1162,7 +1162,7 @@ def load_image(filename, size=(256,256)):
 
 然后，我们可以像以前一样加载我们选择的图像以及 AtoB 生成器模型。
 
-```
+```py
 ...
 # load the image
 image_src = load_image('horse2zebra/trainA/n02381460_541.jpg')
@@ -1173,7 +1173,7 @@ model_AtoB = load_model('g_model_AtoB_089025.h5', cust)
 
 然后，我们可以转换加载的图像，将像素值缩放回预期范围，并绘制结果。
 
-```
+```py
 ...
 # translate image
 image_tar = model_AtoB.predict(image_src)
@@ -1186,7 +1186,7 @@ pyplot.show()
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # example of using saved cyclegan models for image translation
 from numpy import load
 from numpy import expand_dims

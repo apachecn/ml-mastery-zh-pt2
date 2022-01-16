@@ -102,7 +102,7 @@ scikit-learn 库提供了[linear discriminator analysis 类](https://scikit-lear
 
 例如:
 
-```
+```py
 ...
 # prepare dataset
 data = ...
@@ -118,7 +118,7 @@ transformed = lda.transform(data)
 
 也许最好的方法是使用[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，其中第一步是 LDA 变换，下一步是将变换后的数据作为输入的学习算法。
 
-```
+```py
 ...
 # define the pipeline
 steps = [('lda', LinearDiscriminantAnalysis()), ('m', GaussianNB())]
@@ -127,7 +127,7 @@ model = Pipeline(steps=steps)
 
 如果输入变量具有不同的单位或比例，在执行线性判别分析变换之前标准化数据也是一个好主意；例如:
 
-```
+```py
 ...
 # define the pipeline
 steps = [('s', StandardScaler()), ('lda', LinearDiscriminantAnalysis()), ('m', GaussianNB())]
@@ -142,7 +142,7 @@ model = Pipeline(steps=steps)
 
 下面列出了完整的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -153,7 +153,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -165,7 +165,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate lda with naive bayes algorithm for classification
 from numpy import mean
 from numpy import std
@@ -193,7 +193,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到带有朴素贝叶斯的 LDA 变换获得了大约 31.4%的性能。
 
-```
+```py
 Accuracy: 0.314 (0.049)
 ```
 
@@ -207,7 +207,7 @@ LDA 在降维中使用的组件数量被限制在类的数量减一之间，在�
 
 下面的示例执行了该实验，并总结了每种配置的平均分类精度。
 
-```
+```py
 # compare lda number of components with naive bayes algorithm for classification
 from numpy import mean
 from numpy import std
@@ -262,7 +262,7 @@ pyplot.show()
 
 结果表明，使用默认的九个组件可以在这个数据集上获得最佳性能，尽管会有一个温和的折衷，因为使用的维度更少。
 
-```
+```py
 >1 0.182 (0.032)
 >2 0.235 (0.036)
 >3 0.267 (0.038)
@@ -288,7 +288,7 @@ pyplot.show()
 
 下面的代码提供了一个在新数据上使用线性判别分析变换拟合和使用最终模型的例子。
 
-```
+```py
 # make predictions using lda with naive bayes
 from sklearn.datasets import make_classification
 from sklearn.pipeline import Pipeline
@@ -313,7 +313,7 @@ print('Predicted Class: %d' % yhat[0])
 
 提供了一个包含 20 列的新数据行，它被自动转换为 15 个分量，并被馈送到朴素贝叶斯模型，以便预测类标签。
 
-```
+```py
 Predicted Class: 6
 ```
 

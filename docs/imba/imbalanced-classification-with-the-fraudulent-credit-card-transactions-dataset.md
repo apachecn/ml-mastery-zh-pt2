@@ -71,7 +71,7 @@
 
 文件的前几行应该如下所示:
 
-```
+```py
 0,-1.3598071336738,-0.0727811733098497,2.53634673796914,1.37815522427443,-0.338320769942518,0.462387777762292,0.239598554061257,0.0986979012610507,0.363786969611213,0.0907941719789316,-0.551599533260813,-0.617800855762348,-0.991389847235408,-0.311169353699879,1.46817697209427,-0.470400525259478,0.207971241929242,0.0257905801985591,0.403992960255733,0.251412098239705,-0.018306777944153,0.277837575558899,-0.110473910188767,0.0669280749146731,0.128539358273528,-0.189114843888824,0.133558376740387,-0.0210530534538215,149.62,"0"
 0,1.19185711131486,0.26615071205963,0.16648011335321,0.448154078460911,0.0600176492822243,-0.0823608088155687,-0.0788029833323113,0.0851016549148104,-0.255425128109186,-0.166974414004614,1.61272666105479,1.06523531137287,0.48909501589608,-0.143772296441519,0.635558093258208,0.463917041022171,-0.114804663102346,-0.183361270123994,-0.145783041325259,-0.0690831352230203,-0.225775248033138,-0.638671952771851,0.101288021253234,-0.339846475529127,0.167170404418143,0.125894532368176,-0.00898309914322813,0.0147241691924927,2.69,"0"
 1,-1.35835406159823,-1.34016307473609,1.77320934263119,0.379779593034328,-0.503198133318193,1.80049938079263,0.791460956450422,0.247675786588991,-1.51465432260583,0.207642865216696,0.624501459424895,0.066083685268831,0.717292731410831,-0.165945922763554,2.34586494901581,-2.89008319444231,1.10996937869599,-0.121359313195888,-2.26185709530414,0.524979725224404,0.247998153469754,0.771679401917229,0.909412262347719,-0.689280956490685,-0.327641833735251,-0.139096571514147,-0.0553527940384261,-0.0597518405929204,378.66,"0"
@@ -88,7 +88,7 @@
 
 可以使用 [read_csv()熊猫](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)函数将数据集加载为数据框，指定列的位置和名称，因为没有标题行。
 
-```
+```py
 ...
 # define the dataset location
 filename = 'creditcard.csv'
@@ -98,7 +98,7 @@ dataframe = read_csv(filename, header=None)
 
 加载后，我们可以通过打印[数据框](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html)的形状来总结行数和列数。
 
-```
+```py
 ...
 # summarize the shape of the dataset
 print(dataframe.shape)
@@ -106,7 +106,7 @@ print(dataframe.shape)
 
 我们还可以使用 [Counter](https://docs.python.org/3/library/collections.html) 对象总结每个类中的示例数量。
 
-```
+```py
 ...
 # summarize the class distribution
 target = dataframe.values[:,-1]
@@ -118,7 +118,7 @@ for k,v in counter.items():
 
 将这些联系在一起，下面列出了加载和汇总数据集的完整示例。
 
-```
+```py
 # load and summarize the dataset
 from pandas import read_csv
 from collections import Counter
@@ -140,7 +140,7 @@ for k,v in counter.items():
 
 然后总结了类别分布，确认了类别分布的严重偏差，约 99.827%的交易标记为正常，约 0.173%的交易标记为欺诈。这通常与论文中对数据集的描述相匹配。
 
-```
+```py
 (284807, 31)
 Class=0, Count=284315, Percentage=99.827%
 Class=1, Count=492, Percentage=0.173%
@@ -152,7 +152,7 @@ Class=1, Count=492, Percentage=0.173%
 
 下面列出了创建所有输入变量直方图的完整示例。
 
-```
+```py
 # create histograms of input variables
 from pandas import read_csv
 from matplotlib import pyplot
@@ -184,7 +184,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # summarize the amount variable
 from pandas import read_csv
 # define the dataset location
@@ -199,7 +199,7 @@ print(df[29].describe())
 
 最大值约为 25，691，这拉高了分布，可能是一个异常值(例如，有人用信用卡购买了一辆汽车)。
 
-```
+```py
 count    284807.000000
 mean         88.349619
 std         250.120109
@@ -233,7 +233,7 @@ Name: 29, dtype: float64
 
 我们可以定义一个函数来加载数据集，并将列分成输入和输出变量。下面的 *load_dataset()* 函数实现了这一点。
 
-```
+```py
 # load the dataset
 def load_dataset(full_path):
 	# load the dataset as a numpy array
@@ -249,7 +249,7 @@ def load_dataset(full_path):
 
 这包括首先通过[精度 _ 召回 _ 曲线()](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)函数计算预测的精度-召回曲线。然后，每个阈值的输出召回率和精度值可以作为参数提供给 [auc()](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.auc.html) 以计算曲线下的面积。下面的 *pr_auc()* 函数实现了这一点。
 
-```
+```py
 # calculate precision-recall area under curve
 def pr_auc(y_true, probas_pred):
 	# calculate precision-recall curve
@@ -262,7 +262,7 @@ def pr_auc(y_true, probas_pred):
 
 下面的 *evaluate_model()* 函数实现了这一点，将数据集和模型作为参数，返回分数列表。 [make_scorer()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html)用于定义精确-召回 AUC 度量，并指示模型必须预测概率才能被评估。
 
-```
+```py
 # evaluate a model
 def evaluate_model(X, y, model):
 	# define evaluation procedure
@@ -280,7 +280,7 @@ def evaluate_model(X, y, model):
 
 这可以通过使用 scikit-learn 库中的 [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类，并将“*策略*”参数设置为“*常量*”并将“*常量*参数设置为“1”来预测正类来实现。
 
-```
+```py
 ...
 # define the reference model
 model = DummyClassifier(strategy='constant', constant=1)
@@ -288,7 +288,7 @@ model = DummyClassifier(strategy='constant', constant=1)
 
 一旦模型被评估，我们可以直接报告 PR AUC 分数的平均值和标准差。
 
-```
+```py
 ...
 # evaluate the model
 scores = evaluate_model(X, y, model)
@@ -298,7 +298,7 @@ print('Mean PR AUC: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 将这些结合起来，下面列出了加载数据集、评估基线模型和报告性能的完整示例。
 
-```
+```py
 # test harness and baseline model evaluation for the credit dataset
 from collections import Counter
 from numpy import mean
@@ -362,7 +362,7 @@ print('Mean PR AUC: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 这个分数提供了模特技能的下限；任何平均 PR AUC 达到 0.5 以上的模型都有技能，而得分低于这个值的模型在这个数据集上没有技能。
 
-```
+```py
 (284807, 30) (284807,) Counter({0.0: 284315, 1.0: 492})
 Mean PR AUC: 0.501 (0.000)
 ```
@@ -397,7 +397,7 @@ Mean PR AUC: 0.501 (0.000)
 
 我们将依次定义每个模型，并将它们添加到一个列表中，以便我们可以顺序评估它们。下面的 *get_models()* 函数定义了用于评估的模型列表，以及用于以后绘制结果的模型简称列表。
 
-```
+```py
 # define models to test
 def get_models():
 	models, names = list(), list()
@@ -422,7 +422,7 @@ def get_models():
 
 然后，我们可以依次列举模型列表，并对每个模型进行评估，存储分数供以后评估。
 
-```
+```py
 ...
 # define models
 models, names = get_models()
@@ -438,7 +438,7 @@ for i in range(len(models)):
 
 在运行结束时，我们可以将每个分数样本绘制成一个方框，并用相同的比例绘制晶须图，这样我们就可以直接比较分布。
 
-```
+```py
 ...
 # plot the results
 pyplot.boxplot(results, labels=names, showmeans=True)
@@ -447,7 +447,7 @@ pyplot.show()
 
 将所有这些结合起来，下面列出了在信用卡欺诈数据集上评估一套机器学习算法的完整示例。
 
-```
+```py
 # spot check machine learning algorithms on the credit card fraud dataset
 from numpy import mean
 from numpy import std
@@ -539,7 +539,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到所有测试的算法都有技巧，实现了高于默认值 0.5 的 PR AUC。结果表明，决策树算法的集成在该数据集上表现良好，尽管数据集标准化的 KNN 似乎平均表现最好。
 
-```
+```py
 >CART 0.771 (0.049)
 >KNN 0.867 (0.033)
 >BAG 0.846 (0.045)
@@ -567,7 +567,7 @@ pyplot.show()
 
 首先，我们可以将模型定义为管道。
 
-```
+```py
 ...
 # define model to evaluate
 model = KNeighborsClassifier()
@@ -577,7 +577,7 @@ pipeline = Pipeline(steps=[('s',StandardScaler()), ('m',model)])
 
 一旦定义好了，我们就可以在整个训练数据集中使用它。
 
-```
+```py
 ...
 # fit the model
 pipeline.fit(X, y)
@@ -589,7 +589,7 @@ pipeline.fit(X, y)
 
 例如:
 
-```
+```py
 ...
 # define a row of data
 row = [...]
@@ -602,7 +602,7 @@ result = yhat[0][1]
 
 下面列出了完整的示例。
 
-```
+```py
 # fit a model and make predictions for the on the credit card fraud dataset
 from pandas import read_csv
 from sklearn.preprocessing import StandardScaler
@@ -663,7 +663,7 @@ for row in data:
 
 正常情况:
 
-```
+```py
 >Predicted=0.000 (expected 0)
 >Predicted=0.000 (expected 0)
 >Predicted=0.000 (expected 0)

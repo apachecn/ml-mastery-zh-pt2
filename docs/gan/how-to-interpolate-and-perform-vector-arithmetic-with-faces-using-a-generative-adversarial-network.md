@@ -59,7 +59,7 @@ GAN 架构中的生成器模型以潜在空间中的一个点作为输入，并�
 
 第一个是有脸的矢量算法。例如，一个微笑的女人的脸减去一个中立的女人的脸加上一个中立的男人的脸导致了一个微笑的男人的脸。
 
-```
+```py
 smiling woman - neutral woman + neutral man = smiling man
 ```
 
@@ -109,7 +109,7 @@ smiling woman - neutral woman + neutral man = smiling man
 
 我们可以使用[枕库](https://machinelearningmastery.com/how-to-load-and-manipulate-images-for-deep-learning-in-python-with-pil-pillow/)加载一个给定的图像文件，将其转换为 RGB 格式(如果需要)并返回一个像素数据数组。下面的 load_image()函数实现了这一点。
 
-```
+```py
 # load an image as an rgb numpy array
 def load_image(filename):
 	# load image from file
@@ -125,7 +125,7 @@ def load_image(filename):
 
 数据集中有 20 万张图像，这可能超过了我们的需求，因此我们也可以用一个参数来限制要加载的图像数量。下面的 *load_faces()* 函数实现了这一点。
 
-```
+```py
 # load images and extract faces for all images in a directory
 def load_faces(directory, n_faces):
 	faces = list()
@@ -145,7 +145,7 @@ def load_faces(directory, n_faces):
 
 下面的 *plot_faces()* 函数可以做到这一点，绘制排列成正方形的图像。
 
-```
+```py
 # plot a list of loaded faces
 def plot_faces(faces, n):
 	for i in range(n * n):
@@ -160,7 +160,7 @@ def plot_faces(faces, n):
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # load and plot faces
 from os import listdir
 from numpy import asarray
@@ -213,7 +213,7 @@ plot_faces(faces, 5)
 
 运行该示例从目录中总共加载了 25 个图像，然后总结了返回数组的大小。
 
-```
+```py
 Loaded: (25, 218, 178, 3)
 ```
 
@@ -231,13 +231,13 @@ Loaded: (25, 218, 178, 3)
 
 我们将在 [ipazc/mtcnn 项目](https://github.com/ipazc/mtcnn)中使用 Ivan de Paz Centeno 提供的实现。该库可以通过 pip 安装，如下所示:
 
-```
+```py
 sudo pip install mtcnn
 ```
 
 我们可以通过导入库并打印版本来确认库安装正确；例如:
 
-```
+```py
 # confirm mtcnn was installed correctly
 import mtcnn
 # print version
@@ -246,7 +246,7 @@ print(mtcnn.__version__)
 
 运行该示例将打印库的当前版本。
 
-```
+```py
 0.1.0
 ```
 
@@ -254,7 +254,7 @@ MTCNN 模型非常容易使用。
 
 首先创建一个 MTCNN 模型的实例，然后可以调用 *detect_faces()* 函数传入一幅图像的像素数据。结果是检测到的面的列表，以及在像素偏移值中定义的边界框。
 
-```
+```py
 ...
 # prepare model
 model = MTCNN()
@@ -268,7 +268,7 @@ x1, y1, width, height = faces[0]['box']
 
 下面的 *extract_face()* 函数实现了这一点，将单个照片的 MTCNN 模型和像素值作为参数，返回一个 80x80x3 的像素值数组，其中只有人脸，如果没有检测到人脸，则返回 None(这种情况很少发生)。
 
-```
+```py
 # extract the face from a loaded image and resize
 def extract_face(model, pixels, required_size=(80, 80)):
 	# detect face in the image
@@ -293,7 +293,7 @@ def extract_face(model, pixels, required_size=(80, 80)):
 
 我们现在可以更新 *load_faces()* 函数，从加载的照片中提取人脸，并将其存储在返回的人脸列表中。
 
-```
+```py
 # load images and extract faces for all images in a directory
 def load_faces(directory, n_faces):
 	# prepare model
@@ -320,7 +320,7 @@ def load_faces(directory, n_faces):
 
 在这种情况下，我们将加载的人脸总数增加到 50，000 个，以便为我们的 GAN 模型提供一个良好的训练数据集。
 
-```
+```py
 # example of extracting and resizing faces into a new dataset
 from os import listdir
 from numpy import asarray
@@ -396,7 +396,7 @@ savez_compressed('img_align_celeba.npz', all_faces)
 
 然后可以随时加载准备好的数据集，如下所示。
 
-```
+```py
 # load the prepared dataset
 from numpy import load
 # load the face dataset
@@ -407,7 +407,7 @@ print('Loaded: ', faces.shape)
 
 加载数据集总结了阵列的形状，显示了 50K 图像，大小为 80×80 像素，有三个颜色通道。
 
-```
+```py
 Loaded: (50000, 80, 80, 3)
 ```
 
@@ -423,7 +423,7 @@ Loaded: (50000, 80, 80, 3)
 
 下面的 *define_discriminator()* 函数实现了这一点，定义并编译鉴别器模型并返回。图像的输入形状被参数化为一个默认的函数参数，以防您以后想要为自己的图像数据重用该函数。
 
-```
+```py
 # define the standalone discriminator model
 def define_discriminator(in_shape=(80,80,3)):
 	model = Sequential()
@@ -458,7 +458,7 @@ def define_discriminator(in_shape=(80,80,3)):
 
 下面的 *define_generator()* 函数定义了生成器模型，但由于没有直接训练，所以故意不编译，然后返回模型。潜在空间的大小被参数化为函数参数。
 
-```
+```py
 # define the standalone generator model
 def define_generator(latent_dim):
 	model = Sequential()
@@ -490,7 +490,7 @@ def define_generator(latent_dim):
 
 下面的 *define_gan()* 函数实现了这一点，将已经定义的生成器和鉴别器模型作为输入。
 
-```
+```py
 # define the combined generator and discriminator model, for updating the generator
 def define_gan(g_model, d_model):
 	# make weights in the discriminator not trainable
@@ -513,7 +513,7 @@ def define_gan(g_model, d_model):
 
 下面的 *load_real_samples()* 函数实现了这一点，返回加载和缩放的图像数据，为建模做好准备。
 
-```
+```py
 # load and prepare training images
 def load_real_samples():
 	# load the face dataset
@@ -530,7 +530,7 @@ def load_real_samples():
 
 下面的 *generate_real_samples()* 函数实现了这一点，以准备好的数据集为自变量，为鉴别器选择并返回人脸图像的随机样本及其对应的类标签，具体为*类=1* ，表示它们是真实图像。
 
-```
+```py
 # select real samples
 def generate_real_samples(dataset, n_samples):
 	# choose random instances
@@ -546,7 +546,7 @@ def generate_real_samples(dataset, n_samples):
 
 *generate _ 潜伏 _points()* 函数实现了这一点，将潜伏空间的大小作为自变量，所需的点数作为生成器模型的一批输入样本返回。
 
-```
+```py
 # generate points in latent space as input for the generator
 def generate_latent_points(latent_dim, n_samples):
 	# generate points in the latent space
@@ -560,7 +560,7 @@ def generate_latent_points(latent_dim, n_samples):
 
 下面的 *generate_fake_samples()* 函数实现了这一点，将生成器模型和潜在空间的大小作为参数，然后在潜在空间中生成点，并将其用作生成器模型的输入。该函数为鉴别器模型返回生成的图像及其对应的类标签，具体来说，class=0 表示它们是伪造的或生成的。
 
-```
+```py
 # use the generator to generate n fake examples, with class labels
 def generate_fake_samples(g_model, latent_dim, n_samples):
 	# generate points in latent space
@@ -580,7 +580,7 @@ def generate_fake_samples(g_model, latent_dim, n_samples):
 
 下面的 *train()* 函数实现了这一点，将定义的模型、数据集和潜在维度的大小作为参数，并使用默认参数参数化纪元的数量和批处理大小。
 
-```
+```py
 # train the generator and discriminator
 def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batch=128):
 	bat_per_epo = int(dataset.shape[0] / n_batch)
@@ -619,7 +619,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
 
 *summary _ performance()*函数生成样本，评估鉴别器在真样本和假样本上的性能。报告了分类精度，并可能提供对模型性能的洞察。调用 *save_plot()* 创建并保存生成的图像的图，然后将模型保存到文件中。
 
-```
+```py
 # create and save a plot of generated images
 def save_plot(examples, epoch, n=10):
 	# scale from [-1,1] to [0,1]
@@ -658,7 +658,7 @@ def summarize_performance(epoch, g_model, d_model, dataset, latent_dim, n_sample
 
 然后，我们可以定义潜在空间的大小，定义所有三个模型，并在加载的人脸数据集上训练它们。
 
-```
+```py
 # size of the latent space
 latent_dim = 100
 # create the discriminator
@@ -675,7 +675,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # example of a gan for generating faces
 from numpy import load
 from numpy import zeros
@@ -886,7 +886,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 鉴别器在真样品和假样品上的损失，以及发生器的损失，在每批之后报告。
 
-```
+```py
 >1, 1/390, d1=0.699, d2=0.696 g=0.692
 >1, 2/390, d1=0.541, d2=0.702 g=0.686
 >1, 3/390, d1=0.213, d2=0.742 g=0.656
@@ -899,7 +899,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 如果发生这种情况，这是一个训练失败的例子，模型很可能无法从中恢复，您应该重新开始训练过程。
 
-```
+```py
 ...
 >34, 130/390, d1=0.844, d2=8.434 g=3.450
 >34, 131/390, d1=1.233, d2=12.021 g=3.541
@@ -932,7 +932,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of loading the generator model and generating images
 from numpy import asarray
 from numpy.random import randn
@@ -990,7 +990,7 @@ plot_generated(X, 5)
 
 下面的*insert _ points()*函数实现了这一点，并返回潜在空间中两点之间的一系列线性插值向量，包括第一个和最后一个点。
 
-```
+```py
 # uniform interpolation between two points in latent space
 def interpolate_points(p1, p2, n_steps=10):
 	# interpolate ratios between the points
@@ -1007,7 +1007,7 @@ def interpolate_points(p1, p2, n_steps=10):
 
 结果将是在两个原始图像之间过渡的一系列图像。下面的例子演示了两个面。
 
-```
+```py
 # example of interpolating between generated faces
 from numpy import asarray
 from numpy.random import randn
@@ -1073,7 +1073,7 @@ plot_generated(X, len(interpolated))
 
 下面列出了完整的示例。
 
-```
+```py
 # example of interpolating between generated faces
 from numpy import asarray
 from numpy import vstack
@@ -1148,7 +1148,7 @@ plot_generated(results, 10)
 
 有一个数学函数叫做球面线性插值函数，或者叫做“ [Slerp](https://en.wikipedia.org/wiki/Slerp) ”，当插值这个空间时应该使用这个函数，以确保考虑到空间的弯曲。更多细节，我推荐阅读苏史密斯钦塔拉 dcgan.torch 项目中的[线性插值问题。在该项目中，提供了 Python 的 Slerp 函数的实现，我们可以将其用作我们自己的 Slerp 函数的基础，如下所示:](https://github.com/soumith/dcgan.torch/issues/14)
 
-```
+```py
 # spherical linear interpolation (slerp)
 def slerp(val, low, high):
 	omega = arccos(clip(dot(low/norm(low), high/norm(high)), -1, 1))
@@ -1163,7 +1163,7 @@ def slerp(val, low, high):
 
 下面列出了此更改的完整示例。
 
-```
+```py
 # example of interpolating between generated faces
 from numpy import asarray
 from numpy import vstack
@@ -1258,7 +1258,7 @@ plot_generated(results, 10)
 
 以下示例将加载 GAN 模型，并使用它生成 100 个随机面。
 
-```
+```py
 # example of loading the generator model and generating images
 from numpy import asarray
 from numpy.random import randn
@@ -1310,7 +1310,7 @@ plot_generated(X, 10)
 
 我们将执行操作:
 
-```
+```py
 smiling woman - neutral woman + neutral man = smiling man
 ```
 
@@ -1330,7 +1330,7 @@ smiling woman - neutral woman + neutral man = smiling man
 
 首先，我们可以指定我们的首选图像，并加载保存的潜在点的 NumPy 数组。
 
-```
+```py
 # retrieve specific points
 smiling_woman_ix = [92, 98, 99]
 neutral_woman_ix = [9, 21, 79]
@@ -1344,7 +1344,7 @@ points = data['arr_0']
 
 下面的 *average_points()* 函数获取加载的潜在空间点数组，检索每个点，计算平均值，并返回所有向量。
 
-```
+```py
 # average list of latent space vectors
 def average_points(points, ix):
 	# convert to zero offset points
@@ -1360,7 +1360,7 @@ def average_points(points, ix):
 
 我们现在可以使用这个函数来检索潜在空间中所有需要的点并生成图像。
 
-```
+```py
 # average vectors
 smiling_woman = average_points(points, smiling_woman_ix)
 neutral_woman = average_points(points, neutral_woman_ix)
@@ -1376,7 +1376,7 @@ plot_generated(images, 3, 4)
 
 最后，我们可以使用平均向量在潜在空间中执行向量运算并绘制结果。
 
-```
+```py
 # smiling woman - neutral woman + neutral man = smiling man
 result_vector = smiling_woman[-1] - neutral_woman[-1] + neutral_man[-1]
 # generate image
@@ -1390,7 +1390,7 @@ pyplot.show()
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # example of loading the generator model and generating images
 from numpy import asarray
 from numpy.random import randn

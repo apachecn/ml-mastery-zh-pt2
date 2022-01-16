@@ -102,7 +102,7 @@ ReLU 的采用很容易被认为是深度学习革命中为数不多的里程碑
 
 我们可以用一个简单的 if 语句来描述这一点:
 
-```
+```py
 if input > 0:
 	return input
 else:
@@ -111,7 +111,7 @@ else:
 
 我们可以使用 0.0 集合上的 *max()* 函数和输入 *z* 对该函数 *g()* 进行数学描述；例如:
 
-```
+```py
 g(z) = max{0, z}
 ```
 
@@ -135,7 +135,7 @@ g(z) = max{0, z}
 
 或许最简单的实现就是使用 [max()函数](https://docs.python.org/3/library/functions.html#max)；例如:
 
-```
+```py
 # rectified linear function
 def rectified(x):
 	return max(0.0, x)
@@ -145,7 +145,7 @@ def rectified(x):
 
 下面是整流线性激活函数的一些输入和输出示例。
 
-```
+```py
 # demonstrate the rectified linear function
 
 # rectified linear function
@@ -169,7 +169,7 @@ print('rectified(%.1f) is %.1f' % (x, rectified(x)))
 
 运行该示例，我们可以看到，无论正值的大小如何，都会返回正值，而负值会被捕捉到值 0.0。
 
-```
+```py
 rectified(1.0) is 1.0
 rectified(1000.0) is 1000.0
 rectified(0.0) is 0.0
@@ -181,7 +181,7 @@ rectified(-1000.0) is 0.0
 
 下面的示例生成一系列从-10 到 10 的整数，并计算每个输入的校正线性激活，然后绘制结果。
 
-```
+```py
 # plot inputs and outputs
 from matplotlib import pyplot
 

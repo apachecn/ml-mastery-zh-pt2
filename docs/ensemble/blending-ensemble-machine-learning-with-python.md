@@ -92,7 +92,7 @@ scikit-learn 库在编写本文时并不支持混合。
 
 例如，对于分类问题，我们可以使用逻辑回归、知识网络、决策树、SVM 和朴素贝叶斯模型。
 
-```
+```py
 # get a list of base models
 def get_models():
 	models = list()
@@ -110,7 +110,7 @@ def get_models():
 
 首先，我们可以枚举模型列表，并在训练数据集上依次拟合每个模型。同样在这个循环中，我们可以使用拟合模型对保持(验证)数据集进行预测，并存储预测供以后使用。
 
-```
+```py
 ...
 # fit all models on the training set and predict on hold out set
 meta_X = list()
@@ -129,7 +129,7 @@ for name, model in models:
 
 每行代表保持数据集中的一个样本。我们可以使用 [hstack()函数](https://numpy.org/doc/stable/reference/generated/numpy.hstack.html)来确保该数据集是机器学习模型所期望的 2D numpy 数组。
 
-```
+```py
 ...
 # create 2d array from predictions, each set is an input feature
 meta_X = hstack(meta_X)
@@ -137,7 +137,7 @@ meta_X = hstack(meta_X)
 
 我们现在可以训练我们的元模型了。这可以是我们喜欢的任何机器学习模型，例如用于分类的逻辑回归。
 
-```
+```py
 ...
 # define blending model
 blender = LogisticRegression()
@@ -147,7 +147,7 @@ blender.fit(meta_X, y_val)
 
 我们可以将所有这些结合到一个名为 *fit_ensemble()* 的函数中，该函数使用训练数据集和保持验证数据集来训练混合模型。
 
-```
+```py
 # fit the blending ensemble
 def fit_ensemble(models, X_train, X_val, y_train, y_val):
 	# fit all models on the training set and predict on hold out set
@@ -178,7 +178,7 @@ def fit_ensemble(models, X_train, X_val, y_train, y_val):
 
 下面的 *predict_ensemble()* 函数实现了这一点。给定拟合基础模型、拟合混合器集合和数据集(如测试数据集或新数据)的列表，它将返回数据集的一组预测。
 
-```
+```py
 # make a prediction with the blending ensemble
 def predict_ensemble(models, blender, X_test):
 	# make predictions with base models
@@ -206,7 +206,7 @@ def predict_ensemble(models, blender, X_test):
 
 下面列出了完整的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -217,7 +217,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (10000, 20) (10000,)
 ```
 
@@ -225,7 +225,7 @@ print(X.shape, y.shape)
 
 在这种情况下，我们将对训练集和测试集使用 50-50 的分割，然后对训练集和验证集使用 67-33 的分割。
 
-```
+```py
 ...
 # split dataset into train and test sets
 X_train_full, X_test, y_train_full, y_test = train_test_split(X, y, test_size=0.5, random_state=1)
@@ -239,7 +239,7 @@ print('Train: %s, Val: %s, Test: %s' % (X_train.shape, X_val.shape, X_test.shape
 
 然后可以调用*拟合集合()*函数来拟合训练和验证数据集上的混合集合，并且可以使用*预测集合()*函数来对保持数据集进行预测。
 
-```
+```py
 ...
 # create the base models
 models = get_models()
@@ -251,7 +251,7 @@ yhat = predict_ensemble(models, blender, X_test)
 
 最后，我们可以通过在测试数据集上报告分类精度来评估混合模型的性能。
 
-```
+```py
 ...
 # evaluate predictions
 score = accuracy_score(y_test, yhat)
@@ -260,7 +260,7 @@ print('Blending Accuracy: %.3f' % score)
 
 将所有这些联系在一起，下面列出了在合成二元分类问题上评估混合集成的完整示例。
 
-```
+```py
 # blending ensemble for classification using hard voting
 from numpy import hstack
 from sklearn.datasets import make_classification
@@ -349,7 +349,7 @@ print('Blending Accuracy: %.3f' % (score*100))
 
 在这种情况下，我们可以看到混合集成实现了大约 97.900%的分类准确率。
 
-```
+```py
 Train: (3350, 20), Val: (1650, 20), Test: (5000, 20)
 Blending Accuracy: 97.900
 ```
@@ -360,7 +360,7 @@ Blending Accuracy: 97.900
 
 首先，我们必须将模型配置为返回概率，例如 SVM 模型。
 
-```
+```py
 # get a list of base models
 def get_models():
 	models = list()
@@ -376,7 +376,7 @@ def get_models():
 
 这可以通过在拟合基础模型时调用*拟合 _ 集合()*函数中的*预测 _proba()* 函数来实现。
 
-```
+```py
 ...
 # fit all models on the training set and predict on hold out set
 meta_X = list()
@@ -393,7 +393,7 @@ for name, model in models:
 
 当使用混合模型对新数据进行预测时，我们还需要更改基础模型所做的预测。
 
-```
+```py
 ...
 # make predictions with base models
 meta_X = list()
@@ -406,7 +406,7 @@ for name, model in models:
 
 将这些联系在一起，下面列出了对合成二进制分类问题的预测类概率使用混合的完整示例。
 
-```
+```py
 # blending ensemble for classification using soft voting
 from numpy import hstack
 from sklearn.datasets import make_classification
@@ -491,7 +491,7 @@ print('Blending Accuracy: %.3f' % (score*100))
 
 在这种情况下，我们可以看到混合类概率导致分类准确率提升到大约 98.240%。
 
-```
+```py
 Train: (3350, 20), Val: (1650, 20), Test: (5000, 20)
 Blending Accuracy: 98.240
 ```
@@ -502,7 +502,7 @@ Blending Accuracy: 98.240
 
 下面的示例演示了这一点，单独评估每个基础模型。
 
-```
+```py
 # evaluate base models on the entire training dataset
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -556,7 +556,7 @@ for name, model in models:
 
 有趣的是，我们可以看到 SVM 非常接近达到 98.200%的准确率，相比之下混合合奏达到 98.240%。
 
-```
+```py
 Train: (5000, 20), Test: (5000, 20)
 >lr Accuracy: 87.800
 >knn Accuracy: 97.380
@@ -571,7 +571,7 @@ Train: (5000, 20), Test: (5000, 20)
 
 下面列出了使用混合集成对新数据进行分类预测的完整示例。
 
-```
+```py
 # example of making a prediction with a blending ensemble for classification
 from numpy import hstack
 from sklearn.datasets import make_classification
@@ -649,7 +649,7 @@ print('Predicted Class: %d' % (yhat))
 
 运行该示例适合数据集上的混合集成模型，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Train: (6700, 20), Val: (3300, 20)
 Predicted Class: 1
 ```
@@ -664,7 +664,7 @@ Predicted Class: 1
 
 下面列出了完整的示例。
 
-```
+```py
 # test regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -675,13 +675,13 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (10000, 20) (10000,)
 ```
 
 接下来，我们可以定义用作基础模型的回归模型列表。在这种情况下，我们将使用线性回归、kNN、决策树和 SVM 模型。
 
-```
+```py
 # get a list of base models
 def get_models():
 	models = list()
@@ -696,7 +696,7 @@ def get_models():
 
 在这种情况下，我们将使用线性回归模型。
 
-```
+```py
 ...
 # define blending model
 blender = LinearRegression()
@@ -704,7 +704,7 @@ blender = LinearRegression()
 
 假设这是一个回归问题，我们将使用误差度量来评估模型的性能，在这种情况下，是平均绝对误差，简称 MAE。
 
-```
+```py
 ...
 # evaluate predictions
 score = mean_absolute_error(y_test, yhat)
@@ -713,7 +713,7 @@ print('Blending MAE: %.3f' % score)
 
 将这些联系在一起，下面列出了合成回归预测建模问题的混合集成的完整示例。
 
-```
+```py
 # evaluate blending ensemble for regression
 from numpy import hstack
 from sklearn.datasets import make_regression
@@ -800,7 +800,7 @@ print('Blending MAE: %.3f' % score)
 
 在这种情况下，我们可以看到混合集成在测试数据集上实现了大约 0.237 的 MAE。
 
-```
+```py
 Train: (3350, 20), Val: (1650, 20), Test: (5000, 20)
 Blending MAE: 0.237
 ```
@@ -811,7 +811,7 @@ Blending MAE: 0.237
 
 下面的示例在合成回归预测建模数据集上单独评估每个基本模型。
 
-```
+```py
 # evaluate base models in isolation on the regression dataset
 from numpy import hstack
 from sklearn.datasets import make_regression
@@ -864,7 +864,7 @@ for name, model in models:
 
 然而，在这种情况下，我们会选择使用线性回归模型直接解决这个问题。这突出了在采用集合模型作为最终模型之前检查贡献模型的性能的重要性。
 
-```
+```py
 Train: (5000, 20), Test: (5000, 20)
 >lr MAE: 0.236
 >knn MAE: 100.169
@@ -878,7 +878,7 @@ Train: (5000, 20), Test: (5000, 20)
 
 下面列出了使用混合集合对新数据进行回归预测的完整示例。
 
-```
+```py
 # example of making a prediction with a blending ensemble for regression
 from numpy import hstack
 from sklearn.datasets import make_regression
@@ -958,7 +958,7 @@ print('Predicted: %.3f' % (yhat[0]))
 
 运行该示例适合数据集上的混合集成模型，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Train: (6700, 20), Val: (3300, 20)
 Predicted: 359.986
 ```

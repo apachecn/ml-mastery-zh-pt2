@@ -97,7 +97,7 @@ Let’s get started.
 
 然后，我们将缩放这些值，以将它们的分布范围更改为(下限、上限)，其中以 2D 数组的形式指定界限，每个维度对应于每个输入变量。
 
-```
+```py
 ...
 # initialise population of candidate solutions randomly within the specified bounds
 pop = bounds[:, 0] + (rand(pop_size, len(bounds)) * (bounds[:, 1] - bounds[:, 0]))
@@ -105,7 +105,7 @@ pop = bounds[:, 0] + (rand(pop_size, len(bounds)) * (bounds[:, 1] - bounds[:, 0]
 
 目标函数也将在这些相同的范围内进行评估。因此，选择的目标函数和每个输入变量的界限可以定义如下:
 
-```
+```py
 # define objective function
 def obj(x):
   return 0
@@ -116,7 +116,7 @@ bounds = asarray([-5.0, 5.0])
 
 我们可以通过将它作为输入参数传递给目标函数来评估候选解的初始群体。
 
-```
+```py
 ...
 # evaluate initial population of candidate solutions
 obj_all = [obj(ind) for ind in pop]
@@ -126,7 +126,7 @@ obj_all = [obj(ind) for ind in pop]
 
 然后，我们可以循环算法的预定义迭代次数，如参数 iter 指定的 100 或 1000 次，以及所有候选解。
 
-```
+```py
 ...
 # run iterations of the algorithm
 for i in range(iter):
@@ -137,7 +137,7 @@ for i in range(iter):
 
 算法迭代的第一步执行变异过程。为此，从群体中随机选择三个不属于当前候选的随机候选 a、b 和 c，并通过计算生成突变向量:a+F *(b–c)。回想一下，F∏0，2]表示突变比例因子。
 
-```
+```py
 ...
 # choose three candidates, a, b and c, that are not the current one
 candidates = [candidate for candidate in range(pop_size) if candidate != j]
@@ -146,7 +146,7 @@ a, b, c = pop[choice(candidates, 3, replace=False)]
 
 突变过程由函数突变来执行，我们将 a、b、c 和 F 作为输入参数传递给它。
 
-```
+```py
 # define mutation operation
 def mutation(x, F):
     return x[0] + F * (x[1] - x[2])
@@ -158,7 +158,7 @@ mutated = mutation([a, b, c], F)
 
 由于我们在一个有界的值范围内操作，我们需要检查新突变的向量是否也在指定的范围内，如果不在，则根据需要将其值裁剪到上限或下限。该检查由函数 check_bounds 执行。
 
-```
+```py
 # define boundary check operation
 def check_bounds(mutated, bounds):
     mutated_bound = [clip(mutated[i], bounds[i, 0], bounds[i, 1]) for i in range(len(bounds))]
@@ -169,7 +169,7 @@ def check_bounds(mutated, bounds):
 
 交叉过程由 crossover()函数实现，该函数将变异和目标向量以及交叉率 Cr∞[0，1]和输入变量的数量作为输入。
 
-```
+```py
 # define crossover operation
 def crossover(mutated, target, dims, cr):
     # generate a uniform random value for every dimension
@@ -185,7 +185,7 @@ trial = crossover(mutated, pop[j], len(bounds), cr)
 
 如果试验向量产生较低的目标函数值，则最后的选择步骤用试验向量代替目标向量。为此，我们对目标函数上的两个向量进行评估，并随后执行选择，如果发现试验向量是两者中最合适的，则将新的目标函数值存储在 obj_all 中。
 
-```
+```py
 ...
 # compute objective function value for target vector
 obj_target = obj(pop[j])
@@ -201,7 +201,7 @@ if obj_trial < obj_target:
 
 我们可以将所有步骤结合成一个 differential_evolution()函数，该函数将种群大小、每个输入变量的边界、迭代总数、变异比例因子和交叉率作为输入参数，并返回找到的最佳解及其评估。
 
-```
+```py
 def differential_evolution(pop_size, bounds, iter, F, cr):
     # initialise population of candidate solutions randomly within the specified bounds
     pop = bounds[:, 0] + (rand(pop_size, len(bounds)) * (bounds[:, 1] - bounds[:, 0]))
@@ -252,7 +252,7 @@ def differential_evolution(pop_size, bounds, iter, F, cr):
 在本节中，我们将把差分进化算法应用于目标函数。
 我们将使用在边界内指定的简单二维球体目标函数，[-5，5]。球函数是连续的、凸的和单峰的，其特征在于 f(0，0) = 0.0 时的单一全局最小值。
 
-```
+```py
 # define objective function
 def obj(x):
     return x[0]**2.0 + x[1]**2.0
@@ -262,7 +262,7 @@ def obj(x):
 
 为此，我们必须定义算法参数的值，特别是种群大小、迭代次数、变异比例因子和交叉率。我们根据经验将这些值分别设置为 10、100、0.5 和 0.7。
 
-```
+```py
 ...
 # define population size
 pop_size = 10
@@ -276,7 +276,7 @@ cr = 0.7
 
 我们还定义了每个输入变量的边界。
 
-```
+```py
 ...
 # define lower and upper bounds for every dimension
 bounds = asarray([(-5.0, 5.0), (-5.0, 5.0)])
@@ -284,7 +284,7 @@ bounds = asarray([(-5.0, 5.0), (-5.0, 5.0)])
 
 接下来，我们进行搜索并报告结果。
 
-```
+```py
 ...
 # perform differential evolution
 solution = differential_evolution(pop_size, bounds, iter, F, cr)
@@ -292,7 +292,7 @@ solution = differential_evolution(pop_size, bounds, iter, F, cr)
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # differential evolution search of the two-dimensional sphere objective function
 from numpy.random import rand
 from numpy.random import choice
@@ -389,7 +389,7 @@ print('\nSolution: f([%s]) = %.5f' % (around(solution[0], decimals=5), solution[
 
 在这种情况下，我们可以看到算法在 100 次迭代中的大约 33 次改进中收敛到非常接近 f(0.0，0.0) = 0.0。
 
-```
+```py
 Iteration: 1 f([[ 0.89709 -0.45082]]) = 1.00800
 Iteration: 2 f([[-0.5382 0.29676]]) = 0.37773
 Iteration: 3 f([[ 0.41884 -0.21613]]) = 0.22214
@@ -427,7 +427,7 @@ Solution: f([[-0\. 0.]]) = 0.00000
 
 我们可以通过稍微修改 differential_evolution()函数来绘制每次改进时返回的目标函数值，以跟踪目标函数值，并在列表 obj_iter 中返回。
 
-```
+```py
 def differential_evolution(pop_size, bounds, iter, F, cr):
     # initialise population of candidate solutions randomly within the specified bounds
     pop = bounds[:, 0] + (rand(pop_size, len(bounds)) * (bounds[:, 1] - bounds[:, 0]))
@@ -476,7 +476,7 @@ def differential_evolution(pop_size, bounds, iter, F, cr):
 
 然后，我们可以创建这些目标函数值的线图，以查看搜索过程中每一次改进的相对变化。
 
-```
+```py
 from matplotlib import pyplot
 ...
 # perform differential evolution
@@ -491,7 +491,7 @@ pyplot.show()
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # differential evolution search of the two-dimensional sphere objective function
 from numpy.random import rand
 from numpy.random import choice

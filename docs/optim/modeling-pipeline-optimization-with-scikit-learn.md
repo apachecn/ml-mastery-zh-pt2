@@ -31,7 +31,7 @@ The tutorial is simple and easy to follow. It should not take you too long to go
 
 在演示以上所有内容之前，让我们编写导入部分:
 
-```
+```py
 from pandas import read_csv # For dataframes
 from pandas import DataFrame # For dataframes
 from numpy import ravel # For matrices
@@ -50,7 +50,7 @@ from sklearn.model_selection import GridSearchCV # For optimization
 
 我们将使用来自 [UCI 机器学习资源库](https://archive.ics.uci.edu/ml/datasets.php)的 [Ecoli 数据集](https://archive.ics.uci.edu/ml/datasets/Ecoli)来演示本教程的所有概念。该数据集由[中井贤三](http://www.imcb.osaka-u.ac.jp/nakai/psort.html/)维护。让我们首先将 Ecoli 数据集加载到 Pandas DataFrame 中，并查看前几行。
 
-```
+```py
 # Read ecoli dataset from the UCI ML Repository and store in
 # dataframe df
 df = read_csv(
@@ -62,7 +62,7 @@ print(df.head())
 
 运行示例时，您应该会看到以下内容:
 
-```
+```py
             0     1     2     3    4     5     6     7   8
 0   AAT_ECOLI  0.49  0.29  0.48  0.5  0.56  0.24  0.35  cp
 1  ACEA_ECOLI  0.07  0.40  0.48  0.5  0.54  0.35  0.44  cp
@@ -73,7 +73,7 @@ print(df.head())
 
 我们将忽略指定序列名称的第一列。最后一列是类标签。让我们将要素从类标签中分离出来，并将数据集分成 2/3 个训练实例和 1/3 个测试实例。
 
-```
+```py
 ...
 # The data matrix X
 X = df.iloc[:,1:-1]
@@ -97,7 +97,7 @@ print(X_test.shape)
 
 运行示例时，您应该会看到以下内容:
 
-```
+```py
 (224, 7)
 (112, 7)
 ```
@@ -110,7 +110,7 @@ print(X_test.shape)
 
 首先，让我们检查 k 最近邻在训练集和测试集上的表现。这将为我们提供一个性能基线。
 
-```
+```py
 ...
 knn = KNeighborsClassifier().fit(X_train, y_train)
 print('Training set score: ' + str(knn.score(X_train,y_train)))
@@ -119,7 +119,7 @@ print('Test set score: ' + str(knn.score(X_test,y_test)))
 
 运行示例时，您应该会看到以下内容:
 
-```
+```py
 Training set score: 0.9017857142857143
 Test set score: 0.8482142857142857
 ```
@@ -134,7 +134,7 @@ Test set score: 0.8482142857142857
 2.  **特征选择器**:使用方差阈值()丢弃方差小于某个定义阈值的特征。
 3.  **分类器**:kneighgborcsclassifier()，实现 k 近邻分类器，选择最接近测试示例的 k 个点的大部分的类。
 
-```
+```py
 ...
 pipe = Pipeline([
 ('scaler', StandardScaler()),
@@ -145,7 +145,7 @@ pipe = Pipeline([
 
 管道对象很容易理解。它说，规模第一，选择特征第二，最后分类。让我们在训练数据上调用管道对象的 fit()方法，并获得训练和测试分数。
 
-```
+```py
 ...
 pipe.fit(X_train, y_train)
 
@@ -155,7 +155,7 @@ print('Test set score: ' + str(pipe.score(X_test,y_test)))
 
 运行示例时，您应该会看到以下内容:
 
-```
+```py
 Training set score: 0.8794642857142857
 Test set score: 0.8392857142857143
 ```
@@ -176,7 +176,7 @@ Test set score: 0.8392857142857143
 2.  我们将搜索选择器的最佳阈值，即变量阈值()。因此，我们指定了一个值列表[0，0.0001，0.001，0.5]供选择。
 3.  为 KNeighborsClassifier()的 n_neighbors、p 和 leaf_size 参数指定了不同的值。
 
-```
+```py
 ...
 parameters = {'scaler': [StandardScaler(), MinMaxScaler(),
 	Normalizer(), MaxAbsScaler()],
@@ -189,7 +189,7 @@ parameters = {'scaler': [StandardScaler(), MinMaxScaler(),
 
 管道和上面的参数列表随后被传递给 GridSearchCV()对象，该对象在参数空间中搜索最佳参数集，如下所示:
 
-```
+```py
 ...
 grid = GridSearchCV(pipe, parameters, cv=2).fit(X_train, y_train)
 
@@ -199,7 +199,7 @@ print('Test set score: ' + str(grid.score(X_test, y_test)))
 
 运行示例时，您应该会看到以下内容:
 
-```
+```py
 Training set score: 0.8928571428571429
 Test set score: 0.8571428571428571
 ```
@@ -220,7 +220,7 @@ GridSearchCV 计算网格每个角的分数
 
 对于上面网格的每个角，GridSearchCV()对象计算未看到的示例的平均交叉验证分数，并选择给出最佳结果的角/参数组合。下面的代码显示了如何访问网格的最佳参数和我们任务的最佳管道。
 
-```
+```py
 ...
 # Access the best set of parameters
 best_params = grid.best_params_
@@ -232,7 +232,7 @@ print(best_pipe)
 
 运行示例时，您应该会看到以下内容:
 
-```
+```py
 {'classifier__leaf_size': 1, 'classifier__n_neighbors': 7, 'classifier__p': 2, 'scaler': StandardScaler(), 'selector__threshold': 0}
 Pipeline(steps=[('scaler', StandardScaler()),
                 ('selector', VarianceThreshold(threshold=0)),
@@ -242,7 +242,7 @@ Pipeline(steps=[('scaler', StandardScaler()),
 
 分析结果的另一种有用的技术是从网格中构造一个数据框架。让我们查看这个数据框的列。
 
-```
+```py
 ...
 result_df = DataFrame.from_dict(grid.cv_results_, orient='columns')
 print(result_df.columns)
@@ -250,7 +250,7 @@ print(result_df.columns)
 
 运行示例时，您应该会看到以下内容:
 
-```
+```py
 Index(['mean_fit_time', 'std_fit_time', 'mean_score_time', 'std_score_time',
        'param_classifier__leaf_size', 'param_classifier__n_neighbors',
        'param_classifier__p', 'param_scaler', 'param_selector__threshold',
@@ -261,7 +261,7 @@ Index(['mean_fit_time', 'std_fit_time', 'mean_score_time', 'std_score_time',
 
 这个数据框非常有价值，因为它向我们显示了不同参数的分数。带有 mean_test_score 的列是交叉验证期间所有折叠的测试集得分的平均值。数据框可能太大，无法手动可视化，因此绘制结果总是一个好主意。让我们看看 n_neighbors 如何影响不同定标器和不同 p 值的性能。
 
-```
+```py
 ...
 sns.relplot(data=result_df,
 	kind='line',
@@ -280,7 +280,7 @@ plt.show()
 
 这些图清楚地表明，使用 StandardScaler()，n_neighbors=7，p=2，会得到最好的结果。让我们再做一组叶子大小的图。
 
-```
+```py
 ...
 sns.relplot(data=result_df,
             kind='line',
@@ -299,7 +299,7 @@ plt.show()
 
 将这些结合在一起，下面列出了完整的代码示例。
 
-```
+```py
 from pandas import read_csv                           # For dataframes
 from pandas import DataFrame                       # For dataframes
 from numpy import ravel                                  # For matrices

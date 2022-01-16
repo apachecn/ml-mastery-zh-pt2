@@ -79,7 +79,7 @@
 
 下面的代码片段为一个数据样本创建了一个包含 10 个面元的直方图。
 
-```
+```py
 ...
 # plot a histogram of the sample
 pyplot.hist(sample, bins=10)
@@ -90,7 +90,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # example of plotting a histogram of a random sample
 from matplotlib import pyplot
 from numpy.random import normal
@@ -147,7 +147,7 @@ pyplot.show()
 
 我们可以从均值为 50、标准差为 5 的正态分布中生成 1000 个观测值的随机样本。
 
-```
+```py
 ...
 # generate a sample
 sample = normal(loc=50, scale=5, size=1000)
@@ -157,7 +157,7 @@ sample = normal(loc=50, scale=5, size=1000)
 
 考虑到采样过程中的小样本量和噪声，我们不会期望均值和标准差分别为 50 和 5。
 
-```
+```py
 ...
 # calculate parameters
 sample_mean = mean(sample)
@@ -169,7 +169,7 @@ print('Mean=%.3f, Standard Deviation=%.3f' % (sample_mean, sample_std))
 
 在这种情况下，我们可以使用 [norm() SciPy 函数](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html)。
 
-```
+```py
 ...
 # define the distribution
 dist = norm(sample_mean, sample_std)
@@ -177,7 +177,7 @@ dist = norm(sample_mean, sample_std)
 
 然后，我们可以从这个分布中为我们领域中的一系列值采样概率，在本例中为 30 到 70。
 
-```
+```py
 ...
 # sample probabilities for a range of outcomes
 values = [value for value in range(30, 70)]
@@ -188,7 +188,7 @@ probabilities = [dist.pdf(value) for value in values]
 
 重要的是，我们可以将直方图每个面元中的计数或频率转换为归一化概率，以确保直方图的 y 轴与线图的 y 轴相匹配。这可以通过在对 [hist()](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.hist.html) 的调用中将“*密度*参数设置为“*真*来实现。
 
-```
+```py
 ...
 # plot the histogram and pdf
 pyplot.hist(sample, bins=10, density=True)
@@ -197,7 +197,7 @@ pyplot.plot(values, probabilities)
 
 将这些片段连接在一起，参数密度估计的完整示例如下所示。
 
-```
+```py
 # example of parametric probability density estimation
 from matplotlib import pyplot
 from numpy.random import normal
@@ -227,7 +227,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到均值和标准差有一些噪声，分别与期望值 50 和 5 略有不同。噪音很小，分布预计仍然很合适。
 
-```
+```py
 Mean=49.852, Standard Deviation=5.023
 ```
 
@@ -286,7 +286,7 @@ Mean=49.852, Standard Deviation=5.023
 
 下面列出了创建具有双峰概率分布的样本并绘制直方图的完整示例。
 
-```
+```py
 # example of a bimodal data sample
 from matplotlib import pyplot
 from numpy.random import normal
@@ -318,7 +318,7 @@ scikit-learn 机器学习库提供了实现内核密度估计的[内核密度类
 
 然后通过*拟合()*函数将该类拟合到数据样本上。该函数希望数据具有 2D 形状，其形式为[行，列]，因此我们可以将数据样本重新整形为 1，000 行 1 列。
 
-```
+```py
 ...
 # fit density
 model = KernelDensity(bandwidth=2, kernel='gaussian')
@@ -330,7 +330,7 @@ model.fit(sample)
 
 *核密度*上的 *score_samples()* 函数将计算样本数组的对数概率。我们可以创建一个从 1 到 60 的样本范围，大约是我们的域的范围，计算对数概率，然后通过计算指数或 *exp()* 来反转对数操作，以将值返回到正常概率的范围 0-1。
 
-```
+```py
 ...
 # sample probabilities for a range of outcomes
 values = asarray([value for value in range(1, 60)])
@@ -341,7 +341,7 @@ probabilities = exp(probabilities)
 
 最后，我们可以创建一个归一化频率的直方图和一个估计概率值的覆盖线图。
 
-```
+```py
 ...
 # plot the histogram and pdf
 pyplot.hist(sample, bins=50, density=True)
@@ -351,7 +351,7 @@ pyplot.show()
 
 将这些联系在一起，下面列出了双峰数据样本的核密度估计的完整示例。
 
-```
+```py
 # example of kernel density estimation for a bimodal data sample
 from matplotlib import pyplot
 from numpy.random import normal

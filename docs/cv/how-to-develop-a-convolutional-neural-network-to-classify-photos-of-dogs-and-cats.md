@@ -81,7 +81,7 @@
 
 现在，您将拥有一个名为“ *train/* ”的文件夹，其中包含 25，000 个。狗和猫的 jpg 文件。这些照片是用它们的文件名标注的，带有“T2”狗“T3”或“T4”猫“T5”的字样。文件命名约定如下:
 
-```
+```py
 cat.0.jpg
 ...
 cat.124999.jpg
@@ -97,7 +97,7 @@ dog.124999.jpg
 
 下面列出了完整的示例。
 
-```
+```py
 # plot dog photos from the dogs vs cats dataset
 from matplotlib import pyplot
 from matplotlib.image import imread
@@ -127,7 +127,7 @@ pyplot.show()
 
 我们可以更新示例，改为绘制猫咪照片；下面列出了完整的示例。
 
-```
+```py
 # plot cat photos from the dogs vs cats dataset
 from matplotlib import pyplot
 from matplotlib.image import imread
@@ -177,7 +177,7 @@ pyplot.show()
 
 下面的示例使用 Keras 图像处理 API 加载训练数据集中的所有 25，000 张照片，并将其重塑为 200×200 平方的照片。标签也是根据文件名为每张照片确定的。然后保存一组照片和标签。
 
-```
+```py
 # load dogs vs cats dataset, reshape and save to a new file
 from os import listdir
 from numpy import asarray
@@ -213,7 +213,7 @@ save('dogs_vs_cats_labels.npy', labels)
 
 **注意**:运行这个例子假设你有超过 12gb 的内存。如果没有足够的内存，可以跳过这个例子；它仅作为演示提供。
 
-```
+```py
 (25000, 200, 200, 3) (25000,)
 ```
 
@@ -221,7 +221,7 @@ save('dogs_vs_cats_labels.npy', labels)
 
 准备好的数据可以直接加载；例如:
 
-```
+```py
 # load and confirm the shape
 from numpy import load
 photos = load('dogs_vs_cats_photos.npy')
@@ -239,7 +239,7 @@ print(photos.shape, labels.shape)
 
 首先，我们需要创建如下目录结构:
 
-```
+```py
 dataset_dogs_vs_cats
 ├── test
 │   ├── cats
@@ -251,7 +251,7 @@ dataset_dogs_vs_cats
 
 我们可以使用 *makedirs()* 函数在 Python 中创建目录，并使用循环为 *train/* 和 *test/* 目录创建 *dog/* 和 *cat/* 子目录。
 
-```
+```py
 # create directories
 dataset_home = 'dataset_dogs_vs_cats/'
 subdirs = ['train/', 'test/']
@@ -267,7 +267,7 @@ for subdir in subdirs:
 
 此外，我们可以随机决定将 25%的图像保留在测试数据集中。这是通过固定伪随机数发生器的种子来实现的，这样我们每次运行代码时都会得到相同的数据分割。
 
-```
+```py
 # seed random number generator
 seed(1)
 # define ratio of pictures to use for validation
@@ -289,7 +289,7 @@ for file in listdir(src_directory):
 
 下面列出了完整的代码示例，并假设您已经将下载的 *train.zip* 中的图像解压缩到了 *train/* 中的当前工作目录中。
 
-```
+```py
 # organize dataset into a useful structure
 from os import makedirs
 from os import listdir
@@ -340,7 +340,7 @@ for file in listdir(src_directory):
 
 每层将使用 [ReLU 激活功能](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/)和 he 权重初始化，这通常是最佳实践。例如，一个 3 块 VGG 风格的体系结构，其中每个块都有一个卷积和池层，可以在 Keras 中定义如下:
 
-```
+```py
 # block 1
 model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same', input_shape=(200, 200, 3)))
 model.add(MaxPooling2D((2, 2)))
@@ -360,7 +360,7 @@ model.add(MaxPooling2D((2, 2)))
 
 下面是 *define_model()* 函数的一个例子，该函数用一个 vgg 类型的块来定义狗对猫问题的卷积神经网络模型。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -377,7 +377,7 @@ def define_model():
 
 可以根据需要调用它来准备模型，例如:
 
-```
+```py
 # define model
 model = define_model()
 ```
@@ -386,7 +386,7 @@ model = define_model()
 
 这包括首先定义*图像数据生成器*的实例，该实例将像素值缩放到 0-1 的范围。
 
-```
+```py
 # create data generator
 datagen = ImageDataGenerator(rescale=1.0/255.0)
 ```
@@ -395,7 +395,7 @@ datagen = ImageDataGenerator(rescale=1.0/255.0)
 
 我们可以在数据生成器上使用 *flow_from_directory()* 函数，并为*列车/* 和*测试/* 目录各创建一个迭代器。我们必须通过“ *class_mode* ”参数指定问题为二值分类问题，并通过“ *target_size* ”参数加载 200×200 像素大小的图像。我们将把批量固定在 64。
 
-```
+```py
 # prepare iterators
 train_it = datagen.flow_from_directory('dataset_dogs_vs_cats/train/',
 	class_mode='binary', batch_size=64, target_size=(200, 200))
@@ -409,7 +409,7 @@ test_it = datagen.flow_from_directory('dataset_dogs_vs_cats/test/',
 
 该模型将适合 20 个时代，这是一个很小的数字，用于检查模型是否能够学习问题。
 
-```
+```py
 # fit model
 history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
 	validation_data=test_it, validation_steps=len(test_it), epochs=20, verbose=0)
@@ -417,7 +417,7 @@ history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
 
 一旦拟合，最终模型可以直接在测试数据集上进行评估，并报告分类精度。
 
-```
+```py
 # evaluate model
 _, acc = model.evaluate_generator(test_it, steps=len(test_it), verbose=0)
 print('> %.3f' % (acc * 100.0))
@@ -429,7 +429,7 @@ print('> %.3f' % (acc * 100.0))
 
 下面的*summary _ diagnostics()*函数获取历史目录，并创建一个单独的数字，一个是损失的线图，另一个是精度图。然后，图形被保存到一个文件中，该文件的文件名基于脚本的名称。如果我们希望评估不同文件中模型的许多变化，并为每个变化自动创建线图，这将非常有用。
 
-```
+```py
 # plot diagnostic learning curves
 def summarize_diagnostics(history):
 	# plot loss
@@ -452,7 +452,7 @@ def summarize_diagnostics(history):
 
 下面列出了在狗和猫数据集上评估单块基线模型的完整示例。
 
-```
+```py
 # baseline model for the dogs vs cats dataset
 import sys
 from matplotlib import pyplot
@@ -527,7 +527,7 @@ run_test_harness()
 
 该模型的 *define_model()* 函数已在上一节中定义，但为了完整起见，下面再次提供。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -546,7 +546,7 @@ def define_model():
 
 然后对模型进行拟合和评估，在现代图形处理器硬件上大约需要 20 分钟。
 
-```
+```py
 Found 18697 images belonging to 2 classes.
 Found 6303 images belonging to 2 classes.
 > 72.331
@@ -570,7 +570,7 @@ Found 6303 images belonging to 2 classes.
 
 为了完整起见，下面提供了该模型的 *define_model()* 函数。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -591,7 +591,7 @@ def define_model():
 
 对模型进行拟合和评估，并报告测试数据集上的性能。
 
-```
+```py
 Found 18697 images belonging to 2 classes.
 Found 6303 images belonging to 2 classes.
 > 76.646
@@ -615,7 +615,7 @@ Found 6303 images belonging to 2 classes.
 
 该模型的 *define_model()* 函数已在上一节中定义，但为了完整起见，下面再次提供。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -638,7 +638,7 @@ def define_model():
 
 对模型进行拟合和评估，并报告测试数据集上的性能。
 
-```
+```py
 Found 18697 images belonging to 2 classes.
 Found 6303 images belonging to 2 classes.
 > 80.184
@@ -692,7 +692,7 @@ Found 6303 images belonging to 2 classes.
 
 下面是添加了 Dropout 的基线模型的更新版本的 *define_model()* 函数。在这种情况下，在每个 VGG 块之后应用 20%的丢失率，在模型的分类器部分的完全连接层之后应用更大的 50%的丢失率。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -717,7 +717,7 @@ def define_model():
 
 为了完整起见，下面列出了基线模型的完整代码列表，并在犬猫数据集上增加了 drop。
 
-```
+```py
 # baseline model with dropout for the dogs vs cats dataset
 import sys
 from matplotlib import pyplot
@@ -799,7 +799,7 @@ run_test_harness()
 
 在这种情况下，我们可以看到模型性能的小幅提升，从基线模型的 80%左右的精度提升到增加了脱落的 81%左右。
 
-```
+```py
 Found 18697 images belonging to 2 classes.
 Found 6303 images belonging to 2 classes.
 > 81.279
@@ -827,7 +827,7 @@ Found 6303 images belonging to 2 classes.
 
 这要求我们为训练和测试数据集有一个单独的 ImageDataGenerator 实例，然后为从各自的数据生成器创建的训练和测试集有迭代器。例如:
 
-```
+```py
 # create data generators
 train_datagen = ImageDataGenerator(rescale=1.0/255.0,
 	width_shift_range=0.1, height_shift_range=0.1, horizontal_flip=True)
@@ -843,7 +843,7 @@ test_it = test_datagen.flow_from_directory('dataset_dogs_vs_cats/test/',
 
 为了完整起见，下面列出了带有狗和猫数据集训练数据增强的基线模型的完整代码列表。
 
-```
+```py
 # baseline model with data augmentation for the dogs vs cats dataset
 import sys
 from matplotlib import pyplot
@@ -922,7 +922,7 @@ run_test_harness()
 
 在这种情况下，我们可以看到性能提升了大约 5%，从基线模型的大约 80%提升到具有简单数据增加的基线模型的大约 85%。
 
-```
+```py
 > 85.816
 ```
 
@@ -967,7 +967,7 @@ Keras 提供了一系列预先训练好的模型，可以通过 [Keras 应用 AP
 
 下面的 *define_model()* 函数实现了这一点，并返回一个准备训练的新模型。
 
-```
+```py
 # define cnn model
 def define_model():
 	# load model
@@ -997,7 +997,7 @@ VGG16 模型在特定的 ImageNet 挑战数据集上进行了训练。因此，�
 
 下面列出了狗和猫数据集上用于迁移学习的 VGG 模型的完整代码列表。
 
-```
+```py
 # vgg16 model used for transfer learning on the dogs and cats dataset
 import sys
 from matplotlib import pyplot
@@ -1076,7 +1076,7 @@ run_test_harness()
 
 在这种情况下，我们可以看到该模型在保持测试数据集上以大约 97%的分类准确率获得了非常令人印象深刻的结果。
 
-```
+```py
 Found 18697 images belonging to 2 classes.
 Found 6303 images belonging to 2 classes.
 > 97.636
@@ -1110,7 +1110,7 @@ Found 6303 images belonging to 2 classes.
 
 结构如下所示:
 
-```
+```py
 finalize_dogs_vs_cats
 ├── cats
 └── dogs
@@ -1118,7 +1118,7 @@ finalize_dogs_vs_cats
 
 为了完整起见，下面列出了更新后的脚本。
 
-```
+```py
 # organize dataset into a useful structure
 from os import makedirs
 from os import listdir
@@ -1148,7 +1148,7 @@ for file in listdir(src_directory):
 
 必须更新 *flow_from_directory()* 以加载新的*finalize _ dogs _ vs _ cat/*目录中的所有图像。
 
-```
+```py
 # prepare iterator
 train_it = datagen.flow_from_directory('finalize_dogs_vs_cats/',
 	class_mode='binary', batch_size=64, target_size=(224, 224))
@@ -1156,14 +1156,14 @@ train_it = datagen.flow_from_directory('finalize_dogs_vs_cats/',
 
 此外，对 *fit_generator()* 的调用不再需要指定验证数据集。
 
-```
+```py
 # fit model
 model.fit_generator(train_it, steps_per_epoch=len(train_it), epochs=10, verbose=0)
 ```
 
 一旦合适，我们可以通过调用模型上的 *save()* 函数将最终模型保存到一个 H5 文件中，并传入选择的文件名。
 
-```
+```py
 # save model
 model.save('final_model.h5')
 ```
@@ -1172,7 +1172,7 @@ model.save('final_model.h5')
 
 下面列出了在训练数据集上拟合最终模型并将其保存到文件中的完整示例。
 
-```
+```py
 # save the final model to file
 from keras.applications.vgg16 import VGG16
 from keras.models import Model
@@ -1241,7 +1241,7 @@ Dog (sample_image.jpg)
 
 首先，我们可以加载图像，并强制其大小为 224×224 像素。然后可以调整加载图像的大小，使其在数据集中具有单个样本。像素值也必须居中，以匹配模型训练期间准备数据的方式。 *load_image()* 函数实现了这一点，并将返回已加载的准备分类的图像。
 
-```
+```py
 # load and prepare the image
 def load_image(filename):
 	# load the image
@@ -1258,14 +1258,14 @@ def load_image(filename):
 
 接下来，我们可以像上一节一样加载模型，并调用 predict()函数将图像中的内容预测为“ *0* ”和“ *1* 之间的数字，分别表示“*猫*”和“*狗*”。
 
-```
+```py
 # predict the class
 result = model.predict(img)
 ```
 
 下面列出了完整的示例。
 
-```
+```py
 # make a prediction for a new image.
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -1300,7 +1300,7 @@ run_example()
 
 运行该示例首先加载和准备图像，加载模型，然后正确预测加载的图像代表“*狗*或类“ *1* ”。
 
-```
+```py
 1
 ```
 

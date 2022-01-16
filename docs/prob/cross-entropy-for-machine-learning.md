@@ -160,7 +160,7 @@ KL 散度可以计算为以 P 为倍数的每个事件的概率的负和，乘�
 
 对于这个变量，我们可能有两种不同的概率分布；例如:
 
-```
+```py
 ...
 # define distributions
 events = ['red', 'green', 'blue']
@@ -172,7 +172,7 @@ q = [0.80, 0.15, 0.05]
 
 下面列出了完整的示例。
 
-```
+```py
 # plot of distributions
 from matplotlib import pyplot
 # define distributions
@@ -204,7 +204,7 @@ pyplot.show()
 
 我们将使用 log base-2 来确保结果以位为单位。
 
-```
+```py
 # calculate cross entropy
 def cross_entropy(p, q):
 	return -sum([p[i]*log2(q[i]) for i in range(len(p))])
@@ -212,7 +212,7 @@ def cross_entropy(p, q):
 
 然后我们可以用这个函数从 Q 计算 P 的交叉熵，以及反过来，从 P 计算 Q。
 
-```
+```py
 ...
 # calculate cross entropy H(P, Q)
 ce_pq = cross_entropy(p, q)
@@ -224,7 +224,7 @@ print('H(Q, P): %.3f bits' % ce_qp)
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # example of calculating cross entropy
 from math import log2
 
@@ -245,7 +245,7 @@ print('H(Q, P): %.3f bits' % ce_qp)
 
 运行该示例时，首先从 P 计算 Q 的交叉熵，刚好超过 3 位，然后从 Q 计算 P，刚好低于 3 位。
 
-```
+```py
 H(P, Q): 3.288 bits
 H(Q, P): 2.906 bits
 ```
@@ -258,7 +258,7 @@ H(Q, P): 2.906 bits
 
 下面列出了完整的示例。
 
-```
+```py
 # example of calculating cross entropy for identical distributions
 from math import log2
 
@@ -279,7 +279,7 @@ print('H(Q, Q): %.3f bits' % ce_qq)
 
 运行该示例首先计算 Q 对 Q 的交叉熵，它被计算为 Q 的熵，以及 P 对 P，它被计算为 P 的熵
 
-```
+```py
 H(P, P): 1.361 bits
 H(Q, Q): 0.884 bits
 ```
@@ -292,7 +292,7 @@ H(Q, Q): 0.884 bits
 
 首先，我们可以定义一个函数，使用 log base-2 计算分布之间的 KL 散度，以确保结果也是以位为单位的。
 
-```
+```py
 # calculate the kl divergence KL(P || Q)
 def kl_divergence(p, q):
 	return sum(p[i] * log2(p[i]/q[i]) for i in range(len(p)))
@@ -300,7 +300,7 @@ def kl_divergence(p, q):
 
 接下来，我们可以定义一个函数来计算给定概率分布的熵。
 
-```
+```py
 # calculate entropy H(P)
 def entropy(p):
 	return -sum([p[i] * log2(p[i]) for i in range(len(p))])
@@ -308,7 +308,7 @@ def entropy(p):
 
 最后，我们可以使用*熵()*和*KL _ 散度()*函数计算交叉熵。
 
-```
+```py
 # calculate cross entropy H(P, Q)
 def cross_entropy(p, q):
 	return entropy(p) + kl_divergence(p, q)
@@ -318,7 +318,7 @@ def cross_entropy(p, q):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of calculating cross entropy with kl divergence
 from math import log2
 
@@ -352,7 +352,7 @@ print('H(P, Q): %.3f bits' % ce_pq)
 
 这是一个有用的例子，清楚地说明了所有三个计算之间的关系。
 
-```
+```py
 H(P): 1.361 bits
 KL(P || Q): 1.927 bits
 H(P, Q): 3.288 bits
@@ -432,7 +432,7 @@ H(P, Q): 3.288 bits
 
 下面列出了完整的示例。
 
-```
+```py
 # entropy of examples from a classification task with 3 classes
 from math import log2
 from numpy import asarray
@@ -458,7 +458,7 @@ print(entropy(p))
 
 请注意，我们必须在 0.0 值上添加一个非常小的值，以避免 *log()* 爆炸，因为我们无法计算 0.0 的 log。
 
-```
+```py
 9.805612959471341e-14
 9.805612959471341e-14
 9.805612959471341e-14
@@ -495,7 +495,7 @@ print(entropy(p))
 
 考虑一个包含以下 10 个实际类标签(P)和预测类标签(Q)的两类分类任务。
 
-```
+```py
 ...
 # define classification data
 p = [1, 1, 1, 1, 1, 0, 0, 0, 0, 0]
@@ -504,7 +504,7 @@ q = [0.8, 0.9, 0.9, 0.6, 0.8, 0.1, 0.4, 0.2, 0.1, 0.3]
 
 我们可以枚举这些概率，并使用上一节中开发的交叉熵函数计算每个概率的交叉熵，使用 *log()* (自然对数)代替 *log2()* 。
 
-```
+```py
 # calculate cross entropy
 def cross_entropy(p, q):
 	return -sum([p[i]*log(q[i]) for i in range(len(p))])
@@ -514,7 +514,7 @@ def cross_entropy(p, q):
 
 然后，我们可以计算交叉熵，并对所有示例重复该过程。
 
-```
+```py
 ...
 # calculate cross entropy for each example
 results = list()
@@ -530,7 +530,7 @@ for i in range(len(p)):
 
 最后，我们可以计算整个数据集的平均交叉熵，并将其报告为数据集上模型的交叉熵损失。
 
-```
+```py
 ...
 # calculate the average cross entropy
 mean_ce = mean(results)
@@ -539,7 +539,7 @@ print('Average Cross Entropy: %.3f nats' % mean_ce)
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # calculate cross entropy for classification problem
 from math import log
 from numpy import mean
@@ -571,7 +571,7 @@ print('Average Cross Entropy: %.3f nats' % mean_ce)
 
 在本例中，所有示例的最终平均交叉熵损失为 0.247 纳特。
 
-```
+```py
 >[y=1.0, yhat=0.8] ce: 0.223 nats
 >[y=1.0, yhat=0.9] ce: 0.105 nats
 >[y=1.0, yhat=0.9] ce: 0.105 nats
@@ -595,7 +595,7 @@ Average Cross Entropy: 0.247 nats
 
 **注意**:本例假设您安装了 [Keras 库](https://machinelearningmastery.com/tutorial-first-neural-network-python-keras/)(例如 2.3 版或更高版本)，并配置了后端库，例如[TensorFlow](https://machinelearningmastery.com/tensorflow-tutorial-deep-learning-with-tf-keras/)(2.0 版或更高版本)。如果没有，您可以跳过运行这个示例。
 
-```
+```py
 # calculate cross entropy with keras
 from numpy import asarray
 from keras import backend
@@ -615,7 +615,7 @@ print('Average Cross Entropy: %.3f nats' % mean_ce)
 
 这证实了交叉熵的正确人工计算。
 
-```
+```py
 Average Cross Entropy: 0.247 nats
 ```
 
@@ -633,7 +633,7 @@ Average Cross Entropy: 0.247 nats
 
 下面的示例实现了这一点，并绘制了预测概率分布的交叉熵结果与两个事件的目标[0，1]的比较，就像我们在二元分类任务中看到的交叉熵一样。
 
-```
+```py
 # cross-entropy for predicted probability distribution vs label
 from math import log
 from matplotlib import pyplot
@@ -676,7 +676,7 @@ pyplot.show()
 
 下面列出了代码的更新版本。
 
-```
+```py
 # cross-entropy for predicted probability distribution vs label
 from math import log
 from matplotlib import pyplot
@@ -783,7 +783,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # calculate log loss for classification problem with scikit-learn
 from sklearn.metrics import log_loss
 from numpy import asarray
@@ -800,7 +800,7 @@ print('Average Log Loss: %.3f' % ll)
 
 运行该示例给出了 0.247 个日志丢失的预期结果，当使用平均交叉熵计算时，该结果与 0.247 个 nats 匹配。
 
-```
+```py
 Average Log Loss: 0.247
 ```
 

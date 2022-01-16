@@ -119,7 +119,7 @@ Keras 支持对每个优化算法进行梯度裁剪，对模型中的所有层�
 
 这可以在 Keras 中通过在优化器上指定“ *clipnorm* ”参数来使用；例如:
 
-```
+```py
 ....
 # configure sgd with gradient norm clipping
 opt = SGD(lr=0.01, momentum=0.9, clipnorm=1.0)
@@ -133,7 +133,7 @@ opt = SGD(lr=0.01, momentum=0.9, clipnorm=1.0)
 
 这可以在 Keras 中通过在优化器上指定“clipvalue”参数来使用，例如:
 
-```
+```py
 ...
 # configure sgd with gradient value clipping
 opt = SGD(lr=0.01, momentum=0.9, clipvalue=0.5)
@@ -147,7 +147,7 @@ opt = SGD(lr=0.01, momentum=0.9, clipvalue=0.5)
 
 我们将使用这个函数来定义一个有 20 个输入特征的问题；其中 10 个功能将是有意义的，10 个将不相关。总共将随机生成 1000 个示例。[伪随机数发生器](https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/)将被固定，以确保我们每次运行代码时都能得到相同的 1000 个例子。
 
-```
+```py
 # generate regression dataset
 X, y = make_regression(n_samples=1000, n_features=20, noise=0.1, random_state=1)
 ```
@@ -156,7 +156,7 @@ X, y = make_regression(n_samples=1000, n_features=20, noise=0.1, random_state=1)
 
 我们可以创建显示分布和扩散的目标变量图。下面列出了完整的示例。
 
-```
+```py
 # regression predictive modeling problem
 from sklearn.datasets import make_regression
 from matplotlib import pyplot
@@ -187,7 +187,7 @@ pyplot.show()
 
 第一步是将数据分成训练集和测试集，这样我们就可以拟合和评估模型。我们将从域中生成 1，000 个示例，并将数据集分成两半，使用 500 个示例作为训练集和测试集。
 
-```
+```py
 # split into train and test
 n_train = 500
 trainX, testX = X[:n_train, :], X[n_train:, :]
@@ -198,7 +198,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 该模型将在问题的 20 个输入变量中有 20 个输入。单个隐藏层将使用 25 个节点和一个校正的线性激活函数。输出层有一个单目标变量节点和一个线性激活函数来直接预测真实值。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(25, input_dim=20, activation='relu', kernel_initializer='he_uniform'))
@@ -207,7 +207,7 @@ model.add(Dense(1, activation='linear'))
 
 均方误差损失函数将用于优化模型，随机梯度下降优化算法将用于学习率为 0.01、动量为 0.9 的合理默认配置。
 
-```
+```py
 # compile model
 model.compile(loss='mean_squared_error', optimizer=SGD(lr=0.01, momentum=0.9))
 ```
@@ -216,7 +216,7 @@ model.compile(loss='mean_squared_error', optimizer=SGD(lr=0.01, momentum=0.9))
 
 训练结束时，在训练和测试数据集上计算均方误差，以了解模型学习问题的程度。
 
-```
+```py
 # evaluate the model
 train_mse = model.evaluate(trainX, trainy, verbose=0)
 test_mse = model.evaluate(testX, testy, verbose=0)
@@ -224,7 +224,7 @@ test_mse = model.evaluate(testX, testy, verbose=0)
 
 最后，在每个训练周期结束时，训练集和测试集的均方误差的学习曲线用线图表示，在学习问题的同时，提供学习曲线以获得模型的动力学概念。
 
-```
+```py
 # plot loss during training
 pyplot.title('Mean Squared Error')
 pyplot.plot(history.history['loss'], label='train')
@@ -235,7 +235,7 @@ pyplot.show()
 
 将这些元素结合在一起，下面列出了完整的示例。
 
-```
+```py
 # mlp with unscaled data for the regression problem
 from sklearn.datasets import make_regression
 from keras.layers import Dense
@@ -272,7 +272,7 @@ pyplot.show()
 
 在这种情况下，模型无法学习问题，导致对 NaN 值的预测。给定非常大的误差，模型权重在训练期间爆炸，并且反过来为权重更新计算误差梯度。
 
-```
+```py
 Train: nan, Test: nan
 ```
 
@@ -290,7 +290,7 @@ Train: nan, Test: nan
 
 例如，可以将梯度重新缩放为向量范数(大小或长度)为 1.0，如下所示:
 
-```
+```py
 # compile model
 opt = SGD(lr=0.01, momentum=0.9, clipnorm=1.0)
 model.compile(loss='mean_squared_error', optimizer=opt)
@@ -298,7 +298,7 @@ model.compile(loss='mean_squared_error', optimizer=opt)
 
 下面列出了此更改的完整示例。
 
-```
+```py
 # mlp with unscaled data for the regression problem with gradient norm scaling
 from sklearn.datasets import make_regression
 from keras.layers import Dense
@@ -338,7 +338,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到，用 1.0 的向量范数缩放梯度已经产生了能够学习问题并收敛到解决方案的稳定模型。
 
-```
+```py
 Train: 5.082, Test: 27.433
 ```
 
@@ -358,7 +358,7 @@ Train: 5.082, Test: 27.433
 
 我们可以通过将“ *clipvalue* ”参数添加到优化算法配置中来更新 MLP 的训练以使用梯度裁剪。例如，下面的代码将渐变剪辑到[-5 到 5]的范围。
 
-```
+```py
 # compile model
 opt = SGD(lr=0.01, momentum=0.9, clipvalue=5.0)
 model.compile(loss='mean_squared_error', optimizer=opt)
@@ -366,7 +366,7 @@ model.compile(loss='mean_squared_error', optimizer=opt)
 
 下面列出了使用渐变剪辑训练 MLP 的完整示例。
 
-```
+```py
 # mlp with unscaled data for the regression problem with gradient clipping
 from sklearn.datasets import make_regression
 from keras.layers import Dense
@@ -406,7 +406,7 @@ pyplot.show()
 
 我们可以看到，在这种情况下，模型能够在不分解梯度的情况下学习问题，在训练集和测试集中均达到小于 10 的均方误差。
 
-```
+```py
 Train: 9.487, Test: 9.985
 ```
 

@@ -93,7 +93,7 @@ r 中有数百种机器学习算法可用。
 
 *lm()* 函数位于*统计*库中，使用普通最小二乘法创建线性回归模型。
 
-```
+```py
 # load the library
 library(mlbench)
 # load data
@@ -111,7 +111,7 @@ print(mse)
 
 lm 实现可以在插入符号中使用，如下所示:
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -129,7 +129,7 @@ print(fit.lm)
 
 glm 函数位于 stats 库中，它创建了一个广义线性模型。它可以配置为执行适合二元分类问题的逻辑回归。
 
-```
+```py
 # load the library
 library(mlbench)
 # Load the dataset
@@ -147,7 +147,7 @@ table(predictions, PimaIndiansDiabetes$diabetes)
 
 glm 算法可用于插入符号，如下所示:
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -165,7 +165,7 @@ print(fit.glm)
 
 lda 函数在 MASS 库中，它创建了一个分类问题的线性模型。
 
-```
+```py
 # load the libraries
 library(MASS)
 library(mlbench)
@@ -183,7 +183,7 @@ table(predictions, PimaIndiansDiabetes$diabetes)
 
 lda 算法可用于插入符号，如下所示:
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -203,7 +203,7 @@ glmnet 函数位于 glmnet 库中，可用于分类或回归。
 
 分类示例:
 
-```
+```py
 # load the library
 library(glmnet)
 library(mlbench)
@@ -223,7 +223,7 @@ table(predictions, PimaIndiansDiabetes$diabetes)
 
 回归示例:
 
-```
+```py
 # load the libraries
 library(glmnet)
 library(mlbench)
@@ -247,7 +247,7 @@ print(mse)
 
 glmnet 实现可以在插入符号中用于分类，如下所示:
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -264,7 +264,7 @@ print(fit.glmnet)
 
 glmnet 实现可以在脱字符号中用于回归，如下所示:
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -289,7 +289,7 @@ knn3 函数在脱字符号库中，不创建模型，而是直接从训练集中
 
 分类示例:
 
-```
+```py
 # knn direct classification
 
 # load the libraries
@@ -309,7 +309,7 @@ table(predictions, PimaIndiansDiabetes$diabetes)
 
 回归示例:
 
-```
+```py
 # load the libraries
 library(caret)
 library(mlbench)
@@ -331,7 +331,7 @@ print(mse)
 
 knn 实现可以在 caret train()函数中用于分类，如下所示:
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -347,7 +347,7 @@ print(fit.knn)
 
 knn 实现可以在 caret train()函数中用于回归，如下所示:
 
-```
+```py
 # load libraries
 library(caret)
 data(BostonHousing)
@@ -365,7 +365,7 @@ print(fit.knn)
 
 天真贝叶斯函数在 e1071 库中，它独立地对每个属性到结果变量的概率进行建模。它可以用于分类问题。
 
-```
+```py
 # load the libraries
 library(e1071)
 library(mlbench)
@@ -383,7 +383,7 @@ table(predictions, PimaIndiansDiabetes$diabetes)
 
 一个非常相似的朴素贝叶斯实现(来自 klaR 库的朴素贝叶斯)可以如下使用插入符号:
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -405,7 +405,7 @@ ksvm 函数在 kernlab 包中，可用于分类或回归。它是 LIBSVM 库的�
 
 分类示例:
 
-```
+```py
  load the libraries
 library(kernlab)
 library(mlbench)
@@ -423,7 +423,7 @@ table(predictions, PimaIndiansDiabetes$diabetes)
 
 回归示例:
 
-```
+```py
 # load the libraries
 library(kernlab)
 library(mlbench)
@@ -442,7 +442,7 @@ print(mse)
 
 带有径向基核的 SVM 实现可以与插入符号一起使用进行分类，如下所示:
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -458,7 +458,7 @@ print(fit.svmRadial)
 
 带有径向基核的 SVM 实现可以与插入符号一起用于回归，如下所示:
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -478,7 +478,7 @@ rpart 库中的 rpart 函数为分类和回归提供了一个 CART 的实现。
 
 分类示例:
 
-```
+```py
 # load the libraries
 library(rpart)
 library(mlbench)
@@ -496,7 +496,7 @@ table(predictions, PimaIndiansDiabetes$diabetes)
 
 回归示例:
 
-```
+```py
 # load the libraries
 library(rpart)
 library(mlbench)
@@ -515,7 +515,7 @@ print(mse)
 
 rpart 实现可以与脱字符号一起使用进行分类，如下所示:
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -531,7 +531,7 @@ print(fit.rpart)
 
 rpart 实现可以与插入符号一起用于回归，如下所示:
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)

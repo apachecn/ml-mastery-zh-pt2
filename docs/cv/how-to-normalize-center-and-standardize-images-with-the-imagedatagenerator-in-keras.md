@@ -48,7 +48,7 @@
 
 该函数返回两个元组:一个用于训练输入和输出，一个用于测试输入和输出。例如:
 
-```
+```py
 # example of loading the MNIST dataset
 from keras.datasets import mnist
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -56,7 +56,7 @@ from keras.datasets import mnist
 
 我们可以加载 MNIST 数据集并汇总数据集。下面列出了完整的示例。
 
-```
+```py
 # load and summarize the MNIST dataset
 from keras.datasets import mnist
 # load dataset
@@ -75,7 +75,7 @@ print('Test', test_images.min(), test_images.max(), test_images.mean(), test_ima
 
 我们还可以看到，像素值是介于 0 和 255 之间的整数值，并且两个数据集之间像素值的平均值和标准差相似。
 
-```
+```py
 Train (60000, 28, 28) (60000,)
 Test ((10000, 28, 28), (10000,))
 Train 0 255 33.318421449829934 78.56748998339798
@@ -112,7 +112,7 @@ ImageDataGenerator 类支持的三种主要像素缩放技术如下:
 
 通过在构造实例时为 ImageDataGenerator 指定参数来选择像素缩放；例如:
 
-```
+```py
 # create and configure the data generator
 datagen = ImageDataGenerator(...)
 ```
@@ -121,14 +121,14 @@ datagen = ImageDataGenerator(...)
 
 评估和选择模型时，通常会在训练数据集上计算这些统计数据，然后将它们应用于验证和测试数据集。
 
-```
+```py
 # calculate scaling statistics on the training dataset
 datagen.fit(trainX)
 ```
 
 数据生成器一旦准备好，就可以用来拟合神经网络模型，方法是调用 *flow()* 函数来检索返回成批样本的迭代器，并将其传递给 *fit_generator()* 函数。
 
-```
+```py
 # get batch iterator
 train_iterator = datagen.flow(trainX, trainy)
 # fit model
@@ -137,7 +137,7 @@ model.fit_generator(train_iterator, ...)
 
 如果需要验证数据集，可以从相同的数据生成器创建单独的批处理迭代器，该迭代器将执行相同的像素缩放操作，并使用在训练数据集上计算的任何所需统计信息。
 
-```
+```py
 # get batch iterator for training
 train_iterator = datagen.flow(trainX, trainy)
 # get batch iterator for validation
@@ -150,7 +150,7 @@ model.fit_generator(train_iterator, validation_data=val_iterator, ...)
 
 同样，将执行相同的像素缩放操作，并且如果需要，将使用在训练数据集上计算的任何统计数据。
 
-```
+```py
 # get batch iterator for testing
 test_iterator = datagen.flow(testX, testy)
 # evaluate model loss on test dataset
@@ -169,7 +169,7 @@ ImageDataGenerator 类可用于将像素值从 0-255 范围重新缩放到神经
 
 在这种情况下，比率是 1/255 或大约 0.0039。例如:
 
-```
+```py
 # create generator (1.0/255.0 = 0.003921568627451)
 datagen = ImageDataGenerator(rescale=1.0/255.0)
 ```
@@ -180,7 +180,7 @@ datagen = ImageDataGenerator(rescale=1.0/255.0)
 
 通过打印每个迭代器的长度，我们可以看到一个纪元中有多少批次，例如一次通过训练数据集。
 
-```
+```py
 # prepare an iterators to scale images
 train_iterator = datagen.flow(trainX, trainY, batch_size=64)
 test_iterator = datagen.flow(testX, testY, batch_size=64)
@@ -189,7 +189,7 @@ print('Batches train=%d, test=%d' % (len(train_iterator), len(test_iterator)))
 
 然后，我们可以通过检索第一批缩放图像并检查最小和最大像素值来确认像素归一化是否已按预期执行。
 
-```
+```py
 # confirm the scaling works
 batchX, batchy = train_iterator.next()
 print('Batch shape=%s, min=%.3f, max=%.3f' % (batchX.shape, batchX.min(), batchX.max()))
@@ -197,21 +197,21 @@ print('Batch shape=%s, min=%.3f, max=%.3f' % (batchX.shape, batchX.min(), batchX
 
 接下来，我们可以使用数据生成器来拟合和评估模型。我们将定义一个简单的卷积神经网络模型，并将其拟合到 5 个时期的 *train_iterator* 上，其中 60，000 个样本除以每批 64 个样本，即每时期约 938 个批次。
 
-```
+```py
 # fit model with generator
 model.fit_generator(train_iterator, steps_per_epoch=len(train_iterator), epochs=5)
 ```
 
 一旦拟合，我们将在测试数据集上评估模型，大约 10，000 幅图像除以每批 64 个样本，或者在单个时期内大约 157 个步骤。
 
-```
+```py
 _, acc = model.evaluate_generator(test_iterator, steps=len(test_iterator), verbose=0)
 print('Test Accuracy: %.3f' % (acc * 100))
 ```
 
 我们可以把这一切联系在一起；下面列出了完整的示例。
 
-```
+```py
 # example of using ImageDataGenerator to normalize images
 from keras.datasets import mnist
 from keras.utils import to_categorical
@@ -266,7 +266,7 @@ print('Test Accuracy: %.3f' % (acc * 100))
 
 我们从数据集中检索第一批，并确认它包含 64 幅图像，高度和宽度(行和列)为 28 个像素和 1 个通道，新的最小和最大像素值分别为 0 和 1。这证实了正常化取得了预期的效果。
 
-```
+```py
 Train min=0.000, max=255.000
 Test min=0.000, max=255.000
 Batches train=938, test=157
@@ -275,7 +275,7 @@ Batch shape=(64, 28, 28, 1), min=0.000, max=1.000
 
 然后将该模型拟合到归一化的图像数据上。在 CPU 上训练不需要很长时间。最后，在测试数据集中评估模型，应用相同的规范化。
 
-```
+```py
 Epoch 1/5
 938/938 [==============================] - 12s 13ms/step - loss: 0.1841 - acc: 0.9448
 Epoch 2/5
@@ -299,7 +299,7 @@ Test Accuracy: 99.050
 
 ImageDataGenerator 类指的是定心，它使用在训练数据集上计算的平均值作为特征定心。它要求在缩放之前对训练数据集计算统计数据。
 
-```
+```py
 # create generator that centers pixel values
 datagen = ImageDataGenerator(featurewise_center=True)
 # calculate the mean on the training dataset
@@ -308,21 +308,21 @@ datagen.fit(trainX)
 
 它不同于计算每个图像的平均像素值，Keras 称之为样本中心化，不需要在训练数据集上计算任何统计数据。
 
-```
+```py
 # create generator that centers pixel values
 datagen = ImageDataGenerator(samplewise_center=True)
 ```
 
 在本节中，我们将演示按特征居中。一旦在训练数据集上计算出统计量，我们就可以通过访问和打印来确认该值；例如:
 
-```
+```py
 # print the mean calculated on the training dataset.
 print(datagen.mean)
 ```
 
 我们还可以通过计算批处理迭代器返回的一批图像的平均值来确认缩放过程已经达到了预期的效果。我们希望平均值是一个接近于零的小值，但不是零，因为批次中的图像数量很少。
 
-```
+```py
 # get a batch
 batchX, batchy = iterator.next()
 # mean pixel value in the batch
@@ -331,7 +331,7 @@ print(batchX.shape, batchX.mean())
 
 更好的检查是将批次大小设置为训练数据集的大小(例如 60，000 个样本)，检索一个批次，然后计算平均值。它应该是一个非常小的接近于零的值。
 
-```
+```py
 # try to flow the entire training dataset
 iterator = datagen.flow(trainX, trainy, batch_size=len(trainX), shuffle=False)
 # get a batch
@@ -342,7 +342,7 @@ print(batchX.shape, batchX.mean())
 
 下面列出了完整的示例。
 
-```
+```py
 # example of centering a image dataset
 from keras.datasets import mnist
 from keras.preprocessing.image import ImageDataGenerator
@@ -381,7 +381,7 @@ MNIST 数据集只有一个通道，因为图像是黑白的(灰度)，但是如
 
 检索单批居中的图像，我们可以确认平均像素值是接近于零的小值。使用整个训练数据集作为批次大小来重复测试，在这种情况下，缩放数据集的平均像素值是非常接近于零的数字，这证实了居中具有期望的效果。
 
-```
+```py
 Means train=33.318, test=33.791
 Data Generator Mean: 33.318
 (64, 28, 28, 1) 0.09971977
@@ -392,7 +392,7 @@ Data Generator Mean: 33.318
 
 下面列出了按特征对中的完整示例。
 
-```
+```py
 # example of using ImageDataGenerator to center images
 from keras.datasets import mnist
 from keras.utils import to_categorical
@@ -443,7 +443,7 @@ print('Test Accuracy: %.3f' % (acc * 100))
 
 重要的是，在测试数据集上评估模型，其中使用在训练数据集上计算的平均值将测试数据集中的图像居中。这是为了避免任何数据泄露。
 
-```
+```py
 Batches train=938, test=157
 Epoch 1/5
 938/938 [==============================] - 12s 13ms/step - loss: 12.8824 - acc: 0.2001
@@ -468,7 +468,7 @@ Test Accuracy: 98.540
 
 均值和标准差统计可以在训练数据集上计算，正如上一节所讨论的，Keras 将其称为特征统计。
 
-```
+```py
 # feature-wise generator
 datagen = ImageDataGenerator(featurewise_center=True, featurewise_std_normalization=True)
 # calculate mean and standard deviation on the training dataset
@@ -477,7 +477,7 @@ datagen.fit(trainX)
 
 还可以计算统计数据，然后分别用于标准化每个图像，Keras 称之为抽样标准化。
 
-```
+```py
 # sample-wise standardization
 datagen = ImageDataGenerator(samplewise_center=True, samplewise_std_normalization=True)
 ```
@@ -486,7 +486,7 @@ datagen = ImageDataGenerator(samplewise_center=True, samplewise_std_normalizatio
 
 与前一部分一样，我们可以通过一些简单的实验来证实这一点。下面列出了完整的示例。
 
-```
+```py
 # example of standardizing a image dataset
 from keras.datasets import mnist
 from keras.preprocessing.image import ImageDataGenerator
@@ -525,7 +525,7 @@ print(batchX.shape, batchX.mean(), batchX.std())
 
 然后在整个训练数据集上重复测试，我们可以确认平均值确实是一个非常小的接近 0.0 的值，标准偏差是一个非常接近 1.0 的值。
 
-```
+```py
 Statistics train=33.318 (78.567), test=33.791 (79.172)
 Data Generator mean=33.318, std=78.567
 (64, 28, 28, 1) 0.010656365 1.0107679
@@ -536,7 +536,7 @@ Data Generator mean=33.318, std=78.567
 
 下面列出了完整的示例。
 
-```
+```py
 # example of using ImageDataGenerator to standardize images
 from keras.datasets import mnist
 from keras.utils import to_categorical
@@ -583,7 +583,7 @@ print('Test Accuracy: %.3f' % (acc * 100))
 
 运行该示例将 ImageDataGenerator 类配置为标准化图像，仅计算训练集所需的统计信息，然后分别准备训练和测试迭代器来拟合和评估模型。
 
-```
+```py
 Epoch 1/5
 938/938 [==============================] - 12s 13ms/step - loss: 0.1342 - acc: 0.9592
 Epoch 2/5

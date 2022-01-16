@@ -41,7 +41,7 @@
 
 我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个合成的不平衡两类分类数据集。我们将生成 10，000 个少数与多数类比例大约为 1:100 的示例。
 
-```
+```py
 ...
 # define dataset
 X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
@@ -50,7 +50,7 @@ X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
 
 生成后，我们可以总结类分布，以确认数据集是按照我们的预期创建的。
 
-```
+```py
 ...
 # summarize class distribution
 counter = Counter(y)
@@ -59,7 +59,7 @@ print(counter)
 
 最后，我们可以创建示例的散点图，并按类别标签对它们进行着色，以帮助理解从该数据集中对示例进行分类的挑战。
 
-```
+```py
 ...
 # scatter plot of examples by class label
 for label, _ in counter.items():
@@ -71,7 +71,7 @@ pyplot.show()
 
 将这些联系在一起，下面列出了生成合成数据集和绘制示例的完整示例。
 
-```
+```py
 # Generate and plot a synthetic imbalanced classification dataset
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -95,7 +95,7 @@ pyplot.show()
 
 我们可以看到，数据集具有大约 1:100 的类分布，多数类中的示例不到 10，000 个，少数类中的示例不到 100 个。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 ```
 
@@ -111,7 +111,7 @@ Counter({0: 9900, 1: 100})
 
 首先，我们可以定义一个函数来创建合成数据集，并将其分成单独的训练和测试数据集，每个数据集有 5000 个示例。
 
-```
+```py
 # prepare train and test dataset
 def prepare_data():
 	# generate 2d classification dataset
@@ -132,7 +132,7 @@ def prepare_data():
 
 下面的 *define_model()* 函数定义并返回模型，以网络的输入变量个数为自变量。
 
-```
+```py
 # define the neural network model
 def define_model(n_input):
 	# define model
@@ -150,7 +150,7 @@ def define_model(n_input):
 
 我们将为 100 个训练阶段的模型设定默认的批次大小。
 
-```
+```py
 ...
 # fit model
 model.fit(trainX, trainy, epochs=100, verbose=0)
@@ -158,7 +158,7 @@ model.fit(trainX, trainy, epochs=100, verbose=0)
 
 一旦拟合，我们可以使用该模型对测试数据集进行预测，然后使用 [ROC AUC](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/) 分数评估预测。
 
-```
+```py
 ...
 # make predictions on the test dataset
 yhat = model.predict(testX)
@@ -169,7 +169,7 @@ print('ROC AUC: %.3f' % score)
 
 将这些联系在一起，下面列出了在不平衡分类数据集上拟合标准神经网络模型的完整示例。
 
-```
+```py
 # standard neural network on an imbalanced classification dataset
 from sklearn.datasets import make_classification
 from sklearn.metrics import roc_auc_score
@@ -219,7 +219,7 @@ print('ROC AUC: %.3f' % score)
 
 在这种情况下，模型实现了大约 0.949 的 ROC AUC。这表明，与 ROC AUC 为 0.5 的朴素分类器相比，该模型具有一些技巧。
 
-```
+```py
 ROC AUC: 0.949
 ```
 
@@ -268,7 +268,7 @@ Keras Python 深度学习库提供支持类加权。
 
 例如，每个类别 0 和 1 的 1 比 1 权重可以定义如下:
 
-```
+```py
 ...
 # fit model
 weights = {0:1, 1:1}
@@ -285,7 +285,7 @@ history = model.fit(trainX, trainy, class_weight=weights, ...)
 
 例如，测试数据集的类分布是少数类与多数类的比例为 1:100。该比率的倒数可以与多数类的 1 和少数类的 100 一起使用，例如:
 
-```
+```py
 ...
 # fit model
 weights = {0:1, 1:100}
@@ -294,7 +294,7 @@ history = model.fit(trainX, trainy, class_weight=weights, ...)
 
 代表相同比率的分数没有相同的效果。例如，对多数类和少数类分别使用 0.01 和 0.99 可能会导致比使用 1 和 100 更差的性能(在这种情况下确实如此)。
 
-```
+```py
 ...
 # fit model
 weights = {0:0.01, 1:0.99}
@@ -311,7 +311,7 @@ history = model.fit(trainX, trainy, class_weight=weights, ...)
 
 下面列出了完整的示例。
 
-```
+```py
 # class weighted neural network on an imbalanced classification dataset
 from sklearn.datasets import make_classification
 from sklearn.metrics import roc_auc_score
@@ -361,7 +361,7 @@ print('ROC AUC: %.3f' % score)
 
 报告了 ROC AUC 分数，在这种情况下显示出比训练算法的未加权版本更好的分数，或者与大约 0.949 相比大约 0.973。
 
-```
+```py
 ROC AUC: 0.973
 ```
 

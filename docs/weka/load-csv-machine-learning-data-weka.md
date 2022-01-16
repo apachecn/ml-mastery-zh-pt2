@@ -53,7 +53,7 @@ ARFF 是代表属性关系文件格式的缩写。它是 CSV 文件格式的扩�
 
 例如，CSV 格式的经典鸢尾花数据集的前几行如下所示:
 
-```
+```py
 5.1,3.5,1.4,0.2,Iris-setosa
 4.9,3.0,1.4,0.2,Iris-setosa
 4.7,3.2,1.3,0.2,Iris-setosa
@@ -63,7 +63,7 @@ ARFF 是代表属性关系文件格式的缩写。它是 CSV 文件格式的扩�
 
 ARFF 格式的相同文件如下所示:
 
-```
+```py
 @RELATION iris
 
 @ATTRIBUTE sepallength REAL

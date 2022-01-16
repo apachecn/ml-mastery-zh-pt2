@@ -273,7 +273,7 @@ scikit-learn 库提供了大多数有用的统计方法的实现。
 
 通过[f _ 回归()](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html)函数使用[皮尔逊相关系数](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)进行特征选择。
 
-```
+```py
 # pearson's correlation feature selection for numeric input and numeric output
 from sklearn.datasets import make_regression
 from sklearn.feature_selection import SelectKBest
@@ -289,7 +289,7 @@ print(X_selected.shape)
 
 运行该示例首先创建回归数据集，然后定义要素选择并将要素选择过程应用于数据集，返回所选输入要素的子集。
 
-```
+```py
 (100, 10)
 ```
 
@@ -302,7 +302,7 @@ print(X_selected.shape)
 
 通过 [f_classif()](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_classif.html) 功能，使用[方差分析 F 测量](https://en.wikipedia.org/wiki/F-test)进行特征选择。
 
-```
+```py
 # ANOVA feature selection for numeric input and categorical output
 from sklearn.datasets import make_classification
 from sklearn.feature_selection import SelectKBest
@@ -318,7 +318,7 @@ print(X_selected.shape)
 
 运行该示例首先创建分类数据集，然后定义要素选择并将要素选择过程应用于数据集，返回所选输入要素的子集。
 
-```
+```py
 (100, 2)
 ```
 

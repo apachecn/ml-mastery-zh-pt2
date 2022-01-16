@@ -71,7 +71,7 @@ TTA 常用于图像分类，其中图像数据增强用于创建每个图像的�
 
 该示例创建并汇总数据集。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -82,7 +82,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集，并确认数据集的行数和列数。
 
-```
+```py
 (100, 20) (100,)
 ```
 
@@ -90,7 +90,7 @@ print(X.shape, y.shape)
 
 在评估机器学习模型时，一个好的实践是使用重复的 k-fold 交叉验证。当数据集存在分类问题时，确保使用 k-fold 交叉验证的分层版本非常重要。因此，我们将使用 10 倍和 5 倍重复的重复分层 k 倍交叉验证。
 
-```
+```py
 ...
 # prepare the cross-validation procedure
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
@@ -100,7 +100,7 @@ cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
 
 每个循环，我们必须定义和拟合模型，然后使用拟合模型进行预测，评估预测，并存储结果。
 
-```
+```py
 ...
 scores = list()
 for train_ix, test_ix in cv.split(X, y):
@@ -118,7 +118,7 @@ for train_ix, test_ix in cv.split(X, y):
 
 最后，我们可以报告所有折叠和重复的平均分类精度。
 
-```
+```py
 ...
 # report performance
 print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
@@ -126,7 +126,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 将这些联系在一起，下面列出了在综合二元分类数据集上评估逻辑回归模型的完整示例。
 
-```
+```py
 # evaluate logistic regression using repeated stratified k-fold cross-validation
 from numpy import mean
 from numpy import std
@@ -161,7 +161,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到该模型实现了 79.8%的平均分类准确率。
 
-```
+```py
 Accuracy: 0.798 (0.110)
 ```
 
@@ -177,7 +177,7 @@ Accuracy: 0.798 (0.110)
 
 [normal() NumPy 函数](https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.random.normal.html)将用于创建均值为零、标准差较小的随机高斯值向量。标准偏差应该与训练数据集中每个变量的分布成比例。在这种情况下，我们将保持示例简单，并使用 0.02 的值。
 
-```
+```py
 ...
 # create vector of random gaussians
 gauss = normal(loc=0.0, scale=feature_scale, size=len(row))
@@ -189,7 +189,7 @@ new_row = row + gauss
 
 下面的 *create_test_set()* 函数实现了这一点；给定一行数据，它将返回包含该行以及“ *n_cases* ”修改副本的测试集，默认为 3(因此测试集大小为 4)。
 
-```
+```py
 # create a test set for a row of real data with an unknown label
 def create_test_set(row, n_cases=3, feature_scale=0.2):
 	test_set = list()
@@ -209,7 +209,7 @@ def create_test_set(row, n_cases=3, feature_scale=0.2):
 
 第二种设置是对测试集中的每个示例使用 *create_test_set()* ，对构建的测试集进行预测，并使用预测中的汇总统计记录预测的标签。假设预测是绝对的，通过[模式()scipy 函数](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mode.html)，统计模式将是合适的。如果数据集是回归的，或者我们在预测概率，那么平均值或中值会更合适。
 
-```
+```py
 ...
 # create the test set
 test_set = create_test_set(row)
@@ -221,7 +221,7 @@ label, _ = mode(labels)
 
 下面的*test _ time _ employment()*函数实现了这一点；给定一个模型和一个测试集，它返回一个预测数组，其中每个预测都是使用测试时间增加进行的。
 
-```
+```py
 # make predictions using test-time augmentation
 def test_time_augmentation(model, X_test):
 	# evaluate model
@@ -242,7 +242,7 @@ def test_time_augmentation(model, X_test):
 
 将所有这些联系在一起，下面列出了使用测试时间增加在数据集上评估逻辑回归模型的完整示例。
 
-```
+```py
 # evaluate logistic regression using test-time augmentation
 from numpy.random import seed
 from numpy.random import normal
@@ -316,7 +316,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到该模型实现了 81.0%的平均分类准确率，这优于没有使用测试时间增加的测试工具，后者实现了 79.8%的准确率。
 
-```
+```py
 Accuracy: 0.810 (0.114)
 ```
 
@@ -324,7 +324,7 @@ Accuracy: 0.810 (0.114)
 
 下面的示例探索 1 到 20 之间的值，并绘制结果。
 
-```
+```py
 # compare the number of synthetic examples created during the test-time augmentation
 from numpy.random import seed
 from numpy.random import normal
@@ -409,7 +409,7 @@ pyplot.show()
 
 在这种情况下，看起来值 3 可能是这个测试工具的最佳值，因为所有其他值似乎都会导致较低的性能。
 
-```
+```py
 >1, acc: 0.800 (0.118)
 >2, acc: 0.806 (0.114)
 >3, acc: 0.810 (0.114)
@@ -444,7 +444,7 @@ TTA 合成样本数与分类精度的线图
 
 下面的示例演示了这一点，噪声值介于 0.01 和 0.3 之间，网格为 0.01。
 
-```
+```py
 # compare amount of noise added to examples created during the test-time augmentation
 from numpy.random import seed
 from numpy.random import normal
@@ -530,7 +530,7 @@ pyplot.show()
 
 在这种情况下，看起来大约 0.230 的值可能是该测试线束的最佳值，导致 81.2%的稍高精度。
 
-```
+```py
 >noise=0.010, acc: 0.798 (0.110)
 >noise=0.020, acc: 0.798 (0.110)
 >noise=0.030, acc: 0.798 (0.110)

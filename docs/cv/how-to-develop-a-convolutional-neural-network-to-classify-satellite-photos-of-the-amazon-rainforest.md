@@ -96,7 +96,7 @@
 
 例如，在大多数基于 POSIX 的工作站的命令行上，可以使用 p7zip 和 tar 文件对. 7z 文件进行解压缩，如下所示:
 
-```
+```py
 7z x test-jpg.tar.7z
 tar -xvf test-jpg.tar
 7z x train-jpg.tar.7z
@@ -105,7 +105,7 @@ tar -xvf train-jpg.tar
 
 解压缩后，您将拥有一个 CSV 文件和一个位于当前工作目录中的目录，如下所示:
 
-```
+```py
 train-jpg/
 train_v2.csv
 ```
@@ -114,7 +114,7 @@ train_v2.csv
 
 检查 *train_v2.csv* 文件，您将看到训练数据集中的 jpeg 文件的映射( *train-jpg/* )以及它们到类标签的映射，每个类标签用空格分隔；例如:
 
-```
+```py
 image_name,tags
 train_0,haze primary
 train_1,agriculture clear primary water
@@ -146,7 +146,7 @@ train_4,agriculture clear habitation primary road
 
 下面列出了完整的示例。
 
-```
+```py
 # plot the first 9 images in the planet dataset
 from matplotlib import pyplot
 from matplotlib.image import imread
@@ -184,7 +184,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # load and summarize the mapping file for the planet dataset
 from pandas import read_csv
 # load file as CSV
@@ -199,7 +199,7 @@ print(mapping_csv[:10])
 
 接下来，总结文件的前 10 行。我们可以看到，文件的第二列包含一个用空格分隔的标签列表，用于分配给每个图像。
 
-```
+```py
 (40479, 2)
 
   image_name                                         tags
@@ -219,7 +219,7 @@ print(mapping_csv[:10])
 
 这可以通过循环遍历“*标签*”列中的每一行，按空间分割标签，并将其存储在一个集合中来实现。然后我们将有一组所有已知的标签。例如:
 
-```
+```py
 # create a set of labels
 labels = set()
 for i in range(len(mapping_csv)):
@@ -233,7 +233,7 @@ for i in range(len(mapping_csv)):
 
 这将意味着为了一致性，相同的标签将总是被分配相同的整数。
 
-```
+```py
 # convert set of labels to a list to list
 labels = list(labels)
 # order set alphabetically
@@ -244,7 +244,7 @@ labels.sort()
 
 我们还可以创建一个字典，它具有从整数到字符串标记值的反向映射，因此稍后当模型进行预测时，我们可以将其转换为可读的东西。
 
-```
+```py
 # dict that maps labels to integers, and the reverse
 labels_map = {labels[i]:i for i in range(len(labels))}
 inv_labels_map = {i:labels[i] for i in range(len(labels))}
@@ -252,7 +252,7 @@ inv_labels_map = {i:labels[i] for i in range(len(labels))}
 
 我们可以将所有这些绑定到一个名为 *create_tag_mapping()* 的便利函数中，该函数将获取包含 *train_v2.csv* 数据的已加载数据帧，并返回一个映射和逆映射字典。
 
-```
+```py
 # create a mapping of tags to integers given the loaded mapping file
 def create_tag_mapping(mapping_csv):
 	# create a set of all known tags
@@ -274,7 +274,7 @@ def create_tag_mapping(mapping_csv):
 
 我们可以测试这个函数，看看我们需要处理多少标签和什么标签；下面列出了完整的示例。
 
-```
+```py
 # create a mapping of tags to integers
 from pandas import read_csv
 
@@ -311,7 +311,7 @@ print(mapping)
 
 作为进一步的扩展，探索标签在图像中的分布，看看它们在训练数据集中的分配或使用是平衡的还是不平衡的，可能会很有趣。这可以让我们进一步了解预测问题有多难。
 
-```
+```py
 17
 
 {'agriculture': 0, 'artisinal_mine': 1, 'bare_ground': 2, 'blooming': 3, 'blow_down': 4, 'clear': 5, 'cloudy': 6, 'conventional_mine': 7, 'cultivation': 8, 'habitation': 9, 'haze': 10, 'partly_cloudy': 11, 'primary': 12, 'road': 13, 'selective_logging': 14, 'slash_burn': 15, 'water': 16}
@@ -323,7 +323,7 @@ print(mapping)
 
 下面的 *create_file_mapping()* 实现了这一点，也将加载的*数据帧*作为参数，并返回映射，每个文件名的标记值存储为一个列表。
 
-```
+```py
 # create a mapping of filename to tags
 def create_file_mapping(mapping_csv):
 	mapping = dict()
@@ -343,7 +343,7 @@ def create_file_mapping(mapping_csv):
 
 作为加载图像的一部分，我们可以强制将大小变小，以节省内存并加快训练速度。在这种情况下，我们将把图像的大小从 256×256 减半到 128×128。我们还将像素值存储为无符号 8 位整数(例如，0 到 255 之间的值)。
 
-```
+```py
 # load image
 photo = load_img(filename, target_size=(128,128))
 # convert to numpy array
@@ -354,7 +354,7 @@ photo = img_to_array(photo, dtype='uint8')
 
 然后，我们可以使用文件名检索加载图像的标签，而无需使用前一节中开发的 *create_file_mapping()* 函数准备的文件名到标签的映射的扩展名。
 
-```
+```py
 # get tags
 tags = file_mapping(filename[:-4])
 ```
@@ -363,7 +363,7 @@ tags = file_mapping(filename[:-4])
 
 下面的 *one_hot_encode()* 函数实现了这一点，给定一个图像的标签列表和标签到整数的映射作为参数，它将返回一个 17 元素的 NumPy 数组，该数组描述了一张照片的标签的 one hot 编码。
 
-```
+```py
 # create a one hot encoding for one list of tags
 def one_hot_encode(tags, mapping):
 	# create empty vector
@@ -378,7 +378,7 @@ def one_hot_encode(tags, mapping):
 
 下面的 *load_dataset()* 函数实现了这一点，给定了 JPEG 图像的路径，文件到标签的映射，以及标签到整数的映射作为输入；它将返回用于建模的 *X* 和 *y* 元素的 NumPy 数组。
 
-```
+```py
 # load all images into memory
 def load_dataset(path, file_mapping, tag_mapping):
 	photos, targets = list(), list()
@@ -408,7 +408,7 @@ def load_dataset(path, file_mapping, tag_mapping):
 
 我们可以使用 [*save()*](https://docs.scipy.org/doc/numpy/reference/generated/numpy.save.html) 或 [*savez()*](https://docs.scipy.org/doc/numpy/reference/generated/numpy.savez.html) NumPy 函数来保存数组方向。相反，我们将使用 [savez_compressed() NumPy 函数](https://docs.scipy.org/doc/numpy/reference/generated/numpy.savez_compressed.html)以压缩格式在一次函数调用中保存两个数组，从而多保存几兆字节。在建模过程中，加载较小图像的阵列将明显快于每次加载原始 JPEG 图像。
 
-```
+```py
 # save both arrays to one file in compressed format
 savez_compressed('planet_data.npz', X, y)
 ```
@@ -417,7 +417,7 @@ savez_compressed('planet_data.npz', X, y)
 
 下面列出了完整的示例。
 
-```
+```py
 # load and prepare planet dataset and save to file
 from os import listdir
 from numpy import zeros
@@ -501,13 +501,13 @@ savez_compressed('planet_data.npz', X, y)
 
 在运行结束时，会保存一个文件“ *planet_data.npz* ”，其中包含大小约为 1.2 千兆字节的数据集，由于压缩节省了约 700 兆字节。
 
-```
+```py
 (40479, 128, 128, 3) (40479, 17)
 ```
 
 稍后可以使用 [load() NumPy 函数](https://docs.scipy.org/doc/numpy/reference/generated/numpy.load.html)轻松加载数据集，如下所示:
 
-```
+```py
 # load prepared planet dataset
 from numpy import load
 data = load('planet_data.npz')
@@ -517,7 +517,7 @@ print('Loaded: ', X.shape, y.shape)
 
 运行这个小示例确认数据集被正确加载。
 
-```
+```py
 Loaded: (40479, 128, 128, 3) (40479, 17)
 ```
 
@@ -533,7 +533,7 @@ Loaded: (40479, 128, 128, 3) (40479, 17)
 
 F1 分数计算[召回率和](https://en.wikipedia.org/wiki/Precision_and_recall)精确度的平均值。您可能还记得精度和召回率的计算方法如下:
 
-```
+```py
 precision = true positives / (true positives + false positives)
 recall = true positives / (true positives + false negatives)
 ```
@@ -542,13 +542,13 @@ recall = true positives / (true positives + false negatives)
 
 F1 是这两个分数的平均值，特别是[调和平均值](https://machinelearningmastery.com/arithmetic-geometric-and-harmonic-means-for-machine-learning/)，而不是算术平均值，因为这些值是比例。在不平衡数据集上评估模型性能时，F1 优于精确度，最差和最佳可能得分的值介于 0 和 1 之间。
 
-```
+```py
 F1 = 2 x (precision x recall) / (precision + recall)
 ```
 
 F-β度量是 F1 的推广，它允许引入一个名为*β*的术语，该术语衡量在计算平均值时，回忆与精度相比有多重要
 
-```
+```py
 F-Beta = (1 + Beta^2) x (precision x recall) / (Beta^2 x precision + recall)
 ```
 
@@ -558,7 +558,7 @@ beta 的一个常见值是 2，这是竞争中使用的值，召回的价值是�
 
 scikit-learn 库通过 [fbeta_score()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)提供 F-beta 的实现。我们可以调用该函数来评估一组预测，并指定β值为 2，将“*平均值*参数设置为“*样本*”。
 
-```
+```py
 score = fbeta_score(y_true, y_pred, 2, average='samples')
 ```
 
@@ -568,13 +568,13 @@ score = fbeta_score(y_true, y_pred, 2, average='samples')
 
 我们将使用 70%用于训练集，30%用于测试集。
 
-```
+```py
 trainX, testX, trainY, testY = train_test_split(X, y, test_size=0.3, random_state=1)
 ```
 
 下面的 *load_dataset()* 函数通过加载保存的数据集，将其拆分为训练和测试组件，并返回以备使用来实现这一点。
 
-```
+```py
 # load train and test dataset
 def load_dataset():
 	# load dataset
@@ -588,7 +588,7 @@ def load_dataset():
 
 然后，我们可以预测一个热编码向量中的所有类或所有 1 值。
 
-```
+```py
 # make all one predictions
 train_yhat = asarray([ones(trainY.shape[1]) for _ in range(trainY.shape[0])])
 test_yhat = asarray([ones(testY.shape[1]) for _ in range(testY.shape[0])])
@@ -596,14 +596,14 @@ test_yhat = asarray([ones(testY.shape[1]) for _ in range(testY.shape[0])])
 
 然后可以使用 scikit-learn fbeta_score()函数，用训练和测试数据集中的真实值来评估预测。
 
-```
+```py
 train_score = fbeta_score(trainY, train_yhat, 2, average='samples')
 test_score = fbeta_score(testY, test_yhat, 2, average='samples')
 ```
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # test f-beta score
 from numpy import load
 from numpy import ones
@@ -636,7 +636,7 @@ print('All Ones: train=%.3f, test=%.3f' % (train_score, test_score))
 
 接下来，准备所有的预测，然后进行评估，并报告分数。我们可以看到，两个数据集的全 1 预测结果得分约为 0.48。
 
-```
+```py
 (28335, 128, 128, 3) (28335, 17) (12144, 128, 128, 3) (12144, 17)
 All Ones: train=0.484, test=0.483
 ```
@@ -645,7 +645,7 @@ All Ones: train=0.484, test=0.483
 
 在库的 2.0 版本之前，Keras 用于支持二进制分类问题(2 类)的这个度量；我们可以在这里看到这个旧版本的代码: [metrics.py](https://github.com/keras-team/keras/blob/4fa7e5d454dd4f3f33f1d756a2a8659f2e789141/keras/metrics.py#L134) 。该代码可用作定义可与 Keras 一起使用的新度量函数的基础。这个函数的一个版本也在一个名为“T2”的 Kaggle 内核中被提出。下面列出了这个新功能。
 
-```
+```py
 from keras import backend
 
 # calculate fbeta score for multi-class/label classification
@@ -668,14 +668,14 @@ def fbeta(y_true, y_pred, beta=2):
 
 它可以在 Keras 中编译模型时使用，通过 metrics 参数指定；例如:
 
-```
+```py
 ...
 model.compile(... metrics=[fbeta])
 ```
 
 我们可以测试这个新功能，并将结果与 scikit-learn 功能进行比较，如下所示。
 
-```
+```py
 # compare f-beta score between sklearn and keras
 from numpy import load
 from numpy import ones
@@ -728,7 +728,7 @@ print('All Ones (keras): train=%.3f, test=%.3f' % (train_score, test_score))
 
 运行该示例像以前一样加载数据集，在这种情况下，使用 scikit-learn 和 Keras 计算 F-beta。我们可以看到这两个函数实现了相同的结果。
 
-```
+```py
 (28335, 128, 128, 3) (28335, 17) (12144, 128, 128, 3) (12144, 17)
 All Ones (sklearn): train=0.484, test=0.483
 All Ones (keras): train=0.484, test=0.483
@@ -744,7 +744,7 @@ All Ones (keras): train=0.484, test=0.483
 
 具体来说，每个块将有两个具有 3×3 滤波器的卷积层， [ReLU 激活](https://machinelearningmastery.com/how-to-fix-vanishing-gradients-using-the-rectified-linear-activation-function/)和 He 权重初始化具有相同的填充，确保输出的特征图具有相同的宽度和高度。接下来是一个 3×3 内核的最大池层。其中三个模块将分别用于 32、64 和 128 个滤波器。
 
-```
+```py
 model = Sequential()
 model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same', input_shape=(128, 128, 3)))
 model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same'))
@@ -761,7 +761,7 @@ model.add(MaxPooling2D((2, 2)))
 
 该模型必须为每个输出类生成一个预测值介于 0 和 1 之间的 17 元素向量。
 
-```
+```py
 model.add(Flatten())
 model.add(Dense(128, activation='relu', kernel_initializer='he_uniform'))
 model.add(Dense(17, activation='sigmoid'))
@@ -771,7 +771,7 @@ model.add(Dense(17, activation='sigmoid'))
 
 模型将采用小批量随机梯度下降进行优化，保守[学习率](https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/)为 0.01，动量为 0.9，模型将在训练过程中跟踪“ *fbeta* ”度量。
 
-```
+```py
 # compile model
 opt = SGD(lr=0.01, momentum=0.9)
 model.compile(optimizer=opt, loss='binary_crossentropy', metrics=[fbeta])
@@ -781,7 +781,7 @@ model.compile(optimizer=opt, loss='binary_crossentropy', metrics=[fbeta])
 
 该函数将返回一个准备好适合行星数据集的模型。
 
-```
+```py
 # define cnn model
 def define_model(in_shape=(128, 128, 3), out_shape=17):
 	model = Sequential()
@@ -809,14 +809,14 @@ def define_model(in_shape=(128, 128, 3), out_shape=17):
 
 在拟合模型之前，像素值将被归一化。我们将通过定义一个 [ImageDataGenerator](https://keras.io/preprocessing/image/) 实例来实现这一点，并将重新缩放参数指定为 1.0/255.0。这将使每批像素值标准化为 32 位浮点值，这可能比在内存中一次重新缩放所有像素值更节省内存。
 
-```
+```py
 # create data generator
 datagen = ImageDataGenerator(rescale=1.0/255.0)
 ```
 
 我们可以从这个数据生成器为训练集和测试集创建迭代器，在这种情况下，我们将使用 128 个图像的相对较大的批量来加速学习。
 
-```
+```py
 # prepare iterators
 train_it = datagen.flow(trainX, trainY, batch_size=128)
 test_it = datagen.flow(testX, testY, batch_size=128)
@@ -824,7 +824,7 @@ test_it = datagen.flow(testX, testY, batch_size=128)
 
 然后可以使用训练迭代器来拟合定义的模型，并且可以使用测试迭代器来评估每个时期结束时的测试数据集。这个模型将适用于 50 个时代。
 
-```
+```py
 # fit model
 history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
 	validation_data=test_it, validation_steps=len(test_it), epochs=50, verbose=0)
@@ -832,7 +832,7 @@ history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
 
 一旦拟合，我们可以计算测试数据集上的最终损失和 F-beta 分数，以估计模型的技能。
 
-```
+```py
 # evaluate model
 loss, fbeta = model.evaluate_generator(test_it, steps=len(test_it), verbose=0)
 print('> loss=%.3f, fbeta=%.3f' % (loss, fbeta))
@@ -844,7 +844,7 @@ print('> loss=%.3f, fbeta=%.3f' % (loss, fbeta))
 
 创建的图形保存到一个 PNG 文件中，该文件的文件名与扩展名为“ *_plot.png* 的脚本相同。这允许相同的测试线束与不同模型配置的多个不同脚本文件一起使用，从而将学习曲线保存在单独的文件中。
 
-```
+```py
 # plot diagnostic learning curves
 def summarize_diagnostics(history):
 	# plot loss
@@ -865,7 +865,7 @@ def summarize_diagnostics(history):
 
 我们可以将这些联系在一起，定义一个函数*run _ test _ 线束()*来驱动测试线束，包括数据的加载和准备以及模型的定义、拟合和评估。
 
-```
+```py
 # run the test harness for evaluating a model
 def run_test_harness():
 	# load dataset
@@ -889,7 +889,7 @@ def run_test_harness():
 
 下面列出了在行星数据集上评估基线模型的完整示例。
 
-```
+```py
 # baseline model for the planet dataset
 import sys
 from numpy import load
@@ -1000,7 +1000,7 @@ run_test_harness()
 
 在这种情况下，基线模型获得了大约 0.831 的 F-beta 分数，这比前一节中报告的 0.483 的幼稚分数好得多。这表明基线模型是有技巧的。
 
-```
+```py
 (28335, 128, 128, 3) (28335, 17) (12144, 128, 128, 3) (12144, 17)
 > loss=0.470, fbeta=0.831
 ```
@@ -1039,7 +1039,7 @@ run_test_harness()
 
 下面是添加了 Dropout 的基线模型的更新版本的 *define_model()* 函数。在这种情况下，在每个 VGG 块之后应用 20%的丢失率，在模型的分类器部分的完全连接层之后应用更大的 50%的丢失率。
 
-```
+```py
 # define cnn model
 def define_model(in_shape=(128, 128, 3), out_shape=17):
 	model = Sequential()
@@ -1067,7 +1067,7 @@ def define_model(in_shape=(128, 128, 3), out_shape=17):
 
 为了完整起见，下面列出了基线模型的完整代码列表，并在行星数据集上添加了 drop。
 
-```
+```py
 # baseline model with dropout on the planet dataset
 import sys
 from numpy import load
@@ -1181,7 +1181,7 @@ run_test_harness()
 
 在这种情况下，我们可以看到模型性能的小幅提升，从基线模型的约 0.831 的 F-beta 分数提升到约 0.859，并增加了脱落。
 
-```
+```py
 (28335, 128, 128, 3) (28335, 17) (12144, 128, 128, 3) (12144, 17)
 > loss=0.190, fbeta=0.859
 ```
@@ -1208,7 +1208,7 @@ run_test_harness()
 
 这要求我们为训练和测试数据集有一个单独的 ImageDataGenerator 实例，然后为从各自的数据生成器创建的训练和测试集有迭代器。例如:
 
-```
+```py
 # create data generator
 train_datagen = ImageDataGenerator(rescale=1.0/255.0, horizontal_flip=True, vertical_flip=True, rotation_range=90)
 test_datagen = ImageDataGenerator(rescale=1.0/255.0)
@@ -1221,7 +1221,7 @@ test_it = test_datagen.flow(testX, testY, batch_size=128)
 
 为了完整起见，下面列出了带有行星数据集训练数据增强的基线模型的完整代码列表。
 
-```
+```py
 # baseline model with data augmentation for the planet dataset
 import sys
 from numpy import load
@@ -1331,7 +1331,7 @@ run_test_harness()
 
 在这种情况下，我们可以看到性能提升了大约 0.06，从基线模型的大约 0.831 的 F-beta 分数提升到具有简单数据增加的基线模型的大约 0.882 的分数。这是一个很大的进步，比我们看到的辍学率要大。
 
-```
+```py
 (28335, 128, 128, 3) (28335, 17) (12144, 128, 128, 3) (12144, 17)
 > loss=0.103, fbeta=0.882
 ```
@@ -1377,7 +1377,7 @@ Keras 提供了一系列预先训练好的模型，可以通过 [Keras 应用 AP
 
 下面的 *define_model()* 函数实现了这一点，并返回一个准备训练的新模型。
 
-```
+```py
 # define cnn model
 def define_model(in_shape=(128, 128, 3), out_shape=17):
 	# load model
@@ -1405,7 +1405,7 @@ VGG16 模型在特定的 ImageNet 挑战数据集上进行了训练。因此，�
 
 Keras 通过*预处理 _ 输入()*功能提供了一个为单个照片执行该准备的功能。尽管如此，通过将“ *featurewise_center* ”参数设置为“ *True* ”并手动指定居中时使用的平均像素值作为来自 ImageNet 训练数据集的平均值，我们可以使用图像数据生成器实现相同的效果:[123.68，116.779，103.939]。
 
-```
+```py
 # create data generator
 datagen = ImageDataGenerator(featurewise_center=True)
 # specify imagenet mean values for centering
@@ -1414,7 +1414,7 @@ datagen.mean = [123.68, 116.779, 103.939]
 
 下面列出了行星数据集上用于转移学习的 VGG-16 模型的完整代码列表。
 
-```
+```py
 # vgg16 transfer learning on the planet dataset
 import sys
 from numpy import load
@@ -1522,7 +1522,7 @@ run_test_harness()
 
 在这种情况下，我们可以看到该模型获得了约 0.860 的 F-beta 评分，优于基线模型，但不如具有图像数据增强的基线模型。
 
-```
+```py
 (28335, 128, 128, 3) (28335, 17) (12144, 128, 128, 3) (12144, 17)
 > loss=0.152, fbeta=0.860
 ```
@@ -1539,7 +1539,7 @@ VGG-16 模型旨在将物体照片分为 1000 个类别之一。因此，它被�
 
 为了解决这个问题，我们可以重新拟合 VGG-16 模型，并允许训练算法微调模型中某些层的权重。在这种情况下，我们将使三个卷积层(和一致性池层)成为可训练的。下面列出了 *define_model()* 功能的更新版本。
 
-```
+```py
 # define cnn model
 def define_model(in_shape=(128, 128, 3), out_shape=17):
 	# load model
@@ -1569,7 +1569,7 @@ def define_model(in_shape=(128, 128, 3), out_shape=17):
 
 在这种情况下，我们看到，与 VGG-16 模型特征提取模型相比，模型性能有所提高，因为它将 F-beta 评分从约 0.860 提高到约 0.879。该分数接近基线模型的 F-beta 分数，增加了图像数据增强。
 
-```
+```py
 (28335, 128, 128, 3) (28335, 17) (12144, 128, 128, 3) (12144, 17)
 > loss=0.210, fbeta=0.879
 ```
@@ -1584,7 +1584,7 @@ def define_model(in_shape=(128, 128, 3), out_shape=17):
 
 带有微调和数据增强的 VGG-16 的完整例子如下。
 
-```
+```py
 # vgg with fine-tuning and data augmentation for the planet dataset
 import sys
 from numpy import load
@@ -1699,7 +1699,7 @@ run_test_harness()
 
 在这种情况下，我们可以看到模型性能从大约 0.879 的 F-beta 分数进一步提升到大约 0.891 的 F-beta 分数。
 
-```
+```py
 (28335, 128, 128, 3) (28335, 17) (12144, 128, 128, 3) (12144, 17)
 > loss=0.100, fbeta=0.891
 ```
@@ -1738,7 +1738,7 @@ VGG-16 型号的选择有些武断，因为它是一个较小的、众所周知�
 
 可以更新 *load_dataset()* 函数，不再将加载的数据集拆分为训练集和测试集。
 
-```
+```py
 # load train and test dataset
 def load_dataset():
 	# load dataset
@@ -1749,7 +1749,7 @@ def load_dataset():
 
 *define_model()* 函数可以像上一节中为 VGG-16 模型定义的那样使用，具有微调和数据增强功能。
 
-```
+```py
 # define cnn model
 def define_model(in_shape=(128, 128, 3), out_shape=17):
 	# load model
@@ -1776,7 +1776,7 @@ def define_model(in_shape=(128, 128, 3), out_shape=17):
 
 最后，对于训练数据集，我们只需要一个数据生成器和一个迭代器。
 
-```
+```py
 # create data generator
 datagen = ImageDataGenerator(featurewise_center=True, horizontal_flip=True, vertical_flip=True, rotation_range=90)
 # specify imagenet mean values for centering
@@ -1787,7 +1787,7 @@ train_it = datagen.flow(X, y, batch_size=128)
 
 该模型将适用于 50 个时代，之后将通过调用模型上的 *save()* 函数将其保存到 H5 文件中
 
-```
+```py
 # fit model
 model.fit_generator(train_it, steps_per_epoch=len(train_it), epochs=50, verbose=0)
 # save model
@@ -1798,7 +1798,7 @@ model.save('final_model.h5')
 
 下面列出了在训练数据集上拟合最终模型并将其保存到文件中的完整示例。
 
-```
+```py
 # save the final model to file
 from numpy import load
 from keras.preprocessing.image import ImageDataGenerator
@@ -1875,7 +1875,7 @@ run_test_harness()
 
 将其从您的训练数据目录复制到当前工作目录，名称为“ *sample_image.jpg* ，例如:
 
-```
+```py
 cp train-jpg/train_1.jpg ./sample_image.jpg
 ```
 
@@ -1892,7 +1892,7 @@ cp train-jpg/train_1.jpg ./sample_image.jpg
 
 *load_image()* 函数实现了这一点，并将返回已加载的准备分类的图像。
 
-```
+```py
 # load and prepare the image
 def load_image(filename):
 	# load the image
@@ -1909,7 +1909,7 @@ def load_image(filename):
 
 接下来，我们可以像上一节一样加载模型，并调用 *predict()* 函数来预测图像中的内容。
 
-```
+```py
 # predict the class
 result = model.predict(img)
 ```
@@ -1920,7 +1920,7 @@ result = model.predict(img)
 
 下面的 *prediction_to_tags()* 函数实现了这一点，取整数到标签和模型为照片预测的向量的逆映射，返回预测标签列表。
 
-```
+```py
 # convert a prediction to tags
 def prediction_to_tags(inv_mapping, prediction):
 	# round probabilities to {0, 1}
@@ -1932,7 +1932,7 @@ def prediction_to_tags(inv_mapping, prediction):
 
 我们可以把这些联系起来，对新照片做出预测。下面列出了完整的示例。
 
-```
+```py
 # make a prediction for a new image
 from pandas import read_csv
 from keras.preprocessing.image import load_img
@@ -2008,7 +2008,7 @@ run_example(inv_mapping)
 
 在您已经手动建议了标签之后，用一张全新的照片(例如测试数据集中的照片)重复这个测试可能会很有趣。
 
-```
+```py
 [9.0940112e-01 3.6541668e-03 1.5959743e-02 6.8241461e-05 8.5694155e-05
  9.9828100e-01 7.4096164e-08 5.5998818e-05 3.6668104e-01 1.2538023e-01
  4.6371704e-04 3.7660234e-04 9.9999273e-01 1.9014676e-01 5.6060363e-04

@@ -121,7 +121,7 @@
 
 下面列出了完整的示例。
 
-```
+```py
 # example of a normalization
 from numpy import asarray
 from sklearn.preprocessing import MinMaxScaler
@@ -143,7 +143,7 @@ print(scaled)
 
 接下来，定义定标器，使其适合整个数据集，然后用于创建数据集的转换版本，每个列独立地标准化。我们可以看到，每个列的最大原始值现在为值 1.0，每个列的最小值现在为值 0.0。
 
-```
+```py
 [[1.0e+02 1.0e-03]
  [8.0e+00 5.0e-02]
  [5.0e+01 5.0e-03]
@@ -211,7 +211,7 @@ print(scaled)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of a standardization
 from numpy import asarray
 from sklearn.preprocessing import StandardScaler
@@ -233,7 +233,7 @@ print(scaled)
 
 接下来，定义定标器，使其适合整个数据集，然后用于创建数据集的转换版本，每个列独立标准化。我们可以看到，如果存在，每一列的平均值被赋予 0.0 的值，并且这些值以 0.0 为中心，具有正值和负值。
 
-```
+```py
 [[1.0e+02 1.0e-03]
  [8.0e+00 5.0e-02]
  [5.0e+01 5.0e-03]
@@ -267,7 +267,7 @@ print(scaled)
 
 首先，让我们加载并总结数据集。下面列出了完整的示例。
 
-```
+```py
 # load and summarize the sonar dataset
 from pandas import read_csv
 from pandas.plotting import scatter_matrix
@@ -290,7 +290,7 @@ pyplot.show()
 
 提供了输入变量的统计摘要，显示值是数值，范围大约从 0 到 1。
 
-```
+```py
 (208, 61)
                0           1           2   ...          57          58          59
 count  208.000000  208.000000  208.000000  ...  208.000000  208.000000  208.000000
@@ -319,7 +319,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 我们将使用带有默认超参数的 k 近邻算法，并使用重复的分层 k 重交叉验证对其进行评估。下面列出了完整的示例。
 
-```
+```py
 # evaluate knn on the raw sonar dataset
 from numpy import mean
 from numpy import std
@@ -353,7 +353,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 我们可以看到，该模型实现了大约 79.7%的平均分类准确率，表明它具有技巧性(优于 53.4%)，并且处于良好表现的球园区(88%)。
 
-```
+```py
 Accuracy: 0.797 (0.073)
 ```
 
@@ -365,7 +365,7 @@ Accuracy: 0.797 (0.073)
 
 我们将使用默认配置并将值缩放到 0 到 1 的范围。首先，用默认超参数定义一个*最小最大缩放器*实例。一旦定义，我们可以调用 *fit_transform()* 函数，并将其传递给我们的数据集，以创建数据集的转换版本。
 
-```
+```py
 ...
 # perform a robust scaler transform of the dataset
 trans = MinMaxScaler()
@@ -376,7 +376,7 @@ data = trans.fit_transform(data)
 
 下面列出了创建声纳数据集的*最小最大缩放器*变换并绘制结果直方图的完整示例。
 
-```
+```py
 # visualize a minmax scaler transform of the sonar dataset
 from pandas import read_csv
 from pandas import DataFrame
@@ -404,7 +404,7 @@ pyplot.show()
 
 我们可以看到，分布已经调整，每个变量的最小值和最大值现在分别是清晰的 0.0 和 1.0。
 
-```
+```py
                0           1           2   ...          57          58          59
 count  208.000000  208.000000  208.000000  ...  208.000000  208.000000  208.000000
 mean     0.204011    0.162180    0.139068  ...    0.175035    0.216015    0.136425
@@ -428,7 +428,7 @@ max      1.000000    1.000000    1.000000  ...    1.000000    1.000000    1.0000
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate knn on the sonar dataset with minmax scaler transform
 from numpy import mean
 from numpy import std
@@ -464,7 +464,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例，我们可以看到，最小最大缩放器变换将性能从没有变换时的 79.7%提升到有变换时的 81.3%。
 
-```
+```py
 Accuracy: 0.813 (0.085)
 ```
 
@@ -478,7 +478,7 @@ Accuracy: 0.813 (0.085)
 
 一旦定义，我们就可以调用 *fit_transform()* 函数，并将其传递给我们的数据集，以创建数据集的转换版本。
 
-```
+```py
 ...
 # perform a robust scaler transform of the dataset
 trans = StandardScaler()
@@ -489,7 +489,7 @@ data = trans.fit_transform(data)
 
 下面列出了创建声纳数据集的*标准缩放器*变换并绘制结果直方图的完整示例。
 
-```
+```py
 # visualize a standard scaler transform of the sonar dataset
 from pandas import read_csv
 from pandas import DataFrame
@@ -517,7 +517,7 @@ pyplot.show()
 
 我们可以看到，分布已经被调整，平均值是一个非常小的接近零的数字，每个变量的标准偏差非常接近 1.0。
 
-```
+```py
                  0             1   ...            58            59
 count  2.080000e+02  2.080000e+02  ...  2.080000e+02  2.080000e+02
 mean  -4.190024e-17  1.663333e-16  ...  1.283695e-16  3.149190e-17
@@ -541,7 +541,7 @@ max    4.706053e+00  5.944643e+00  ...  4.615037e+00  7.450343e+00
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate knn on the sonar dataset with standard scaler transform
 from numpy import mean
 from numpy import std
@@ -577,7 +577,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例，我们可以看到*标准缩放器*变换将性能从无变换时的 79.7%提升到有变换时的 81.0%，尽管比使用*最小最大缩放器*的结果略低。
 
-```
+```py
 Accuracy: 0.810 (0.080)
 ```
 

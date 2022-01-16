@@ -23,7 +23,7 @@
 
 岭回归创建了一个线性回归模型，用平方系数之和的 L2 范数进行惩罚。这具有缩小系数值(以及模型的复杂性)的效果，允许对响应贡献较小的一些系数接近于零。
 
-```
+```py
 # load the package
 library(glmnet)
 # load data
@@ -47,7 +47,7 @@ print(mse)
 
 最小绝对收缩和选择算子(LASSO)创建一个回归模型，用绝对系数之和的 L1 范数进行惩罚。这具有缩小系数值的效果(以及模型的复杂性)，允许对响应影响较小的一些变为零。
 
-```
+```py
 # load the package
 library(lars)
 # load data
@@ -73,7 +73,7 @@ print(mse)
 
 弹性网创建了一个回归模型，该模型同时受到 L1 范数和 L2 范数的惩罚。这具有有效收缩系数(如在岭回归中)和将一些系数设置为零(如在 LASSO 中)的效果。
 
-```
+```py
 # load the package
 library(glmnet)
 # load data

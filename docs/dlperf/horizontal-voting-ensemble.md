@@ -76,7 +76,7 @@ scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/mo
 
 该问题有两个输入变量(表示点的 x 和 y 坐标)，每个组中的点的标准偏差为 2.0。我们将使用相同的随机状态(伪随机数发生器的种子)来确保我们总是获得相同的数据点。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random_state=2)
 ```
@@ -87,7 +87,7 @@ X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random
 
 下面列出了完整的示例。
 
-```
+```py
 # scatter plot of blobs dataset
 from sklearn.datasets import make_blobs
 from matplotlib import pyplot
@@ -120,7 +120,7 @@ pyplot.show()
 
 我们将从斑点问题中创建 1100 个数据点。模型将在前 100 个点上进行训练，剩余的 1000 个点将保留在测试数据集中，模型无法使用。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1100, centers=3, n_features=2, cluster_std=2, random_state=2)
 # split into train and test
@@ -134,7 +134,7 @@ print(trainX.shape, testX.shape)
 
 这意味着模型将以样本属于三类中每一类的概率来预测具有三个元素的向量。因此，我们必须对类值进行热编码，最好是在我们将行分割成训练、测试和验证数据集之前，这样它就是一个函数调用。
 
-```
+```py
 y = to_categorical(y)
 ```
 
@@ -144,7 +144,7 @@ y = to_categorical(y)
 
 由于问题是多类的，我们将使用分类交叉熵损失函数来优化模型和有效的 [Adam](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/) 味道的随机梯度下降。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(25, input_dim=2, activation='relu'))
@@ -154,14 +154,14 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 
 该模型适用于 1，000 个训练时期，我们将使用测试集作为验证集来评估训练集中每个时期的模型。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=1000, verbose=0)
 ```
 
 在运行结束时，我们将评估模型在列车和测试集上的性能。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -170,7 +170,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 最后，我们将在训练和验证数据集上绘制每个训练时期的模型精度的学习曲线。
 
-```
+```py
 # learning curves of model accuracy
 pyplot.plot(history.history['accuracy'], label='train')
 pyplot.plot(history.history['val_accuracy'], label='test')
@@ -180,7 +180,7 @@ pyplot.show()
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # develop an mlp for blobs dataset
 from sklearn.datasets import make_blobs
 from keras.utils import to_categorical
@@ -220,7 +220,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到，该模型在我们知道是乐观的训练数据集上达到了大约 85%的准确率，在测试数据集上达到了大约 80%，我们预计这将更加真实。
 
-```
+```py
 (100, 2) (1000, 2)
 Train: 0.850, Test: 0.804
 ```
@@ -245,7 +245,7 @@ Train: 0.850, Test: 0.804
 
 例如，对于我们的测试问题，我们将针对 1，000 个纪元训练模型，并且可能保存从纪元 950 开始的模型(例如，在纪元 950 和 999 之间并且包括纪元 950 和 999)。
 
-```
+```py
 # fit model
 n_epochs, n_save_after = 1000, 950
 for i in range(n_epochs):
@@ -260,7 +260,7 @@ for i in range(n_epochs):
 
 为了避免与我们的源文件混淆，我们将所有模型保存在当前工作目录中新的“ *models/* ”文件夹下。
 
-```
+```py
 # create directory for models
 makedirs('models')
 ```
@@ -269,13 +269,13 @@ makedirs('models')
 
 您可以使用 pip 安装此库，如下所示:
 
-```
+```py
 pip install h5py
 ```
 
 将所有这些结合在一起，下面列出了在训练数据集上拟合模型并保存最近 50 个时代的所有模型的完整示例。
 
-```
+```py
 # save horizontal voting ensemble members during training
 from sklearn.datasets import make_blobs
 from keras.utils import to_categorical
@@ -321,7 +321,7 @@ for i in range(n_epochs):
 
 下面的功能 *load_all_models()* 将从“ *models/* 目录加载模型。它以开始和结束时代作为参数，这样您就可以试验在连续时代中保存的不同组的模型。
 
-```
+```py
 # load models from file
 def load_all_models(n_start, n_end):
 	all_models = list()
@@ -340,7 +340,7 @@ def load_all_models(n_start, n_end):
 
 然后，我们可以反转模型列表，以便运行结束时的模型位于列表的开头。这将有助于我们以后测试不同大小的投票集合，包括从跑步结束后向后到训练时期的模型，以防最好的模型真的在跑步结束时。
 
-```
+```py
 # load models in order
 members = load_all_models(950, 1000)
 print('Loaded %d models' % len(members))
@@ -356,7 +356,7 @@ members = list(reversed(members))
 
 首先，我们需要一个函数来用集合成员的列表进行预测。每个成员预测三个输出类的概率。将概率相加，我们使用 argmax 来选择支持度最高的类。下面的*集成预测()*函数实现了这种基于投票的预测方案。
 
-```
+```py
 # make an ensemble prediction for multi-class classification
 def ensemble_predictions(members, testX):
 	# make predictions
@@ -373,7 +373,7 @@ def ensemble_predictions(members, testX):
 
 需要选择子集，做出预测，并通过将预测与期望值进行比较来估计集合的性能。下面的 *evaluate_n_members()* 函数实现了这个集合大小的评估。
 
-```
+```py
 # evaluate a specific number of members in an ensemble
 def evaluate_n_members(members, n_members, testX, testy):
 	# select a subset of members
@@ -386,7 +386,7 @@ def evaluate_n_members(members, n_members, testX, testy):
 
 我们现在可以列举从 1 到 50 的不同大小的横向投票组合。每个成员都单独评估，然后评估该规模的整体，并记录分数。
 
-```
+```py
 # evaluate different numbers of ensembles on hold out set
 single_scores, ensemble_scores = list(), list()
 for i in range(1, len(members)+1):
@@ -403,14 +403,14 @@ for i in range(1, len(members)+1):
 
 在评估结束时，我们报告测试数据集中单个模型的分数分布。如果我们选择任何一个保存的模型作为最终模型，平均分数就是我们平均期望的分数。
 
-```
+```py
 # summarize average accuracy of a single final model
 print('Accuracy %.3f (%.3f)' % (mean(single_scores), std(single_scores)))
 ```
 
 最后，我们可以绘制分数。每个独立模型的分数都绘制为蓝点，并为每个连续模型的集合(橙色)创建线图。
 
-```
+```py
 # plot score vs number of ensemble members
 x_axis = [i for i in range(1, len(members)+1)]
 pyplot.plot(x_axis, single_scores, marker='o', linestyle='None')
@@ -422,7 +422,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # load models and make predictions using a horizontal voting ensemble
 from sklearn.datasets import make_blobs
 from sklearn.metrics import accuracy_score
@@ -505,7 +505,7 @@ pyplot.show()
 
 首先，将 50 个保存的模型加载到内存中。
 
-```
+```py
 ...
 >loaded models/model_990.h5
 >loaded models/model_991.h5
@@ -521,7 +521,7 @@ pyplot.show()
 
 接下来，在保持测试数据集和该大小的集合(1、2、3 等)上评估每个单个模型的性能。)在保持测试数据集上创建和评估。
 
-```
+```py
 > 1: single=0.814, ensemble=0.814
 > 2: single=0.816, ensemble=0.816
 > 3: single=0.812, ensemble=0.816
@@ -582,7 +582,7 @@ pyplot.show()
 
 为了有用，我们需要水平合奏超过这个平均值。
 
-```
+```py
 Accuracy 0.816 (0.003)
 ```
 

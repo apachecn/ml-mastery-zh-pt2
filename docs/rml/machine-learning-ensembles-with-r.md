@@ -57,7 +57,7 @@
 
 让我们加载库和数据集。
 
-```
+```py
 # Load libraries
 library(mlbench)
 library(caret)
@@ -74,7 +74,7 @@ dataset$V1 <- as.numeric(as.character(dataset$V1))
 
 这里是电离层数据集的前几行的一个预览。
 
-```
+```py
 > head(dataset)
   V1      V3       V4       V5       V6       V7       V8      V9      V10     V11      V12     V13      V14      V15
 1  1 0.99539 -0.05889  0.85243  0.02306  0.83398 -0.37708 1.00000  0.03760 0.85243 -0.17755 0.59755 -0.44945  0.60536
@@ -112,7 +112,7 @@ dataset$V1 <- as.numeric(as.character(dataset$V1))
 
 以下是 r 中的 C5.0 和随机梯度增强(使用梯度增强建模实现)算法的示例。这两种算法都包含本示例中未调整的参数。
 
-```
+```py
 # Example of Boosting Algorithms
 control <- trainControl(method="repeatedcv", number=10, repeats=3)
 seed <- 7
@@ -131,7 +131,7 @@ dotplot(boosting_results)
 
 我们可以看到 C5.0 算法产生了一个更精确的模型，准确率为 94.58%。
 
-```
+```py
 Models: c5.0, gbm 
 Number of resamples: 30 
 
@@ -156,7 +156,7 @@ gbm  0.8824  0.9143 0.9429 0.9402  0.9641    1    0
 
 下面是 r 中的袋装 CART 和随机森林算法的示例。这两种算法都包含本示例中未调整的参数。
 
-```
+```py
 # Example of Bagging algorithms
 control <- trainControl(method="repeatedcv", number=10, repeats=3)
 seed <- 7
@@ -175,7 +175,7 @@ dotplot(bagging_results)
 
 我们可以看到，随机森林产生了一个更准确的模型，准确率为 93.25%。
 
-```
+```py
 Models: treebag, rf 
 Number of resamples: 30 
 
@@ -207,7 +207,7 @@ R
 
 下面是创建这 5 个子模型的示例。注意由*carestenmble*包提供的新的有用的 *caretList()* 功能，用于创建标准插入符号模型的列表。
 
-```
+```py
 # Example of Stacking algorithms
 # create submodels
 control <- trainControl(method="repeatedcv", number=10, repeats=3, savePredictions=TRUE, classProbs=TRUE)
@@ -221,7 +221,7 @@ dotplot(results)
 
 我们可以看到，SVM 以 94.66%的准确率创建了最准确的模型。
 
-```
+```py
 Models: lda, rpart, glm, knn, svmRadial 
 Number of resamples: 30 
 
@@ -242,7 +242,7 @@ R 中叠加系综子模型的比较
 
 如果子模型的预测被高度修正(> 0.75)，那么它们大部分时间会做出相同或非常相似的预测，从而降低了组合预测的好处。
 
-```
+```py
 # correlation between results
 modelCor(results)
 splom(results)
@@ -250,7 +250,7 @@ splom(results)
 
 我们可以看到，所有的预测对都具有普遍较低的相关性。预测之间相关性最高的两种方法是逻辑回归(GLM)和 kNN，相关系数为 0.517，这并不算高(> 0.75)。
 
-```
+```py
                 lda     rpart       glm       knn svmRadial
 lda       1.0000000 0.2515454 0.2970731 0.5013524 0.1126050
 rpart     0.2515454 1.0000000 0.1749923 0.2823324 0.3465532
@@ -265,7 +265,7 @@ svmRadial 0.1126050 0.3465532 0.3788275 0.3512242 1.0000000
 
 让我们使用一个简单的线性模型来组合分类器的预测。
 
-```
+```py
 # stack using glm
 stackControl <- trainControl(method="repeatedcv", number=10, repeats=3, savePredictions=TRUE, classProbs=TRUE)
 set.seed(seed)
@@ -275,7 +275,7 @@ print(stack.glm)
 
 我们可以看到，我们已经将准确率提升到了 94.99%，这比单独使用 SVM 有一点点改进。如上所述，这也是对在数据集上单独使用随机森林的改进。
 
-```
+```py
 A glm ensemble of 2 base models: lda, rpart, glm, knn, svmRadial
 
 Ensemble results:
@@ -296,7 +296,7 @@ Resampling results
 
 我们还可以使用更复杂的算法来组合预测，努力梳理出何时最好使用不同的方法。在这种情况下，我们可以使用随机森林算法来组合预测。
 
-```
+```py
 # stack using random forest
 set.seed(seed)
 stack.rf <- caretStack(models, method="rf", metric="Accuracy", trControl=stackControl)
@@ -305,7 +305,7 @@ print(stack.rf)
 
 我们可以看到，这已经将准确率提升到了 96.26%，仅在 SVM 就有了令人印象深刻的提高。
 
-```
+```py
 A rf ensemble of 2 base models: lda, rpart, glm, knn, svmRadial
 
 Ensemble results:

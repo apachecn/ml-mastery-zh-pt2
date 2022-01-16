@@ -52,7 +52,7 @@
 
 本示例和教程的其余部分假设您已经安装了枕头 Python 库。
 
-```
+```py
 # load and show an image with Pillow
 from PIL import Image
 # load the image
@@ -69,7 +69,7 @@ image.show()
 
 接下来，报告图像的大小，显示宽度为 640 像素，高度为 374 像素。
 
-```
+```py
 JPEG
 RGB
 (640, 374)
@@ -93,7 +93,7 @@ RGB
 
 以下示例加载图像并将其转换为 NumPy 数组。报告阵列的数据类型，然后打印所有三个通道的最小和最大像素值。接下来，在像素值被归一化并报告新的像素值范围之前，阵列被转换为浮点数据类型。
 
-```
+```py
 # example of pixel normalization
 from numpy import asarray
 from PIL import Image
@@ -115,7 +115,7 @@ print('Min: %.3f, Max: %.3f' % (pixels.min(), pixels.max()))
 
 打印最小和最大像素值，分别显示预期的 0 和 255。像素值被归一化，然后报告 0.0 和 1.0 的新最小值和最大值。
 
-```
+```py
 Data Type: uint8
 Min: 0.000, Max: 255.000
 Min: 0.000, Max: 1.000
@@ -158,7 +158,7 @@ Min: 0.000, Max: 1.000
 
 以下示例计算加载图像中所有三个颜色通道的全局平均值，然后使用全局平均值将像素值居中。
 
-```
+```py
 # example of global centering (subtract mean)
 from numpy import asarray
 from PIL import Image
@@ -183,7 +183,7 @@ print('Min: %.3f, Max: %.3f' % (pixels.min(), pixels.max()))
 
 一旦居中，我们可以确认像素值的新平均值为 0.0，并且新的数据范围围绕该平均值为正和负。
 
-```
+```py
 Mean: 152.149
 Min: 0.000, Max: 255.000
 Mean: -0.000
@@ -198,7 +198,7 @@ Min: -152.149, Max: 102.851
 
 还要注意，当我们计算平均值时，我们将数据类型指定为'*float 64*'；这是必需的，因为这将导致以 64 位精度执行均值的所有子操作，例如求和。如果没有这一点，将在较低的分辨率下执行求和，并且给定精度损失中的累积误差，所得到的平均值将是错误的，这又意味着每个通道的中心像素值的平均值将不是零(或者非常小的接近零的数字)。
 
-```
+```py
 # example of per-channel centering (subtract mean)
 from numpy import asarray
 from PIL import Image
@@ -223,7 +223,7 @@ print('Mins: %s, Maxs: %s' % (pixels.min(axis=(0,1)), pixels.max(axis=(0,1))))
 
 我们可以看到，新的平均像素值是非常小的接近零的数字，并且这些值是以零为中心的负值和正值。
 
-```
+```py
 Means: [148.61581718 150.64154412 157.18977691]
 Mins: [0\. 0\. 0.], Maxs: [255\. 255\. 255.]
 Means: [1.14413078e-06 1.61369515e-06 1.37722619e-06]
@@ -250,7 +250,7 @@ Mins: [-148.61581 -150.64154 -157.18977], Maxs: [106.384186 104.35846 97.81023 ]
 
 以下示例计算加载图像中所有颜色通道的平均值和标准偏差，然后使用这些值来标准化像素值。
 
-```
+```py
 # example of global pixel standardization
 from numpy import asarray
 from PIL import Image
@@ -271,7 +271,7 @@ print('Mean: %.3f, Standard Deviation: %.3f' % (mean, std))
 
 运行该示例首先计算全局平均值和标准偏差像素值，标准化像素值，然后通过分别报告 0.0 和 1.0 的新全局平均值和标准偏差来确认转换。
 
-```
+```py
 Mean: 152.149, Standard Deviation: 70.642
 Mean: -0.000, Standard Deviation: 1.000
 ```
@@ -284,7 +284,7 @@ Mean: -0.000, Standard Deviation: 1.000
 
 下面的示例更新了全局标准化示例，以演示这种额外的重新缩放。
 
-```
+```py
 # example of global pixel standardization shifted to positive domain
 from numpy import asarray
 from numpy import clip
@@ -313,7 +313,7 @@ print('Min: %.3f, Max: %.3f' % (pixels.min(), pixels.max()))
 
 接下来，报告新的平均值和标准偏差分别约为 0.5 和 0.3，新的最小值和最大值确认为 0.0 和 1.0。
 
-```
+```py
 Mean: 152.149, Standard Deviation: 70.642
 Mean: 0.510, Standard Deviation: 0.388
 Min: 0.000, Max: 1.000
@@ -323,7 +323,7 @@ Min: 0.000, Max: 1.000
 
 下面的示例计算每个通道加载图像的平均值和标准偏差，然后使用这些统计数据分别标准化每个通道中的像素。
 
-```
+```py
 # example of per-channel pixel standardization
 from numpy import asarray
 from PIL import Image
@@ -348,7 +348,7 @@ print('Means: %s, Stds: %s' % (means, stds))
 
 然后对像素值进行标准化，重新计算统计数据，确认新的零均值和单位标准偏差。
 
-```
+```py
 Means: [148.61581718 150.64154412 157.18977691], Stds: [70.21666738 70.6718887 70.75185228]
 Means: [ 6.26286458e-14 -4.40909176e-14 -8.38046276e-13], Stds: [1\. 1\. 1.]
 ```

@@ -48,7 +48,7 @@ R
 
 在下面的例子中，使用了皮马印第安人糖尿病数据集。对于消极和积极的结果，它有 65%到 35%的分类分解。
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -66,7 +66,7 @@ print(fit)
 
 您可以看到，模型的精度约为 76%，比 65%的基线精度高出 11 个百分点，这并不令人印象深刻。另一方面，Kappa 显示大约 46%，这更有趣。
 
-```
+```py
 Generalized Linear Model 
 
 768 samples
@@ -92,7 +92,7 @@ Resampling results
 
 在本例中，使用了长期经济数据集。输出变量是一个“使用的数字”。不清楚这是实际计数(例如，以百万计)还是百分比。
 
-```
+```py
 # load libraries
 library(caret)
 # load data
@@ -109,7 +109,7 @@ print(fit)
 
 你可以看到 RMSE 是 0.38 的就业单位(无论这些单位是什么)。然而，R 平方值显示了非常适合值非常接近 1 (0.988)的数据。
 
-```
+```py
 Linear Regression 
 
 16 samples
@@ -138,7 +138,7 @@ ROC 可分为敏感性和特异性。二元分类问题实际上是敏感性和�
 
 **特异性**也叫真阴性率。是负类(第二类)中实际预测正确的实例数。[在这里了解更多关于敏感性和特异性的信息](https://en.wikipedia.org/wiki/Sensitivity_and_specificity)。
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -154,7 +154,7 @@ print(fit)
 
 在这里，你可以看到 0.833 的“好”但不“优秀”的 AUC 评分。第一级被视为阳性，在这种情况下为“阴性”(没有糖尿病发作)。
 
-```
+```py
 Generalized Linear Model 
 
 768 samples
@@ -176,7 +176,7 @@ Resampling results
 
 在这种情况下，我们看到为鸢尾花多类分类问题计算的对数损失。
 
-```
+```py
 # load libraries
 library(caret)
 # load the dataset
@@ -191,7 +191,7 @@ print(fit)
 
 Logloss 被最小化，我们可以看到最优 CART 模型的 cp 为 0。
 
-```
+```py
 CART 
 
 150 samples

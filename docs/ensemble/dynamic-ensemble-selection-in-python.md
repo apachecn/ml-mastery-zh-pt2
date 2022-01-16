@@ -112,13 +112,13 @@ DESlib 是一个易于使用的集成学习库，专注于实现动态分类器�
 
 首先，我们可以使用 pip 包管理器安装 DESlib 库，如果它还没有安装的话。
 
-```
+```py
 sudo pip install deslib
 ```
 
 安装后，我们可以通过加载库并打印安装的版本来检查库是否安装正确并准备好使用。
 
-```
+```py
 # check deslib version
 import deslib
 print(deslib.__version__)
@@ -128,7 +128,7 @@ print(deslib.__version__)
 
 您的版本应该相同或更高。如果没有，您必须升级您的 DESlib 库版本。
 
-```
+```py
 0.3
 ```
 
@@ -142,7 +142,7 @@ DESlib 分别通过 [KNORAE](https://deslib.readthedocs.io/en/latest/modules/des
 
 我们可以使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个包含 10，000 个示例和 20 个输入特征的合成二进制分类问题。
 
-```
+```py
 # synthetic binary classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -153,7 +153,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (10000, 20) (10000,)
 ```
 
@@ -169,7 +169,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate dynamic KNORA-E dynamic ensemble selection for binary classification
 from numpy import mean
 from numpy import std
@@ -195,7 +195,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到 KNORA-E 集成和默认超参数实现了大约 91.5%的分类准确率。
 
-```
+```py
 Mean Accuracy: 0.915 (0.009)
 ```
 
@@ -205,7 +205,7 @@ Mean Accuracy: 0.915 (0.009)
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make a prediction with KNORA-E dynamic ensemble selection
 from sklearn.datasets import make_classification
 from deslib.des.knora_e import KNORAE
@@ -223,7 +223,7 @@ print('Predicted Class: %d' % yhat[0])
 
 运行该示例使 KNORA-E 动态集成选择算法适用于整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Class: 0
 ```
 
@@ -239,7 +239,7 @@ Predicted Class: 0
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate dynamic KNORA-U dynamic ensemble selection for binary classification
 from numpy import mean
 from numpy import std
@@ -265,7 +265,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到 KNORA-U 动态集成选择模型和默认超参数实现了大约 93.3%的分类精度。
 
-```
+```py
 Mean Accuracy: 0.933 (0.009)
 ```
 
@@ -275,7 +275,7 @@ Mean Accuracy: 0.933 (0.009)
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make a prediction with KNORA-U dynamic ensemble selection
 from sklearn.datasets import make_classification
 from deslib.des.knora_u import KNORAU
@@ -293,7 +293,7 @@ print('Predicted Class: %d' % yhat[0])
 
 运行该示例使 KNORA-U 模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Class: 0
 ```
 
@@ -315,7 +315,7 @@ k 值控制邻域的大小，重要的是将其设置为适合数据集的值，
 
 下面的代码示例探讨了 k 值从 2 到 21 的 KNORA-U 算法的分类精度。
 
-```
+```py
 # explore k in knn for KNORA-U dynamic ensemble selection
 from numpy import mean
 from numpy import std
@@ -365,7 +365,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到精度会随着邻域大小的增加而增加，可能会增加到 k=10，此时精度会趋于平稳。
 
-```
+```py
 >2 0.933 (0.008)
 >3 0.933 (0.010)
 >4 0.935 (0.011)
@@ -412,7 +412,7 @@ KNORA 池中使用的算法选择是另一个重要的超参数。
 
 下面列出了在合成数据集上评估 KNORA 集成和一组自定义分类器的完整示例。
 
-```
+```py
 # evaluate KNORA-U dynamic ensemble selection with a custom pool of algorithms
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -449,7 +449,7 @@ print('Accuracy: %.3f' % (score))
 
 在这种情况下，我们可以看到模型达到了大约 91.3%的准确率。
 
-```
+```py
 Accuracy: 0.913
 ```
 
@@ -457,7 +457,7 @@ Accuracy: 0.913
 
 我们可以通过评估测试集中每个有贡献的分类器的性能来检查这一点。
 
-```
+```py
 ...
 # evaluate contributing models
 for c in classifiers:
@@ -468,7 +468,7 @@ for c in classifiers:
 
 下面列出了 KNORA 的更新示例，该示例具有一个自定义的分类器池，这些分类器也是独立评估的。
 
-```
+```py
 # evaluate KNORA-U dynamic ensemble selection with a custom pool of algorithms
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -510,7 +510,7 @@ for c in classifiers:
 
 在这种情况下，我们可以再次看到 KNORAU 达到了大约 91.3%的准确率，这比任何贡献模型都好。
 
-```
+```py
 Accuracy: 0.913
 >LogisticRegression: 0.878
 >DecisionTreeClassifier: 0.885
@@ -521,7 +521,7 @@ Accuracy: 0.913
 
 例如，我们可以使用具有 1，000 个成员的随机森林集成作为基本分类器，在 KNORA 中考虑如下:
 
-```
+```py
 ...
 # define classifiers to use in the pool
 pool = RandomForestClassifier(n_estimators=1000)
@@ -533,7 +533,7 @@ model = KNORAU(pool_classifiers=pool)
 
 将这些联系在一起，下面列出了以随机森林集成成员作为分类器的完整 KNORA-U 示例。
 
-```
+```py
 # evaluate KNORA-U with a random forest ensemble as the classifier pool
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -568,7 +568,7 @@ print('>%s: %.3f' % (pool.__class__.__name__, score))
 
 在这种情况下，我们可以看到，具有动态选择的集成成员的 KNORA 模型比具有静态选择的(完全集合)集成成员的随机森林表现更好。
 
-```
+```py
 Accuracy: 0.968
 >RandomForestClassifier: 0.967
 ```

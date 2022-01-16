@@ -94,7 +94,7 @@
 
 文件的前几行应该如下所示:
 
-```
+```py
 0.49,0.29,0.48,0.50,0.56,0.24,0.35,cp
 0.07,0.40,0.48,0.50,0.54,0.35,0.44,cp
 0.56,0.40,0.48,0.50,0.49,0.37,0.46,cp
@@ -107,7 +107,7 @@
 
 可以使用 [read_csv()熊猫函数](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)将数据集加载为数据帧，指定文件的位置和没有标题行的事实。
 
-```
+```py
 ...
 # define the dataset location
 filename = 'ecoli.csv'
@@ -117,7 +117,7 @@ dataframe = read_csv(filename, header=None)
 
 加载后，我们可以通过打印[数据框](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)的形状来总结行数和列数。
 
-```
+```py
 ...
 # summarize the shape of the dataset
 print(dataframe.shape)
@@ -125,7 +125,7 @@ print(dataframe.shape)
 
 接下来，我们可以为每个输入变量计算一个五位数的摘要。
 
-```
+```py
 ...
 # describe the dataset
 set_option('precision', 3)
@@ -134,7 +134,7 @@ print(dataframe.describe())
 
 最后，我们还可以使用 [Counter](https://docs.python.org/3/library/collections.html) 对象总结每个类中的示例数量。
 
-```
+```py
 ...
 # summarize the class distribution
 target = dataframe.values[:,-1]
@@ -146,7 +146,7 @@ for k,v in counter.items():
 
 将这些联系在一起，下面列出了加载和汇总数据集的完整示例。
 
-```
+```py
 # load and summarize the dataset
 from pandas import read_csv
 from pandas import set_option
@@ -176,7 +176,7 @@ for k,v in counter.items():
 
 可能没有足够的数据来概括这些少数群体。一种方法可能是简单地删除这些类的示例。
 
-```
+```py
 (336, 8)
              0        1        2        3        4        5        6
 count  336.000  336.000  336.000  336.000  336.000  336.000  336.000
@@ -202,7 +202,7 @@ Class=pp, Count=52, Percentage=15.476%
 
 下面列出了创建所有输入变量直方图的完整示例。
 
-```
+```py
 # create histograms of all variables
 from pandas import read_csv
 from matplotlib import pyplot
@@ -240,7 +240,7 @@ k-fold 交叉验证程序对模型性能提供了一个良好的总体估计，�
 
 首先，我们可以定义一个函数来加载数据集，并将输入变量分成输入和输出变量，并使用标签编码器来确保类标签按顺序编号。
 
-```
+```py
 # load the dataset
 def load_dataset(full_path):
 	# load the dataset as a numpy array
@@ -258,7 +258,7 @@ def load_dataset(full_path):
 
 下面的 *evaluate_model()* 函数实现了这一点。
 
-```
+```py
 # evaluate a model
 def evaluate_model(X, y, model):
 	# define evaluation procedure
@@ -270,7 +270,7 @@ def evaluate_model(X, y, model):
 
 然后我们可以调用 *load_dataset()* 函数加载并确认大肠杆菌数据集。
 
-```
+```py
 ...
 # define the location of the dataset
 full_path = 'ecoli.csv'
@@ -284,7 +284,7 @@ print(X.shape, y.shape, Counter(y))
 
 这可以通过使用 [DummyClassifier](https://machinelearningmastery.com/how-to-develop-and-evaluate-naive-classifier-strategies-using-probability/) 类并将“*策略*”设置为“*最频繁*”来自动实现，该策略将预测训练数据集中最常见的类(例如类' *cp* ')。因此，鉴于这是训练数据集中最常见类别的分布，我们预计该模型将达到约 42%的分类准确率。
 
-```
+```py
 ...
 # define the reference model
 model = DummyClassifier(strategy='most_frequent')
@@ -292,7 +292,7 @@ model = DummyClassifier(strategy='most_frequent')
 
 然后，我们可以通过调用我们的 *evaluate_model()* 函数来评估模型，并报告结果的平均值和标准差。
 
-```
+```py
 ...
 # evaluate the model
 scores = evaluate_model(X, y, model)
@@ -302,7 +302,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 将所有这些结合在一起，下面列出了在大肠杆菌数据集上使用分类精度评估基线模型的完整示例。
 
-```
+```py
 # baseline model and test harness for the ecoli dataset
 from collections import Counter
 from numpy import mean
@@ -351,14 +351,14 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 然后使用重复分层的 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)评估带有我们默认策略的*Dummy 分类器*，分类精度的平均值和标准偏差报告为大约 42.6%。
 
-```
+```py
 (336, 7) (336,) Counter({0: 143, 1: 77, 7: 52, 4: 35, 5: 20, 6: 5, 3: 2, 2: 2})
 Mean Accuracy: 0.426 (0.006)
 ```
 
 模型评估期间会报告警告；例如:
 
-```
+```py
 Warning: The least populated class in y has only 2 members, which is too few. The minimum number of members in any class cannot be less than n_splits=5.
 ```
 
@@ -366,7 +366,7 @@ Warning: The least populated class in y has only 2 members, which is too few. Th
 
 在这种情况下，我们将从数据集中移除这些示例。这可以通过更新 *load_dataset()* 来移除具有这些类的行来实现，例如四行。
 
-```
+```py
 # load the dataset
 def load_dataset(full_path):
 	# load the dataset as a numpy array
@@ -387,7 +387,7 @@ def load_dataset(full_path):
 
 下面列出了完整的示例。
 
-```
+```py
 # baseline model and test harness for the ecoli dataset
 from collections import Counter
 from numpy import mean
@@ -441,7 +441,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 性能的基线被确定为 43.1%。该分数提供了该数据集的基线，通过该基线可以比较所有其他分类算法。得分高于约 43.1%表示模型在此数据集上有技能，得分等于或低于此值表示模型在此数据集上没有技能。
 
-```
+```py
 (332, 7) (332,) Counter({0: 143, 1: 77, 5: 52, 2: 35, 3: 20, 4: 5})
 Mean Accuracy: 0.431 (0.005)
 ```
@@ -474,7 +474,7 @@ Mean Accuracy: 0.431 (0.005)
 
 我们将依次定义每个模型，并将它们添加到一个列表中，以便我们可以顺序评估它们。下面的 *get_models()* 函数定义了用于评估的模型列表，以及用于以后绘制结果的模型简称列表。
 
-```
+```py
 # define models to test
 def get_models():
 	models, names = list(), list()
@@ -498,7 +498,7 @@ def get_models():
 
 然后，我们可以依次列举模型列表，并对每个模型进行评估，存储分数供以后评估。
 
-```
+```py
 ...
 # define models
 models, names = get_models()
@@ -514,7 +514,7 @@ for i in range(len(models)):
 
 在运行结束时，我们可以将每个分数样本绘制成一个方框，并用相同的比例绘制晶须图，这样我们就可以直接比较分布。
 
-```
+```py
 ...
 # plot the results
 pyplot.boxplot(results, labels=names, showmeans=True)
@@ -523,7 +523,7 @@ pyplot.show()
 
 下面列出了在大肠杆菌数据集上评估一套机器学习算法的完整示例。
 
-```
+```py
 # spot check machine learning algorithms on the ecoli dataset
 from numpy import mean
 from numpy import std
@@ -608,7 +608,7 @@ pyplot.show()
 
 结果表明，大多数算法在这个数据集上表现良好，决策树的集成表现最好，额外的树达到 88%的准确率，随机森林达到 89.5%的准确率。
 
-```
+```py
 >LDA 0.886 (0.027)
 >SVM 0.883 (0.027)
 >BAG 0.851 (0.037)
@@ -640,7 +640,7 @@ pyplot.show()
 
 定义这些模型的 *get_models()* 函数的更新版本如下。
 
-```
+```py
 # define models to test
 def get_models():
 	models, names = list(), list()
@@ -668,7 +668,7 @@ SMOTE 将使用训练数据集中的 k 近邻合成新示例，其中默认情�
 
 这对于我们数据集中的一些类来说太大了。因此，我们将尝试 2 的 *k* 值。
 
-```
+```py
 ...
 # create pipeline
 steps = [('o', SMOTE(k_neighbors=2)), ('m', models[i])]
@@ -679,7 +679,7 @@ scores = evaluate_model(X, y, pipeline)
 
 综上所述，下面列出了在大肠杆菌数据集上使用 SMOTE 过采样的完整示例。
 
-```
+```py
 # spot check smote with machine learning algorithms on the ecoli dataset
 from numpy import mean
 from numpy import std
@@ -769,7 +769,7 @@ pyplot.show()
 
 在这种情况下，使用 SMOTE 时，SVM 似乎也是性能最好的方法，尽管与上一节中的随机森林相比，它没有实现任何改进。
 
-```
+```py
 >LR 0.875 (0.024)
 >LDA 0.879 (0.029)
 >SVM 0.888 (0.025)
@@ -795,7 +795,7 @@ pyplot.show()
 
 首先，我们可以定义模型。
 
-```
+```py
 ...
 # define model to evaluate
 model = RandomForestClassifier(n_estimators=1000)
@@ -803,7 +803,7 @@ model = RandomForestClassifier(n_estimators=1000)
 
 一旦定义好了，我们就可以在整个训练数据集中使用它。
 
-```
+```py
 ...
 # fit the model
 model.fit(X, y)
@@ -815,7 +815,7 @@ model.fit(X, y)
 
 例如:
 
-```
+```py
 ...
 # define a row of data
 row = [...]
@@ -828,7 +828,7 @@ label = le.inverse_transform(yhat)[0]
 
 下面列出了完整的示例。
 
-```
+```py
 # fit a model and make predictions for the on the ecoli dataset
 from pandas import read_csv
 from sklearn.preprocessing import LabelEncoder
@@ -896,7 +896,7 @@ print('>Predicted=%s (expected pp)' % (label))
 
 我们可以看到为每个选择的例子预测了正确的类标签。尽管如此，平均而言，我们预计 10 个预测中有 1 个是错误的，这些错误可能不会平均分布在各个班级。
 
-```
+```py
 >Predicted=cp (expected cp)
 >Predicted=im (expected im)
 >Predicted=imU (expected imU)

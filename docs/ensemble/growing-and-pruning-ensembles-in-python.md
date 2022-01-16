@@ -83,7 +83,7 @@ Python 中的生长和修剪套装
 
 下面的示例定义了数据集并总结了其大小。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -94,7 +94,7 @@ print(X.shape, y.shape)
 
 运行该示例以可重复的方式创建数据集，并报告行数和输入要素，符合我们的预期。
 
-```
+```py
 (5000, 20) (5000,)
 ```
 
@@ -106,7 +106,7 @@ print(X.shape, y.shape)
 
 下面的 *get_models()* 函数实现了这一点，并返回要考虑的模型列表。
 
-```
+```py
 # get a list of models to evaluate
 def get_models():
 	models = list()
@@ -122,7 +122,7 @@ def get_models():
 
 下面的 *evaluate_model()* 函数实现了这一点，并返回所有折叠和重复的分数列表。
 
-```
+```py
 # evaluate a give model using cross-validation
 def evaluate_model(model, X, y):
 	# define the model evaluation procedure
@@ -136,7 +136,7 @@ def evaluate_model(model, X, y):
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # evaluate standard models on the synthetic dataset
 from numpy import mean
 from numpy import std
@@ -200,7 +200,7 @@ pyplot.show()
 
 这些结果提供了一个性能基线，我们要求任何系综都要超过这个基线，才能被认为对这个数据集有用。
 
-```
+```py
 >lr 0.856 (0.014)
 >knn 0.953 (0.008)
 >tree 0.867 (0.014)
@@ -224,7 +224,7 @@ pyplot.show()
 
 然后，我们可以通过“*投票*”参数设置要执行的投票类型，在本例中，该参数设置为“*软*”
 
-```
+```py
 ...
 # create the ensemble
 ensemble = VotingClassifier(estimators=models, voting='soft')
@@ -232,7 +232,7 @@ ensemble = VotingClassifier(estimators=models, voting='soft')
 
 将这些联系在一起，下面的示例评估了合成二进制分类数据集上所有五个模型的投票集合。
 
-```
+```py
 # example of a voting ensemble with soft voting of ensemble members
 from numpy import mean
 from numpy import std
@@ -283,7 +283,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 该结果强调了所有模型的简单投票集合导致在这种情况下模型具有更高的复杂性和更差的性能。也许我们可以找到一个成员子集，它比任何单个模型表现得更好，并且比简单地使用所有模型具有更低的复杂性。
 
-```
+```py
 Mean Accuracy: 0.928 (0.012)
 ```
 
@@ -301,7 +301,7 @@ Mean Accuracy: 0.928 (0.012)
 
 这个函数可以用来评估每个候选人从集合中的移除。下面的 *evaluate_ensemble()* 函数实现了这一点。
 
-```
+```py
 # evaluate a list of models
 def evaluate_ensemble(models, X, y):
 	# check for no models
@@ -325,7 +325,7 @@ def evaluate_ensemble(models, X, y):
 
 下面的 *prune_round()* 函数在给定集合和数据集中当前模型的列表的情况下实现这一点，并返回分数的提高(如果有的话)和为达到该分数要移除的最佳模型。
 
-```
+```py
 # perform a single round of pruning the ensemble
 def prune_round(models_in, X, y):
 	# establish a baseline
@@ -354,7 +354,7 @@ def prune_round(models_in, X, y):
 
 下面的*修剪 _ 集成()*函数实现了这一点，并返回最终集成中使用的模型以及通过我们的评估过程获得的分数。
 
-```
+```py
 # prune an ensemble from scratch
 def prune_ensemble(models, X, y):
 	best_score = 0.0
@@ -377,7 +377,7 @@ def prune_ensemble(models, X, y):
 
 我们可以将所有这些结合到一个综合二进制分类数据集上的集成修剪示例中。
 
-```
+```py
 # example of ensemble pruning for classification
 from numpy import mean
 from numpy import std
@@ -478,7 +478,7 @@ print('Final Mean Accuracy: %.3f' % score)
 
 模型的最终列表然后可以通过“*估计器*”参数用于新的最终投票集合模型，适合整个数据集并用于对新数据进行预测。
 
-```
+```py
 >0.939 (removed: nb)
 >0.948 (removed: tree)
 >0.957 (removed: lr)
@@ -501,7 +501,7 @@ Final Mean Accuracy: 0.957
 
 下面的 *grow_round()* 函数实现了这个行为。
 
-```
+```py
 # perform a single round of growing the ensemble
 def grow_round(models_in, models_candidate, X, y):
 	# establish a baseline
@@ -528,7 +528,7 @@ def grow_round(models_in, models_candidate, X, y):
 
 *grow _ 系综()*函数实现了这一点，并返回模型列表，这些模型被贪婪地确定为产生最佳性能以及预期的平均精度。
 
-```
+```py
 # grow an ensemble from scratch
 def grow_ensemble(models, X, y):
 	best_score, best_list = 0.0, list()
@@ -554,7 +554,7 @@ def grow_ensemble(models, X, y):
 
 将这些联系在一起，下面列出了在合成二进制分类数据集上增长的贪婪集成的完整示例。
 
-```
+```py
 # example of ensemble growing for classification
 from numpy import mean
 from numpy import std
@@ -656,7 +656,7 @@ print('Final Mean Accuracy: %.3f' % score)
 
 在这种情况下，我们可以看到，集成增长找到了与贪婪集成修剪相同的解决方案，其中 SVM 和 KNN 的集成实现了大约 95.6%的平均分类精度，比任何单个独立模型和组合所有模型都有所提高。
 
-```
+```py
 >0.953 (svm)
 >0.956 (svm,knn)
 >no further improvement

@@ -55,7 +55,7 @@ Keras API 支持重量限制。
 
 例如，可以导入和实例化约束:
 
-```
+```py
 # import norm
 from keras.constraints import max_norm
 # instantiate norm
@@ -72,7 +72,7 @@ norm = max_norm(3.0)
 
 以下示例在密集完全连接图层上设置最大范数权重约束。
 
-```
+```py
 # example of max norm on a dense layer
 from keras.layers import Dense
 from keras.constraints import max_norm
@@ -85,7 +85,7 @@ model.add(Dense(32, kernel_constraint=max_norm(3), bias_constraint=max_norm(3)))
 
 下面的示例在卷积层上设置了最大范数权重约束。
 
-```
+```py
 # example of max norm on a cnn layer
 from keras.layers import Conv2D
 from keras.constraints import max_norm
@@ -102,7 +102,7 @@ model.add(Conv2D(32, (3,3), kernel_constraint=max_norm(3), bias_constraint=max_n
 
 以下示例在 LSTM 图层上设置了最大标准权重约束。
 
-```
+```py
 # example of max norm on an lstm layer
 from keras.layers import LSTM
 from keras.constraints import max_norm
@@ -127,7 +127,7 @@ model.add(LSTM(32, kernel_constraint=max_norm(3), recurrent_constraint=max_norm(
 
 我们可以使用 [make_moons()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_moons.html)从这个问题中生成观测值。我们将向数据中添加噪声，并为随机数生成器播种，这样每次运行代码时都会生成相同的样本。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_moons(n_samples=100, noise=0.2, random_state=1)
 ```
@@ -136,7 +136,7 @@ X, y = make_moons(n_samples=100, noise=0.2, random_state=1)
 
 下面列出了生成数据集并绘制它的完整示例。
 
-```
+```py
 # generate two moons dataset
 from sklearn.datasets import make_moons
 from matplotlib import pyplot
@@ -171,7 +171,7 @@ pyplot.show()
 
 在定义模型之前，我们将把数据集分成训练集和测试集，用 30 个例子训练模型，用 70 个例子评估拟合模型的性能。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_moons(n_samples=100, noise=0.2, random_state=1)
 # split into train and test
@@ -186,7 +186,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 该模型使用二元交叉熵损失函数进行优化，适用于二元分类问题和高效的 Adam 版本梯度下降。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(500, input_dim=2, activation='relu'))
@@ -198,14 +198,14 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 
 我们还将使用测试数据集作为验证数据集。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=4000, verbose=0)
 ```
 
 我们可以在测试数据集上评估模型的性能并报告结果。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -216,7 +216,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 如果模型确实过度训练了训练数据集，那么随着模型学习训练数据集中的统计噪声，我们将期望训练集上的精度线图继续增加，并且测试集上升，然后再次下降。
 
-```
+```py
 # plot history
 pyplot.plot(history.history['accuracy'], label='train')
 pyplot.plot(history.history['val_accuracy'], label='test')
@@ -226,7 +226,7 @@ pyplot.show()
 
 我们可以把所有这些部分绑在一起；下面列出了完整的示例。
 
-```
+```py
 # mlp overfit on the moons dataset
 from sklearn.datasets import make_moons
 from keras.layers import Dense
@@ -264,7 +264,7 @@ pyplot.show()
 
 因为模型过于精确，我们通常不会期望在同一数据集上模型的重复运行中有太多(如果有的话)精度差异。
 
-```
+```py
 Train: 1.000, Test: 0.914
 ```
 
@@ -286,25 +286,25 @@ Train: 1.000, Test: 0.914
 
 我们可以通过使用 Keras 中的*单位 _ 范数*来做到这一点。该约束可以添加到第一个隐藏层，如下所示:
 
-```
+```py
 model.add(Dense(500, input_dim=2, activation='relu', kernel_constraint=unit_norm()))
 ```
 
 我们也可以通过使用 *min_max_norm* 并将最小值和最大值设置为 1.0 来获得相同的结果，例如:
 
-```
+```py
 model.add(Dense(500, input_dim=2, activation='relu', kernel_constraint=min_max_norm(min_value=1.0, max_value=1.0)))
 ```
 
 我们不能用最大范数约束来达到同样的结果，因为它允许范数等于或低于指定的极限；例如:
 
-```
+```py
 model.add(Dense(500, input_dim=2, activation='relu', kernel_constraint=max_norm(1.0)))
 ```
 
 下面列出了带有单位定额约束的完整更新示例:
 
-```
+```py
 # mlp overfit on the moons dataset with a unit norm constraint
 from sklearn.datasets import make_moons
 from keras.layers import Dense
@@ -341,7 +341,7 @@ pyplot.show()
 
 我们可以看到，对权重大小的严格约束确实提高了模型在保持集上的性能，而不影响训练集的性能。
 
-```
+```py
 Train: 1.000, Test: 0.943
 ```
 

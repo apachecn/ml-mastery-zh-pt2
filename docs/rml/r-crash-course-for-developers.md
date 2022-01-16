@@ -78,7 +78,7 @@ R 中赋值的关键是赋值的箭头运算符(
 
 下面是分配一个整数、双精度、字符串和一个布尔值，并依次打印到控制台的例子。
 
-```
+```py
 > # integer
 > i <- 23
 > i
@@ -115,7 +115,7 @@ R 中赋值的关键是赋值的箭头运算符(
 
 列表提供了一组命名项，这与地图并无不同。
 
-```
+```py
 # create a list of named items
 a <- list(aa=1, bb=2, cc=3)
 a
@@ -132,7 +132,7 @@ a
 
 向量是相同或不同类型的数据列表:
 
-```
+```py
 > # create a vector using the c() function
 > v <- c(98, 99, 100)
 > v
@@ -162,7 +162,7 @@ a
 
 矩阵是一个数据表。它有维度(行和列)，列可以命名。
 
-```
+```py
 # Create a 2-row, 3-column matrix with named headings
 > data <- c(1, 2, 3, 4, 5, 6)
 > headings <- list(NULL, c("a","b","c"))
@@ -188,7 +188,7 @@ a b c
 
 数据框对于在 r 中实际表示数据表非常有用
 
-```
+```py
 # create a new data frame
 years <- c(1980, 1985, 1990)
 scores <- c(34, 44, 83)
@@ -215,7 +215,7 @@ r 支持所有你已经习惯的流量控制结构。
 
 #### 如果-那么-否则
 
-```
+```py
 # if then else
 a <- 66
 if (a > 55) {
@@ -229,7 +229,7 @@ if (a > 55) {
 
 #### 用于循环
 
-```
+```py
 # for loop
 mylist <- c(55, 66, 77, 88, 99)
 for (value in mylist) {
@@ -245,7 +245,7 @@ for (value in mylist) {
 
 #### 当循环
 
-```
+```py
 # while loop
 a <- 100
 while (a < 500) {
@@ -274,7 +274,7 @@ r 有很多内置功能，可以通过安装和加载第三方包来提供额外
 
 下面是一个使用统计函数计算数字向量平均值的例子:
 
-```
+```py
 # call function to calculate the mean on a vector of integers
 numbers <- c(1, 2, 3, 4, 5, 6)
 mean(numbers)
@@ -286,7 +286,7 @@ mean(numbers)
 
 您可以使用问号运算符(？)后跟函数名。
 
-```
+```py
 # help with the mean() function
 ?mean
 help(mean)
@@ -296,7 +296,7 @@ help(mean)
 
 您可以通过调用 example()函数并将函数的名称作为参数传递来获取函数的用法示例。
 
-```
+```py
 # example usage of the mean function
 example(mean)
 ```
@@ -307,7 +307,7 @@ example(mean)
 
 下面是一个计算和返回三个数字之和的自定义函数示例:
 
-```
+```py
 # define custom function
 mysum <- function(a, b, c) {
 	sum <- a + b + c
@@ -329,7 +329,7 @@ mysum(1,2,3)
 
 例如，下面是如何安装在机器学习中非常有用的脱字符号包:
 
-```
+```py
 # install the caret package
 install.packages("caret")
 # load the package
@@ -340,7 +340,7 @@ library(caret)
 
 一个包可以提供很多新功能。你可以在一个包的 CRAN 页面上阅读它，但是你也可以使用库函数在 R 中获得这个包的帮助。
 
-```
+```py
 # help for the caret package
 library(help="caret")
 ```

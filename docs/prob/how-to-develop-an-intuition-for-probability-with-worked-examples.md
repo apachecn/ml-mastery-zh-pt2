@@ -84,7 +84,7 @@
 
 下面的例子计算了从 2 到 30 的组大小的概率。
 
-```
+```py
 # example of the birthday problem
 # define group size
 n = 30
@@ -100,7 +100,7 @@ for i in range(1, n):
 
 运行该示例首先打印组大小，然后是可用天数除以一年中的总天数，然后是组中没有匹配生日的概率，接着是补码或组中两个人过生日的概率。
 
-```
+```py
 n=2, 364/365, p=99.726 1-p=0.274
 n=3, 363/365, p=99.180 1-p=0.820
 n=4, 362/365, p=98.364 1-p=1.636
@@ -154,7 +154,7 @@ n=30, 336/365, p=29.368 1-p=70.632
 
 考虑一张无条件概率表。
 
-```
+```py
 Younger Child | Older Child | Unconditional Probability
 Girl            Boy           1/4
 Boy             Boy           1/4
@@ -168,7 +168,7 @@ Boy             Girl          1/4
 
 我们可以通过列举包含给定信息的所有可能组合来探索这一点:
 
-```
+```py
 Younger Child | Older Child | Conditional Probability
 Girl            Boy           1/2
 Boy             Boy           1/2 (*)
@@ -194,7 +194,7 @@ Boy             Girl          0 (impossible)
 
 为了找出原因，让我们再次列举所有可能的组合:
 
-```
+```py
 Younger Child | Older Child | Conditional Probability
 Girl            Boy           1/3
 Boy             Boy           1/3 (*)
@@ -350,7 +350,7 @@ Girl            Girl          0 (impossible)
 
 我们可以从列举所有组合和列出无条件概率开始。假设有三扇门，用户随机选择一扇门，例如门 1。
 
-```
+```py
 Door 1 | Door 2 | Door 3 | Unconditional Probability
 Goat     Goat     Car      1/3
 Goat     Car      Goat     1/3
@@ -369,7 +369,7 @@ Car      Goat     Goat     1/3
 
 我们可以将这个场景的直观条件概率总结如下:
 
-```
+```py
 Door 1 | Door 2 | Door 3 | Uncon. | Cond.
 Goat     Goat     Car      1/3      1/2
 Goat     Car      Goat     1/3      0
@@ -384,7 +384,7 @@ Car      Goat     Goat     1/3      1/2
 
 让我们看一张结果表，给出选择 1 号门和停留或转换。
 
-```
+```py
 Door 1 | Door 2 | Door 3 | Stay | Switch
 Goat     Goat     Car      Goat   Car
 Goat     Car      Goat     Goat   Car

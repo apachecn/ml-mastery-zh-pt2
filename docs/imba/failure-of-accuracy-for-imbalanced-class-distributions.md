@@ -74,7 +74,7 @@
 
 在这种类型的混淆矩阵中，表中的每个单元格都有一个具体且易于理解的名称，总结如下:
 
-```
+```py
                | Positive Prediction | Negative Prediction
 Positive Class | True Positive (TP)  | False Negative (FN)
 Negative Class | False Positive (FP) | True Negative (TN)
@@ -152,7 +152,7 @@ Negative Class | False Positive (FP) | True Negative (TN)
 
 下面这个名为 *get_dataset()* 的函数将采用一个类分布，并返回一个具有该类分布的合成数据集。
 
-```
+```py
 # create a dataset with a given class distribution
 def get_dataset(proportions):
 	# determine the number of classes
@@ -176,7 +176,7 @@ def get_dataset(proportions):
 
 接下来，我们可以使用上一节中的代码为已创建的数据集创建散点图，并将其放入助手函数中。下面是 *plot_dataset()* 函数，该函数将绘制数据集并显示一个图例，以指示颜色到类标签的映射。
 
-```
+```py
 # scatter plot of dataset, different color for each class
 def plot_dataset(X, y):
 	# create scatter plot for samples from each class
@@ -198,7 +198,7 @@ def plot_dataset(X, y):
 
 下面列出了完整的示例。
 
-```
+```py
 # define an imbalanced dataset with a 1:100 class ratio
 from numpy import unique
 from numpy import hstack
@@ -255,7 +255,7 @@ plot_dataset(X, y)
 
 我们可以看到，数据集中超过 99%的示例属于多数类，不到 1%的示例属于少数类。
 
-```
+```py
 Class 0: 99.010%, Class 1: 0.990%
 ```
 
@@ -269,7 +269,7 @@ Class 0: 99.010%, Class 1: 0.990%
 
 我们可以使用 scikit 中的 [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 来实现这一点——学习并使用“*最频繁*策略，该策略将始终预测在训练数据集中观察到最多的类标签。
 
-```
+```py
 ...
 # define model
 model = DummyClassifier(strategy='most_frequent')
@@ -279,7 +279,7 @@ model = DummyClassifier(strategy='most_frequent')
 
 下面的 *evaluate_model()* 函数实现了这一点，并返回模型每次评估的分数列表。
 
-```
+```py
 # evaluate a model using repeated k-fold cross-validation
 def evaluate_model(X, y, metric):
 	# define model
@@ -294,7 +294,7 @@ def evaluate_model(X, y, metric):
 
 我们预计朴素分类器将达到大约 99%的分类精度，这是我们知道的，因为这是训练数据集中大多数类的分布。
 
-```
+```py
 ...
 # evaluate model
 scores = evaluate_model(X, y, 'accuracy')
@@ -304,7 +304,7 @@ print('Accuracy: %.3f%%' % (mean(scores) * 100))
 
 将所有这些联系在一起，下面列出了在具有 1:100 类分布的合成数据集上评估朴素分类器的完整示例。
 
-```
+```py
 # evaluate a majority class classifier on an 1:100 imbalanced dataset
 from numpy import mean
 from numpy import hstack
@@ -362,7 +362,7 @@ print('Accuracy: %.3f%%' % (mean(scores) * 100))
 
 通常，达到 99%的分类准确率是值得庆祝的。虽然，正如我们所看到的，因为类分布不平衡，99%实际上是这个数据集可接受的最低精度，也是更复杂的模型必须改进的起点。
 
-```
+```py
 Class 0: 99.010%, Class 1: 0.990%
 Accuracy: 99.010%
 ```

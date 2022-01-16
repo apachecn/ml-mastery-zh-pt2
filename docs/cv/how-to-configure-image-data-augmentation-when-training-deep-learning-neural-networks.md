@@ -89,7 +89,7 @@ Keras 深度学习库提供了在训练模型时自动使用数据扩充的能�
 
 例如，可以构造 ImageDataGenerator 类的一个实例。
 
-```
+```py
 ...
 # create data generator
 datagen = ImageDataGenerator()
@@ -101,7 +101,7 @@ datagen = ImageDataGenerator()
 
 迭代器可以通过 *flow()* 函数从加载到内存中的图像数据集创建；例如:
 
-```
+```py
 ...
 # load image dataset
 X, y = ...
@@ -111,7 +111,7 @@ it = datagen.flow(X, y)
 
 或者，可以为位于磁盘上指定目录中的图像数据集创建迭代器，其中该目录中的图像根据它们的类别被组织到子目录中。
 
-```
+```py
 ...
 # create iterator
 it = datagen.flow_from_directory(X, y, ...)
@@ -121,7 +121,7 @@ it = datagen.flow_from_directory(X, y, ...)
 
 *步长/周期*参数必须指定组成一个周期的样本批次数。例如，如果您的原始数据集有 10，000 个图像，并且您的批次大小为 32，那么在增强数据上拟合模型时， *steps_per_epoch* 的合理值可能是 *ceil(10，000/32)* ，或者 313 个批次。
 
-```
+```py
 # define model
 model = ...
 # fit model on the augmented dataset
@@ -150,7 +150,7 @@ model.fit_generator(it, steps_per_epoch=313, ...)
 
 下面的示例演示了一个水平移动，其 *width_shift_range* 参数在[-200，200]像素之间，并生成了一个生成图像的图来演示效果。
 
-```
+```py
 # example of horizontal shift image augmentation
 from numpy import expand_dims
 from keras.preprocessing.image import load_img
@@ -191,7 +191,7 @@ pyplot.show()
 
 下面是通过 *height_shift_range* 参数更新为执行图像垂直移动的相同示例，在这种情况下，指定图像移动的百分比为图像高度的 0.5%。
 
-```
+```py
 # example of vertical shift image augmentation
 from numpy import expand_dims
 from keras.preprocessing.image import load_img
@@ -242,7 +242,7 @@ pyplot.show()
 
 下面的例子演示了通过*水平翻转*参数用水平翻转来增强所选照片。
 
-```
+```py
 # example of horizontal flip image augmentation
 from numpy import expand_dims
 from keras.preprocessing.image import load_img
@@ -289,7 +289,7 @@ pyplot.show()
 
 下面的例子通过*旋转范围*参数演示了随机旋转，图像的旋转在 0 到 90 度之间。
 
-```
+```py
 # example of random rotation image augmentation
 from numpy import expand_dims
 from keras.preprocessing.image import load_img
@@ -338,7 +338,7 @@ pyplot.show()
 
 下面的示例演示了亮度图像增强，允许生成器在 1.0(无变化)和 0.2 或 20%之间随机变暗图像。
 
-```
+```py
 # example of brighting image augmentation
 from numpy import expand_dims
 from keras.preprocessing.image import load_img
@@ -389,7 +389,7 @@ pyplot.show()
 
 下面的例子演示了放大图像，例如放大照片中的对象。
 
-```
+```py
 # example of zoom image augmentation
 from numpy import expand_dims
 from keras.preprocessing.image import load_img

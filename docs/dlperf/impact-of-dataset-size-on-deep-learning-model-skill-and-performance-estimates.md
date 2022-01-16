@@ -54,7 +54,7 @@ scikit-learn 库提供了 [make_circles()函数](http://scikit-learn.org/stable/
 
 下面的示例从两个没有噪声且值为 1 的圆生成 100 个示例来播种伪随机数发生器。
 
-```
+```py
 # example of generating circles dataset
 from sklearn.datasets import make_circles
 # generate circles
@@ -70,7 +70,7 @@ for i in range(5):
 
 显示了数据集的前五个示例。我们可以看到输入变量的 *x* 和 *y* 分量以 0.0 为中心，并且有边界[-1，1]。我们还可以看到，类值是 0 或 1 的整数，并且示例在类之间进行了混合。
 
-```
+```py
 (100, 2) (100,)
 [-0.6472136 -0.4702282] 1
 [-0.34062343 -0.72386164] 1
@@ -85,7 +85,7 @@ for i in range(5):
 
 下面的示例生成相同的点，并使用散点图绘制样本的输入变量。我们可以使用[散点()matplotlib 函数](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.scatter.html)来创建图，并将第一个变量用于 *x* 坐标，第二个变量用于图中的 *y* 坐标传递到 *X* 数组的所有行中。
 
-```
+```py
 # example of creating a scatter plot of the circles dataset
 from sklearn.datasets import make_circles
 from matplotlib import pyplot
@@ -106,7 +106,7 @@ pyplot.show()
 
 我们可以使用 [where() NumPy 函数](https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html)选择 y 数组中具有给定值的样本的索引，然后使用这些索引选择 *X* 数组中的行。完整的例子如下。
 
-```
+```py
 #  scatter plot of the circles dataset with points colored by class
 from sklearn.datasets import make_circles
 from numpy import where
@@ -136,7 +136,7 @@ pyplot.show()
 
 我们可以创建一个名为*散点图 _ 圆 _ 问题()*的新函数，该函数创建一个具有给定噪声量的数据集，并创建一个散点图，其中的点按其类值着色。
 
-```
+```py
 # create a scatter plot of the circles dataset with the given amount of noise
 def scatter_plot_circles_problem(noise_value):
 	# generate circles
@@ -153,7 +153,7 @@ def scatter_plot_circles_problem(noise_value):
 
 我们将通过 4 乘 4 矩阵中的[子图()matplotlib 函数](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html)创建四个散点图作为子图，噪声值为[0.0，0.1，0.2，0.3]。下面列出了完整的示例。
 
-```
+```py
 # scatter plots of the circles dataset with varied amounts of noise
 from sklearn.datasets import make_circles
 from numpy import where
@@ -195,7 +195,7 @@ pyplot.show()
 
 我们可以更新*散点图圆问题()*函数，把要生成的样本数作为自变量，也可以把噪声量作为自变量，将噪声设置为默认值 0.1，这样会让问题有噪声，但不会太吵。
 
-```
+```py
 # create a scatter plot of the circles problem
 def scatter_plot_circles_problem(n_samples, noise_value=0.1):
 	# generate circles
@@ -212,7 +212,7 @@ def scatter_plot_circles_problem(n_samples, noise_value=0.1):
 
 我们将使用以下大小的样本[50，100，500，1000]来尝试问题的版本。下面列出了完整的示例。
 
-```
+```py
 # scatter plots of the circles dataset with varied sample sizes
 from sklearn.datasets import make_circles
 from numpy import where
@@ -256,7 +256,7 @@ pyplot.show()
 
 可以使用称为 [Adam](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/) 的小批量随机梯度下降的有效版本来训练模型，其中模型中的每个权重都有其自己的自适应学习速率。二元交叉熵损失函数可以用作优化的基础，其中较小的损失值表示更好的模型拟合。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(25, input_dim=2, activation='relu'))
@@ -268,7 +268,7 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 
 下面的 *create_dataset()* 函数将创建这些给定大小的训练和测试集，并使用 0.1 的默认噪声。
 
-```
+```py
 # create a test dataset
 def create_dataset(n_train, n_test, noise=0.1):
 	# generate samples
@@ -283,14 +283,14 @@ def create_dataset(n_train, n_test, noise=0.1):
 
 我们可以调用这个函数来准备分成输入和输出组件的训练和测试集。
 
-```
+```py
 # create dataset
 trainX, trainy, testX, testy = create_dataset(500, 500)
 ```
 
 一旦我们定义了数据集和模型，我们就可以训练模型了。我们将在训练数据集上训练模型 500 个时期。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, epochs=500, verbose=0)
 ```
@@ -299,7 +299,7 @@ history = model.fit(trainX, trainy, epochs=500, verbose=0)
 
 *evaluate()* 函数执行此操作，返回测试数据集上模型的损失和精度。我们可以忽略损失并显示精度，以了解模型在将随机示例从圆形域映射到 0 类或 1 类方面的表现。
 
-```
+```py
 # evaluate the model
 _, test_acc = model.evaluate(testX, testy, verbose=0)
 print('Test Accuracy: %.3f' % (test_acc*100))
@@ -307,7 +307,7 @@ print('Test Accuracy: %.3f' % (test_acc*100))
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # mlp evaluated on the circles dataset
 from sklearn.datasets import make_circles
 from keras.layers import Dense
@@ -344,7 +344,7 @@ print('Test Accuracy: %.3f' % (test_acc*100))
 
 在这种情况下，模型达到了大约 84.4%的估计精度。
 
-```
+```py
 Test Accuracy: 84.400
 ```
 
@@ -356,7 +356,7 @@ Test Accuracy: 84.400
 
 再次运行该示例，我看到估计准确率约为 84.8%。同样，您的具体结果可能会有所不同。
 
-```
+```py
 Test Accuracy: 84.800
 ```
 
@@ -386,7 +386,7 @@ Test Accuracy: 84.800
 
 我们可以将单个 MLP 的评估转移到一个获取数据集并返回测试集精度的函数。下面的 *evaluate_model()* 函数实现了这个行为。
 
-```
+```py
 # evaluate an mlp model
 def evaluate_model(trainX, trainy, testX, testy):
 	# define model
@@ -405,7 +405,7 @@ def evaluate_model(trainX, trainy, testX, testy):
 
 考虑到[大数定律](https://machinelearningmastery.com/a-gentle-introduction-to-the-law-of-large-numbers-in-machine-learning/)，更多的运行将意味着更精确的估计。为了保持跑步时间适中，我们将重复跑步 10 次。
 
-```
+```py
 # evaluate model
 n_repeats = 10
 scores = list()
@@ -420,7 +420,7 @@ for i in range(n_repeats):
 
 然后，在这些运行结束时，将报告分数的平均值和标准偏差。我们也可以通过[箱线图()matplotlib 函数](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.boxplot.html)使用箱线图和触须图来总结分布。
 
-```
+```py
 # report distribution of scores
 mean_score, std_score = mean(scores)*100, std(scores)*100
 print('Score Over %d Runs: %.3f (%.3f)' % (n_repeats, mean_score, std_score))
@@ -431,7 +431,7 @@ pyplot.show()
 
 将所有这些元素结合在一起，下面列出了在圆形数据集上重复评估 MLP 模型的示例。
 
-```
+```py
 # repeated evaluation of mlp on the circles dataset
 from sklearn.datasets import make_circles
 from keras.layers import Dense
@@ -492,7 +492,7 @@ pyplot.show()
 
 毫无疑问，10 的小样本量导致了这些估计的一些误差。
 
-```
+```py
 >1: 84.600
 >2: 84.800
 >3: 85.400
@@ -532,7 +532,7 @@ MLP 圆问题测试精度的盒须图
 
 我们可以使用上一节中定义的 *create_dataset()* 函数来创建训练和测试数据集，并将测试集参数的大小设置为默认值 100，000 个示例，同时允许指定训练集的大小，并随每次调用而变化。重要的是，我们希望对每个不同大小的训练数据集使用相同的测试集。
 
-```
+```py
 # create train and test datasets
 def create_dataset(n_train, n_test=100000, noise=0.1):
 	# generate samples
@@ -547,7 +547,7 @@ def create_dataset(n_train, n_test=100000, noise=0.1):
 
 我们可以直接使用上一节中相同的 *evaluate_model()* 函数来拟合和评估给定列车和测试集上的 MLP 模型。
 
-```
+```py
 # evaluate an mlp model
 def evaluate_model(trainX, trainy, testX, testy):
 	# define model
@@ -566,7 +566,7 @@ def evaluate_model(trainX, trainy, testX, testy):
 
 下面的 *evaluate_size()* 函数将训练集的大小以及重复次数作为参数，默认为 5 次，以保持运行时间下降。创建 *create_dataset()* 函数来创建训练集和测试集，然后重复调用 *evaluate_model()* 函数来评估模型。然后，该函数返回重复得分列表。
 
-```
+```py
 # repeated evaluation of mlp model with dataset of a given size
 def evaluate_size(n_train, n_repeats=5):
 	# create dataset
@@ -584,7 +584,7 @@ def evaluate_size(n_train, n_repeats=5):
 
 因此，我们将调查 100、1，000、5，000 和 10，000 个示例的训练集大小。将报告每种测试规模的平均测试精度，以便了解进展情况。
 
-```
+```py
 # define dataset sizes to evaluate
 sizes = [100, 1000, 5000, 10000]
 score_sets, means = list(), list()
@@ -604,7 +604,7 @@ for n_train in sizes:
 
 下面列出了完整的示例。
 
-```
+```py
 # study of training set size for an mlp on the circles problem
 from sklearn.datasets import make_circles
 from keras.layers import Dense
@@ -673,7 +673,7 @@ pyplot.show()
 
 报告了每个训练集大小的平均模型性能，如我们所料，随着训练集的增加，测试精度稳步提高。我们还看到平均模型性能从 5，000 个示例下降到 10，000 个示例，这很可能突出了数据样本中的差异已经超过了所选模型配置的容量(层数和节点数)。
 
-```
+```py
 Train Size=100, Test Accuracy 72.041
 Train Size=1000, Test Accuracy 83.719
 Train Size=5000, Test Accuracy 84.062
@@ -712,7 +712,7 @@ Train Size=10000, Test Accuracy 84.025
 
 可以更新 *create_dataset()* 函数来指定测试集大小，并使用默认的 1000 个示例作为训练集大小。重要的是，每次测试集的大小发生变化时，训练集都会使用相同的 1000 个示例。
 
-```
+```py
 # create dataset
 def create_dataset(n_test, n_train=1000, noise=0.1):
 	# generate samples
@@ -727,7 +727,7 @@ def create_dataset(n_test, n_train=1000, noise=0.1):
 
 我们可以使用同样的 *fit_model()* 函数来拟合模型。因为我们使用相同的训练数据集和不同的测试数据集，我们可以创建和拟合模型一次，并为每个不同大小的测试集重用它们。在这种情况下，我们将在同一训练数据集上拟合 10 个模型来模拟 10 次重复。
 
-```
+```py
 # create fixed training dataset
 trainX, trainy, _, _ = create_dataset(10)
 # fit one model for each repeat
@@ -738,7 +738,7 @@ print('Fit %d models' % n_repeats)
 
 一旦适合，我们就可以使用给定大小的测试数据集来评估每个模型。下面的 *evaluate_test_set_size()* 函数实现了这一行为，返回拟合模型列表和给定测试集大小的测试集准确度分数列表。
 
-```
+```py
 # evaluate a test set of a given size on the fit models
 def evaluate_test_set_size(models, n_test):
 	# create dataset
@@ -753,7 +753,7 @@ def evaluate_test_set_size(models, n_test):
 
 我们将用 100、1，000、5，000 和 10，000 个例子来评估四个不同大小的测试集。然后，我们可以报告每个大小的测试集的平均分数，并创建相同的直线、方框和触须图。
 
-```
+```py
 # define test set sizes to evaluate
 sizes = [100, 1000, 5000, 10000]
 score_sets, means = list(), list()
@@ -775,7 +775,7 @@ pyplot.show()
 
 将这些元素结合在一起，下面列出了完整的示例。
 
-```
+```py
 # study of test set size for an mlp on the circles problem
 from sklearn.datasets import make_circles
 from keras.layers import Dense
@@ -847,7 +847,7 @@ pyplot.show()
 
 如果我们将前一部分的 83.7%的结果作为对 100，000 个例子的评估，那么我们可以看到较小规模的测试集在这个评估的上下变化。
 
-```
+```py
 Fit 10 models
 Test Size=100, Test Accuracy 86.100
 Test Size=1000, Test Accuracy 82.410

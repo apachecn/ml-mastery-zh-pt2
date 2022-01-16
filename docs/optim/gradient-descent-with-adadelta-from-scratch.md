@@ -151,7 +151,7 @@ Adadelta 是 RMSProp 的进一步扩展，旨在提高算法的收敛性，并�
 
 下面的 objective()函数实现了这个功能
 
-```
+```py
 # objective function
 def objective(x, y):
 	return x**2.0 + y**2.0
@@ -161,7 +161,7 @@ def objective(x, y):
 
 下面列出了绘制目标函数的完整示例。
 
-```
+```py
 # 3d plot of the test function
 from numpy import arange
 from numpy import meshgrid
@@ -200,7 +200,7 @@ pyplot.show()
 
 以下示例创建了目标函数的等高线图。
 
-```
+```py
 # contour plot of the test function
 from numpy import asarray
 from numpy import arange
@@ -247,7 +247,7 @@ pyplot.show()
 
 x^2 的导数在每个维度上都是 x * 2。导数()函数实现如下。
 
-```
+```py
 # derivative of objective function
 def derivative(x, y):
 	return asarray([x * 2.0, y * 2.0])
@@ -259,7 +259,7 @@ def derivative(x, y):
 
 这假设我们有一个定义搜索范围的数组，每个维度有一行，第一列定义维度的最小值，第二列定义维度的最大值。
 
-```
+```py
 ...
 # generate an initial point
 solution = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
@@ -267,7 +267,7 @@ solution = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
 
 接下来，我们需要将每个维度的平方偏导数和平方变化的衰减平均值初始化为 0.0。
 
-```
+```py
 ...
 # list of the average square gradients for each variable
 sq_grad_avg = [0.0 for _ in range(bounds.shape[0])]
@@ -277,7 +277,7 @@ sq_para_avg = [0.0 for _ in range(bounds.shape[0])]
 
 然后，我们可以枚举由“ *n_iter* ”超参数定义的搜索优化算法的固定迭代次数。
 
-```
+```py
 ...
 # run the gradient descent
 for it in range(n_iter):
@@ -286,7 +286,7 @@ for it in range(n_iter):
 
 第一步是使用*导数()*函数计算当前解的梯度。
 
-```
+```py
 ...
 # calculate gradient
 gradient = derivative(solution[0], solution[1])
@@ -294,7 +294,7 @@ gradient = derivative(solution[0], solution[1])
 
 然后我们需要计算偏导数的平方，并用“*ρ*”超参数更新平方偏导数的衰减移动平均值。
 
-```
+```py
 ...
 # update the average of the squared partial derivatives
 for i in range(gradient.shape[0]):
@@ -306,7 +306,7 @@ for i in range(gradient.shape[0]):
 
 然后，我们可以使用平方偏导数和梯度的衰减移动平均值来计算下一个点的步长。我们将一次做一个变量。
 
-```
+```py
 ...
 # build solution
 new_solution = list()
@@ -316,7 +316,7 @@ for i in range(solution.shape[0]):
 
 首先，我们将使用平方变化和平方偏导数的衰减移动平均以及“ep”超参数来计算这个变量在这次迭代中的自定义步长。
 
-```
+```py
 ...
 # calculate the step size for this variable
 alpha = (ep + sqrt(sq_para_avg[i])) / (ep + sqrt(sq_grad_avg[i]))
@@ -324,7 +324,7 @@ alpha = (ep + sqrt(sq_para_avg[i])) / (ep + sqrt(sq_grad_avg[i]))
 
 接下来，我们可以使用自定义步长和偏导数来计算变量的变化。
 
-```
+```py
 ...
 # calculate the change
 change = alpha * gradient[i]
@@ -332,7 +332,7 @@ change = alpha * gradient[i]
 
 然后，我们可以使用变化来更新平方变化的衰减移动平均，使用“*ρ*”超参数。
 
-```
+```py
 ...
 # update the moving average of squared parameter changes
 sq_para_avg[i] = (sq_para_avg[i] * rho) + (change**2.0 * (1.0-rho))
@@ -340,7 +340,7 @@ sq_para_avg[i] = (sq_para_avg[i] * rho) + (change**2.0 * (1.0-rho))
 
 最后，我们可以在继续下一个变量之前更改变量并存储结果。
 
-```
+```py
 ...
 # calculate the new position in this variable
 value = solution[i] - change
@@ -350,7 +350,7 @@ new_solution.append(value)
 
 然后可以使用 objective()函数评估这个新的解决方案，并报告搜索的性能。
 
-```
+```py
 ...
 # evaluate candidate point
 solution = asarray(new_solution)
@@ -367,7 +367,7 @@ print('>%d f(%s) = %.5f' % (it, solution, solution_eval))
 
 下面列出了完整的功能。
 
-```
+```py
 # gradient descent algorithm with adadelta
 def adadelta(objective, derivative, bounds, n_iter, rho, ep=1e-3):
 	# generate an initial point
@@ -413,7 +413,7 @@ def adadelta(objective, derivative, bounds, n_iter, rho, ep=1e-3):
 
 在这种情况下，我们将使用该算法的 120 次迭代和 0.99 的 rho 超参数值，该值是在经过一点反复试验后选择的。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -431,7 +431,7 @@ print('f(%s) = %f' % (best, score))
 
 将所有这些联系在一起，下面列出了使用 Adadelta 进行梯度下降优化的完整示例。
 
-```
+```py
 # gradient descent optimization with adadelta for a two-dimensional test function
 from math import sqrt
 from numpy import asarray
@@ -504,7 +504,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以看到，在大约 105 次搜索迭代后，找到了接近最优的解，输入值接近 0.0 和 0.0，评估为 0.0。
 
-```
+```py
 ...
 >100 f([-1.45142626e-07 2.71163181e-03]) = 0.00001
 >101 f([-1.24898699e-07 2.56875692e-03]) = 0.00001
@@ -540,7 +540,7 @@ f([-8.03777865e-09 9.60673346e-04]) = 0.000001
 
 下面列出了带有这些更改的功能的更新版本。
 
-```
+```py
 # gradient descent algorithm with adadelta
 def adadelta(objective, derivative, bounds, n_iter, rho, ep=1e-3):
 	# track all solutions
@@ -586,7 +586,7 @@ def adadelta(objective, derivative, bounds, n_iter, rho, ep=1e-3):
 
 然后，我们可以像以前一样执行搜索，这次检索解决方案列表，而不是最佳最终解决方案。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -602,7 +602,7 @@ solutions = adadelta(objective, derivative, bounds, n_iter, rho)
 
 然后，我们可以像以前一样创建目标函数的等高线图。
 
-```
+```py
 ...
 # sample input range uniformly at 0.1 increments
 xaxis = arange(bounds[0,0], bounds[0,1], 0.1)
@@ -617,7 +617,7 @@ pyplot.contourf(x, y, results, levels=50, cmap='jet')
 
 最后，我们可以将搜索过程中找到的每个解决方案绘制成由一条线连接的白点。
 
-```
+```py
 ...
 # plot the sample as black circles
 solutions = asarray(solutions)
@@ -626,7 +626,7 @@ pyplot.plot(solutions[:, 0], solutions[:, 1], '.-', color='w')
 
 将所有这些结合起来，下面列出了对测试问题执行 Adadelta 优化并将结果绘制在等高线图上的完整示例。
 
-```
+```py
 # example of plotting the adadelta search on a contour plot of the test function
 from math import sqrt
 from numpy import asarray

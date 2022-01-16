@@ -163,7 +163,7 @@ Adam 可以理解为更新与过去梯度的比例 L2 范数(平方)成反比的
 
 下面的*目标()*函数实现了这一点。
 
-```
+```py
 # objective function
 def objective(x, y):
 	return x**2.0 + y**2.0
@@ -173,7 +173,7 @@ def objective(x, y):
 
 下面列出了绘制目标函数的完整示例。
 
-```
+```py
 # 3d plot of the test function
 from numpy import arange
 from numpy import meshgrid
@@ -212,7 +212,7 @@ pyplot.show()
 
 以下示例创建了目标函数的等高线图。
 
-```
+```py
 # contour plot of the test function
 from numpy import asarray
 from numpy import arange
@@ -261,7 +261,7 @@ x^2 的导数在每个维度上都是 x * 2。
 
 导数()函数实现如下。
 
-```
+```py
 # derivative of objective function
 def derivative(x, y):
 	return asarray([x * 2.0, y * 2.0])
@@ -273,7 +273,7 @@ def derivative(x, y):
 
 这假设我们有一个定义搜索范围的数组，每个维度有一行，第一列定义维度的最小值，第二列定义维度的最大值。
 
-```
+```py
 ...
 # generate an initial point
 x = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
@@ -281,7 +281,7 @@ x = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
 
 接下来，我们需要初始化矩向量和指数加权无穷范数。
 
-```
+```py
 ...
 # initialize moment vector and weighted infinity norm
 m = [0.0 for _ in range(bounds.shape[0])]
@@ -290,7 +290,7 @@ u = [0.0 for _ in range(bounds.shape[0])]
 
 然后，我们运行由“ *n_iter* ”超参数定义的算法的固定迭代次数。
 
-```
+```py
 ...
 # run iterations of gradient descent
 for t in range(n_iter):
@@ -299,7 +299,7 @@ for t in range(n_iter):
 
 第一步是计算当前参数集的导数。
 
-```
+```py
 ...
 # calculate gradient g(t)
 g = derivative(x[0], x[1])
@@ -309,7 +309,7 @@ g = derivative(x[0], x[1])
 
 实际上，为了提高效率，我建议使用 NumPy 向量运算。
 
-```
+```py
 ...
 # build a solution one variable at a time
 for i in range(x.shape[0]):
@@ -318,7 +318,7 @@ for i in range(x.shape[0]):
 
 首先，我们需要计算力矩矢量。
 
-```
+```py
 ...
 # m(t) = beta1 * m(t-1) + (1 - beta1) * g(t)
 m[i] = beta1 * m[i] + (1.0 - beta1) * g[i]
@@ -326,7 +326,7 @@ m[i] = beta1 * m[i] + (1.0 - beta1) * g[i]
 
 接下来，我们需要计算指数加权无穷范数。
 
-```
+```py
 ...
 # u(t) = max(beta2 * u(t-1), abs(g(t)))
 u[i] = max(beta2 * u[i], abs(g[i]))
@@ -334,7 +334,7 @@ u[i] = max(beta2 * u[i], abs(g[i]))
 
 然后是更新中使用的步长。
 
-```
+```py
 ...
 # step_size(t) = alpha / (1 - beta1(t))
 step_size = alpha / (1.0 - beta1**(t+1))
@@ -342,7 +342,7 @@ step_size = alpha / (1.0 - beta1**(t+1))
 
 以及变量的变化。
 
-```
+```py
 ...
 # delta(t) = m(t) / u(t)
 delta = m[i] / u[i]
@@ -350,7 +350,7 @@ delta = m[i] / u[i]
 
 最后，我们可以计算变量的新值。
 
-```
+```py
 ...
 # x(t) = x(t-1) - step_size(t) * delta(t)
 x[i] = x[i] - step_size * delta
@@ -360,7 +360,7 @@ x[i] = x[i] - step_size * delta
 
 迭代结束时，我们可以评估新的参数值，并报告搜索的性能。
 
-```
+```py
 ...
 # evaluate candidate point
 score = objective(x[0], x[1])
@@ -370,7 +370,7 @@ print('>%d f(%s) = %.5f' % (t, x, score))
 
 我们可以将所有这些联系到一个名为 *adamax()* 的函数中，该函数采用目标函数和导数函数以及算法超参数的名称，并返回在搜索及其评估结束时找到的最佳解。
 
-```
+```py
 # gradient descent algorithm with adamax
 def adamax(objective, derivative, bounds, n_iter, alpha, beta1, beta2):
 	# generate an initial point
@@ -405,7 +405,7 @@ def adamax(objective, derivative, bounds, n_iter, alpha, beta1, beta2):
 
 在这种情况下，我们将运行该算法 60 次迭代，初始学习率为 0.02，beta 为 0.8，beta2 为 0.99，这是经过一点点尝试和错误后发现的。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -425,7 +425,7 @@ best, score = adamax(objective, derivative, bounds, n_iter, alpha, beta1, beta2)
 
 运行结束时，我们将报告找到的最佳解决方案。
 
-```
+```py
 ...
 # summarize the result
 print('Done!')
@@ -434,7 +434,7 @@ print('f(%s) = %f' % (best, score))
 
 将所有这些联系在一起，下面列出了应用于我们测试问题的完整的 AdaMax 梯度下降示例。
 
-```
+```py
 # gradient descent optimization with adamax for a two-dimensional test function
 from numpy import asarray
 from numpy.random import rand
@@ -502,7 +502,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以看到，在大约 35 次搜索迭代后，找到了一个接近最优的解，输入值接近 0.0 和 0.0，评估为 0.0。
 
-```
+```py
 ...
 >33 f([-0.00122185 0.00427944]) = 0.00002
 >34 f([-0.00045147 0.00289913]) = 0.00001
@@ -535,7 +535,7 @@ f([-0.00033193 -0.00064834]) = 0.000001
 
 下面列出了带有这些更改的功能的更新版本。
 
-```
+```py
 # gradient descent algorithm with adamax
 def adamax(objective, derivative, bounds, n_iter, alpha, beta1, beta2):
 	solutions = list()
@@ -570,7 +570,7 @@ def adamax(objective, derivative, bounds, n_iter, alpha, beta1, beta2):
 
 然后，我们可以像以前一样执行搜索，这次检索解决方案列表，而不是最佳最终解决方案。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -590,7 +590,7 @@ solutions = adamax(objective, derivative, bounds, n_iter, alpha, beta1, beta2)
 
 然后，我们可以像以前一样创建目标函数的等高线图。
 
-```
+```py
 ...
 # sample input range uniformly at 0.1 increments
 xaxis = arange(bounds[0,0], bounds[0,1], 0.1)
@@ -605,7 +605,7 @@ pyplot.contourf(x, y, results, levels=50, cmap='jet')
 
 最后，我们可以将搜索过程中找到的每个解决方案绘制成由一条线连接的白点。
 
-```
+```py
 ...
 # plot the sample as black circles
 solutions = asarray(solutions)
@@ -614,7 +614,7 @@ pyplot.plot(solutions[:, 0], solutions[:, 1], '.-', color='w')
 
 将所有这些结合起来，下面列出了对测试问题执行 AdaMax 优化并将结果绘制在等高线图上的完整示例。
 
-```
+```py
 # example of plotting the adamax search on a contour plot of the test function
 from numpy import asarray
 from numpy import arange

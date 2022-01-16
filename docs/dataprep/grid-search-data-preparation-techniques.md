@@ -80,7 +80,7 @@
 
 我们可以看到，这是一个带有数值输入变量的多类分类预测建模问题，每个变量都有不同的尺度。
 
-```
+```py
 14.23,1.71,2.43,15.6,127,2.8,3.06,.28,2.29,5.64,1.04,3.92,1065,1
 13.2,1.78,2.14,11.2,100,2.65,2.76,.26,1.28,4.38,1.05,3.4,1050,1
 13.16,2.36,2.67,18.6,101,2.8,3.24,.3,2.81,5.68,1.03,3.17,1185,1
@@ -91,7 +91,7 @@
 
 下面的示例加载数据集并将其拆分为输入和输出列，然后汇总数据数组。
 
-```
+```py
 # example of loading and summarizing the wine dataset
 from pandas import read_csv
 # define the location of the dataset
@@ -108,7 +108,7 @@ print(X.shape, y.shape)
 
 运行该示例，我们可以看到数据集被正确加载，并且有 179 行数据，包含 13 个输入变量和一个目标变量。
 
-```
+```py
 (178, 13) (178,)
 ```
 
@@ -122,7 +122,7 @@ print(X.shape, y.shape)
 
 首先，我们可以定义一个函数来加载数据集，并执行一些最小的数据准备，以确保输入是数字的，目标是标签编码的。
 
-```
+```py
 # prepare the dataset
 def load_dataset():
 	# load the dataset
@@ -138,7 +138,7 @@ def load_dataset():
 
 我们将使用重复分层 [k 倍交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)的金标准对模型进行评估，重复 10 次，重复 3 次。
 
-```
+```py
 # evaluate a model
 def evaluate_model(X, y, model):
 	# define the cross-validation procedure
@@ -150,7 +150,7 @@ def evaluate_model(X, y, model):
 
 然后，我们可以调用函数来加载数据集，定义我们的模型，然后对其进行评估，报告平均值和标准偏差精度。
 
-```
+```py
 ...
 # get the dataset
 X, y = load_dataset()
@@ -164,7 +164,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 将这些联系在一起，下面列出了在原酒分类数据集上评估逻辑回归模型的完整示例。
 
-```
+```py
 # baseline model performance on the wine dataset
 from numpy import mean
 from numpy import std
@@ -210,7 +210,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到，适合原始输入数据的逻辑回归模型实现了大约 95.3%的平均分类精度，提供了性能基线。
 
-```
+```py
 Accuracy: 0.953 (0.048)
 ```
 
@@ -224,7 +224,7 @@ Accuracy: 0.953 (0.048)
 
 我们将定义一个函数，将这些管道创建为元组列表，其中每个元组定义管道和管道本身的简称。我们将评估一系列不同的数据缩放方法(例如[最小最大缩放器和标准缩放器](https://machinelearningmastery.com/standardscaler-and-minmaxscaler-transforms-in-python/))、分布变换([量化变换器](https://machinelearningmastery.com/quantile-transforms-for-machine-learning/)和[kbins 离散化器](https://machinelearningmastery.com/discretization-transforms-for-machine-learning/))以及降维变换( [PCA](https://machinelearningmastery.com/principal-components-analysis-for-dimensionality-reduction-in-python/) 和 [SVD](https://machinelearningmastery.com/singular-value-decomposition-for-dimensionality-reduction-in-python/) )。
 
-```
+```py
 # get modeling pipelines to evaluate
 def get_pipelines(model):
 	pipelines = list()
@@ -251,7 +251,7 @@ def get_pipelines(model):
 
 然后，我们可以调用这个函数来获取转换列表，然后枚举每个转换，对其进行评估并报告一路上的性能。
 
-```
+```py
 ...
 # get the modeling pipelines
 pipelines = get_pipelines(model)
@@ -269,7 +269,7 @@ for name, pipeline in pipelines:
 
 在运行结束时，我们可以为每组分数创建一个方框和触须图，并直观地比较结果的分布。
 
-```
+```py
 ...
 # plot the result
 pyplot.boxplot(results, labels=names, showmeans=True)
@@ -278,7 +278,7 @@ pyplot.show()
 
 将这些联系在一起，下面列出了葡萄酒分类数据集中网格搜索数据准备技术的完整示例。
 
-```
+```py
 # compare data preparation methods for the wine classification dataset
 from numpy import mean
 from numpy import std
@@ -371,7 +371,7 @@ pyplot.show()
 **能不能取得更好的成绩？**
 在下面的评论里告诉我。
 
-```
+```py
 >norm: 0.976 (0.031)
 >std: 0.987 (0.023)
 >quan: 0.987 (0.023)
@@ -396,7 +396,7 @@ pyplot.show()
 
 下面提供了更新后的 *get_pipelines()* 函数的变换序列。
 
-```
+```py
 # get modeling pipelines to evaluate
 def get_pipelines(model):
 	pipelines = list()
@@ -411,7 +411,7 @@ def get_pipelines(model):
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # compare sequences of data preparation methods for the wine classification dataset
 from numpy import mean
 from numpy import std
@@ -489,7 +489,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到，具有特征选择的标准化提供了从 98.7%到 98.9%的额外精度提升，尽管数据缩放和功率变换没有提供任何超过分位数变换的额外好处。
 
-```
+```py
 >std: 0.989 (0.022)
 >power: 0.987 (0.023)
 ```

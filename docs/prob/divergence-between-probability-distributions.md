@@ -109,7 +109,7 @@ KL 散度得分的直觉是，当一个事件来自 P 的概率较大，而同�
 
 考虑一个随机变量，它有三个不同颜色的事件。对于这个变量，我们可能有两种不同的概率分布；例如:
 
-```
+```py
 ...
 # define distributions
 events = ['red', 'green', 'blue']
@@ -121,7 +121,7 @@ q = [0.80, 0.15, 0.05]
 
 下面列出了完整的示例。
 
-```
+```py
 # plot of distributions
 from matplotlib import pyplot
 # define distributions
@@ -151,7 +151,7 @@ pyplot.show()
 
 我们将使用 log base-2 来确保结果以位为单位。
 
-```
+```py
 # calculate the kl divergence
 def kl_divergence(p, q):
 	return sum(p[i] * log2(p[i]/q[i]) for i in range(len(p)))
@@ -159,7 +159,7 @@ def kl_divergence(p, q):
 
 然后我们可以用这个函数来计算 P 和 Q 的 KL 散度，以及反过来，P 和 Q 的 KL 散度
 
-```
+```py
 # calculate (P || Q)
 kl_pq = kl_divergence(p, q)
 print('KL(P || Q): %.3f bits' % kl_pq)
@@ -170,7 +170,7 @@ print('KL(Q || P): %.3f bits' % kl_qp)
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # example of calculating the kl divergence between two mass functions
 from math import log2
 
@@ -193,14 +193,14 @@ print('KL(Q || P): %.3f bits' % kl_qp)
 
 如果我们考虑当 Q 很小时 P 具有大概率，这是直观的，这使得 P 比 Q 从 P 得到的发散更小，因为当 P 具有大概率时 Q 具有更多的小概率。在第二种情况下，分歧更大。
 
-```
+```py
 KL(P || Q): 1.927 bits
 KL(Q || P): 2.022 bits
 ```
 
 如果我们将 *log2()* 改为自然对数 *log()* 函数，结果用 nats 表示，如下所示:
 
-```
+```py
 # KL(P || Q): 1.336 nats
 # KL(Q || P): 1.401 nats
 ```
@@ -213,7 +213,7 @@ SciPy 库提供了 [kl_div()函数](https://docs.scipy.org/doc/scipy/reference/g
 
 下面列出了使用 SciPy 为上面使用的相同概率分布计算 KL(P || Q)和 KL(Q || P)的完整示例:
 
-```
+```py
 # example of calculating the kl divergence (relative entropy) with scipy
 from scipy.special import rel_entr
 # define distributions
@@ -229,7 +229,7 @@ print('KL(Q || P): %.3f nats' % sum(kl_qp))
 
 运行该示例，我们可以看到计算出的偏差与我们手动计算的 KL(P || Q)和 KL(Q || P)分别约为 1.3 nats 和 1.4 nats 相匹配。
 
-```
+```py
 KL(P || Q): 1.336 nats
 KL(Q || P): 1.401 nats
 ```
@@ -260,7 +260,7 @@ JS 散度可以计算如下:
 
 首先，我们可以定义一个函数来计算 JS 散度，该函数使用上一节准备的*KL _ diffusion()*函数。
 
-```
+```py
 # calculate the kl divergence
 def kl_divergence(p, q):
 	return sum(p[i] * log2(p[i]/q[i]) for i in range(len(p)))
@@ -275,7 +275,7 @@ def js_divergence(p, q):
 
 首先，我们将计算分布的 JS 散度分数，然后计算分数的平方根，给出分布之间的 JS 距离。例如:
 
-```
+```py
 ...
 # calculate JS(P || Q)
 js_pq = js_divergence(p, q)
@@ -285,7 +285,7 @@ print('JS(P || Q) distance: %.3f' % sqrt(js_pq))
 
 然后可以对相反的情况重复这一过程，以表明发散是对称的，与 KL 发散不同。
 
-```
+```py
 ...
 # calculate JS(Q || P)
 js_qp = js_divergence(q, p)
@@ -295,7 +295,7 @@ print('JS(Q || P) distance: %.3f' % sqrt(js_qp))
 
 将这些联系在一起，下面列出了计算 JS 散度和 JS 距离的完整示例。
 
-```
+```py
 # example of calculating the js divergence between two mass functions
 from math import log2
 from math import sqrt
@@ -327,7 +327,7 @@ print('JS(Q || P) distance: %.3f' % sqrt(js_qp))
 
 我们可以看到计算是对称的，给 JS(P || Q)和 JS(Q || P)相同的分数和距离度量。
 
-```
+```py
 JS(P || Q) divergence: 0.420 bits
 JS(P || Q) distance: 0.648
 JS(Q || P) divergence: 0.420 bits
@@ -340,7 +340,7 @@ SciPy 库通过 [jensenshannon()函数](https://scipy.github.io/devdocs/generate
 
 下面列出了完整的示例。
 
-```
+```py
 # calculate the jensen-shannon distance metric
 from scipy.spatial.distance import jensenshannon
 from numpy import asarray
@@ -357,7 +357,7 @@ print('JS(Q || P) Distance: %.3f' % js_qp)
 
 运行该示例，我们可以确认距离分数与我们手动计算的 0.648 相匹配，并且距离计算如预期的那样对称。
 
-```
+```py
 JS(P || Q) Distance: 0.648
 JS(Q || P) Distance: 0.648
 ```

@@ -129,7 +129,7 @@
 
 您可以使用 pip Python 安装程序安装 scikit-learn 库，如下所示:
 
-```
+```py
 sudo pip install scikit-learn
 ```
 
@@ -141,7 +141,7 @@ sudo pip install scikit-learn
 
 运行以下脚本打印库版本号。
 
-```
+```py
 # check scikit-learn version
 import sklearn
 print(sklearn.__version__)
@@ -149,7 +149,7 @@ print(sklearn.__version__)
 
 运行该示例时，您应该会看到以下版本号或更高版本号。
 
-```
+```py
 0.23.0
 ```
 
@@ -163,7 +163,7 @@ print(sklearn.__version__)
 
 下面列出了创建和汇总综合分类数据集的示例。
 
-```
+```py
 # synthetic classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -174,7 +174,7 @@ print(X.shape, y.shape)
 
 运行该示例会创建数据集，并报告符合我们预期的行数和列数。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -184,7 +184,7 @@ print(X.shape, y.shape)
 
 以下示例将原始数据集上的模型作为比较点进行评估。
 
-```
+```py
 # evaluate logistic regression model on raw data
 from numpy import mean
 from numpy import std
@@ -209,7 +209,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 注意:我们并不是试图“*求解*”这个数据集，只是提供可以作为起点的工作示例。
 
-```
+```py
 Accuracy: 0.824 (0.034)
 ```
 
@@ -219,7 +219,7 @@ Accuracy: 0.824 (0.034)
 
 我们将使用[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)将数据转换和模型组合成一个原子单元，可以使用交叉验证程序进行评估；例如:
 
-```
+```py
 ...
 # define the pipeline
 steps = [('pca', PCA(n_components=10)), ('m', LogisticRegression())]
@@ -243,7 +243,7 @@ scikit-learn 库提供了主成分分析的[主成分分析类](https://scikit-l
 
 下面列出了使用主成分分析降维评估模型的完整示例。
 
-```
+```py
 # evaluate pca with logistic regression algorithm for classification
 from numpy import mean
 from numpy import std
@@ -271,7 +271,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们看不到使用主成分分析变换对模型性能有任何提升。
 
-```
+```py
 Accuracy: 0.824 (0.034)
 ```
 
@@ -287,7 +287,7 @@ scikit-learn 库提供了奇异值分解的[截断的 VD 类](https://scikit-lea
 
 下面列出了使用奇异值分解降维评估模型的完整示例。
 
-```
+```py
 # evaluate svd with logistic regression algorithm for classification
 from numpy import mean
 from numpy import std
@@ -315,7 +315,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们看不到使用奇异值分解变换对模型性能有任何提升。
 
-```
+```py
 Accuracy: 0.824 (0.034)
 ```
 
@@ -333,7 +333,7 @@ scikit-learn 库提供了[线性判别分析类](https://scikit-learn.org/stable
 
 下面列出了使用 LDA 降维评估模型的完整示例。
 
-```
+```py
 # evaluate lda with logistic regression algorithm for classification
 from numpy import mean
 from numpy import std
@@ -361,7 +361,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，与原始数据的基线拟合相比，我们可以看到性能略有提升。
 
-```
+```py
 Accuracy: 0.825 (0.034)
 ```
 
@@ -373,7 +373,7 @@ scikit-learn 库提供了 Isomap 嵌入的 [Isomap 类](https://scikit-learn.org
 
 下面列出了使用奇异值分解降维评估模型的完整示例。
 
-```
+```py
 # evaluate isomap with logistic regression algorithm for classification
 from numpy import mean
 from numpy import std
@@ -401,7 +401,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，与原始数据的基线拟合相比，我们可以看到 Isomap 数据转换的性能有所提升。
 
-```
+```py
 Accuracy: 0.888 (0.029)
 ```
 
@@ -413,7 +413,7 @@ scikit-learn 库提供了局部线性嵌入的[局部线性嵌入类](https://sc
 
 下面列出了使用 LLE 降维评估模型的完整示例。
 
-```
+```py
 # evaluate lle and logistic regression for classification
 from numpy import mean
 from numpy import std
@@ -441,7 +441,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，与原始数据的基线拟合相比，我们可以看到 LLE 数据转换的性能提升。
 
-```
+```py
 Accuracy: 0.886 (0.028)
 ```
 
@@ -453,7 +453,7 @@ scikit-learn 库提供了修改的局部线性嵌入的[局部线性嵌入类](h
 
 下面列出了使用修正 LLE 降维评估模型的完整示例。
 
-```
+```py
 # evaluate modified lle and logistic regression for classification
 from numpy import mean
 from numpy import std
@@ -481,7 +481,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，与原始数据的基线拟合相比，我们可以看到修改后的 LLE 数据转换的性能有所提升。
 
-```
+```py
 Accuracy: 0.846 (0.036)
 ```
 

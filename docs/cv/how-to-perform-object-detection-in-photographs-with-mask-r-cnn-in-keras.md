@@ -38,7 +38,7 @@
 
 您可以按如下方式安装这些特定版本的库:
 
-```
+```py
 sudo pip install --no-deps tensorflow==1.15.3
 sudo pip install --no-deps keras==2.2.4
 ```
@@ -116,13 +116,13 @@ R-CNN 模型的每个版本都有源代码，在独立的 GitHub 存储库中提
 
 这就像从命令行运行以下命令一样简单:
 
-```
+```py
 git clone https://github.com/matterport/Mask_RCNN.git
 ```
 
 这将创建一个名为 *Mask_RCNN* 的新本地目录，如下所示:
 
-```
+```py
 Mask_RCNN
 ├── assets
 ├── build
@@ -148,26 +148,26 @@ Mask_RCNN
 
 在命令行中，键入以下内容:
 
-```
+```py
 cd Mask_RCNN
 python setup.py install
 ```
 
 在 Linux 或 MacOS 上，您可能需要安装具有 sudo 权限的软件；例如，您可能会看到如下错误:
 
-```
+```py
 error: can't create or remove files in install directory
 ```
 
 在这种情况下，使用 sudo 安装软件:
 
-```
+```py
 sudo python setup.py install
 ```
 
 然后，该库将直接安装，您将看到许多成功安装的消息，以下列内容结尾:
 
-```
+```py
 ...
 Finished processing dependencies for mask-rcnn==2.1
 ```
@@ -180,13 +180,13 @@ Finished processing dependencies for mask-rcnn==2.1
 
 您可以通过 pip 命令查询库来确认库安装正确；例如:
 
-```
+```py
 pip show mask-rcnn
 ```
 
 您应该会看到通知您版本和安装位置的输出；例如:
 
-```
+```py
 Name: mask-rcnn
 Version: 2.1
 Summary: Mask R-CNN for object detection and instance segmentation
@@ -238,7 +238,7 @@ Required-by:
 
 您可以在 [config.py 文件](https://github.com/matterport/Mask_RCNN/blob/master/mrcnn/config.py)中看到配置对象的完整范围和可以覆盖的属性。
 
-```
+```py
 # define the test configuration
 class TestConfig(Config):
      NAME = "test"
@@ -251,21 +251,21 @@ class TestConfig(Config):
 
 我们将模型定义为类型“*推断*”，表示我们感兴趣的是做预测而不是训练。我们还必须指定一个可以写入任何日志消息的目录，在这种情况下，它将是当前的工作目录。
 
-```
+```py
 # define the model
 rcnn = MaskRCNN(mode='inference', model_dir='./', config=TestConfig())
 ```
 
 下一步是加载我们下载的权重。
 
-```
+```py
 # load coco model weights
 rcnn.load_weights('mask_rcnn_coco.h5', by_name=True)
 ```
 
 现在我们可以对我们的图像进行预测。首先，我们可以加载图像并将其转换为 NumPy 数组。
 
-```
+```py
 # load photograph
 img = load_img('elephant.jpg')
 img = img_to_array(img)
@@ -273,7 +273,7 @@ img = img_to_array(img)
 
 然后我们可以用这个模型做一个预测。我们将调用*检测()*函数，并将单个图像传递给它，而不是像在正常的 Keras 模型上那样调用 *predict()* 。
 
-```
+```py
 # make prediction
 results = rcnn.detect([img], verbose=0)
 ```
@@ -291,19 +291,19 @@ results = rcnn.detect([img], verbose=0)
 
 我们可以通过首先获取第一幅图像的字典(例如*结果【0】*)，然后检索边界框列表(例如 *['rois']* )来绘制图像中检测到的每个框。
 
-```
+```py
 boxes = results[0]['rois']
 ```
 
 每个边界框都是根据图像中边界框的左下角和右上角坐标来定义的
 
-```
+```py
 y1, x1, y2, x2 = boxes[0]
 ```
 
 我们可以使用这些坐标从 matplotlib API 创建一个[矩形()，并在图像顶部绘制每个矩形。](https://matplotlib.org/api/_as_gen/matplotlib.patches.Rectangle.html)
 
-```
+```py
 # get coordinates
 y1, x1, y2, x2 = box
 # calculate width and height of the box
@@ -316,7 +316,7 @@ ax.add_patch(rect)
 
 为了保持整洁，我们可以创建一个函数来做到这一点，它将获取照片的文件名和要绘制的边界框列表，并将显示带有框的照片。
 
-```
+```py
 # draw an image with detected objects
 def draw_image_with_boxes(filename, boxes_list):
      # load the image
@@ -343,7 +343,7 @@ def draw_image_with_boxes(filename, boxes_list):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of inference with a pre-trained coco model
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -411,7 +411,7 @@ draw_image_with_boxes('elephant.jpg', results[0]['rois'])
 
 参数之一是字典的“ *class_ids* ”键中可用的预测类标识符列表。该函数还需要 id 到类标签的映射。预训练的模型适合具有 80 个(81 个包括背景)类别标签的数据集，在下面列出的[面具 R-CNN 演示，笔记本教程](https://github.com/matterport/Mask_RCNN/blob/master/samples/demo.ipynb)中作为列表提供是有帮助的。
 
-```
+```py
 # define 81 classes that the coco model knowns about
 class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
                'bus', 'train', 'truck', 'boat', 'traffic light',
@@ -432,7 +432,7 @@ class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
 
 然后我们可以向*display _ instance()*函数提供大象照片的预测细节；例如:
 
-```
+```py
 # get dictionary for first prediction
 r = results[0]
 # show photo with bounding boxes, masks, class labels and scores
@@ -443,7 +443,7 @@ display_instances(img, r['rois'], r['masks'], r['class_ids'], class_names, r['sc
 
 下面列出了使用 *display_instances()* 功能进行此更改的完整示例。
 
-```
+```py
 # example of inference with a pre-trained coco model
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array

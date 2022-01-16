@@ -96,7 +96,7 @@ scikit-learn Python 机器学习库为机器学习提供了梯度增强集成的
 
 首先，通过运行以下脚本来确认您使用的是现代版本的库:
 
-```
+```py
 # check scikit-learn version
 import sklearn
 print(sklearn.__version__)
@@ -106,7 +106,7 @@ print(sklearn.__version__)
 
 您的版本应该相同或更高。如果没有，您必须升级 scikit-learn 库的版本。
 
-```
+```py
 0.22.1
 ```
 
@@ -128,7 +128,7 @@ print(sklearn.__version__)
 
 下面列出了完整的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -139,7 +139,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -147,7 +147,7 @@ print(X.shape, y.shape)
 
 我们将使用重复的分层 k 折叠交叉验证来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
 
-```
+```py
 # evaluate gradient boosting algorithm for classification
 from numpy import mean
 from numpy import std
@@ -173,7 +173,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到带有默认超参数的梯度增强集成在这个测试数据集上实现了大约 89.9%的分类精度。
 
-```
+```py
 Mean Accuracy: 0.899 (0.030)
 ```
 
@@ -183,7 +183,7 @@ Mean Accuracy: 0.899 (0.030)
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make predictions using gradient boosting for classification
 from sklearn.datasets import make_classification
 from sklearn.ensemble import GradientBoostingClassifier
@@ -202,7 +202,7 @@ print('Predicted Class: %d' % yhat[0])
 
 运行该示例使梯度增强集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Class: 1
 ```
 
@@ -216,7 +216,7 @@ Predicted Class: 1
 
 下面列出了完整的示例。
 
-```
+```py
 # test regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -227,7 +227,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -237,7 +237,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate gradient boosting ensemble for regression
 from numpy import mean
 from numpy import std
@@ -263,7 +263,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到带有默认超参数的梯度增强系综实现了大约 62 的 MAE。
 
-```
+```py
 MAE: -62.475 (3.254)
 ```
 
@@ -273,7 +273,7 @@ MAE: -62.475 (3.254)
 
 下面的例子在我们的回归数据集上演示了这一点。
 
-```
+```py
 # gradient boosting ensemble for making predictions for regression
 from sklearn.datasets import make_regression
 from sklearn.ensemble import GradientBoostingRegressor
@@ -292,7 +292,7 @@ print('Prediction: %d' % yhat[0])
 
 运行该示例使梯度增强集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Prediction: 37
 ```
 
@@ -320,7 +320,7 @@ Prediction: 37
 
 下面的示例探讨了值在 10 到 5，000 之间的树的数量的影响。
 
-```
+```py
 # explore gradient boosting number of trees effect on performance
 from numpy import mean
 from numpy import std
@@ -377,7 +377,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到该数据集上的性能有所提高，直到大约 500 棵树，之后性能似乎趋于平稳。与 AdaBoost 不同，在这种情况下，随着树的数量增加，梯度增强似乎不会过度。
 
-```
+```py
 >10 0.830 (0.037)
 >50 0.880 (0.033)
 >100 0.899 (0.030)
@@ -404,7 +404,7 @@ pyplot.show()
 
 下面的示例演示了样本大小对模型性能的影响。
 
-```
+```py
 # explore gradient boosting ensemble number of samples effect on performance
 from numpy import mean
 from numpy import std
@@ -462,7 +462,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到平均性能对于大约是训练数据集一半大小的样本来说可能是最好的，例如 0.4 或更高。
 
-```
+```py
 >0.1 0.872 (0.033)
 >0.2 0.897 (0.032)
 >0.3 0.904 (0.029)
@@ -493,7 +493,7 @@ pyplot.show()
 
 下面的示例探讨了 1 到 20 之间的测试数据集的特征数量对模型性能的影响。
 
-```
+```py
 # explore gradient boosting number of features on performance
 from numpy import mean
 from numpy import std
@@ -549,7 +549,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到平均性能增加到功能数量的一半左右，并且在此之后保持一定水平。令人惊讶的是，去掉一半的输入变量效果如此之小。
 
-```
+```py
 >1 0.864 (0.036)
 >2 0.885 (0.032)
 >3 0.891 (0.031)
@@ -590,7 +590,7 @@ pyplot.show()
 
 下面的示例探讨了学习率，并比较了 0.0001 和 1.0 之间的值的效果。
 
-```
+```py
 # explore gradient boosting ensemble learning rate effect on performance
 from numpy import mean
 from numpy import std
@@ -649,7 +649,7 @@ pyplot.show()
 
 这突出了树的数量(训练速度)和学习率之间的权衡，例如，我们可以通过使用更少的树和更大的学习率来更快地拟合模型。
 
-```
+```py
 >0.0001 0.761 (0.043)
 >0.0010 0.781 (0.034)
 >0.0100 0.836 (0.034)
@@ -677,7 +677,7 @@ pyplot.show()
 
 下面的示例探讨了 1 到 10 之间的树深度以及对模型性能的影响。
 
-```
+```py
 # explore gradient boosting tree depth effect on performance
 from numpy import mean
 from numpy import std
@@ -733,7 +733,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到性能随着树的深度而提高，可能在深度 3 到 6 左右达到峰值，之后更深、更专门化的树会导致性能下降。
 
-```
+```py
 >1 0.834 (0.031)
 >2 0.877 (0.029)
 >3 0.899 (0.030)
@@ -768,7 +768,7 @@ pyplot.show()
 
 下面列出了在我们的合成分类数据集上网格搜索梯度增强算法的关键超参数的完整示例。
 
-```
+```py
 # example of grid searching key hyperparameters for gradient boosting on a classification dataset
 from sklearn.datasets import make_classification
 from sklearn.model_selection import RepeatedStratifiedKFold
@@ -808,7 +808,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 尽管在这种情况下没有测试这些配置，以确保网格搜索在合理的时间内完成，但该模型在有更多树(如 1000 或 5000 棵树)的情况下可能会表现得更好。
 
-```
+```py
 Best: 0.946667 using {'learning_rate': 0.1, 'max_depth': 7, 'n_estimators': 500, 'subsample': 0.7}
 0.529667 (0.089012) with: {'learning_rate': 0.0001, 'max_depth': 3, 'n_estimators': 10, 'subsample': 0.5}
 0.525667 (0.077875) with: {'learning_rate': 0.0001, 'max_depth': 3, 'n_estimators': 10, 'subsample': 0.7}

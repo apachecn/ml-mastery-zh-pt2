@@ -110,7 +110,7 @@
 
 我们可以使用[make _ classification()sci kit-learn 函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建一个给定大小的数据集，少数类与多数类的示例比例约为 1:100(1%到 99%)。
 
-```
+```py
 ...
 # create the dataset
 X, y = make_classification(n_samples=1000, n_features=2, n_redundant=0,
@@ -119,7 +119,7 @@ X, y = make_classification(n_samples=1000, n_features=2, n_redundant=0,
 
 然后，我们可以创建数据集的散点图，并用分隔色为每个类的点着色，以了解示例的空间关系。
 
-```
+```py
 ...
 # scatter plot of examples by class label
 for label, _ in counter.items():
@@ -132,7 +132,7 @@ pyplot.legend()
 
 下面列出了完整的示例。
 
-```
+```py
 # vary the dataset size for a 1:100 imbalanced dataset
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -168,7 +168,7 @@ pyplot.show()
 
 首先，显示每个数据集大小的类分布。我们可以看到，在一个包含 100 个例子的小数据集中，我们只得到少数民族类中的一个例子，正如我们可能预期的那样。即使数据集中有 100，000 个例子，我们在少数民族类中也只能得到 1，000 个例子。
 
-```
+```py
 Size=100, Ratio=Counter({0: 99, 1: 1})
 Size=1000, Ratio=Counter({0: 990, 1: 10})
 Size=10000, Ratio=Counter({0: 9900, 1: 100})
@@ -219,7 +219,7 @@ Size=100000, Ratio=Counter({0: 99000, 1: 1000})
 
 下面列出了完整的示例。
 
-```
+```py
 # vary the label noise for a 1:100 imbalanced dataset
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -257,7 +257,7 @@ pyplot.show()
 
 我们可能会认为，少数类中这 30 个标签噪声为 7%的额外示例会对试图在特征空间中定义清晰类边界的模型造成相当大的损害。
 
-```
+```py
 Noise=0%, Ratio=Counter({0: 990, 1: 10})
 Noise=1%, Ratio=Counter({0: 983, 1: 17})
 Noise=5%, Ratio=Counter({0: 963, 1: 37})
@@ -312,7 +312,7 @@ Noise=7%, Ratio=Counter({0: 959, 1: 41})
 
 下面列出了完整的示例。
 
-```
+```py
 # vary the number of clusters for a 1:100 imbalanced dataset
 from collections import Counter
 from sklearn.datasets import make_classification

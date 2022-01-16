@@ -85,7 +85,7 @@ KNN 插补的配置通常涉及为每个预测选择距离度量(例如欧几里
 
 下面提供了数据集中带有标记缺失值的行的示例。
 
-```
+```py
 2,1,530101,38.50,66,28,3,3,?,2,5,4,4,?,?,?,3,5,45.00,8.40,?,?,2,2,11300,00000,00000,2
 1,1,534817,39.2,88,20,?,?,4,1,3,4,2,?,?,?,4,2,50,85,2,2,3,2,02208,00000,00000,2
 2,1,530334,38.30,40,24,1,1,3,1,3,3,1,?,?,?,1,1,33.00,6.70,?,?,1,2,00000,00000,00000,1
@@ -104,7 +104,7 @@ KNN 插补的配置通常涉及为每个预测选择距离度量(例如欧几里
 
 我们可以使用 read_csv() Pandas 函数加载数据集，并指定“na_values”来加载“？”的值作为缺失，用 NaN 值标记。
 
-```
+```py
 ...
 # load dataset
 url = 'https://raw.githubusercontent.com/jbrownlee/Datasets/master/horse-colic.csv'
@@ -113,7 +113,7 @@ dataframe = read_csv(url, header=None, na_values='?')
 
 加载后，我们可以查看加载的数据以确认“？”值被标记为 NaN。
 
-```
+```py
 ...
 # summarize the first few rows
 print(dataframe.head())
@@ -121,7 +121,7 @@ print(dataframe.head())
 
 然后，我们可以枚举每一列，并报告该列缺少值的行数。
 
-```
+```py
 ...
 # summarize the number of rows with missing values for each column
 for i in range(dataframe.shape[1]):
@@ -133,7 +133,7 @@ for i in range(dataframe.shape[1]):
 
 将这些联系在一起，下面列出了加载和汇总数据集的完整示例。
 
-```
+```py
 # summarize the horse colic dataset
 from pandas import read_csv
 # load dataset
@@ -153,7 +153,7 @@ for i in range(dataframe.shape[1]):
 
 我们可以看到，被标记为“？”的缺失值字符已被 NaN 值替换。
 
-```
+```py
     0   1        2     3      4     5    6   ...   21   22  23     24  25  26  27
 0  2.0   1   530101  38.5   66.0  28.0  3.0  ...  NaN  2.0   2  11300   0   0   2
 1  1.0   1   534817  39.2   88.0  20.0  NaN  ...  2.0  3.0   2   2208   0   0   2
@@ -168,7 +168,7 @@ for i in range(dataframe.shape[1]):
 
 我们可以看到，一些列(例如列索引 1 和 2)没有缺失值，而其他列(例如列索引 15 和 21)有许多甚至大部分缺失值。
 
-```
+```py
 > 0, Missing: 1 (0.3%)
 > 1, Missing: 0 (0.0%)
 > 2, Missing: 0 (0.0%)
@@ -217,7 +217,7 @@ scikit-learn 机器学习库提供了支持最近邻插补的 [KNNImputer 类](h
 
 最后，距离度量可以与实例(行)之间的距离成比例地加权，尽管默认情况下这被设置为统一的加权，通过“*权重*”参数来控制。
 
-```
+```py
 ...
 # define imputer
 imputer = KNNImputer(n_neighbors=5, weights='uniform', metric='nan_euclidean')
@@ -225,7 +225,7 @@ imputer = KNNImputer(n_neighbors=5, weights='uniform', metric='nan_euclidean')
 
 然后，在数据集上拟合估算值。
 
-```
+```py
 ...
 # fit on the dataset
 imputer.fit(X)
@@ -233,7 +233,7 @@ imputer.fit(X)
 
 然后，将拟合估算器应用于数据集，以创建数据集的副本，用估计值替换每列的所有缺失值。
 
-```
+```py
 ...
 # transform the dataset
 Xtrans = imputer.transform(X)
@@ -243,7 +243,7 @@ Xtrans = imputer.transform(X)
 
 下面列出了完整的示例。
 
-```
+```py
 # knn imputation transform for the horse colic dataset
 from numpy import isnan
 from pandas import read_csv
@@ -273,7 +273,7 @@ print('Missing: %d' % sum(isnan(Xtrans).flatten()))
 
 每个缺失的值都被替换为模型估计的值。
 
-```
+```py
 Missing: 1605
 Missing: 0
 ```
@@ -288,7 +288,7 @@ Missing: 0
 
 例如，下面的管道使用带有默认策略的 *KNNImputer* ，后跟随机森林模型。
 
-```
+```py
 ...
 # define modeling pipeline
 model = RandomForestClassifier()
@@ -300,7 +300,7 @@ pipeline = Pipeline(steps=[('i', imputer), ('m', model)])
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate knn imputation and random forest for the horse colic dataset
 from numpy import mean
 from numpy import std
@@ -334,7 +334,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 使用 10 倍交叉验证的三次重复对管道进行评估，并报告数据集上的平均分类精度约为 86.2%，这是一个合理的分数。
 
-```
+```py
 Mean Accuracy: 0.862 (0.059)
 ```
 
@@ -350,7 +350,7 @@ KNN 算法的关键超参数是*k*；它控制用于预测的最近邻居的数�
 
 下面的示例评估模型管道，并比较从 1 到 21 的 *k* 的奇数。
 
-```
+```py
 # compare knn imputation strategies for the horse colic dataset
 from numpy import mean
 from numpy import std
@@ -393,7 +393,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到，较大的 k 值会产生性能更好的模型，其中 *k=1* 会产生约 86.7%精度的最佳性能。
 
-```
+```py
 >1 0.867 (0.049)
 >3 0.859 (0.056)
 >5 0.864 (0.054)
@@ -420,7 +420,7 @@ pyplot.show()
 
 重要的是，新数据行必须使用 NaN 值标记任何缺失的值。
 
-```
+```py
 ...
 # define new data
 row = [2, 1, 530101, 38.50, 66, 28, 3, 3, nan, 2, 5, 4, 4, nan, nan, nan, 3, 5, 45.00, 8.40, nan, nan, 2, 11300, 00000, 00000, 2]
@@ -428,7 +428,7 @@ row = [2, 1, 530101, 38.50, 66, 28, 3, 3, nan, 2, 5, 4, 4, nan, nan, nan, 3, 5, 
 
 下面列出了完整的示例。
 
-```
+```py
 # knn imputation strategy and prediction for the hose colic dataset
 from numpy import nan
 from pandas import read_csv
@@ -458,7 +458,7 @@ print('Predicted Class: %d' % yhat[0])
 
 定义一个新的数据行，其缺失值用 NaNs 标记，并进行分类预测。
 
-```
+```py
 Predicted Class: 2
 ```
 

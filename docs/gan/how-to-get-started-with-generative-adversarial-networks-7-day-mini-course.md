@@ -171,7 +171,7 @@ GANs 是一种训练生成模型的聪明方法，它通过两个子模型将问
 
 同样遵循最佳实践，卷积层之后是斜率为 0.2 的 LeakyReLU 激活和批处理标准化层。
 
-```
+```py
 ...
 # define the discriminator model
 model = Sequential()
@@ -198,7 +198,7 @@ model.add(Dense(1, activation='sigmoid'))
 
 通过 tanh 激活功能，输出是像素值在[-1，1]范围内的三通道图像。
 
-```
+```py
 ...
 # define the generator model
 model = Sequential()
@@ -243,7 +243,7 @@ model.add(Conv2D(3, (3,3), activation='tanh', padding='same'))
 
 作为最佳实践，可以使用具有小学习率和保守动量的随机梯度下降的 [Adam](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/) 版本来优化模型。
 
-```
+```py
 ...
 # compile model
 model.compile(loss='binary_crossentropy', optimizer=Adam(lr=0.0002, beta_1=0.5))
@@ -263,7 +263,7 @@ model.compile(loss='binary_crossentropy', optimizer=Adam(lr=0.0002, beta_1=0.5))
 
 复合模型使用与独立鉴别器模型相同的分类交叉熵损失和相同的随机梯度下降亚当版本来执行优化。
 
-```
+```py
 # create the composite model for training the generator
 generator = ...
 discriminator = ...
@@ -306,7 +306,7 @@ model.compile(loss='binary_crossentropy', optimizer=Adam(lr=0.0002, beta_1=0.5))
 
 下面的例子演示了 GAN 训练算法。
 
-```
+```py
 ...
 # gan training algorithm
 discriminator = ...

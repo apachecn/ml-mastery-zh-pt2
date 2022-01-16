@@ -47,7 +47,7 @@ Keras 中最简单的辍学形式是由辍学核心层提供的。
 
 下面是一个创建脱落层的示例，50%的概率将输入设置为零。
 
-```
+```py
 layer = Dropout(0.5)
 ```
 
@@ -57,7 +57,7 @@ layer = Dropout(0.5)
 
 例如，给定两个致密层:
 
-```
+```py
 ...
 model.append(Dense(32))
 model.append(Dense(32))
@@ -68,7 +68,7 @@ model.append(Dense(32))
 
 这是第二层，现在已经应用了脱落。
 
-```
+```py
 ...
 model.append(Dense(32))
 model.append(Dropout(0.5))
@@ -80,7 +80,7 @@ model.append(Dense(32))
 
 这要求您将 Dropout 图层定义为第一个图层，并将 *input_shape* 参数添加到该图层，以指定输入样本的预期形状。
 
-```
+```py
 ...
 model.add(Dropout(0.5, input_shape=(2,)))
 ...
@@ -92,7 +92,7 @@ model.add(Dropout(0.5, input_shape=(2,)))
 
 下面的例子增加了两个密集的全连接层之间的压差。
 
-```
+```py
 # example of dropout between fully connected layers
 from keras.layers import Dense
 from keras.layers import Dropout
@@ -109,7 +109,7 @@ model.add(Dense(1))
 
 通常，仅在[汇集图层](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/)后才使用退出，但这只是一个粗略的启发。
 
-```
+```py
 # example of dropout for a CNN
 from keras.layers import Dense
 from keras.layers import Conv2D
@@ -134,7 +134,7 @@ model.add(Dense(1))
 
 空间丢失在喀拉斯通过空间丢失 2D 层(以及 1D 和 3D 版本)提供。
 
-```
+```py
 # example of spatial dropout for a CNN
 from keras.layers import Dense
 from keras.layers import Conv2D
@@ -153,7 +153,7 @@ model.add(Dense(1))
 
 下面的例子增加了两层之间的脱落:LSTM 循环层和密集的全连接层。
 
-```
+```py
 # example of dropout between LSTM and fully connected layers
 from keras.layers import Dense
 from keras.layers import LSTM
@@ -169,7 +169,7 @@ model.add(Dense(1))
 
 或者，LSTM 的输入可能会丢失。在这种情况下，在提交给 LSTM 的每个样本中的每个时间步长应用不同的丢失掩码。
 
-```
+```py
 # example of dropout before LSTM layer
 from keras.layers import Dense
 from keras.layers import LSTM
@@ -189,7 +189,7 @@ model.add(Dense(1))
 
 Keras 通过递归层上的两个参数，即输入的“*drop*”和递归输入的“*recurrent _ drop*”，支持可变 rnn(即输入和递归输入样本时间步长上的一致 drop)。
 
-```
+```py
 # example of variational LSTM dropout
 from keras.layers import Dense
 from keras.layers import LSTM
@@ -214,7 +214,7 @@ model.add(Dense(1))
 
 我们可以使用 [make_circles()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_circles.html)从这个问题中生成观察值。我们将向数据中添加噪声，并为随机数生成器播种，这样每次运行代码时都会生成相同的样本。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_circles(n_samples=100, noise=0.1, random_state=1)
 ```
@@ -223,7 +223,7 @@ X, y = make_circles(n_samples=100, noise=0.1, random_state=1)
 
 下面列出了生成数据集并绘制它的完整示例。
 
-```
+```py
 # generate two circles dataset
 from sklearn.datasets import make_circles
 from matplotlib import pyplot
@@ -258,7 +258,7 @@ pyplot.show()
 
 在定义模型之前，我们将把数据集分成训练集和测试集，用 30 个例子训练模型，用 70 个例子评估拟合模型的性能。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_circles(n_samples=100, noise=0.1, random_state=1)
 # split into train and test
@@ -273,7 +273,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 该模型使用二元交叉熵损失函数进行优化，适用于二元分类问题和高效的 Adam 版本梯度下降。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(500, input_dim=2, activation='relu'))
@@ -285,14 +285,14 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 
 我们还将使用测试数据集作为验证数据集。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=4000, verbose=0)
 ```
 
 我们可以在测试数据集上评估模型的性能并报告结果。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -303,7 +303,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 如果模型确实过度训练了训练数据集，那么随着模型学习训练数据集中的统计噪声，我们将期望训练集上的精度线图继续增加，并且测试集上升，然后再次下降。
 
-```
+```py
 # plot history
 pyplot.plot(history.history['accuracy'], label='train')
 pyplot.plot(history.history['val_accuracy'], label='test')
@@ -313,7 +313,7 @@ pyplot.show()
 
 我们可以把所有这些部分绑在一起；下面列出了完整的示例。
 
-```
+```py
 # mlp overfit on the two circles dataset
 from sklearn.datasets import make_circles
 from keras.layers import Dense
@@ -351,7 +351,7 @@ pyplot.show()
 
 因为模型被严重过度拟合，我们通常不会期望模型在同一数据集上重复运行时的精度有太大差异。
 
-```
+```py
 Train: 1.000, Test: 0.757
 ```
 
@@ -369,7 +369,7 @@ Train: 1.000, Test: 0.757
 
 我们只需在隐藏层和输出层之间插入一个新的 Dropout 层就可以做到这一点。在这种情况下，我们将辍学率(将隐藏层的输出设置为零的概率)指定为 40%或 0.4。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(500, input_dim=2, activation='relu'))
@@ -380,7 +380,7 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 
 下面列出了隐藏层后添加了脱落的完整更新示例:
 
-```
+```py
 # mlp with dropout on the two circles dataset
 from sklearn.datasets import make_circles
 from keras.models import Sequential
@@ -418,7 +418,7 @@ pyplot.show()
 
 在这个特定的例子中，我们可以看到，丢失导致训练数据集的精度略有下降，从 100%下降到 96%，测试集的精度从 75%上升到 81%。
 
-```
+```py
 Train: 0.967, Test: 0.814
 ```
 

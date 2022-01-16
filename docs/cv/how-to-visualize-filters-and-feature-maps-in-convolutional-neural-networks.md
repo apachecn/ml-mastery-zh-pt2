@@ -62,7 +62,7 @@ Keras [提供了许多由不同研究小组为 ImageNet 大规模视觉识别挑
 
 我们只需几行代码就可以加载并汇总 [VGG16 模型](https://keras.io/applications/#vgg16)；例如:
 
-```
+```py
 # load vgg model
 from keras.applications.vgg16 import VGG16
 # load the model
@@ -77,7 +77,7 @@ model.summary()
 
 我们可以看到，这些层命名良好，组织成块，并在每个块中用整数索引命名。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -149,7 +149,7 @@ _________________________________________________________________
 
 每一层都有一个*层. name* 属性，其中卷积层有一个命名卷积，如*块#_conv#* ，其中“ *#* ”是一个整数。因此，我们可以检查每个层的名称，跳过任何不包含字符串“ *conv* ”的层。
 
-```
+```py
 # summarize filter shapes
 for layer in model.layers:
 	# check for convolutional layer
@@ -161,7 +161,7 @@ for layer in model.layers:
 
 一个是滤波器块，另一个是偏差值块。这些可通过*图层. get_weights()* 功能访问。我们可以检索这些权重，然后总结它们的形状。
 
-```
+```py
 # get filter weights
 filters, biases = layer.get_weights()
 print(layer.name, filters.shape)
@@ -169,7 +169,7 @@ print(layer.name, filters.shape)
 
 将这些联系在一起，下面列出了总结模型过滤器的完整示例。
 
-```
+```py
 # summarize filters in each convolutional layer
 from keras.applications.vgg16 import VGG16
 from matplotlib import pyplot
@@ -187,7 +187,7 @@ for layer in model.layers:
 
 运行该示例会打印图层详细信息列表，包括图层名称和图层中过滤器的形状。
 
-```
+```py
 block1_conv1 (3, 3, 3, 64)
 block1_conv2 (3, 3, 64, 64)
 block2_conv1 (3, 3, 64, 128)
@@ -211,7 +211,7 @@ block5_conv3 (3, 3, 512, 512)
 
 我们可以从第一层检索过滤器，如下所示:
 
-```
+```py
 # retrieve weights from the second hidden layer
 filters, biases = model.layers[1].get_weights()
 ```
@@ -220,7 +220,7 @@ filters, biases = model.layers[1].get_weights()
 
 我们可以将它们的值标准化到 0-1 的范围内，以便于可视化。
 
-```
+```py
 # normalize filter values to 0-1 so we can visualize them
 f_min, f_max = filters.min(), filters.max()
 filters = (filters - f_min) / (f_max - f_min)
@@ -230,7 +230,7 @@ filters = (filters - f_min) / (f_max - f_min)
 
 我们使用 matplotlib 库，将每个滤镜绘制为一行新的子情节，将每个滤镜通道或深度绘制为一列新的内容。
 
-```
+```py
 # plot first few filters
 n_filters, ix = 6, 1
 for i in range(n_filters):
@@ -251,7 +251,7 @@ pyplot.show()
 
 将这些联系在一起，下面列出了从 VGG16 模型的第一个隐藏卷积层绘制前六个滤波器的完整示例。
 
-```
+```py
 # cannot easily visualize filters lower down
 from keras.applications.vgg16 import VGG16
 from matplotlib import pyplot
@@ -314,7 +314,7 @@ VGG16 的前 6 个滤波器图，每个通道一个子图
 
 以下示例将枚举模型中的所有图层，并打印每个卷积图层的输出大小或要素图大小以及模型中的图层索引。
 
-```
+```py
 # summarize feature map size for each conv layer
 from keras.applications.vgg16 import VGG16
 from matplotlib import pyplot
@@ -332,7 +332,7 @@ for i in range(len(model.layers)):
 
 运行该示例，我们看到了与我们在模型摘要中看到的相同的输出形状，但在这种情况下，仅针对卷积层。
 
-```
+```py
 1 block1_conv1 (?, 224, 224, 64)
 2 block1_conv2 (?, 224, 224, 64)
 4 block2_conv1 (?, 112, 112, 128)
@@ -352,7 +352,7 @@ for i in range(len(model.layers)):
 
 例如，在加载 VGG 模型之后，我们可以定义一个新模型，它从第一个卷积层(索引 1)输出一个特征图，如下所示。
 
-```
+```py
 # redefine model to output right after the first hidden layer
 model = Model(inputs=model.inputs, outputs=model.layers[1].output)
 ```
@@ -361,14 +361,14 @@ model = Model(inputs=model.inputs, outputs=model.layers[1].output)
 
 定义模型后，我们需要加载模型预期大小的鸟图像，在本例中为 224×224。
 
-```
+```py
 # load the image with the required shape
 img = load_img('bird.jpg', target_size=(224, 224))
 ```
 
 接下来，需要将图像 PIL 对象转换为像素数据的 NumPy 数组，并从 3D 数组扩展为具有[ *个样本、行、列、通道* ]个维度的 4D 数组，其中我们只有一个样本。
 
-```
+```py
 # convert the image to an array
 img = img_to_array(img)
 # expand dimensions so that it represents a single 'sample'
@@ -377,21 +377,21 @@ img = expand_dims(img, axis=0)
 
 然后，需要为 VGG 模型适当地缩放像素值。
 
-```
+```py
 # prepare the image (e.g. scale pixel values for the vgg)
 img = preprocess_input(img)
 ```
 
 我们现在准备获取要素地图。我们可以通过调用 *model.predict()* 函数并传入准备好的单个图像来轻松做到这一点。
 
-```
+```py
 # get feature map for first hidden layer
 feature_maps = model.predict(img)
 ```
 
 我们知道结果将是 224x224x64 的要素地图。我们可以将所有 64 幅二维图像绘制成 8×8 的正方形图像。
 
-```
+```py
 # plot all 64 maps in an 8x8 squares
 square = 8
 ix = 1
@@ -410,7 +410,7 @@ pyplot.show()
 
 将所有这些结合在一起，下面列出了在鸟类输入图像的 VGG16 模型中可视化第一个卷积层的特征图的完整代码示例。
 
-```
+```py
 # plot feature map of first conv layer for given image
 from keras.applications.vgg16 import VGG16
 from keras.applications.vgg16 import preprocess_input
@@ -454,7 +454,7 @@ pyplot.show()
 
 请记住:该模型比 VGG16 模型小得多，但在第一个卷积层中仍然使用与 VGG16 模型相同的权重(滤波器)。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -486,7 +486,7 @@ VGG16 模型中第一卷积层特征图的可视化
 
 我们可以定义一个具有多个输出的新模型，每个块中最后一个卷积层的每个输出一个特征图；例如:
 
-```
+```py
 # redefine model to output right after the first hidden layer
 ixs = [2, 5, 9, 13, 17]
 outputs = [model.layers[i+1].output for i in ixs]
@@ -498,7 +498,7 @@ model.summary()
 
 我们知道，更深层中的特征图数量(例如深度或通道数量)远远超过 64，例如 256 或 512。然而，为了保持一致性，我们可以将可视化的特征图的数量限制在 64 个。
 
-```
+```py
 # plot the output from each block
 square = 8
 for fmap in feature_maps:
@@ -519,7 +519,7 @@ for fmap in feature_maps:
 
 将这些变化联系在一起，我们现在可以为 VGG16 模型中的五个区块中的每一个区块创建五个单独的地块，用于我们的鸟类照片。完整列表如下。
 
-```
+```py
 # visualize feature maps output from each block in the vgg model
 from keras.applications.vgg16 import VGG16
 from keras.applications.vgg16 import preprocess_input

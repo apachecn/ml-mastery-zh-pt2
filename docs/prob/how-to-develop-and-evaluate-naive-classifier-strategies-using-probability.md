@@ -69,7 +69,7 @@
 
 我们可以用下面列出的 Python 中的一个小例子来具体说明这一点。
 
-```
+```py
 # summarize a test dataset
 # define dataset
 class0 = [0 for _ in range(25)]
@@ -82,7 +82,7 @@ print('Class 1: %.3f' % (len(class1) / len(y) * 100))
 
 运行该示例会创建数据集，并汇总属于每个类的示例的分数，显示类 0 和类 1 的 25%和 75%，正如我们可能直观预期的那样。
 
-```
+```py
 Class 0: 25.000
 Class 1: 75.000
 ```
@@ -124,7 +124,7 @@ Class 1: 75.000
 
 该策略可以实现为一个函数，为每个所需的预测随机选择 0 或 1。
 
-```
+```py
 # guess random class
 def random_guess():
 	if random() < 0.5:
@@ -134,7 +134,7 @@ def random_guess():
 
 然后可以为数据集中所需的每个预测调用这个函数，并可以评估精度
 
-```
+```py
 ...
 yhat = [random_guess() for _ in range(len(y))]
 acc = accuracy_score(y, yhat)
@@ -146,7 +146,7 @@ acc = accuracy_score(y, yhat)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of a random guess naive classifier
 from numpy import mean
 from numpy.random import random
@@ -177,7 +177,7 @@ print('Mean: %.3f' % mean(results))
 
 在这种情况下，我们可以看到预期性能与计算性能非常接近。假设[大数定律](https://machinelearningmastery.com/a-gentle-introduction-to-the-law-of-large-numbers-in-machine-learning/)，我们进行的实验越多，我们的估计就越接近我们计算的理论值。
 
-```
+```py
 Mean: 0.499
 ```
 
@@ -210,7 +210,7 @@ Mean: 0.499
 
 下面的 *random_class()* 函数通过从训练数据集中选择并返回一个随机的类标签来实现这个朴素的分类器策略。
 
-```
+```py
 # predict a randomly selected class
 def random_class(y):
 	return y[randint(len(y))]
@@ -220,7 +220,7 @@ def random_class(y):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of selecting a random class naive classifier
 from numpy import mean
 from numpy.random import randint
@@ -249,7 +249,7 @@ print('Mean: %.3f' % mean(results))
 
 在这种情况下，我们可以看到预期性能再次与计算性能非常接近:模拟中为 62.4%，而我们上面计算的是 62.5%。
 
-```
+```py
 Mean: 0.624
 ```
 
@@ -282,7 +282,7 @@ Mean: 0.624
 
 可以使用[模式()SciPy 功能](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mode.html)。它返回两个值，第一个是我们可以返回的模式。下面的*more _ class()*函数实现了这个朴素的分类器。
 
-```
+```py
 # predict the majority class
 def majority_class(y):
 	return mode(y)[0]
@@ -292,7 +292,7 @@ def majority_class(y):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of a majority class naive classifier
 from scipy.stats import mode
 from sklearn.metrics import accuracy_score
@@ -316,7 +316,7 @@ print('Accuracy: %.3f' % accuracy)
 
 准确性与 75%的概率框架计算的期望值和训练数据集的组成相匹配。
 
-```
+```py
 Accuracy: 0.750
 ```
 
@@ -334,7 +334,7 @@ scikit-learn 机器学习库提供了多数类朴素分类算法的实现，您�
 
 要使用朴素分类器，必须定义类，并将“*策略*”参数设置为“*最频繁*，以确保预测多数类。然后，该类可以适合训练数据集，并用于对测试数据集或其他重采样模型评估策略进行预测。
 
-```
+```py
 ...
 # define model
 model = DummyClassifier(strategy='most_frequent')
@@ -356,7 +356,7 @@ yhat = model.predict(X)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of the majority class naive classifier in scikit-learn
 from numpy import asarray
 from sklearn.dummy import DummyClassifier
@@ -383,7 +383,7 @@ print('Accuracy: %.3f' % accuracy)
 
 评估来自模型的预测的分类准确性证实了模型的表现如预期的那样，获得了 75%的分数。
 
-```
+```py
 Accuracy: 0.750
 ```
 

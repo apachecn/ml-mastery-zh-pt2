@@ -139,7 +139,7 @@ Hessian 及其反函数的大小与目标函数的输入参数数量成正比。
 
 该函数需要多个参数，但最重要的是，我们可以将目标函数的名称指定为第一个参数，将搜索的起点指定为第二个参数，并将“*方法*参数指定为“ *BFGS* ”。用于计算目标函数导数的函数的名称可以通过“ *jac* ”参数指定。
 
-```
+```py
 ...
 # perform the bfgs algorithm search
 result = minimize(objective, pt, method='BFGS', jac=derivative)
@@ -149,7 +149,7 @@ result = minimize(objective, pt, method='BFGS', jac=derivative)
 
 首先，我们可以定义一个简单的二维目标函数，一个碗函数，例如 x^2.简单来说，就是输入变量的平方和，在 f(0，0) = 0.0 时取一个最优值。
 
-```
+```py
 # objective function
 def objective(x):
 	return x[0]**2.0 + x[1]**2.0
@@ -157,7 +157,7 @@ def objective(x):
 
 接下来，让我们为函数的导数定义一个函数，它是[x*2，y*2]。
 
-```
+```py
 # derivative of the objective function
 def derivative(x):
 	return [x[0] * 2, x[1] * 2]
@@ -165,7 +165,7 @@ def derivative(x):
 
 我们将把函数的边界定义为一个盒子，每个维度的范围是-5 和 5。
 
-```
+```py
 ...
 # define range for input
 r_min, r_max = -5.0, 5.0
@@ -173,7 +173,7 @@ r_min, r_max = -5.0, 5.0
 
 搜索的起点将是搜索域中随机生成的位置。
 
-```
+```py
 ...
 # define the starting point as a random sample from the domain
 pt = r_min + rand(2) * (r_max - r_min)
@@ -181,7 +181,7 @@ pt = r_min + rand(2) * (r_max - r_min)
 
 然后，我们可以通过指定目标函数的名称、起始点、我们想要使用的方法(BFGS)和导数函数的名称，应用 BFGS 算法来找到目标函数的最小值。
 
-```
+```py
 ...
 # perform the bfgs algorithm search
 result = minimize(objective, pt, method='BFGS', jac=derivative)
@@ -189,7 +189,7 @@ result = minimize(objective, pt, method='BFGS', jac=derivative)
 
 然后，我们可以查看结果，报告一条消息，说明算法是否成功完成，以及已执行的目标函数的评估总数。
 
-```
+```py
 ...
 # summarize the result
 print('Status : %s' % result['message'])
@@ -198,7 +198,7 @@ print('Total Evaluations: %d' % result['nfev'])
 
 最后，我们可以报告找到的输入变量及其对目标函数的评估。
 
-```
+```py
 ...
 # evaluate solution
 solution = result['x']
@@ -208,7 +208,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # bfgs algorithm local optimization of a convex function
 from scipy.optimize import minimize
 from numpy.random import rand
@@ -242,7 +242,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 在这种情况下，我们可以看到算法执行了四次迭代，发现了非常接近 optima f(0.0，0.0) = 0.0 的解，至少达到了有用的精度水平。
 
-```
+```py
 Status: Optimization terminated successfully.
 Total Evaluations: 4
 Solution: f([0.00000000e+00 1.11022302e-16]) = 0.00000
@@ -254,7 +254,7 @@ Solution: f([0.00000000e+00 1.11022302e-16]) = 0.00000
 
 这可以通过将“*方法*参数指定为“ *L-BFGS-B* 来实现。
 
-```
+```py
 ...
 # perform the l-bfgs-b algorithm search
 result = minimize(objective, pt, method='L-BFGS-B', jac=derivative)
@@ -262,7 +262,7 @@ result = minimize(objective, pt, method='L-BFGS-B', jac=derivative)
 
 下面列出了此更新的完整示例。
 
-```
+```py
 # l-bfgs-b algorithm local optimization of a convex function
 from scipy.optimize import minimize
 from numpy.random import rand
@@ -296,7 +296,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 同样，我们可以看到函数的最小值是在很少的评估中找到的。
 
-```
+```py
 Status : b'CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL'
 Total Evaluations: 3
 Solution: f([-1.33226763e-15 1.33226763e-15]) = 0.00000

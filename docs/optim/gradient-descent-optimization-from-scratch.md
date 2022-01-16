@@ -128,7 +128,7 @@ Let’s get started.![How to Implement Gradient Descent Optimization from Scratc
 
 边界可以和目标函数一起定义为一个数组，每个维度有一个最小值和最大值。 [rand() NumPy 函数](https://numpy.org/doc/stable/reference/random/generated/numpy.random.rand.html)可用于生成 0-1 范围内的随机数向量。
 
-```
+```py
 ...
 # generate an initial point
 solution = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
@@ -136,7 +136,7 @@ solution = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
 
 然后，我们可以使用名为*导数()*的函数来计算该点的导数。
 
-```
+```py
 ...
 # calculate gradient
 gradient = derivative(solution)
@@ -146,7 +146,7 @@ gradient = derivative(solution)
 
 使用计算的梯度和*步长*超参数计算新位置。
 
-```
+```py
 ...
 # take a step
 solution = solution - step_size * gradient
@@ -154,7 +154,7 @@ solution = solution - step_size * gradient
 
 然后我们可以评估这一点并报告性能。
 
-```
+```py
 ...
 # evaluate candidate point
 solution_eval = objective(solution)
@@ -162,7 +162,7 @@ solution_eval = objective(solution)
 
 这个过程可以通过 *n_iter* 超参数控制重复固定次数的迭代。
 
-```
+```py
 ...
 # run the gradient descent
 for i in range(n_iter):
@@ -182,7 +182,7 @@ for i in range(n_iter):
 
 下面列出了作为函数实现的完整梯度下降优化算法。
 
-```
+```py
 # gradient descent algorithm
 def gradient_descent(objective, derivative, bounds, n_iter, step_size):
 	# generate an initial point
@@ -212,7 +212,7 @@ def gradient_descent(objective, derivative, bounds, n_iter, step_size):
 
 下面的*目标()*函数实现了这个功能。
 
-```
+```py
 # objective function
 def objective(x):
 	return x**2.0
@@ -220,7 +220,7 @@ def objective(x):
 
 然后，我们可以对该范围内的所有输入进行采样，并计算每个输入的目标函数值。
 
-```
+```py
 ...
 # define range for input
 r_min, r_max = -1.0, 1.0
@@ -232,7 +232,7 @@ results = objective(inputs)
 
 最后，我们可以创建输入(x 轴)与目标函数值(y 轴)的线图，以获得我们将搜索的目标函数形状的直觉。
 
-```
+```py
 ...
 # create a line plot of input vs result
 pyplot.plot(inputs, results)
@@ -242,7 +242,7 @@ pyplot.show()
 
 下面的示例将这些联系在一起，并提供了绘制一维测试函数的示例。
 
-```
+```py
 # plot of simple function
 from numpy import arange
 from matplotlib import pyplot
@@ -277,7 +277,7 @@ pyplot.show()
 
 x^2 的导数是 x * 2，下面的*导数()*函数实现了这一点。
 
-```
+```py
 # derivative of objective function
 def derivative(x):
 	return x * 2.0
@@ -287,7 +287,7 @@ def derivative(x):
 
 我们将使用 0.1 和 30 次迭代的步长，这两个步长都是经过一些实验后发现的。
 
-```
+```py
 ...
 # define range for input
 bounds = asarray([[-1.0, 1.0]])
@@ -301,7 +301,7 @@ best, score = gradient_descent(objective, derivative, bounds, n_iter, step_size)
 
 将这些联系在一起，下面列出了将梯度下降优化应用于我们的一维测试函数的完整示例。
 
-```
+```py
 # example of gradient descent for a one-dimensional function
 from numpy import asarray
 from numpy.random import rand
@@ -348,7 +348,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以看到算法在大约 20-30 次迭代后找到了一个好的解，函数求值约为 0.0。注意，此功能的最佳值为 f(0.0) = 0.0。
 
-```
+```py
 >0 f([-0.36308639]) = 0.13183
 >1 f([-0.29046911]) = 0.08437
 >2 f([-0.23237529]) = 0.05400
@@ -387,7 +387,7 @@ f([-0.00056185]) = 0.000000
 
 将步长设置为较大的值，如 1.0，然后重新运行搜索。
 
-```
+```py
 ...
 # define the step size
 step_size = 1.0
@@ -399,7 +399,7 @@ step_size = 1.0
 
 我们可以看到，搜索没有找到最优解，而是在域中来回跳动，在本例中，在值 0.64820935 和-0.64820935 之间。
 
-```
+```py
 ...
 >25 f([0.64820935]) = 0.42018
 >26 f([-0.64820935]) = 0.42018
@@ -412,7 +412,7 @@ f([0.64820935]) = 0.420175
 
 现在，尝试一个小得多的步长，例如 1e-8。
 
-```
+```py
 ...
 # define the step size
 step_size = 1e-5
@@ -422,7 +422,7 @@ step_size = 1e-5
 
 重新运行搜索，我们可以看到算法从起点沿着目标函数的斜率非常缓慢地向下移动。
 
-```
+```py
 ...
 >25 f([-0.87315153]) = 0.76239
 >26 f([-0.87313407]) = 0.76236
@@ -439,7 +439,7 @@ f([-0.87308168]) = 0.762272
 
 首先，我们可以更新*gradient _ download()*函数，将优化过程中找到的所有解及其得分存储为列表，并在搜索结束时返回，而不是找到的最佳解。
 
-```
+```py
 # gradient descent algorithm
 def gradient_descent(objective, derivative, bounds, n_iter, step_size):
 	# track all solutions
@@ -464,7 +464,7 @@ def gradient_descent(objective, derivative, bounds, n_iter, step_size):
 
 可以调用该函数，我们可以获得搜索过程中找到的解决方案列表及其得分。
 
-```
+```py
 ...
 # perform the gradient descent search
 solutions, scores = gradient_descent(objective, derivative, bounds, n_iter, step_size)
@@ -472,7 +472,7 @@ solutions, scores = gradient_descent(objective, derivative, bounds, n_iter, step
 
 我们可以像以前一样创建目标函数的线图。
 
-```
+```py
 ...
 # sample input range uniformly at 0.1 increments
 inputs = arange(bounds[0,0], bounds[0,1]+0.1, 0.1)
@@ -484,7 +484,7 @@ pyplot.plot(inputs, results)
 
 最后，我们可以将找到的每个解决方案绘制成一个红点，并用一条线连接这些点，这样我们就可以看到搜索是如何走下坡路的。
 
-```
+```py
 ...
 # plot the solutions found
 pyplot.plot(solutions, scores, '.-', color='red')
@@ -492,7 +492,7 @@ pyplot.plot(solutions, scores, '.-', color='red')
 
 将所有这些联系在一起，下面列出了在一维测试函数上绘制梯度下降搜索结果的完整示例。
 
-```
+```py
 # example of plotting a gradient descent search on a one-dimensional function
 from numpy import asarray
 from numpy import arange

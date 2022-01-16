@@ -60,7 +60,7 @@ Fbeta 度量是使用精度和召回率计算的。
 
 在这种类型的混淆矩阵中，表中的每个单元格都有一个具体且易于理解的名称，总结如下:
 
-```
+```py
                | Positive Prediction | Negative Prediction
 Positive Class | True Positive (TP)  | False Negative (FN)
 Negative Class | False Positive (FP) | True Negative (TN)
@@ -80,7 +80,7 @@ Negative Class | False Positive (FP) | True Negative (TN)
 
 精度的直觉是它不关心假阴性，它**最小化假阳性**。我们可以用下面的一个小例子来演示这一点。
 
-```
+```py
 # intuition for precision
 from sklearn.metrics import precision_score
 # no precision
@@ -111,7 +111,7 @@ print('Perfect Precision: %.3f' % score)
 
 一个预测一些假阴性的例子显示了完美的精度，强调了该措施与假阴性无关。
 
-```
+```py
 No Precision: 0.000
 Some False Positives: 0.714
 Some False Negatives: 1.000
@@ -130,7 +130,7 @@ Perfect Precision: 1.000
 
 回忆的直觉是它不关心假阳性，它**最小化假阴性**。我们可以用下面的一个小例子来演示这一点。
 
-```
+```py
 # intuition for recall
 from sklearn.metrics import recall_score
 # no recall
@@ -161,7 +161,7 @@ print('Perfect Recall: %.3f' % score)
 
 一个预测一些假阴性的例子显示了召回率的下降，强调了该措施与最小化假阴性有关。
 
-```
+```py
 No Recall: 0.000
 Some False Positives: 1.000
 Some False Negatives: 0.600
@@ -190,7 +190,7 @@ F-measure 的直觉是，这两个度量在重要性上是平衡的，只有好�
 
 第一，如果所有的例子都被完美地错误地预测，我们将具有零精度和零召回，导致零 F 测度；例如:
 
-```
+```py
 # worst case f-measure
 from sklearn.metrics import f1_score
 from sklearn.metrics import precision_score
@@ -206,13 +206,13 @@ print('No Precision or Recall: p=%.3f, r=%.3f, f=%.3f' % (p, r, f))
 
 运行该示例，我们可以看到没有精度或召回率导致最坏情况下的 F 度量。
 
-```
+```py
 No Precision or Recall: p=0.000, r=0.000, f=0.000
 ```
 
 假设精度和召回率只与正类相关，我们可以通过预测所有示例的负类来实现相同的最坏情况精度、召回率和 F-measure:
 
-```
+```py
 # another worst case f-measure
 from sklearn.metrics import f1_score
 from sklearn.metrics import precision_score
@@ -228,7 +228,7 @@ print('No Precision or Recall: p=%.3f, r=%.3f, f=%.3f' % (p, r, f))
 
 鉴于没有预测到阳性病例，我们必须输出零精度和召回率，进而输出 f 测度。
 
-```
+```py
 No Precision or Recall: p=0.000, r=0.000, f=0.000
 ```
 
@@ -236,7 +236,7 @@ No Precision or Recall: p=0.000, r=0.000, f=0.000
 
 相反，完美的预测将产生完美的精确度和召回率，进而产生完美的 F 值，例如:
 
-```
+```py
 # best case f-measure
 from sklearn.metrics import f1_score
 from sklearn.metrics import precision_score
@@ -252,7 +252,7 @@ print('Perfect Precision and Recall: p=%.3f, r=%.3f, f=%.3f' % (p, r, f))
 
 运行该示例，我们可以看到完美的精度和召回率导致了完美的 F 度量。
 
-```
+```py
 Perfect Precision and Recall: p=1.000, r=1.000, f=1.000
 ```
 
@@ -268,7 +268,7 @@ Perfect Precision and Recall: p=1.000, r=1.000, f=1.000
 
 下面的例子演示了这一点。
 
-```
+```py
 # perfect precision f-measure
 from sklearn.metrics import f1_score
 from sklearn.metrics import precision_score
@@ -284,7 +284,7 @@ print('Result: p=%.3f, r=%.3f, f=%.3f' % (p, r, f))
 
 运行该示例证实，我们确实具有 50 的感知精度和完美的召回率，并且 F 分数的结果值约为 0.667。
 
-```
+```py
 Result: p=0.500, r=1.000, f=0.667
 ```
 
@@ -336,7 +336,7 @@ beta 参数的三个常见值如下:
 
 下面列出了完整的示例。
 
-```
+```py
 # calculate the f1-measure
 from sklearn.metrics import fbeta_score
 from sklearn.metrics import precision_score
@@ -354,7 +354,7 @@ print('Result: p=%.3f, r=%.3f, f=%.3f' % (p, r, f))
 
 0.667 的 F1 度量值与上一节中为相同场景计算的 F 度量值相匹配。
 
-```
+```py
 Result: p=0.500, r=1.000, f=0.667
 ```
 
@@ -384,7 +384,7 @@ f 0.5-测量值计算如下:
 
 我们可以证实这个计算；下面列出了完整的示例。
 
-```
+```py
 # calculate the f0.5-measure
 from sklearn.metrics import fbeta_score
 from sklearn.metrics import f1_score
@@ -401,7 +401,7 @@ print('Result: p=%.3f, r=%.3f, f=%.3f' % (p, r, f))
 
 运行该示例确认精度和召回值，然后报告 0.556(带舍入)的 F0.5 度量，与我们手动计算的值相同。
 
-```
+```py
 Result: p=0.500, r=1.000, f=0.556
 ```
 
@@ -433,7 +433,7 @@ F2 测量值计算如下:
 
 我们可以证实这个计算；下面列出了完整的示例。
 
-```
+```py
 # calculate the f2-measure
 from sklearn.metrics import fbeta_score
 from sklearn.metrics import f1_score
@@ -450,7 +450,7 @@ print('Result: p=%.3f, r=%.3f, f=%.3f' % (p, r, f))
 
 运行该示例确认精度和召回值，然后报告 0.883 的 F2 度量值，与我们手动计算的值相同(带舍入)。
 
-```
+```py
 Result: p=0.500, r=1.000, f=0.833
 ```
 

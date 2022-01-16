@@ -94,7 +94,7 @@ LSGAN 实验中使用的发生器(左)和鉴别器(右)模型架构总结。
 
 鉴别器期望灰度输入图像具有 28×28 的形状，图像的形状在 MNIST 数据集中，并且输出层是具有线性激活函数的单个节点。根据最小二乘法，使用均方误差损失函数优化模型。下面的 *define_discriminator()* 函数定义了鉴别器模型。
 
-```
+```py
 # define the standalone discriminator model
 def define_discriminator(in_shape=(28,28,1)):
 	# weight initialization
@@ -121,7 +121,7 @@ def define_discriminator(in_shape=(28,28,1)):
 
 下面的 *define_generator()* 函数定义了生成器模型。这个模型没有被编译，因为它不是以独立的方式训练的。
 
-```
+```py
 # define the standalone generator model
 def define_generator(latent_dim):
 	# weight initialization
@@ -154,7 +154,7 @@ def define_generator(latent_dim):
 
 *define_gan()* 函数定义并编译复合模型，用于通过鉴别器更新发电机模型，再次根据 LSGAN 通过均方误差进行优化。
 
-```
+```py
 # define the combined generator and discriminator model, for updating the generator
 def define_gan(generator, discriminator):
 	# make weights in the discriminator not trainable
@@ -176,7 +176,7 @@ def define_gan(generator, discriminator):
 
 仅使用了 MNIST 数据集的训练部分，其中包含 60，000 幅居中的灰度图像，位数从零到九。
 
-```
+```py
 # load mnist images
 def load_real_samples():
 	# load dataset
@@ -194,7 +194,7 @@ def load_real_samples():
 
 真实图像与鉴别器模型的相应目标值一起返回，例如 y=1.0，以指示它们是真实的。
 
-```
+```py
 # select real samples
 def generate_real_samples(dataset, n_samples):
 	# choose random instances
@@ -210,7 +210,7 @@ def generate_real_samples(dataset, n_samples):
 
 首先，用于在潜在空间中生成随机点以用作通过生成器模型生成图像的输入的函数。
 
-```
+```py
 # generate points in latent space as input for the generator
 def generate_latent_points(latent_dim, n_samples):
 	# generate points in the latent space
@@ -222,7 +222,7 @@ def generate_latent_points(latent_dim, n_samples):
 
 接下来，一个函数将使用生成器模型生成一批假图像，用于更新鉴别器模型，以及指示图像是假的目标值(y=0)。
 
-```
+```py
 # use the generator to generate n fake examples, with class labels
 def generate_fake_samples(generator, latent_dim, n_samples):
 	# generate points in latent space
@@ -238,7 +238,7 @@ def generate_fake_samples(generator, latent_dim, n_samples):
 
 在训练过程中可以调用下面的*summary _ performance()*函数，生成并保存一张图像图，保存生成器模型。使用反向灰度色图绘制图像，使数字在白色背景上变成黑色。
 
-```
+```py
 # generate samples and save as a plot and save the model
 def summarize_performance(step, g_model, latent_dim, n_samples=100):
 	# prepare fake examples
@@ -267,7 +267,7 @@ def summarize_performance(step, g_model, latent_dim, n_samples=100):
 
 因此，我们可以在每次训练迭代的列表中记录损失，然后创建并保存模型学习动态的线图。创建并保存[学习曲线](https://machinelearningmastery.com/learning-curves-for-diagnosing-machine-learning-model-performance/)的绘图在*绘图 _ 历史()*功能中实现。
 
-```
+```py
 # create a line plot of loss for the gan and save to file
 def plot_history(d1_hist, d2_hist, g_hist):
 	pyplot.plot(d1_hist, label='dloss1')
@@ -288,7 +288,7 @@ def plot_history(d1_hist, d2_hist, g_hist):
 
 在每次训练迭代中报告损失，并根据每个时期结束时生成的图像图总结模型性能。学习曲线的绘图在运行结束时创建并保存。
 
-```
+```py
 # train the generator and discriminator
 def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=20, n_batch=64):
 	# calculate the number of batches per training epoch
@@ -326,7 +326,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=20, n_batch
 
 将所有这些结合在一起，下面列出了在 MNIST 手写数字数据集上训练 LSGAN 的完整代码示例。
 
-```
+```py
 # example of lsgan for mnist
 from numpy import expand_dims
 from numpy import zeros
@@ -540,7 +540,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 这些分数会在每次培训结束时打印出来，预计在整个培训过程中保持较小的值。长时间的零值可能表示故障模式，应重新开始培训过程。
 
-```
+```py
 >1, d1=9.292, d2=0.153 g=2.530
 >2, d1=1.173, d2=2.057 g=0.903
 >3, d1=1.347, d2=1.922 g=2.215
@@ -581,7 +581,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 在这种情况下，我们将使用在 20 个时期后保存的模型，或 18，740 (60K/64 或每个时期 937 批次* 20 个时期)训练迭代。
 
-```
+```py
 # example of loading the generator model and generating images
 from keras.models import load_model
 from numpy.random import randn

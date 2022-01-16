@@ -125,7 +125,7 @@
 
 首先，让我们定义一个合成的二进制分类数据集。我们将使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建 1000 个示例，两个类的分割比例为 99%/1%。下面列出了创建和汇总数据集的完整示例。
 
-```
+```py
 # create an imbalanced dataset
 from numpy import unique
 from sklearn.datasets import make_classification
@@ -142,7 +142,7 @@ for c in classes:
 
 运行该示例会创建数据集，并报告每个类中示例的分布。
 
-```
+```py
 > Class=0 : 990/1000 (99.0%)
 > Class=1 : 10/1000 (1.0%)
 ```
@@ -155,7 +155,7 @@ for c in classes:
 
 因此，为所有示例预测类别 0 的某些概率将按如下方式实现:
 
-```
+```py
 ...
 # no skill prediction 0
 probabilities = [[1, 0] for _ in range(len(testy))]
@@ -169,7 +169,7 @@ print('P(class0=1): Log Loss=%.3f' % (avg_logloss))
 
 一个更好的简单策略是预测每个例子的类分布。例如，因为我们的数据集对于多数和少数类具有 99%/1%的类分布，所以对于每个示例，该分布可以是“*预测的*，以给出概率预测的基线。
 
-```
+```py
 ...
 # baseline probabilities
 probabilities = [[0.99, 0.01] for _ in range(len(testy))]
@@ -179,7 +179,7 @@ print('Baseline: Log Loss=%.3f' % (avg_logloss))
 
 最后，我们还可以通过将测试集的目标值作为预测来计算完美预测概率的对数损失。
 
-```
+```py
 ...
 # perfect probabilities
 avg_logloss = log_loss(testy, testy)
@@ -188,7 +188,7 @@ print('Perfect: Log Loss=%.3f' % (avg_logloss))
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # log loss for naive probability predictions.
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -223,7 +223,7 @@ print('Perfect: Log Loss=%.3f' % (avg_logloss))
 
 最后，我们可以看到完美预测概率的对数损失为 0.0，表明实际和预测概率分布之间没有差异。
 
-```
+```py
 P(class0=1): Log Loss=0.345
 P(class1=1): Log Loss=34.193
 Baseline: Log Loss=0.056
@@ -262,7 +262,7 @@ Brier 分数可以使用[Brier _ score _ loss()scikit-learn 功能](https://scik
 
 如前一节所述，我们可以评估预测每个类标签的确定性的简单策略。在这种情况下，由于分数只考虑了正类的概率，这将涉及预测 P(类=1)=0 的 0.0 和 P(类=1)=1 的 1.0。例如:
 
-```
+```py
 ...
 # no skill prediction 0
 probabilities = [0.0 for _ in range(len(testy))]
@@ -276,7 +276,7 @@ print('P(class1=1): Brier Score=%.4f' % (avg_brier))
 
 我们还可以测试无技能分类器，该分类器预测数据集中正面示例的比率，在本例中为 1%或 0.01。
 
-```
+```py
 ...
 # baseline probabilities
 probabilities = [0.01 for _ in range(len(testy))]
@@ -286,7 +286,7 @@ print('Baseline: Brier Score=%.4f' % (avg_brier))
 
 最后，我们还可以确认完美预测概率的布瑞尔分数。
 
-```
+```py
 ...
 # perfect probabilities
 avg_brier = brier_score_loss(testy, testy)
@@ -295,7 +295,7 @@ print('Perfect: Brier Score=%.4f' % (avg_brier))
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # brier score for naive probability predictions.
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -328,7 +328,7 @@ print('Perfect: Brier Score=%.4f' % (avg_brier))
 
 重要的是，我们可以看到默认的无技能分类器比预测所有 0.0 值的结果得分更低。同样，这代表基线分数，低于该分数的模型将展示技能。
 
-```
+```py
 P(class1=0): Brier Score=0.0100
 P(class1=1): Brier Score=0.9900
 Baseline: Brier Score=0.0099
@@ -345,7 +345,7 @@ Perfect: Brier Score=0.0000
 
 我们可以通过开发一个函数来计算下面列出的 Brier 技能分数来演示这一点。
 
-```
+```py
 # calculate the brier skill score
 def brier_skill_score(y, yhat, brier_ref):
 	# calculate the brier score
@@ -358,7 +358,7 @@ def brier_skill_score(y, yhat, brier_ref):
 
 下面列出了完整的示例。
 
-```
+```py
 # brier skill score for naive probability predictions.
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -403,7 +403,7 @@ print('Perfect: BSS=%.4f' % (bss))
 
 因此，布瑞尔技能评分是评估概率预测的最佳实践，广泛用于例行评估概率分类预测的地方，例如天气预报(例如，是否下雨)。
 
-```
+```py
 Reference: Brier Score=0.0099
 P(class1=0): BSS=-0.0101
 P(class1=1): BSS=-99.0000

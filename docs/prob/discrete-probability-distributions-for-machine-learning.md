@@ -116,7 +116,7 @@
 
 我们可以用随机生成的案例模拟伯努利过程，并计算给定试验次数的成功次数。这可以通过[二项式()NumPy 功能](https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.binomial.html)来实现。该函数将试验总数和成功概率作为参数，并返回一次模拟试验中成功结果的数量。
 
-```
+```py
 # example of simulating a binomial process and counting success
 from numpy.random import binomial
 # define the parameters of the distribution
@@ -133,13 +133,13 @@ print('Total Success: %d' % success)
 
 在这种情况下，我们可以看到我们获得的成功试验略少于预期的 30 个。
 
-```
+```py
 Total Success: 28
 ```
 
 我们可以使用 [binom.stats() SciPy 函数](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.binom.html)计算这个分布的矩，特别是期望值或平均值和方差。
 
-```
+```py
 # calculate moments of a binomial distribution
 from scipy.stats import binom
 # define the parameters of the distribution
@@ -152,7 +152,7 @@ print('Mean=%.3f, Variance=%.3f' % (mean, var))
 
 运行该示例报告了分布的期望值，正如我们所期望的，是 30，以及方差 21，如果我们计算平方根，得到的标准偏差约为 4.5。
 
-```
+```py
 Mean=30.000, Variance=21.000
 ```
 
@@ -160,7 +160,7 @@ Mean=30.000, Variance=21.000
 
 我们预计 30 个成功结果的概率最高。
 
-```
+```py
 # example of using the pmf for the binomial distribution
 from scipy.stats import binom
 # define the parameters of the distribution
@@ -177,7 +177,7 @@ for n in range(10, 110, 10):
 
 概率乘以 100 给出百分比，我们可以看到 30 个成功结果的概率最高，约为 8.6%。
 
-```
+```py
 P of 10 success: 0.000%
 P of 20 success: 0.758%
 P of 30 success: 8.678%
@@ -192,7 +192,7 @@ P of 100 success: 0.000%
 
 鉴于一项试验的成功概率为 30%，我们预计 100 项试验中 50 项或更少成功的概率接近 100%。我们可以用累积分布函数来计算，如下所示。
 
-```
+```py
 # example of using the cdf for the binomial distribution
 from scipy.stats import binom
 # define the parameters of the distribution
@@ -209,7 +209,7 @@ for n in range(10, 110, 10):
 
 不出所料，在 50 次或更少的成功之后，涵盖了该分布中 99.999%的预期成功。
 
-```
+```py
 P of 10 success: 0.000%
 P of 20 success: 1.646%
 P of 30 success: 54.912%
@@ -264,7 +264,7 @@ P of 100 success: 100.000%
 
 下面列出了完整的示例。
 
-```
+```py
 # example of simulating a multinomial process
 from numpy.random import multinomial
 # define the parameters of the distribution
@@ -285,7 +285,7 @@ for i in range(len(cases)):
 
 在这种情况下，我们看到病例的分布高达 37 例，低至 30 例。
 
-```
+```py
 Case 1: 37
 Case 2: 33
 Case 3: 30
@@ -297,7 +297,7 @@ Case 3: 30
 
 下面列出了完整的示例。
 
-```
+```py
 # calculate the probability for a given number of events of each type
 from scipy.stats import multinomial
 # define the parameters of the distribution
@@ -315,7 +315,7 @@ print('Case=%s, Probability: %.3f%%' % (cases, pr*100))
 
 运行该示例报告了每个事件类型的理想化案例数[33，33，34]小于 1%的概率。
 
-```
+```py
 Case=[33, 33, 34], Probability: 0.813%
 ```
 

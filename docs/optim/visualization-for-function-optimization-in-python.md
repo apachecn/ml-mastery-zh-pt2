@@ -83,7 +83,7 @@ Python 功能优化可视化
 
 下面的示例实现了这个目标函数，并对单个输入进行了评估。
 
-```
+```py
 # example of a 1d objective function
 
 # objective function
@@ -98,7 +98,7 @@ print('f(%.3f) = %.3f' % (x, result))
 
 运行该示例用目标函数计算值 4.0，等于 16.0。
 
-```
+```py
 f(4.000) = 16.000
 ```
 
@@ -110,7 +110,7 @@ f(4.000) = 16.000
 
 在这种情况下，我们将在 x=-5.0 到 x=5.0 的最佳值周围定义一个感兴趣的域，并以 0.1 的增量对该范围内的值网格进行采样，例如-5.0、-4.9、-4.8 等。
 
-```
+```py
 ...
 # define range for input
 r_min, r_max = -5.0, 5.0
@@ -122,7 +122,7 @@ print(inputs[:5])
 
 然后，我们可以评估样本中的每个 x 值。
 
-```
+```py
 ...
 # compute targets
 results = objective(inputs)
@@ -132,7 +132,7 @@ print(results[:5])
 
 最后，我们可以检查一些输入和它们相应的输出。
 
-```
+```py
 ...
 # create a mapping of some inputs to some results
 for i in range(5):
@@ -141,7 +141,7 @@ for i in range(5):
 
 将这些联系在一起，下面列出了对输入空间进行采样并评估样本中所有点的完整示例。
 
-```
+```py
 # sample 1d objective function
 from numpy import arange
 
@@ -168,7 +168,7 @@ for i in range(5):
 
 然后使用目标函数评估输入点，最后，我们可以看到目标函数的输入到输出的简单映射。
 
-```
+```py
 [-5\.  -4.9 -4.8 -4.7 -4.6]
 [25\.   24.01 23.04 22.09 21.16]
 f(-5.000) = 25.000
@@ -188,7 +188,7 @@ f(-4.600) = 21.160
 
 在这种情况下，我们可以使用样本生成目标函数的线图，输入点(x)在图的 x 轴上，目标函数输出(结果)在图的 y 轴上。
 
-```
+```py
 ...
 # create a line plot of input vs result
 pyplot.plot(inputs, results)
@@ -198,7 +198,7 @@ pyplot.show()
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # line plot of input vs result for a 1d objective function
 from numpy import arange
 from matplotlib import pyplot
@@ -235,7 +235,7 @@ pyplot.show()
 
 因此，创建点的散点图会更准确；例如:
 
-```
+```py
 # scatter plot of input vs result for a 1d objective function
 from numpy import arange
 from matplotlib import pyplot
@@ -274,7 +274,7 @@ pyplot.show()
 
 首先，我们必须定义 optima 的输入，然后评估该点以给出用于绘图的 x 轴和 y 轴值。
 
-```
+```py
 ...
 # define the known function optima
 optima_x = 0.0
@@ -283,7 +283,7 @@ optima_y = objective(optima_x)
 
 然后我们可以用我们喜欢的任何形状或颜色来绘制这个点，在这个例子中，是一个红色的正方形。
 
-```
+```py
 ...
 # draw the function optima as a red square
 pyplot.plot([optima_x], [optima_y], 's', color='r')
@@ -291,7 +291,7 @@ pyplot.plot([optima_x], [optima_y], 's', color='r')
 
 将这些联系在一起，下面列出了用一个点突出显示的 optima 创建函数的线图的完整示例。
 
-```
+```py
 # line plot of input vs result for a 1d objective function and show optima
 from numpy import arange
 from matplotlib import pyplot
@@ -329,7 +329,7 @@ pyplot.show()
 
 在这种情况下，我们可以在整个情节上画一条垂直线。
 
-```
+```py
 ...
 # draw a vertical line at the optimal input
 pyplot.axvline(x=optima_x, ls='--', color='red')
@@ -337,7 +337,7 @@ pyplot.axvline(x=optima_x, ls='--', color='red')
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # line plot of input vs result for a 1d objective function and show optima as line
 from numpy import arange
 from matplotlib import pyplot
@@ -374,7 +374,7 @@ pyplot.show()
 
 我们将使用从输入域中抽取的随机点来模拟这些样本。
 
-```
+```py
 ...
 # simulate a sample made by an optimization algorithm
 seed(1)
@@ -385,7 +385,7 @@ sample_eval = objective(sample)
 
 然后我们可以绘制这个样本，在这种情况下使用黑色小圆圈。
 
-```
+```py
 ...
 # plot the sample as black circles
 pyplot.plot(sample, sample_eval, 'o', color='black')
@@ -393,7 +393,7 @@ pyplot.plot(sample, sample_eval, 'o', color='black')
 
 下面列出了创建函数线图的完整示例，其中 optima 用红线标记，算法示例用小黑点绘制。
 
-```
+```py
 # line plot of domain for a 1d function with optima and algorithm sample
 from numpy import arange
 from numpy.random import seed
@@ -453,7 +453,7 @@ pyplot.show()
 
 下面的示例实现了这个目标函数，并对单个输入进行了评估。
 
-```
+```py
 # example of a 2d objective function
 
 # objective function
@@ -469,7 +469,7 @@ print('f(%.3f, %.3f) = %.3f' % (x, y, result))
 
 运行该示例计算点[x=4，y=4]，该点等于 32。
 
-```
+```py
 f(4.000, 4.000) = 32.000
 ```
 
@@ -485,7 +485,7 @@ f(4.000, 4.000) = 32.000
 
 这可以使用 [meshgrid() NumPy 功能](https://numpy.org/doc/stable/reference/generated/numpy.meshgrid.html)来实现；例如:
 
-```
+```py
 ...
 # define range for input
 r_min, r_max = -5.0, 5.0
@@ -500,7 +500,7 @@ print(x[:5, :5])
 
 然后，我们可以使用我们的目标函数来评估每对点。
 
-```
+```py
 ...
 # compute targets
 results = objective(x, y)
@@ -510,7 +510,7 @@ print(results[:5, :5])
 
 最后，我们可以回顾一些输入到相应输出值的映射。
 
-```
+```py
 ...
 # create a mapping of some inputs to some results
 for i in range(5):
@@ -519,7 +519,7 @@ for i in range(5):
 
 下面的例子演示了我们如何在二维输入空间和目标函数中创建一个统一的样本网格。
 
-```
+```py
 # sample 2d objective function
 from numpy import arange
 from numpy import meshgrid
@@ -550,7 +550,7 @@ for i in range(5):
 
 最后，我们列举二维输入空间中的坐标及其相应的函数求值。
 
-```
+```py
 [[-5\.  -4.9 -4.8 -4.7 -4.6]
  [-5\.  -4.9 -4.8 -4.7 -4.6]
  [-5\.  -4.9 -4.8 -4.7 -4.6]
@@ -582,7 +582,7 @@ f(-5.000, -4.600) = 46.160
 
 然后，我们可以指定要在轮廓上绘制的级别数和要使用的配色方案。在这种情况下，我们将使用 50 级和流行的“ *jet* ”配色方案，其中低级使用冷配色方案(蓝色)，高级使用热配色方案(红色)。
 
-```
+```py
 ...
 # create a contour plot with 50 levels and jet color scheme
 pyplot.contour(x, y, results, 50, alpha=1.0, cmap='jet')
@@ -592,7 +592,7 @@ pyplot.show()
 
 将这些联系在一起，下面列出了创建二维目标函数等高线图的完整示例。
 
-```
+```py
 # create a contour plot with 50 levels and jet color scheme
 pyplot.contour(x, y, results, 50, alpha=1.0, cmap='jet')
 # show the plot
@@ -642,7 +642,7 @@ pyplot.show()
 
 我们可以使用采用相同参数的函数的 [contourf()版本来填充等高线图。](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.contourf.html)
 
-```
+```py
 ...
 # create a filled contour plot with 50 levels and jet color scheme
 pyplot.contourf(x, y, results, levels=50, cmap='jet')
@@ -650,7 +650,7 @@ pyplot.contourf(x, y, results, levels=50, cmap='jet')
 
 我们也可以在剧情上展示 optima，在这种情况下是一颗白色的星星，它将在剧情最低部分的蓝色背景颜色中脱颖而出。
 
-```
+```py
 ...
 # define the known function optima
 optima_x = [0.0, 0.0]
@@ -660,7 +660,7 @@ pyplot.plot([optima_x[0]], [optima_x[1]], '*', color='white')
 
 将这些联系在一起，下面列出了带有 optima 标记的填充等高线图的完整示例。
 
-```
+```py
 # filled contour plot for 2d objective function and show the optima
 from numpy import arange
 from numpy import meshgrid
@@ -703,7 +703,7 @@ pyplot.show()
 
 在这种情况下，我们可以用输入空间中的随机坐标模拟优化算法选择的点。
 
-```
+```py
 ...
 # simulate a sample made by an optimization algorithm
 seed(1)
@@ -713,7 +713,7 @@ sample_y = r_min + rand(10) * (r_max - r_min)
 
 然后，这些点可以直接绘制成黑色圆圈，它们的背景颜色可以表示它们的相对质量。
 
-```
+```py
 ...
 # plot the sample as black circles
 pyplot.plot(sample_x, sample_y, 'o', color='black')
@@ -721,7 +721,7 @@ pyplot.plot(sample_x, sample_y, 'o', color='black')
 
 将这些联系在一起，下面列出了绘制了最优样本和输入样本的填充等高线图的完整示例。
 
-```
+```py
 # filled contour plot for 2d objective function and show the optima and sample
 from numpy import arange
 from numpy import meshgrid
@@ -772,7 +772,7 @@ pyplot.show()
 
 这可以使用 [plot_surface() Matplotlib 函数](https://matplotlib.org/mpl_toolkits/mplot3d/tutorial.html#mpl_toolkits.mplot3d.Axes3D.plot_surface)来实现，该函数与等高线图一样，直接采用网格和函数求值。
 
-```
+```py
 ...
 # create a surface plot with the jet color scheme
 figure = pyplot.figure()
@@ -782,7 +782,7 @@ axis.plot_surface(x, y, results, cmap='jet')
 
 下面列出了创建曲面图的完整示例。
 
-```
+```py
 # surface plot for 2d objective function
 from numpy import arange
 from numpy import meshgrid

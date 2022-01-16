@@ -63,7 +63,7 @@
 
 我们将使用这个函数来定义一个有 20 个输入特征的问题；其中 10 个功能将是有意义的，10 个将不相关。总共将随机生成 1000 个示例。伪随机数发生器将是固定的，以确保我们每次运行代码时都会得到相同的 1000 个例子。
 
-```
+```py
 # generate regression dataset
 X, y = make_regression(n_samples=1000, n_features=20, noise=0.1, random_state=1)
 ```
@@ -72,7 +72,7 @@ X, y = make_regression(n_samples=1000, n_features=20, noise=0.1, random_state=1)
 
 我们可以使用 scikit-learn 库中的[标准转换器](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)类来实现这一点。在一个实际问题上，我们将在训练数据集上准备定标器，并将其应用于训练集和测试集，但是为了简单起见，我们将在分割成训练集和测试集之前将所有数据一起定标。
 
-```
+```py
 # standardize dataset
 X = StandardScaler().fit_transform(X)
 y = StandardScaler().fit_transform(y.reshape(len(y),1))[:,0]
@@ -80,7 +80,7 @@ y = StandardScaler().fit_transform(y.reshape(len(y),1))[:,0]
 
 一旦缩放，数据将被平均分成训练集和测试集。
 
-```
+```py
 # split into train and test
 n_train = 500
 trainX, testX = X[:n_train, :], X[n_train:, :]
@@ -91,7 +91,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 该模型将预期 20 个特征作为问题定义的输入。该模型将有一个包含 25 个节点的隐藏层，并将使用[校正线性激活函数(ReLU)](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/) 。给定一个要预测的真实值，输出层将有 1 个节点，并将使用线性激活函数。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(25, input_dim=20, activation='relu', kernel_initializer='he_uniform'))
@@ -102,7 +102,7 @@ model.add(Dense(1, activation='linear'))
 
 训练将进行 100 个时期，测试集将在每个时期结束时进行评估，以便我们可以在运行结束时[绘制学习曲线](https://machinelearningmastery.com/how-to-control-neural-network-model-capacity-with-nodes-and-layers/)。
 
-```
+```py
 opt = SGD(lr=0.01, momentum=0.9)
 model.compile(loss='...', optimizer=opt)
 # fit model
@@ -123,19 +123,19 @@ history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=100, 
 
 在 Keras 中，均方误差损失函数可以通过在编译模型时指定“ *mse* 或“*均方误差*作为损失函数来使用。
 
-```
+```py
 model.compile(loss='mean_squared_error')
 ```
 
 建议输出层有一个目标变量节点，并使用线性激活函数。
 
-```
+```py
 model.add(Dense(1, activation='linear'))
 ```
 
 下面列出了在所描述的回归问题上演示 MLP 的完整示例。
 
-```
+```py
 # mlp for regression with mse loss function
 from sklearn.datasets import make_regression
 from sklearn.preprocessing import StandardScaler
@@ -178,7 +178,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到模型学会了实现零误差的问题，至少达到小数点后三位。
 
-```
+```py
 Train: 0.000, Test: 0.001
 ```
 
@@ -202,13 +202,13 @@ Train: 0.000, Test: 0.001
 
 模型可以更新为使用“*均方对数误差*损失函数，并保持输出层的相同配置。在拟合模型时，我们还将跟踪均方误差作为一个指标，以便我们可以将其用作性能的衡量标准，并绘制学习曲线。
 
-```
+```py
 model.compile(loss='mean_squared_logarithmic_error', optimizer=opt, metrics=['mse'])
 ```
 
 下面列出了使用 MSLE 损失函数的完整示例。
 
-```
+```py
 # mlp for regression with msle loss function
 from sklearn.datasets import make_regression
 from sklearn.preprocessing import StandardScaler
@@ -258,7 +258,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到该模型在训练和测试数据集上都导致了稍差的均方误差。因为目标变量的分布是标准的高斯分布，所以它可能不太适合这个问题。
 
-```
+```py
 Train: 0.165, Test: 0.184
 ```
 
@@ -278,13 +278,13 @@ Train: 0.165, Test: 0.184
 
 模型可以更新为使用“ *mean_absolute_error* ”损失函数，并为输出层保持相同的配置。
 
-```
+```py
 model.compile(loss='mean_absolute_error', optimizer=opt, metrics=['mse'])
 ```
 
 下面列出了使用平均绝对误差作为回归测试问题损失函数的完整示例。
 
-```
+```py
 # mlp for regression with mae loss function
 from sklearn.datasets import make_regression
 from sklearn.preprocessing import StandardScaler
@@ -334,7 +334,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到模型学会了这个问题，实现了接近零的误差，至少到小数点后三位。
 
-```
+```py
 Train: 0.002, Test: 0.002
 ```
 
@@ -360,14 +360,14 @@ Train: 0.002, Test: 0.002
 
 我们将生成 1000 个示例，并添加 10%的统计噪声。伪随机数发生器将被植入相同的值，以确保我们总是得到相同的 1000 个例子。
 
-```
+```py
 # generate circles
 X, y = make_circles(n_samples=1000, noise=0.1, random_state=1)
 ```
 
 我们可以创建数据集的散点图来了解我们正在建模的问题。下面列出了完整的示例。
 
-```
+```py
 # scatter plot of the circles dataset with points colored by class
 from sklearn.datasets import make_circles
 from numpy import where
@@ -392,7 +392,7 @@ pyplot.show()
 
 对于训练集和测试集，数据集被平均分割。
 
-```
+```py
 # split into train and test
 n_train = 500
 trainX, testX = X[:n_train, :], X[n_train:, :]
@@ -401,7 +401,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 可以定义一个简单的 MLP 模型来解决这个问题，该模型要求数据集中的两个要素有两个输入，一个具有 50 个节点的隐藏层，一个经过校正的线性激活函数，以及一个需要针对损失函数的选择进行配置的输出层。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(50, input_dim=2, activation='relu', kernel_initializer='he_uniform'))
@@ -410,14 +410,14 @@ model.add(Dense(1, activation='...'))
 
 模型将使用随机梯度下降进行拟合，合理默认学习率为 0.01，动量为 0.9。
 
-```
+```py
 opt = SGD(lr=0.01, momentum=0.9)
 model.compile(loss='...', optimizer=opt, metrics=['accuracy'])
 ```
 
 我们将为 200 个训练时期拟合模型，并针对每个时期结束时的损失和准确性评估模型的性能，以便绘制学习曲线。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=200, verbose=0)
 ```
@@ -438,19 +438,19 @@ history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=200, 
 
 通过在编译模型时指定“*binary _ cross 熵*”，可以将交叉熵指定为 Keras 中的损失函数。
 
-```
+```py
 model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
 ```
 
 该函数要求输出层配置单个节点和一个“ *sigmoid* ”激活，以便预测类别 1 的概率。
 
-```
+```py
 model.add(Dense(1, activation='sigmoid'))
 ```
 
 下面列出了两个圆的二元分类问题的交叉熵损失 MLP 的完整例子。
 
-```
+```py
 # mlp for the circles problem with cross entropy loss
 from sklearn.datasets import make_circles
 from keras.models import Sequential
@@ -496,7 +496,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到模型相当好地学习了问题，在训练数据集上达到了大约 83%的准确率，在测试数据集上达到了大约 85%。分数相当接近，表明该模型可能没有结束或不足。
 
-```
+```py
 Train: 0.836, Test: 0.852
 ```
 
@@ -520,26 +520,26 @@ Train: 0.836, Test: 0.852
 
 首先，目标变量必须修改为具有集合{-1，1}中的值。
 
-```
+```py
 # change y from {0,1} to {-1,1}
 y[where(y == 0)] = -1
 ```
 
 然后，可以在编译函数中将铰链损失函数指定为“*铰链*”。
 
-```
+```py
 model.compile(loss='hinge', optimizer=opt, metrics=['accuracy'])
 ```
 
 最后，网络的输出层必须配置为具有单个节点，该节点具有双曲正切激活函数，能够输出[-1，1]范围内的单个值。
 
-```
+```py
 model.add(Dense(1, activation='tanh'))
 ```
 
 下面列出了两个圆的二元分类问题的具有铰链损失函数的 MLP 的完整例子。
 
-```
+```py
 # mlp for the circles problem with hinge loss
 from sklearn.datasets import make_circles
 from keras.models import Sequential
@@ -588,7 +588,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到比使用交叉熵稍差的性能，所选择的模型配置在列车和测试集上的准确率低于 80%。
 
-```
+```py
 Train: 0.792, Test: 0.740
 ```
 
@@ -610,26 +610,26 @@ Train: 0.792, Test: 0.740
 
 与使用铰链损失函数一样，必须修改目标变量，使其值在集合{-1，1}中。
 
-```
+```py
 # change y from {0,1} to {-1,1}
 y[where(y == 0)] = -1
 ```
 
 在定义模型时，平方铰链损失可以在*编译()*函数中指定为“*平方铰链*”。
 
-```
+```py
 model.compile(loss='squared_hinge', optimizer=opt, metrics=['accuracy'])
 ```
 
 最后，输出层必须使用具有双曲正切激活函数的单个节点，该函数能够输出[-1，1]范围内的连续值。
 
-```
+```py
 model.add(Dense(1, activation='tanh'))
 ```
 
 下面列出了在两个圆的二元分类问题上具有平方铰链损失函数的 MLP 的完整例子。
 
-```
+```py
 # mlp for the circles problem with squared hinge loss
 from sklearn.datasets import make_circles
 from keras.models import Sequential
@@ -678,7 +678,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到，对于这个问题和所选的模型配置，铰链平方损失可能不合适，导致列车和测试集上的分类精度低于 70%。
 
-```
+```py
 Train: 0.682, Test: 0.646
 ```
 
@@ -700,7 +700,7 @@ Train: 0.682, Test: 0.646
 
 我们将使用斑点问题作为调查的基础。scikit-learn 提供的 [make_blobs()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html)提供了一种在给定指定数量的类和输入特征的情况下生成示例的方法。我们将使用这个函数为一个有 2 个输入变量的 3 类分类问题生成 1000 个例子。伪随机数发生器将被一致地播种，以便每次运行代码时生成相同的 1000 个例子。
 
-```
+```py
 # generate dataset
 X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random_state=2)
 ```
@@ -709,7 +709,7 @@ X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random
 
 下面的示例按照类别成员关系创建了整个数据集着色点的散点图。
 
-```
+```py
 # scatter plot of blobs dataset
 from sklearn.datasets import make_blobs
 from numpy import where
@@ -733,7 +733,7 @@ pyplot.show()
 
 数据集将在训练集和测试集之间平均分割。
 
-```
+```py
 # split into train and test
 n_train = 500
 trainX, testX = X[:n_train, :], X[n_train:, :]
@@ -744,7 +744,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 该模型需要两个输入变量，在隐藏层和校正线性激活函数中有 50 个节点，输出层必须根据损失函数的选择进行定制。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(50, input_dim=2, activation='relu', kernel_initializer='he_uniform'))
@@ -753,7 +753,7 @@ model.add(Dense(..., activation='...'))
 
 该模型使用随机梯度下降进行拟合，合理的默认学习率为 0.01，动量为 0.9。
 
-```
+```py
 # compile model
 opt = SGD(lr=0.01, momentum=0.9)
 model.compile(loss='...', optimizer=opt, metrics=['accuracy'])
@@ -761,7 +761,7 @@ model.compile(loss='...', optimizer=opt, metrics=['accuracy'])
 
 该模型将适用于训练数据集上的 100 个时期，测试数据集将用作验证数据集，允许我们在每个训练时期结束时评估训练集和测试集的损失和分类精度，并绘制学习曲线。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=100, verbose=0)
 ```
@@ -782,13 +782,13 @@ history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=100, 
 
 在编译模型时，通过指定“*分类 _ 交叉熵*”，可以将交叉熵指定为 Keras 中的损失函数。
 
-```
+```py
 model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 ```
 
 该功能要求输出层配置有一个 *n* 节点(每个类一个)，在这种情况下为三个节点，以及一个“ *softmax* 激活，以便预测每个类的概率。
 
-```
+```py
 model.add(Dense(3, activation='softmax'))
 ```
 
@@ -796,14 +796,14 @@ model.add(Dense(3, activation='softmax'))
 
 这是为了确保每个示例的实际类值的预期概率为 1.0，所有其他类值的预期概率为 0.0。这可以使用[到 _ classic()Keras 函数](https://keras.io/utils/#to_categorical)来实现。
 
-```
+```py
 # one hot encode output variable
 y = to_categorical(y)
 ```
 
 下面列出了用于多类斑点分类问题的具有交叉熵损失的 MLP 的完整例子。
 
-```
+```py
 # mlp for the blobs multi-class classification problem with cross-entropy loss
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -853,7 +853,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到模型表现良好，在训练数据集上实现了大约 84%的分类准确率，在测试数据集上实现了大约 82%的分类准确率。
 
-```
+```py
 Train: 0.840, Test: 0.822
 ```
 
@@ -875,13 +875,13 @@ Train: 0.840, Test: 0.822
 
 调用*编译()*函数时，使用“*稀疏 _ 分类 _ 交叉熵*，可以在 keras 中使用稀疏交叉熵进行多类分类。
 
-```
+```py
 model.compile(loss='sparse_categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 ```
 
 该功能要求输出层配置有一个 *n* 节点(每个类一个)，在这种情况下为三个节点，以及一个“ *softmax* 激活，以便预测每个类的概率。
 
-```
+```py
 model.add(Dense(3, activation='softmax'))
 ```
 
@@ -889,7 +889,7 @@ model.add(Dense(3, activation='softmax'))
 
 下面列出了在斑点多类分类问题上用稀疏交叉熵训练 MLP 的完整例子。
 
-```
+```py
 # mlp for the blobs multi-class classification problem with sparse cross-entropy loss
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -936,7 +936,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到模型在问题上取得了良好的性能。事实上，如果多次重复实验，稀疏和非稀疏交叉熵的平均性能应该是相当的。
 
-```
+```py
 Train: 0.832, Test: 0.818
 ```
 
@@ -958,7 +958,7 @@ KL 散度损失为 0 表明分布是相同的。实际上，KL 散度的行为�
 
 通过在*编译()*函数中指定“*kull back _ leibler _ diffusion*”可以在 Keras 中使用 KL 散度损失。
 
-```
+```py
 model.compile(loss='kullback_leibler_divergence', optimizer=opt, metrics=['accuracy'])
 ```
 
@@ -966,14 +966,14 @@ model.compile(loss='kullback_leibler_divergence', optimizer=opt, metrics=['accur
 
 此外，与分类交叉熵一样，我们必须对目标变量进行热编码，以使类值的预期概率为 1.0，所有其他类值的预期概率为 0.0。
 
-```
+```py
 # one hot encode output variable
 y = to_categorical(y)
 ```
 
 下面列出了为 blobs 多类分类问题训练具有 KL 散度损失的 MLP 的完整例子。
 
-```
+```py
 # mlp for the blobs multi-class classification problem with kl divergence loss
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -1023,7 +1023,7 @@ pyplot.show()
 
 在这种情况下，我们看到的性能类似于交叉熵损失的结果，在这种情况下，训练和测试数据集的准确率约为 82%。
 
-```
+```py
 Train: 0.822, Test: 0.822
 ```
 

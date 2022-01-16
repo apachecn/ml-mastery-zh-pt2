@@ -88,7 +88,7 @@
 
 我们可以看到，这是一个带有数值输入变量的[多类分类](https://machinelearningmastery.com/types-of-classification-in-machine-learning/)预测建模问题，每个变量都有不同的尺度。
 
-```
+```py
 14.23,1.71,2.43,15.6,127,2.8,3.06,.28,2.29,5.64,1.04,3.92,1065,1
 13.2,1.78,2.14,11.2,100,2.65,2.76,.26,1.28,4.38,1.05,3.4,1050,1
 13.16,2.36,2.67,18.6,101,2.8,3.24,.3,2.81,5.68,1.03,3.17,1185,1
@@ -99,7 +99,7 @@
 
 该示例加载数据集并将其拆分为输入和输出列，然后汇总数据数组。
 
-```
+```py
 # example of loading and summarizing the wine dataset
 from pandas import read_csv
 # define the location of the dataset
@@ -116,7 +116,7 @@ print(X.shape, y.shape)
 
 运行该示例，我们可以看到数据集被正确加载，并且有 179 行数据，包含 13 个输入变量和一个目标变量。
 
-```
+```py
 (178, 13) (178,)
 ```
 
@@ -130,7 +130,7 @@ print(X.shape, y.shape)
 
 首先，我们可以通过确保输入变量是数字的并且目标变量是标签编码的来执行最少的数据准备工作，正如 scikit-learn 库所期望的那样。
 
-```
+```py
 ...
 # minimally prepare dataset
 X = X.astype('float')
@@ -139,7 +139,7 @@ y = LabelEncoder().fit_transform(y.astype('str'))
 
 接下来，我们可以定义我们的预测模型。
 
-```
+```py
 ...
 # define the model
 model = LogisticRegression(solver='liblinear')
@@ -149,7 +149,7 @@ model = LogisticRegression(solver='liblinear')
 
 将使用分类准确度评估模型性能。
 
-```
+```py
 ...
 model = LogisticRegression(solver='liblinear')
 # define the cross-validation procedure
@@ -160,7 +160,7 @@ scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 
 在运行结束时，我们将报告在所有重复和评估折叠中收集的准确度分数的平均值和标准偏差。
 
-```
+```py
 ...
 # report performance
 print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
@@ -168,7 +168,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 将这些联系在一起，下面列出了在原酒分类数据集上评估逻辑回归模型的完整示例。
 
-```
+```py
 # baseline model performance on the wine dataset
 from numpy import mean
 from numpy import std
@@ -201,7 +201,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到，适合原始输入数据的逻辑回归模型实现了大约 95.3%的平均分类精度，提供了性能基线。
 
-```
+```py
 Accuracy: 0.953 (0.048)
 ```
 
@@ -219,7 +219,7 @@ Accuracy: 0.953 (0.048)
 
 列数的估计是 13 个输入变量乘以 5 个变换，或者 65 加上从主成分分析和奇异值分解降维方法输出的 14 列，得到总共约 79 个特征。
 
-```
+```py
 ...
 # transforms for the feature union
 transforms = list()
@@ -236,7 +236,7 @@ fu = FeatureUnion(transforms)
 
 然后我们可以创建一个建模[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，第一步是特征联合，最后一步是逻辑回归模型。
 
-```
+```py
 ...
 # define the model
 model = LogisticRegression(solver='liblinear')
@@ -251,7 +251,7 @@ pipeline = Pipeline(steps=steps)
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # data preparation as feature engineering for wine dataset
 from numpy import mean
 from numpy import std
@@ -309,7 +309,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到性能比基线性能有所提升，平均分类准确率约为 96.8%，而上一节为 95.3%。
 
-```
+```py
 Accuracy: 0.968 (0.037)
 ```
 
@@ -322,7 +322,7 @@ Accuracy: 0.968 (0.037)
 
 在这种情况下，我们将使用[递归特征消除](https://machinelearningmastery.com/rfe-feature-selection-in-python/)或 RFE 技术进行特征选择，并将其配置为选择 15 个最相关的特征。
 
-```
+```py
 ...
 # define the feature selection
 rfe = RFE(estimator=LogisticRegression(solver='liblinear'), n_features_to_select=15)
@@ -330,7 +330,7 @@ rfe = RFE(estimator=LogisticRegression(solver='liblinear'), n_features_to_select
 
 然后，我们可以在*特征联合*之后和*物流配送*算法之前，将 RFE 特征选择添加到建模管道中。
 
-```
+```py
 ...
 # define the pipeline
 steps = list()
@@ -342,7 +342,7 @@ pipeline = Pipeline(steps=steps)
 
 将这些结合在一起，下面列出了带有特征选择的特征选择数据准备方法的完整示例。
 
-```
+```py
 # data preparation as feature engineering with feature selection for wine dataset
 from numpy import mean
 from numpy import std
@@ -404,7 +404,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 同样，我们可以看到性能进一步提升，从所有提取特征的 96.8%提升到建模前使用特征选择的 98.9%左右。
 
-```
+```py
 Accuracy: 0.989 (0.022)
 ```
 

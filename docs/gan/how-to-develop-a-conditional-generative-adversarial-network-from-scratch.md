@@ -120,7 +120,7 @@ Keras 通过 [fashion_mnist.load_dataset()函数](https://keras.io/datasets/#fas
 
 注意:第一次加载数据集时，Keras 会自动下载图像的压缩版本，并保存在 *~/的主目录下。keras/数据集/* 。下载速度很快，因为压缩形式的数据集只有大约 25 兆字节。
 
-```
+```py
 # example of loading the fashion_mnist dataset
 from keras.datasets.fashion_mnist import load_data
 # load the images into memory
@@ -134,7 +134,7 @@ print('Test', testX.shape, testy.shape)
 
 我们可以看到训练集中有 60K 个例子，测试集中有 10K，每个图像都是 28 乘 28 像素的正方形。
 
-```
+```py
 Train (60000, 28, 28) (60000,)
 Test (10000, 28, 28) (10000,)
 ```
@@ -143,7 +143,7 @@ Test (10000, 28, 28) (10000,)
 
 我们可以使用带有 [imshow()函数](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.imshow.html)的 matplotlib 库绘制训练数据集中的一些图像，并通过“ *cmap* ”参数将颜色映射指定为“*灰色*，以正确显示像素值。
 
-```
+```py
 # plot raw pixel data
 pyplot.imshow(trainX[i], cmap='gray')
 ```
@@ -152,14 +152,14 @@ pyplot.imshow(trainX[i], cmap='gray')
 
 它们更容易观看，因为大部分图像现在是白色的，而感兴趣的区域是黑色的。这可以通过使用反向灰度色图来实现，如下所示:
 
-```
+```py
 # plot raw pixel data
 pyplot.imshow(trainX[i], cmap='gray_r')
 ```
 
 以下示例将训练数据集中的前 100 幅图像绘制成 10 乘 10 的正方形。
 
-```
+```py
 # example of loading the fashion_mnist dataset
 from keras.datasets.fashion_mnist import load_data
 from matplotlib import pyplot
@@ -198,7 +198,7 @@ pyplot.show()
 
 下面的 define_discriminator()函数实现了这一点，定义并编译鉴别器模型并返回它。图像的输入形状被参数化为一个默认的函数参数，以防您以后想要为自己的图像数据重用该函数。
 
-```
+```py
 # define the standalone discriminator model
 def define_discriminator(in_shape=(28,28,1)):
 	model = Sequential()
@@ -222,7 +222,7 @@ def define_discriminator(in_shape=(28,28,1)):
 
 下面的 *define_generator()* 函数定义了生成器模型，但由于没有直接训练，所以故意不编译，然后返回模型。潜在空间的大小被参数化为函数参数。
 
-```
+```py
 # define the standalone generator model
 def define_generator(latent_dim):
 	model = Sequential()
@@ -248,7 +248,7 @@ def define_generator(latent_dim):
 
 下面的 *define_gan()* 函数实现了这一点，将已经定义的生成器和鉴别器模型作为输入。
 
-```
+```py
 # define the combined generator and discriminator model, for updating the generator
 def define_gan(generator, discriminator):
 	# make weights in the discriminator not trainable
@@ -271,7 +271,7 @@ def define_gan(generator, discriminator):
 
 下面的 *load_real_samples()* 函数实现了这一点，返回加载并缩放的时尚 MNIST 训练数据集，准备建模。
 
-```
+```py
 # load fashion mnist images
 def load_real_samples():
 	# load dataset
@@ -289,7 +289,7 @@ def load_real_samples():
 
 下面的 *generate_real_samples()* 函数实现了这一点，以准备好的数据集为参数，为鉴别器选择并返回一个时尚 MNIST 图像的随机样本及其对应的类标签，具体为 class=1，表示它们是真实图像。
 
-```
+```py
 # select real samples
 def generate_real_samples(dataset, n_samples):
 	# choose random instances
@@ -305,7 +305,7 @@ def generate_real_samples(dataset, n_samples):
 
 *generate _ 潜伏 _points()* 函数实现了这一点，将潜伏空间的大小作为自变量，所需的点数作为生成器模型的一批输入样本返回。
 
-```
+```py
 # generate points in latent space as input for the generator
 def generate_latent_points(latent_dim, n_samples):
 	# generate points in the latent space
@@ -319,7 +319,7 @@ def generate_latent_points(latent_dim, n_samples):
 
 下面的 *generate_fake_samples()* 函数实现了这一点，将生成器模型和潜在空间的大小作为参数，然后在潜在空间中生成点，并将其用作生成器模型的输入。该函数为鉴别器模型返回生成的图像及其对应的类标签，具体来说，class=0 表示它们是伪造的或生成的。
 
-```
+```py
 # use the generator to generate n fake examples, with class labels
 def generate_fake_samples(generator, latent_dim, n_samples):
 	# generate points in latent space
@@ -339,7 +339,7 @@ def generate_fake_samples(generator, latent_dim, n_samples):
 
 下面的 *train()* 函数实现了这一点，将定义的模型、数据集和潜在维度的大小作为参数，并使用默认参数参数化纪元的数量和批处理大小。发电机模型在训练结束时保存。
 
-```
+```py
 # train the generator and discriminator
 def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batch=128):
 	bat_per_epo = int(dataset.shape[0] / n_batch)
@@ -371,7 +371,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
 
 然后，我们可以定义潜在空间的大小，定义所有三个模型，并在加载的时尚 MNIST 数据集上训练它们。
 
-```
+```py
 # size of the latent space
 latent_dim = 100
 # create the discriminator
@@ -388,7 +388,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # example of training an unconditional gan on the fashion mnist dataset
 from numpy import expand_dims
 from numpy import zeros
@@ -551,7 +551,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 在这种情况下，在整个训练过程中，鉴频器和发生器的损耗都在 0.6 到 0.7 左右。
 
-```
+```py
 ...
 >100, 464/468, d1=0.681, d2=0.685 g=0.693
 >100, 465/468, d1=0.691, d2=0.700 g=0.703
@@ -566,7 +566,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 以下示例加载保存的模型，并生成 100 件随机的衣服。
 
-```
+```py
 # example of loading the generator model and generating images
 from keras.models import load_model
 from numpy.random import randn
@@ -626,7 +626,7 @@ show_plot(X, 10)
 
 下面的 *define_discriminator()* 实现了对鉴别器模型的更新。在嵌入层之后，输入图像的参数化形状也用于定义完全连接层的激活次数，以重塑其输出。问题中的类的数量也在函数和集合中被参数化。
 
-```
+```py
 # define the standalone discriminator model
 def define_discriminator(in_shape=(28,28,1), n_classes=10):
 	# label input
@@ -676,7 +676,7 @@ def define_discriminator(in_shape=(28,28,1), n_classes=10):
 
 下面的 *define_generator()* 函数实现了这一点，再次参数化了类的数量，就像我们对鉴别器模型所做的那样。
 
-```
+```py
 # define the standalone generator model
 def define_generator(latent_dim, n_classes=10):
 	# label input
@@ -726,7 +726,7 @@ def define_generator(latent_dim, n_classes=10):
 
 下面的 *define_gan()* 函数实现了 gan 的条件版本。
 
-```
+```py
 # define the combined generator and discriminator model, for updating the generator
 def define_gan(g_model, d_model):
 	# make weights in the discriminator not trainable
@@ -759,7 +759,7 @@ def define_gan(g_model, d_model):
 
 首先，必须更新 *load_real_samples()* 和 *generate_real_samples()* 函数，分别用于加载数据集和选择一批样本，以利用训练数据集中的真实类标签。重要的是， *generate_real_samples()* 函数现在返回图像、服装标签和鉴别器的类别标签(类别=1)。
 
-```
+```py
 # load fashion mnist images
 def load_real_samples():
 	# load dataset
@@ -789,7 +789,7 @@ def generate_real_samples(dataset, n_samples):
 
 然后必须更新 *generate_fake_samples()* 函数，以便在生成新的假图像时使用这些随机生成的类标签作为生成器模型的输入。
 
-```
+```py
 # generate points in latent space as input for the generator
 def generate_latent_points(latent_dim, n_samples, n_classes=10):
 	# generate points in the latent space
@@ -813,7 +813,7 @@ def generate_fake_samples(generator, latent_dim, n_samples):
 
 最后， *train()* 函数必须更新，以便在更新鉴别器和生成器模型的调用中检索和使用类标签。
 
-```
+```py
 # train the generator and discriminator
 def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batch=128):
 	bat_per_epo = int(dataset[0].shape[0] / n_batch)
@@ -845,7 +845,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
 
 将所有这些联系在一起，下面列出了时尚 MNIST 数据集的条件深度卷积生成对抗网络的完整示例。
 
-```
+```py
 # example of training an conditional gan on the fashion mnist dataset
 from numpy import expand_dims
 from numpy import zeros
@@ -1047,7 +1047,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of loading the generator model and generating images
 from numpy import asarray
 from numpy.random import randn

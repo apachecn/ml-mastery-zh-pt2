@@ -73,7 +73,7 @@
 
 我们可以用 Python 中计算这个不平衡数据集熵的例子来演示这一点。下面列出了完整的示例。
 
-```
+```py
 # calculate the entropy for a dataset
 from math import log2
 # proportion of examples in each class
@@ -87,7 +87,7 @@ print('entropy: %.3f bits' % entropy)
 
 运行该示例，我们可以看到用于二进制分类的数据集的熵小于 1 位。也就是说，对数据集中任意示例的类标签进行编码所需的信息不到一位。
 
-```
+```py
 entropy: 0.469 bits
 ```
 
@@ -127,7 +127,7 @@ entropy: 0.469 bits
 
 我们可以定义一个函数，根据属于类别 0 和类别 1 的样本的比率来计算一组样本的熵。
 
-```
+```py
 # calculate the entropy for the split in the dataset
 def entropy(class0, class1):
 	return -(class0 * log2(class0) + class1 * log2(class1))
@@ -135,7 +135,7 @@ def entropy(class0, class1):
 
 现在，考虑一个包含 20 个示例的数据集，13 个用于类 0，7 个用于类 1。我们可以计算这个数据集的熵，它将少于 1 位。
 
-```
+```py
 ...
 # split of the main dataset
 class0 = 13 / 20
@@ -149,7 +149,7 @@ print('Dataset Entropy: %.3f bits' % s_entropy)
 
 让我们假设，如果我们按值 1 分割数据集，我们有一组八个样本，七个用于类 0，一个用于类 1。然后我们可以计算这组样本的熵。
 
-```
+```py
 ...
 # split 1 (split via value1)
 s1_class0 = 7 / 8
@@ -161,7 +161,7 @@ print('Group1 Entropy: %.3f bits' % s1_entropy)
 
 现在，让我们假设我们按值 2 分割数据集；我们有一组 12 个样本，每组 6 个。我们希望这个组的熵为 1。
 
-```
+```py
 ...
 # split 2  (split via value2)
 s2_class0 = 6 / 12
@@ -185,7 +185,7 @@ print('Group2 Entropy: %.3f bits' % s2_entropy)
 
 或者用代码:
 
-```
+```py
 ...
 # calculate the information gain
 gain = s_entropy - (8/20 * s1_entropy + 12/20 * s2_entropy)
@@ -194,7 +194,7 @@ print('Information Gain: %.3f bits' % gain)
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # calculate the information gain
 from math import log2
 
@@ -232,7 +232,7 @@ print('Information Gain: %.3f bits' % gain)
 
 最后，变量的信息增益计算为 0.117 位。也就是说，通过所选变量拆分数据集获得的增益为 0.117 位。
 
-```
+```py
 Dataset Entropy: 0.934 bits
 Group1 Entropy: 0.544 bits
 Group2 Entropy: 1.000 bits
@@ -265,7 +265,7 @@ Information Gain: 0.117 bits
 
 这可以通过在配置模型时将标准参数设置为“*熵*”来实现；例如:
 
-```
+```py
 # example of a decision tree trained with information gain
 from sklearn.tree import DecisionTreeClassifier
 model = sklearn.tree.DecisionTreeClassifier(criterion='entropy')

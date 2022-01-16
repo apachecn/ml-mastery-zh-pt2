@@ -83,7 +83,7 @@ Weka 安装目录中提供的数据集
 
 如果您安装了 Java(很可能使用 Weka)，您也可以解压缩。在下载 jar 的目录中，使用以下命令在命令行上手动创建 jar 文件:
 
-```
+```py
 jar -xvf datasets-numeric.jar
 ```
 

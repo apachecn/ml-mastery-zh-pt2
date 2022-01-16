@@ -41,7 +41,7 @@ Keras 通过 batch normalization 层提供对批处理规范化的支持。
 
 例如:
 
-```
+```py
 bn = BatchNormalization()
 ```
 
@@ -55,7 +55,7 @@ bn = BatchNormalization()
 
 一个“*动量*”参数允许你控制在计算更新时包含多少来自前一个小批量的统计数据。默认情况下，该值保持较高，为 0.99。这可以设置为 0.0，以便只使用当前小批量的统计数据，如原论文所述。
 
-```
+```py
 bn = BatchNormalization(momentum=0.0)
 ```
 
@@ -75,7 +75,7 @@ BatchNormalization 层可以添加到您的模型中，以标准化原始输入�
 
 然而，当用于标准化原始输入变量时，图层必须指定 *input_shape* 参数；例如:
 
-```
+```py
 ...
 model = Sequential
 model.add(BatchNormalization(input_shape=(2,)))
@@ -84,7 +84,7 @@ model.add(BatchNormalization(input_shape=(2,)))
 
 当用于标准化隐藏层的输出时，该层可以像任何其他层一样添加到模型中。
 
-```
+```py
 ...
 model = Sequential
 ...
@@ -98,7 +98,7 @@ BatchNormalization 规范化层可用于标准化前一层激活功能之前或�
 
 介绍该方法的[原纸](https://arxiv.org/abs/1502.03167)建议在前一层的激活函数之前加入批量归一化，例如:
 
-```
+```py
 ...
 model = Sequential
 model.add(Dense(32))
@@ -109,7 +109,7 @@ model.add(Activation('relu'))
 
 [有报道实验提示](https://github.com/ducha-aiki/caffenet-benchmark/blob/master/batchnorm.md)在前一层的激活功能后加入批量归一化层时性能更好；例如:
 
-```
+```py
 ...
 model = Sequential
 model.add(Dense(32, activation='relu'))
@@ -125,7 +125,7 @@ model.add(BatchNormalization())
 
 下面的示例在密集隐藏层之间的激活函数之后添加批处理规范化。
 
-```
+```py
 # example of batch normalization for an mlp
 from keras.layers import Dense
 from keras.layers import BatchNormalization
@@ -140,7 +140,7 @@ model.add(Dense(1))
 
 下面的示例在卷积层和最大池层之间的激活函数之后添加了批处理规范化。
 
-```
+```py
 # example of batch normalization for an cnn
 from keras.layers import Dense
 from keras.layers import Conv2D
@@ -159,7 +159,7 @@ model.add(Dense(1))
 
 下面的示例在 LSTM 和密集隐藏层之间的激活函数之后添加批处理规范化。
 
-```
+```py
 # example of batch normalization for a lstm
 from keras.layers import Dense
 from keras.layers import LSTM
@@ -185,7 +185,7 @@ model.add(Dense(1))
 
 我们可以使用 [make_circles()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_circles.html)从这个问题中生成观察值。我们将向数据中添加噪声，并为随机数生成器播种，这样每次运行代码时都会生成相同的样本。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_circles(n_samples=1000, noise=0.1, random_state=1)
 ```
@@ -194,7 +194,7 @@ X, y = make_circles(n_samples=1000, noise=0.1, random_state=1)
 
 下面列出了生成数据集并绘制它的完整示例。
 
-```
+```py
 # scatter plot of the circles dataset with points colored by class
 from sklearn.datasets import make_circles
 from numpy import where
@@ -225,7 +225,7 @@ pyplot.show()
 
 首先，我们将把 1000 个生成的样本分成一个训练和测试数据集，每个数据集有 500 个例子。这将为模型提供足够大的学习样本和同等规模的(公平的)性能评估。
 
-```
+```py
 # split into train and test
 n_train = 500
 trainX, testX = X[:n_train, :], X[n_train:, :]
@@ -238,7 +238,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 该模型将使用随机梯度下降进行训练，学习率为 0.01，动量为 0.9，优化将使用二元交叉熵损失函数进行。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(50, input_dim=2, activation='relu', kernel_initializer='he_uniform'))
@@ -251,14 +251,14 @@ model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
 
 我们将使用保持测试数据集作为验证数据集，并在每个训练周期结束时评估其性能。该模型将适合 100 个时代，经过一点点尝试和错误选择。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=100, verbose=0)
 ```
 
 在运行结束时，在列车和测试数据集上评估模型，并报告精度。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -269,7 +269,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 这个学习曲线图很有用，因为它给出了模型学习问题的速度和效果的概念。
 
-```
+```py
 # plot history
 pyplot.plot(history.history['accuracy'], label='train')
 pyplot.plot(history.history['val_accuracy'], label='test')
@@ -279,7 +279,7 @@ pyplot.show()
 
 将这些元素结合在一起，下面列出了完整的示例。
 
-```
+```py
 # mlp for the two circles problem
 from sklearn.datasets import make_circles
 from keras.models import Sequential
@@ -317,7 +317,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到该模型在保持数据集上实现了大约 84%的准确率，并且在给定两个数据集的相同大小和相似组成的情况下，在训练集和测试集上都实现了相当的性能。
 
-```
+```py
 Train: 0.838, Test: 0.846
 ```
 
@@ -339,7 +339,7 @@ Train: 0.838, Test: 0.846
 
 在输出层之前的隐藏层之后，可以向模型添加新的 BatchNormalization 层。具体来说，在前一隐藏层的激活功能之后。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(50, input_dim=2, activation='relu', kernel_initializer='he_uniform'))
@@ -351,7 +351,7 @@ model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
 
 下面列出了这种修改的完整示例。
 
-```
+```py
 # mlp for the two circles problem with batchnorm after activation function
 from sklearn.datasets import make_circles
 from keras.models import Sequential
@@ -391,7 +391,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到模型在列车和测试集上的可比性能，准确率约为 84%，与我们在上一节中看到的非常相似，如果不是更好一点的话。
 
-```
+```py
 Train: 0.846, Test: 0.848
 ```
 
@@ -407,7 +407,7 @@ Train: 0.846, Test: 0.848
 
 我们也可以尝试模型的一种变体，在隐藏层的激活函数之前应用批处理规范化，而不是在激活函数之后。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(50, input_dim=2, kernel_initializer='he_uniform'))
@@ -420,7 +420,7 @@ model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
 
 下面列出了对模型进行此更改的完整代码列表。
 
-```
+```py
 # mlp for the two circles problem with batchnorm before activation function
 from sklearn.datasets import make_circles
 from keras.models import Sequential
@@ -462,7 +462,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到该模型在训练和测试数据集上的性能相当，但比没有批处理归一化的模型稍差。
 
-```
+```py
 Train: 0.826, Test: 0.830
 ```
 

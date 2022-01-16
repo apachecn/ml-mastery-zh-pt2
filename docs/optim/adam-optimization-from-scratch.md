@@ -173,7 +173,7 @@ Adam 旨在加速优化过程，例如减少达到最优所需的函数求值次
 
 下面的 objective()函数实现了这个功能
 
-```
+```py
 # objective function
 def objective(x, y):
 	return x**2.0 + y**2.0
@@ -183,7 +183,7 @@ def objective(x, y):
 
 下面列出了绘制目标函数的完整示例。
 
-```
+```py
 # 3d plot of the test function
 from numpy import arange
 from numpy import meshgrid
@@ -222,7 +222,7 @@ pyplot.show()
 
 以下示例创建了目标函数的等高线图。
 
-```
+```py
 # contour plot of the test function
 from numpy import asarray
 from numpy import arange
@@ -269,7 +269,7 @@ pyplot.show()
 
 x^2 的导数在每个维度上都是 x * 2。导数()函数实现如下。
 
-```
+```py
 # derivative of objective function
 def derivative(x, y):
 	return asarray([x * 2.0, y * 2.0])
@@ -281,7 +281,7 @@ def derivative(x, y):
 
 这假设我们有一个定义搜索范围的数组，每个维度有一行，第一列定义维度的最小值，第二列定义维度的最大值。
 
-```
+```py
 ...
 # generate an initial point
 x = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
@@ -290,7 +290,7 @@ score = objective(x[0], x[1])
 
 接下来，我们需要将第一和第二时刻初始化为零。
 
-```
+```py
 ...
 # initialize first and second moments
 m = [0.0 for _ in range(bounds.shape[0])]
@@ -299,7 +299,7 @@ v = [0.0 for _ in range(bounds.shape[0])]
 
 然后，我们运行由“ *n_iter* ”超参数定义的算法的固定迭代次数。
 
-```
+```py
 ...
 # run iterations of gradient descent
 for t in range(n_iter):
@@ -308,7 +308,7 @@ for t in range(n_iter):
 
 第一步是使用*导数()*函数计算当前解的梯度。
 
-```
+```py
 ...
 # calculate gradient
 gradient = derivative(solution[0], solution[1])
@@ -316,7 +316,7 @@ gradient = derivative(solution[0], solution[1])
 
 第一步是计算当前参数集的导数。
 
-```
+```py
 ...
 # calculate gradient g(t)
 g = derivative(x[0], x[1])
@@ -326,7 +326,7 @@ g = derivative(x[0], x[1])
 
 实际上，为了提高效率，我建议使用 NumPy 向量运算。
 
-```
+```py
 ...
 # build a solution one variable at a time
 for i in range(x.shape[0]):
@@ -335,7 +335,7 @@ for i in range(x.shape[0]):
 
 首先，我们需要计算时刻。
 
-```
+```py
 ...
 # m(t) = beta1 * m(t-1) + (1 - beta1) * g(t)
 m[i] = beta1 * m[i] + (1.0 - beta1) * g[i]
@@ -343,7 +343,7 @@ m[i] = beta1 * m[i] + (1.0 - beta1) * g[i]
 
 然后第二个瞬间。
 
-```
+```py
 ...
 # v(t) = beta2 * v(t-1) + (1 - beta2) * g(t)^2
 v[i] = beta2 * v[i] + (1.0 - beta2) * g[i]**2
@@ -351,7 +351,7 @@ v[i] = beta2 * v[i] + (1.0 - beta2) * g[i]**2
 
 然后是第一和第二时刻的偏差校正。
 
-```
+```py
 ...
 # mhat(t) = m(t) / (1 - beta1(t))
 mhat = m[i] / (1.0 - beta1**(t+1))
@@ -361,7 +361,7 @@ vhat = v[i] / (1.0 - beta2**(t+1))
 
 然后最后更新变量值。
 
-```
+```py
 ...
 # x(t) = x(t-1) - alpha * mhat(t) / (sqrt(vhat(t)) + eps)
 x[i] = x[i] - alpha * mhat / (sqrt(vhat) + eps)
@@ -371,7 +371,7 @@ x[i] = x[i] - alpha * mhat / (sqrt(vhat) + eps)
 
 迭代结束时，我们可以评估新的参数值，并报告搜索的性能。
 
-```
+```py
 ...
 # evaluate candidate point
 score = objective(x[0], x[1])
@@ -383,7 +383,7 @@ print('>%d f(%s) = %.5f' % (t, x, score))
 
 下面列出了完整的功能。
 
-```
+```py
 # gradient descent algorithm with adam
 def adam(objective, derivative, bounds, n_iter, alpha, beta1, beta2, eps=1e-8):
 	# generate an initial point
@@ -421,7 +421,7 @@ def adam(objective, derivative, bounds, n_iter, alpha, beta1, beta2, eps=1e-8):
 
 在这种情况下，我们将使用算法的 60 次迭代，初始步长为 0.02，β1 和β2 值分别为 0.8 和 0.999。这些超参数值是经过一点点反复试验后发现的。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -443,7 +443,7 @@ print('f(%s) = %f' % (best, score))
 
 将所有这些联系在一起，下面列出了使用 Adam 进行梯度下降优化的完整示例。
 
-```
+```py
 # gradient descent optimization with adam for a two-dimensional test function
 from math import sqrt
 from numpy import asarray
@@ -512,7 +512,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以看到，在大约 53 次搜索迭代后，找到了一个接近最优的解，输入值接近 0.0 和 0.0，评估为 0.0。
 
-```
+```py
 ...
 >50 f([-0.00056912 -0.00321961]) = 0.00001
 >51 f([-0.00052452 -0.00286514]) = 0.00001
@@ -538,7 +538,7 @@ f([ 0.00018407 -0.00054858]) = 0.000000
 
 下面列出了带有这些更改的功能的更新版本。
 
-```
+```py
 # gradient descent algorithm with adam
 def adam(objective, derivative, bounds, n_iter, alpha, beta1, beta2, eps=1e-8):
 	solutions = list()
@@ -575,7 +575,7 @@ def adam(objective, derivative, bounds, n_iter, alpha, beta1, beta2, eps=1e-8):
 
 然后，我们可以像以前一样执行搜索，这次检索解决方案列表，而不是最佳最终解决方案。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -595,7 +595,7 @@ solutions = adam(objective, derivative, bounds, n_iter, alpha, beta1, beta2)
 
 然后，我们可以像以前一样创建目标函数的等高线图。
 
-```
+```py
 ...
 # sample input range uniformly at 0.1 increments
 xaxis = arange(bounds[0,0], bounds[0,1], 0.1)
@@ -610,7 +610,7 @@ pyplot.contourf(x, y, results, levels=50, cmap='jet')
 
 最后，我们可以将搜索过程中找到的每个解决方案绘制成由一条线连接的白点。
 
-```
+```py
 ...
 # plot the sample as black circles
 solutions = asarray(solutions)
@@ -619,7 +619,7 @@ pyplot.plot(solutions[:, 0], solutions[:, 1], '.-', color='w')
 
 将所有这些联系在一起，下面列出了对测试问题执行 Adam 优化并将结果绘制在等高线图上的完整示例。
 
-```
+```py
 # example of plotting the adam search on a contour plot of the test function
 from math import sqrt
 from numpy import asarray

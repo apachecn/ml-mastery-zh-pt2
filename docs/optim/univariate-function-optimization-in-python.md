@@ -80,7 +80,7 @@ Brent 的方法在 Python 中可以通过[minimum _ scalar()SciPy 函数](https:
 
 它返回一个[optimizer result](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.OptimizeResult.html)对象，该对象是一个包含解决方案的字典。重要的是，' *x* 键总结了 optima 的输入，' *fun* 键总结了 optima 的功能输出，' *nfev* 总结了已执行的目标功能的评估数量。
 
-```
+```py
 ...
 # minimize the function
 result = minimize_scalar(objective, method='brent')
@@ -96,7 +96,7 @@ result = minimize_scalar(objective, method='brent')
 
 在这种情况下，我们将使用 x^2 函数的简单偏移版本，例如简单的[抛物线](https://en.wikipedia.org/wiki/Parabola) (u 形)函数。这是一个最小化目标函数，其最优值为-5.0。
 
-```
+```py
 # objective function
 def objective(x):
 	return (5.0 + x)**2.0
@@ -106,7 +106,7 @@ def objective(x):
 
 下面列出了完整的示例。
 
-```
+```py
 # plot a convex target function
 from numpy import arange
 from matplotlib import pyplot
@@ -138,7 +138,7 @@ pyplot.show()
 
 接下来，我们可以使用优化算法来寻找最优解。
 
-```
+```py
 ...
 # minimize the function
 result = minimize_scalar(objective, method='brent')
@@ -146,7 +146,7 @@ result = minimize_scalar(objective, method='brent')
 
 优化后，我们可以总结结果，包括 optima 的输入和评估以及定位 optima 所需的功能评估数量。
 
-```
+```py
 ...
 # summarize the result
 opt_x, opt_y = result['x'], result['fun']
@@ -157,7 +157,7 @@ print('Total Evaluations n: %d' % result['nfev'])
 
 最后，我们可以再次绘制该函数，并标记 optima，以确认它位于我们期望该函数出现的位置。
 
-```
+```py
 ...
 # define the range
 r_min, r_max = -10.0, 10.0
@@ -175,7 +175,7 @@ pyplot.show()
 
 下面列出了优化无约束凸单变量函数的完整示例。
 
-```
+```py
 # optimize convex objective function
 from numpy import arange
 from scipy.optimize import minimize_scalar
@@ -212,7 +212,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到 optima 是在对输入为-5.0 的目标函数进行 10 次评估后找到的，目标函数值为 0.0。
 
-```
+```py
 Optimal Input x: -5.000000
 Optimal Output f(x): 0.000000
 Total Evaluations n: 10
@@ -232,7 +232,7 @@ Total Evaluations n: 10
 
 我们可以定义一个非凸单变量函数如下。
 
-```
+```py
 # objective function
 def objective(x):
 	return (x - 2.0) * x * (x + 2.0)**2.0
@@ -242,7 +242,7 @@ def objective(x):
 
 下面列出了完整的示例。
 
-```
+```py
 # plot a non-convex univariate function
 from numpy import arange
 from matplotlib import pyplot
@@ -278,7 +278,7 @@ pyplot.show()
 
 下面列出了无约束非凸单变量函数优化的完整例子。
 
-```
+```py
 # optimize non-convex objective function
 from numpy import arange
 from scipy.optimize import minimize_scalar
@@ -313,7 +313,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到 optima 是在对输入约为 1.28 的目标函数进行 15 次评估后定位的，实现了约为-9.91 的目标函数值。
 
-```
+```py
 Optimal Input x: 1.280776
 Optimal Output f(x): -9.914950
 Total Evaluations n: 15

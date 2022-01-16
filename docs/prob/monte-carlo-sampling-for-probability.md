@@ -170,7 +170,7 @@
 
 下面列出了完整的示例。
 
-```
+```py
 # example of effect of size on monte carlo sample
 from numpy.random import normal
 from matplotlib import pyplot

@@ -48,7 +48,7 @@
 
 在这种类型的混淆矩阵中，表中的每个单元格都有一个具体且易于理解的名称，总结如下:
 
-```
+```py
                | Positive Prediction | Negative Prediction
 Positive Class | True Positive (TP)  | False Negative (FN)
 Negative Class | False Positive (FP) | True Negative (TN)
@@ -100,7 +100,7 @@ x 轴表示假阳性率，y 轴表示真阳性率。
 
 该函数获取测试集中的真实结果(0，1)和 1 类的预测概率。该函数返回每个阈值的假阳性率、每个阈值的真阳性率和阈值。
 
-```
+```py
 ...
 # calculate roc curve
 fpr, tpr, thresholds = roc_curve(testy, pos_probs)
@@ -110,7 +110,7 @@ fpr, tpr, thresholds = roc_curve(testy, pos_probs)
 
 这将为测试集中的每个样本返回每个类别的概率，例如，在二进制分类问题中，两个类别中的每个类别有两个数字。正类的概率可以作为概率数组中的第二列来检索。
 
-```
+```py
 ...
 # predict probabilities
 yhat = model.predict_proba(testX)
@@ -122,7 +122,7 @@ pos_probs = yhat[:, 1]
 
 [make _ classing()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)可以用来创建综合分类问题。在这种情况下，我们将为二进制分类问题创建 1000 个示例(每个类大约 500 个示例)。然后，我们将数据集分割成一个训练集，并测试大小相等的集合，以便拟合和评估模型。
 
-```
+```py
 ...
 # generate 2 class dataset
 X, y = make_classification(n_samples=1000, n_classes=2, random_state=1)
@@ -132,7 +132,7 @@ trainX, testX, trainy, testy = train_test_split(X, y, test_size=0.5, random_stat
 
 逻辑回归模型是一个很好的演示模型，因为预测的概率经过了很好的校准，而其他机器学习模型不是围绕概率模型开发的，在这种情况下，它们的[概率可能需要首先校准](https://machinelearningmastery.com/calibrated-classification-model-in-scikit-learn/)(例如 SVM)。
 
-```
+```py
 ...
 # fit a model
 model = LogisticRegression(solver='lbfgs')
@@ -141,7 +141,7 @@ model.fit(trainX, trainy)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of a roc curve for a predictive model
 from sklearn.datasets import make_classification
 from sklearn.linear_model import LogisticRegression
@@ -206,7 +206,7 @@ pyplot.show()
 
 像 *roc_curve()* 函数一样，AUC 函数同时采用测试集中的真实结果(0，1)和正类的预测概率。
 
-```
+```py
 ...
 # calculate roc auc
 roc_auc = roc_auc_score(testy, pos_probs)
@@ -216,7 +216,7 @@ roc_auc = roc_auc_score(testy, pos_probs)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of a roc auc for a predictive model
 from sklearn.datasets import make_classification
 from sklearn.dummy import DummyClassifier
@@ -251,7 +251,7 @@ print('Logistic ROC AUC %.3f' % roc_auc)
 
 在这种情况下，我们可以看到逻辑回归模型在合成数据集上的 ROC AUC 约为 0.903，这比得分约为 0.5 的无技能分类器好得多。
 
-```
+```py
 No Skill ROC AUC 0.509
 Logistic ROC AUC 0.903
 ```
@@ -304,7 +304,7 @@ PR 曲线对少数类的关注使其成为不平衡二元分类模型的有效�
 
 可以在 scikit-learn 中使用 [precision_recall_curve()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)计算精度-召回率曲线，该函数获取少数类的类标签和预测概率，并返回精度、召回率和阈值。
 
-```
+```py
 ...
 # calculate precision-recall curve
 precision, recall, _ = precision_recall_curve(testy, pos_probs)
@@ -314,7 +314,7 @@ precision, recall, _ = precision_recall_curve(testy, pos_probs)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of a precision-recall curve for a predictive model
 from sklearn.datasets import make_classification
 from sklearn.linear_model import LogisticRegression
@@ -367,7 +367,7 @@ pyplot.show()
 
 精度-召回 AUC 分数可以使用 scikit-learn 中的 [auc()函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.auc.html)计算，以精度和召回值为参数。
 
-```
+```py
 ...
 # calculate the precision-recall auc
 auc_score = auc(recall, precision)
@@ -377,7 +377,7 @@ auc_score = auc(recall, precision)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of a precision-recall auc for a predictive model
 from sklearn.datasets import make_classification
 from sklearn.dummy import DummyClassifier
@@ -415,7 +415,7 @@ print('Logistic PR AUC: %.3f' % auc_score)
 
 在这种情况下，我们可以看到逻辑回归模型在合成数据集上的精度-召回率 AUC 约为 0.898，这比在这种情况下得分为 0.632 的无技能分类器好得多。
 
-```
+```py
 No Skill PR AUC: 0.632
 Logistic PR AUC: 0.898
 ```
@@ -428,7 +428,7 @@ Logistic PR AUC: 0.898
 
 我们将对 1000 个示例使用 99%和 1%的权重，这意味着 0 类大约有 990 个，1 类大约有 10 个。
 
-```
+```py
 ...
 # generate 2 class dataset
 X, y = make_classification(n_samples=1000, n_classes=2, weights=[0.99, 0.01], random_state=1)
@@ -436,7 +436,7 @@ X, y = make_classification(n_samples=1000, n_classes=2, weights=[0.99, 0.01], ra
 
 然后，我们可以将数据集拆分为训练集和测试集，并通过在调用 *train_test_split()* 函数时设置“*分层*”参数并将其设置为目标变量数组来确保两者具有相同的一般类比率。
 
-```
+```py
 ...
 # split into train/test sets with same class ratio
 trainX, testX, trainy, testy = train_test_split(X, y, test_size=0.5, random_state=2, stratify=y)
@@ -444,7 +444,7 @@ trainX, testX, trainy, testy = train_test_split(X, y, test_size=0.5, random_stat
 
 将这些联系在一起，下面列出了准备不平衡数据集的完整示例。
 
-```
+```py
 # create an imbalanced dataset
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -460,7 +460,7 @@ print('Test: Class0=%d, Class1=%d' % (len(testy[testy==0]), len(testy[testy==1])
 
 运行该示例首先总结整个数据集的类比率，然后是每个训练集和测试集的比率，确认数据集的分割保持相同的比率。
 
-```
+```py
 Dataset: Class0=985, Class1=15
 Train: Class0=492, Class1=8
 Test: Class0=493, Class1=7
@@ -470,7 +470,7 @@ Test: Class0=493, Class1=7
 
 下面列出了完整的示例。
 
-```
+```py
 # roc curve and roc auc on an imbalanced dataset
 from sklearn.datasets import make_classification
 from sklearn.linear_model import LogisticRegression
@@ -528,7 +528,7 @@ plot_roc_curve(testy, naive_probs, model_probs)
 
 报告了两个分类器的 ROC AUC 分数，显示无技能分类器达到了预期的大约 0.5 的最低分数。逻辑回归模型的结果表明它有一些技巧，得分约为 0.869。
 
-```
+```py
 No Skill ROC AUC 0.490
 Logistic ROC AUC 0.869
 ```
@@ -543,7 +543,7 @@ Logistic ROC AUC 0.869
 
 下面列出了完整的示例。
 
-```
+```py
 # pr curve and pr auc on an imbalanced dataset
 from sklearn.datasets import make_classification
 from sklearn.dummy import DummyClassifier
@@ -602,7 +602,7 @@ plot_pr_curve(testy, model_probs)
 
 在这种情况下，我们可以看到逻辑回归模型的公关 AUC 约为 0.228，无技能模型的公关 AUC 约为 0.007。
 
-```
+```py
 No Skill PR AUC: 0.007
 Logistic PR AUC: 0.228
 ```
@@ -619,7 +619,7 @@ Logistic PR AUC: 0.228
 
 如果我们使用阈值 0.5，并使用逻辑回归模型对测试集中的所有示例进行预测，我们会看到它在所有情况下都预测 0 类或多数类。这可以通过使用拟合模型来预测清晰的类标签来确认，这将使用默认阈值 0.5。然后可以总结预测的类标签的分布。
 
-```
+```py
 ...
 # predict class labels
 yhat = model.predict(testX)
@@ -629,7 +629,7 @@ print(Counter(yhat))
 
 然后，我们可以创建正类的预测概率直方图，以确认预测概率的质量低于 0.5，因此被映射到类 0。
 
-```
+```py
 ...
 # create a histogram of the predicted probabilities
 pyplot.hist(pos_probs, bins=100)
@@ -638,7 +638,7 @@ pyplot.show()
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # summarize the distribution of predicted probabilities
 from collections import Counter
 from matplotlib import pyplot
@@ -667,7 +667,7 @@ pyplot.show()
 
 运行该示例首先总结了预测类标签的分布。正如我们所料，测试集中的所有示例都预测了多数类(类 0)。
 
-```
+```py
 Counter({0: 500})
 ```
 

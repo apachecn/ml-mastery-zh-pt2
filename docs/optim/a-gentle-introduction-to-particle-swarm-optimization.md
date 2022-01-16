@@ -89,7 +89,7 @@ $pbest^i$和$gbest$的位置在每次迭代中都会更新，以反映迄今为�
 
 对于上面显示的相同函数，我们可以首先将其定义为 Python 函数，并在等高线图中显示:
 
-```
+```py
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -117,7 +117,7 @@ f(x，y)等值线图
 
 这里我们在$0\le x，y\le 5$的范围内绘制了函数$f(x，y)$的曲线。我们可以在该区域的随机位置创建 20 个粒子，以及在平均值为 0、标准偏差为 0.1 的正态分布上采样的随机速度，如下所示:
 
-```
+```py
 n_particles = 20
 X = np.random.rand(2, n_particles) * 5
 V = np.random.randn(2, n_particles) * 0.1
@@ -131,7 +131,7 @@ V = np.random.randn(2, n_particles) * 0.1
 
 由此，我们已经可以发现$gbest$是所有粒子找到的最佳位置。由于粒子根本没有探索，它们目前的位置也是它们的$pbest^i$:
 
-```
+```py
 pbest = X
 pbest_obj = f(X[0], X[1])
 gbest = pbest[:, pbest_obj.argmin()]
@@ -146,7 +146,7 @@ gbest 的位置标记为星形
 
 让我们设置$c_1=c_2=0.1$和$w=0.8$。然后我们可以根据上面提到的公式更新位置和速度，然后更新$pbest^i$和$gbest$之后:
 
-```
+```py
 c1 = c2 = 0.1
 w = 0.8
 # One iteration
@@ -202,7 +202,7 @@ gbest_obj = pbest_obj.min()
 
 应该很容易看出我们如何改变上面的代码来求解更高维的目标函数，或者从最小化切换到最大化。以下是找到上面提出的函数$f(x，y)$的最小值的完整示例，以及生成绘图动画的代码:
 
-```
+```py
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation

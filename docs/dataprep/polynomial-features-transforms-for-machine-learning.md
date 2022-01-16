@@ -90,7 +90,7 @@
 
 我们可以用一个例子来证明这一点:
 
-```
+```py
 # demonstrate the types of features created
 from numpy import asarray
 from sklearn.preprocessing import PolynomialFeatures
@@ -107,7 +107,7 @@ print(data)
 
 然后创建多项式特征，得到六个特征，与上面描述的相匹配。
 
-```
+```py
 [[2 3]
  [2 3]
  [2 3]]
@@ -146,7 +146,7 @@ print(data)
 
 首先，让我们加载并总结数据集。下面列出了完整的示例。
 
-```
+```py
 # load and summarize the sonar dataset
 from pandas import read_csv
 from pandas.plotting import scatter_matrix
@@ -169,7 +169,7 @@ pyplot.show()
 
 提供了输入变量的统计摘要，显示值是数值，范围大约从 0 到 1。
 
-```
+```py
 (208, 61)
                0           1           2   ...          57          58          59
 count  208.000000  208.000000  208.000000  ...  208.000000  208.000000  208.000000
@@ -196,7 +196,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 我们将使用带有默认超参数的 k 近邻算法，并使用重复的分层 k 重交叉验证对其进行评估。下面列出了完整的示例。
 
-```
+```py
 # evaluate knn on the raw sonar dataset
 from numpy import mean
 from numpy import std
@@ -230,7 +230,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 我们可以看到，该模型实现了大约 79.7%的平均分类准确率，表明它具有技巧性(优于 53.4%)，并且处于良好表现的球园区(88%)。
 
-```
+```py
 Accuracy: 0.797 (0.073)
 ```
 
@@ -242,7 +242,7 @@ Accuracy: 0.797 (0.073)
 
 在这种情况下，我们将使用 3 度。
 
-```
+```py
 ...
 # perform a polynomial features transform of the dataset
 trans = PolynomialFeatures(degree=3)
@@ -253,7 +253,7 @@ data = trans.fit_transform(data)
 
 下面是创建声纳数据集的多项式特征变换并总结创建的特征的完整示例。
 
-```
+```py
 # visualize a polynomial features transform of the sonar dataset
 from pandas import read_csv
 from pandas import DataFrame
@@ -278,7 +278,7 @@ print(dataset.shape)
 
 我们可以看到，我们的要素从原始数据集的 61 个(60 个输入要素)增加到 39，711 个(39，710 个输入要素)。
 
-```
+```py
 (208, 39711)
 ```
 
@@ -286,7 +286,7 @@ print(dataset.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate knn on the sonar dataset with polynomial features transform
 from numpy import mean
 from numpy import std
@@ -322,7 +322,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例，我们可以看到多项式特征变换将性能从没有变换时的 79.7%提升到有变换时的 80.0%。
 
-```
+```py
 Accuracy: 0.800 (0.077)
 ```
 
@@ -336,7 +336,7 @@ Accuracy: 0.800 (0.077)
 
 下面列出了完整的示例。
 
-```
+```py
 # compare the effect of the degree on the number of created features
 from pandas import read_csv
 from sklearn.preprocessing import LabelEncoder
@@ -381,7 +381,7 @@ pyplot.show()
 
 这强调了对于除了非常小的数据集之外的任何数据集，应该使用 2 或 3 度来避免输入变量的急剧增加。
 
-```
+```py
 Degree: 1, Features: 61
 Degree: 2, Features: 1891
 Degree: 3, Features: 39711
@@ -399,7 +399,7 @@ Degree: 5, Features: 8259888
 
 下面的示例探索了从 1 到 4 的度值，并评估了它们对所选模型的分类精度的影响。
 
-```
+```py
 # explore the effect of degree on accuracy for the polynomial features transform
 from numpy import mean
 from numpy import std
@@ -465,7 +465,7 @@ pyplot.show()
 
 探索在执行转换之前或之后扩展数据，看看它如何影响模型性能，可能会很有趣。
 
-```
+```py
 >1 0.797 (0.073)
 >2 0.793 (0.085)
 >3 0.800 (0.077)

@@ -99,7 +99,7 @@ SciPy 开源库提供了 [curve_fit()函数](https://docs.scipy.org/doc/scipy/re
 
 例如，我们可以从我们的域中加载一些观察值作为输入变量 *x* 和输出变量 *y* 。
 
-```
+```py
 ...
 # load input variables from a file
 x_values = ...
@@ -110,7 +110,7 @@ y_values = ...
 
 它可能是一条直线，在这种情况下，它看起来如下:
 
-```
+```py
 # objective function
 def objective(x, a, b, c):
 	return a * x + b
@@ -120,7 +120,7 @@ def objective(x, a, b, c):
 
 函数 *curve_fit()* 返回映射函数的最佳值，例如系数值。它还返回估计参数的协方差矩阵，但我们现在可以忽略它。
 
-```
+```py
 ...
 # fit curve
 popt, _ = curve_fit(objective, x_values, y_values)
@@ -130,7 +130,7 @@ popt, _ = curve_fit(objective, x_values, y_values)
 
 这可能包括我们已经从域中收集的示例的输出，它可能包括插值观察值的新值，或者它可能包括超出观察值限制的外推值。
 
-```
+```py
 ...
 # define new input values
 x_new = ...
@@ -159,7 +159,7 @@ y_new = objective(x_new, a, b, c)
 
 下面的示例从 URL 加载数据集，选择输入变量为“*人口*”，输出变量为“*”采用*，并创建散点图。
 
-```
+```py
 # plot "Population" vs "Employed"
 from pandas import read_csv
 from matplotlib import pyplot
@@ -186,7 +186,7 @@ pyplot.show()
 
 首先，我们将尝试对此数据拟合一条直线，如下所示:
 
-```
+```py
 # define the true objective function
 def objective(x, a, b):
 	return a * x + b
@@ -194,7 +194,7 @@ def objective(x, a, b):
 
 我们可以使用曲线拟合来找到“ *a* ”和“ *b* ”的最佳值，并总结找到的值:
 
-```
+```py
 ...
 # curve fit
 popt, _ = curve_fit(objective, x, y)
@@ -205,7 +205,7 @@ print('y = %.5f * x + %.5f' % (a, b))
 
 然后我们可以像以前一样创建散点图。
 
-```
+```py
 ...
 # plot input vs output
 pyplot.scatter(x, y)
@@ -215,7 +215,7 @@ pyplot.scatter(x, y)
 
 这包括首先定义在数据集中观察到的最小值和最大值之间的输入值序列(例如，在大约 120 和大约 130 之间)。
 
-```
+```py
 ...
 # define a sequence of inputs between the smallest and largest known inputs
 x_line = arange(min(x), max(x), 1)
@@ -223,7 +223,7 @@ x_line = arange(min(x), max(x), 1)
 
 然后，我们可以计算每个输入值的输出值。
 
-```
+```py
 ...
 # calculate the output for the range
 y_line = objective(x_line, a, b)
@@ -231,7 +231,7 @@ y_line = objective(x_line, a, b)
 
 然后创建输入与输出的线图，以查看一条线:
 
-```
+```py
 ...
 # create a line plot for the mapping function
 pyplot.plot(x_line, y_line, '--', color='red')
@@ -239,7 +239,7 @@ pyplot.plot(x_line, y_line, '--', color='red')
 
 将这些联系在一起，下面的例子使用曲线拟合来为我们的经济数据找到直线的参数。
 
-```
+```py
 # fit a straight line to the economic data
 from numpy import arange
 from pandas import read_csv
@@ -276,7 +276,7 @@ pyplot.show()
 
 首先，报告参数值。
 
-```
+```py
 y = 0.48488 * x + 8.38067
 ```
 
@@ -292,7 +292,7 @@ y = 0.48488 * x + 8.38067
 
 让我们通过向目标函数添加平方项来尝试多项式回归模型。
 
-```
+```py
 # define the true objective function
 def objective(x, a, b, c):
 	return a * x + b * x**2 + c
@@ -300,7 +300,7 @@ def objective(x, a, b, c):
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # fit a second degree polynomial to the economic data
 from numpy import arange
 from pandas import read_csv
@@ -335,7 +335,7 @@ pyplot.show()
 
 首先报告最佳参数。
 
-```
+```py
 y = 3.25443 * x + -0.01170 * x^2 + -155.02783
 ```
 
@@ -351,7 +351,7 @@ y = 3.25443 * x + -0.01170 * x^2 + -155.02783
 
 例如，下面是一个五次多项式拟合数据的例子。
 
-```
+```py
 # fit a fifth degree polynomial to the economic data
 from numpy import arange
 from pandas import read_csv
@@ -395,7 +395,7 @@ pyplot.show()
 
 例如，下面列出了使用正弦波和二次多项式的任意函数:
 
-```
+```py
 # define the true objective function
 def objective(x, a, b, c, d):
 	return a * sin(b - x) + c * x**2 + d
@@ -403,7 +403,7 @@ def objective(x, a, b, c, d):
 
 下面列出了使用该基函数拟合曲线的完整示例。
 
-```
+```py
 # fit a line to the economic data
 from numpy import sin
 from numpy import sqrt

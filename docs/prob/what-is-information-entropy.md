@@ -93,7 +93,7 @@
 
 考虑抛一枚公平的硬币。正面(和反面)的概率是 0.5。我们可以使用 [log2()函数](https://docs.python.org/3/library/math.html)计算 Python 中翻转头部的信息。
 
-```
+```py
 # calculate the information for a coin flip
 from math import log2
 # probability of the event
@@ -106,7 +106,7 @@ print('p(x)=%.3f, information: %.3f bits' % (p, h))
 
 运行该示例会将事件的概率打印为 50%，并将事件的信息内容打印为 1 位。
 
-```
+```py
 p(x)=0.500, information: 1.000 bits
 ```
 
@@ -114,7 +114,7 @@ p(x)=0.500, information: 1.000 bits
 
 如果硬币不公平，头像出现的概率反而是 10% (0.1)，那么这个事件将更加罕见，需要 3 位以上的信息。
 
-```
+```py
 p(x)=0.100, information: 3.322 bits
 ```
 
@@ -122,7 +122,7 @@ p(x)=0.100, information: 3.322 bits
 
 我们知道滚动任何数字的概率是 1/6，这比掷硬币的 1/2 小，因此我们会期待更多的惊喜或更多的信息。
 
-```
+```py
 # calculate the information for a dice roll
 from math import log2
 # probability of the event
@@ -135,7 +135,7 @@ print('p(x)=%.3f, information: %.3f bits' % (p, h))
 
 运行该示例，我们可以看到我们的直觉是正确的，事实上，在一卷公平骰子中有超过 2.5 位的信息。
 
-```
+```py
 p(x)=0.167, information: 2.585 bits
 ```
 
@@ -147,7 +147,7 @@ p(x)=0.167, information: 2.585 bits
 
 下面列出了完整的示例。
 
-```
+```py
 # compare probability vs information entropy
 from math import log2
 from matplotlib import pyplot
@@ -203,7 +203,7 @@ pyplot.show()
 
 我们可以考虑一卷公平骰子，计算变量的熵。每个结果都有相同的 1/6 概率，因此是一个均匀的概率分布。因此，我们希望平均信息与上一节计算的单个事件的信息相同。
 
-```
+```py
 # calculate the entropy for a dice roll
 from math import log2
 # the number of events
@@ -218,7 +218,7 @@ print('entropy: %.3f bits' % entropy)
 
 运行该示例将熵计算为超过 2.5 位，这与单个结果的信息相同。这是有意义的，因为平均信息与信息的下限相同，因为所有的结果都是相同的。
 
-```
+```py
 entropy: 2.585 bits
 ```
 
@@ -226,7 +226,7 @@ entropy: 2.585 bits
 
 例如:
 
-```
+```py
 # calculate the entropy for a dice roll
 from scipy.stats import entropy
 # discrete probabilities
@@ -239,7 +239,7 @@ print('entropy: %.3f bits' % e)
 
 运行该示例会报告与我们手动计算的结果相同的结果。
 
-```
+```py
 entropy: 2.585 bits
 ```
 
@@ -256,7 +256,7 @@ entropy: 2.585 bits
 
 下面的例子实现了这一点，在这个转换中创建每个概率分布，计算每个概率分布的熵并绘制结果。
 
-```
+```py
 # compare probability distributions vs entropy
 from math import log2
 from matplotlib import pyplot

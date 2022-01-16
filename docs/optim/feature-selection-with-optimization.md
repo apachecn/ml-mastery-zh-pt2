@@ -83,7 +83,7 @@ RFE 是系统地解决这个问题的一种方法，尽管它可能受到大量�
 
 下面的示例定义了数据集并总结了它的形状。
 
-```
+```py
 # define a small classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -94,7 +94,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集，并确认它具有所需的形状。
 
-```
+```py
 (1000, 5) (1000,)
 ```
 
@@ -106,7 +106,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate a decision tree on the entire small dataset
 from numpy import mean
 from numpy import std
@@ -132,7 +132,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到模型达到了大约 80.5%的准确率。
 
-```
+```py
 Mean Accuracy: 0.805 (0.030)
 ```
 
@@ -148,7 +148,7 @@ Mean Accuracy: 0.805 (0.030)
 
 该函数返回一个可迭代的，我们可以直接为每个序列枚举。
 
-```
+```py
 ...
 # determine the number of columns
 n_cols = X.shape[1]
@@ -160,7 +160,7 @@ for subset in product([True, False], repeat=n_cols):
 
 对于给定的布尔值序列，我们可以枚举它，并将其转换为序列中每个 *True* 的列索引序列。
 
-```
+```py
 ...
 # convert into column indexes
 ix = [i for i, x in enumerate(subset) if x]
@@ -168,7 +168,7 @@ ix = [i for i, x in enumerate(subset) if x]
 
 如果序列没有列索引(在所有*为假*值的情况下)，那么我们可以跳过该序列。
 
-```
+```py
 # check for now column (all False)
 if len(ix) == 0:
 	continue
@@ -176,7 +176,7 @@ if len(ix) == 0:
 
 然后，我们可以使用列索引来选择数据集中的列。
 
-```
+```py
 ...
 # select columns
 X_new = X[:, ix]
@@ -184,7 +184,7 @@ X_new = X[:, ix]
 
 然后数据集的这个子集可以像我们之前做的那样被评估。
 
-```
+```py
 ...
 # define model
 model = DecisionTreeClassifier()
@@ -198,7 +198,7 @@ result = mean(scores)
 
 如果模型的精度优于目前为止找到的最佳序列，我们可以存储它。
 
-```
+```py
 ...
 # check if it is better than the best so far
 if best_score is None or result >= best_score:
@@ -210,7 +210,7 @@ if best_score is None or result >= best_score:
 
 将这些联系在一起，下面列出了通过列举所有可能的特征子集进行特征选择的完整示例。
 
-```
+```py
 # feature selection by enumerating all possible subsets of features
 from itertools import product
 from numpy import mean
@@ -257,7 +257,7 @@ print('f(%s) = %f' % (best_subset, best_score))
 
 在这种情况下，我们可以看到特征的最佳子集涉及索引[2，3，4]处的特征，这导致了大约 83.0%的平均分类精度，这优于之前使用所有输入特征报告的结果。
 
-```
+```py
 >f([0, 1, 2, 3, 4]) = 0.813667
 >f([0, 1, 2, 3]) = 0.827667
 >f([0, 1, 2, 4]) = 0.815333
@@ -303,7 +303,7 @@ f([0, 3, 4]) = 0.830333
 
 我们将定义一个具有 10，000 行和 500 个输入特征的分类问题，其中 10 个是相关的，其余 490 个是冗余的。
 
-```
+```py
 # define a large classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -314,7 +314,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集，并确认它具有所需的形状。
 
-```
+```py
 (10000, 500) (10000,)
 ```
 
@@ -324,7 +324,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate a decision tree on the entire larger dataset
 from numpy import mean
 from numpy import std
@@ -352,7 +352,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 这提供了一个基线，我们期望使用特征选择能够超越它。
 
-```
+```py
 Mean Accuracy: 0.913 (0.001)
 ```
 
@@ -364,7 +364,7 @@ Mean Accuracy: 0.913 (0.001)
 
 下面的 *objective()* 函数实现了这一点，并返回分数和用于有用报告的解码列子集。
 
-```
+```py
 # objective function
 def objective(X, y, subset):
 	# convert into column indexes
@@ -393,7 +393,7 @@ def objective(X, y, subset):
 
 *p_mutate* 值越大(在 0 到 1 的范围内)，搜索空间中的步长越大。
 
-```
+```py
 # mutation operator
 def mutate(solution, p_mutate):
 	# make a copy
@@ -410,7 +410,7 @@ def mutate(solution, p_mutate):
 
 初始解是随机生成的序列，然后对其进行评估。
 
-```
+```py
 ...
 # generate an initial point
 solution = choice([True, False], size=X.shape[1])
@@ -420,7 +420,7 @@ solution_eval, ix = objective(X, y, solution)
 
 然后，我们循环进行固定次数的迭代，创建当前解决方案的变异版本，对它们进行评估，如果分数更高，则保存它们。
 
-```
+```py
 ...
 # run the hill climb
 for i in range(n_iter):
@@ -438,7 +438,7 @@ for i in range(n_iter):
 
 下面的*爬山()*函数实现了这一点，将数据集、目标函数和超参数作为参数，返回数据集列的最佳子集和模型的估计性能。
 
-```
+```py
 # hill climbing local search algorithm
 def hillclimbing(X, y, objective, n_iter, p_mutate):
 	# generate an initial point
@@ -464,7 +464,7 @@ def hillclimbing(X, y, objective, n_iter, p_mutate):
 
 在这种情况下，我们将运行算法 100 次迭代，并对给定突变的序列进行大约 5 次翻转，这相当保守。
 
-```
+```py
 ...
 # define dataset
 X, y = make_classification(n_samples=10000, n_features=500, n_informative=10, n_redundant=490, random_state=1)
@@ -478,7 +478,7 @@ subset, score = hillclimbing(X, y, objective, n_iter, p_mut)
 
 在运行结束时，我们将把布尔序列转换成列索引(这样，如果需要，我们可以拟合最终模型)，并报告最佳子序列的性能。
 
-```
+```py
 ...
 # convert into column indexes
 ix = [i for i, x in enumerate(subset) if x]
@@ -488,7 +488,7 @@ print('Best: f(%d) = %f' % (len(ix), score))
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # stochastic optimization for feature selection
 from numpy import mean
 from numpy.random import rand
@@ -569,7 +569,7 @@ print('Best: f(%d) = %f' % (len(ix), score))
 
 虽然结果更好，但我们知道我们可以做得更好，也许通过调整优化算法的超参数，或者通过使用替代优化算法。
 
-```
+```py
 ...
 >80 f(240) = 0.918099
 >81 f(236) = 0.918099

@@ -158,7 +158,7 @@ RMSProp 是梯度下降的非常有效的扩展，并且是通常用于拟合深
 
 下面的*目标()*函数实现该功能
 
-```
+```py
 # objective function
 def objective(x, y):
 	return x**2.0 + y**2.0
@@ -168,7 +168,7 @@ def objective(x, y):
 
 下面列出了绘制目标函数的完整示例。
 
-```
+```py
 # 3d plot of the test function
 from numpy import arange
 from numpy import meshgrid
@@ -207,7 +207,7 @@ pyplot.show()
 
 以下示例创建了目标函数的等高线图。
 
-```
+```py
 # contour plot of the test function
 from numpy import asarray
 from numpy import arange
@@ -254,7 +254,7 @@ pyplot.show()
 
 x^2 的导数在每个维度上都是 x * 2。*导数()*函数实现如下。
 
-```
+```py
 # derivative of objective function
 def derivative(x, y):
 	return asarray([x * 2.0, y * 2.0])
@@ -266,7 +266,7 @@ def derivative(x, y):
 
 这假设我们有一个定义搜索范围的数组，每个维度有一行，第一列定义维度的最小值，第二列定义维度的最大值。
 
-```
+```py
 ...
 # generate an initial point
 solution = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
@@ -274,7 +274,7 @@ solution = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
 
 接下来，我们需要将每个维度的平方偏导数的衰减平均值初始化为 0.0。
 
-```
+```py
 ...
 # list of the average square gradients for each variable
 sq_grad_avg = [0.0 for _ in range(bounds.shape[0])]
@@ -282,7 +282,7 @@ sq_grad_avg = [0.0 for _ in range(bounds.shape[0])]
 
 然后，我们可以枚举由“ *n_iter* ”超参数定义的搜索优化算法的固定迭代次数。
 
-```
+```py
 ...
 # run the gradient descent
 for it in range(n_iter):
@@ -291,7 +291,7 @@ for it in range(n_iter):
 
 第一步是使用*导数()*函数计算当前解的梯度。
 
-```
+```py
 ...
 # calculate gradient
 gradient = derivative(solution[0], solution[1])
@@ -299,7 +299,7 @@ gradient = derivative(solution[0], solution[1])
 
 然后我们需要计算偏导数的平方，并用“*ρ*”超参数更新平方偏导数的衰减平均值。
 
-```
+```py
 ...
 # update the average of the squared partial derivatives
 for i in range(gradient.shape[0]):
@@ -313,7 +313,7 @@ for i in range(gradient.shape[0]):
 
 我们将一次处理一个变量，首先计算变量的步长，然后计算变量的新值。这些值在一个数组中建立，直到我们有一个全新的解决方案，该解决方案使用自定义步长从当前点开始以最陡的下降方向下降。
 
-```
+```py
 ...
 # build a solution one variable at a time
 new_solution = list()
@@ -328,7 +328,7 @@ for i in range(solution.shape[0]):
 
 然后，可以使用*客观()*函数来评估这个新的解决方案，并且可以报告搜索的性能。
 
-```
+```py
 ...
 # evaluate candidate point
 solution = asarray(new_solution)
@@ -343,7 +343,7 @@ print('>%d f(%s) = %.5f' % (it, solution, solution_eval))
 
 下面列出了完整的功能。
 
-```
+```py
 # gradient descent algorithm with rmsprop
 def rmsprop(objective, derivative, bounds, n_iter, step_size, rho):
 	# generate an initial point
@@ -383,7 +383,7 @@ def rmsprop(objective, derivative, bounds, n_iter, step_size, rho):
 
 在这种情况下，我们将使用算法的 50 次迭代，初始学习率为 0.01，rho 超参数的值为 0.99，所有这些都是在一点点尝试和错误之后选择的。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -403,7 +403,7 @@ print('f(%s) = %f' % (best, score))
 
 将所有这些结合在一起，下面列出了使用 RMSProp 进行梯度下降优化的完整示例。
 
-```
+```py
 # gradient descent optimization with rmsprop for a two-dimensional test function
 from math import sqrt
 from numpy import asarray
@@ -472,7 +472,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以看到，在大约 33 次搜索迭代后，找到了接近最优的解，输入值接近 0.0 和 0.0，评估为 0.0。
 
-```
+```py
 ...
 >30 f([-9.61030898e-14 3.19352553e-03]) = 0.00001
 >31 f([-3.42767893e-14 2.71513758e-03]) = 0.00001
@@ -508,7 +508,7 @@ f([-5.45667355e-23 1.25022522e-04]) = 0.000000
 
 下面列出了带有这些更改的功能的更新版本。
 
-```
+```py
 # gradient descent algorithm with rmsprop
 def rmsprop(objective, derivative, bounds, n_iter, step_size, rho):
 	# track all solutions
@@ -547,7 +547,7 @@ def rmsprop(objective, derivative, bounds, n_iter, step_size, rho):
 
 然后，我们可以像以前一样执行搜索，这次检索解决方案列表，而不是最佳最终解决方案。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -565,7 +565,7 @@ solutions = rmsprop(objective, derivative, bounds, n_iter, step_size, rho)
 
 然后，我们可以像以前一样创建目标函数的等高线图。
 
-```
+```py
 ...
 # sample input range uniformly at 0.1 increments
 xaxis = arange(bounds[0,0], bounds[0,1], 0.1)
@@ -580,7 +580,7 @@ pyplot.contourf(x, y, results, levels=50, cmap='jet')
 
 最后，我们可以将搜索过程中找到的每个解决方案绘制成由一条线连接的白点。
 
-```
+```py
 ...
 # plot the sample as black circles
 solutions = asarray(solutions)
@@ -589,7 +589,7 @@ pyplot.plot(solutions[:, 0], solutions[:, 1], '.-', color='w')
 
 将所有这些结合起来，下面列出了对测试问题执行 RMSProp 优化并将结果绘制在等高线图上的完整示例。
 
-```
+```py
 # example of plotting the rmsprop search on a contour plot of the test function
 from math import sqrt
 from numpy import asarray

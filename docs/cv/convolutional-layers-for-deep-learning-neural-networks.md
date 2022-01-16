@@ -78,7 +78,7 @@
 
 例如，下面是一个手工制作的 3×3 元素过滤器，用于检测垂直线:
 
-```
+```py
 0.0, 1.0, 0.0
 0.0, 1.0, 0.0
 0.0, 1.0, 0.0
@@ -90,7 +90,7 @@
 
 也可以创建水平线检测器并将其应用于图像，例如:
 
-```
+```py
 0.0, 0.0, 0.0
 1.0, 1.0, 1.0
 0.0, 0.0, 0.0
@@ -158,7 +158,7 @@ Keras 深度学习库提供了一套卷积层。
 
 我们可以定义一个一维输入，它有八个元素，所有元素的值都是 0.0，中间有两个元素凸起，值是 1.0。
 
-```
+```py
 [0, 0, 0, 1, 1, 0, 0, 0]
 ```
 
@@ -168,7 +168,7 @@ Keras 深度学习库提供了一套卷积层。
 
 因此，输入数组的形状将是[1，8，1]。
 
-```
+```py
 # define input data
 data = asarray([0, 0, 0, 1, 1, 0, 0, 0])
 data = data.reshape(1, 8, 1)
@@ -178,7 +178,7 @@ data = data.reshape(1, 8, 1)
 
 该模型将有一个形状为 3 或三个元素宽的过滤器。Keras 将过滤器的形状称为*内核大小*。
 
-```
+```py
 # create model
 model = Sequential()
 model.add(Conv1D(1, 3, input_shape=(8, 1)))
@@ -188,7 +188,7 @@ model.add(Conv1D(1, 3, input_shape=(8, 1)))
 
 我们将定义的三元素过滤器如下所示:
 
-```
+```py
 [0, 1, 0]
 ```
 
@@ -196,7 +196,7 @@ model.add(Conv1D(1, 3, input_shape=(8, 1)))
 
 因此，我们可以强制一维卷积层的权重使用手工滤波器，如下所示:
 
-```
+```py
 # define a vertical line detector
 weights = [asarray([[[0]],[[1]],[[0]]]), asarray([0.0])]
 # store the weights in the model
@@ -207,7 +207,7 @@ model.set_weights(weights)
 
 我们可以检索重量并确认它们设置正确。
 
-```
+```py
 # confirm they were stored
 print(model.get_weights())
 ```
@@ -216,7 +216,7 @@ print(model.get_weights())
 
 我们可以通过调用模型上的 *predict()* 函数来实现。这将直接返回特征图:即在输入序列中系统地应用过滤器的输出。
 
-```
+```py
 # apply filter to input data
 yhat = model.predict(data)
 print(yhat)
@@ -224,7 +224,7 @@ print(yhat)
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # example of calculation 1d convolutions
 from numpy import asarray
 from keras.models import Sequential
@@ -250,7 +250,7 @@ print(yhat)
 
 接下来，将过滤器应用于输入模式，并计算和显示特征图。我们可以从特征图的值中看到，凹凸被正确检测到。
 
-```
+```py
 [array([[[0.]],
        [[1.]],
        [[0.]]], dtype=float32), array([0.], dtype=float32)]
@@ -271,32 +271,32 @@ print(yhat)
 
 回想一下，点积是元素乘法的和，或者这里是(0 x 0) + (1 x 0) + (0 x 0) = 0。在 NumPy 中，这可以手动实现为:
 
-```
+```py
 from numpy import asarray
 print(asarray([0, 1, 0]).dot(asarray([0, 0, 0])))
 ```
 
 在我们的手动示例中，如下所示:
 
-```
+```py
 [0, 1, 0] . [0, 0, 0] = 0
 ```
 
 然后沿着输入序列的一个元素移动过滤器，并重复该过程；具体来说，对索引 1、2 和 3 处的输入序列应用了相同的过滤器，这也导致了要素图中的零输出。
 
-```
+```py
 [0, 1, 0] . [0, 0, 1] = 0
 ```
 
 我们是系统化的，所以再次，过滤器沿着输入的另一个元素移动，并应用于索引 2、3 和 4 处的输入。这一次输出在要素地图中的值为 1。我们检测到了这个特征，并适当地激活了它。
 
-```
+```py
 [0, 1, 0] . [0, 1, 1] = 1
 ```
 
 重复这个过程，直到我们计算出整个特征图。
 
-```
+```py
 [0, 0, 1, 1, 0, 0]
 ```
 
@@ -310,7 +310,7 @@ print(asarray([0, 1, 0]).dot(asarray([0, 0, 0])))
 
 同样，我们可以限制输入，在这种情况下是一个 8×8 像素的正方形输入图像，其中有一个通道(例如灰度)，中间有一条垂直线。
 
-```
+```py
 [0, 0, 0, 1, 1, 0, 0, 0]
 [0, 0, 0, 1, 1, 0, 0, 0]
 [0, 0, 0, 1, 1, 0, 0, 0]
@@ -327,7 +327,7 @@ Conv2D 图层的输入必须是四维的。
 
 因此，在这种情况下，输入必须具有四维形状[样本、行、列、通道]或[1，8，8，1]。
 
-```
+```py
 # define input data
 data = [[0, 0, 0, 1, 1, 0, 0, 0],
 		[0, 0, 0, 1, 1, 0, 0, 0],
@@ -345,7 +345,7 @@ data = data.reshape(1, 8, 8, 1)
 
 过滤器将是二维和正方形，形状为 3×3。该层将期望输入样本具有形状[列、行、通道]或[8，8，1]。
 
-```
+```py
 # create model
 model = Sequential()
 model.add(Conv2D(1, (3,3), input_shape=(8, 8, 1)))
@@ -355,7 +355,7 @@ model.add(Conv2D(1, (3,3), input_shape=(8, 8, 1)))
 
 过滤器如下所示:
 
-```
+```py
 0, 1, 0
 0, 1, 0
 0, 1, 0
@@ -363,7 +363,7 @@ model.add(Conv2D(1, (3,3), input_shape=(8, 8, 1)))
 
 我们可以这样实现:
 
-```
+```py
 # define a vertical line detector
 detector = [[[[0]],[[1]],[[0]]],
             [[[0]],[[1]],[[0]]],
@@ -377,14 +377,14 @@ print(model.get_weights())
 
 最后，我们将对输入图像应用过滤器，这将产生一个特征图，我们期望显示输入图像中垂直线的检测。
 
-```
+```py
 # apply filter to input data
 yhat = model.predict(data)
 ```
 
 要素地图输出的形状将是四维的，具有形状[批次、行、列、过滤器]。我们将执行单个批处理，我们有一个滤波器(一个滤波器和一个输入通道)，因此输出形状为[1，？, ?, 1].我们可以将单个要素地图的内容漂亮地打印如下:
 
-```
+```py
 for r in range(yhat.shape[1]):
 	# print each column in the row
 	print([yhat[0,r,c,0] for c in range(yhat.shape[2])])
@@ -392,7 +392,7 @@ for r in range(yhat.shape[1]):
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # example of calculation 2d convolutions
 from numpy import asarray
 from keras.models import Sequential
@@ -431,7 +431,7 @@ for r in range(yhat.shape[1]):
 
 接下来，打印计算出的要素图。从数字的比例中我们可以看出，过滤器确实检测到了特征图中间具有强激活的单个垂直线。
 
-```
+```py
 [array([[[[0.]],
         [[1.]],
         [[0.]]],
@@ -454,7 +454,7 @@ for r in range(yhat.shape[1]):
 
 首先，将滤镜应用于图像的左上角，即 3×3 元素的图像块。从技术上来说，图像块是三维的，只有一个通道，过滤器也有相同的尺寸。我们不能使用[点()](https://docs.scipy.org/doc/numpy/reference/generated/numpy.dot.html)函数在 NumPy 中实现这一点，相反，我们必须使用 [tensordot()](https://docs.scipy.org/doc/numpy/reference/generated/numpy.tensordot.html) 函数，以便我们可以适当地对所有维度求和，例如:
 
-```
+```py
 from numpy import asarray
 from numpy import tensordot
 m1 = asarray([[0, 1, 0],
@@ -470,7 +470,7 @@ print(tensordot(m1, m2))
 
 手动，如下所示:
 
-```
+```py
 0, 1, 0     0, 0, 0
 0, 1, 0  .  0, 0, 0 = 0
 0, 1, 0     0, 0, 0
@@ -478,7 +478,7 @@ print(tensordot(m1, m2))
 
 过滤器向左移动一列，重复该过程。同样，不会检测到该特征。
 
-```
+```py
 0, 1, 0     0, 0, 1
 0, 1, 0  .  0, 0, 1 = 0
 0, 1, 0     0, 0, 1
@@ -486,7 +486,7 @@ print(tensordot(m1, m2))
 
 再向左移动一次到下一列，该特征就被第一次检测到，导致强激活。
 
-```
+```py
 0, 1, 0     0, 1, 1
 0, 1, 0  .  0, 1, 1 = 3
 0, 1, 0     0, 1, 1
@@ -494,7 +494,7 @@ print(tensordot(m1, m2))
 
 重复该过程，直到滤波器的边缘靠在输入图像的边缘或最后一列上。这给出了要素地图第一整行中的最后一个元素。
 
-```
+```py
 [0.0, 0.0, 3.0, 3.0, 0.0, 0.0]
 ```
 

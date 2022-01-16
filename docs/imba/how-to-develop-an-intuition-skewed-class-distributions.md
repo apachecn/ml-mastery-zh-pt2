@@ -45,7 +45,7 @@ scikit-learn Python 机器学习库提供了生成合成数据集的[功能。](
 
 例如，下面的代码片段将为具有两个输入变量的两类(二进制)分类问题生成 1000 个示例。类值的值为 0 和 1。
 
-```
+```py
 ...
 X, y = make_blobs(n_samples=1000, centers=2, n_features=2, random_state=1, cluster_std=3)
 ```
@@ -58,7 +58,7 @@ X, y = make_blobs(n_samples=1000, centers=2, n_features=2, random_state=1, clust
 
 例如:
 
-```
+```py
 ...
 # create scatter plot for samples from each class
 for class_value in range(2):
@@ -70,7 +70,7 @@ for class_value in range(2):
 
 下面列出了创建二进制分类测试数据集并将示例绘制为散点图的完整示例。
 
-```
+```py
 # generate binary classification dataset and plot
 from numpy import where
 from matplotlib import pyplot
@@ -107,7 +107,7 @@ pyplot.show()
 
 例如，每个类中有 5，000 个示例的相等类分布将被定义为:
 
-```
+```py
 ...
 # define the class distribution
 proportions = {0:5000, 1:5000}
@@ -115,7 +115,7 @@ proportions = {0:5000, 1:5000}
 
 然后我们可以枚举不同的分布并找到最大的分布，然后使用 *make_blobs()* 函数为每个类创建一个包含如此多示例的数据集。
 
-```
+```py
 ...
 # determine the number of classes
 n_classes = len(proportions)
@@ -128,7 +128,7 @@ n_samples = largest * n_classes
 
 然后，我们可以枚举类标签，并为每个类选择所需数量的示例，以构成将要返回的数据集。
 
-```
+```py
 ...
 # collect the examples
 X_list, y_list = list(), list()
@@ -141,7 +141,7 @@ for k,v in proportions.items():
 
 我们可以将它绑定到一个名为 *get_dataset()* 的新函数中，该函数将采用一个类分布，并返回一个具有该类分布的合成数据集。
 
-```
+```py
 # create a dataset with a given class distribution
 def get_dataset(proportions):
 	# determine the number of classes
@@ -165,7 +165,7 @@ def get_dataset(proportions):
 
 接下来，我们可以使用上一节中的代码为已创建的数据集创建散点图，并将其放入助手函数中。下面是 *plot_dataset()* 函数，该函数将绘制数据集并显示一个图例，以指示颜色到类标签的映射。
 
-```
+```py
 # scatter plot of dataset, different color for each class
 def plot_dataset(X, y):
 	# create scatter plot for samples from each class
@@ -187,7 +187,7 @@ def plot_dataset(X, y):
 
 下面列出了完整的示例。
 
-```
+```py
 # create and plot synthetic dataset with a given class distribution
 from numpy import unique
 from numpy import hstack
@@ -264,7 +264,7 @@ plot_dataset(X, y)
 
 因此，我们可以通过在对 *get_dataset()* 函数的调用中先定义多数类，再定义少数类来确保我们的类分布符合这一实践；例如:
 
-```
+```py
 ...
 # define the class distribution
 proportions = {0:10000, 1:10}
@@ -287,7 +287,7 @@ X, y = get_dataset(proportions)
 
 下面列出了完整的代码示例。
 
-```
+```py
 # create and plot synthetic dataset with a given class distribution
 from numpy import unique
 from numpy import hstack
@@ -352,7 +352,7 @@ plot_dataset(X, y)
 
 下面列出了完整的代码示例。
 
-```
+```py
 # create and plot synthetic dataset with a given class distribution
 from numpy import unique
 from numpy import hstack
@@ -419,7 +419,7 @@ plot_dataset(X, y)
 
 下面列出了完整的代码示例。
 
-```
+```py
 # create and plot synthetic dataset with a given class distribution
 from numpy import unique
 from numpy import hstack

@@ -154,7 +154,7 @@ Let’s get started.![Gradient Descent With Momentum from Scratch](img/42379d993
 
 下面的*目标()*函数实现了这个功能。
 
-```
+```py
 # objective function
 def objective(x):
 	return x**2.0
@@ -162,7 +162,7 @@ def objective(x):
 
 然后，我们可以对该范围内的所有输入进行采样，并计算每个输入的目标函数值。
 
-```
+```py
 ...
 # define range for input
 r_min, r_max = -1.0, 1.0
@@ -174,7 +174,7 @@ results = objective(inputs)
 
 最后，我们可以创建输入(x 轴)与目标函数值(y 轴)的线图，以获得我们将搜索的目标函数形状的直觉。
 
-```
+```py
 ...
 # create a line plot of input vs result
 pyplot.plot(inputs, results)
@@ -184,7 +184,7 @@ pyplot.show()
 
 下面的示例将这些联系在一起，并提供了绘制一维测试函数的示例。
 
-```
+```py
 # plot of simple function
 from numpy import arange
 from matplotlib import pyplot
@@ -221,7 +221,7 @@ pyplot.show()
 
 x^2 的导数是 x * 2，下面的*导数()*函数实现了这一点。
 
-```
+```py
 # derivative of objective function
 def derivative(x):
 	return x * 2.0
@@ -233,7 +233,7 @@ def derivative(x):
 
 下面的函数*梯度 _ 下降()*实现了这一点，并采用目标函数和梯度函数的名称以及目标函数输入的边界、迭代次数和步长，然后在搜索结束时返回解及其评估。
 
-```
+```py
 # gradient descent algorithm
 def gradient_descent(objective, derivative, bounds, n_iter, step_size):
 	# generate an initial point
@@ -257,7 +257,7 @@ def gradient_descent(objective, derivative, bounds, n_iter, step_size):
 
 伪随机数发生器的种子是固定的，因此我们总是获得相同的随机数序列，在这种情况下，它确保我们每次运行代码时都获得相同的搜索起点(例如，远离 optima 的有趣的东西)。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(4)
@@ -273,7 +273,7 @@ best, score = gradient_descent(objective, derivative, bounds, n_iter, step_size)
 
 将这些联系在一起，下面列出了将网格搜索应用于我们的一维测试函数的完整示例。
 
-```
+```py
 # example of gradient descent for a one-dimensional function
 from numpy import asarray
 from numpy.random import rand
@@ -327,7 +327,7 @@ print('f(%s) = %f' % (best, score))
 
 我们预计，动量梯度下降将加速优化过程，并在更少的迭代中找到类似的评估解决方案。
 
-```
+```py
 >0 f([0.74724774]) = 0.55838
 >1 f([0.59779819]) = 0.35736
 >2 f([0.47823856]) = 0.22871
@@ -368,7 +368,7 @@ f([0.00115631]) = 0.000001
 
 首先，我们可以更新*gradient _ download()*函数，将优化过程中找到的所有解及其得分存储为列表，并在搜索结束时返回，而不是找到的最佳解。
 
-```
+```py
 # gradient descent algorithm
 def gradient_descent(objective, derivative, bounds, n_iter, step_size):
 	# track all solutions
@@ -393,7 +393,7 @@ def gradient_descent(objective, derivative, bounds, n_iter, step_size):
 
 这个函数可以被调用，我们可以得到解的列表和搜索过程中找到的分数。
 
-```
+```py
 ...
 # perform the gradient descent search
 solutions, scores = gradient_descent(objective, derivative, bounds, n_iter, step_size)
@@ -401,7 +401,7 @@ solutions, scores = gradient_descent(objective, derivative, bounds, n_iter, step
 
 我们可以像以前一样创建目标函数的线图。
 
-```
+```py
 ...
 # sample input range uniformly at 0.1 increments
 inputs = arange(bounds[0,0], bounds[0,1]+0.1, 0.1)
@@ -413,7 +413,7 @@ pyplot.plot(inputs, results)
 
 最后，我们可以将找到的每个解决方案绘制成一个红点，并用一条线连接这些点，这样我们就可以看到搜索是如何走下坡路的。
 
-```
+```py
 ...
 # plot the solutions found
 pyplot.plot(solutions, scores, '.-', color='red')
@@ -421,7 +421,7 @@ pyplot.plot(solutions, scores, '.-', color='red')
 
 将所有这些联系在一起，下面列出了在一维测试函数上绘制梯度下降搜索结果的完整示例。
 
-```
+```py
 # example of plotting a gradient descent search on a one-dimensional function
 from numpy import asarray
 from numpy import arange
@@ -502,7 +502,7 @@ pyplot.show()
 
 对解决方案所做的更改必须从循环的上一次迭代中记住，初始值为 0.0。
 
-```
+```py
 ...
 # keep track of the change
 change = 0.0
@@ -510,7 +510,7 @@ change = 0.0
 
 然后，我们可以将更新过程分解为首先计算梯度，然后计算解的变化，计算新解的位置，然后将变化保存到下一次迭代中。
 
-```
+```py
 ...
 # calculate gradient
 gradient = derivative(solution)
@@ -524,7 +524,7 @@ change = new_change
 
 带有这些变化的*梯度 _ 下降()*功能的更新版本如下。
 
-```
+```py
 # gradient descent algorithm
 def gradient_descent(objective, derivative, bounds, n_iter, step_size, momentum):
 	# generate an initial point
@@ -552,7 +552,7 @@ def gradient_descent(objective, derivative, bounds, n_iter, step_size, momentum)
 
 经过一点尝试和错误，动量值 0.3 被发现对这个问题是有效的，给定固定的步长 0.1。
 
-```
+```py
 ...
 # define momentum
 momentum = 0.3
@@ -562,7 +562,7 @@ best, score = gradient_descent(objective, derivative, bounds, n_iter, step_size,
 
 将这些联系在一起，下面列出了动量梯度下降优化的完整示例。
 
-```
+```py
 # example of gradient descent with momentum for a one-dimensional function
 from numpy import asarray
 from numpy.random import rand
@@ -622,7 +622,7 @@ print('f(%s) = %f' % (best, score))
 
 正如预期的那样，这比没有动量的梯度下降更快(迭代更少)，使用相同的起点和步长，需要 27 次迭代。
 
-```
+```py
 >0 f([0.74724774]) = 0.55838
 >1 f([0.54175461]) = 0.29350
 >2 f([0.37175575]) = 0.13820
@@ -663,7 +663,7 @@ f([6.17748881e-07]) = 0.000000
 
 下面列出了完整的示例。
 
-```
+```py
 # example of plotting gradient descent with momentum for a one-dimensional function
 from numpy import asarray
 from numpy import arange

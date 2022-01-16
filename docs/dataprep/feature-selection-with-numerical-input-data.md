@@ -56,7 +56,7 @@
 
 查看数据，我们可以看到所有九个输入变量都是数值。
 
-```
+```py
 6,148,72,35,0,33.6,0.627,50,1
 1,85,66,29,0,26.6,0.351,31,0
 8,183,64,0,0,23.3,0.672,32,1
@@ -67,7 +67,7 @@
 
 我们可以使用熊猫库将这个数据集加载到内存中。
 
-```
+```py
 ...
 # load the dataset as a pandas DataFrame
 data = read_csv(filename, header=None)
@@ -77,7 +77,7 @@ dataset = data.values
 
 加载后，我们可以将列拆分为输入(X)和输出(y)进行建模。
 
-```
+```py
 ...
 # split into input (X) and output (y) variables
 X = dataset[:, :-1]
@@ -86,7 +86,7 @@ y = dataset[:,-1]
 
 我们可以将所有这些结合到一个有用的函数中，以便以后重用。
 
-```
+```py
 # load the dataset
 def load_dataset(filename):
 	# load the dataset as a pandas DataFrame
@@ -103,7 +103,7 @@ def load_dataset(filename):
 
 我们将使用 [train_test_split()函数](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)形成 scikit-learn，并将 67%的数据用于训练，33%的数据用于测试。
 
-```
+```py
 ...
 # load the dataset
 X, y = load_dataset('pima-indians-diabetes.csv')
@@ -113,7 +113,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random
 
 将所有这些元素结合在一起，下面列出了加载、拆分和汇总原始分类数据集的完整示例。
 
-```
+```py
 # load and summarize the dataset
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -142,7 +142,7 @@ print('Test', X_test.shape, y_test.shape)
 
 我们可以看到，我们有 514 个示例用于培训，254 个示例用于测试。
 
-```
+```py
 Train (514, 8) (514, 1)
 Test (254, 8) (254, 1)
 ```
@@ -178,7 +178,7 @@ scikit-learn 机器库提供了 [f_classif()函数](https://scikit-learn.org/sta
 
 例如，我们可以定义 *SelectKBest* 类来使用 *f_classif()* 功能并选择所有特征，然后转换列车和测试集。
 
-```
+```py
 ...
 # configure to select all features
 fs = SelectKBest(score_func=f_classif, k='all')
@@ -192,7 +192,7 @@ X_test_fs = fs.transform(X_test)
 
 然后，我们可以打印每个变量的分数(越大越好)，并将每个变量的分数绘制成条形图，以了解我们应该选择多少特征。
 
-```
+```py
 ...
 # what are scores for the features
 for i in range(len(fs.scores_)):
@@ -204,7 +204,7 @@ pyplot.show()
 
 将此与上一节中糖尿病数据集的数据准备结合起来，下面列出了完整的示例。
 
-```
+```py
 # example of anova f-test feature selection for numerical data
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -257,7 +257,7 @@ pyplot.show()
 
 也许特性 1、5 和 7 最相关。
 
-```
+```py
 Feature 0: 16.527385
 Feature 1: 131.325562
 Feature 2: 0.042371
@@ -296,7 +296,7 @@ scikit-learn 机器学习库通过 *mutual_info_classif()* 函数，为特征选
 
 和 *f_classif()* 一样，可以在 *SelectKBest* 特征选择策略(和其他策略)中使用。
 
-```
+```py
 ...
 # configure to select all features
 fs = SelectKBest(score_func=mutual_info_classif, k='all')
@@ -312,7 +312,7 @@ X_test_fs = fs.transform(X_test)
 
 下面列出了使用互信息进行数字特征选择的完整示例。
 
-```
+```py
 # example of mutual information feature selection for numerical input data
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -365,7 +365,7 @@ pyplot.show()
 
 也许特性 1 和 5 最相关。
 
-```
+```py
 Feature 1: 0.118431
 Feature 2: 0.019966
 Feature 3: 0.041791
@@ -403,7 +403,7 @@ Feature 7: 0.033098
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluation of a model using all input features
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -443,7 +443,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 我们更喜欢使用达到与此相同或更好的分类精度的特征子集。
 
-```
+```py
 Accuracy: 77.56
 ```
 
@@ -453,7 +453,7 @@ Accuracy: 77.56
 
 为此，更新了下面的 select_features()函数。
 
-```
+```py
 # feature selection
 def select_features(X_train, y_train, X_test):
 	# configure to select a subset of features
@@ -469,7 +469,7 @@ def select_features(X_train, y_train, X_test):
 
 下面列出了使用此特征选择方法评估逻辑回归模型拟合和评估数据的完整示例。
 
-```
+```py
 # evaluation of a model using 4 features chosen with anova f-test
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -523,7 +523,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 在这种情况下，我们看到模型达到了大约 78.74%的准确率，与达到 77.56%的基线相比，性能有所提升。
 
-```
+```py
 Accuracy: 78.74
 ```
 
@@ -533,7 +533,7 @@ Accuracy: 78.74
 
 下面列出了实现此功能的 *select_features()* 功能的更新版本。
 
-```
+```py
 # feature selection
 def select_features(X_train, y_train, X_test):
 	# configure to select a subset of features
@@ -549,7 +549,7 @@ def select_features(X_train, y_train, X_test):
 
 下面列出了使用互信息进行特征选择以拟合逻辑回归模型的完整示例。
 
-```
+```py
 # evaluation of a model using 4 features chosen with mutual information
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -603,7 +603,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 在这种情况下，与基线模型相比，我们没有什么不同。这很有趣，因为我们知道该方法与之前的方法相比选择了不同的四个特征。
 
-```
+```py
 Accuracy: 77.56
 ```
 
@@ -615,7 +615,7 @@ Accuracy: 77.56
 
 使用[重复分层 k 重交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估分类任务的模型配置是一种良好的做法。我们将通过[repeated stratifiedfold 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)使用三次重复的 10 倍交叉验证。
 
-```
+```py
 ...
 # define the evaluation method
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -625,7 +625,7 @@ cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
 
 在这种情况下，我们将使用方差分析 f-检验统计方法来选择特征。
 
-```
+```py
 ...
 # define the pipeline to evaluate
 model = LogisticRegression(solver='liblinear')
@@ -637,7 +637,7 @@ pipeline = Pipeline(steps=[('anova',fs), ('lr', model)])
 
 请注意，网格是一个参数到要搜索的值的字典，假设我们使用的是一个*管道*，我们可以通过我们给它起的名字来访问 *SelectKBest* 对象，' *anova* '，然后是参数名' *k* '，用两个下划线分隔，或' *anova__k* '。
 
-```
+```py
 ...
 # define the grid
 grid = dict()
@@ -646,7 +646,7 @@ grid['anova__k'] = [i+1 for i in range(X.shape[1])]
 
 然后，我们可以定义并运行搜索。
 
-```
+```py
 ...
 # define the grid search
 search = GridSearchCV(pipeline, grid, scoring='accuracy', n_jobs=-1, cv=cv)
@@ -656,7 +656,7 @@ results = search.fit(X, y)
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # compare different numbers of features selected using anova f-test
 from pandas import read_csv
 from sklearn.model_selection import RepeatedStratifiedKFold
@@ -704,7 +704,7 @@ print('Best Config: %s' % results.best_params_)
 
 在这种情况下，我们可以看到所选特征的最佳数量是七个；达到了 77%的准确率。
 
-```
+```py
 Best Mean Accuracy: 0.770
 Best Config: {'anova__k': 7}
 ```
@@ -715,7 +715,7 @@ Best Config: {'anova__k': 7}
 
 下面列出了实现这一点的完整示例。
 
-```
+```py
 # compare different numbers of features selected using anova f-test
 from numpy import mean
 from numpy import std
@@ -772,7 +772,7 @@ pyplot.show()
 
 在这种情况下，选择五个和七个要素的准确度大致相同。
 
-```
+```py
 >1 0.748 (0.048)
 >2 0.756 (0.042)
 >3 0.761 (0.044)

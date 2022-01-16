@@ -81,7 +81,7 @@ Let’s get started.![How to Use the Nelder-Mead Optimization in Python](img/0e7
 
 该函数要求将“*方法*”参数设置为“*内尔德-米德*”以使用内尔德-米德算法。它将目标函数最小化，并作为搜索的起始点。
 
-```
+```py
 ...
 # perform the search
 result = minimize(objective, pt, method='nelder-mead')
@@ -93,7 +93,7 @@ result = minimize(objective, pt, method='nelder-mead')
 
 重要的是，“ *x* ”键指定输入值，如果搜索成功，该输入值指示通过搜索找到的最优值。
 
-```
+```py
 ...
 # summarize the result
 print('Status : %s' % result['message'])
@@ -107,7 +107,7 @@ print('Solution: %s' % result['x'])
 
 我们可以在下面定义*目标()*函数。
 
-```
+```py
 # objective function
 def objective(x):
 	return x[0]**2.0 + x[1]**2.0
@@ -115,7 +115,7 @@ def objective(x):
 
 我们将使用定义的域中的随机点作为搜索的起点。
 
-```
+```py
 ...
 # define range for input
 r_min, r_max = -5.0, 5.0
@@ -125,7 +125,7 @@ pt = r_min + rand(2) * (r_max - r_min)
 
 然后可以执行搜索。我们使用通过“ *maxiter* 设置的默认最大函数求值次数，并设置为 N*200，其中 N 是输入变量的数量，在这种情况下为 2，例如 400 次求值。
 
-```
+```py
 ...
 # perform the search
 result = minimize(objective, pt, method='nelder-mead')
@@ -133,7 +133,7 @@ result = minimize(objective, pt, method='nelder-mead')
 
 搜索完成后，我们将报告用于查找 optima 的总功能评估和搜索成功消息，在这种情况下，我们希望是肯定的。
 
-```
+```py
 ...
 # summarize the result
 print('Status : %s' % result['message'])
@@ -142,7 +142,7 @@ print('Total Evaluations: %d' % result['nfev'])
 
 最后，我们将检索已定位 optima 的输入值，使用目标函数对其进行评估，并以人类可读的方式报告两者。
 
-```
+```py
 ...
 # evaluate solution
 solution = result['x']
@@ -152,7 +152,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 将这些联系在一起，下面列出了在简单凸目标函数上使用内尔德-米德优化算法的完整示例。
 
-```
+```py
 # nelder-mead optimization of a convex function
 from scipy.optimize import minimize
 from numpy.random import rand
@@ -184,7 +184,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 我们可以看到 optima 位于输入非常接近[0，0]的位置，其评估为最小目标值 0.0。
 
-```
+```py
 Status: Optimization terminated successfully.
 Total Evaluations: 88
 Solution: f([ 2.25680716e-05 -3.87021351e-05]) = 0.00000
@@ -208,7 +208,7 @@ Solution: f([ 2.25680716e-05 -3.87021351e-05]) = 0.00000
 
 例如，我们可以定义一维版本的 x^2 函数，并使用 [randn()函数](https://numpy.org/doc/stable/reference/random/generated/numpy.random.randn.html)将均值为 0.0、标准差为 0.3 的小高斯随机数添加到输入中。
 
-```
+```py
 # objective function
 def objective(x):
 	return (x + randn(len(x))*0.3)**2.0
@@ -218,7 +218,7 @@ def objective(x):
 
 下面列出了使用内尔德-米德优化噪声目标函数的完整示例。
 
-```
+```py
 # nelder-mead optimization of noisy one-dimensional convex function
 from scipy.optimize import minimize
 from numpy.random import rand
@@ -249,7 +249,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 在这种情况下，算法不收敛，而是使用最大函数求值次数，即 200。
 
-```
+```py
 Status: Maximum number of function evaluations has been exceeded.
 Total Evaluations: 200
 Solution: f([-0.6918238]) = 0.79431
@@ -267,7 +267,7 @@ Solution: f([-0.6918238]) = 0.79431
 
 下面的示例实现了阿克利，并创建了一个显示全局最优值和多个局部最优值的三维图。
 
-```
+```py
 # ackley multimodal function
 from numpy import arange
 from numpy import exp
@@ -312,7 +312,7 @@ pyplot.show()
 
 我们可以通过下面的例子来探讨这一点，这个例子演示了阿克利函数的内尔德-米德算法。
 
-```
+```py
 # nelder-mead for multimodal function optimization
 from scipy.optimize import minimize
 from numpy.random import rand
@@ -350,7 +350,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 每次我们运行这个例子，给定不同的搜索随机起点，我们会找到不同的局部最优解。
 
-```
+```py
 Status: Optimization terminated successfully.
 Total Evaluations: 62
 Solution: f([-4.9831427 -3.98656015]) = 11.90126

@@ -130,7 +130,7 @@
 
 一个小的变化是在计算对数概率时引入了一个ε(一个接近于零的微小数字)，以避免在试图计算零概率的对数时爆炸。这在实践中可能是不需要的(例如，对于真实生成的图像)，但是在这里是有用的，并且是处理对数概率时的良好实践。
 
-```
+```py
 # calculate the inception score for p(y|x)
 def calculate_inception_score(p_yx, eps=1E-16):
 	# calculate p(y)
@@ -150,7 +150,7 @@ def calculate_inception_score(p_yx, eps=1E-16):
 
 我们可以想象三类图像的情况，以及对于三个图像的每一类的完美自信预测。
 
-```
+```py
 # conditional probabilities for high quality images
 p_yx = asarray([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]])
 ```
@@ -159,7 +159,7 @@ p_yx = asarray([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]])
 
 下面列出了计算这些概率的初始分数的完整示例。
 
-```
+```py
 # calculate inception score in numpy
 from numpy import asarray
 from numpy import expand_dims
@@ -189,7 +189,7 @@ print(score)
 
 运行该示例给出的预期得分为 3.0(或非常接近的数字)。
 
-```
+```py
 2.999999999999999
 ```
 
@@ -197,7 +197,7 @@ print(score)
 
 这就是为什么我们对于每个类仍然有相同数量的图像(三个类中的每一个都有一个)，但是对象是未知的，这给出了每个类的统一预测概率分布。
 
-```
+```py
 # conditional probabilities for low quality images
 p_yx = asarray([[0.33, 0.33, 0.33], [0.33, 0.33, 0.33], [0.33, 0.33, 0.33]])
 score = calculate_inception_score(p_yx)
@@ -208,7 +208,7 @@ print(score)
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # calculate inception score in numpy
 from numpy import asarray
 from numpy import expand_dims
@@ -238,7 +238,7 @@ print(score)
 
 运行该示例报告预期的初始分数为 1.0。
 
-```
+```py
 1.0
 ```
 
@@ -252,7 +252,7 @@ print(score)
 
 首先，我们可以直接在 Keras 中加载盗梦空间 v3 模型。
 
-```
+```py
 ...
 # load inception v3 model
 model = InceptionV3()
@@ -264,7 +264,7 @@ model = InceptionV3()
 
 这可以通过将像素值从整数转换为浮点值，然后为图像调用*prepare _ input()*函数来实现。
 
-```
+```py
 ...
 # convert from uint8 to float32
 processed = images.astype('float32')
@@ -274,7 +274,7 @@ processed = preprocess_input(processed)
 
 然后，可以为图像预测 1000 个图像类别中的每一个的条件概率。
 
-```
+```py
 ...
 # predict class probabilities for images
 yhat = model.predict(images)
@@ -284,14 +284,14 @@ yhat = model.predict(images)
 
 在此之前，我们必须将条件概率分成组，由 *n_split* 参数控制，并设置为原始论文中使用的默认值 10。
 
-```
+```py
 ...
 n_part = floor(images.shape[0] / n_split)
 ```
 
 然后，我们可以在 *n_part* 图像或预测的块中枚举条件概率，并计算初始分数。
 
-```
+```py
 ...
 # retrieve p(y|x)
 ix_start, ix_end = i * n_part, (i+1) * n_part
@@ -300,7 +300,7 @@ p_yx = yhat[ix_start:ix_end]
 
 在计算了条件概率的每个分割的分数之后，我们可以计算并返回平均和标准偏差初始分数。
 
-```
+```py
 ...
 # average across images
 is_avg, is_std = mean(scores), std(scores)
@@ -308,7 +308,7 @@ is_avg, is_std = mean(scores), std(scores)
 
 将所有这些联系在一起，下面的*calculate _ inception _ score()*函数获取一组预期大小和像素值在[0，255]的图像，并使用 Keras 中的 inception v3 模型计算平均和标准差的 inception 分数。
 
-```
+```py
 # assumes images have the shape 299x299x3, pixels in [0,255]
 def calculate_inception_score(images, n_split=10, eps=1E-16):
 	# load inception v3 model
@@ -345,7 +345,7 @@ def calculate_inception_score(images, n_split=10, eps=1E-16):
 
 我们可以用 50 幅所有像素值为 1.0 的人工图像来测试这个函数。
 
-```
+```py
 ...
 # pretend to load images
 images = ones((50, 299, 299, 3))
@@ -356,7 +356,7 @@ print('loaded', images.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # calculate inception score with Keras
 from math import floor
 from numpy import ones
@@ -413,7 +413,7 @@ print('score', is_avg, is_std)
 
 **注**:第一次使用 InceptionV3 模型时，Keras 会下载模型权重保存到 *~/。工作站上的 keras/models/* 目录。权重约为 100 兆字节，根据您的互联网连接速度，下载可能需要一些时间。
 
-```
+```py
 loaded (50, 299, 299, 3)
 score 1.0 0.0
 ```
@@ -428,7 +428,7 @@ Keras 应用编程接口提供对 [CIFAR-10 数据集](https://machinelearningma
 
 首先，图像可以被加载和混洗，以确保每个分割覆盖不同的类集。
 
-```
+```py
 ...
 # load cifar10 images
 (images, _), (_, _) = cifar10.load_data()
@@ -440,7 +440,7 @@ shuffle(images)
 
 我们将使用 [scikit-image 库](https://scikit-image.org/)将像素值的 NumPy 数组调整到所需的大小。下面的 *scale_images()* 功能实现了这一点。
 
-```
+```py
 # scale an array of images to a new size
 def scale_images(images, new_shape):
 	images_list = list()
@@ -454,13 +454,13 @@ def scale_images(images, new_shape):
 
 注意，如果尚未安装 scikit-image 库，您可能需要安装它。这可以通过以下方式实现:
 
-```
+```py
 sudo pip install scikit-image
 ```
 
 然后，我们可以列举拆分的数量，选择图像的子集，缩放它们，预处理它们，并使用该模型来预测条件类概率。
 
-```
+```py
 ...
 # retrieve images
 ix_start, ix_end = i * n_part, (i+1) * n_part
@@ -481,7 +481,7 @@ p_yx = model.predict(subset)
 
 基于最初的初始分数论文中报告的类似计算，我们预计该数据集上报告的分数大约为 11。有趣的是，在使用渐进生长 GAN 编写时，生成图像的 CIFAR-10 的[最佳初始分数约为 8.8。](https://paperswithcode.com/sota/image-generation-on-cifar-10)
 
-```
+```py
 # calculate inception score for cifar-10 in Keras
 from math import floor
 from numpy import ones
@@ -558,7 +558,7 @@ print('score', is_avg, is_std)
 
 **注意**:第一次使用 CIFAR-10 数据集时，Keras 会下载压缩格式的图片，存储在 *~/。keras/datasets/* 目录。下载量约为 161 兆字节，根据您的互联网连接速度，可能需要几分钟。
 
-```
+```py
 loaded (50000, 32, 32, 3)
 score 11.317895 0.14821531
 ```

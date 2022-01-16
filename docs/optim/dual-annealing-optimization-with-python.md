@@ -66,7 +66,7 @@ Let’s get started.![Dual Annealing Optimization With Python](img/e1d64c8d6ac37
 
 该函数将目标函数的名称和每个输入变量的边界作为搜索的最小参数。
 
-```
+```py
 ...
 # perform the dual annealing search
 result = dual_annealing(objective, bounds)
@@ -100,7 +100,7 @@ result = dual_annealing(objective, bounds)
 
 下面的示例实现了 Ackley，并创建了一个显示全局最优值和多个局部最优值的三维曲面图。
 
-```
+```py
 # ackley multimodal function
 from numpy import arange
 from numpy import exp
@@ -143,7 +143,7 @@ pyplot.show()
 
 首先，我们可以将搜索空间的边界定义为函数在每个维度上的极限。
 
-```
+```py
 ...
 # define the bounds on the search
 bounds = [[r_min, r_max], [r_min, r_max]]
@@ -153,7 +153,7 @@ bounds = [[r_min, r_max], [r_min, r_max]]
 
 在这种情况下，我们将使用默认的超参数。
 
-```
+```py
 ...
 # perform the simulated annealing search
 result = dual_annealing(objective, bounds)
@@ -161,7 +161,7 @@ result = dual_annealing(objective, bounds)
 
 搜索完成后，它将报告搜索状态和执行的迭代次数，以及通过评估找到的最佳结果。
 
-```
+```py
 ...
 # summarize the result
 print('Status : %s' % result['message'])
@@ -174,7 +174,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 将这些联系在一起，下面列出了将双重退火应用于阿克利目标函数的完整示例。
 
-```
+```py
 # dual annealing global optimization for the ackley multimodal objective function
 from scipy.optimize import dual_annealing
 from numpy.random import rand
@@ -212,7 +212,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 我们可以看到总共进行了 4136 次功能评估。
 
-```
+```py
 Status : ['Maximum number of iteration reached']
 Total Evaluations: 4136
 Solution: f([-2.26474440e-09 -8.28465933e-09]) = 0.00000

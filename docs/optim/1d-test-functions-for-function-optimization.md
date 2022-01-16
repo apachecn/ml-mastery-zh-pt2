@@ -53,7 +53,7 @@ Let’s get started.![One-Dimensional (1D) Test Functions for Function Optimizat
 
 下面函数的范围限制在-5.0 和 5.0 之间，最佳输入值为 0.0。
 
-```
+```py
 # convex unimodal optimization function
 from numpy import arange
 from matplotlib import pyplot
@@ -100,7 +100,7 @@ pyplot.show()
 
 下面函数的范围限制在-10.0 和 10.0 之间，最佳输入值为 0.67956。
 
-```
+```py
 # non-convex unimodal optimization function
 from numpy import arange
 from numpy import sin
@@ -147,7 +147,7 @@ A [多模态功能](https://en.wikipedia.org/wiki/Multimodal_distribution)是指
 
 范围以-2.7 和 7.5 为界，最佳输入值为 5.145735。
 
-```
+```py
 # multimodal function
 from numpy import sin
 from numpy import arange
@@ -183,7 +183,7 @@ pyplot.show()
 
 范围以 0.0 和 1.2 为界，最佳输入值为 0.96609。
 
-```
+```py
 # multimodal function
 from numpy import sin
 from numpy import arange
@@ -219,7 +219,7 @@ pyplot.show()
 
 范围以 0.0 和 10.0 为界，最佳输入值为 7.9787。
 
-```
+```py
 # multimodal function
 from numpy import sin
 from numpy import arange
@@ -263,7 +263,7 @@ pyplot.show()
 
 范围在-2.0 和 2.0 之间，最佳输入值为 1.0。
 
-```
+```py
 # non-smooth optimization function
 from numpy import arange
 from matplotlib import pyplot
@@ -306,7 +306,7 @@ pyplot.show()
 
 下面函数的范围限制在-5.0 和 5.0 之间，最佳输入值为 0.0。
 
-```
+```py
 # noisy optimization function
 from numpy import arange
 from numpy.random import randn

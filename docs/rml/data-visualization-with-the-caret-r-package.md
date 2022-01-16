@@ -36,7 +36,7 @@ R 中有很多用于汇总数据的包和函数，可以感觉到势不可挡。
 
 下面的示例显示了虹膜数据集的散点图矩阵，所有四个属性都有成对散点图，散点图中的点由类属性着色。
 
-```
+```py
 # load the library
 library(caret)
 # load the data
@@ -57,7 +57,7 @@ featurePlot(x=iris[,1:4], y=iris[,5], plot="pairs", auto.key=list(columns=3))
 
 下面的示例显示了 iris 数据集的密度图，显示了每个属性如何与每个类值相关的 pdf。
 
-```
+```py
 # load the library
 library(caret)
 # load the data
@@ -78,7 +78,7 @@ featurePlot(x=iris[,1:4], y=iris[,5], plot="density", scales=list(x=list(relatio
 
 下面的示例显示了 iris 数据集的方框图和触须图，为给定属性的每个类值显示了一个单独的方框。
 
-```
+```py
 # load the library
 library(caret)
 # load the data

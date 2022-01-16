@@ -65,7 +65,7 @@ Pix2Pix GAN 已经在一系列图像到图像的转换任务中进行了演示�
 
 下载数据集并将其解压缩到当前工作目录中。这将创建一个名为“*地图*”的目录，其结构如下:
 
-```
+```py
 maps
 ├── train
 └── val
@@ -83,7 +83,7 @@ train 文件夹包含 1，097 个图像，而验证数据集包含 1，099 个�
 
 下面的 *load_images()* 函数实现了这一点。它枚举给定目录中的图像列表，加载每个目标大小为 256×512 像素的图像，将每个图像拆分为卫星和地图元素，并返回每个元素的数组。
 
-```
+```py
 # load all images in a directory into memory
 def load_images(path, size=(256,512)):
 	src_list, tar_list = list(), list()
@@ -104,7 +104,7 @@ def load_images(path, size=(256,512)):
 
 下面列出了完整的示例。
 
-```
+```py
 # load, split and scale the maps dataset ready for training
 from os import listdir
 from numpy import asarray
@@ -141,7 +141,7 @@ print('Saved dataset: ', filename)
 
 运行该示例将加载训练数据集中的所有图像，总结它们的形状以确保图像被正确加载，然后以压缩的 NumPy 数组格式将数组保存到名为 *maps_256.npz* 的新文件中。
 
-```
+```py
 Loaded:  (1096, 256, 256, 3) (1096, 256, 256, 3)
 Saved dataset:  maps_256.npz
 ```
@@ -150,7 +150,7 @@ Saved dataset:  maps_256.npz
 
 然后，我们可以绘制一些图像对，以确认数据已被正确处理。
 
-```
+```py
 # load the prepared dataset
 from numpy import load
 from matplotlib import pyplot
@@ -174,7 +174,7 @@ pyplot.show()
 
 运行此示例加载准备好的数据集并总结每个数组的形状，这证实了我们对 10256×256 个图像对的期望。
 
-```
+```py
 Loaded: (1096, 256, 256, 3) (1096, 256, 256, 3)
 ```
 
@@ -206,7 +206,7 @@ Loaded: (1096, 256, 256, 3) (1096, 256, 256, 3)
 
 下面的 *define_discriminator()* 函数按照文中模型的设计实现了 70×70 的 PatchGAN 鉴别器模型。该模型采用两个连接在一起的输入图像，并预测预测的补丁输出。使用二进制交叉熵优化模型，并使用权重，使得模型的更新具有通常效果的一半(0.5)。Pix2Pix 的作者推荐这种模型更新的权重，以减缓训练期间相对于生成器模型的鉴别器变化。
 
-```
+```py
 # define the discriminator model
 def define_discriminator(image_shape):
 	# weight initialization
@@ -261,7 +261,7 @@ def define_discriminator(image_shape):
 
 下面的 *define_generator()* 函数实现了 U-Net 编解码生成器模型。它使用*定义 _ 编码器 _ 块()*辅助函数为编码器创建层块，使用*解码器 _ 块()*函数为解码器创建层块。tanh 激活函数用于输出层，这意味着生成的图像中的像素值将在[-1，1]的范围内。
 
-```
+```py
 # define an encoder block
 def define_encoder_block(layer_in, n_filters, batchnorm=True):
 	# weight initialization
@@ -337,7 +337,7 @@ def define_generator(image_shape=(256,256,3)):
 
 下面的 *define_gan()* 函数实现了这一点，将已经定义的生成器和鉴别器模型作为参数，并使用 [Keras 函数 API](https://machinelearningmastery.com/keras-functional-api-deep-learning/) 将它们连接到一个复合模型中。为模型的两个输出指定了两个损失函数，并且在*编译()*函数的*损失权重*参数中指定了每个损失函数使用的权重。
 
-```
+```py
 # define the combined generator and discriminator model, for updating the generator
 def define_gan(g_model, d_model, image_shape):
 	# make weights in the discriminator not trainable
@@ -362,7 +362,7 @@ def define_gan(g_model, d_model, image_shape):
 
 这将返回两个 NumPy 数组的列表:第一个用于源图像，第二个用于对应的目标图像。
 
-```
+```py
 # load and prepare training images
 def load_real_samples(filename):
 	# load compressed arrays
@@ -379,7 +379,7 @@ def load_real_samples(filename):
 
 下面的 *generate_real_samples()* 函数将从训练数据集中准备一批随机的图像对，*类对应的鉴别器标签=1* 表示它们是真实的。
 
-```
+```py
 # select a batch of random samples, returns images and target
 def generate_real_samples(dataset, n_samples, patch_shape):
 	# unpack dataset
@@ -397,7 +397,7 @@ def generate_real_samples(dataset, n_samples, patch_shape):
 
 这些与标签类-0 一起返回，以向鉴别器表明它们是假的。
 
-```
+```py
 # generate a batch of images, returns images and targets
 def generate_fake_samples(g_model, samples, patch_shape):
 	# generate fake instance
@@ -415,7 +415,7 @@ def generate_fake_samples(g_model, samples, patch_shape):
 
 图像和模型文件名都包含训练迭代次数，这使得我们在训练结束时可以很容易地将它们区分开来。
 
-```
+```py
 # generate samples and save as a plot and save the model
 def summarize_performance(step, g_model, dataset, n_samples=3):
 	# select a sample of input images
@@ -463,7 +463,7 @@ def summarize_performance(step, g_model, dataset, n_samples=3):
 
 最后，每次更新的损失会在每次训练迭代中报告给控制台，并且每 10 个训练时期评估一次模型性能。
 
-```
+```py
 # train pix2pix model
 def train(d_model, g_model, gan_model, dataset, n_epochs=100, n_batch=1):
 	# determine the output square shape of the discriminator
@@ -495,7 +495,7 @@ def train(d_model, g_model, gan_model, dataset, n_epochs=100, n_batch=1):
 
 将所有这些结合在一起，下面列出了训练 Pix2Pix GAN 将卫星照片翻译成谷歌地图图像的完整代码示例。
 
-```
+```py
 # example of pix2pix gan for satellite to map image-to-image translation
 from numpy import load
 from numpy import zeros
@@ -752,7 +752,7 @@ train(d_model, g_model, gan_model, dataset)
 
 如果鉴别器的损耗变为零并在那里停留很长时间，考虑重新开始训练，因为这是训练失败的一个例子。
 
-```
+```py
 >1, d1[0.566] d2[0.520] g[82.266]
 >2, d1[0.469] d2[0.484] g[66.813]
 >3, d1[0.428] d2[0.477] g[79.520]
@@ -799,7 +799,7 @@ train(d_model, g_model, gan_model, dataset)
 
 首先，我们可以加载训练数据集。我们可以使用名为 *load_real_samples()* 的相同函数来加载数据集，就像训练模型时使用的一样。
 
-```
+```py
 # load and prepare training images
 def load_real_samples(filename):
 	# load compressed ararys
@@ -814,7 +814,7 @@ def load_real_samples(filename):
 
 这个函数可以如下调用:
 
-```
+```py
 ...
 # load dataset
 [X1, X2] = load_real_samples('maps_256.npz')
@@ -823,7 +823,7 @@ print('Loaded', X1.shape, X2.shape)
 
 接下来，我们可以加载保存的 Keras 模型。
 
-```
+```py
 ...
 # load model
 model = load_model('model_109600.h5')
@@ -831,7 +831,7 @@ model = load_model('model_109600.h5')
 
 接下来，我们可以从训练数据集中选择一个随机图像对作为示例。
 
-```
+```py
 ...
 # select random example
 ix = randint(0, len(X1), 1)
@@ -840,7 +840,7 @@ src_image, tar_image = X1[ix], X2[ix]
 
 我们可以提供源卫星图像作为模型的输入，并使用它来预测谷歌地图图像。
 
-```
+```py
 ...
 # generate image from source
 gen_image = model.predict(src_image)
@@ -850,7 +850,7 @@ gen_image = model.predict(src_image)
 
 下面的 *plot_images()* 函数实现了这一点，在每个图像上方提供了一个漂亮的标题。
 
-```
+```py
 # plot source, generated and target images
 def plot_images(src_img, gen_img, tar_img):
 	images = vstack((src_img, gen_img, tar_img))
@@ -872,7 +872,7 @@ def plot_images(src_img, gen_img, tar_img):
 
 这个函数可以用我们的每个源图像、生成图像和目标图像来调用。
 
-```
+```py
 ...
 # plot all three images
 plot_images(src_image, gen_image, tar_image)
@@ -880,7 +880,7 @@ plot_images(src_image, gen_image, tar_image)
 
 将所有这些结合在一起，下面列出了使用训练数据集中的一个示例执行特定图像到图像翻译的完整示例。
 
-```
+```py
 # example of loading a pix2pix model and using it for image to image translation
 from keras.models import load_model
 from numpy import load
@@ -961,7 +961,7 @@ plot_images(src_image, gen_image, tar_image)
 
 下面的 *load_image()* 函数实现了这一点，返回可以直接提供给加载的 Pix2Pix 模型的图像像素。
 
-```
+```py
 # load an image
 def load_image(filename, size=(256,256)):
 	# load image with the preferred size
@@ -977,7 +977,7 @@ def load_image(filename, size=(256,256)):
 
 然后我们可以加载我们裁剪后的卫星图像。
 
-```
+```py
 ...
 # load source image
 src_image = load_image('satellite.jpg')
@@ -986,7 +986,7 @@ print('Loaded', src_image.shape)
 
 像以前一样，我们可以加载我们保存的 Pix2Pix 生成器模型，并生成加载图像的翻译。
 
-```
+```py
 ...
 # load model
 model = load_model('model_109600.h5')
@@ -996,7 +996,7 @@ gen_image = model.predict(src_image)
 
 最后，我们可以将像素值缩放回范围[0，1]并绘制结果。
 
-```
+```py
 ...
 # scale from [-1,1] to [0,1]
 gen_image = (gen_image + 1) / 2.0
@@ -1008,7 +1008,7 @@ pyplot.show()
 
 将所有这些结合在一起，下面列出了使用单个图像文件执行临时图像翻译的完整示例。
 
-```
+```py
 # example of loading a pix2pix model and using it for one-off image translation
 from keras.models import load_model
 from keras.preprocessing.image import img_to_array
@@ -1062,7 +1062,7 @@ pyplot.show()
 
 我们可以使用相同的代码来训练模型，只有一点点不同。我们可以改变 *load_real_samples()* 函数返回的数据集的顺序；例如:
 
-```
+```py
 # load and prepare training images
 def load_real_samples(filename):
 	# load compressed arrays
@@ -1086,7 +1086,7 @@ def load_real_samples(filename):
 
 和以前一样，在每次训练迭代中都会报告模型的丢失。如果鉴别器的损耗变为零并在那里停留很长时间，考虑重新开始训练，因为这是训练失败的一个例子。
 
-```
+```py
 >1, d1[0.442] d2[0.650] g[49.790]
 >2, d1[0.317] d2[0.478] g[56.476]
 >3, d1[0.376] d2[0.450] g[48.114]

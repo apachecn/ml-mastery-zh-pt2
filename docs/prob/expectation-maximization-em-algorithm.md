@@ -114,7 +114,7 @@ EM 算法可以被非常广泛地应用，尽管它可能在机器学习中最�
 
 我们将从第一个过程中抽取 3000 点，从第二个过程中抽取 7000 点，并将其混合在一起。
 
-```
+```py
 ...
 # generate a sample
 X1 = normal(loc=20, scale=5, size=3000)
@@ -126,7 +126,7 @@ X = hstack((X1, X2))
 
 下面列出了完整的示例。
 
-```
+```py
 # example of a bimodal constructed from two gaussian processes
 from numpy import hstack
 from numpy.random import normal
@@ -160,7 +160,7 @@ pyplot.show()
 
 我们也有许多方法可以配置模型，以包含我们可能知道的关于数据的其他信息，例如如何估计分布的初始值。在这种情况下，我们将通过将 *init_params* 参数设置为“随机”来随机猜测初始参数。
 
-```
+```py
 ...
 # fit model
 model = GaussianMixture(n_components=2, init_params='random')
@@ -173,7 +173,7 @@ model.fit(X)
 
 例如，我们可以为训练数据集中的点估计潜在变量，并且我们期望前 3，000 个点属于一个过程(例如*值=1* )，而接下来的 7，000 个数据点属于不同的过程(例如*值=0* )。
 
-```
+```py
 ...
 # predict latent values
 yhat = model.predict(X)
@@ -185,7 +185,7 @@ print(yhat[-100:])
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # example of fitting a gaussian mixture model with expectation maximization
 from numpy import hstack
 from numpy.random import normal
@@ -213,7 +213,7 @@ print(yhat[-100:])
 
 在这种情况下，我们可以看到，至少在数据集中的前几个和最后几个示例中，模型主要预测潜在变量的正确值。这通常是一个具有挑战性的问题，预计分布峰值之间的点将保持不明确，并整体分配给一个或另一个过程。
 
-```
+```py
 [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
  1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
  1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]

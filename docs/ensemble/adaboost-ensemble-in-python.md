@@ -84,7 +84,7 @@ scikit-learn Python 机器学习库为机器学习提供了 AdaBoost 集成的�
 
 首先，通过运行以下脚本来确认您使用的是现代版本的库:
 
-```
+```py
 # check scikit-learn version
 import sklearn
 print(sklearn.__version__)
@@ -94,7 +94,7 @@ print(sklearn.__version__)
 
 您的版本应该相同或更高。如果没有，您必须升级 scikit-learn 库的版本。
 
-```
+```py
 0.22.1
 ```
 
@@ -116,7 +116,7 @@ AdaBoost 通过【AdaBoost 渐层和【AdaBoost 分类器类提供。
 
 下面列出了完整的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -127,7 +127,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -135,7 +135,7 @@ print(X.shape, y.shape)
 
 我们将使用[重复分层 k 折叠交叉验证](https://machinelearningmastery.com/k-fold-cross-validation/)来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
 
-```
+```py
 # evaluate adaboost algorithm for classification
 from numpy import mean
 from numpy import std
@@ -160,7 +160,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到带有默认超参数的 AdaBoost 集成在这个测试数据集上实现了大约 80%的分类精度。
 
-```
+```py
 Accuracy: 0.806 (0.041)
 ```
 
@@ -170,7 +170,7 @@ Accuracy: 0.806 (0.041)
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make predictions using adaboost for classification
 from sklearn.datasets import make_classification
 from sklearn.ensemble import AdaBoostClassifier
@@ -188,7 +188,7 @@ print('Predicted Class: %d' % yhat[0])
 
 运行该示例使 AdaBoost 集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Class: 0
 ```
 
@@ -202,7 +202,7 @@ Predicted Class: 0
 
 下面列出了完整的示例。
 
-```
+```py
 # test regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -213,7 +213,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -223,7 +223,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate adaboost ensemble for regression
 from numpy import mean
 from numpy import std
@@ -248,7 +248,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到带有默认超参数的 AdaBoost 集成实现了大约 100 的 MAE。
 
-```
+```py
 MAE: -72.327 (4.041)
 ```
 
@@ -258,7 +258,7 @@ MAE: -72.327 (4.041)
 
 下面的例子在我们的回归数据集上演示了这一点。
 
-```
+```py
 # adaboost ensemble for making predictions for regression
 from sklearn.datasets import make_regression
 from sklearn.ensemble import AdaBoostRegressor
@@ -276,7 +276,7 @@ print('Prediction: %d' % yhat[0])
 
 运行该示例使 AdaBoost 集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Prediction: -10
 ```
 
@@ -298,7 +298,7 @@ AdaBoost 算法的一个重要超参数是集成中使用的决策树的数量�
 
 下面的示例探讨了值在 10 到 5，000 之间的树的数量的影响。
 
-```
+```py
 # explore adaboost ensemble number of trees effect on performance
 from numpy import mean
 from numpy import std
@@ -355,7 +355,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到这个数据集上的性能提高了，直到大约 50 棵树，然后下降。这可能是在添加额外的树之后，集合过度拟合训练数据集的迹象。
 
-```
+```py
 >10 0.773 (0.039)
 >50 0.806 (0.041)
 >100 0.801 (0.032)
@@ -380,7 +380,7 @@ AdaBoost 集成大小与分类精度的箱线图
 
 下面的例子探索了增加[决策树分类器](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)弱学习器的深度对 AdBoost 集成的影响。
 
-```
+```py
 # explore adaboost ensemble tree depth effect on performance
 from numpy import mean
 from numpy import std
@@ -440,7 +440,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到，随着决策树深度的增加，集成的性能在这个数据集上也增加了。
 
-```
+```py
 >1 0.806 (0.041)
 >2 0.864 (0.028)
 >3 0.867 (0.030)
@@ -471,7 +471,7 @@ AdaBoost 还支持一个学习速率，控制每个模型对集成预测的贡�
 
 下面的示例以 0.1 为增量探索 0.1 到 2.0 之间的学习速率值。
 
-```
+```py
 # explore adaboost ensemble learning rate effect on performance
 from numpy import mean
 from numpy import std
@@ -530,7 +530,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到 0.5 到 1.0 之间的相似值，以及之后模型性能的下降。
 
-```
+```py
 >0.100 0.767 (0.049)
 >0.200 0.786 (0.042)
 >0.300 0.802 (0.040)
@@ -569,7 +569,7 @@ AdaBoost 集成学习率与分类精度的箱线图
 
 可以通过“ *base_estimator* ”参数指定基础模型。在分类的情况下，基础模型还必须支持预测概率或类似概率的分数。如果指定的模型不支持加权训练数据集，您将看到如下错误消息:
 
-```
+```py
 ValueError: KNeighborsClassifier doesn't support sample_weight.
 ```
 
@@ -577,7 +577,7 @@ ValueError: KNeighborsClassifier doesn't support sample_weight.
 
 下面的例子演示了一个带有弱学习者的 AdaBoost 算法。
 
-```
+```py
 # evaluate adaboost algorithm with logistic regression weak learner for classification
 from numpy import mean
 from numpy import std
@@ -603,7 +603,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到带有逻辑回归弱模型的 AdaBoost 集成在这个测试数据集上实现了大约 79%的分类精度。
 
-```
+```py
 Accuracy: 0.794 (0.032)
 ```
 
@@ -621,7 +621,7 @@ Accuracy: 0.794 (0.032)
 
 下面列出了在我们的合成分类数据集上网格搜索 AdaBoost 算法的关键超参数的完整示例。
 
-```
+```py
 # example of grid searching key hyperparameters for adaboost on a classification dataset
 from sklearn.datasets import make_classification
 from sklearn.model_selection import RepeatedStratifiedKFold
@@ -659,7 +659,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 尽管在这种情况下没有测试这些配置，以确保网格搜索在合理的时间内完成，但该模型在有更多树(如 1000 或 5000 棵树)的情况下可能会表现得更好。
 
-```
+```py
 Best: 0.813667 using {'learning_rate': 0.1, 'n_estimators': 500}
 0.646333 (0.036376) with: {'learning_rate': 0.0001, 'n_estimators': 10}
 0.646667 (0.036545) with: {'learning_rate': 0.0001, 'n_estimators': 50}

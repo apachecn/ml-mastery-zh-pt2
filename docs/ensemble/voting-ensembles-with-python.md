@@ -119,7 +119,7 @@ scikit-learn Python 机器学习库为机器学习提供了投票的实现。
 
 首先，通过运行以下脚本来确认您使用的是现代版本的库:
 
-```
+```py
 # check scikit-learn version
 import sklearn
 print(sklearn.__version__)
@@ -129,7 +129,7 @@ print(sklearn.__version__)
 
 您的版本应该相同或更高。如果没有，您必须升级 scikit-learn 库的版本。
 
-```
+```py
 0.22.1
 ```
 
@@ -141,7 +141,7 @@ print(sklearn.__version__)
 
 例如，下面定义了两个基本模型:
 
-```
+```py
 ...
 models = [('lr',LogisticRegression()),('svm',SVC())]
 ensemble = VotingClassifier(estimators=models)
@@ -151,7 +151,7 @@ ensemble = VotingClassifier(estimators=models)
 
 例如:
 
-```
+```py
 ...
 models = [('lr',LogisticRegression()),('svm',make_pipeline(StandardScaler(),SVC()))]
 ensemble = VotingClassifier(estimators=models)
@@ -161,7 +161,7 @@ ensemble = VotingClassifier(estimators=models)
 
 例如:
 
-```
+```py
 ...
 models = [('lr',LogisticRegression()),('svm',SVC())]
 ensemble = VotingClassifier(estimators=models, voting='soft')
@@ -177,7 +177,7 @@ ensemble = VotingClassifier(estimators=models, voting='soft')
 
 下面列出了完整的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -188,7 +188,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -204,7 +204,7 @@ print(X.shape, y.shape)
 
 首先，我们可以创建一个名为 *get_voting()* 的函数，该函数创建每个 KNN 模型，并将这些模型组合成一个硬投票集合。
 
-```
+```py
 # get a voting ensemble of models
 def get_voting():
 	# define the base models
@@ -223,7 +223,7 @@ def get_voting():
 
 这将有助于我们在分类精度分数的分布方面直接比较 KNN 模型和集合的每个独立配置。下面的 *get_models()* 函数创建模型列表供我们评估。
 
-```
+```py
 # get a list of models to evaluate
 def get_models():
 	models = dict()
@@ -240,7 +240,7 @@ def get_models():
 
 下面的 *evaluate_model()* 函数获取一个模型实例，并返回分层 10 倍交叉验证的三次重复的分数列表。
 
-```
+```py
 # evaluate a give model using cross-validation
 def evaluate_model(model, X, y):
 	cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -252,7 +252,7 @@ def evaluate_model(model, X, y):
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # compare hard voting to standalone classifiers
 from numpy import mean
 from numpy import std
@@ -320,7 +320,7 @@ pyplot.show()
 
 我们可以看到，与模型的所有独立版本相比，硬投票集成实现了约 90.2%的更好的分类准确率。
 
-```
+```py
 >knn1 0.873 (0.030)
 >knn3 0.889 (0.038)
 >knn5 0.895 (0.031)
@@ -341,7 +341,7 @@ pyplot.show()
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make a prediction with a hard voting ensemble
 from sklearn.datasets import make_classification
 from sklearn.ensemble import VotingClassifier
@@ -367,7 +367,7 @@ print('Predicted Class: %d' % (yhat))
 
 运行该示例使硬投票集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Class: 1
 ```
 
@@ -383,7 +383,7 @@ SVM 算法本身并不预测概率，尽管它可以被配置为通过在 [SVC �
 
 首先，我们可以创建一个名为 *get_voting()* 的函数来创建 SVM 模型，并将它们组合成一个软投票集合。
 
-```
+```py
 # get a voting ensemble of models
 def get_voting():
 	# define the base models
@@ -402,7 +402,7 @@ def get_voting():
 
 这将有助于我们在分类精度分数的分布方面直接比较 SVM 模型和集合的每个独立配置。下面的 *get_models()* 函数创建模型列表供我们评估。
 
-```
+```py
 # get a list of models to evaluate
 def get_models():
 	models = dict()
@@ -419,7 +419,7 @@ def get_models():
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # compare soft voting ensemble to standalone classifiers
 from numpy import mean
 from numpy import std
@@ -487,7 +487,7 @@ pyplot.show()
 
 我们可以看到，与模型的所有独立版本相比，软投票集成实现了约 92.4%的更好的分类准确率。
 
-```
+```py
 >svm1 0.855 (0.035)
 >svm2 0.859 (0.034)
 >svm3 0.890 (0.035)
@@ -508,7 +508,7 @@ pyplot.show()
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make a prediction with a soft voting ensemble
 from sklearn.datasets import make_classification
 from sklearn.ensemble import VotingClassifier
@@ -534,7 +534,7 @@ print('Predicted Class: %d' % (yhat))
 
 运行该示例使软投票集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Class: 1
 ```
 
@@ -546,7 +546,7 @@ Predicted Class: 1
 
 下面列出了完整的示例。
 
-```
+```py
 # test regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -557,7 +557,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -569,7 +569,7 @@ print(X.shape, y.shape)
 
 首先，我们可以创建一个名为 *get_voting()* 的函数，该函数创建每个 CART 模型并将这些模型组合成一个投票集合。
 
-```
+```py
 # get a voting ensemble of models
 def get_voting():
 	# define the base models
@@ -588,7 +588,7 @@ def get_voting():
 
 这将有助于我们直接比较 CART 模型的每个独立配置和错误分数分布的集合。下面的 *get_models()* 函数创建模型列表供我们评估。
 
-```
+```py
 # get a list of models to evaluate
 def get_models():
 	models = dict()
@@ -607,7 +607,7 @@ def get_models():
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # compare voting ensemble to each standalone models for regression
 from numpy import mean
 from numpy import std
@@ -675,7 +675,7 @@ pyplot.show()
 
 我们可以看到，投票集成实现了更好的均方误差，约为-136.338，与模型的所有独立版本相比，这更大(更好)。
 
-```
+```py
 >cart1 -161.519 (11.414)
 >cart2 -152.596 (11.271)
 >cart3 -142.378 (10.900)
@@ -696,7 +696,7 @@ pyplot.show()
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make a prediction with a voting ensemble
 from sklearn.datasets import make_regression
 from sklearn.tree import DecisionTreeRegressor
@@ -722,7 +722,7 @@ print('Predicted Value: %.3f' % (yhat))
 
 运行该示例使投票集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Value: 141.319
 ```
 

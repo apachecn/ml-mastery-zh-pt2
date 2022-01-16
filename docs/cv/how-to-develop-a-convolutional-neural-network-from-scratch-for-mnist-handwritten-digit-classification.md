@@ -59,7 +59,7 @@ MNIST 手写数字分类问题是用于计算机视觉和深度学习的标准�
 
 以下示例使用 Keras API 加载 MNIST 数据集，并创建训练数据集中前九幅图像的图。
 
-```
+```py
 # example of loading the mnist dataset
 from tensorflow.keras.datasets import mnist
 from matplotlib import pyplot as plt
@@ -82,7 +82,7 @@ plt.show()
 
 我们可以看到训练数据集中有 6 万个例子，测试数据集中有 1 万个例子，图像确实是 28×28 像素的正方形。
 
-```
+```py
 Train: X=(60000, 28, 28), y=(60000,)
 Test: X=(10000, 28, 28), y=(10000,)
 ```
@@ -105,7 +105,7 @@ Test: X=(10000, 28, 28), y=(10000,)
 
 Keras API 通过在训练模型时为 *model.fit()* 函数指定“ *validation_data* ”参数来支持这一点，该函数将返回一个对象，该对象描述所选损失的模型性能和每个训练时期的度量。
 
-```
+```py
 # record model performance on a validation dataset during training
 history = model.fit(..., validation_data=(valX, valY))
 ```
@@ -114,7 +114,7 @@ history = model.fit(..., validation_data=(valX, valY))
 
 我们可以使用 scikit-learn API 中的 [KFold 类](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html)来实现给定神经网络模型的 k 重交叉验证评估。有许多方法可以实现这一点，尽管我们可以选择一种灵活的方法，其中 *KFold* 类仅用于指定用于每个 spit 的行索引。
 
-```
+```py
 # example of k-fold cv for a neural net
 data = ...
 # prepare cross validation
@@ -145,7 +145,7 @@ for train_ix, test_ix in kfold.split(data):
 
 因此，我们可以加载图像并重塑数据阵列，使其具有单一颜色通道。
 
-```
+```py
 # load dataset
 (trainX, trainY), (testX, testY) = mnist.load_data()
 # reshape dataset to have a single channel
@@ -157,7 +157,7 @@ testX = testX.reshape((testX.shape[0], 28, 28, 1))
 
 因此，我们可以对每个样本的类元素使用一个热编码，将整数转换为一个 10 元素的二进制向量，类值的索引为 1，所有其他类的索引为 0。我们可以通过*到 _ classic()*效用函数来实现。
 
-```
+```py
 # one hot encode target values
 trainY = to_categorical(trainY)
 testY = to_categorical(testY)
@@ -165,7 +165,7 @@ testY = to_categorical(testY)
 
 *load_dataset()* 函数实现了这些行为，可以用来加载数据集。
 
-```
+```py
 # load train and test dataset
 def load_dataset():
 	# load dataset
@@ -187,7 +187,7 @@ def load_dataset():
 
 一个好的起点是[归一化灰度图像的像素值](https://machinelearningmastery.com/how-to-normalize-center-and-standardize-images-with-the-imagedatagenerator-in-keras/)，例如将它们重新缩放到范围[0，1]。这包括首先将数据类型从无符号整数转换为浮点数，然后将像素值除以最大值。
 
-```
+```py
 # convert from integers to floats
 train_norm = train.astype('float32')
 test_norm = test.astype('float32')
@@ -198,7 +198,7 @@ test_norm = test_norm / 255.0
 
 下面的 *prep_pixels()* 函数实现了这些行为，并提供了需要缩放的训练和测试数据集的像素值。
 
-```
+```py
 # scale pixels
 def prep_pixels(train, test):
 	# convert from integers to floats
@@ -229,7 +229,7 @@ def prep_pixels(train, test):
 
 下面的 *define_model()* 函数将定义并返回这个模型。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -256,7 +256,7 @@ def define_model():
 
 下面的 *evaluate_model()* 函数实现了这些行为，将训练数据集作为参数，并返回一个准确性分数和训练历史的列表，稍后可以对其进行总结。
 
-```
+```py
 # evaluate a model using k-fold cross-validation
 def evaluate_model(dataX, dataY, n_folds=5):
 	scores, histories = list(), list()
@@ -289,7 +289,7 @@ def evaluate_model(dataX, dataY, n_folds=5):
 
 我们将创建一个有两个支线剧情的单一人物，一个是损失，一个是准确性。蓝色线将指示训练数据集上的模型性能，橙色线将指示等待测试数据集上的性能。下面的*summary _ diagnostics()*函数在给定收集的训练历史的情况下创建并显示该图。
 
-```
+```py
 # plot diagnostic learning curves
 def summarize_diagnostics(histories):
 	for i in range(len(histories)):
@@ -310,7 +310,7 @@ def summarize_diagnostics(histories):
 
 下面的*summary _ performance()*函数为模型评估期间收集的给定分数列表实现了这一点。
 
-```
+```py
 # summarize model performance
 def summarize_performance(scores):
 	# print summary
@@ -326,7 +326,7 @@ def summarize_performance(scores):
 
 这包括调用所有的定义函数。
 
-```
+```py
 # run the test harness for evaluating a model
 def run_test_harness():
 	# load dataset
@@ -343,7 +343,7 @@ def run_test_harness():
 
 我们现在拥有我们需要的一切；下面列出了 MNIST 数据集上基线卷积神经网络模型的完整代码示例。
 
-```
+```py
 # baseline cnn model for mnist
 from numpy import mean
 from numpy import std
@@ -461,7 +461,7 @@ run_test_harness()
 
 我们可以看到模型达到完美技能的两种情况，以及达到低于 98%准确率的一种情况。这些都是好结果。
 
-```
+```py
 > 98.550
 > 98.600
 > 98.642
@@ -481,7 +481,7 @@ k 重交叉验证期间基线模型的损失和精度学习曲线
 
 我们可以看到，在这种情况下，模型的估计技能约为 98.6%，这是合理的。
 
-```
+```py
 Accuracy: mean=98.677 std=0.107, n=5
 ```
 
@@ -511,7 +511,7 @@ Accuracy: mean=98.677 std=0.107, n=5
 
 我们可以更新模型定义，以便在基线模型的卷积层和密集层的激活函数之后使用批处理规范化。带批量规格化的 *define_model()* 函数的更新版本如下。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -530,7 +530,7 @@ def define_model():
 
 下面提供了包含此更改的完整代码列表。
 
-```
+```py
 # cnn model with batch normalization for mnist
 from numpy import mean
 from numpy import std
@@ -651,7 +651,7 @@ run_test_harness()
 
 与交叉验证折叠中的基线相比，我们可能会看到模型性能的小幅下降。
 
-```
+```py
 > 98.475
 > 98.608
 > 98.683
@@ -669,7 +669,7 @@ k 重交叉验证中批处理模型的损失和精度学习曲线
 
 接下来，给出了模型的估计性能，显示了模型的平均精度略有下降的性能:与基线模型的 98.677 相比，为 98.643。
 
-```
+```py
 Accuracy: mean=98.643 std=0.101, n=5
 ```
 
@@ -687,7 +687,7 @@ Accuracy: mean=98.643 std=0.101, n=5
 
 带有此更改的 *define_model()* 函数的更新版本如下所示。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -707,7 +707,7 @@ def define_model():
 
 为了完整起见，下面提供了整个代码列表，包括这一更改。
 
-```
+```py
 # deeper cnn model for mnist
 from numpy import mean
 from numpy import std
@@ -828,7 +828,7 @@ run_test_harness()
 
 每倍得分可能表明比基线有所改善。
 
-```
+```py
 > 99.058
 > 99.042
 > 98.883
@@ -844,7 +844,7 @@ k 重交叉验证期间更深模型的损失和精度学习曲线
 
 接下来，给出了模型的估计性能，与基线相比，性能略有提高，从 98.677 提高到 99.062，标准偏差也略有下降。
 
-```
+```py
 Accuracy: mean=99.062 std=0.104, n=5
 ```
 
@@ -866,14 +866,14 @@ Accuracy: mean=99.062 std=0.104, n=5
 
 在本教程中，我们有意保留一个测试数据集，以便我们可以估计最终模型的性能，这在实践中可能是一个好主意。因此，我们将只在训练数据集上拟合我们的模型。
 
-```
+```py
 # fit model
 model.fit(trainX, trainY, epochs=10, batch_size=32, verbose=0)
 ```
 
 一旦合适，我们可以通过调用模型上的 *save()* 函数将最终模型保存到一个 H5 文件中，并传入选择的文件名。
 
-```
+```py
 # save model
 model.save('final_model.h5')
 ```
@@ -882,7 +882,7 @@ model.save('final_model.h5')
 
 下面列出了在训练数据集上拟合最终深度模型并将其保存到文件中的完整示例。
 
-```
+```py
 # save the final model to file
 from tensorflow.keras.datasets import mnist
 from tensorflow.keras.utils import to_categorical
@@ -961,7 +961,7 @@ run_test_harness()
 
 下面列出了加载保存的模型并在测试数据集上对其进行评估的完整示例。
 
-```
+```py
 # evaluate the deep model on the test dataset
 from tensorflow.keras.datasets import mnist
 from tensorflow.keras.models import load_model
@@ -1012,7 +1012,7 @@ run_test_harness()
 
 计算并打印测试数据集中模型的分类精度。在这种情况下，我们可以看到该模型达到了 99.090%的准确率，或者仅仅不到 1%，这一点也不差，并且相当接近估计的 99.753%，标准偏差约为 0.5%(例如 99%的分数)。
 
-```
+```py
 > 99.090
 ```
 
@@ -1036,7 +1036,7 @@ run_test_harness()
 
 重要的是，像素值的准备方式与在拟合最终模型时为训练数据集准备像素值的方式相同，在这种情况下，最终模型是归一化的。
 
-```
+```py
 # load and prepare the image
 def load_image(filename):
 	# load the image
@@ -1053,7 +1053,7 @@ def load_image(filename):
 
 接下来，我们可以像上一节一样加载模型，调用 *predict()* 函数得到预测得分，然后使用 *argmax()* 得到图像所代表的数字。
 
-```
+```py
 # predict the class
 predict_value = model.predict(img)
 digit = argmax(predict_value)
@@ -1061,7 +1061,7 @@ digit = argmax(predict_value)
 
 下面列出了完整的示例。
 
-```
+```py
 # make a prediction for a new image.
 from numpy import argmax
 from keras.preprocessing.image import load_img
@@ -1098,7 +1098,7 @@ run_example()
 
 运行该示例首先加载和准备图像，加载模型，然后正确预测加载的图像代表数字“ *7* ”。
 
-```
+```py
 7
 ```
 

@@ -60,7 +60,7 @@ R
 
 以下是您可以在 r 中的机器学习项目中使用的项目模板。
 
-```
+```py
 # R Project Template
 
 # 1\. Prepare Problem

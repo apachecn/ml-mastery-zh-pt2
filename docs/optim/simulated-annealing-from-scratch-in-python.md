@@ -95,7 +95,7 @@ Python 中的模拟退火从零开始
 
 例如，一维目标函数和边界可以定义如下:
 
-```
+```py
 # objective function
 def objective(x):
 	return 0
@@ -106,7 +106,7 @@ bounds = asarray([[-5.0, 5.0]])
 
 接下来，我们可以将初始点生成为问题边界内的随机点，然后使用目标函数对其进行评估。
 
-```
+```py
 ...
 # generate an initial point
 best = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
@@ -116,7 +116,7 @@ best_eval = objective(best)
 
 我们需要保持“*”当前的*”解决方案，这是搜索的重点，可能会被更好的解决方案所取代。
 
-```
+```py
 ...
 # current working solution
 curr, curr_eval = best, best_eval
@@ -124,7 +124,7 @@ curr, curr_eval = best, best_eval
 
 现在，我们可以循环定义为“ *n_iterations* ”的算法的预定义迭代次数，例如 100 或 1000 次。
 
-```
+```py
 ...
 # run the algorithm
 for i in range(n_iterations):
@@ -135,7 +135,7 @@ for i in range(n_iterations):
 
 这需要一个预定义的“*步长*”参数，该参数与搜索空间的边界相关。我们将采用高斯分布的随机步长，其中平均值是当前点，标准偏差由“*步长*定义。这意味着大约 99%的步骤将在当前点的 *3 *步长*之内。
 
-```
+```py
 ...
 # take a step
 candidate = solution + randn(len(bounds)) * step_size
@@ -143,7 +143,7 @@ candidate = solution + randn(len(bounds)) * step_size
 
 我们没有必要以这种方式采取措施。您可能希望在 0 和步长之间使用均匀分布。例如:
 
-```
+```py
 ...
 # take a step
 candidate = solution + rand(len(bounds)) * step_size
@@ -151,7 +151,7 @@ candidate = solution + rand(len(bounds)) * step_size
 
 接下来，我们需要对其进行评估。
 
-```
+```py
 ...
 # evaluate candidate point
 candidate_eval = objective(candidate)
@@ -161,7 +161,7 @@ candidate_eval = objective(candidate)
 
 这与当前的工作解决方案是分开的，当前的工作解决方案是搜索的焦点。
 
-```
+```py
 ...
 # check for new best solution
 if candidate_eval < best_eval:
@@ -175,7 +175,7 @@ if candidate_eval < best_eval:
 
 第一步是计算当前解与当前工作解的目标函数评价之差。
 
-```
+```py
 ...
 # difference between candidate and current point evaluation
 diff = candidate_eval - curr_eval
@@ -183,7 +183,7 @@ diff = candidate_eval - curr_eval
 
 接下来，我们需要使用快速退火时间表计算当前温度，其中“ *temp* ”是作为参数提供的初始温度。
 
-```
+```py
 ...
 # calculate temperature for current epoch
 t = temp / float(i + 1)
@@ -191,7 +191,7 @@ t = temp / float(i + 1)
 
 然后，我们可以计算接受性能比当前工作解决方案更差的解决方案的可能性。
 
-```
+```py
 ...
 # calculate metropolis acceptance criterion
 metropolis = exp(-diff / t)
@@ -199,7 +199,7 @@ metropolis = exp(-diff / t)
 
 最后，如果新点具有更好的目标函数评价(差值为负)或者如果目标函数更差，我们可以接受新点作为当前工作解，但是我们可能决定接受它。
 
-```
+```py
 ...
 # check if we should keep the new point
 if diff < 0 or rand() < metropolis:
@@ -211,7 +211,7 @@ if diff < 0 or rand() < metropolis:
 
 我们可以将这个模拟退火算法实现为一个可重用的函数，该函数以目标函数的名称、每个输入变量的边界、总迭代次数、步长和初始温度为参数，并返回找到的最佳解及其评估。
 
-```
+```py
 # simulated annealing algorithm
 def simulated_annealing(objective, bounds, n_iterations, step_size, temp):
 	# generate an initial point
@@ -257,7 +257,7 @@ def simulated_annealing(objective, bounds, n_iterations, step_size, temp):
 
 下面的示例定义了函数，然后为输入值网格创建了函数响应面的线图，并用红线标记 f(0.0) = 0.0 处的 optima
 
-```
+```py
 # convex unimodal optimization function
 from numpy import arange
 from matplotlib import pyplot
@@ -296,7 +296,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # explore temperature vs algorithm iteration for simulated annealing
 from matplotlib import pyplot
 # total iterations of algorithm
@@ -328,7 +328,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # explore metropolis acceptance criterion for simulated annealing
 from math import exp
 from matplotlib import pyplot
@@ -370,7 +370,7 @@ pyplot.show()
 
 一般来说，这不是必需的，但是在这种情况下，我希望确保每次运行算法时都得到相同的结果(相同的随机数序列)，这样我们就可以在以后绘制结果。
 
-```
+```py
 ...
 # seed the pseudorandom number generator
 seed(1)
@@ -382,7 +382,7 @@ seed(1)
 
 我们还将使用 10.0 的初始温度。搜索过程对退火程序比对初始温度更敏感，因此，初始温度值几乎是任意的。
 
-```
+```py
 ...
 n_iterations = 1000
 # define the maximum step size
@@ -393,7 +393,7 @@ temp = 10
 
 接下来，我们可以执行搜索并报告结果。
 
-```
+```py
 ...
 # perform the simulated annealing search
 best, score = simulated_annealing(objective, bounds, n_iterations, step_size, temp)
@@ -403,7 +403,7 @@ print('f(%s) = %f' % (best, score))
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # simulated annealing search of a one-dimensional objective function
 from numpy import asarray
 from numpy import exp
@@ -471,7 +471,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以看到算法的 1000 次迭代中有大约 20 次改进，并且有一个非常接近最佳输入 0.0 的解，其计算结果为 f(0.0) = 0.0。
 
-```
+```py
 >34 f([-0.78753544]) = 0.62021
 >35 f([-0.76914239]) = 0.59158
 >37 f([-0.68574854]) = 0.47025
@@ -500,7 +500,7 @@ f([0.00013605]) = 0.000000
 
 我们可以更新*模拟退火()*来跟踪每次有改进的目标函数评估，并返回这个分数列表。
 
-```
+```py
 # simulated annealing algorithm
 def simulated_annealing(objective, bounds, n_iterations, step_size, temp):
 	# generate an initial point
@@ -538,7 +538,7 @@ def simulated_annealing(objective, bounds, n_iterations, step_size, temp):
 
 然后，我们可以创建这些分数的折线图，以查看搜索过程中发现的每个改进的目标函数的相对变化。
 
-```
+```py
 ...
 # line plot of best scores
 pyplot.plot(scores, '.-')
@@ -549,7 +549,7 @@ pyplot.show()
 
 将这些联系在一起，下面列出了在搜索过程中执行搜索并绘制改进解决方案的目标函数分数的完整示例。
 
-```
+```py
 # simulated annealing search of a one-dimensional objective function
 from numpy import asarray
 from numpy import exp

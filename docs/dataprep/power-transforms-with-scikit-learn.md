@@ -114,7 +114,7 @@
 
 下面列出了完整的示例。
 
-```
+```py
 # demonstration of the power transform on data with a skew
 from numpy import exp
 from numpy.random import randn
@@ -176,7 +176,7 @@ pyplot.show()
 
 首先，让我们加载并总结数据集。下面列出了完整的示例。
 
-```
+```py
 # load and summarize the sonar dataset
 from pandas import read_csv
 from pandas.plotting import scatter_matrix
@@ -199,7 +199,7 @@ pyplot.show()
 
 提供了输入变量的统计摘要，显示值是数值，范围大约从 0 到 1。
 
-```
+```py
 (208, 61)
                0           1           2   ...          57          58          59
 count  208.000000  208.000000  208.000000  ...  208.000000  208.000000  208.000000
@@ -228,7 +228,7 @@ max      0.137100    0.233900    0.305900  ...    0.044000    0.036400    0.0439
 
 我们将使用带有默认超参数的 [k 最近邻算法](https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/)，并使用重复的分层 k 重交叉验证对其进行评估。下面列出了完整的示例。
 
-```
+```py
 # evaluate knn on the raw sonar dataset
 from numpy import mean
 from numpy import std
@@ -262,7 +262,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 我们可以看到，该模型实现了大约 79.7%的平均分类准确率，表明它具有技巧性(优于 53.4%)，并且处于良好表现的球园区(88%)。
 
-```
+```py
 Accuracy: 0.797 (0.073)
 ```
 
@@ -280,7 +280,7 @@ Box-Cox 变换以该方法的两位作者的名字命名。
 
 我们可以使用 *PowerTransformer* 类应用 Box-Cox 变换，并将“*方法*参数设置为“ *box-cox* ”。一旦定义，我们就可以调用 *fit_transform()* 函数，并将其传递给我们的数据集，以创建数据集的 Box-Cox 转换版本。
 
-```
+```py
 ...
 pt = PowerTransformer(method='box-cox')
 data = pt.fit_transform(data)
@@ -292,7 +292,7 @@ data = pt.fit_transform(data)
 
 下面列出了创建声纳数据集的 Box-Cox 变换并绘制结果直方图的完整示例。
 
-```
+```py
 # visualize a box-cox transform of the sonar dataset
 from pandas import read_csv
 from pandas import DataFrame
@@ -316,7 +316,7 @@ pyplot.show()
 
 运行该示例会导致如下错误:
 
-```
+```py
 ValueError: The Box-Cox transformation can only be applied to strictly positive data
 ```
 
@@ -326,7 +326,7 @@ ValueError: The Box-Cox transformation can only be applied to strictly positive 
 
 我们可以使用[管道对象](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)依次应用两种变换；例如:
 
-```
+```py
 ...
 # perform a box-cox transform of the dataset
 scaler = MinMaxScaler(feature_range=(1, 2))
@@ -337,7 +337,7 @@ data = pipeline.fit_transform(data)
 
 下面列出了将 Box-Cox 变换应用于缩放数据集的更新版本。
 
-```
+```py
 # visualize a box-cox transform of the scaled sonar dataset
 from pandas import read_csv
 from pandas import DataFrame
@@ -375,7 +375,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate knn on the box-cox sonar dataset
 from numpy import mean
 from numpy import std
@@ -413,7 +413,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例，我们可以看到 Box-Cox 变换将性能从没有变换时的 79.7%提升到有变换时的 81.1%。
 
-```
+```py
 Accuracy: 0.811 (0.085)
 ```
 
@@ -427,7 +427,7 @@ Accuracy: 0.811 (0.085)
 
 我们可以通过定义一个 *PowerTransform* 对象并将“*方法*”参数设置为“ *yeo-johnson* ”(默认值)来应用转换。
 
-```
+```py
 ...
 # perform a yeo-johnson transform of the dataset
 pt = PowerTransformer(method='yeo-johnson')
@@ -436,7 +436,7 @@ data = pt.fit_transform(data)
 
 下面的示例应用了约-约翰逊变换，并创建了每个变换变量的直方图。
 
-```
+```py
 # visualize a yeo-johnson transform of the sonar dataset
 from pandas import read_csv
 from pandas import DataFrame
@@ -470,7 +470,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate knn on the yeo-johnson sonar dataset
 from numpy import mean
 from numpy import std
@@ -507,7 +507,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例，我们可以看到 Yeo-Johnson 变换将性能从没有变换时的 79.7%提升到有变换时的约 80.8%，低于达到约 81.1%的 Box-Cox 变换。
 
-```
+```py
 Accuracy: 0.808 (0.082)
 ```
 
@@ -517,7 +517,7 @@ Accuracy: 0.808 (0.082)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate knn on the yeo-johnson standardized sonar dataset
 from numpy import mean
 from numpy import std
@@ -555,7 +555,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 运行该示例，我们可以看到，在 Yeo-Johnson 转换之前对数据进行标准化导致性能从约 80.8%小幅提升至约 81.6%，比 Box-Cox 转换的结果略有提升。
 
-```
+```py
 Accuracy: 0.816 (0.077)
 ```
 

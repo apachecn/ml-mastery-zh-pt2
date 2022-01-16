@@ -35,7 +35,7 @@ Caret R 包允许您轻松构建许多不同的模型类型并调整它们的参
 
 这是通过三种方式完成的。分布以百分位数概括。分布被总结为箱线图，最后分布被总结为点线图。
 
-```
+```py
 # load the library
 library(mlbench)
 library(caret)
@@ -64,7 +64,7 @@ dotplot(results)
 
 下面是总结每个模型分布的结果表。
 
-```
+```py
 Models: LVQ, GBM, SVM 
 Number of resamples: 30 
 

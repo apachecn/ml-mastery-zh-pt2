@@ -47,7 +47,7 @@ Keras 提供了一个体重调整 API，允许你在[损失函数](https://machi
 
 正则项在 keras .正则项下提供，名称为 l1、l2 和 l1_l2。每一个都以正则超参数为自变量。例如:
 
-```
+```py
 keras.regularizers.l1(0.01)
 keras.regularizers.l2(0.01)
 keras.regularizers.l1_l2(l1=0.01, l2=0.01)
@@ -65,7 +65,7 @@ keras.regularizers.l1_l2(l1=0.01, l2=0.01)
 
 以下示例在密集全连通层上设置 l2 正则化:
 
-```
+```py
 # example of l2 on a dense layer
 from keras.layers import Dense
 from keras.regularizers import l2
@@ -80,7 +80,7 @@ model.add(Dense(32, kernel_regularizer=l2(0.01), bias_regularizer=l2(0.01)))
 
 以下示例在 Conv2D 卷积层上设置 l2 正则化:
 
-```
+```py
 # example of l2 on a convolutional layer
 from keras.layers import Conv2D
 from keras.regularizers import l2
@@ -97,7 +97,7 @@ model.add(Conv2D(32, (3,3), kernel_regularizer=l2(0.01), bias_regularizer=l2(0.0
 
 以下示例在 LSTM 递归层上设置 l2 正则化:
 
-```
+```py
 # example of l2 on an lstm layer
 from keras.layers import LSTM
 from keras.regularizers import l2
@@ -186,7 +186,7 @@ LSTM 模型通常使用权重正则化。
 
 我们可以使用 [make_moons()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_moons.html)从这个问题中生成观测值。我们将向数据中添加噪声，并为随机数生成器播种，这样每次运行代码时都会生成相同的样本。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_moons(n_samples=100, noise=0.2, random_state=1)
 ```
@@ -195,7 +195,7 @@ X, y = make_moons(n_samples=100, noise=0.2, random_state=1)
 
 下面列出了生成数据集并绘制它的完整示例。
 
-```
+```py
 # generate two moons dataset
 from sklearn.datasets import make_moons
 from matplotlib import pyplot
@@ -230,7 +230,7 @@ pyplot.show()
 
 在定义模型之前，我们将把数据集分成训练集和测试集，用 30 个例子训练模型，用 70 个例子评估拟合模型的性能。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_moons(n_samples=100, noise=0.2, random_state=1)
 # split into train and test
@@ -247,7 +247,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 该模型使用二元交叉熵损失函数进行优化，适用于二元分类问题和高效的 Adam 版本梯度下降。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(500, input_dim=2, activation='relu'))
@@ -257,14 +257,14 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 
 然后，定义的模型适用于 4000 个时期的训练数据，默认批量为 32。
 
-```
+```py
 # fit model
 model.fit(trainX, trainy, epochs=4000, verbose=0)
 ```
 
 最后，我们可以在测试数据集上评估模型的性能并报告结果。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -273,7 +273,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 我们可以把所有这些部分绑在一起；下面列出了完整的示例。
 
-```
+```py
 # overfit mlp for the moons dataset
 from sklearn.datasets import make_moons
 from keras.layers import Dense
@@ -305,7 +305,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 因为模型被严重过度拟合，我们通常不会期望模型在同一数据集上重复运行时的精度有太大差异。
 
-```
+```py
 Train: 1.000, Test: 0.914
 ```
 
@@ -315,7 +315,7 @@ overfit 模型应该在训练和测试中显示精度增加，并且在某一点
 
 我们可以更新示例来绘制这些曲线。下面列出了完整的示例。
 
-```
+```py
 # overfit mlp for the moons dataset plotting history
 from sklearn.datasets import make_moons
 from keras.layers import Dense
@@ -358,13 +358,13 @@ pyplot.show()
 
 这可以通过向层添加 kernel _ regularizer 参数并将其设置为 l2 实例来实现。
 
-```
+```py
 model.add(Dense(500, input_dim=2, activation='relu', kernel_regularizer=l2(0.001)))
 ```
 
 下面列出了使用权重正则化在 moons 数据集上拟合和评估模型的更新示例。
 
-```
+```py
 # mlp with weight regularization for the moons dataset
 from sklearn.datasets import make_moons
 from keras.layers import Dense
@@ -395,7 +395,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 我们可以看到训练数据集的准确性没有变化，测试数据集有所改进。
 
-```
+```py
 Train: 1.000, Test: 0.943
 ```
 
@@ -405,7 +405,7 @@ Train: 1.000, Test: 0.943
 
 下面列出了拟合模型、绘制训练和测试学习曲线的完整示例。
 
-```
+```py
 # mlp with weight regularization for the moons dataset plotting history
 from sklearn.datasets import make_moons
 from keras.layers import Dense
@@ -449,7 +449,7 @@ pyplot.show()
 
 我们可以通过定义要测试的值，循环遍历每个值并记录训练和测试性能，在数量级中进行网格搜索。
 
-```
+```py
 ...
 # grid search values
 values = [1e-1, 1e-2, 1e-3, 1e-4, 1e-5, 1e-6]
@@ -466,14 +466,14 @@ for param in values:
 
 因为参数跳跃数量级(10 的幂)，我们可以使用对数标度创建结果的线图。Matplotlib 库允许通过[semi ogx()函数](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.semilogx.html)进行此操作。例如:
 
-```
+```py
 pyplot.semilogx(values, all_train, label='train', marker='o')
 pyplot.semilogx(values, all_test, label='test', marker='o')
 ```
 
 下面列出了月球数据集上网格搜索权重正则化值的完整示例。
 
-```
+```py
 # grid search regularization values for moons dataset
 from sklearn.datasets import make_moons
 from keras.layers import Dense
@@ -516,7 +516,7 @@ pyplot.show()
 
 结果表明，0.01 或 0.001 可能就足够了，并且可以为进一步的网格搜索提供良好的界限。
 
-```
+```py
 Param: 0.100000, Train: 0.967, Test: 0.829
 Param: 0.010000, Train: 1.000, Test: 0.943
 Param: 0.001000, Train: 1.000, Test: 0.943

@@ -73,7 +73,7 @@ SciPy 库通过[最小化()功能](https://docs.scipy.org/doc/scipy/reference/ge
 
 *最小化()*函数将被最小化的目标函数的名称和开始搜索的起始点作为输入，并返回一个[优化结果](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.OptimizeResult.html)，该结果总结了搜索的成功或失败以及解决方案的细节(如果找到的话)。
 
-```
+```py
 ...
 # minimize an objective function
 result = minimize(objective, point)
@@ -92,7 +92,7 @@ result = minimize(objective, point)
 
 下面的例子演示了如何使用 L-BFGS-B 局部搜索算法求解二维凸函数。
 
-```
+```py
 # l-bfgs-b algorithm local optimization of a convex function
 from scipy.optimize import minimize
 from numpy.random import rand
@@ -118,7 +118,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 运行该示例将执行优化，并报告搜索的成功或失败、执行的函数评估次数以及导致函数最优的输入。
 
-```
+```py
 Status : b'CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL'
 Total Evaluations: 9
 Solution: f([3.38059583e-07 3.70089258e-07]) = 0.00000
@@ -146,7 +146,7 @@ SciPy 库提供了许多随机全局优化算法，每个算法都通过不同�
 
 下面的例子演示了如何使用模拟退火来求解二维多峰函数。
 
-```
+```py
 # simulated annealing global optimization for a multimodal objective function
 from scipy.optimize import dual_annealing
 
@@ -172,7 +172,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 运行该示例将执行优化，并报告搜索的成功或失败、执行的函数评估次数以及导致函数最优的输入。
 
-```
+```py
 Status : ['Maximum number of iteration reached']
 Total Evaluations: 4028
 Solution: f([-3.77931027 -3.283186 ]) = 0.00000

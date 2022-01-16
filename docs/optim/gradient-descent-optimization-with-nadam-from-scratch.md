@@ -157,7 +157,7 @@ Let’s get started.![Gradient Descent Optimization With Nadam From Scratch](img
 
 下面的*目标()*函数实现该功能
 
-```
+```py
 # objective function
 def objective(x, y):
 	return x**2.0 + y**2.0
@@ -167,7 +167,7 @@ def objective(x, y):
 
 下面列出了绘制目标函数的完整示例。
 
-```
+```py
 # 3d plot of the test function
 from numpy import arange
 from numpy import meshgrid
@@ -206,7 +206,7 @@ pyplot.show()
 
 以下示例创建了目标函数的等高线图。
 
-```
+```py
 # contour plot of the test function
 from numpy import asarray
 from numpy import arange
@@ -255,7 +255,7 @@ pyplot.show()
 
 导数()函数实现如下。
 
-```
+```py
 # derivative of objective function
 def derivative(x, y):
 	return asarray([x * 2.0, y * 2.0])
@@ -267,7 +267,7 @@ def derivative(x, y):
 
 这假设我们有一个定义搜索范围的数组，每个维度有一行，第一列定义维度的最小值，第二列定义维度的最大值。
 
-```
+```py
 ...
 # generate an initial point
 x = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
@@ -276,7 +276,7 @@ score = objective(x[0], x[1])
 
 接下来，我们需要初始化力矩矢量。
 
-```
+```py
 ...
 # initialize decaying moving averages
 m = [0.0 for _ in range(bounds.shape[0])]
@@ -285,7 +285,7 @@ n = [0.0 for _ in range(bounds.shape[0])]
 
 然后，我们运行由“ *n_iter* ”超参数定义的算法的固定迭代次数。
 
-```
+```py
 ...
 # run iterations of gradient descent
 for t in range(n_iter):
@@ -294,7 +294,7 @@ for t in range(n_iter):
 
 第一步是计算当前参数集的导数。
 
-```
+```py
 ...
 # calculate gradient g(t)
 g = derivative(x[0], x[1])
@@ -304,7 +304,7 @@ g = derivative(x[0], x[1])
 
 实际上，为了提高效率，我建议使用 NumPy 向量运算。
 
-```
+```py
 ...
 # build a solution one variable at a time
 for i in range(x.shape[0]):
@@ -313,7 +313,7 @@ for i in range(x.shape[0]):
 
 首先，我们需要计算力矩矢量。
 
-```
+```py
 ...
 # m(t) = mu * m(t-1) + (1 - mu) * g(t)
 m[i] = mu * m[i] + (1.0 - mu) * g[i]
@@ -321,7 +321,7 @@ m[i] = mu * m[i] + (1.0 - mu) * g[i]
 
 然后是第二个力矩矢量。
 
-```
+```py
 ...
 # n(t) = nu * n(t-1) + (1 - nu) * g(t)^2
 n[i] = nu * n[i] + (1.0 - nu) * g[i]**2
@@ -329,7 +329,7 @@ n[i] = nu * n[i] + (1.0 - nu) * g[i]**2
 
 然后是偏差修正的内斯特罗夫动量。
 
-```
+```py
 ...
 # mhat = (mu * m(t) / (1 - mu)) + ((1 - mu) * g(t) / (1 - mu))
 mhat = (mu * m[i] / (1.0 - mu)) + ((1 - mu) * g[i] / (1.0 - mu))
@@ -337,7 +337,7 @@ mhat = (mu * m[i] / (1.0 - mu)) + ((1 - mu) * g[i] / (1.0 - mu))
 
 偏差校正的第二个瞬间。
 
-```
+```py
 ...
 # nhat = nu * n(t) / (1 - nu)
 nhat = nu * n[i] / (1.0 - nu)
@@ -345,7 +345,7 @@ nhat = nu * n[i] / (1.0 - nu)
 
 最后更新参数。
 
-```
+```py
 ...
 # x(t) = x(t-1) - alpha / (sqrt(nhat) + eps) * mhat
 x[i] = x[i] - alpha / (sqrt(nhat) + eps) * mhat
@@ -355,7 +355,7 @@ x[i] = x[i] - alpha / (sqrt(nhat) + eps) * mhat
 
 迭代结束时，我们可以评估新的参数值，并报告搜索的性能。
 
-```
+```py
 ...
 # evaluate candidate point
 score = objective(x[0], x[1])
@@ -365,7 +365,7 @@ print('>%d f(%s) = %.5f' % (t, x, score))
 
 我们可以将所有这些联系到一个名为 nadam()的函数中，该函数采用目标函数和导数函数的名称，以及算法超参数，并返回在搜索和评估结束时找到的最佳解。
 
-```
+```py
 # gradient descent algorithm with nadam
 def nadam(objective, derivative, bounds, n_iter, alpha, mu, nu, eps=1e-8):
 	# generate an initial point
@@ -401,7 +401,7 @@ def nadam(objective, derivative, bounds, n_iter, alpha, mu, nu, eps=1e-8):
 
 在这种情况下，我们将运行该算法 50 次迭代，初始α为 0.02，μ为 0.8，nu 为 0.999，这是经过一点反复试验后发现的。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -421,7 +421,7 @@ best, score = nadam(objective, derivative, bounds, n_iter, alpha, mu, nu)
 
 运行结束时，我们将报告找到的最佳解决方案。
 
-```
+```py
 ...
 # summarize the result
 print('Done!')
@@ -430,7 +430,7 @@ print('f(%s) = %f' % (best, score))
 
 将所有这些联系在一起，下面列出了应用于我们的测试问题的纳达姆梯度下降的完整示例。
 
-```
+```py
 # gradient descent optimization with nadam for a two-dimensional test function
 from math import sqrt
 from numpy import asarray
@@ -499,7 +499,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以看到，在大约 44 次搜索迭代后，找到了一个接近最优的解，输入值接近 0.0 和 0.0，评估为 0.0。
 
-```
+```py
 ...
 >40 f([ 5.07445337e-05 -3.32910019e-03]) = 0.00001
 >41 f([-1.84325171e-05 -3.00939427e-03]) = 0.00001
@@ -525,7 +525,7 @@ f([-5.54299505e-05 -1.00116899e-03]) = 0.000001
 
 下面列出了带有这些更改的功能的更新版本。
 
-```
+```py
 # gradient descent algorithm with nadam
 def nadam(objective, derivative, bounds, n_iter, alpha, mu, nu, eps=1e-8):
 	solutions = list()
@@ -562,7 +562,7 @@ def nadam(objective, derivative, bounds, n_iter, alpha, mu, nu, eps=1e-8):
 
 然后，我们可以像以前一样执行搜索，这次检索解决方案列表，而不是最佳最终解决方案。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -582,7 +582,7 @@ solutions = nadam(objective, derivative, bounds, n_iter, alpha, mu, nu)
 
 然后，我们可以像以前一样创建目标函数的等高线图。
 
-```
+```py
 ...
 # sample input range uniformly at 0.1 increments
 xaxis = arange(bounds[0,0], bounds[0,1], 0.1)
@@ -597,7 +597,7 @@ pyplot.contourf(x, y, results, levels=50, cmap='jet')
 
 最后，我们可以将搜索过程中找到的每个解决方案绘制成由一条线连接的白点。
 
-```
+```py
 ...
 # plot the sample as black circles
 solutions = asarray(solutions)
@@ -606,7 +606,7 @@ pyplot.plot(solutions[:, 0], solutions[:, 1], '.-', color='w')
 
 将所有这些联系在一起，下面列出了在测试问题上执行那达慕优化并在等高线图上绘制结果的完整示例。
 
-```
+```py
 # example of plotting the nadam search on a contour plot of the test function
 from math import sqrt
 from numpy import asarray

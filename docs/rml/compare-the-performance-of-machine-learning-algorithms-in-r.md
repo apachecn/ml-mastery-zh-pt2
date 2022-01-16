@@ -59,7 +59,7 @@
 
 让我们为这个案例研究加载库和数据集。
 
-```
+```py
 # load libraries
 library(mlbench)
 library(caret)
@@ -85,7 +85,7 @@ data(PimaIndiansDiabetes)
 
 我们在下一节中使用的函数都期望有一个包含这些数据的对象。
 
-```
+```py
 # prepare training scheme
 control <- trainControl(method="repeatedcv", number=10, repeats=3)
 # CART
@@ -115,14 +115,14 @@ results <- resamples(list(CART=fit.cart, LDA=fit.lda, SVM=fit.svm, KNN=fit.knn, 
 
 这是您能做的最简单的比较，只需调用 summary 函数()并将重新采样结果传递给它。它将创建一个表，每行一个算法，每列一个评估指标。在这种情况下，我们已经排序。
 
-```
+```py
 # summarize differences between modes
 summary(results)
 ```
 
 我发现查看平均值和最大值列很有用。
 
-```
+```py
 Accuracy 
        Min. 1st Qu. Median   Mean 3rd Qu.   Max. NA's
 CART 0.6234  0.7115 0.7403 0.7382  0.7760 0.8442    0
@@ -144,7 +144,7 @@ RF   0.2624  0.3787 0.4516 0.4588  0.5193 0.6781    0
 
 这是查看不同方法的估计精度的分布及其相互关系的有用方法。
 
-```
+```py
 # box and whisker plots to compare models
 scales <- list(x=list(relation="free"), y=list(relation="free"))
 bwplot(results, scales=scales)
@@ -160,7 +160,7 @@ R 盒图和须图中机器学习算法的比较
 
 您可以将模型精度的分布显示为密度图。这是评估算法的估计行为中的重叠的有用方法。
 
-```
+```py
 # density plots of accuracy
 scales <- list(x=list(relation="free"), y=list(relation="free"))
 densityplot(results, scales=scales, pch = "|")
@@ -176,7 +176,7 @@ R 密度图中机器学习算法的比较
 
 这些是有用的图，因为它们既显示了平均估计精度，也显示了 95%的置信区间(例如，95%的观察得分下降的范围)。
 
-```
+```py
 # dot plots of accuracy
 scales <- list(x=list(relation="free"), y=list(relation="free"))
 dotplot(results, scales=scales)
@@ -192,7 +192,7 @@ R 点图中机器学习算法的比较
 
 这是另一种看待数据的方式。它显示了每个交叉验证折叠的每个试验对于每个测试算法的表现。它可以帮助你看到那些对一种算法来说困难的坚持子集如何对其他算法公平。
 
-```
+```py
 # parallel plots to compare models
 parallelplot(results)
 ```
@@ -207,7 +207,7 @@ R 平行图中机器学习算法的比较
 
 与所有其他算法的相同折叠试验结果相比，这创建了算法的所有折叠试验结果的散点图矩阵。所有配对都进行了比较。
 
-```
+```py
 # pair-wise scatterplots of predictions to compare models
 splom(results)
 ```
@@ -224,7 +224,7 @@ R 散点图矩阵中机器学习算法的比较
 
 您可以使用 xyplot 对两种机器学习算法的试折叠精度进行成对比较。
 
-```
+```py
 # xyplot plots to compare models
 xyplot(results, models=c("LDA", "SVM"))
 ```
@@ -239,7 +239,7 @@ R 对散点图中机器学习算法的比较
 
 您可以计算不同机器学习算法的度量分布之间差异的显著性。我们可以通过调用 summary()函数直接汇总结果。
 
-```
+```py
 # difference in model predictions
 diffs <- diff(results)
 # summarize p-values for pair-wise comparisons
@@ -252,7 +252,7 @@ summary(diffs)
 
 这些分数可以帮助您在特定算法之间做出任何准确性声明。
 
-```
+```py
 p-value adjustment: bonferroni 
 Upper diagonal: estimates of the difference
 Lower diagonal: p-value for H0: difference = 0

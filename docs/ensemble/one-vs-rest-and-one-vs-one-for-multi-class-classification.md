@@ -92,7 +92,7 @@ One-vs-rest(简称 OvR，也称为 One-vs-All 或 OvA)是一种启发式方法�
 
 下面列出了使用内置的一对多策略拟合多类分类的逻辑回归模型的完整示例。
 
-```
+```py
 # logistic regression for multi-class classification using built-in one-vs-rest
 from sklearn.datasets import make_classification
 from sklearn.linear_model import LogisticRegression
@@ -114,7 +114,7 @@ scikit-learn 库还提供了一个单独的 [OneVsRestClassifier](https://scikit
 
 下面的例子演示了如何使用 *OneVsRestClassifier* 类和作为二进制分类模型的*物流分类*类。
 
-```
+```py
 # logistic regression for multi-class classification using a one-vs-rest
 from sklearn.datasets import make_classification
 from sklearn.linear_model import LogisticRegression
@@ -174,7 +174,7 @@ scikit-learn 中的支持向量机实现由 [SVC](https://scikit-learn.org/stabl
 
 下面的例子演示了 SVM 使用一对一方法进行多类分类。
 
-```
+```py
 # SVM for multi-class classification using built-in one-vs-one
 from sklearn.datasets import make_classification
 from sklearn.svm import SVC
@@ -196,7 +196,7 @@ scikit-learn 库还提供了一个单独的 [OneVsOneClassifier](https://scikit-
 
 下面的例子演示了如何使用 *OneVsOneClassifier* 类和一个用作二进制分类模型的 SVC 类。
 
-```
+```py
 # SVM for multi-class classification using one-vs-one
 from sklearn.datasets import make_classification
 from sklearn.svm import SVC

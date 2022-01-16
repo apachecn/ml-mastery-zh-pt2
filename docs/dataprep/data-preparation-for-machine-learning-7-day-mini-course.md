@@ -132,7 +132,7 @@
 
 下面列出了完整的示例。
 
-```
+```py
 # statistical imputation transform for the horse colic dataset
 from numpy import isnan
 from pandas import read_csv
@@ -180,7 +180,7 @@ scikit-learn Python 机器学习库为机器学习提供了一个 [RFE](https://
 
 下面的示例定义了一个具有五个冗余输入要素的合成分类数据集。然后，使用决策树算法使用 RFE 来选择五个特征。
 
-```
+```py
 # report which features were selected by RFE
 from sklearn.datasets import make_classification
 from sklearn.feature_selection import RFE
@@ -218,7 +218,7 @@ for i in range(X.shape[1]):
 
 下面的例子定义了一个合成分类数据集，然后使用最小最大缩放器来规范化输入变量。
 
-```
+```py
 # example of normalizing input data
 from sklearn.datasets import make_classification
 from sklearn.preprocessing import MinMaxScaler
@@ -260,7 +260,7 @@ print(X_norm[:3, :])
 
 例如:
 
-```
+```py
 red,	green,	blue
 1,		0,		0
 0,		1,		0
@@ -273,7 +273,7 @@ red,	green,	blue
 
 以下示例加载数据集，并对每个分类输入变量进行热编码。
 
-```
+```py
 # one-hot encode the breast cancer dataset
 from pandas import read_csv
 from sklearn.preprocessing import OneHotEncoder
@@ -324,7 +324,7 @@ print(X_oe[:3, :])
 
 下面的示例创建了一个包含 10 个数字输入变量的合成输入变量，然后用序数编码将每个变量编码到 10 个离散的容器中。
 
-```
+```py
 # discretize numeric input variables
 from sklearn.datasets import make_classification
 from sklearn.preprocessing import KBinsDiscretizer
@@ -370,7 +370,7 @@ scikit-learn 库提供了[主成分分析类](https://scikit-learn.org/stable/mo
 
 下面的示例创建了一个包含 10 个输入变量的合成二进制分类数据集，然后使用主成分分析将数据集的维度减少到三个最重要的组成部分。
 
-```
+```py
 # example of pca for dimensionality reduction
 from sklearn.datasets import make_classification
 from sklearn.decomposition import PCA

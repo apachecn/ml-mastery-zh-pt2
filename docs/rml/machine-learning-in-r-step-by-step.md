@@ -125,7 +125,7 @@ R is 很容易安装，我相信你能处理好。没有特殊要求。如果您
 
 打开您的命令行，更改(或创建)到您的项目目录，并通过键入以下命令启动 R:
 
-```
+```py
 R
 ```
 
@@ -139,19 +139,19 @@ R
 
 安装我们今天要使用的软件包。包是我们可以在 r 中使用的第三方插件或库。
 
-```
+```py
 install.packages("caret")
 ```
 
 **UPDATE** :我们可能需要其他的包，但是脱字符号应该会问我们要不要加载。如果程序包有问题，您可以通过键入以下命令来安装脱字符号程序包和所有可能需要的程序包:
 
-```
+```py
 install.packages("caret", dependencies=c("Depends", "Suggests"))
 ```
 
 现在，让我们加载我们将在本教程中使用的包，插入符号包。
 
-```
+```py
 library(caret)
 ```
 
@@ -178,7 +178,7 @@ library(caret)
 
 幸运的是，R 平台为我们提供了虹膜数据集。按如下方式加载数据集:
 
-```
+```py
 # attach the iris dataset to the environment
 data(iris)
 # rename the dataset
@@ -198,7 +198,7 @@ dataset <- iris
 
 从 CSV 文件加载数据集，如下所示:
 
-```
+```py
 # define the filename
 filename <- "iris.csv"
 # load the CSV file from the local directory
@@ -218,7 +218,7 @@ colnames(dataset) <- c("Sepal.Length","Sepal.Width","Petal.Length","Petal.Width"
 
 我们将把加载的数据集分成两部分，其中 80%用于训练模型，20%作为验证数据集保留下来。
 
-```
+```py
 # create a list of 80% of the rows in the original dataset we can use for training
 validation_index <- createDataPartition(dataset$Species, p=0.80, list=FALSE)
 # select 20% of the data for validation
@@ -250,14 +250,14 @@ dataset <- dataset[validation_index,]
 
 我们可以通过 dim 函数快速了解数据包含多少实例(行)和多少属性(列)。
 
-```
+```py
 # dimensions of dataset
 dim(dataset)
 ```
 
 您应该会看到 120 个实例和 5 个属性:
 
-```
+```py
 [1] 120 5
 ```
 
@@ -267,14 +267,14 @@ dim(dataset)
 
 了解类型很重要，因为这将让您了解如何更好地总结您所拥有的数据，以及在建模之前可能需要使用哪些类型的转换来准备数据。
 
-```
+```py
 # list types for each attribute
 sapply(dataset, class)
 ```
 
 您应该看到所有的输入都是双精度的，类值是一个因素:
 
-```
+```py
 Sepal.Length Sepal.Width Petal.Length Petal.Width Species 
  "numeric" "numeric" "numeric" "numeric" "factor"
 ```
@@ -283,14 +283,14 @@ Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 
 事实上，关注你的数据也是一个好主意。
 
-```
+```py
 # take a peek at the first 5 rows of the data
 head(dataset)
 ```
 
 您应该会看到前 5 行数据:
 
-```
+```py
  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 1 5.1 3.5 1.4 0.2 setosa
 2 4.9 3.0 1.4 0.2 setosa
@@ -304,14 +304,14 @@ head(dataset)
 
 类变量是一个因素。因子是具有多个类别标签或级别的类别。让我们看看级别:
 
-```
+```py
 # list the levels for the class
 levels(dataset$Species)
 ```
 
 请注意上面我们如何通过名称将属性称为数据集的属性。在结果中，我们可以看到该类有 3 个不同的标签:
 
-```
+```py
 [1] "setosa" "versicolor" "virginica"
 ```
 
@@ -321,7 +321,7 @@ levels(dataset$Species)
 
 现在让我们看看属于每个类的实例(行)的数量。我们可以将此视为绝对计数和百分比。
 
-```
+```py
 # summarize the class distribution
 percentage <- prop.table(table(dataset$Species)) * 100
 cbind(freq=table(dataset$Species), percentage=percentage)
@@ -329,7 +329,7 @@ cbind(freq=table(dataset$Species), percentage=percentage)
 
 我们可以看到，每个类都有相同数量的实例(数据集的 40%或 33%)
 
-```
+```py
  freq percentage
 setosa     40 33.33333
 versicolor 40 33.33333
@@ -342,14 +342,14 @@ virginica  40 33.33333
 
 这包括平均值、最小值和最大值以及一些百分位数(第 25 位、第 50 位或第 50 位或第 75 位，例如，如果我们对一个属性的所有值进行排序，则为此时的值)。
 
-```
+```py
 # summarize attribute distributions
 summary(dataset)
 ```
 
 我们可以看到所有的数值都有相同的刻度(厘米)和相似的范围[0，8]厘米。
 
-```
+```py
  Sepal.Length  Sepal.Width  Petal.Length  Petal.Width   Species 
  Min.   :4.300 Min.   :2.00 Min.   :1.000 Min.   :0.100 setosa    :40 
  1st Qu.:5.100 1st Qu.:2.80 1st Qu.:1.575 1st Qu.:0.300 versicolor:40 
@@ -374,7 +374,7 @@ summary(dataset)
 
 有一种方法可以只引用输入属性和输出属性，这对可视化很有帮助。让我们设置它，并调用输入属性 x 和输出属性(或类)y。
 
-```
+```py
 # split input and output
 x <- dataset[,1:4]
 y <- dataset[,5]
@@ -382,7 +382,7 @@ y <- dataset[,5]
 
 假设输入变量是数字，我们可以创建每个变量的方框图和触须图。
 
-```
+```py
 # boxplot for each attribute on one image
 par(mfrow=c(1,4))
   for(i in 1:4) {
@@ -398,7 +398,7 @@ R 中的方框图和触须图
 
 我们还可以创建一个物种类变量的条形图来获得类分布的图形表示(在这种情况下通常不感兴趣，因为它们是均匀的)。
 
-```
+```py
 # barplot for class breakdown
 plot(y)
 ```
@@ -415,7 +415,7 @@ plot(y)
 
 首先，让我们看看所有属性对的散点图，并按类给点着色。此外，因为散点图显示每个类的点通常是分开的，所以我们可以在它们周围画椭圆。
 
-```
+```py
 # scatterplot matrix
 featurePlot(x=x, y=y, plot="ellipse")
 ```
@@ -428,7 +428,7 @@ featurePlot(x=x, y=y, plot="ellipse")
 
 我们还可以再次查看每个输入变量的方框图和触须图，但这次为每个类细分为单独的图。这有助于梳理出类别之间明显的线性分离。
 
-```
+```py
 # box and whisker plots for each attribute
 featurePlot(x=x, y=y, plot="box")
 ```
@@ -441,7 +441,7 @@ featurePlot(x=x, y=y, plot="box")
 
 接下来，我们可以了解每个属性的分布，同样像方框图和触须图，按类值细分。有时直方图对此很有用，但在这种情况下，我们将使用一些概率密度图来为每个分布给出漂亮的平滑线条。
 
-```
+```py
 # density plots for each attribute by class value
 scales <- list(x=list(relation="free"), y=list(relation="free"))
 featurePlot(x=x, y=y, plot="density", scales=scales)
@@ -469,7 +469,7 @@ featurePlot(x=x, y=y, plot="density", scales=scales)
 
 这将把我们的数据集分成 10 个部分，在 9 个部分中训练，在 1 个部分中测试，并发布所有组合的训练-测试分割。我们还将对每个算法重复该过程 3 次，将不同的数据分成 10 组，以获得更准确的估计。
 
-```
+```py
 # Run algorithms using 10-fold cross validation
 control <- trainControl(method="cv", number=10)
 metric <- "Accuracy"
@@ -493,7 +493,7 @@ metric <- "Accuracy"
 
 让我们构建五个模型:
 
-```
+```py
 # a) linear algorithms
 set.seed(7)
 fit.lda <- train(Species~., data=dataset, method="lda", metric=metric, trControl=control)
@@ -521,7 +521,7 @@ Caret 确实支持每个模型的配置和配置调优，但是我们不会在�
 
 我们可以通过首先创建一个已创建模型的列表并使用 summary 函数来报告每个模型的准确性。
 
-```
+```py
 # summarize accuracy of models
 results <- resamples(list(lda=fit.lda, cart=fit.cart, knn=fit.knn, svm=fit.svm, rf=fit.rf))
 summary(results)
@@ -529,7 +529,7 @@ summary(results)
 
 我们可以看到每个分类器的准确性，以及其他指标，如卡帕:
 
-```
+```py
 Models: lda, cart, knn, svm, rf 
 Number of resamples: 10 
 
@@ -552,7 +552,7 @@ rf   0.750  0.8750 0.9375 0.9250       1    1    0
 
 我们还可以创建模型评估结果的图表，并比较每个模型的分布和平均精度。每种算法都有一组精度度量，因为每种算法都被评估了 10 次(10 倍交叉验证)。
 
-```
+```py
 # compare accuracy of models
 dotplot(results)
 ```
@@ -565,14 +565,14 @@ dotplot(results)
 
 仅 LDA 模型的结果就可以概括。
 
-```
+```py
 # summarize Best Model
 print(fit.lda)
 ```
 
 这很好地总结了用于训练模型的内容以及达到的平均和标准偏差(SD)精度，特别是 97.5%的精度+/- 4%
 
-```
+```py
 Linear Discriminant Analysis 
 
 120 samples
@@ -596,7 +596,7 @@ Resampling results
 
 我们可以直接在验证集上运行 LDA 模型，并在[混淆矩阵](https://machinelearningmastery.com/confusion-matrix-machine-learning/)中总结结果。
 
-```
+```py
 # estimate skill of LDA on the validation dataset
 predictions <- predict(fit.lda, validation)
 confusionMatrix(predictions, validation$Species)
@@ -604,7 +604,7 @@ confusionMatrix(predictions, validation$Species)
 
 我们可以看到准确率是 100%。这是一个小的验证数据集(20%)，但这个结果在我们预期的 97% +/-4%的范围内，表明我们可能有一个准确可靠的精确模型。
 
-```
+```py
 Confusion Matrix and Statistics
 
             Reference

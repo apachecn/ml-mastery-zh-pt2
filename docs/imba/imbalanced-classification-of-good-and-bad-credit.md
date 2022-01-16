@@ -106,7 +106,7 @@
 
 文件的前几行应该如下所示:
 
-```
+```py
 A11,6,A34,A43,1169,A65,A75,4,A93,A101,4,A121,67,A143,A152,2,A173,1,A192,A201,1
 A12,48,A32,A43,5951,A61,A73,2,A92,A101,2,A121,22,A143,A152,1,A173,1,A191,A201,2
 A14,12,A34,A46,2096,A61,A74,2,A93,A101,3,A121,49,A143,A152,1,A172,2,A191,A201,1
@@ -123,7 +123,7 @@ A11,24,A33,A40,4870,A61,A73,3,A93,A101,4,A124,53,A143,A153,2,A173,2,A191,A201,2
 
 可以使用 [read_csv()熊猫函数](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)将数据集加载为数据帧，指定位置和没有标题行的事实。
 
-```
+```py
 ...
 # define the dataset location
 filename = 'german.csv'
@@ -133,7 +133,7 @@ dataframe = read_csv(filename, header=None)
 
 加载后，我们可以通过打印[数据框](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)的形状来总结行数和列数。
 
-```
+```py
 ...
 # summarize the shape of the dataset
 print(dataframe.shape)
@@ -141,7 +141,7 @@ print(dataframe.shape)
 
 我们还可以使用 [Counter](https://docs.python.org/3/library/collections.html) 对象总结每个类中的示例数量。
 
-```
+```py
 ...
 # summarize the class distribution
 target = dataframe.values[:,-1]
@@ -153,7 +153,7 @@ for k,v in counter.items():
 
 将这些联系在一起，下面列出了加载和汇总数据集的完整示例。
 
-```
+```py
 # load and summarize the dataset
 from pandas import read_csv
 from collections import Counter
@@ -175,7 +175,7 @@ for k,v in counter.items():
 
 然后总结类别分布，确认好客户和坏客户的数量以及少数和多数类别中的案例百分比。
 
-```
+```py
 (1000, 21)
 Class=1, Count=700, Percentage=70.000%
 Class=2, Count=300, Percentage=30.000%
@@ -185,7 +185,7 @@ Class=2, Count=300, Percentage=30.000%
 
 首先，我们可以通过调用 DataFrame 上的 [select_dtypes()函数](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.select_dtypes.html)来选择带有数值变量的列。然后，我们可以从数据框中选择这些列。我们预计会有七个，加上数字类标签。
 
-```
+```py
 ...
 # select columns with numerical data types
 num_ix = df.select_dtypes(include=['int64', 'float64']).columns
@@ -195,7 +195,7 @@ subset = df[num_ix]
 
 然后，我们可以创建每个数字输入变量的直方图。下面列出了完整的示例。
 
-```
+```py
 # create histograms of numeric input variables
 from pandas import read_csv
 from matplotlib import pyplot
@@ -277,7 +277,7 @@ pyplot.show()
 
 首先，我们必须将数据帧分成输入和输出变量。
 
-```
+```py
 ...
 # split into inputs and outputs
 last_ix = len(dataframe.columns) - 1
@@ -288,7 +288,7 @@ X, y = dataframe.drop(last_ix, axis=1), dataframe[last_ix]
 
 这可以通过使用[列转换器](https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html)并将转换定义为仅适用于分类变量列索引的 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) 来实现。
 
-```
+```py
 ...
 # select categorical features
 cat_ix = X.select_dtypes(include=['object', 'bool']).columns
@@ -299,7 +299,7 @@ X = ct.fit_transform(X)
 
 然后我们可以对目标变量进行标签编码。
 
-```
+```py
 ...
 # label encode the target variable to have the classes 0 and 1
 y = LabelEncoder().fit_transform(y)
@@ -307,7 +307,7 @@ y = LabelEncoder().fit_transform(y)
 
 下面的 *load_dataset()* 函数将所有这些联系在一起，并为建模加载和准备数据集。
 
-```
+```py
 # load the dataset
 def load_dataset(full_path):
 	# load the dataset as a numpy array
@@ -327,7 +327,7 @@ def load_dataset(full_path):
 
 接下来，我们需要一个函数，该函数将使用*β*设置为 2 的 *fbeta_score()* 函数来评估一组预测。
 
-```
+```py
 # calculate f2 score
 def f2(y_true, y_pred):
 	return fbeta_score(y_true, y_pred, beta=2)
@@ -337,7 +337,7 @@ def f2(y_true, y_pred):
 
 下面的 *evaluate_model()* 函数实现了这一点，将数据集和模型作为参数，返回分数列表。
 
-```
+```py
 # evaluate a model
 def evaluate_model(X, y, model):
 	# define evaluation procedure
@@ -355,7 +355,7 @@ def evaluate_model(X, y, model):
 
 这可以通过使用 scikit-learn 库中的 [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html) 类，并将少数民族类的“*策略*”参数设置为“*常量*”并将“*常量*”参数设置为“ *1* ”来实现。
 
-```
+```py
 ...
 # define the reference model
 model = DummyClassifier(strategy='constant', constant=1)
@@ -363,7 +363,7 @@ model = DummyClassifier(strategy='constant', constant=1)
 
 一旦评估了模型，我们就可以直接报告 F2-Measure 分数的平均值和标准偏差。
 
-```
+```py
 ...
 # evaluate the model
 scores = evaluate_model(X, y, model)
@@ -373,7 +373,7 @@ print('Mean F2: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 将这些结合起来，下面列出了加载德国信用数据集、评估基线模型和报告性能的完整示例。
 
-```
+```py
 # test harness and baseline model evaluation for the german credit dataset
 from collections import Counter
 from numpy import mean
@@ -442,7 +442,7 @@ print('Mean F2: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们可以看到基线算法实现了大约 0.682 的 F2-Measure。这个分数提供了模特技能的下限；任何获得高于约 0.682 的 F2-Measure 平均值的模型都有技能，而获得低于该值的分数的模型在该数据集上没有技能。
 
-```
+```py
 (1000, 61) (1000,) Counter({0: 700, 1: 300})
 Mean F2: 0.682 (0.000)
 ```
@@ -477,7 +477,7 @@ Mean F2: 0.682 (0.000)
 
 我们将依次定义每个模型，并将它们添加到一个列表中，以便我们可以顺序评估它们。下面的 *get_models()* 函数定义了用于评估的模型列表，以及用于以后绘制结果的模型简称列表。
 
-```
+```py
 # define models to test
 def get_models():
 	models, names = list(), list()
@@ -507,7 +507,7 @@ def get_models():
 
 我们可以更新 *load_dataset()* 来返回列索引以及数据集的输入和输出元素。下面列出了该功能的更新版本。
 
-```
+```py
 # load the dataset
 def load_dataset(full_path):
 	# load the dataset as a numpy array
@@ -525,7 +525,7 @@ def load_dataset(full_path):
 
 然后，我们可以调用这个函数来获取数据以及分类变量和数值变量的列表。
 
-```
+```py
 ...
 # define the location of the dataset
 full_path = 'german.csv'
@@ -537,7 +537,7 @@ X, y, cat_ix, num_ix = load_dataset(full_path)
 
 首先，定义*列转换器*，它指定对每种类型的列应用什么转换，然后这被用作管道的第一步，该管道以将被拟合和评估的特定模型结束。
 
-```
+```py
 ...
 # evaluate each model
 for i in range(len(models)):
@@ -551,7 +551,7 @@ for i in range(len(models)):
 
 我们可以总结每个算法的平均 F2-Measure；这将有助于直接比较算法。
 
-```
+```py
 ...
 # summarize and store
 print('>%s %.3f (%.3f)' % (names[i], mean(scores), std(scores)))
@@ -561,7 +561,7 @@ print('>%s %.3f (%.3f)' % (names[i], mean(scores), std(scores)))
 
 这些图将使用相同的 y 轴比例，因此我们可以直接比较结果的分布。
 
-```
+```py
 ...
 # plot the results
 pyplot.boxplot(results, labels=names, showmeans=True)
@@ -570,7 +570,7 @@ pyplot.show()
 
 将所有这些结合起来，下面列出了在德国信用数据集上评估一套机器学习算法的完整示例。
 
-```
+```py
 # spot check machine learning algorithms on the german credit dataset
 from numpy import mean
 from numpy import std
@@ -668,7 +668,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到，在所有情况下，没有一个测试模型的 F2 度量高于预测多数类的默认值(0.682)。这些模特都不熟练。这是令人惊讶的，尽管这表明这两个类别之间的决策边界可能是嘈杂的。
 
-```
+```py
 >LR 0.497 (0.072)
 >LDA 0.519 (0.072)
 >NB 0.639 (0.049)
@@ -704,7 +704,7 @@ Tomek Links 和 ENN 方法从多数类中选择要删除的示例，而 OSS 和 
 
 定义欠采样方法的 *get_models()* 函数的更新版本如下。
 
-```
+```py
 # define undersampling models to test
 def get_models():
 	models, names = list(), list()
@@ -730,7 +730,7 @@ scikit-learn 提供的[管道](https://scikit-learn.org/stable/modules/generated
 
 与上一节一样，管道的第一步将是分类变量的热编码和数值变量的标准化，最后一步是拟合模型。这里，中间步骤将是欠采样技术，仅在训练数据集的交叉验证评估中正确应用。
 
-```
+```py
 ...
 # define model to evaluate
 model = LogisticRegression(solver='liblinear', class_weight='balanced')
@@ -748,7 +748,7 @@ scores = evaluate_model(X, y, pipeline)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate undersampling with logistic regression on the imbalanced german credit dataset
 from numpy import mean
 from numpy import std
@@ -851,7 +851,7 @@ pyplot.show()
 
 结果表明 *SMOTE* 以 0.604 的 F2-Measure 获得了最佳得分。
 
-```
+```py
 >TL 0.669 (0.057)
 >ENN 0.706 (0.048)
 >RENN 0.714 (0.041)
@@ -879,7 +879,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # improve performance on the imbalanced german credit dataset
 from numpy import mean
 from numpy import std
@@ -945,7 +945,7 @@ print('%.3f (%.3f)' % (mean(scores), std(scores)))
 
 运行该示例会得到以下结果。
 
-```
+```py
 0.727 (0.033)
 ```
 
@@ -955,7 +955,7 @@ print('%.3f (%.3f)' % (mean(scores), std(scores)))
 
 下面列出了完整的示例。
 
-```
+```py
 # improve performance on the imbalanced german credit dataset
 from numpy import mean
 from numpy import std
@@ -1022,7 +1022,7 @@ print('%.3f (%.3f)' % (mean(scores), std(scores)))
 
 运行该示例会得到以下结果。
 
-```
+```py
 0.730 (0.046)
 ```
 
@@ -1032,7 +1032,7 @@ print('%.3f (%.3f)' % (mean(scores), std(scores)))
 
 下面列出了完整的示例。
 
-```
+```py
 # improve performance on the imbalanced german credit dataset
 from numpy import mean
 from numpy import std
@@ -1099,7 +1099,7 @@ print('%.3f (%.3f)' % (mean(scores), std(scores)))
 
 运行该示例会得到以下结果。
 
-```
+```py
 0.741 (0.034)
 ```
 
@@ -1116,7 +1116,7 @@ print('%.3f (%.3f)' % (mean(scores), std(scores)))
 
 首先，我们可以将模型定义为管道。
 
-```
+```py
 ...
 # define model to evaluate
 model = LogisticRegression(solver='liblinear', class_weight='balanced')
@@ -1128,7 +1128,7 @@ pipeline = Pipeline(steps=[('t',ct), ('s', RepeatedEditedNearestNeighbours()), (
 
 一旦定义好了，我们就可以在整个训练数据集中使用它。
 
-```
+```py
 ...
 # fit the model
 pipeline.fit(X, y)
@@ -1140,7 +1140,7 @@ pipeline.fit(X, y)
 
 例如:
 
-```
+```py
 ...
 # define a row of data
 row = [...]
@@ -1152,7 +1152,7 @@ yhat = pipeline.predict([row])
 
 下面列出了完整的示例。
 
-```
+```py
 # fit a model and make predictions for the german credit dataset
 from pandas import read_csv
 from sklearn.preprocessing import LabelEncoder
@@ -1221,7 +1221,7 @@ for row in data:
 
 然后将实际不良客户的一些情况作为模型的输入，并对标签进行预测。正如我们所希望的那样，所有情况下都能预测到正确的标签。
 
-```
+```py
 Good Customers:
 >Predicted=0 (expected 0)
 >Predicted=0 (expected 0)

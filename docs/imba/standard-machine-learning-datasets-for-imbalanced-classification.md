@@ -60,7 +60,7 @@
 
 下面提供了数据集前五行的示例。
 
-```
+```py
 6,148,72,35,0,33.6,0.627,50,1
 1,85,66,29,0,26.6,0.351,31,0
 8,183,64,0,0,23.3,0.672,32,1
@@ -71,7 +71,7 @@
 
 下面的示例加载并总结了数据集的类细分。
 
-```
+```py
 # Summarize the Pima Indians Diabetes dataset
 from numpy import unique
 from pandas import read_csv
@@ -102,7 +102,7 @@ for c in classes:
 
 运行该示例提供了以下输出。
 
-```
+```py
 N Examples: 768
 N Inputs: 8
 N Classes: 2
@@ -122,7 +122,7 @@ Class Breakdown:
 
 下面提供了数据集前五行的示例。
 
-```
+```py
 30,64,1,1
 30,62,3,1
 30,65,0,1
@@ -133,7 +133,7 @@ Class Breakdown:
 
 下面的示例加载并总结了数据集的类细分。
 
-```
+```py
 # Summarize the Haberman Breast Cancer dataset
 from numpy import unique
 from pandas import read_csv
@@ -164,7 +164,7 @@ for c in classes:
 
 运行该示例提供了以下输出。
 
-```
+```py
 N Examples: 306
 N Inputs: 3
 N Classes: 2
@@ -184,7 +184,7 @@ Class Breakdown:
 
 下面提供了数据集前五行的示例。
 
-```
+```py
 A11,6,A34,A43,1169,A65,A75,4,A93,A101,4,A121,67,A143,A152,2,A173,1,A192,A201,1
 A12,48,A32,A43,5951,A61,A73,2,A92,A101,2,A121,22,A143,A152,1,A173,1,A191,A201,2
 A14,12,A34,A46,2096,A61,A74,2,A93,A101,3,A121,49,A143,A152,1,A172,2,A191,A201,1
@@ -195,7 +195,7 @@ A11,24,A33,A40,4870,A61,A73,3,A93,A101,4,A124,53,A143,A153,2,A173,2,A191,A201,2
 
 下面的示例加载并总结了数据集的类细分。
 
-```
+```py
 # Summarize the German Credit dataset
 from numpy import unique
 from pandas import read_csv
@@ -226,7 +226,7 @@ for c in classes:
 
 运行该示例提供了以下输出。
 
-```
+```py
 N Examples: 1000
 N Inputs: 20
 N Classes: 2
@@ -264,7 +264,7 @@ Class Breakdown:
 
 下面提供了数据集前五行的示例。
 
-```
+```py
 1.52101,13.64,4.49,1.10,71.78,0.06,8.75,0.00,0.00,1
 1.51761,13.89,3.60,1.36,72.73,0.48,7.83,0.00,0.00,1
 1.51618,13.53,3.55,1.54,72.99,0.39,7.78,0.00,0.00,1
@@ -277,7 +277,7 @@ Class Breakdown:
 
 下面的示例加载并总结了数据集的类细分。
 
-```
+```py
 # Summarize the Glass Identification dataset
 from numpy import unique
 from pandas import read_csv
@@ -308,7 +308,7 @@ for c in classes:
 
 运行该示例提供了以下输出。
 
-```
+```py
 N Examples: 214
 N Inputs: 9
 N Classes: 6
@@ -332,7 +332,7 @@ Class Breakdown:
 
 下面提供了数据集前五行的示例。
 
-```
+```py
 0.49,0.29,0.48,0.50,0.56,0.24,0.35,cp
 0.07,0.40,0.48,0.50,0.54,0.35,0.44,cp
 0.56,0.40,0.48,0.50,0.49,0.37,0.46,cp
@@ -345,7 +345,7 @@ Class Breakdown:
 
 下面的示例加载并总结了数据集的类细分。
 
-```
+```py
 # Summarize the Ecoli dataset
 from numpy import unique
 from pandas import read_csv
@@ -376,7 +376,7 @@ for c in classes:
 
 运行该示例提供了以下输出。
 
-```
+```py
 N Examples: 336
 N Inputs: 7
 N Classes: 8
@@ -402,7 +402,7 @@ Class Breakdown:
 
 下面提供了数据集前五行的示例。
 
-```
+```py
 107,10.1,2.2,0.9,2.7,1
 113,9.9,3.1,2.0,5.9,1
 127,12.9,2.4,1.4,0.6,1
@@ -413,7 +413,7 @@ Class Breakdown:
 
 下面的示例加载并总结了数据集的类细分。
 
-```
+```py
 # Summarize the Thyroid Gland dataset
 from numpy import unique
 from pandas import read_csv
@@ -444,7 +444,7 @@ for c in classes:
 
 运行该示例提供了以下输出。
 
-```
+```py
 N Examples: 215
 N Inputs: 5
 N Classes: 3
@@ -479,7 +479,7 @@ Class Breakdown:
 
 下面提供了数据集前五行的示例。
 
-```
+```py
 "Time","V1","V2","V3","V4","V5","V6","V7","V8","V9","V10","V11","V12","V13","V14","V15","V16","V17","V18","V19","V20","V21","V22","V23","V24","V25","V26","V27","V28","Amount","Class"
 0,-1.3598071336738,-0.0727811733098497,2.53634673796914,1.37815522427443,-0.338320769942518,0.462387777762292,0.239598554061257,0.0986979012610507,0.363786969611213,0.0907941719789316,-0.551599533260813,-0.617800855762348,-0.991389847235408,-0.311169353699879,1.46817697209427,-0.470400525259478,0.207971241929242,0.0257905801985591,0.403992960255733,0.251412098239705,-0.018306777944153,0.277837575558899,-0.110473910188767,0.0669280749146731,0.128539358273528,-0.189114843888824,0.133558376740387,-0.0210530534538215,149.62,"0"
 0,1.19185711131486,0.26615071205963,0.16648011335321,0.448154078460911,0.0600176492822243,-0.0823608088155687,-0.0788029833323113,0.0851016549148104,-0.255425128109186,-0.166974414004614,1.61272666105479,1.06523531137287,0.48909501589608,-0.143772296441519,0.635558093258208,0.463917041022171,-0.114804663102346,-0.183361270123994,-0.145783041325259,-0.0690831352230203,-0.225775248033138,-0.638671952771851,0.101288021253234,-0.339846475529127,0.167170404418143,0.125894532368176,-0.00898309914322813,0.0147241691924927,2.69,"0"
@@ -490,7 +490,7 @@ Class Breakdown:
 
 下面的示例加载并总结了数据集的类细分。
 
-```
+```py
 # Summarize the Credit Card Fraud dataset
 from numpy import unique
 from pandas import read_csv
@@ -520,7 +520,7 @@ for c in classes:
 
 运行该示例提供了以下输出。
 
-```
+```py
 N Examples: 284807
 N Inputs: 30
 N Classes: 2
@@ -542,7 +542,7 @@ Class Breakdown:
 
 下面提供了数据集前五行的示例。
 
-```
+```py
 id,target,ps_ind_01,ps_ind_02_cat,ps_ind_03,ps_ind_04_cat,ps_ind_05_cat,ps_ind_06_bin,ps_ind_07_bin,ps_ind_08_bin,ps_ind_09_bin,ps_ind_10_bin,ps_ind_11_bin,ps_ind_12_bin,ps_ind_13_bin,ps_ind_14,ps_ind_15,ps_ind_16_bin,ps_ind_17_bin,ps_ind_18_bin,ps_reg_01,ps_reg_02,ps_reg_03,ps_car_01_cat,ps_car_02_cat,ps_car_03_cat,ps_car_04_cat,ps_car_05_cat,ps_car_06_cat,ps_car_07_cat,ps_car_08_cat,ps_car_09_cat,ps_car_10_cat,ps_car_11_cat,ps_car_11,ps_car_12,ps_car_13,ps_car_14,ps_car_15,ps_calc_01,ps_calc_02,ps_calc_03,ps_calc_04,ps_calc_05,ps_calc_06,ps_calc_07,ps_calc_08,ps_calc_09,ps_calc_10,ps_calc_11,ps_calc_12,ps_calc_13,ps_calc_14,ps_calc_15_bin,ps_calc_16_bin,ps_calc_17_bin,ps_calc_18_bin,ps_calc_19_bin,ps_calc_20_bin
 7,0,2,2,5,1,0,0,1,0,0,0,0,0,0,0,11,0,1,0,0.7,0.2,0.7180703307999999,10,1,-1,0,1,4,1,0,0,1,12,2,0.4,0.8836789178,0.3708099244,3.6055512755000003,0.6,0.5,0.2,3,1,10,1,10,1,5,9,1,5,8,0,1,1,0,0,1
 9,0,1,1,7,0,0,0,0,1,0,0,0,0,0,0,3,0,0,1,0.8,0.4,0.7660776723,11,1,-1,0,-1,11,1,1,2,1,19,3,0.316227766,0.6188165191,0.3887158345,2.4494897428,0.3,0.1,0.3,2,1,9,5,8,1,7,3,1,1,9,0,1,1,0,1,0
@@ -553,7 +553,7 @@ id,target,ps_ind_01,ps_ind_02_cat,ps_ind_03,ps_ind_04_cat,ps_ind_05_cat,ps_ind_0
 
 下面的示例加载并总结了数据集的类细分。
 
-```
+```py
 # Summarize the Porto Seguro’s Safe Driver Prediction dataset
 from numpy import unique
 from pandas import read_csv
@@ -583,7 +583,7 @@ for c in classes:
 
 运行该示例提供了以下输出。
 
-```
+```py
 N Examples: 595212
 N Inputs: 58
 N Classes: 2

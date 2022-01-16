@@ -88,7 +88,7 @@ scikit-learn 库提供了一些常用的一类分类算法，用于异常值或�
 
 下面的示例创建并总结了这个数据集。
 
-```
+```py
 # Generate and plot a synthetic imbalanced classification dataset
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -110,7 +110,7 @@ pyplot.show()
 
 运行该示例首先总结了类分布，确认不平衡是按预期创建的。
 
-```
+```py
 Counter({0: 9990, 1: 10})
 ```
 
@@ -138,7 +138,7 @@ scikit-learn 库在 [OneClassSVM 类](https://scikit-learn.org/stable/modules/ge
 
 与标准 SVM 的主要区别在于，它以无监督的方式进行拟合，并且不像 *C* 那样提供用于调整余量的正常超参数。取而代之的是，它提供了一个超参数“ *nu* ”，该参数控制支持向量的灵敏度，并且应该被调整到数据中离群值的近似比率，例如 0.01%。
 
-```
+```py
 ...
 # define outlier detection model
 model = OneClassSVM(gamma='scale', nu=0.01)
@@ -148,7 +148,7 @@ model = OneClassSVM(gamma='scale', nu=0.01)
 
 在这种情况下，我们将尝试只适合训练集中属于多数类的那些示例。
 
-```
+```py
 # fit on majority class
 trainX = trainX[trainy==0]
 model.fit(trainX)
@@ -161,7 +161,7 @@ model.fit(trainX)
 *   **内联预测** : +1
 *   **异常值预测** : -1
 
-```
+```py
 ...
 # detect outliers in the test set
 yhat = model.predict(testX)
@@ -169,7 +169,7 @@ yhat = model.predict(testX)
 
 如果我们想评估模型作为二进制分类器的性能，我们必须将测试数据集中的标签从多数类和少数类的 0 和 1 分别更改为+1 和-1。
 
-```
+```py
 ...
 # mark inliers 1, outliers -1
 testy[testy == 1] = -1
@@ -180,7 +180,7 @@ testy[testy == 0] = 1
 
 在这种情况下，我们将使用 F-measure 得分，这是精度和召回率的调和平均值。我们可以使用 *f1_score()* 函数计算 F-measure，并通过“ *pos_label* 参数将少数民族类的标签指定为-1。
 
-```
+```py
 ...
 # calculate score
 score = f1_score(testy, yhat, pos_label=-1)
@@ -191,7 +191,7 @@ print('F1 Score: %.3f' % score)
 
 下面列出了完整的示例。
 
-```
+```py
 # one-class svm for imbalanced binary classification
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -223,7 +223,7 @@ print('F1 Score: %.3f' % score)
 
 在这种情况下，获得了 0.123 的 F1 分数。
 
-```
+```py
 F1 Score: 0.123
 ```
 
@@ -253,7 +253,7 @@ scikit-learn 库在 [IsolationForest 类](https://scikit-learn.org/stable/module
 
 我们知道污染大约是阳性病例与阴性病例的 0.01%，因此我们可以将“*污染*”参数设置为 0.01。
 
-```
+```py
 ...
 # define outlier detection model
 model = IsolationForest(contamination=0.01, behaviour='new')
@@ -261,7 +261,7 @@ model = IsolationForest(contamination=0.01, behaviour='new')
 
 该模型可能在排除异常值的例子上训练得最好。在这种情况下，我们只针对多数类的示例，在输入特征上拟合模型。
 
-```
+```py
 ...
 # fit on majority class
 trainX = trainX[trainy==0]
@@ -272,7 +272,7 @@ model.fit(trainX)
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # isolation forest for imbalanced classification
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -304,7 +304,7 @@ print('F1 Score: %.3f' % score)
 
 在这种情况下，获得了 0.154 的 F1 分数。
 
-```
+```py
 F1 Score: 0.154
 ```
 
@@ -330,7 +330,7 @@ scikit-learn 库通过[椭圆包络类](https://scikit-learn.org/stable/modules/
 
 它提供了“*污染*”参数，该参数定义了在实践中观察到的异常值的预期比率。我们知道这在我们的合成数据集中是 0.01%，所以我们可以相应地设置它。
 
-```
+```py
 ...
 # define outlier detection model
 model = EllipticEnvelope(contamination=0.01)
@@ -338,7 +338,7 @@ model = EllipticEnvelope(contamination=0.01)
 
 该模型只能拟合来自多数类的输入数据，以便以无监督的方式估计“*正常*”数据的分布。
 
-```
+```py
 ...
 # fit on majority class
 trainX = trainX[trainy==0]
@@ -347,7 +347,7 @@ model.fit(trainX)
 
 然后，该模型将用于将新示例分类为正常(+1)或异常值(-1)。
 
-```
+```py
 ...
 # detect outliers in the test set
 yhat = model.predict(testX)
@@ -355,7 +355,7 @@ yhat = model.predict(testX)
 
 将这些联系在一起，下面列出了在我们的合成二进制分类数据集上使用椭圆包络离群点检测模型进行不平衡分类的完整示例。
 
-```
+```py
 # elliptic envelope for imbalanced classification
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -387,7 +387,7 @@ print('F1 Score: %.3f' % score)
 
 在这种情况下，获得了 0.157 的 F1 分数。
 
-```
+```py
 F1 Score: 0.157
 ```
 
@@ -407,7 +407,7 @@ scikit-learn 库在[localhoutlierfactor 类](https://scikit-learn.org/stable/mod
 
 该模型可以被定义，并且要求指示数据集中异常值的预期百分比，例如在我们的合成数据集中为 0.01%。
 
-```
+```py
 ...
 # define outlier detection model
 model = LocalOutlierFactor(contamination=0.01)
@@ -417,7 +417,7 @@ model = LocalOutlierFactor(contamination=0.01)
 
 要使用这个模型来识别测试数据集中的异常值，我们必须首先准备训练数据集，使其只包含多数类的输入示例。
 
-```
+```py
 ...
 # get examples for just the majority class
 trainX = trainX[trainy==0]
@@ -425,7 +425,7 @@ trainX = trainX[trainy==0]
 
 接下来，我们可以将这些示例与测试数据集中的输入示例连接起来。
 
-```
+```py
 ...
 # create one large dataset
 composite = vstack((trainX, testX))
@@ -433,7 +433,7 @@ composite = vstack((trainX, testX))
 
 然后，我们可以通过调用 *fit_predict()* 进行预测，并且只检索测试集中示例的那些标签。
 
-```
+```py
 ...
 # make prediction on composite dataset
 yhat = model.fit_predict(composite)
@@ -443,7 +443,7 @@ yhat yhat[len(trainX):]
 
 为了使事情变得更简单，我们可以将它包装成一个新的函数，其名称为 *lof_predict()* ，如下所示。
 
-```
+```py
 # make a prediction with a lof model
 def lof_predict(model, trainX, testX):
 	# create one large dataset
@@ -458,7 +458,7 @@ def lof_predict(model, trainX, testX):
 
 将这些联系在一起，下面列出了使用 LOF 离群点检测算法进行分类的完整示例。
 
-```
+```py
 # local outlier factor for imbalanced classification
 from numpy import vstack
 from sklearn.datasets import make_classification
@@ -500,7 +500,7 @@ print('F1 Score: %.3f' % score)
 
 在这种情况下，获得了 0.138 的 F1 分数。
 
-```
+```py
 F1 Score: 0.138
 ```
 

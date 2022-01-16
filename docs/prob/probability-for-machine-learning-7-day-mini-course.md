@@ -206,7 +206,7 @@
 
 下面的示例从这个分布中采样并打印了 10 个数字。
 
-```
+```py
 # sample a normal distribution
 from numpy.random import normal
 # define the distribution
@@ -260,7 +260,7 @@ print(sample)
 
 下面列出了将高斯朴素贝叶斯模型([高斯年](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html))拟合到测试数据集的完整示例。
 
-```
+```py
 # example of gaussian naive bayes
 from sklearn.datasets import make_blobs
 from sklearn.naive_bayes import GaussianNB
@@ -328,7 +328,7 @@ print('Truth: y=%d' % ysample)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of calculating cross entropy
 from math import log2
 
@@ -393,7 +393,7 @@ scikit-learn 机器学习库提供了一种称为 [DummyClassifier](https://scik
 
 下面列出了完整的示例。
 
-```
+```py
 # example of the majority class naive classifier in scikit-learn
 from numpy import asarray
 from sklearn.dummy import DummyClassifier
@@ -448,7 +448,7 @@ print('Accuracy: %.3f' % accuracy)
 
 例如:
 
-```
+```py
 # example of log loss
 from numpy import asarray
 from sklearn.metrics import log_loss
@@ -475,7 +475,7 @@ Brier 分数可以使用 scikit-learn 中的 [brier_score_loss()函数在 Python
 
 例如:
 
-```
+```py
 # example of brier loss
 from sklearn.metrics import brier_score_loss
 # define data

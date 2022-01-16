@@ -95,7 +95,7 @@
 
 下面的 *define_discriminator()* 函数实现了这一点，并定义了我们的标准鉴别器模型。
 
-```
+```py
 # example of defining the discriminator model
 from keras.models import Model
 from keras.layers import Input
@@ -156,7 +156,7 @@ plot_model(model, to_file='discriminator_plot.png', show_shapes=True, show_layer
 
 下面的示例首先创建具有二进制输出的传统鉴别器模型，然后重新使用特征提取图层，并创建一个新的多类预测模型，在本例中有 10 个类。
 
-```
+```py
 # example of defining semi-supervised discriminator model
 from keras.models import Model
 from keras.layers import Input
@@ -234,7 +234,7 @@ plot_model(c_model, to_file='discriminator2_plot.png', show_shapes=True, show_la
 
 我们还可以看到，模型被编译为两个损失函数，模型的每个输出层一个。
 
-```
+```py
 # example of defining semi-supervised discriminator model
 from keras.models import Model
 from keras.layers import Input
@@ -303,7 +303,7 @@ SGAN 中无监督鉴别器模型的输出函数示例。
 
 下面列出了完整的示例。
 
-```
+```py
 # example of custom activation function
 import numpy as np
 
@@ -336,7 +336,7 @@ print(custom_activation(output))
 
 对于小激活或负激活，输出接近 0.0 的值，对于正激活或大激活，输出接近 1.0 的值。当我们运行示例时，我们可以看到这一点。
 
-```
+```py
 0.00013618124143106674
 0.5246331135813284
 0.75
@@ -352,7 +352,7 @@ print(custom_activation(output))
 
 不需要 sigmoid 激活函数，因为我们已经标准化了激活。如前所述，使用二元交叉熵损失拟合无监督模型。
 
-```
+```py
 # example of defining semi-supervised discriminator model
 from keras.models import Model
 from keras.layers import Input
@@ -439,7 +439,7 @@ plot_model(c_model, to_file='stacked_discriminator2_plot.png', show_shapes=True,
 
 接下来，我们可以定义生成器模型。在这种情况下，生成器模型将把潜在空间中的一个点作为输入，并将使用转置卷积层来输出 28×28 灰度图像。下面的 *define_generator()* 函数实现了这一点，并返回定义的生成器模型。
 
-```
+```py
 # define the standalone generator model
 def define_generator(latent_dim):
 	# image generator input
@@ -468,7 +468,7 @@ def define_generator(latent_dim):
 
 下面的 *define_gan()* 函数实现了这一点，将已经定义的生成器和鉴别器模型作为输入，并返回用于训练生成器模型权重的复合模型。
 
-```
+```py
 # define the combined generator and discriminator model, for updating the generator
 def define_gan(g_model, d_model):
 	# make weights in the discriminator not trainable
@@ -485,7 +485,7 @@ def define_gan(g_model, d_model):
 
 我们可以加载训练数据集[并将像素](https://machinelearningmastery.com/how-to-manually-scale-image-pixel-data-for-deep-learning/)缩放到范围[-1，1]以匹配生成器模型的输出值。
 
-```
+```py
 # load the images
 def load_real_samples():
 	# load dataset
@@ -504,7 +504,7 @@ def load_real_samples():
 
 下面的*select _ supervised _ samples()*函数实现了这一点，并小心地确保示例的选择是随机的，并且类是平衡的。标记示例的数量被参数化并设置为 100，这意味着 10 个类中的每一个都将有 10 个随机选择的示例。
 
-```
+```py
 # select a supervised subset of the dataset, ensures classes are balanced
 def select_supervised_samples(dataset, n_samples=100, n_classes=10):
 	X, y = dataset
@@ -525,7 +525,7 @@ def select_supervised_samples(dataset, n_samples=100, n_classes=10):
 
 选择图像和标签的样本，并进行替换。这个相同的函数可以用来从标记和未标记的数据集中检索示例，稍后当我们训练模型时。在“*无标签数据集*的情况下，我们将忽略标签。
 
-```
+```py
 # select real samples
 def generate_real_samples(dataset, n_samples):
 	# split into images and labels
@@ -543,7 +543,7 @@ def generate_real_samples(dataset, n_samples):
 
 首先，*generate _ 潜伏 _points()* 函数会在潜伏空间中创建一批有价值的随机点，这些随机点可以作为生成图像的输入。 *generate_fake_samples()* 函数将调用该函数来生成一批有价值的图像，这些图像可以在训练期间被馈送到无监督鉴别器模型或复合 GAN 模型。
 
-```
+```py
 # generate points in latent space as input for the generator
 def generate_latent_points(latent_dim, n_samples):
 	# generate points in the latent space
@@ -571,7 +571,7 @@ def generate_fake_samples(generator, latent_dim, n_samples):
 
 下面的*summary _ performance()*函数实现了这一点，可以定期调用，比如每个[训练时期](https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/)的结束。可以在运行结束时查看结果，以选择分类器甚至生成器模型。
 
-```
+```py
 # generate samples and save as a plot and save the model
 def summarize_performance(step, g_model, c_model, latent_dim, dataset, n_samples=100):
 	# prepare fake examples
@@ -615,7 +615,7 @@ def summarize_performance(step, g_model, c_model, latent_dim, dataset, n_samples
 
 鉴别器模型的共享权重用 1.5 批样本更新，而生成器模型的权重每次迭代用一批样本更新。改变这一点，使每个模型更新相同的量，可能会改善模型训练过程。
 
-```
+```py
 # train the generator and discriminator
 def train(g_model, d_model, c_model, gan_model, dataset, latent_dim, n_epochs=20, n_batch=100):
 	# select supervised dataset
@@ -650,7 +650,7 @@ def train(g_model, d_model, c_model, gan_model, dataset, latent_dim, n_epochs=20
 
 最后，我们可以定义模型并调用函数来训练和保存模型。
 
-```
+```py
 # size of the latent space
 latent_dim = 100
 # create the discriminator models
@@ -667,7 +667,7 @@ train(g_model, d_model, c_model, gan_model, dataset, latent_dim)
 
 将所有这些结合在一起，下面列出了在 MNIST 手写数字图像分类任务上训练半监督 GAN 的完整示例。
 
-```
+```py
 # example of semi-supervised gan for mnist
 from numpy import expand_dims
 from numpy import zeros
@@ -905,7 +905,7 @@ train(g_model, d_model, c_model, gan_model, dataset, latent_dim)
 
 监督模型的损失将缩小到接近于零的小值，并且精度将达到 100%，这将在整个运行期间保持不变。如果无监督鉴别器和发生器保持平衡，它们的损失在整个运行过程中应保持在适当的值。
 
-```
+```py
 (60000, 28, 28, 1) (60000,)
 (100, 28, 28, 1) (100,)
 n_epochs=20, n_batch=100, 1/2=50, b/e=600, steps=12000
@@ -921,7 +921,7 @@ n_epochs=20, n_batch=100, 1/2=50, b/e=600, steps=12000
 
 这是令人惊讶的，因为该模型只在每个类的 10 个有标签的例子上训练。
 
-```
+```py
 Classifier Accuracy: 85.543%
 Classifier Accuracy: 91.487%
 Classifier Accuracy: 92.628%
@@ -962,7 +962,7 @@ Classifier Accuracy: 92.180%
 
 我们可以通过 *load_model()* Keras 函数直接加载模型。
 
-```
+```py
 ...
 # load the model
 model = load_model('c_model_7200.h5')
@@ -974,7 +974,7 @@ model = load_model('c_model_7200.h5')
 
 下面列出了加载保存的半监督分类器模型并在完整的 MNIST 数据集中对其进行评估的完整示例。
 
-```
+```py
 # example of loading the classifier model and generating images
 from numpy import expand_dims
 from keras.models import load_model
@@ -1007,7 +1007,7 @@ print('Test Accuracy: %.3f%%' % (test_acc * 100))
 
 我们还可以看到，在保持测试数据集上的精度同样好，或者略好，大约为 95.920%。这表明所学习的分类器具有良好的泛化能力。
 
-```
+```py
 Train Accuracy: 95.432%
 Test Accuracy: 95.920%
 ```

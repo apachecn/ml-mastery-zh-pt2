@@ -40,7 +40,7 @@ Keras 支持通过 GaussianNoise 层向模型添加噪声。
 
 这是一个会给给定形状的输入添加噪声的层。噪声的平均值为零，要求将噪声的标准偏差指定为一个参数。例如:
 
-```
+```py
 # import noise layer
 from keras.layers import GaussianNoise
 # define noise layer
@@ -57,7 +57,7 @@ layer = GaussianNoise(0.1)
 
 下面是一个将高斯图层定义为采用两个输入变量的模型的输入图层的示例。
 
-```
+```py
 ...
 model.add(GaussianNoise(0.01, input_shape=(2,)))
 ...
@@ -67,7 +67,7 @@ model.add(GaussianNoise(0.01, input_shape=(2,)))
 
 下面是一个 GaussianNoise 层的示例，它在[校正线性激活函数(ReLU)](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/) 之前将噪声添加到密集层的线性输出中，这可能是隐藏层之间更合适的噪声使用方式。
 
-```
+```py
 ...
 model.add(Dense(32))
 model.add(GaussianNoise(0.1))
@@ -78,7 +78,7 @@ model.add(Dense(32))
 
 噪声也可以在激活功能后添加，很像使用噪声激活功能。这种用法的一个缺点是，结果值可能超出激活函数正常提供的范围。例如，具有附加噪声的值可能小于零，而 relu 激活函数将只输出 0 或更大的值。
 
-```
+```py
 ...
 model.add(Dense(32, activation='reu'))
 model.add(GaussianNoise(0.1))
@@ -92,7 +92,7 @@ model.add(Dense(32))
 
 下面的示例在两个密集的完全连接的层之间添加了噪声。
 
-```
+```py
 # example of noise between fully connected layers
 from keras.layers import Dense
 from keras.layers import GaussianNoise
@@ -109,7 +109,7 @@ model.add(Dense(1))
 
 下面的例子在卷积网络的汇聚层之后增加了噪声。
 
-```
+```py
 # example of noise for a CNN
 from keras.layers import Dense
 from keras.layers import Conv2D
@@ -128,7 +128,7 @@ model.add(Dense(1))
 
 以下示例在 LSTM 循环层和密集全连接层之间添加了噪声。
 
-```
+```py
 # example of noise between LSTM and fully connected layers
 from keras.layers import Dense
 from keras.layers import Activation
@@ -158,7 +158,7 @@ model.add(Dense(1))
 
 我们可以使用 [make_circles()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_circles.html)从这个问题中生成观察值。我们将向数据中添加噪声，并为随机数生成器播种，这样每次运行代码时都会生成相同的样本。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_circles(n_samples=100, noise=0.1, random_state=1)
 ```
@@ -167,7 +167,7 @@ X, y = make_circles(n_samples=100, noise=0.1, random_state=1)
 
 下面列出了生成数据集并绘制它的完整示例。
 
-```
+```py
 # generate two circles dataset
 from sklearn.datasets import make_circles
 from matplotlib import pyplot
@@ -202,7 +202,7 @@ pyplot.show()
 
 在定义模型之前，我们将把数据集分成训练集和测试集，用 30 个例子训练模型，用 70 个例子评估拟合模型的性能。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_circles(n_samples=100, noise=0.1, random_state=1)
 # split into train and test
@@ -215,7 +215,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 隐藏层使用隐藏层中的 500 个节点和校正的线性激活函数。输出层使用 sigmoid 激活函数来预测类值 0 或 1。该模型使用二元交叉熵损失函数进行优化，适用于二元分类问题和高效的 Adam 版本梯度下降。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(500, input_dim=2, activation='relu'))
@@ -227,14 +227,14 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 
 我们还将使用测试数据集作为验证数据集。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=4000, verbose=0)
 ```
 
 我们可以在测试数据集上评估模型的性能并报告结果。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -245,7 +245,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 如果模型确实过度训练了训练数据集，那么随着模型学习训练数据集中的统计噪声，我们将期望训练集上的精度线图继续增加，并且测试集上升，然后再次下降。
 
-```
+```py
 # plot history
 pyplot.plot(history.history['accuracy'], label='train')
 pyplot.plot(history.history['val_accuracy'], label='test')
@@ -255,7 +255,7 @@ pyplot.show()
 
 我们可以把所有这些部分绑在一起；下面列出了完整的示例。
 
-```
+```py
 # mlp overfit on the two circles dataset
 from sklearn.datasets import make_circles
 from keras.layers import Dense
@@ -291,7 +291,7 @@ pyplot.show()
 
 我们可以看到，该模型在训练数据集上的性能优于测试数据集，这可能是过度拟合的一个迹象。
 
-```
+```py
 Train: 1.000, Test: 0.757
 ```
 
@@ -311,7 +311,7 @@ Train: 1.000, Test: 0.757
 
 我们可以添加一个高斯图层作为输入图层。噪音必须很小。假设输入值在范围[0，1]内，我们将添加平均值为 0.0、标准偏差为 0.01 的高斯噪声，这是任意选择的。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(GaussianNoise(0.01, input_shape=(2,)))
@@ -322,7 +322,7 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 
 下面列出了此更改的完整示例。
 
-```
+```py
 # mlp overfit on the two circles dataset with input noise
 from sklearn.datasets import make_circles
 from keras.models import Sequential
@@ -360,7 +360,7 @@ pyplot.show()
 
 在这种情况下，我们可能会在测试数据集上看到模型性能的小幅提升，而不会对训练数据集产生负面影响。
 
-```
+```py
 Train: 1.000, Test: 0.771
 ```
 
@@ -380,7 +380,7 @@ Train: 1.000, Test: 0.771
 
 这可以通过在应用激活函数之前向层的线性输出(加权和)添加噪声来实现，在这种情况下是整流的线性激活函数。我们还可以对噪声使用较大的标准偏差，因为在这个水平上，模型对噪声不太敏感，因为过度拟合可能会导致较大的权重。我们将使用 0.1 的标准偏差，同样是任意选择的。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(500, input_dim=2))
@@ -392,7 +392,7 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 
 下面列出了隐藏层之间有高斯噪声的完整示例。
 
-```
+```py
 # mlp overfit on the two circles dataset with hidden layer noise
 from sklearn.datasets import make_circles
 from keras.models import Sequential
@@ -432,7 +432,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到模型在等待测试集上的性能显著提高。
 
-```
+```py
 # Train: 0.967, Test: 0.814
 ```
 
@@ -444,7 +444,7 @@ pyplot.show()
 
 我们还可以在第一个隐藏层的输出通过激活函数后进行实验并添加噪声。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(500, input_dim=2, activation='relu'))
@@ -455,7 +455,7 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 
 下面列出了完整的示例。
 
-```
+```py
 # mlp overfit on the two circles dataset with hidden layer noise (alternate)
 from sklearn.datasets import make_circles
 from keras.models import Sequential
@@ -493,7 +493,7 @@ pyplot.show()
 
 令人惊讶的是，我们在模型的性能上几乎看不到差异。
 
-```
+```py
 Train: 0.967, Test: 0.814
 ```
 

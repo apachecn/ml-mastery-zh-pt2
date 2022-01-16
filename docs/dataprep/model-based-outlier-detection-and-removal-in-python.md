@@ -80,7 +80,7 @@ Python 中基于模型的离群点检测和移除
 
 我们可以看到，这是一个带有数值输入变量的回归预测建模问题，每个变量都有不同的尺度。
 
-```
+```py
 0.00632,18.00,2.310,0,0.5380,6.5750,65.20,4.0900,1,296.0,15.30,396.90,4.98,24.00
 0.02731,0.00,7.070,0,0.4690,6.4210,78.90,4.9671,2,242.0,17.80,396.90,9.14,21.60
 0.02729,0.00,7.070,0,0.4690,7.1850,61.10,4.9671,2,242.0,17.80,392.83,4.03,34.70
@@ -93,7 +93,7 @@ Python 中基于模型的离群点检测和移除
 
 下面的示例加载数据集并将其拆分为输入和输出列，将其拆分为训练和测试数据集，然后总结数据数组的形状。
 
-```
+```py
 # load and summarize the dataset
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -116,7 +116,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
 
 数据集被分成训练集和测试集，其中 339 行用于模型训练，167 行用于模型评估。
 
-```
+```py
 (506, 13) (506,)
 (339, 13) (167, 13) (339,) (167,)
 ```
@@ -131,7 +131,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
 
 下面列出了在数据集上评估线性回归模型的完整示例。
 
-```
+```py
 # evaluate model on the raw dataset
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -162,7 +162,7 @@ print('MAE: %.3f' % mae)
 
 在这种情况下，我们可以看到模型实现了大约 3.417 的 MAE。这提供了一个性能基线，我们可以据此比较不同的异常值识别和去除程序。
 
-```
+```py
 MAE: 3.417
 ```
 
@@ -196,7 +196,7 @@ scikit-learn 库在 [IsolationForest 类](https://scikit-learn.org/stable/module
 
 也许模型中最重要的超参数是“*污染*”参数，该参数用于帮助估计数据集中异常值的数量。这是一个介于 0.0 和 0.5 之间的值，默认设置为 0.1。
 
-```
+```py
 ...
 # identify outliers in the training dataset
 iso = IsolationForest(contamination=0.1)
@@ -205,7 +205,7 @@ yhat = iso.fit_predict(X_train)
 
 一旦识别出来，我们就可以从训练数据集中移除异常值。
 
-```
+```py
 ...
 # select all rows that are not outliers
 mask = yhat != -1
@@ -214,7 +214,7 @@ X_train, y_train = X_train[mask, :], y_train[mask]
 
 将这些联系在一起，下面列出了在房屋数据集上评估线性模型的完整示例，使用隔离林识别并移除异常值。
 
-```
+```py
 # evaluate model performance with outliers removed using isolation forest
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -256,7 +256,7 @@ print('MAE: %.3f' % mae)
 
 在这种情况下，我们可以看到，该模型识别并移除了 34 个异常值，并获得了约 3.189 的 MAE，这比得分约为 3.417 的基线有所改善。
 
-```
+```py
 (339, 13) (339,)
 (305, 13) (305,)
 MAE: 3.189
@@ -278,7 +278,7 @@ scikit-learn 库通过[椭圆包络类](https://scikit-learn.org/stable/modules/
 
 它提供了“*污染*”参数，该参数定义了在实践中观察到的异常值的预期比率。在这种情况下，我们将它设置为 0.01 的值，通过一点点反复试验发现。
 
-```
+```py
 ...
 # identify outliers in the training dataset
 ee = EllipticEnvelope(contamination=0.01)
@@ -289,7 +289,7 @@ yhat = ee.fit_predict(X_train)
 
 将这些联系在一起，下面列出了使用椭圆包络(最小协变行列式)方法从房屋数据集中识别和移除异常值的完整示例。
 
-```
+```py
 # evaluate model performance with outliers removed using elliptical envelope
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -331,7 +331,7 @@ print('MAE: %.3f' % mae)
 
 在这种情况下，我们可以看到椭圆包络方法仅识别并移除了 4 个异常值，导致 MAE 从基线的 3.417 下降到 3.388。
 
-```
+```py
 (339, 13) (339,)
 (335, 13) (335,)
 MAE: 3.388
@@ -353,7 +353,7 @@ scikit-learn 库在[localhoutlierfactor 类](https://scikit-learn.org/stable/mod
 
 该模型提供“*污染*”参数，即数据集中异常值的预期百分比，被指示并默认为 0.1。
 
-```
+```py
 ...
 # identify outliers in the training dataset
 lof = LocalOutlierFactor()
@@ -362,7 +362,7 @@ yhat = lof.fit_predict(X_train)
 
 将这些联系在一起，下面列出了使用局部异常因子方法从住房数据集中识别和移除异常值的完整示例。
 
-```
+```py
 # evaluate model performance with outliers removed using local outlier factor
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -404,7 +404,7 @@ print('MAE: %.3f' % mae)
 
 在这种情况下，我们可以看到局部离群因子方法识别并移除了 34 个离群值，与隔离林的数量相同，导致 MAE 从基线的 3.417 下降到 3.356。更好，但不如隔离森林，这表明发现并移除了一组不同的异常值。
 
-```
+```py
 (339, 13) (339,)
 (305, 13) (305,)
 MAE: 3.356
@@ -426,7 +426,7 @@ scikit-learn 库在 [OneClassSVM 类](https://scikit-learn.org/stable/modules/ge
 
 该类提供了“ *nu* ”参数，该参数指定了数据集中异常值的近似比率，默认为 0.1。在这种情况下，我们将它设置为 0.01，稍微试错一下就发现了。
 
-```
+```py
 ...
 # identify outliers in the training dataset
 ee = OneClassSVM(nu=0.01)
@@ -435,7 +435,7 @@ yhat = ee.fit_predict(X_train)
 
 将这些联系在一起，下面列出了使用一类 SVM 方法从住房数据集中识别和移除异常值的完整示例。
 
-```
+```py
 # evaluate model performance with outliers removed using one class SVM
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -477,7 +477,7 @@ print('MAE: %.3f' % mae)
 
 在这种情况下，我们可以看到只有三个异常值被识别和移除，并且模型实现了大约 3.431 的 MAE，这并不比实现 3.417 的基线模型更好。也许通过更多的调整可以获得更好的性能。
 
-```
+```py
 (339, 13) (339,)
 (336, 13) (336,)
 MAE: 3.431

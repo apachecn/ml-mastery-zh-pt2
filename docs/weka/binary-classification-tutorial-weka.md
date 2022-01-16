@@ -228,7 +228,7 @@
 
 9.单击“执行测试”按钮来执行成对测试-将所有结果与 ZeroR 的结果进行比较的测试。
 
-```
+```py
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 2 -stddev-prec 2 -col-name-width 0 -row-name-width 25 -mean-width 0 -stddev-width 0 -sig-width 0 -count-width 5 -print-col-names -print-row-names -enum-col-names"
 Analysing:  Percent_correct
 Datasets:   4
@@ -265,7 +265,7 @@ Key:
 
 10.单击“测试基础”的“选择”按钮，然后选择“功能”。后勤”。单击“执行测试”按钮重新运行分析。
 
-```
+```py
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 2 -stddev-prec 2 -col-name-width 0 -row-name-width 25 -mean-width 2 -stddev-width 2 -sig-width 1 -count-width 5 -print-col-names -print-row-names -enum-col-names"
 Analysing:  Percent_correct
 Datasets:   4
@@ -304,7 +304,7 @@ Key:
 
 我们现在有了一个可以用来描述我们模型的最终结果。
 
-```
+```py
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -V -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 2 -stddev-prec 2 -col-name-width 0 -row-name-width 25 -mean-width 2 -stddev-width 2 -sig-width 1 -count-width 5 -show-stddev -print-col-names -print-row-names -enum-col-names"
 Analysing:  Percent_correct
 Datasets:   4

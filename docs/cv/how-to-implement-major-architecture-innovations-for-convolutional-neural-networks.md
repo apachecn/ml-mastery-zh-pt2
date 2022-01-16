@@ -53,7 +53,7 @@
 
 我们可以使用 Keras 函数 API 定义一个函数来创建一个 VGG 块，该函数具有给定数量的卷积层和每层给定数量的滤波器。
 
-```
+```py
 # function for creating a vgg block
 def vgg_block(layer_in, n_filters, n_conv):
 	# add convolutional layers
@@ -70,7 +70,7 @@ def vgg_block(layer_in, n_filters, n_conv):
 
 我们可以通过定义一个小模型来演示如何使用这个函数，该模型期望正方形彩色图像作为输入，并向模型中添加一个具有两个卷积层的 VGG 块，每个卷积层具有 64 个滤波器。
 
-```
+```py
 # Example of creating a CNN model with a VGG block
 from keras.models import Model
 from keras.layers import Input
@@ -103,7 +103,7 @@ plot_model(model, show_shapes=True, to_file='vgg_block.png')
 
 我们可以看到，正如预期的那样，该模型添加了一个带有两个卷积层的 VGG 块，每个卷积层有 64 个滤波器，然后是一个最大池层。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -135,7 +135,7 @@ _________________________________________________________________
 
 完整的代码列表如下。
 
-```
+```py
 # Example of creating a CNN model with many VGG blocks
 from keras.models import Model
 from keras.layers import Input
@@ -170,7 +170,7 @@ plot_model(model, show_shapes=True, to_file='multiple_vgg_blocks.png')
 
 再次，运行示例总结了模型架构，我们可以清楚地看到 VGG 区块的模式。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -226,7 +226,7 @@ _________________________________________________________________
 
 我们可以直接使用 Keras 函数式 API 实现一个初始模块。下面的函数将为每个并行卷积层创建一个带有固定数量滤波器的初始模块。从论文中描述的 GoogLeNet 架构来看，由于模型经过高度优化，似乎没有对并行卷积层使用系统的滤波器规模。因此，我们可以对模块定义进行参数化，以便指定在 1×1、3×3 和 5×5 滤波器中使用的滤波器数量。
 
-```
+```py
 # function for creating a naive inception block
 def inception_module(layer_in, f1, f2, f3):
 	# 1x1 conv
@@ -248,7 +248,7 @@ def inception_module(layer_in, f1, f2, f3):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of creating a CNN with an inception module
 from keras.models import Model
 from keras.layers import Input
@@ -287,7 +287,7 @@ plot_model(model, show_shapes=True, to_file='naive_inception_module.png')
 
 我们知道卷积层和池层是并行的，但是这个总结并不容易捕捉结构。
 
-```
+```py
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to
 ==================================================================================================
@@ -330,7 +330,7 @@ ________________________________________________________________________________
 
 下面的函数通过参数化实现了这种优化改进，因此您可以控制 3×3 和 5×5 卷积层之前滤波器数量的减少量，以及最大池化之后增加的滤波器数量。
 
-```
+```py
 # function for creating a projected inception module
 def inception_module(layer_in, f1, f2_in, f2_out, f3_in, f3_out, f4_out):
 	# 1x1 conv
@@ -355,7 +355,7 @@ def inception_module(layer_in, f1, f2_in, f2_out, f3_in, f3_out, f4_out):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of creating a CNN with an efficient inception module
 from keras.models import Model
 from keras.layers import Input
@@ -397,7 +397,7 @@ plot_model(model, show_shapes=True, to_file='inception_module.png')
 
 运行该示例会创建图层的线性摘要，这对理解正在发生的事情并没有真正的帮助。
 
-```
+```py
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to
 ==================================================================================================
@@ -463,7 +463,7 @@ ResNet 的一个关键创新是剩余模块。残差模块，特别是单位残�
 
 我们可以在 Keras 中使用函数式 API 和 *add()* 合并函数直接实现这一点。
 
-```
+```py
 # function for creating an identity residual module
 def residual_module(layer_in, n_filters):
 	# conv1
@@ -487,7 +487,7 @@ def residual_module(layer_in, n_filters):
 
 下面是函数的更新版本，如果可能的话，将使用标识，否则输入中过滤器数量的投影与 *n_filters* 参数不匹配。
 
-```
+```py
 # function for creating an identity or projection residual module
 def residual_module(layer_in, n_filters):
 	merge_input = layer_in
@@ -509,7 +509,7 @@ def residual_module(layer_in, n_filters):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of a CNN model with an identity or projection residual module
 from keras.models import Model
 from keras.layers import Input
@@ -551,7 +551,7 @@ plot_model(model, show_shapes=True, to_file='residual_module.png')
 
 因为模块是线性的，所以这个总结有助于了解发生了什么。
 
-```
+```py
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to
 ==================================================================================================

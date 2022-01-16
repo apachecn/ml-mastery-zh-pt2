@@ -81,7 +81,7 @@ scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/mo
 
 我们用 1000 个例子来说明这个问题，输入变量(代表点的 x 和 y 坐标)和每个组内点的标准偏差为 2.0。我们将使用相同的随机状态(用于[伪随机数发生器](https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/)的种子)来确保我们总是获得相同的 1000 分。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random_state=2)
 ```
@@ -92,7 +92,7 @@ X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random
 
 下面列出了完整的示例。
 
-```
+```py
 # scatter plot of blobs dataset
 from sklearn.datasets import make_blobs
 from matplotlib import pyplot
@@ -123,7 +123,7 @@ pyplot.show()
 
 该问题是一个多类分类问题，我们将在输出层使用 softmax 激活函数对其进行建模。这意味着该模型将以样本属于 3 类中每一类的概率来预测具有 3 个元素的向量。因此，第一步是[对类值进行一次热编码](https://machinelearningmastery.com/why-one-hot-encode-data-in-machine-learning/)。
 
-```
+```py
 y = to_categorical(y)
 ```
 
@@ -131,7 +131,7 @@ y = to_categorical(y)
 
 我们选择大分割是因为这是一个有噪声的问题，性能良好的模型需要尽可能多的数据来学习复杂的分类函数。
 
-```
+```py
 # split into train and test
 n_train = int(0.9 * X.shape[0])
 trainX, testX = X[:n_train, :], X[n_train:, :]
@@ -144,7 +144,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 由于问题是多类的，我们将使用分类交叉熵损失函数来优化模型和随机梯度下降的有效[亚当味](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(50, input_dim=2, activation='relu'))
@@ -154,14 +154,14 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 
 该模型适合 50 个训练时期，我们将在测试集上评估每个时期的模型，使用测试集作为验证集。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=50, verbose=0)
 ```
 
 在运行结束时，我们将评估模型在列车和测试集上的性能。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -170,7 +170,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 最后，我们将在训练和测试数据集上绘制每个训练时期的模型精度的学习曲线。
 
-```
+```py
 # plot history
 pyplot.plot(history.history['accuracy'], label='train')
 pyplot.plot(history.history['val_accuracy'], label='test')
@@ -180,7 +180,7 @@ pyplot.show()
 
 下面列出了完整的示例。
 
-```
+```py
 # develop an mlp for blobs dataset
 from sklearn.datasets import make_blobs
 from keras.utils import to_categorical
@@ -221,7 +221,7 @@ pyplot.show()
 
 选择将数据集分成训练集和测试集意味着测试集很小，不能代表更广泛的问题。反过来，测试集上的性能不代表模型；在这种情况下，它是乐观的偏见。
 
-```
+```py
 Train: 0.830, Test: 0.860
 ```
 
@@ -245,7 +245,7 @@ Train: 0.830, Test: 0.860
 
 这个额外的数据集不是测试数据集。从技术上讲，这是为了演示的目的，但我们假装在模型训练时无法获得这些数据。
 
-```
+```py
 # generate 2d classification dataset
 dataX, datay = make_blobs(n_samples=55000, centers=3, n_features=2, cluster_std=2, random_state=2)
 X, newX = dataX[:5000, :], dataX[5000:, :]
@@ -256,7 +256,7 @@ y, newy = datay[:5000], datay[5000:]
 
 接下来，我们需要一个函数来拟合和评估训练数据集上的单个模型，并返回拟合模型在测试数据集上的性能。我们还需要合适的模型，这样我们就可以把它作为一个整体的一部分。下面的 evaluate_model()函数实现了这种行为。
 
-```
+```py
 # evaluate a single mlp model
 def evaluate_model(trainX, trainy, testX, testy):
 	# encode targets
@@ -282,7 +282,7 @@ def evaluate_model(trainX, trainy, testX, testy):
 
 在本例中，我们将限制拆分的数量，并依次将拟合模型的数量限制为 10 个。
 
-```
+```py
 # multiple train-test splits
 n_splits = 10
 scores, members = list(), list()
@@ -298,7 +298,7 @@ for _ in range(n_splits):
 
 在拟合和评估模型之后，我们可以使用为域选择的配置来估计给定模型的预期性能。
 
-```
+```py
 # summarize expected performance
 print('Estimated Accuracy %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
@@ -309,7 +309,7 @@ print('Estimated Accuracy %.3f (%.3f)' % (mean(scores), std(scores)))
 
 我们还可以评估保持数据集上的每个模型，并计算这些分数的平均值，以更好地近似所选模型在预测问题上的真实性能。
 
-```
+```py
 # evaluate different numbers of ensembles on hold out set
 single_scores, ensemble_scores = list(), list()
 for i in range(1, n_splits+1):
@@ -323,7 +323,7 @@ for i in range(1, n_splits+1):
 
 最后，我们可以比较和计算平均模型在预测问题上的总体性能的更稳健的估计，然后在保持数据集上绘制集成大小对精度的性能。
 
-```
+```py
 # plot score vs number of ensemble members
 print('Accuracy %.3f (%.3f)' % (mean(single_scores), std(single_scores)))
 x_axis = [i for i in range(1, n_splits+1)]
@@ -334,7 +334,7 @@ pyplot.show()
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # random-splits mlp ensemble on blobs dataset
 from sklearn.datasets import make_blobs
 from sklearn.model_selection import train_test_split
@@ -423,7 +423,7 @@ pyplot.show()
 
 根据这些分数，我们估计数据集上的平均模型拟合将达到约 83%的精度，标准偏差约为 1.9%。
 
-```
+```py
 >0.816
 >0.836
 >0.818
@@ -443,7 +443,7 @@ Estimated Accuracy 0.832 (0.019)
 
 从这些分数中，我们可以看出，平均模型在这个问题上的性能的更准确估计约为 82%，并且估计的性能是乐观的。
 
-```
+```py
 > 1: single=0.821, ensemble=0.821
 > 2: single=0.821, ensemble=0.820
 > 3: single=0.820, ensemble=0.820
@@ -487,7 +487,7 @@ Accuracy 0.820 (0.000)
 
 我们可以使用 scikit 中的 [KFold 类](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html)-学会将数据集拆分成 k 个折叠。它将拆分的次数、是否对样本进行混洗以及混洗前使用的伪随机数发生器的种子作为参数。
 
-```
+```py
 # prepare the k-fold cross-validation configuration
 n_folds = 10
 kfold = KFold(n_folds, True, 1)
@@ -495,7 +495,7 @@ kfold = KFold(n_folds, True, 1)
 
 一旦类被实例化，它就可以被枚举，以将索引的每个分割部分放入训练集和测试集的数据集中。
 
-```
+```py
 # cross validation estimation of performance
 scores, members = list(), list()
 for train_ix, test_ix in kfold.split(X):
@@ -511,7 +511,7 @@ for train_ix, test_ix in kfold.split(X):
 
 一旦计算出每个折叠的得分，得分的平均值就可以用来报告该方法的预期性能。
 
-```
+```py
 # summarize expected performance
 print('Estimated Accuracy %.3f (%.3f)' % (mean(scores), std(scores)))
 ```
@@ -520,7 +520,7 @@ print('Estimated Accuracy %.3f (%.3f)' % (mean(scores), std(scores)))
 
 下面列出了分析交叉验证集成的完整示例。
 
-```
+```py
 # cross-validation mlp ensemble on blobs dataset
 from sklearn.datasets import make_blobs
 from sklearn.model_selection import KFold
@@ -614,7 +614,7 @@ pyplot.show()
 
 据报道，这些模型的平均性能约为 82%，这似乎不如前一节中使用的随机拆分方法乐观。
 
-```
+```py
 >0.834
 >0.870
 >0.818
@@ -632,7 +632,7 @@ Estimated Accuracy 0.827 (0.018)
 
 这些分数的平均值也约为 82%，这突出表明，至少在这种情况下，对模型总体性能的交叉验证估计是合理的。
 
-```
+```py
 > 1: single=0.819, ensemble=0.819
 > 2: single=0.820, ensemble=0.820
 > 3: single=0.820, ensemble=0.820
@@ -680,7 +680,7 @@ Accuracy 0.820 (0.001)
 
 样本的大小将为 4，500，即 90%的数据，尽管在使用重采样的情况下，测试集可能大于 10%，但可能有 500 多个示例未被选择。
 
-```
+```py
 # multiple train-test splits
 n_splits = 10
 scores, members = list(), list()
@@ -707,7 +707,7 @@ for _ in range(n_splits):
 
 下面列出了使用多层感知器评估模型性能和集成学习的自举聚合的完整示例。
 
-```
+```py
 # bagging mlp ensemble on blobs dataset
 from sklearn.datasets import make_blobs
 from sklearn.utils import resample
@@ -803,7 +803,7 @@ pyplot.show()
 
 我们可以看到，在这种情况下，模型的预期性能不如随机训练测试分割乐观，可能与 k 倍交叉验证的发现非常相似。
 
-```
+```py
 >0.829
 >0.820
 >0.830
@@ -821,7 +821,7 @@ Estimated Accuracy 0.825 (0.006)
 
 考虑到用自举代替抽样引入的偏差，这是可以预期的。
 
-```
+```py
 > 1: single=0.819, ensemble=0.819
 > 2: single=0.818, ensemble=0.820
 > 3: single=0.820, ensemble=0.820

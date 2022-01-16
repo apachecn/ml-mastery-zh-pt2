@@ -57,19 +57,19 @@
 
 您可以通过键入以下命令从此库中加载数据集:
 
-```
+```py
 data(DataSetName)
 ```
 
 例如，要加载非常常用的虹膜数据集:
 
-```
+```py
 data(iris)
 ```
 
 要查看此库中可用数据集的列表，您可以键入:
 
-```
+```py
 # list all datasets in the package
 library(help = "datasets")
 ```
@@ -86,7 +86,7 @@ library(help = "datasets")
 *   UCI 机器学习知识库:[描述](https://archive.ics.uci.edu/ml/datasets/Iris)
 *   公布的准确度结果:[汇总](http://www.is.umk.pl/projects/rules.html#Iris)
 
-```
+```py
 # iris flowers datasets
 data(iris)
 dim(iris)
@@ -96,7 +96,7 @@ head(iris)
 
 您将看到:
 
-```
+```py
   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 1          5.1         3.5          1.4         0.2  setosa
 2          4.9         3.0          1.4         0.2  setosa
@@ -114,7 +114,7 @@ head(iris)
 *   输入:数字
 *   输出:数字
 
-```
+```py
 # Longley's Economic Regression Data
 data(longley)
 dim(longley)
@@ -123,7 +123,7 @@ head(longley)
 
 您将看到:
 
-```
+```py
      GNP.deflator     GNP Unemployed Armed.Forces Population Year Employed
 1947         83.0 234.289      235.6        159.0    107.608 1947   60.323
 1948         88.5 259.426      232.5        145.6    108.632 1948   61.122
@@ -148,20 +148,20 @@ head(longley)
 
 如果未安装，您可以按如下方式安装此库:
 
-```
+```py
 install.packages("mlbench")
 ```
 
 您可以按如下方式加载库:
 
-```
+```py
 # load the library
 library(mlbench)
 ```
 
 要查看此库中可用数据集的列表，您可以键入:
 
-```
+```py
 # list the contents of the library
 library(help = "mlbench")
 ```
@@ -177,7 +177,7 @@ library(help = "mlbench")
 *   输出:数字
 *   UCI 机器学习知识库:[描述](https://archive.ics.uci.edu/ml/datasets/Housing)
 
-```
+```py
 # Boston Housing Data
 data(BostonHousing)
 dim(BostonHousing)
@@ -186,7 +186,7 @@ head(BostonHousing)
 
 您将看到:
 
-```
+```py
      crim zn indus chas   nox    rm  age    dis rad tax ptratio      b lstat medv
 1 0.00632 18  2.31    0 0.538 6.575 65.2 4.0900   1 296    15.3 396.90  4.98 24.0
 2 0.02731  0  7.07    0 0.469 6.421 78.9 4.9671   2 242    17.8 396.90  9.14 21.6
@@ -206,7 +206,7 @@ head(BostonHousing)
 *   UCI 机器学习知识库:[描述](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Original))
 *   公布的准确度结果:[汇总](http://www.is.umk.pl/projects/datasets.html#Wisconsin)
 
-```
+```py
 # Wisconsin Breast Cancer Database
 data(BreastCancer)
 dim(BreastCancer)
@@ -216,7 +216,7 @@ head(BreastCancer)
 
 您将看到:
 
-```
+```py
        Id Cl.thickness Cell.size Cell.shape Marg.adhesion Epith.c.size Bare.nuclei Bl.cromatin Normal.nucleoli Mitoses     Class
 1 1000025            5         1          1             1            2           1           3               1       1    benign
 2 1002945            5         4          4             5            7          10           3               2       1    benign
@@ -236,7 +236,7 @@ head(BreastCancer)
 *   UCI 机器学习知识库:[描述](https://archive.ics.uci.edu/ml/datasets/Glass+Identification)
 *   公布的准确度结果:[汇总](http://www.is.umk.pl/projects/datasets.html#Other)
 
-```
+```py
 # Glass Identification Database
 data(Glass)
 dim(Glass)
@@ -246,7 +246,7 @@ head(Glass)
 
 您将看到:
 
-```
+```py
        RI    Na   Mg   Al    Si    K   Ca Ba   Fe Type
 1 1.52101 13.64 4.49 1.10 71.78 0.06 8.75  0 0.00    1
 2 1.51761 13.89 3.60 1.36 72.73 0.48 7.83  0 0.00    1
@@ -266,7 +266,7 @@ head(Glass)
 *   UCI 机器学习知识库:[描述](https://archive.ics.uci.edu/ml/datasets/Ionosphere)
 *   公布的准确度结果:[汇总](http://www.is.umk.pl/projects/datasets.html#Ionosphere)
 
-```
+```py
 # Johns Hopkins University Ionosphere database
 data(Ionosphere)
 dim(Ionosphere)
@@ -276,7 +276,7 @@ head(Ionosphere)
 
 您将看到:
 
-```
+```py
   V1 V2      V3       V4       V5       V6       V7       V8      V9      V10     V11      V12     V13      V14      V15      V16      V17      V18      V19
 1  1  0 0.99539 -0.05889  0.85243  0.02306  0.83398 -0.37708 1.00000  0.03760 0.85243 -0.17755 0.59755 -0.44945  0.60536 -0.38223  0.84356 -0.38542  0.58212
 2  1  0 1.00000 -0.18829  0.93035 -0.36156 -0.10868 -0.93597 1.00000 -0.04549 0.50874 -0.67743 0.34432 -0.69707 -0.51685 -0.97515  0.05499 -0.62237  0.33109
@@ -303,7 +303,7 @@ head(Ionosphere)
 *   数据集详情:[描述](https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.names)
 *   公布的准确度结果:[汇总](http://www.is.umk.pl/projects/datasets.html#Diabetes)
 
-```
+```py
 # Pima Indians Diabetes Database
 data(PimaIndiansDiabetes)
 dim(PimaIndiansDiabetes)
@@ -313,7 +313,7 @@ head(PimaIndiansDiabetes)
 
 您将看到:
 
-```
+```py
   pregnant glucose pressure triceps insulin mass pedigree age diabetes
 1        6     148       72      35       0 33.6    0.627  50      pos
 2        1      85       66      29       0 26.6    0.351  31      neg
@@ -333,7 +333,7 @@ head(PimaIndiansDiabetes)
 *   UCI 机器学习知识库:[描述](https://archive.ics.uci.edu/ml/datasets/Connectionist+Bench+(Sonar,+Mines+vs.+Rocks))
 *   公布的准确度结果:[汇总](http://www.is.umk.pl/projects/datasets.html#Sonar)
 
-```
+```py
 # Sonar, Mines vs. Rocks
 data(Sonar)
 dim(Sonar)
@@ -343,7 +343,7 @@ head(Sonar)
 
 您将看到:
 
-```
+```py
       V1     V2     V3     V4     V5     V6     V7     V8     V9    V10    V11    V12    V13    V14    V15    V16    V17    V18    V19    V20    V21    V22
 1 0.0200 0.0371 0.0428 0.0207 0.0954 0.0986 0.1539 0.1601 0.3109 0.2111 0.1609 0.1582 0.2238 0.0645 0.0660 0.2273 0.3100 0.2999 0.5078 0.4797 0.5783 0.5071
 2 0.0453 0.0523 0.0843 0.0689 0.1183 0.2583 0.2156 0.3481 0.3337 0.2872 0.4918 0.6552 0.6919 0.7797 0.7464 0.9444 1.0000 0.8874 0.8024 0.7818 0.5212 0.4052
@@ -376,7 +376,7 @@ head(Sonar)
 *   输出:分类，19 个类别标签
 *   UCI 机器学习知识库:[描述](https://archive.ics.uci.edu/ml/datasets/Soybean+%28Large%29)
 
-```
+```py
 # Soybean Database
 data(Soybean)
 dim(Soybean)
@@ -386,7 +386,7 @@ head(Soybean)
 
 您将看到:
 
-```
+```py
                   Class date plant.stand precip temp hail crop.hist area.dam sever seed.tmt germ plant.growth leaves leaf.halo leaf.marg leaf.size leaf.shread
 1 diaporthe-stem-canker    6           0      2    1    0         1        1     1        0    0            1      1         0         2         2           0
 2 diaporthe-stem-canker    4           0      2    1    0         2        0     2        1    1            1      1         0         2         2           0
@@ -423,20 +423,20 @@ head(Soybean)
 
 如果未安装，您可以按如下方式安装此库:
 
-```
+```py
 install.packages("AppliedPredictiveModeling")
 ```
 
 您可以按如下方式加载库:
 
-```
+```py
 # load the library
 library(AppliedPredictiveModeling)
 ```
 
 要查看此库中可用数据集的列表，您可以键入:
 
-```
+```py
 # list the contents of the library
 library(help = "AppliedPredictiveModeling")
 ```
@@ -452,7 +452,7 @@ library(help = "AppliedPredictiveModeling")
 *   输出:整数
 *   UCI 机器学习知识库:[描述](https://archive.ics.uci.edu/ml/datasets/Abalone)
 
-```
+```py
 # Abalone Data
 data(abalone)
 dim(abalone)
@@ -461,7 +461,7 @@ head(abalone)
 
 您将看到:
 
-```
+```py
   Type LongestShell Diameter Height WholeWeight ShuckedWeight VisceraWeight ShellWeight Rings
 1    M        0.455    0.365  0.095      0.5140        0.2245        0.1010       0.150    15
 2    M        0.350    0.265  0.090      0.2255        0.0995        0.0485       0.070     7

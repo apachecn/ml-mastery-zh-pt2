@@ -97,7 +97,7 @@
 
 例如，我们可以用两个系综成员定义一个加权平均系综进行分类，如下所示:
 
-```
+```py
 ...
 # define the models in the ensemble
 models = [('lr',LogisticRegression()),('svm',SVC())]
@@ -109,7 +109,7 @@ ensemble = VotingClassifier(estimators=models, weights=weights)
 
 此外，用于分类的投票集成提供了“投票”参数，该参数在计算用于预测的加权和时，支持用于组合清晰类标签的硬投票(‘T0’硬【T1’)和用于组合类概率的软投票(‘T2’软【T3’)；例如:
 
-```
+```py
 ...
 # define the models in the ensemble
 models = [('lr',LogisticRegression()),('svm',SVC())]
@@ -131,7 +131,7 @@ ensemble = VotingClassifier(estimators=models, weights=weights, voting='soft')
 
 下面列出了完整的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -142,7 +142,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (10000, 20) (10000,)
 ```
 
@@ -150,7 +150,7 @@ print(X.shape, y.shape)
 
 首先，我们将数据集分割成 50-50 分割的训练集和测试集。然后，我们将整个训练集分成训练模型的子集和验证的子集。
 
-```
+```py
 ...
 # split dataset into train and test sets
 X_train_full, X_test, y_train_full, y_test = train_test_split(X, y, test_size=0.50, random_state=1)
@@ -160,7 +160,7 @@ X_train, X_val, y_train, y_val = train_test_split(X_train_full, y_train_full, te
 
 接下来，我们将定义一个函数来创建一个在集合中使用的模型列表。在这种情况下，我们将使用不同的分类模型集合，包括逻辑回归、决策树和[朴素贝叶斯](https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/)。
 
-```
+```py
 # get a list of base models
 def get_models():
 	models = list()
@@ -178,7 +178,7 @@ def get_models():
 
 下面的 *evaluate_models()* 函数实现了这一点，返回每个模型的性能。
 
-```
+```py
 # evaluate each base model
 def evaluate_models(models, X_train, X_val, y_train, y_val):
 	# fit and evaluate the models
@@ -197,7 +197,7 @@ def evaluate_models(models, X_train, X_val, y_train, y_val):
 
 然后，我们可以调用这个函数来获得分数，并将它们用作集合的权重。
 
-```
+```py
 ...
 # fit and evaluate each model
 scores = evaluate_models(models, X_train, X_val, y_train, y_val)
@@ -207,7 +207,7 @@ ensemble = VotingClassifier(estimators=models, voting='soft', weights=scores)
 
 然后，我们可以在完整的训练数据集上拟合集合，并在保持测试集上对其进行评估。
 
-```
+```py
 ...
 # fit the ensemble on the training dataset
 ensemble.fit(X_train, y_train)
@@ -220,7 +220,7 @@ print('Weighted Avg Accuracy: %.3f' % (score*100))
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # evaluate a weighted average ensemble for classification
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -281,7 +281,7 @@ print('Weighted Avg Accuracy: %.3f' % (score*100))
 
 在这种情况下，我们可以看到投票集成实现了大约 90.960%的分类准确率。
 
-```
+```py
 [0.8896969696969697, 0.8575757575757575, 0.8812121212121212]
 Weighted Avg Accuracy: 90.960
 ```
@@ -290,7 +290,7 @@ Weighted Avg Accuracy: 90.960
 
 我们可以更新示例，并添加对每个独立模型的评估，以便进行比较。
 
-```
+```py
 ...
 # evaluate each standalone model
 scores = evaluate_models(models, X_train_full, X_test, y_train_full, y_test)
@@ -302,7 +302,7 @@ for i in range(len(models)):
 
 这也可以通过显式评估投票集合来检查。
 
-```
+```py
 ...
 # evaluate equal weighting
 ensemble = VotingClassifier(estimators=models, voting='soft')
@@ -314,7 +314,7 @@ print('Voting Accuracy: %.3f' % (score*100))
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # evaluate a weighted average ensemble for classification compared to base model
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -387,7 +387,7 @@ print('Voting Accuracy: %.3f' % (score*100))
 
 我们还可以看到，等权重集成(投票)获得了大约 90.620%的准确率，这低于获得略高的 90.760%准确率的加权集成。
 
-```
+```py
 [0.8896969696969697, 0.8703030303030304, 0.8812121212121212]
 Weighted Avg Accuracy: 90.760
 >lr: 87.800
@@ -406,7 +406,7 @@ Voting Accuracy: 90.620
 
 下面列出了完整的示例。
 
-```
+```py
 # test regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -417,7 +417,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (10000, 20) (10000,)
 ```
 
@@ -425,7 +425,7 @@ print(X.shape, y.shape)
 
 首先，我们可以将数据集分割成训练集和测试集，然后进一步将训练集分割成训练集和验证集，这样我们就可以估计每个贡献模型的性能。
 
-```
+```py
 ...
 # split dataset into train and test sets
 X_train_full, X_test, y_train_full, y_test = train_test_split(X, y, test_size=0.50, random_state=1)
@@ -435,7 +435,7 @@ X_train, X_val, y_train, y_val = train_test_split(X_train_full, y_train_full, te
 
 我们可以定义在集合中使用的模型列表。在这种情况下，我们将使用 k 近邻、决策树和支持向量回归。
 
-```
+```py
 # get a list of base models
 def get_models():
 	models = list()
@@ -449,7 +449,7 @@ def get_models():
 
 我们将使用负的 MAE 分数作为权重，其中接近零的大误差值表示更好的模型性能。
 
-```
+```py
 # evaluate each base model
 def evaluate_models(models, X_train, X_val, y_train, y_val):
 	# fit and evaluate the models
@@ -468,7 +468,7 @@ def evaluate_models(models, X_train, X_val, y_train, y_val):
 
 然后，我们可以调用这个函数来获得分数，并使用它们来定义回归的加权平均集合。
 
-```
+```py
 ...
 # fit and evaluate each model
 scores = evaluate_models(models, X_train, X_val, y_train, y_val)
@@ -479,7 +479,7 @@ ensemble = VotingRegressor(estimators=models, weights=scores)
 
 然后，我们可以在整个训练数据集上拟合集合，并在保持测试数据集上评估性能。
 
-```
+```py
 ...
 # fit the ensemble on the training dataset
 ensemble.fit(X_train_full, y_train_full)
@@ -492,7 +492,7 @@ print('Weighted Avg MAE: %.3f' % (score))
 
 我们期望集成比任何贡献的集成成员表现得更好，这可以通过独立评估完整列车和测试集上的每个成员模型来直接检查。
 
-```
+```py
 ...
 # evaluate each standalone model
 scores = evaluate_models(models, X_train_full, X_test, y_train_full, y_test)
@@ -502,7 +502,7 @@ for i in range(len(models)):
 
 最后，我们还期望加权平均集成比具有相同权重的相同集成表现得更好。这也是可以证实的。
 
-```
+```py
 ...
 # evaluate equal weighting
 ensemble = VotingRegressor(estimators=models)
@@ -514,7 +514,7 @@ print('Voting MAE: %.3f' % (score))
 
 将这些联系在一起，下面列出了评估回归的加权平均集合的完整示例。
 
-```
+```py
 # evaluate a weighted average ensemble for regression
 from sklearn.datasets import make_regression
 from sklearn.model_selection import train_test_split
@@ -585,7 +585,7 @@ print('Voting MAE: %.3f' % (score))
 
 在这种情况下，我们可以看到加权平均系综实现了大约 105.158 的平均绝对误差，这比实现了大约 100.169 的误差的独立 kNN 模型更差(大误差)。我们还可以看到，假设每个模型权重相等的投票集成也比加权平均集成表现更好，误差约为 102.706。
 
-```
+```py
 [-101.97000126284476, -142.26014983127837, -153.9765827528269]
 Weighted Avg MAE: 105.158
 >knn: -100.169
@@ -616,7 +616,7 @@ argsort 函数返回数组中已排序的值的索引。所以，如果我们有
 
 我们可以用下面列出的一个小例子来说明这一点。
 
-```
+```py
 # demonstrate argsort
 from numpy import argsort
 # data
@@ -632,7 +632,7 @@ print(argsort(argsort(x)))
 
 结果与我们的手动计算相匹配。
 
-```
+```py
 [300, 100, 200]
 [1 2 0]
 [2 0 1]
@@ -642,7 +642,7 @@ print(argsort(argsort(x)))
 
 同样，我们可以用一个工作实例来证实这一点。
 
-```
+```py
 # demonstrate argsort with negative scores
 from numpy import argsort
 # data
@@ -658,7 +658,7 @@ print(argsort(argsort(x)))
 
 得分的 argsort 的 argsort 显示最佳模型获得最高等级(最多票数)值为 2，最差模型获得最低等级(最少票数)值为 0。
 
-```
+```py
 [-10, -100, -80]
 [1 2 0]
 [2 0 1]
@@ -668,7 +668,7 @@ print(argsort(argsort(x)))
 
 在计算分数之后，我们可以计算模型分数的 argsort 的 argsort 来给出排名。然后使用模型排名作为加权平均集成的模型权重。
 
-```
+```py
 ...
 # fit and evaluate each model
 scores = evaluate_models(models, X_train, X_val, y_train, y_val)
@@ -681,7 +681,7 @@ ensemble = VotingRegressor(estimators=models, weights=ranking)
 
 将这些联系在一起，下面列出了用于回归的加权平均集合的完整示例，模型排名用作模型权重。
 
-```
+```py
 # evaluate a weighted average ensemble for regression with rankings for model weights
 from numpy import argsort
 from sklearn.datasets import make_regression
@@ -757,7 +757,7 @@ print('Voting MAE: %.3f' % (score))
 
 这突出了探索在集合中选择模型权重的替代方法的重要性。
 
-```
+```py
 [-101.97000126284476, -141.51998518020065, -153.9765827528269]
 [3 2 1]
 Weighted Avg MAE: 96.692

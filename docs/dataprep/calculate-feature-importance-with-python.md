@@ -99,7 +99,7 @@
 
 您可以使用下面的代码示例检查已安装的库的版本:
 
-```
+```py
 # check scikit-learn version
 import sklearn
 print(sklearn.__version__)
@@ -109,7 +109,7 @@ print(sklearn.__version__)
 
 您需要使用 scikit-learn 或更高版本。
 
-```
+```py
 0.22.1
 ```
 
@@ -127,7 +127,7 @@ print(sklearn.__version__)
 
 下面列出了创建和汇总数据集的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -138,7 +138,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集，并确认样本和要素的预期数量。
 
-```
+```py
 (1000, 10) (1000,)
 ```
 
@@ -148,7 +148,7 @@ print(X.shape, y.shape)
 
 与分类数据集一样，回归数据集将有 1，000 个示例，有 10 个输入要素，其中 5 个是信息性的，其余 5 个是冗余的。
 
-```
+```py
 # test regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -159,7 +159,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集，并确认样本和要素的预期数量。
 
-```
+```py
 (1000, 10) (1000,)
 ```
 
@@ -183,7 +183,7 @@ print(X.shape, y.shape)
 
 下面列出了特征重要性的线性回归系数的完整示例。
 
-```
+```py
 # linear regression feature importance
 from sklearn.datasets import make_regression
 from sklearn.linear_model import LinearRegression
@@ -210,7 +210,7 @@ pyplot.show()
 
 这些分数表明，该模型找到了五个重要的特征，并用零系数标记了所有其他特征，基本上将它们从模型中移除。
 
-```
+```py
 Feature: 0, Score: 0.00000
 Feature: 1, Score: 12.44483
 Feature: 2, Score: -0.00000
@@ -239,7 +239,7 @@ Feature: 9, Score: 0.00000
 
 下面列出了特征重要性的逻辑回归系数的完整示例。
 
-```
+```py
 # logistic regression for feature importance
 from sklearn.datasets import make_classification
 from sklearn.linear_model import LogisticRegression
@@ -268,7 +268,7 @@ pyplot.show()
 
 从这些结果中，没有明确的重要和不重要的特征模式可以被识别，至少从我所能告诉的来看。
 
-```
+```py
 Feature: 0, Score: 0.16320
 Feature: 1, Score: -0.64301
 Feature: 2, Score: 0.48497
@@ -309,7 +309,7 @@ Feature: 9, Score: 0.26540
 
 下面列出了拟合[决策树回归器](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html)并汇总计算出的特征重要性分数的完整示例。
 
-```
+```py
 # decision tree for feature importance on a regression problem
 from sklearn.datasets import make_regression
 from sklearn.tree import DecisionTreeRegressor
@@ -336,7 +336,7 @@ pyplot.show()
 
 结果表明，10 个特征中可能有 3 个对预测很重要。
 
-```
+```py
 Feature: 0, Score: 0.00294
 Feature: 1, Score: 0.00502
 Feature: 2, Score: 0.00318
@@ -359,7 +359,7 @@ Feature: 9, Score: 0.00106
 
 下面列出了拟合[决策树分类器](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)并汇总计算出的特征重要性分数的完整示例。
 
-```
+```py
 # decision tree for feature importance on a classification problem
 from sklearn.datasets import make_classification
 from sklearn.tree import DecisionTreeClassifier
@@ -386,7 +386,7 @@ pyplot.show()
 
 结果表明，10 个特征中可能有 4 个对预测很重要。
 
-```
+```py
 Feature: 0, Score: 0.01486
 Feature: 1, Score: 0.01029
 Feature: 2, Score: 0.18347
@@ -419,7 +419,7 @@ Feature: 9, Score: 0.04745
 
 下面列出了拟合一个[随机森林回归器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)并总结计算出的特征重要性分数的完整示例。
 
-```
+```py
 # random forest for feature importance on a regression problem
 from sklearn.datasets import make_regression
 from sklearn.ensemble import RandomForestRegressor
@@ -446,7 +446,7 @@ pyplot.show()
 
 结果表明，10 个特征中可能有两三个对预测很重要。
 
-```
+```py
 Feature: 0, Score: 0.00280
 Feature: 1, Score: 0.00545
 Feature: 2, Score: 0.00294
@@ -469,7 +469,7 @@ Feature: 9, Score: 0.00283
 
 下面列出了拟合一个[随机森林分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)并总结计算出的特征重要性分数的完整例子。
 
-```
+```py
 # random forest for feature importance on a classification problem
 from sklearn.datasets import make_classification
 from sklearn.ensemble import RandomForestClassifier
@@ -496,7 +496,7 @@ pyplot.show()
 
 结果表明，10 个特征中可能有两三个对预测很重要。
 
-```
+```py
 Feature: 0, Score: 0.06523
 Feature: 1, Score: 0.10737
 Feature: 2, Score: 0.15779
@@ -527,13 +527,13 @@ XGBoost 是一个库，它提供了随机梯度提升算法的高效和有效的
 
 首先，安装 XGBoost 库，比如用 pip:
 
-```
+```py
 sudo pip install xgboost
 ```
 
 然后，通过检查版本号来确认库安装正确并且工作正常。
 
-```
+```py
 # check xgboost version
 import xgboost
 print(xgboost.__version__)
@@ -541,7 +541,7 @@ print(xgboost.__version__)
 
 运行该示例时，您应该会看到以下版本号或更高版本号。
 
-```
+```py
 0.90
 ```
 
@@ -555,7 +555,7 @@ print(xgboost.__version__)
 
 下面列出了拟合一个[xgbrevoller](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBRegressor)并汇总计算出的特征重要性分数的完整示例。
 
-```
+```py
 # xgboost for feature importance on a regression problem
 from sklearn.datasets import make_regression
 from xgboost import XGBRegressor
@@ -582,7 +582,7 @@ pyplot.show()
 
 结果表明，10 个特征中可能有两三个对预测很重要。
 
-```
+```py
 Feature: 0, Score: 0.00060
 Feature: 1, Score: 0.01917
 Feature: 2, Score: 0.00091
@@ -605,7 +605,7 @@ XGBRegressor 特征重要性分数条形图
 
 下面列出了拟合一个 [XGBClassifier](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBRFClassifier) 并汇总计算出的特征重要性分数的完整示例。
 
-```
+```py
 # xgboost for feature importance on a classification problem
 from sklearn.datasets import make_classification
 from xgboost import XGBClassifier
@@ -632,7 +632,7 @@ pyplot.show()
 
 结果表明，10 个特征中可能有 7 个对预测很重要。
 
-```
+```py
 Feature: 0, Score: 0.02464
 Feature: 1, Score: 0.08153
 Feature: 2, Score: 0.12516
@@ -667,7 +667,7 @@ Feature: 9, Score: 0.02220
 
 下面列出了拟合一个[kneighborsrgressor](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html)并总结计算出的排列特征重要性分数的完整示例。
 
-```
+```py
 # permutation feature importance with knn for regression
 from sklearn.datasets import make_regression
 from sklearn.neighbors import KNeighborsRegressor
@@ -697,7 +697,7 @@ pyplot.show()
 
 结果表明，10 个特征中可能有两三个对预测很重要。
 
-```
+```py
 Feature: 0, Score: 175.52007
 Feature: 1, Score: 345.80170
 Feature: 2, Score: 126.60578
@@ -720,7 +720,7 @@ Feature: 9, Score: 84.94768
 
 下面列出了拟合一个[kneighborscclassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)并汇总计算出的排列特征重要性分数的完整示例。
 
-```
+```py
 # permutation feature importance with knn for classification
 from sklearn.datasets import make_classification
 from sklearn.neighbors import KNeighborsClassifier
@@ -750,7 +750,7 @@ pyplot.show()
 
 结果表明，10 个特征中可能有两三个对预测很重要。
 
-```
+```py
 Feature: 0, Score: 0.04760
 Feature: 1, Score: 0.06680
 Feature: 2, Score: 0.05240
@@ -783,7 +783,7 @@ Feature: 9, Score: 0.03080
 
 下面列出了使用所有特征作为合成数据集输入来评估逻辑回归模型的完整示例。
 
-```
+```py
 # evaluation of a model using all features
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -809,7 +809,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 在这种情况下，我们可以看到模型使用数据集中的所有特征实现了大约 84.55%的分类准确率。
 
-```
+```py
 Accuracy: 84.55
 ```
 
@@ -819,7 +819,7 @@ Accuracy: 84.55
 
 我们可以使用 [SelectFromModel](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFromModel.html) 类来定义我们希望计算重要性分数的模型，在这种情况下是[随机森林分类器](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)，以及要选择的特征数量，在这种情况下是 5。
 
-```
+```py
 ...
 # configure to select a subset of features
 fs = SelectFromModel(RandomForestClassifier(n_estimators=200), max_features=5)
@@ -829,7 +829,7 @@ fs = SelectFromModel(RandomForestClassifier(n_estimators=200), max_features=5)
 
 这将计算可用于对所有输入要素进行排名的重要性分数。然后，我们可以将该方法应用为转换，从数据集中选择 5 个最重要特征的子集。该转换将应用于训练数据集和测试集。
 
-```
+```py
 ...
 # learn relationship from training data
 fs.fit(X_train, y_train)
@@ -841,7 +841,7 @@ X_test_fs = fs.transform(X_test)
 
 将所有这些结合起来，下面列出了使用随机森林特征重要性进行特征选择的完整示例。
 
-```
+```py
 # evaluation of a model using 5 features chosen with random forest importance
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -884,7 +884,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 在这种情况下，我们可以看到模型在数据集上实现了相同的性能，尽管输入要素的数量只有一半。不出所料，由随机森林计算的特征重要性分数使我们能够准确地对输入特征进行排名，并删除那些与目标变量无关的特征。
 
-```
+```py
 Accuracy: 84.55
 ```
 

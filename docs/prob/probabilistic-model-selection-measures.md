@@ -228,7 +228,7 @@ MDL 计算与 BIC 非常相似，在某些情况下可以显示为等效。
 
 在本例中，我们将使用[make _ returnalism()sci kit-learn 函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)提供的测试回归问题。该问题将有两个输入变量，需要预测目标数值。
 
-```
+```py
 ...
 # generate dataset
 X, y = make_regression(n_samples=100, n_features=2, noise=0.1)
@@ -237,7 +237,7 @@ X, y = make_regression(n_samples=100, n_features=2, noise=0.1)
 
 我们将在整个数据集上直接拟合一个[线性回归()模型](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)。
 
-```
+```py
 ...
 # define and fit the model on all data
 model = LinearRegression()
@@ -246,7 +246,7 @@ model.fit(X, y)
 
 一旦拟合，我们可以报告模型中的参数数量，给定问题的定义，我们期望是三个(两个系数和一个截距)。
 
-```
+```py
 ...
 # number of parameters
 num_params = len(model.coef_) + 1
@@ -257,7 +257,7 @@ print('Number of parameters: %d' % (num_params))
 
 首先，模型可用于估计训练数据集中每个示例的结果，然后[均方误差()scikit-learn 函数](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)可用于计算模型的均方误差。
 
-```
+```py
 ...
 # predict the training set
 yhat = model.predict(X)
@@ -268,7 +268,7 @@ print('MSE: %.3f' % mse)
 
 将所有这些结合在一起，下面列出了定义数据集、拟合模型以及报告模型的参数数量和最大似然估计的完整示例。
 
-```
+```py
 # generate a test dataset and fit a linear regression model
 from sklearn.datasets import make_regression
 from sklearn.linear_model import LinearRegression
@@ -292,7 +292,7 @@ print('MSE: %.3f' % mse)
 
 如我们所料，运行该示例首先报告模型中的参数数量为 3，然后报告 MSE 约为 0.01。
 
-```
+```py
 Number of parameters: 3
 MSE: 0.010
 ```
@@ -307,7 +307,7 @@ MSE: 0.010
 
 下面的 *calculate_aic()* 函数实现了这一点，以 *n* 、原始均方误差( *mse* )和 *k* 为参数。
 
-```
+```py
 # calculate aic for regression
 def calculate_aic(n, mse, num_params):
 	aic = n * log(mse) + 2 * num_params
@@ -318,7 +318,7 @@ def calculate_aic(n, mse, num_params):
 
 下面列出了完整的示例。
 
-```
+```py
 # calculate akaike information criterion for a linear regression model
 from math import log
 from sklearn.datasets import make_regression
@@ -354,7 +354,7 @@ print('AIC: %.3f' % aic)
 
 在这种情况下，据报道 AIC 值约为-451.616。为了选择更好的型号，该值可以最小化。
 
-```
+```py
 Number of parameters: 3
 MSE: 0.010
 AIC: -451.616
@@ -370,7 +370,7 @@ AIC: -451.616
 
 下面的 *calculate_bic()* 函数实现了这一点，以 *n* 、原始均方误差( *mse* )和 *k* 为参数。
 
-```
+```py
 # calculate bic for regression
 def calculate_bic(n, mse, num_params):
 	bic = n * log(mse) + num_params * log(n)
@@ -381,7 +381,7 @@ def calculate_bic(n, mse, num_params):
 
 下面列出了完整的示例。
 
-```
+```py
 # calculate bayesian information criterion for a linear regression model
 from math import log
 from sklearn.datasets import make_regression
@@ -417,7 +417,7 @@ print('BIC: %.3f' % bic)
 
 在这种情况下，据报道 BIC 值约为-450.020，非常接近-451.616 的 AIC 值。同样，为了选择更好的型号，该值可以最小化。
 
-```
+```py
 Number of parameters: 3
 MSE: 0.010
 BIC: -450.020

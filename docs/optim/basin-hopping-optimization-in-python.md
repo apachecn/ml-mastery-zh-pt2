@@ -71,7 +71,7 @@ Python 中的跳盆优化
 
 该函数采用要最小化的目标函数的名称和初始起点。
 
-```
+```py
 ...
 # perform the basin hopping search
 result = basinhopping(objective, pt)
@@ -81,7 +81,7 @@ result = basinhopping(objective, pt)
 
 这可以设置为数千次或更多次迭代。
 
-```
+```py
 ...
 # perform the basin hopping search
 result = basinhopping(objective, pt, niter=10000)
@@ -91,7 +91,7 @@ result = basinhopping(objective, pt, niter=10000)
 
 例如，如果搜索空间的合理界限是-100 到 100，那么 5.0 或 10.0 单位的步长可能是合适的(例如，域的 2.5%或 5%)。
 
-```
+```py
 ...
 # perform the basin hopping search
 result = basinhopping(objective, pt, stepsize=10.0)
@@ -101,7 +101,7 @@ result = basinhopping(objective, pt, stepsize=10.0)
 
 可以通过将“ *minimizer_kwargs* ”参数设置为一个目录，该目录的关键字为“ *method* ，该值作为要使用的本地搜索算法的名称，如“*内尔德-米德*”可以使用 SciPy 库提供的任何本地搜索算法。
 
-```
+```py
 ...
 # perform the basin hopping search
 result = basinhopping(objective, pt, minimizer_kwargs={'method':'nelder-mead'})
@@ -129,7 +129,7 @@ result = basinhopping(objective, pt, minimizer_kwargs={'method':'nelder-mead'})
 
 下面的示例实现了 Ackley，并创建了一个显示全局最优值和多个局部最优值的三维曲面图。
 
-```
+```py
 # ackley multimodal function
 from numpy import arange
 from numpy import exp
@@ -172,7 +172,7 @@ pyplot.show()
 
 在这种情况下，我们将使用从-5 到 5 之间的输入域中抽取的随机点开始搜索。
 
-```
+```py
 ...
 # define the starting point as a random sample from the domain
 pt = r_min + rand(2) * (r_max - r_min)
@@ -180,7 +180,7 @@ pt = r_min + rand(2) * (r_max - r_min)
 
 我们将使用 0.5 的步长，200 次迭代，以及默认的局部搜索算法。这种配置是经过反复试验后选择的。
 
-```
+```py
 ...
 # perform the basin hopping search
 result = basinhopping(objective, pt, stepsize=0.5, niter=200)
@@ -188,7 +188,7 @@ result = basinhopping(objective, pt, stepsize=0.5, niter=200)
 
 搜索完成后，它将报告搜索状态、执行的迭代次数以及通过评估找到的最佳结果。
 
-```
+```py
 ...
 # summarize the result
 print('Status : %s' % result['message'])
@@ -201,7 +201,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 将这些联系在一起，下面列出了将盆地跳跃应用于阿克利目标函数的完整示例。
 
-```
+```py
 # basin hopping global optimization for the ackley multimodal objective function
 from scipy.optimize import basinhopping
 from numpy.random import rand
@@ -239,7 +239,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 我们可以看到，算法的 200 次迭代导致了 86，020 次函数求值。
 
-```
+```py
 Status: ['requested number of basinhopping iterations completed successfully']
 Total Evaluations: 86020
 Solution: f([ 5.29778873e-10 -2.29022817e-10]) = 0.00000
@@ -255,7 +255,7 @@ Solution: f([ 5.29778873e-10 -2.29022817e-10]) = 0.00000
 
 下面的例子实现了 Himmelblau，并创建了一个三维表面图，以给出目标函数的直觉。
 
-```
+```py
 # himmelblau multimodal test function
 from numpy import arange
 from numpy import meshgrid
@@ -295,7 +295,7 @@ Himmelblau 多模态函数的三维表面图
 
 我们将使用 0.5 的步长，200 次迭代，以及默认的局部搜索算法。在搜索结束时，我们将报告最佳位置 optima 的输入，
 
-```
+```py
 # basin hopping global optimization for the himmelblau multimodal objective function
 from scipy.optimize import basinhopping
 from numpy.random import rand
@@ -326,7 +326,7 @@ print('Solution: f(%s) = %.5f' % (solution, evaluation))
 
 我们可以看到，算法的 200 次迭代导致了 7660 次函数求值。
 
-```
+```py
 Status : ['requested number of basinhopping iterations completed successfully']
 Total Evaluations: 7660
 Solution: f([3\. 1.99999999]) = 0.00000
@@ -336,7 +336,7 @@ Solution: f([3\. 1.99999999]) = 0.00000
 
 例如，在下面，我们可以看到一个 optima 位于大约[-2.805118，3.131312]，不同于之前的运行。
 
-```
+```py
 Status : ['requested number of basinhopping iterations completed successfully']
 Total Evaluations: 7636
 Solution: f([-2.80511809 3.13131252]) = 0.00000

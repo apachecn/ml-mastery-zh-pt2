@@ -67,7 +67,7 @@ Let’s get started.![How to Manually Optimize Neural Network Models](img/b8af55
 
 下面的示例创建数据集并总结数据的形状。
 
-```
+```py
 # define a binary classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -78,7 +78,7 @@ print(X.shape, y.shape)
 
 运行该示例会打印出创建的数据集的形状，这证实了我们的预期。
 
-```
+```py
 (1000, 5) (1000,)
 ```
 
@@ -96,7 +96,7 @@ print(X.shape, y.shape)
 
 下面的 *transfer()* 函数获取模型的激活，并返回一个类标签，类=1 表示正激活或零激活，类=0 表示负激活。这被称为阶跃传递函数。
 
-```
+```py
 # transfer function
 def transfer(activation):
 	if activation >= 0.0:
@@ -110,7 +110,7 @@ def transfer(activation):
 
 **注**:我们有意使用简单的 Python 列表和命令式编程风格，而不是 NumPy 数组或列表压缩，以使代码对 Python 初学者来说更具可读性。请随意优化它，并在下面的评论中发布您的代码。
 
-```
+```py
 # activation function
 def activate(row, weights):
 	# add the bias, the last weight
@@ -123,7 +123,7 @@ def activate(row, weights):
 
 接下来，我们可以一起使用 *activate()* 和 *transfer()* 函数来为给定的数据行生成预测。下面的 *predict_row()* 函数实现了这一点。
 
-```
+```py
 # use model weights to predict 0 or 1 for a given row of data
 def predict_row(row, weights):
 	# activate for input
@@ -136,7 +136,7 @@ def predict_row(row, weights):
 
 同样，为了可读性，我们有意使用简单的命令式编码风格，而不是列表压缩。
 
-```
+```py
 # use model weights to generate predictions for a dataset of rows
 def predict_dataset(X, weights):
 	yhats = list()
@@ -152,7 +152,7 @@ def predict_dataset(X, weights):
 
 回想一下，我们需要为每个输入(这个数据集中的五个输入)加上一个额外的偏置权重。
 
-```
+```py
 ...
 # define dataset
 X, y = make_classification(n_samples=1000, n_features=5, n_informative=2, n_redundant=1, random_state=1)
@@ -164,7 +164,7 @@ weights = rand(n_weights)
 
 然后，我们可以使用数据集的这些权重来进行预测。
 
-```
+```py
 ...
 # generate predictions for dataset
 yhat = predict_dataset(X, weights)
@@ -172,7 +172,7 @@ yhat = predict_dataset(X, weights)
 
 我们可以评估这些预测的分类准确性。
 
-```
+```py
 ...
 # calculate accuracy
 score = accuracy_score(y, yhat)
@@ -183,7 +183,7 @@ print(score)
 
 我们可以将所有这些联系在一起，并演示我们简单的用于分类的感知器模型。下面列出了完整的示例。
 
-```
+```py
 # simple perceptron model for binary classification
 from numpy.random import rand
 from sklearn.datasets import make_classification
@@ -238,7 +238,7 @@ print(score)
 
 在给定一组随机权重和每个类中具有相同数量示例的数据集的情况下，我们期望大约 50%的准确性，这大约是我们在本例中看到的。
 
-```
+```py
 0.548
 ```
 
@@ -248,7 +248,7 @@ print(score)
 
 我们将使用 67%的数据进行训练，剩下的 33%作为测试集来评估模型的性能。
 
-```
+```py
 ...
 # split into train test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
@@ -262,7 +262,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
 
 给定数据集和一组权重，下面的 *objective()* 函数实现了这一点，并返回模型的精度
 
-```
+```py
 # objective function
 def objective(X, y, weights):
 	# generate predictions for dataset
@@ -278,7 +278,7 @@ def objective(X, y, weights):
 
 下面的*爬山()*函数实现了这一点，将数据集、目标函数、初始解和超参数作为参数，并返回找到的最佳权重集和估计的性能。
 
-```
+```py
 # hill climbing local search algorithm
 def hillclimbing(X, y, objective, solution, n_iter, step_size):
 	# evaluate the initial point
@@ -300,7 +300,7 @@ def hillclimbing(X, y, objective, solution, n_iter, step_size):
 
 然后我们可以调用这个函数，传入一组权重作为初始解，将训练数据集作为数据集来优化模型。
 
-```
+```py
 ...
 # define the total iterations
 n_iter = 1000
@@ -318,7 +318,7 @@ print('f(%s) = %f' % (weights, score))
 
 最后，我们可以在测试数据集上评估最佳模型并报告性能。
 
-```
+```py
 ...
 # generate predictions for the test dataset
 yhat = predict_dataset(X_test, weights)
@@ -329,7 +329,7 @@ print('Test Accuracy: %.5f' % (score * 100))
 
 将这些联系在一起，下面列出了在合成二进制优化数据集上优化感知器模型权重的完整示例。
 
-```
+```py
 # hill climbing to optimize weights of a perceptron model for classification
 from numpy import asarray
 from numpy.random import randn
@@ -425,7 +425,7 @@ print('Test Accuracy: %.5f' % (score * 100))
 
 在这种情况下，我们可以看到优化算法找到了一组权重，在训练数据集上获得了大约 88.5%的准确率，在测试数据集上获得了大约 81.8%的准确率。
 
-```
+```py
 ...
 >111 0.88060
 >119 0.88060
@@ -463,7 +463,7 @@ Test Accuracy: 81.81818
 
 该函数输出 0-1 之间的实数值，表示[二项式概率分布](https://machinelearningmastery.com/discrete-probability-distributions-for-machine-learning/)，例如一个例子属于类=1 的概率。下面的*转移()*功能实现了这一点。
 
-```
+```py
 # transfer function
 def transfer(activation):
 	# sigmoid transfer function
@@ -484,7 +484,7 @@ def transfer(activation):
 
 下面的 *predict_row()* 函数实现了这一点。
 
-```
+```py
 # activation function for a network
 def predict_row(row, network):
 	inputs = row
@@ -510,7 +510,7 @@ def predict_row(row, network):
 
 例如，我们可以定义一个具有单个隐藏层和单个节点的 MLP，如下所示:
 
-```
+```py
 ...
 # create a one node network
 node = rand(n_inputs + 1)
@@ -522,7 +522,7 @@ network = [layer]
 
 让我们定义一个具有一个隐藏层和一个输出层的 MLP。第一个隐藏层将有 10 个节点，每个节点将从数据集获取输入模式(例如 5 个输入)。输出层将具有单个节点，该节点从第一隐藏层的输出中获取输入，然后输出预测。
 
-```
+```py
 ...
 # one hidden layer and an output layer
 n_hidden = 10
@@ -533,7 +533,7 @@ network = [hidden1, output1]
 
 然后，我们可以使用该模型对数据集进行预测。
 
-```
+```py
 ...
 # generate predictions for dataset
 yhat = predict_dataset(X, network)
@@ -541,7 +541,7 @@ yhat = predict_dataset(X, network)
 
 在计算分类精度之前，我们必须将预测四舍五入到类别标签 0 和 1。
 
-```
+```py
 ...
 # round the predictions
 yhat = [round(y) for y in yhat]
@@ -552,7 +552,7 @@ print(score)
 
 将所有这些联系在一起，下面列出了在我们的合成二进制分类数据集上用随机初始权重评估 MLP 的完整示例。
 
-```
+```py
 # develop an mlp model for classification
 from math import exp
 from numpy.random import rand
@@ -623,7 +623,7 @@ print(score)
 
 同样，在给定一组随机权重和每个类中具有相同数量示例的数据集的情况下，我们期望大约 50%的准确性，这大约是我们在本例中看到的。
 
-```
+```py
 0.499
 ```
 
@@ -635,7 +635,7 @@ print(score)
 
 下面的*步骤()*功能实现了这一点。
 
-```
+```py
 # take a step in the search space
 def step(network, step_size):
 	new_net = list()
@@ -659,7 +659,7 @@ def step(network, step_size):
 
 然后我们可以从爬山()函数中调用这个新的 *step()* 函数。
 
-```
+```py
 # hill climbing local search algorithm
 def hillclimbing(X, y, objective, solution, n_iter, step_size):
 	# evaluate the initial point
@@ -681,7 +681,7 @@ def hillclimbing(X, y, objective, solution, n_iter, step_size):
 
 将这些联系在一起，下面列出了应用随机爬山来优化二元分类的 MLP 模型权重的完整示例。
 
-```
+```py
 # stochastic hill climbing to optimize a multilayer perceptron for classification
 from math import exp
 from numpy.random import randn
@@ -810,7 +810,7 @@ print('Test Accuracy: %.5f' % (score * 100))
 
 在这种情况下，我们可以看到优化算法找到了一组权重，在训练数据集上获得了大约 87.3%的准确率，在测试数据集上获得了大约 85.1%的准确率。
 
-```
+```py
 ...
 >55 0.755224
 >56 0.765672

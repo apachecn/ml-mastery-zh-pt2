@@ -94,7 +94,7 @@ Keras 允许您轻松地将节点和图层添加到模型中。
 
 例如，我们可以创建一个具有 32 个节点的全连接层，如下所示:
 
-```
+```py
 ...
 layer = Dense(32)
 ```
@@ -103,7 +103,7 @@ layer = Dense(32)
 
 例如，我们可以创建一个具有 32 个节点(或单元)的 LSTM 图层，如下所示:
 
-```
+```py
 ...
 layer = LSTM(32)
 ```
@@ -112,7 +112,7 @@ layer = LSTM(32)
 
 我们可以用 32 个过滤图定义一个二维 CNN，每个过滤图的大小为 3 乘 3，如下所示:
 
-```
+```py
 ...
 layer = Conv2D(32, (3,3))
 ```
@@ -123,7 +123,7 @@ layer = Conv2D(32, (3,3))
 
 MLP 的全连接层可以通过重复调用来添加，以在已配置的密集层中添加通道；例如:
 
-```
+```py
 ...
 model = Sequential()
 model.add(Dense(32))
@@ -136,7 +136,7 @@ model.add(Dense(64))
 
 这可以通过将“*return _ sequence*”参数设置为“ *True* 来实现。例如:
 
-```
+```py
 ...
 model = Sequential()
 model.add(LSTM(32, return_sequences=True))
@@ -145,7 +145,7 @@ model.add(LSTM(32))
 
 卷积层可以直接堆叠，通常是将一两个卷积层堆叠在一起，然后是一个汇集层，然后重复这种层的模式；例如:
 
-```
+```py
 ...
 model = Sequential()
 model.add(Conv2D(16, (3,3)))
@@ -168,7 +168,7 @@ scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/mo
 
 例如，下面的调用为一个有两个输入变量的三类问题生成了 1000 个例子。
 
-```
+```py
 ...
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random_state=2)
@@ -180,7 +180,7 @@ X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random
 
 下面列出了完整的示例。
 
-```
+```py
 # scatter plot of blobs dataset
 from sklearn.datasets import make_blobs
 from matplotlib import pyplot
@@ -209,7 +209,7 @@ pyplot.show()
 
 为了以下实验的目的，我们将使用 100 个输入特征和 20 个类；例如:
 
-```
+```py
 ...
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1000, centers=20, n_features=100, cluster_std=2, random_state=2)
@@ -227,14 +227,14 @@ X, y = make_blobs(n_samples=1000, centers=20, n_features=100, cluster_std=2, ran
 
 我们可以使用[to _ classic()Keras 效用函数](https://keras.io/utils/#to_categorical)来实现，例如:
 
-```
+```py
 # one hot encode output variable
 y = to_categorical(y)
 ```
 
 接下来，我们可以将 1，000 个示例分成两半，使用 500 个示例作为训练数据集，使用 500 个示例来评估模型。
 
-```
+```py
 # split into train and test
 n_train = 500
 trainX, testX = X[:n_train, :], X[n_train:, :]
@@ -244,7 +244,7 @@ return trainX, trainy, testX, testy
 
 下面的 *create_dataset()* 函数将这些元素联系在一起，并根据输入和输出元素返回训练和测试集。
 
-```
+```py
 # prepare multi-class classification dataset
 def create_dataset():
 	# generate 2d classification dataset
@@ -260,7 +260,7 @@ def create_dataset():
 
 我们可以调用这个函数来准备数据集。
 
-```
+```py
 # prepare dataset
 trainX, trainy, testX, testy = create_dataset()
 ```
@@ -269,7 +269,7 @@ trainX, trainy, testX, testy = create_dataset()
 
 模型需要知道输入变量的数量以便配置输入层，并且需要知道目标类的数量以便配置输出层。这些属性可以直接从训练数据集中提取。
 
-```
+```py
 # configure the model based on the data
 n_input, n_classes = trainX.shape[1], testy.shape[1]
 ```
@@ -278,7 +278,7 @@ n_input, n_classes = trainX.shape[1], testy.shape[1]
 
 输出层将使用 softmax 激活函数来预测每个目标类的概率。隐藏层中的节点数量将通过名为“ *n_nodes* ”的参数提供。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(n_nodes, input_dim=n_input, activation='relu', kernel_initializer='he_uniform'))
@@ -287,7 +287,7 @@ model.add(Dense(n_classes, activation='softmax'))
 
 该模型将使用随机梯度下降进行优化，学习率为 0.01，高动量为 0.9，并将使用分类交叉熵损失函数，适用于多类分类。
 
-```
+```py
 # compile model
 opt = SGD(lr=0.01, momentum=0.9)
 model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
@@ -295,7 +295,7 @@ model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy
 
 该模型将适合 100 个训练时期，然后将在测试数据集上评估该模型。
 
-```
+```py
 # fit model on train set
 history = model.fit(trainX, trainy, epochs=100, verbose=0)
 # evaluate model on test set
@@ -304,7 +304,7 @@ _, test_acc = model.evaluate(testX, testy, verbose=0)
 
 将这些元素联系在一起，下面的 *evaluate_model()* 函数将节点数和数据集作为参数，并返回每个时期结束时的训练损失历史以及最终模型在测试数据集上的准确性。
 
-```
+```py
 # fit model with given number of nodes, returns test set accuracy
 def evaluate_model(n_nodes, trainX, trainy, testX, testy):
 	# configure the model based on the data
@@ -331,7 +331,7 @@ def evaluate_model(n_nodes, trainX, trainy, testX, testy):
 
 将打印每个配置的测试精度，并绘制每个配置的训练精度的学习曲线。
 
-```
+```py
 # evaluate model and plot learning curve with given number of nodes
 num_nodes = [1, 2, 3, 4, 5, 6, 7]
 for n_nodes in num_nodes:
@@ -348,7 +348,7 @@ pyplot.show()
 
 为了完整起见，下面提供了完整的代码列表。
 
-```
+```py
 # study of mlp learning curves given different number of nodes for multi-class classification
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -408,7 +408,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到，随着节点数量的增加，模型学习问题的能力也会增加。这导致模型在测试数据集上的泛化误差逐渐降低，直到模型完美地学习问题的 6 和 7 个节点。
 
-```
+```py
 nodes=1: 0.138
 nodes=2: 0.380
 nodes=3: 0.582
@@ -442,7 +442,7 @@ nodes=7: 1.000
 
 下面列出了更新后的函数，以层数和数据集为参数，返回模型的训练历史和测试精度。
 
-```
+```py
 # fit model with given number of layers, returns test set accuracy
 def evaluate_model(n_layers, trainX, trainy, testX, testy):
 	# configure the model based on the data
@@ -469,7 +469,7 @@ def evaluate_model(n_layers, trainX, trainy, testX, testy):
 
 在这种情况下，我们将评估具有 1 到 5 层的模型，期望在某一点上，层数将导致所选择的学习算法不能适应训练数据的模型。
 
-```
+```py
 # evaluate model and plot learning curve of model with given number of layers
 all_history = list()
 num_layers = [1, 2, 3, 4, 5]
@@ -485,7 +485,7 @@ pyplot.show()
 
 将这些元素结合在一起，下面列出了完整的示例。
 
-```
+```py
 # study of mlp learning curves given different number of layers for multi-class classification
 from sklearn.datasets import make_blobs
 from keras.models import Sequential
@@ -546,7 +546,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到模型能够很好地学习问题，最多有三层，然后开始动摇。我们可以看到，五层的性能确实下降了，如果层数进一步增加，预计还会继续下降。
 
-```
+```py
 layers=1: 1.000
 layers=2: 1.000
 layers=3: 1.000

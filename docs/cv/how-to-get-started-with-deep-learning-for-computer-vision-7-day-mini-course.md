@@ -140,7 +140,7 @@
 
 接下来，我们可以使用枕头库加载照片，确认最小和最大像素值，对这些值进行归一化，并确认进行了归一化。
 
-```
+```py
 # example of pixel normalization
 from numpy import asarray
 from PIL import Image
@@ -194,7 +194,7 @@ print('Min: %.3f, Max: %.3f' % (pixels.min(), pixels.max()))
 
 下面的例子创建了一个卷积神经网络，它期望灰度图像的平方大小为 256×256 像素，一个卷积层有 32 个滤波器，每个滤波器的大小为 3×3 像素，一个最大池层和一个二进制分类输出层。
 
-```
+```py
 # cnn with single convolutional, pooling and output layer
 from keras.models import Sequential
 from keras.layers import Conv2D
@@ -239,7 +239,7 @@ model.summary()
 
 **注意**:第一次运行这个例子，需要下载预训练好的模型，几百兆，根据你上网的速度做几分钟。
 
-```
+```py
 # example of using a pre-trained model as a classifier
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -288,7 +288,7 @@ print('%s (%.2f%%)' % (label[1], label[2]*100))
 
 这个例子将在现代的中央处理器上运行几分钟；不需要 GPU。
 
-```
+```py
 # fit a cnn on the fashion mnist dataset
 from keras.datasets import fashion_mnist
 from keras.utils import to_categorical
@@ -349,7 +349,7 @@ Keras 深度学习神经网络库通过 [ImageDataGenerator 类](https://keras.i
 
 下面的示例将照片加载为数据集，并使用图像增强来创建图像的翻转和旋转版本，该版本可用于训练卷积神经网络模型。
 
-```
+```py
 # example using image augmentation
 from numpy import expand_dims
 from keras.preprocessing.image import load_img
@@ -400,7 +400,7 @@ pyplot.show()
 
 [ipazc/MTCNN 项目](https://github.com/ipazc/mtcnn)提供了一个 MTCNN 的开源实现，可以轻松安装如下:
 
-```
+```py
 sudo pip install mtcnn
 ```
 
@@ -410,7 +410,7 @@ sudo pip install mtcnn
 
 下面的示例将加载照片并使用 MTCNN 模型来检测人脸，并将绘制照片并在第一个检测到的人脸周围画一个框。
 
-```
+```py
 # face detection with mtcnn on a photograph
 from matplotlib import pyplot
 from matplotlib.patches import Rectangle

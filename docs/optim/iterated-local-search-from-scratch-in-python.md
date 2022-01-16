@@ -79,7 +79,7 @@ Let’s get started.![Iterated Local Search From Scratch in Python](img/157a1d5e
 
 下面的示例实现了 Ackley，并创建了一个显示全局最优值和多个局部最优值的三维曲面图。
 
-```
+```py
 # ackley multimodal function
 from numpy import arange
 from numpy import exp
@@ -132,7 +132,7 @@ pyplot.show()
 
 我们可以通过对具有均匀概率分布的搜索空间进行采样来生成随机点。例如:
 
-```
+```py
 ...
 # generate a random point in the search space
 solution = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
@@ -142,7 +142,7 @@ solution = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
 
 我们将这个超参数称为“*步长*”，例如:
 
-```
+```py
 ...
 # generate a perturbed version of a current working solution
 candidate = solution + randn(len(bounds)) * step_size
@@ -152,7 +152,7 @@ candidate = solution + randn(len(bounds)) * step_size
 
 这可以通过名为 *in_bounds()* 的自定义函数来实现，该函数获取候选解和搜索空间的边界，如果该点在搜索空间中，则返回真，否则返回假*。*
 
- *```
+```py
 # check if a point is within the bounds of the search
 def in_bounds(point, bounds):
 	# enumerate all dimensions of the point
@@ -167,7 +167,7 @@ def in_bounds(point, bounds):
 
 将这些联系在一起，下面的函数*爬山()*实现了随机爬山局部搜索算法。它将目标函数的名称、问题的边界、迭代次数和步长作为参数，并返回最佳解及其评估。
 
-```
+```py
 # hill climbing local search algorithm
 def hillclimbing(objective, bounds, n_iterations, step_size):
 	# generate an initial point
@@ -201,7 +201,7 @@ def hillclimbing(objective, bounds, n_iterations, step_size):
 
 运行结束时，我们将报告找到的最佳解决方案。
 
-```
+```py
 ...
 # seed the pseudorandom number generator
 seed(1)
@@ -219,7 +219,7 @@ print('f(%s) = %f' % (best, score))
 
 下面列出了将随机爬山算法应用于阿克利目标函数的完整示例。
 
-```
+```py
 # hill climbing search of the ackley objective function
 from numpy import asarray
 from numpy import exp
@@ -289,7 +289,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以在搜索过程中看到大约 13 个改进，最终的解约为 f(-0.981，1.965)，得到的评估值约为 5.381，与 f(0.0，0.0) = 0 相差甚远。
 
-```
+```py
 >0 f([-0.85618854 2.1495965 ]) = 6.46986
 >1 f([-0.81291816 2.03451957]) = 6.07149
 >5 f([-0.82903902 2.01531685]) = 5.93526
@@ -315,7 +315,7 @@ f([-0.98102417 1.96555308]) = 5.381939
 
 首先，我们修改*爬山()*函数，取搜索的起点，而不是随机生成。这将有助于我们稍后实现迭代局部搜索算法。
 
-```
+```py
 # hill climbing local search algorithm
 def hillclimbing(objective, bounds, n_iterations, step_size, start_pt):
 	# store the initial point
@@ -341,7 +341,7 @@ def hillclimbing(objective, bounds, n_iterations, step_size, start_pt):
 
 每次通话，我们都会为爬山搜索生成一个新的随机选择的起点。
 
-```
+```py
 ...
 # generate a random initial point for the search
 start_pt = None
@@ -353,7 +353,7 @@ solution, solution_eval = hillclimbing(objective, bounds, n_iter, step_size, sta
 
 然后，我们可以检查结果，如果它比我们迄今为止看到的任何搜索结果都好，就保留它。
 
-```
+```py
 ...
 # check for new best
 if solution_eval < best_eval:
@@ -363,7 +363,7 @@ print('Restart %d, best: f(%s) = %.5f' % (n, best, best_eval))
 
 将这些联系在一起，*random _ restaults()*函数实现了随机重启的随机爬山算法。
 
-```
+```py
 # hill climbing with random restarts algorithm
 def random_restarts(objective, bounds, n_iter, step_size, n_restarts):
 	best, best_eval = None, 1e+10
@@ -386,7 +386,7 @@ def random_restarts(objective, bounds, n_iter, step_size, n_restarts):
 
 下面列出了完整的示例。
 
-```
+```py
 # hill climbing search with random restarts of the ackley objective function
 from numpy import asarray
 from numpy import exp
@@ -471,7 +471,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以在搜索过程中看到三个改进，并且找到的最佳解决方案大约是 f(0.002，0.002)，其评估为大约 0.009，这比爬山算法的单次运行好得多。
 
-```
+```py
 Restart 0, best: f([-0.98102417 1.96555308]) = 5.38194
 Restart 2, best: f([1.96522236 0.98120013]) = 5.38191
 Restart 4, best: f([0.00223194 0.00258853]) = 0.00998
@@ -491,7 +491,7 @@ f([0.00223194 0.00258853]) = 0.009978
 
 这可以通过使用步长超参数来实现，就像随机爬山器中使用的一样。在这种情况下，考虑到在搜索空间中需要更大的扰动，将使用更大的步长值。
 
-```
+```py
 ...
 # generate an initial point as a perturbed version of the last best
 start_pt = None
@@ -501,7 +501,7 @@ while start_pt is None or not in_bounds(start_pt, bounds):
 
 将这些联系在一起，下面定义了*迭代 _ 局部 _ 搜索()*函数。
 
-```
+```py
 # iterated local search algorithm
 def iterated_local_search(objective, bounds, n_iter, step_size, n_restarts, p_size):
 	# define starting point
@@ -529,7 +529,7 @@ def iterated_local_search(objective, bounds, n_iter, step_size, n_restarts, p_si
 
 下面列出了完整的示例。
 
-```
+```py
 # iterated local search of the ackley objective function
 from numpy import asarray
 from numpy import exp
@@ -623,7 +623,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以在搜索过程中看到四个改进，找到的最佳解决方案是两个非常小的输入，接近于零，估计约为 0.0003，这比爬山者的单次运行或重新启动爬山者要好。
 
-```
+```py
 Restart 0, best: f([-0.96775653 0.96853129]) = 3.57447
 Restart 3, best: f([-4.50618519e-04 9.51020713e-01]) = 2.57996
 Restart 5, best: f([ 0.00137423 -0.00047059]) = 0.00416

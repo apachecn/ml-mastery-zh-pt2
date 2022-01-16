@@ -53,7 +53,7 @@
 
 在这种类型的混淆矩阵中，表中的每个单元格都有一个具体且易于理解的名称，总结如下:
 
-```
+```py
                | Positive Prediction | Negative Prediction
 Positive Class | True Positive (TP)  | False Negative (FN)
 Negative Class | False Positive (FP) | True Negative (TN)
@@ -141,7 +141,7 @@ Negative Class | False Positive (FP) | True Negative (TN)
 
 首先，有 100 个阳性到 10，000 个阴性例子的情况，一个模型预测 90 个真阳性和 30 个假阳性。下面列出了完整的示例。
 
-```
+```py
 # calculates precision for 1:100 dataset with 90 tp and 30 fp
 from sklearn.metrics import precision_score
 # define actual
@@ -159,7 +159,7 @@ print('Precision: %.3f' % precision)
 
 运行该示例计算精度，与我们的手动计算相匹配。
 
-```
+```py
 Precision: 0.750
 ```
 
@@ -169,7 +169,7 @@ Precision: 0.750
 
 下面列出了完整的示例。
 
-```
+```py
 # calculates precision for 1:1:100 dataset with 50tp,20fp, 99tp,51fp
 from sklearn.metrics import precision_score
 # define actual
@@ -189,7 +189,7 @@ print('Precision: %.3f' % precision)
 
 同样，运行该示例会计算与我们的手动计算相匹配的多类示例的精度。
 
-```
+```py
 Precision: 0.677
 ```
 
@@ -254,7 +254,7 @@ Precision: 0.677
 
 下面列出了完整的示例。
 
-```
+```py
 # calculates recall for 1:100 dataset with 90 tp and 10 fn
 from sklearn.metrics import recall_score
 # define actual
@@ -272,7 +272,7 @@ print('Recall: %.3f' % recall)
 
 运行该示例，我们可以看到分数与上面的手动计算相匹配。
 
-```
+```py
 Recall: 0.900
 ```
 
@@ -282,7 +282,7 @@ Recall: 0.900
 
 下面列出了完整的示例。
 
-```
+```py
 # calculates recall for 1:1:100 dataset with 77tp,23fn and 95tp,5fn
 from sklearn.metrics import recall_score
 # define actual
@@ -302,7 +302,7 @@ print('Recall: %.3f' % recall)
 
 同样，运行该示例计算与我们的手动计算相匹配的多类示例的召回率。
 
-```
+```py
 Recall: 0.860
 ```
 
@@ -394,7 +394,7 @@ F-Measure 提供了一种方法，可以将精度和召回率结合到一个能�
 
 下面列出了完整的示例。
 
-```
+```py
 # calculates f1 for 1:100 dataset with 95tp, 5fn, 55fp
 from sklearn.metrics import f1_score
 # define actual
@@ -412,7 +412,7 @@ print('F-Measure: %.3f' % score)
 
 运行该示例计算 F-Measure，匹配我们的手动计算，在一些小的舍入误差内。
 
-```
+```py
 F-Measure: 0.760
 ```
 

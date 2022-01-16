@@ -104,7 +104,7 @@
 
 让我们加载库和我们的糖尿病数据集。它与 *mlbench* 包一起分发，所以我们可以直接加载它。
 
-```
+```py
 # load libraries
 library(mlbench)
 library(caret)
@@ -131,7 +131,7 @@ dataset <- PimaIndiansDiabetes
 
 在本案例研究中，我们将使用 3 次重复的 10 倍交叉验证。
 
-```
+```py
 control <- trainControl(method="repeatedcv", number=10, repeats=3)
 seed <- 7
 ```
@@ -168,7 +168,7 @@ seed <- 7
 
 评估指标是通过调用给定模型的 *train()* 函数来指定的，因此我们现在将定义指标，供以后所有的模型训练使用。
 
-```
+```py
 metric <- "Accuracy"
 ```
 
@@ -223,7 +223,7 @@ R 中脱字符号包的一个方面是它有助于调整算法参数。它还可
 
 最有用的转换是通过以下方式扩展和集中数据。例如:
 
-```
+```py
 preProcess=c("center", "scale")
 ```
 
@@ -231,7 +231,7 @@ preProcess=c("center", "scale")
 
 下面是我们将抽查的糖尿病病例研究模型。
 
-```
+```py
 # Linear Discriminant Analysis
 set.seed(seed)
 fit.lda <- train(diabetes~., data=dataset, method="lda", metric=metric, preProc=c("center", "scale"), trControl=control)
@@ -285,7 +285,7 @@ fit.gbm <- train(diabetes~., data=dataset, method="gbm", metric=metric, trContro
 
 现在的目标是选择几个，也许是 2 到 5 个多样且性能良好的算法来进一步研究。
 
-```
+```py
 results <- resamples(list(lda=fit.lda, logistic=fit.glm, glmnet=fit.glmnet,
 	svm=fit.svmRadial, knn=fit.knn, nb=fit.nb, cart=fit.cart, c50=fit.c50,
 	bagging=fit.treebag, rf=fit.rf, gbm=fit.gbm))
@@ -295,7 +295,7 @@ summary(results)
 
 您可以看到，我们已经将算法的结果总结为表格。
 
-```
+```py
 Models: lda, logistic, glmnet, svm, knn, nb, cart, c50, bagging, rf, gbm 
 Number of resamples: 30 
 
@@ -316,7 +316,7 @@ gbm      0.6974  0.7273 0.7727 0.7708  0.8052 0.8831    0
 
 使用几种不同的可视化技术来查看结果也很有用，这样可以了解精确度的平均值和分布情况。
 
-```
+```py
 # boxplot comparison
 bwplot(results)
 # Dot-plot comparison

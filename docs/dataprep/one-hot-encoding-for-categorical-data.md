@@ -110,7 +110,7 @@
 
 下面列出了完整的示例。
 
-```
+```py
 # example of a ordinal encoding
 from numpy import asarray
 from sklearn.preprocessing import OrdinalEncoder
@@ -128,7 +128,7 @@ print(result)
 
 我们可以看到，这些数字是按照我们的预期分配给标签的。
 
-```
+```py
 [['red']
  ['green']
  ['blue']]
@@ -161,7 +161,7 @@ print(result)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of a one hot encoding
 from numpy import asarray
 from sklearn.preprocessing import OneHotEncoder
@@ -177,7 +177,7 @@ print(onehot)
 
 运行该示例首先列出了三行标签数据，然后是一个热编码，与我们对 3 个二进制变量的期望相匹配，顺序为“蓝色”、“绿色”和“红色”。
 
-```
+```py
 [['red']
  ['green']
  ['blue']]
@@ -226,7 +226,7 @@ print(onehot)
 
 我们可以用我们的颜色类别来证明这一点。下面列出了完整的示例。
 
-```
+```py
 # example of a dummy variable encoding
 from numpy import asarray
 from sklearn.preprocessing import OneHotEncoder
@@ -242,7 +242,7 @@ print(onehot)
 
 运行该示例首先列出了分类变量的三行，然后是虚拟变量编码，显示绿色编码为[1，0]，红色编码为[0，1]，蓝色编码为[0，0]。
 
-```
+```py
 [['red']
  ['green']
  ['blue']]
@@ -270,7 +270,7 @@ print(onehot)
 
 具体来说，所有变量都是带引号的字符串。有些变量显示了一个明显的数值范围的序数关系(如年龄范围)，有些则没有。
 
-```
+```py
 '40-49','premeno','15-19','0-2','yes','3','right','left_up','no','recurrence-events'
 '50-59','ge40','15-19','0-2','no','1','right','central','no','no-recurrence-events'
 '50-59','ge40','35-39','0-2','no','2','left','left_low','no','recurrence-events'
@@ -285,7 +285,7 @@ print(onehot)
 
 我们可以使用熊猫库将这个数据集加载到内存中。
 
-```
+```py
 ...
 # load the dataset
 dataset = read_csv(url, header=None)
@@ -295,7 +295,7 @@ data = dataset.values
 
 加载后，我们可以将列拆分为输入(X)和输出(y)进行建模。
 
-```
+```py
 ...
 # separate into input and output columns
 X = data[:, :-1].astype(str)
@@ -304,7 +304,7 @@ y = data[:, -1].astype(str)
 
 利用这个函数，下面列出了加载和汇总原始分类数据集的完整示例。
 
-```
+```py
 # load and summarize the dataset
 from pandas import read_csv
 # define the location of the dataset
@@ -325,7 +325,7 @@ print('Output', y.shape)
 
 我们可以看到我们有 286 个例子和 9 个输入变量。
 
-```
+```py
 Input (286, 9)
 Output (286,)
 ```
@@ -346,7 +346,7 @@ Output (286,)
 
 一旦定义，我们就可以调用 *fit_transform()* 函数，并将其传递给我们的数据集，以创建数据集的分位数转换版本。
 
-```
+```py
 ...
 # ordinal encode input variables
 ordinal = OrdinalEncoder()
@@ -355,7 +355,7 @@ X = ordinal.fit_transform(X)
 
 我们也可以用同样的方式准备目标。
 
-```
+```py
 ...
 # ordinal encode target variable
 label_encoder = LabelEncoder()
@@ -366,7 +366,7 @@ y = label_encoder.fit_transform(y)
 
 下面列出了创建乳腺癌数据集的序数编码转换并总结结果的完整示例。
 
-```
+```py
 # ordinal encode the breast cancer dataset
 from pandas import read_csv
 from sklearn.preprocessing import LabelEncoder
@@ -399,7 +399,7 @@ print(y[:5])
 
 不出所料，在这种情况下，我们可以看到变量的数量没有变化，但是所有的值现在都是序数编码的整数。
 
-```
+```py
 Input (286, 9)
 [[2\. 2\. 2\. 0\. 1\. 2\. 1\. 2\. 0.]
  [3\. 0\. 2\. 0\. 0\. 0\. 1\. 0\. 0.]
@@ -416,7 +416,7 @@ Output (286,)
 
 我们将首先分割数据集，然后在训练集上准备编码，并将其应用于测试集。
 
-```
+```py
 ...
 # split the dataset into train and test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=1)
@@ -424,7 +424,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random
 
 然后，我们可以在训练数据集上拟合*序数编码器*，并使用它来转换训练和测试数据集。
 
-```
+```py
 ...
 # ordinal encode input variables
 ordinal_encoder = OrdinalEncoder()
@@ -437,7 +437,7 @@ X_test = ordinal_encoder.transform(X_test)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate logistic regression on the breast cancer dataset with an ordinal encoding
 from numpy import mean
 from numpy import std
@@ -485,7 +485,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 在这种情况下，该模型实现了大约 75.79%的分类准确率，这是一个合理的分数。
 
-```
+```py
 Accuracy: 75.79
 ```
 
@@ -501,7 +501,7 @@ scikit-learn 库提供了 [OneHotEncoder](https://scikit-learn.org/stable/module
 
 一旦定义，我们就可以调用 *fit_transform()* 函数，并将其传递给我们的数据集，以创建数据集的分位数转换版本。
 
-```
+```py
 ...
 # one hot encode input variables
 onehot_encoder = OneHotEncoder(sparse=False)
@@ -512,7 +512,7 @@ X = onehot_encoder.fit_transform(X)
 
 下面列出了创建乳腺癌数据集的一次性编码转换并总结结果的完整示例。
 
-```
+```py
 # one-hot encode the breast cancer dataset
 from pandas import read_csv
 from sklearn.preprocessing import LabelEncoder
@@ -543,7 +543,7 @@ print(X[:5, :])
 
 不出所料，在这种情况下，我们可以看到变量的数量从 9 个跃升到 43 个，现在所有的值都是二进制值 0 或 1。
 
-```
+```py
 Input (286, 43)
 [[0\. 0\. 1\. 0\. 0\. 0\. 0\. 0\. 1\. 0\. 0\. 1\. 0\. 0\. 0\. 0\. 0\. 0\. 0\. 0\. 1\. 0\. 0\. 0.
   0\. 0\. 0\. 0\. 1\. 0\. 0\. 0\. 1\. 0\. 1\. 0\. 0\. 1\. 0\. 0\. 0\. 1\. 0.]
@@ -561,7 +561,7 @@ Input (286, 43)
 
 编码适合训练集，然后像以前一样应用于训练集和测试集。
 
-```
+```py
 ...
 # one-hot encode input variables
 onehot_encoder = OneHotEncoder()
@@ -572,7 +572,7 @@ X_test = onehot_encoder.transform(X_test)
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # evaluate logistic regression on the breast cancer dataset with an one-hot encoding
 from numpy import mean
 from numpy import std
@@ -620,7 +620,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 在这种情况下，该模型实现了大约 70.53%的分类准确率，这比前一节中的序数编码稍差。
 
-```
+```py
 Accuracy: 70.53
 ```
 

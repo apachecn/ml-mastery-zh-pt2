@@ -78,13 +78,13 @@
 
 在这些例子中，我们将使用[不平衡学习 Python 库](https://github.com/scikit-learn-contrib/imbalanced-learn)提供的实现，可以通过 pip 安装如下:
 
-```
+```py
 sudo pip install imbalanced-learn
 ```
 
 您可以通过打印已安装库的版本来确认安装成功:
 
-```
+```py
 # check version number
 import imblearn
 print(imblearn.__version__)
@@ -92,7 +92,7 @@ print(imblearn.__version__)
 
 运行该示例将打印已安装库的版本号；例如:
 
-```
+```py
 0.5.0
 ```
 
@@ -124,7 +124,7 @@ print(imblearn.__version__)
 
 例如:
 
-```
+```py
 ...
 # define oversampling strategy
 oversample = RandomOverSampler(sampling_strategy='minority')
@@ -134,7 +134,7 @@ oversample = RandomOverSampler(sampling_strategy='minority')
 
 可以指定一个浮点值来指示转换数据集中少数类多数示例的比率。例如:
 
-```
+```py
 ...
 # define oversampling strategy
 oversample = RandomOverSampler(sampling_strategy=0.5)
@@ -146,7 +146,7 @@ oversample = RandomOverSampler(sampling_strategy=0.5)
 
 例如，可以通过调用 *fit_sample()* 函数一步拟合应用:
 
-```
+```py
 ...
 # fit and apply the transform
 X_over, y_over = oversample.fit_resample(X, y)
@@ -154,7 +154,7 @@ X_over, y_over = oversample.fit_resample(X, y)
 
 我们可以在一个简单的综合二元分类问题上演示这一点，该问题具有 1:100 的类别不平衡。
 
-```
+```py
 ...
 # define dataset
 X, y = make_classification(n_samples=10000, weights=[0.99], flip_y=0)
@@ -162,7 +162,7 @@ X, y = make_classification(n_samples=10000, weights=[0.99], flip_y=0)
 
 下面列出了定义数据集和执行随机过采样以平衡类分布的完整示例。
 
-```
+```py
 # example of random oversampling to balance the class distribution
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -183,7 +183,7 @@ print(Counter(y_over))
 
 然后定义随机过采样变换来平衡少数类，然后拟合并应用于数据集。报告了转换数据集的类分布，显示现在少数类的示例数与多数类相同。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 Counter({0: 9900, 1: 9900})
 ```
@@ -192,7 +192,7 @@ Counter({0: 9900, 1: 9900})
 
 不能使用传统的 scikit-learn [管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)；相反，可以使用来自不平衡学习库的[管道。例如:](https://imbalanced-learn.org/stable/generated/imblearn.pipeline.Pipeline.html)
 
-```
+```py
 ...
 # pipeline
 steps = [('over', RandomOverSampler()), ('model', DecisionTreeClassifier())]
@@ -203,7 +203,7 @@ pipeline = Pipeline(steps=steps)
 
 使用三次重复的重复 10 倍交叉验证对模型进行评估，并在每次重复中对训练数据集分别执行过采样，确保不会出现交叉验证前执行过采样时可能出现的数据泄漏。
 
-```
+```py
 # example of evaluating a decision tree with random oversampling
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -232,7 +232,7 @@ print('F1 Score: %.3f' % score)
 
 使用默认的过采样策略，平衡少数类和多数类。报告每次折叠和每次重复的 F1 平均得分。
 
-```
+```py
 F1 Score: 0.990
 ```
 
@@ -256,7 +256,7 @@ F1 Score: 0.990
 
 该类可以像上一节中的*randomoversacompler*类一样使用，除了策略影响多数类而不是少数类。例如，将 *sampling_strategy* 参数设置为“*多数*”将对由具有最大数量示例的类确定的多数类进行欠采样。
 
-```
+```py
 ...
 # define undersample strategy
 undersample = RandomUnderSampler(sampling_strategy='majority')
@@ -266,7 +266,7 @@ undersample = RandomUnderSampler(sampling_strategy='majority')
 
 我们还可以将 *sampling_strategy* 参数设置为一个浮点值，该值是相对于少数类的百分比，具体来说就是少数类中的示例数除以多数类中的示例数。例如，如果我们将不平衡数据集中的*采样策略*设置为 0.5，多数类中有 1000 个示例，少数类中有 100 个示例，那么转换后的数据集中多数类将有 200 个示例(或者 100/200 = 0.5)。
 
-```
+```py
 ...
 # define undersample strategy
 undersample = RandomUnderSampler(sampling_strategy=0.5)
@@ -280,7 +280,7 @@ undersample = RandomUnderSampler(sampling_strategy=0.5)
 
 然后，通过调用 *fit_resample()* 函数并将未转换的数据集作为参数传递，可以一步完成转换并将其应用于数据集。
 
-```
+```py
 ...
 # fit and apply the transform
 X_over, y_over = undersample.fit_resample(X, y)
@@ -290,7 +290,7 @@ X_over, y_over = undersample.fit_resample(X, y)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of random undersampling to balance the class distribution
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -313,7 +313,7 @@ print(Counter(y_over))
 
 必须使用判断和经验结果来判断只有 200 个示例的训练数据集是否足以训练模型。
 
-```
+```py
 Counter({0: 9900, 1: 100})
 Counter({0: 100, 1: 100})
 ```
@@ -322,7 +322,7 @@ Counter({0: 100, 1: 100})
 
 这允许仅使用评估方案(如 k-fold 交叉验证)将转换应用于训练数据集，从而避免模型评估中的任何数据泄漏。
 
-```
+```py
 ...
 # define pipeline
 steps = [('under', RandomUnderSampler()), ('model', DecisionTreeClassifier())]
@@ -333,7 +333,7 @@ pipeline = Pipeline(steps=steps)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of evaluating a decision tree with random undersampling
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -362,7 +362,7 @@ print('F1 Score: %.3f' % score)
 
 使用默认的欠采样策略，平衡多数类和少数类。报告每次折叠和每次重复的 F1 平均得分。
 
-```
+```py
 F1 Score: 0.889
 ```
 
@@ -378,7 +378,7 @@ F1 Score: 0.889
 
 这可以通过使用不平衡学习来实现，方法是将*采样策略*设置为 0.1 (10%)，然后使用*随机欠采样器*，将*采样策略*设置为 0.5 (50%)。例如:
 
-```
+```py
 ...
 # define oversampling strategy
 over = RandomOverSampler(sampling_strategy=0.1)
@@ -392,7 +392,7 @@ X, y = under.fit_resample(X, y)
 
 我们可以在 1:100 类分布的合成数据集上演示这一点。完整的示例如下所示:
 
-```
+```py
 # example of combining random oversampling and undersampling for imbalanced data
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -420,7 +420,7 @@ print(Counter(y))
 
 然后应用过采样，将分布从大约 1:100 增加到大约 1:10。最后，应用欠采样，进一步将类别分布从 1:10 改善到大约 1:2
 
-```
+```py
 Counter({0: 9900, 1: 100})
 Counter({0: 9900, 1: 990})
 Counter({0: 1980, 1: 990})
@@ -430,7 +430,7 @@ Counter({0: 1980, 1: 990})
 
 这可以通过使用具有一系列转换的管道并以正在评估的模型结束来实现；例如:
 
-```
+```py
 ...
 # define pipeline
 over = RandomOverSampler(sampling_strategy=0.1)
@@ -443,7 +443,7 @@ pipeline = Pipeline(steps=steps)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of evaluating a model with random oversampling and undersampling
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -473,7 +473,7 @@ print('F1 Score: %.3f' % score)
 
 所选模型和重采样配置是任意的，旨在提供一个模板，您可以使用该模板来测试数据集和学习算法的欠采样，而不是最佳地求解合成数据集。
 
-```
+```py
 F1 Score: 0.985
 ```
 

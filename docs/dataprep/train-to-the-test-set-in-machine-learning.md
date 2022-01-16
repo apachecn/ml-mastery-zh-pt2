@@ -63,7 +63,7 @@
 
 我们可以使用 k 近邻模型来选择那些与测试集最相似的训练集实例。[kneighgboresgressor](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html)和[kneighgborsclassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)都提供了[kneighgbors()函数](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier.kneighbors)，该函数会将与给定数据(如测试集)最相似的行的索引返回到训练数据集中。
 
-```
+```py
 ...
 # get the most similar neighbor for each point in the test set
 neighbor_ix = knn.kneighbors(X_test, 2, return_distance=False)
@@ -72,7 +72,7 @@ ix = neighbor_ix[:,0]
 
 我们可能需要尝试从选定的行索引中删除重复项。
 
-```
+```py
 ...
 # remove duplicate rows
 ix = unique(ix)
@@ -80,7 +80,7 @@ ix = unique(ix)
 
 然后，我们可以使用这些行索引来构建定制的训练数据集并拟合模型。
 
-```
+```py
 ...
 # create a training dataset from selected instances
 X_train_neigh, y_train_neigh = X_train[ix], y_train[ix]
@@ -103,7 +103,7 @@ X_train_neigh, y_train_neigh = X_train[ix], y_train[ix]
 
 下面提供了数据集前五行的示例。
 
-```
+```py
 6,148,72,35,0,33.6,0.627,50,1
 1,85,66,29,0,26.6,0.351,31,0
 8,183,64,0,0,23.3,0.672,32,1
@@ -116,7 +116,7 @@ X_train_neigh, y_train_neigh = X_train[ix], y_train[ix]
 
 下面列出了完整的示例。
 
-```
+```py
 # example of evaluating a knn model on the diabetes classification dataset
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -148,7 +148,7 @@ print('Accuracy: %.3f' % (accuracy * 100))
 
 最后，该模型的分类准确率约为 77.056%。
 
-```
+```py
 (768, 8) (768,)
 (537, 8) (231, 8) (537,) (231,)
 Accuracy: 77.056
@@ -158,7 +158,7 @@ Accuracy: 77.056
 
 首先，我们将使用训练集中更简单的示例为测试集中的每一行构建一个训练数据集。
 
-```
+```py
 ...
 # select examples that are most similar to the test set
 knn = KNeighborsClassifier()
@@ -173,7 +173,7 @@ print(X_train_neigh.shape, y_train_neigh.shape)
 
 接下来，我们将在这个新的数据集上训练模型，并像以前一样在测试集上评估它。
 
-```
+```py
 ...
 # define model
 model = KNeighborsClassifier()
@@ -183,7 +183,7 @@ model.fit(X_train_neigh, y_train_neigh)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of training to the test set for the diabetes dataset
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -224,7 +224,7 @@ print('Accuracy: %.3f' % (accuracy * 100))
 
 我们可以看到，与在整个训练数据集上训练模型相比，通过训练测试集，我们已经实现了性能的提升。在这种情况下，我们实现了大约 79.654%的分类准确率，而在使用整个训练数据集时，分类准确率为 77.056%。
 
-```
+```py
 (768, 8) (768,)
 (537, 8) (231, 8) (537,) (231,)
 (231, 8) (231,)
@@ -254,7 +254,7 @@ Accuracy: 79.654
 
 下面列出了前五行的示例。
 
-```
+```py
 0.00632,18.00,2.310,0,0.5380,6.5750,65.20,4.0900,1,296.0,15.30,396.90,4.98,24.00
 0.02731,0.00,7.070,0,0.4690,6.4210,78.90,4.9671,2,242.0,17.80,396.90,9.14,21.60
 0.02729,0.00,7.070,0,0.4690,7.1850,61.10,4.9671,2,242.0,17.80,392.83,4.03,34.70
@@ -267,7 +267,7 @@ Accuracy: 79.654
 
 下面列出了完整的示例。
 
-```
+```py
 # example of evaluating a knn model on the housing regression dataset
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -299,7 +299,7 @@ print('MAE: %.3f' % mae)
 
 最后，模型的 MAE 据报道约为 4.488。
 
-```
+```py
 (506, 13) (506,)
 (354, 13) (152, 13) (354,) (152,)
 MAE: 4.488
@@ -309,7 +309,7 @@ MAE: 4.488
 
 首先，我们将使用训练集中更简单的示例为测试集中的每一行构建一个训练数据集。
 
-```
+```py
 ...
 # select examples that are most similar to the test set
 knn = KNeighborsClassifier()
@@ -324,7 +324,7 @@ print(X_train_neigh.shape, y_train_neigh.shape)
 
 接下来，我们将在这个新的数据集上训练模型，并像以前一样在测试集上评估它。
 
-```
+```py
 ...
 # define model
 model = KNeighborsClassifier()
@@ -334,7 +334,7 @@ model.fit(X_train_neigh, y_train_neigh)
 
 下面列出了完整的示例。
 
-```
+```py
 # example of training to the test set for the housing dataset
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -377,7 +377,7 @@ print('MAE: %.3f' % mae)
 
 同样，在构建新的训练集时，您可能希望探索使用不同数量的邻居，看看在训练数据集中保留唯一的行是否有所不同。在下面的评论中报告你的发现。
 
-```
+```py
 (506, 13) (506,)
 (354, 13) (152, 13) (354,) (152,)
 (152, 13) (152,)

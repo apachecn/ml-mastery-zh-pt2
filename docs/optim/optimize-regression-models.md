@@ -67,7 +67,7 @@ Let’s get started.![How to Use Optimization Algorithms to Manually Fit Regress
 
 下面的示例创建数据集并总结数据的形状。
 
-```
+```py
 # define a regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -78,7 +78,7 @@ print(X.shape, y.shape)
 
 运行该示例会打印出创建的数据集的形状，这证实了我们的预期。
 
-```
+```py
 (1000, 10) (1000,)
 ```
 
@@ -92,7 +92,7 @@ print(X.shape, y.shape)
 
 我们正在使用简单的 Python 列表和命令式编程风格，而不是故意使用 [NumPy 数组](https://machinelearningmastery.com/gentle-introduction-n-dimensional-arrays-python-numpy/)或列表压缩，以使代码对 Python 初学者来说更易读。请随意优化它，并在下面的评论中发布您的代码。
 
-```
+```py
 # linear regression
 def predict_row(row, coefficients):
 	# add the bias, the last coefficient
@@ -107,7 +107,7 @@ def predict_row(row, coefficients):
 
 同样，为了可读性，我们有意使用简单的命令式编码风格，而不是列表压缩。
 
-```
+```py
 # use model coefficients to generate predictions for a dataset of rows
 def predict_dataset(X, coefficients):
 	yhats = list()
@@ -125,7 +125,7 @@ def predict_dataset(X, coefficients):
 
 回想一下，我们每个输入需要一个系数(本数据集中有 10 个输入)加上 y 截距系数的额外权重。
 
-```
+```py
 ...
 # define dataset
 X, y = make_regression(n_samples=1000, n_features=10, n_informative=2, noise=0.2, random_state=1)
@@ -137,7 +137,7 @@ coefficients = rand(n_coeff)
 
 然后，我们可以将这些系数与数据集一起使用来进行预测。
 
-```
+```py
 ...
 # generate predictions for dataset
 yhat = predict_dataset(X, coefficients)
@@ -145,7 +145,7 @@ yhat = predict_dataset(X, coefficients)
 
 我们可以评估这些预测的均方误差。
 
-```
+```py
 ...
 # calculate model prediction error
 score = mean_squared_error(y, yhat)
@@ -156,7 +156,7 @@ print('MSE: %f' % score)
 
 我们可以将所有这些联系在一起，并演示我们的线性回归模型用于回归预测建模。下面列出了完整的示例。
 
-```
+```py
 # linear regression model
 from numpy.random import rand
 from sklearn.datasets import make_regression
@@ -200,7 +200,7 @@ print('MSE: %f' % score)
 
 在给定一组随机权重的情况下，我们预计会有很大的误差，这就是我们在这种情况下看到的，误差值约为 7，307 个单位。
 
-```
+```py
 MSE: 7307.756740
 ```
 
@@ -210,7 +210,7 @@ MSE: 7307.756740
 
 我们将使用 67%的数据进行训练，剩下的 33%作为测试集来评估模型的性能。
 
-```
+```py
 ...
 # split into train test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
@@ -224,7 +224,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
 
 给定数据集和一组系数，下面的 *objective()* 函数实现了这一点，并返回模型的误差。
 
-```
+```py
 # objective function
 def objective(X, y, coefficients):
 	# generate predictions for dataset
@@ -240,7 +240,7 @@ def objective(X, y, coefficients):
 
 下面的*爬山()*函数实现了这一点，将数据集、目标函数、初始解和超参数作为参数，并返回找到的最佳系数集和估计的性能。
 
-```
+```py
 # hill climbing local search algorithm
 def hillclimbing(X, y, objective, solution, n_iter, step_size):
 	# evaluate the initial point
@@ -262,7 +262,7 @@ def hillclimbing(X, y, objective, solution, n_iter, step_size):
 
 然后我们可以调用这个函数，传入一组初始系数作为初始解，并将训练数据集作为数据集来优化模型。
 
-```
+```py
 ...
 # define the total iterations
 n_iter = 2000
@@ -281,7 +281,7 @@ print('Train MSE: %f' % (score))
 
 最后，我们可以在测试数据集上评估最佳模型并报告性能。
 
-```
+```py
 ...
 # generate predictions for the test dataset
 yhat = predict_dataset(X_test, coefficients)
@@ -292,7 +292,7 @@ print('Test MSE: %f' % (score))
 
 将这些联系在一起，下面列出了在综合回归数据集上优化线性回归模型系数的完整示例。
 
-```
+```py
 # optimize linear regression coefficients for regression dataset
 from numpy.random import randn
 from numpy.random import rand
@@ -379,7 +379,7 @@ print('Test MSE: %f' % (score))
 
 该算法在训练数据集和测试数据集上找到了性能非常相似的模型，这是一个好的迹象，表明该模型没有过度拟合(过度优化)训练数据集。这意味着该模型可以很好地推广到新数据。
 
-```
+```py
 ...
 >1546 0.35426
 >1567 0.32863
@@ -417,7 +417,7 @@ Test MSE: 0.080779
 
 下面的示例创建数据集并总结数据的形状。
 
-```
+```py
 # define a binary classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -428,7 +428,7 @@ print(X.shape, y.shape)
 
 运行该示例会打印出创建的数据集的形状，这证实了我们的预期。
 
-```
+```py
 (1000, 5) (1000,)
 ```
 
@@ -444,7 +444,7 @@ print(X.shape, y.shape)
 
 更新后的 *predict_row()* 功能如下。
 
-```
+```py
 # logistic regression
 def predict_row(row, coefficients):
 	# add the bias, the last coefficient
@@ -461,7 +461,7 @@ def predict_row(row, coefficients):
 
 与线性回归一样，我们可以用一组随机模型系数来测试模型。
 
-```
+```py
 ...
 # determine the number of coefficients
 n_coeff = X.shape[1] + 1
@@ -475,7 +475,7 @@ yhat = predict_dataset(X, coefficients)
 
 对于预期的类标签，我们可以将预测舍入为整数值 0 和 1。
 
-```
+```py
 ...
 # round predictions to labels
 yhat = [round(y) for y in yhat]
@@ -483,7 +483,7 @@ yhat = [round(y) for y in yhat]
 
 我们可以评估这些预测的分类准确性。
 
-```
+```py
 ...
 # calculate accuracy
 score = accuracy_score(y, yhat)
@@ -494,7 +494,7 @@ print('Accuracy: %f' % score)
 
 我们可以将所有这些联系在一起，并演示我们用于二元分类的简单逻辑回归模型。下面列出了完整的示例。
 
-```
+```py
 # logistic regression function for binary classification
 from math import exp
 from numpy.random import rand
@@ -543,7 +543,7 @@ print('Accuracy: %f' % score)
 
 在给定一组随机权重和每个类中具有相同数量示例的数据集的情况下，我们期望大约 50%的准确性，这大约是我们在本例中看到的。
 
-```
+```py
 Accuracy: 0.540000
 ```
 
@@ -553,7 +553,7 @@ Accuracy: 0.540000
 
 重要的区别是更新了*目标()*函数，使用分类精度而不是均方误差来舍入预测和评估模型。
 
-```
+```py
 # objective function
 def objective(X, y, coefficients):
 	# generate predictions for dataset
@@ -567,7 +567,7 @@ def objective(X, y, coefficients):
 
 *爬山()*功能也必须更新，以最大化解的得分，而不是线性回归情况下的最小化。
 
-```
+```py
 # hill climbing local search algorithm
 def hillclimbing(X, y, objective, solution, n_iter, step_size):
 	# evaluate the initial point
@@ -589,7 +589,7 @@ def hillclimbing(X, y, objective, solution, n_iter, step_size):
 
 最后，通过搜索找到的系数可以在运行结束时使用分类精度进行评估。
 
-```
+```py
 ...
 # generate predictions for the test dataset
 yhat = predict_dataset(X_test, coefficients)
@@ -602,7 +602,7 @@ print('Test Accuracy: %f' % (score))
 
 将所有这些联系在一起，下面列出了使用随机爬山来最大化逻辑回归模型的分类精度的完整示例。
 
-```
+```py
 # optimize logistic regression model with a stochastic hill climber
 from math import exp
 from numpy.random import randn
@@ -694,7 +694,7 @@ print('Test Accuracy: %f' % (score))
 
 在这种情况下，我们可以看到优化算法找到了一组权重，在训练数据集上获得了大约 87.3%的准确率，在测试数据集上获得了大约 83.9%的准确率。
 
-```
+```py
 ...
 >200 0.85672
 >225 0.85672

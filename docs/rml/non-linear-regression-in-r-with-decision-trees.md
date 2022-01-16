@@ -25,7 +25,7 @@ longley 数据集描述了从 1947 年到 1962 年观察到的 7 个经济变量
 
 下面的方法演示了 longley 数据集上的递归分区决策树方法。
 
-```
+```py
 # load the package
 library(rpart)
 # load data
@@ -49,7 +49,7 @@ print(mse)
 
 下面的方法演示了 longley 数据集上的条件推理树方法。
 
-```
+```py
 # load the package
 library(party)
 # load data
@@ -73,7 +73,7 @@ print(mse)
 
 下面的方法演示了 longley 数据集上的 M5P 模型树方法。
 
-```
+```py
 # load the package
 library(RWeka)
 # load data
@@ -97,7 +97,7 @@ print(mse)
 
 下面的方法演示了 longley 数据集上的 M5Rules 规则系统。
 
-```
+```py
 # load the package
 library(RWeka)
 # load data
@@ -121,7 +121,7 @@ print(mse)
 
 下面的方法演示了将 bagging 应用于递归分区决策树。
 
-```
+```py
 # load the package
 library(ipred)
 # load data
@@ -143,7 +143,7 @@ print(mse)
 
 随机森林是决策树装袋的变体，它通过将每个决策点的树的可用属性减少为随机子样本。这进一步增加了树的方差，需要更多的树。
 
-```
+```py
 # load the package
 library(randomForest)
 # load data
@@ -165,7 +165,7 @@ print(mse)
 
 Boosting 是一种集成方法，开发用于分类以减少偏差，其中添加模型来学习现有模型中的错误分类错误。它以梯度增强机器(GBM)的形式进行了推广和调整，用于 CART 决策树的分类和回归。
 
-```
+```py
 # load the package
 library(gbm)
 # load data
@@ -187,7 +187,7 @@ print(mse)
 
 立体决策树是另一种集成方法。它们像模型树一样构建，但是包含一个类似助推的过程，叫做委员会，它是类似规则的模型。
 
-```
+```py
 # load the package
 library(Cubist)
 # load data

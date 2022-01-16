@@ -97,7 +97,7 @@ scikit-learn 库提供了[主成分分析类](https://scikit-learn.org/stable/mo
 
 例如:
 
-```
+```py
 ...
 data = ...
 # define transform
@@ -112,7 +112,7 @@ transformed = pca.transform(data)
 
 也许最好的方法是使用[管道](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)，其中第一步是主成分分析变换，下一步是将变换后的数据作为输入的学习算法。
 
-```
+```py
 ...
 # define the pipeline
 steps = [('pca', PCA()), ('m', LogisticRegression())]
@@ -121,7 +121,7 @@ model = Pipeline(steps=steps)
 
 如果输入变量具有不同的单位或比例，在执行主成分分析变换之前对数据进行归一化也是一个好主意；例如:
 
-```
+```py
 ...
 # define the pipeline
 steps = [('norm', MinMaxScaler()), ('pca', PCA()), ('m', LogisticRegression())]
@@ -136,7 +136,7 @@ model = Pipeline(steps=steps)
 
 下面列出了完整的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -147,7 +147,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -159,7 +159,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate pca with logistic regression algorithm for classification
 from numpy import mean
 from numpy import std
@@ -187,7 +187,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到带有逻辑回归的主成分分析变换获得了大约 81.8%的性能。
 
-```
+```py
 Accuracy: 0.816 (0.034)
 ```
 
@@ -199,7 +199,7 @@ Accuracy: 0.816 (0.034)
 
 下面的示例执行了该实验，并总结了每种配置的平均分类精度。
 
-```
+```py
 # compare pca number of components with logistic regression algorithm for classification
 from numpy import mean
 from numpy import std
@@ -255,7 +255,7 @@ pyplot.show()
 
 有趣的是，我们没有看到超过 15 个组件的任何改进。这与我们对问题的定义相匹配，其中只有前 15 个组件包含关于该类的信息，其余 5 个是冗余的。
 
-```
+```py
 >1 0.542 (0.048)
 >2 0.713 (0.048)
 >3 0.720 (0.053)
@@ -292,7 +292,7 @@ pyplot.show()
 
 以下示例提供了在新数据上拟合和使用带有主成分分析变换的最终模型的示例。
 
-```
+```py
 # make predictions using pca with logistic regression
 from sklearn.datasets import make_classification
 from sklearn.pipeline import Pipeline
@@ -317,7 +317,7 @@ print('Predicted Class: %d' % yhat[0])
 
 提供具有 20 列的新数据行，并自动转换为 15 个分量，并馈送到逻辑回归模型，以便预测类别标签。
 
-```
+```py
 Predicted Class: 1
 ```
 

@@ -120,7 +120,7 @@ scikit-learn 库通过[校准分类器类](https://scikit-learn.org/stable/modul
 
 设置“ *cv* ”参数取决于可用的数据量，尽管可以使用 3 或 5 等值。重要的是，分割是分层的，这在不平衡数据集上使用概率校准时很重要，因为不平衡数据集通常很少有正类的例子。
 
-```
+```py
 ...
 # example of wrapping a model with probability calibration
 model = ...
@@ -135,7 +135,7 @@ calibrated = CalibratedClassifierCV(model, method='sigmoid', cv=3)
 
 首先，让我们使用[make _ classion()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)定义一个数据集。我们将生成 10，000 个示例，其中 99%属于负案例(类别 0)，1%属于正案例(类别 1)。
 
-```
+```py
 ...
 # generate dataset
 X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
@@ -144,7 +144,7 @@ X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
 
 接下来，我们可以定义一个具有默认超参数的 SVM。这意味着模型不会针对数据集进行调整，但会提供一致的比较基础。
 
-```
+```py
 ...
 # define model
 model = SVC(gamma='scale')
@@ -154,7 +154,7 @@ model = SVC(gamma='scale')
 
 我们将使用 ROC AUC 评估模型，并计算所有重复和折叠的平均得分。中华民国 AUC 将利用 SVM 提供的未经校准的类概率分数。
 
-```
+```py
 ...
 # define evaluation procedure
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -166,7 +166,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # evaluate svm with uncalibrated probabilities for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -192,7 +192,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到 SVM 实现了约 0.804 的 ROC AUC。
 
-```
+```py
 Mean ROC AUC: 0.804
 ```
 
@@ -206,7 +206,7 @@ Mean ROC AUC: 0.804
 
 我们将像以前一样定义 SVM 模型，然后用等渗回归定义*校准分类器*，然后通过重复分层 k 倍交叉验证评估校准模型。
 
-```
+```py
 ...
 # define model
 model = SVC(gamma='scale')
@@ -218,7 +218,7 @@ calibrated = CalibratedClassifierCV(model, method='isotonic', cv=3)
 
 将这些联系在一起，下面列出了用校准概率评估 SVM 的完整例子。
 
-```
+```py
 # evaluate svm with calibrated probabilities for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -247,7 +247,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到 SVM 实现了 ROC AUC 从约 0.804 到约 0.875 的提升。
 
-```
+```py
 Mean ROC AUC: 0.875
 ```
 
@@ -255,7 +255,7 @@ Mean ROC AUC: 0.875
 
 例如，SVM 提供了“ *class_weight* ”参数，该参数可以设置为“ *balanced* ”来调整保证金，以有利于少数族裔。我们可以将这一变化纳入 SVM 模型，并校准概率，我们可能会看到模型技能的进一步提升；例如:
 
-```
+```py
 ...
 # define model
 model = SVC(gamma='scale', class_weight='balanced')
@@ -263,7 +263,7 @@ model = SVC(gamma='scale', class_weight='balanced')
 
 将这些联系在一起，下面列出了具有校准概率的类加权 SVM 的完整示例。
 
-```
+```py
 # evaluate weighted svm with calibrated probabilities for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -292,7 +292,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到，SVM 实现了中华民国 AUC 从约 0.875 到约 0.966 的进一步提升。
 
-```
+```py
 Mean ROC AUC: 0.966
 ```
 
@@ -308,7 +308,7 @@ Mean ROC AUC: 0.966
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate decision tree with uncalibrated probabilities for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -334,7 +334,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到决策树实现了大约 0.842 的 ROC AUC。
 
-```
+```py
 Mean ROC AUC: 0.842
 ```
 
@@ -342,7 +342,7 @@ Mean ROC AUC: 0.842
 
 在这种情况下，我们将使用通过将“*方法*”参数设置为“ *sigmoid* 而配置的普拉特缩放方法。
 
-```
+```py
 ...
 # wrap the model
 calibrated = CalibratedClassifierCV(model, method='sigmoid', cv=3)
@@ -350,7 +350,7 @@ calibrated = CalibratedClassifierCV(model, method='sigmoid', cv=3)
 
 下面列出了用校准概率评估不平衡分类决策树的完整示例。
 
-```
+```py
 # decision tree with calibrated probabilities for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -379,7 +379,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到决策树实现了 ROC AUC 从大约 0.842 到大约 0.859 的提升。
 
-```
+```py
 Mean ROC AUC: 0.859
 ```
 
@@ -395,7 +395,7 @@ k-最近邻算法，或称 KNN 算法，是另一种非线性机器学习算法�
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate knn with uncalibrated probabilities for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -421,7 +421,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到 KNN 实现了约 0.864 的 ROC AUC。
 
-```
+```py
 Mean ROC AUC: 0.864
 ```
 
@@ -431,7 +431,7 @@ Mean ROC AUC: 0.864
 
 首先，模型和校准包装器的定义与之前一样。
 
-```
+```py
 ...
 # define model
 model = KNeighborsClassifier()
@@ -443,7 +443,7 @@ calibrated = CalibratedClassifierCV(model)
 
 我们可以将参数网格定义为一个带有参数名称的字典，我们想要调整*校准分类器*并提供要尝试的值列表。这将测试 3 * 2 或 6 种不同的组合。
 
-```
+```py
 ...
 # define grid
 param_grid = dict(cv=[2,3,4], method=['sigmoid','isotonic'])
@@ -451,7 +451,7 @@ param_grid = dict(cv=[2,3,4], method=['sigmoid','isotonic'])
 
 然后，我们可以用模型和参数网格定义 *GridSearchCV* ，并使用我们之前使用的相同的重复分层 k 倍交叉验证来评估每个参数组合。
 
-```
+```py
 ...
 # define evaluation procedure
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -463,7 +463,7 @@ grid_result = grid.fit(X, y)
 
 评估后，我们将总结 ROC AUC 最高的配置，然后列出所有组合的结果。
 
-```
+```py
 # report the best configuration
 print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
 # report all configurations
@@ -476,7 +476,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 将这些联系在一起，下面列出了使用 KNN 模型进行不平衡分类的网格搜索概率校准的完整示例。
 
-```
+```py
 # grid search probability calibration with knn for imbalance classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -515,7 +515,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 在这种情况下，我们可以看到最佳结果是用 2 的“ *cv* ”和“*方法*的“*等张*值”获得的，平均 ROC AUC 约为 0.895，比没有校准时的 0.864 有所提高。
 
-```
+```py
 Best: 0.895120 using {'cv': 2, 'method': 'isotonic'}
 0.895084 (0.062358) with: {'cv': 2, 'method': 'sigmoid'}
 0.895120 (0.062488) with: {'cv': 2, 'method': 'isotonic'}

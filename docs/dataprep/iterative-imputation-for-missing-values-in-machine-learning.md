@@ -82,7 +82,7 @@
 
 下面提供了数据集中带有标记缺失值的行的示例。
 
-```
+```py
 2,1,530101,38.50,66,28,3,3,?,2,5,4,4,?,?,?,3,5,45.00,8.40,?,?,2,2,11300,00000,00000,2
 1,1,534817,39.2,88,20,?,?,4,1,3,4,2,?,?,?,4,2,50,85,2,2,3,2,02208,00000,00000,2
 2,1,530334,38.30,40,24,1,1,3,1,3,3,1,?,?,?,1,1,33.00,6.70,?,?,1,2,00000,00000,00000,1
@@ -101,7 +101,7 @@
 
 我们可以使用 read_csv() Pandas 函数加载数据集，并指定“na_values”来加载“？”的值作为缺失，用 NaN 值标记。
 
-```
+```py
 ...
 # load dataset
 url = 'https://raw.githubusercontent.com/jbrownlee/Datasets/master/horse-colic.csv'
@@ -110,7 +110,7 @@ dataframe = read_csv(url, header=None, na_values='?')
 
 加载后，我们可以查看加载的数据以确认“？”值被标记为 NaN。
 
-```
+```py
 ...
 # summarize the first few rows
 print(dataframe.head())
@@ -118,7 +118,7 @@ print(dataframe.head())
 
 然后，我们可以枚举每一列，并报告该列缺少值的行数。
 
-```
+```py
 ...
 # summarize the number of rows with missing values for each column
 for i in range(dataframe.shape[1]):
@@ -130,7 +130,7 @@ for i in range(dataframe.shape[1]):
 
 将这些联系在一起，下面列出了加载和汇总数据集的完整示例。
 
-```
+```py
 # summarize the horse colic dataset
 from pandas import read_csv
 # load dataset
@@ -150,7 +150,7 @@ for i in range(dataframe.shape[1]):
 
 我们可以看到，被标记为“？”的缺失值字符已被 NaN 值替换。
 
-```
+```py
     0   1        2     3      4     5    6   ...   21   22  23     24  25  26  27
 0  2.0   1   530101  38.5   66.0  28.0  3.0  ...  NaN  2.0   2  11300   0   0   2
 1  1.0   1   534817  39.2   88.0  20.0  NaN  ...  2.0  3.0   2   2208   0   0   2
@@ -165,7 +165,7 @@ for i in range(dataframe.shape[1]):
 
 我们可以看到，一些列(例如列索引 1 和 2)没有缺失值，而其他列(例如列索引 15 和 21)有许多甚至大部分缺失值。
 
-```
+```py
 > 0, Missing: 1 (0.3%)
 > 1, Missing: 0 (0.0%)
 > 2, Missing: 0 (0.0%)
@@ -208,7 +208,7 @@ scikit-learn 机器学习库提供了支持迭代插补的[迭代插补器类](h
 
 这是一种数据转换，首先根据用于估计缺失值的方法进行配置。默认情况下，使用贝叶斯岭模型，该模型使用所有其他输入特征的函数。要素以升序填充，从缺失值最少的要素到缺失值最多的要素。
 
-```
+```py
 ...
 # define imputer
 imputer = IterativeImputer(estimator=BayesianRidge(), n_nearest_features=None, imputation_order='ascending')
@@ -216,7 +216,7 @@ imputer = IterativeImputer(estimator=BayesianRidge(), n_nearest_features=None, i
 
 然后将估算值拟合到数据集上。
 
-```
+```py
 ...
 # fit on the dataset
 imputer.fit(X)
@@ -224,7 +224,7 @@ imputer.fit(X)
 
 然后将拟合估算值应用于数据集，以创建数据集的副本，用估计值替换每列的所有缺失值。
 
-```
+```py
 ...
 # transform the dataset
 Xtrans = imputer.transform(X)
@@ -234,13 +234,13 @@ Xtrans = imputer.transform(X)
 
 如果您尝试直接使用它，您将获得如下错误:
 
-```
+```py
 ImportError: cannot import name 'IterativeImputer'
 ```
 
 相反，您必须添加额外的导入语句来添加对迭代器类的支持，如下所示:
 
-```
+```py
 ...
 from sklearn.experimental import enable_iterative_imputer
 ```
@@ -249,7 +249,7 @@ from sklearn.experimental import enable_iterative_imputer
 
 下面列出了完整的示例。
 
-```
+```py
 # iterative imputation transform for the horse colic dataset
 from numpy import isnan
 from pandas import read_csv
@@ -280,7 +280,7 @@ print('Missing: %d' % sum(isnan(Xtrans).flatten()))
 
 每个缺失的值都被替换为模型估计的值。
 
-```
+```py
 Missing: 1605
 Missing: 0
 ```
@@ -295,7 +295,7 @@ Missing: 0
 
 例如，下面的*管道*使用带有默认策略的*迭代估算器*，后跟随机森林模型。
 
-```
+```py
 ...
 # define modeling pipeline
 model = RandomForestClassifier()
@@ -307,7 +307,7 @@ pipeline = Pipeline(steps=[('i', imputer), ('m', model)])
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate iterative imputation and random forest for the horse colic dataset
 from numpy import mean
 from numpy import std
@@ -342,7 +342,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 使用三次重复的 10 倍交叉验证对管道进行评估，并报告数据集上的平均分类精度约为 86.3%，这是一个不错的分数。
 
-```
+```py
 Mean Accuracy: 0.863 (0.057)
 ```
 
@@ -360,7 +360,7 @@ Mean Accuracy: 0.863 (0.057)
 
 以下示例评估和比较了每个可用的插补顺序配置。
 
-```
+```py
 # compare iterative imputation strategies for the horse colic dataset
 from numpy import mean
 from numpy import std
@@ -403,7 +403,7 @@ pyplot.show()
 
 每种策略的平均精确度都是一路上报告的。结果表明，大多数方法之间差别不大，降序(与默认值相反)表现最好。结果表明，阿拉伯语(从右到左)或罗马顺序可能更适合此数据集，准确率约为 87.2%。
 
-```
+```py
 >ascending 0.867 (0.049)
 >descending 0.871 (0.052)
 >roman 0.872 (0.052)
@@ -425,7 +425,7 @@ pyplot.show()
 
 评估不同的迭代次数可能会很有趣。以下示例比较了从 1 到 20 的“ *max_iter* ”的不同值。
 
-```
+```py
 # compare iterative imputation number of iterations for the horse colic dataset
 from numpy import mean
 from numpy import std
@@ -468,7 +468,7 @@ pyplot.show()
 
 结果表明，在这个数据集上，很少的迭代，如 3 次迭代，可能与 9-12 次迭代一样有效或更有效。
 
-```
+```py
 >1 0.872 (0.053)
 >2 0.872 (0.052)
 >3 0.874 (0.051)
@@ -505,7 +505,7 @@ pyplot.show()
 
 重要的是，新数据行必须使用 NaN 值标记任何缺失的值。
 
-```
+```py
 ...
 # define new data
 row = [2, 1, 530101, 38.50, 66, 28, 3, 3, nan, 2, 5, 4, 4, nan, nan, nan, 3, 5, 45.00, 8.40, nan, nan, 2, 11300, 00000, 00000, 2]
@@ -513,7 +513,7 @@ row = [2, 1, 530101, 38.50, 66, 28, 3, 3, nan, 2, 5, 4, 4, nan, nan, nan, 3, 5, 
 
 下面列出了完整的示例。
 
-```
+```py
 # iterative imputation strategy and prediction for the hose colic dataset
 from numpy import nan
 from pandas import read_csv
@@ -543,7 +543,7 @@ print('Predicted Class: %d' % yhat[0])
 
 定义一个新的数据行，其缺失值用 NaNs 标记，并进行分类预测。
 
-```
+```py
 Predicted Class: 2
 ```
 

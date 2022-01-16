@@ -35,7 +35,7 @@ caret R 包提供了自动报告数据中属性的相关性和重要性的工具
 
 通常，您希望删除绝对相关性为 0.75 或更高的属性。
 
-```
+```py
 # ensure the results are repeatable
 set.seed(7)
 # load the library
@@ -59,7 +59,7 @@ print(highlyCorrelated)
 
 以下示例加载了皮马印第安人糖尿病数据集，并构建了一个[学习矢量量化](https://machinelearningmastery.com/learning-vector-quantization-for-machine-learning/) (LVQ)模型。变量随后被用来估计变量的重要性，并被打印和绘制出来。它显示葡萄糖、质量和年龄属性是数据集中最重要的前 3 个属性，胰岛素属性是最不重要的。
 
-```
+```py
 # ensure results are repeatable
 set.seed(7)
 # load the library
@@ -91,7 +91,7 @@ plot(importance)
 
 以下示例提供了皮马印第安人糖尿病数据集的 RFE 方法示例。每次迭代都使用随机森林算法来评估模型。该算法被配置为探索所有可能的属性子集。本例中选择了所有 8 个属性，尽管在显示不同属性子集大小的准确性的图中，我们可以看到只有 4 个属性给出了几乎相当的结果。
 
-```
+```py
 # ensure the results are repeatable
 set.seed(7)
 # load the library

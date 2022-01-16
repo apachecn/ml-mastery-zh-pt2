@@ -100,7 +100,7 @@ FaceNet 是一个人脸识别系统，由谷歌的 Florian schrovf 等人在他�
 
 我们可以使用 *load_model()* 函数直接在 Keras 中加载模型；例如:
 
-```
+```py
 # example of loading the keras facenet model
 from keras.models import load_model
 # load the model
@@ -114,7 +114,7 @@ print(model.outputs)
 
 我们可以看到，该模型确实期望以形状为 160×160 的正方形彩色图像作为输入，并且将输出作为 128 元素向量的面部嵌入。
 
-```
+```py
 # [<tf.Tensor 'input_1:0' shape=(?, 160, 160, 3) dtype=float32>]
 # [<tf.Tensor 'Bottleneck_BatchNorm/cond/Merge:0' shape=(?, 128) dtype=float32>]
 ```
@@ -131,13 +131,13 @@ print(model.outputs)
 
 我们将在 [ipazc/mtcnn 项目](https://github.com/ipazc/mtcnn)中使用 [Iván de Paz Centeno](https://www.linkedin.com/in/ivandepazcenteno/) 提供的实现。这也可以通过 pip 安装，如下所示:
 
-```
+```py
 sudo pip install mtcnn
 ```
 
 我们可以通过导入库并打印版本来确认库安装正确；例如:
 
-```
+```py
 # confirm mtcnn was installed correctly
 import mtcnn
 # print version
@@ -146,7 +146,7 @@ print(mtcnn.__version__)
 
 运行该示例将打印库的当前版本。
 
-```
+```py
 0.1.0
 ```
 
@@ -154,7 +154,7 @@ print(mtcnn.__version__)
 
 第一步是将图像加载为 NumPy 数组，我们可以使用 PIL 库和 *open()* 函数来实现。我们还会将图像转换为 RGB，以防图像有 alpha 通道或者是黑白的。
 
-```
+```py
 # load image from file
 image = Image.open(filename)
 # convert to RGB, if needed
@@ -165,7 +165,7 @@ pixels = asarray(image)
 
 接下来，我们可以创建一个 MTCNN 人脸检测器类，并使用它来检测加载照片中的所有人脸。
 
-```
+```py
 # create the detector, using default weights
 detector = MTCNN()
 # detect faces in the image
@@ -176,7 +176,7 @@ results = detector.detect_faces(pixels)
 
 如果我们假设照片中只有一张脸用于实验，我们可以如下确定边界框的像素坐标。有时候库会返回负像素索引，我觉得这是一个 bug。我们可以通过取坐标的绝对值来解决这个问题。
 
-```
+```py
 # extract the bounding box from the first face
 x1, y1, width, height = results[0]['box']
 # bug fix
@@ -186,14 +186,14 @@ x2, y2 = x1 + width, y1 + height
 
 我们可以用这些坐标提取人脸。
 
-```
+```py
 # extract the face
 face = pixels[y1:y2, x1:x2]
 ```
 
 然后，我们可以使用 PIL 图书馆来调整这个小图像的脸所需的大小；具体来说，该模型期望形状为 160×160 的正方形输入面。
 
-```
+```py
 # resize pixels to the model size
 image = Image.fromarray(face)
 image = image.resize((160, 160))
@@ -202,7 +202,7 @@ face_array = asarray(image)
 
 将所有这些结合在一起，函数 *extract_face()* 将从加载的文件名中加载一张照片，并返回提取的人脸。它假设照片包含一张脸，并将返回检测到的第一张脸。
 
-```
+```py
 # function for face detection with mtcnn
 from PIL import Image
 from numpy import asarray
@@ -261,7 +261,7 @@ pixels = extract_face('...')
 
 现在，您应该有一个具有以下结构的目录(注意，有些目录名存在拼写错误，在本例中它们保持原样):
 
-```
+```py
 5-celebrity-faces-dataset
 ├── train
 │   ├── ben_afflek
@@ -293,7 +293,7 @@ pixels = extract_face('...')
 
 下面列出了完整的示例。
 
-```
+```py
 # demonstrate face detection on 5 Celebrity Faces Dataset
 from os import listdir
 from PIL import Image
@@ -346,7 +346,7 @@ pyplot.show()
 
 运行该示例需要一点时间，并报告一路上每个加载照片的进度以及包含面部像素数据的 NumPy 数组的形状。
 
-```
+```py
 1 (160, 160, 3)
 2 (160, 160, 3)
 3 (160, 160, 3)
@@ -377,7 +377,7 @@ pyplot.show()
 
 下面的 *load_faces()* 函数会将所有的人脸加载到给定目录的列表中，例如“*5-名人脸-数据集/火车/Ben _ a fleek/*”。
 
-```
+```py
 # load images and extract faces for all images in a directory
 def load_faces(directory):
 	faces = list()
@@ -398,7 +398,7 @@ def load_faces(directory):
 
 它将数据集的 *X* 和 *y* 元素作为 NumPy 数组返回。
 
-```
+```py
 # load a dataset that contains one subdir for each class that in turn contains images
 def load_dataset(directory):
 	X, y = list(), list()
@@ -423,7 +423,7 @@ def load_dataset(directory):
 
 然后，我们可以为“train”和“val”文件夹调用该函数来加载所有数据，然后通过 [savez_compressed()函数](https://docs.scipy.org/doc/numpy/reference/generated/numpy.savez_compressed.html)将结果保存在一个压缩的 NumPy 数组文件中。
 
-```
+```py
 # load train dataset
 trainX, trainy = load_dataset('5-celebrity-faces-dataset/train/')
 print(trainX.shape, trainy.shape)
@@ -436,7 +436,7 @@ savez_compressed('5-celebrity-faces-dataset.npz', trainX, trainy, testX, testy)
 
 将所有这些结合起来，下面列出了检测 5 张名人脸数据集中所有人脸的完整示例。
 
-```
+```py
 # face detection for the 5 Celebrity Faces Dataset
 from os import listdir
 from os.path import isdir
@@ -520,7 +520,7 @@ savez_compressed('5-celebrity-faces-dataset.npz', trainX, trainy, testX, testy)
 
 然后，这两个数据集都被保存到一个名为“*5-名人脸-数据集. npz* ”的压缩 NumPy 数组文件中，该文件约为 3 兆字节，存储在当前工作目录中。
 
-```
+```py
 >loaded 14 examples for class: ben_afflek
 >loaded 19 examples for class: madonna
 >loaded 17 examples for class: elton_john
@@ -551,7 +551,7 @@ FaceNet 模型可以用作分类器本身的一部分，或者我们可以使用
 
 首先，我们可以使用 [load() NumPy 函数](https://docs.scipy.org/doc/numpy/reference/generated/numpy.load.html)加载我们检测到的人脸数据集。
 
-```
+```py
 # load the face dataset
 data = load('5-celebrity-faces-dataset.npz')
 trainX, trainy, testX, testy = data['arr_0'], data['arr_1'], data['arr_2'], data['arr_3']
@@ -560,7 +560,7 @@ print('Loaded: ', trainX.shape, trainy.shape, testX.shape, testy.shape)
 
 接下来，我们可以加载我们的 FaceNet 模型，准备将面转换为面嵌入。
 
-```
+```py
 # load the facenet model
 model = load_model('facenet_keras.h5')
 print('Loaded Model')
@@ -570,7 +570,7 @@ print('Loaded Model')
 
 为了预测嵌入，首先需要适当地准备图像的像素值，以满足 FaceNet 模型的期望。FaceNet 模型的这个具体实现期望像素值是标准化的。
 
-```
+```py
 # scale pixel values
 face_pixels = face_pixels.astype('float32')
 # standardize pixel values across channels (global)
@@ -580,14 +580,14 @@ face_pixels = (face_pixels - mean) / std
 
 为了对 Keras 中的一个示例进行预测，我们必须扩展维度，以便人脸数组是一个样本。
 
-```
+```py
 # transform face into one sample
 samples = expand_dims(face_pixels, axis=0)
 ```
 
 然后，我们可以使用该模型进行预测并提取嵌入向量。
 
-```
+```py
 # make prediction to get embedding
 yhat = model.predict(samples)
 # get embedding
@@ -596,7 +596,7 @@ embedding = yhat[0]
 
 下面定义的 *get_embedding()* 函数实现了这些行为，并将返回给定一张人脸图像和加载的 FaceNet 模型的人脸嵌入。
 
-```
+```py
 # get the face embedding for one face
 def get_embedding(model, face_pixels):
 	# scale pixel values
@@ -613,7 +613,7 @@ def get_embedding(model, face_pixels):
 
 将所有这些结合在一起，下面列出了将每个人脸转换为嵌入在训练和测试数据集中的人脸的完整示例。
 
-```
+```py
 # calculate a face embedding for each face in the dataset using facenet
 from numpy import load
 from numpy import expand_dims
@@ -665,7 +665,7 @@ savez_compressed('5-celebrity-faces-embeddings.npz', newTrainX, trainy, newTestX
 
 然后将结果数据集保存到一个压缩的 NumPy 数组中，该数组约为 50 千字节，在当前工作目录中的名称为“*5-名人脸-嵌入. npz* ”。
 
-```
+```py
 Loaded:  (93, 160, 160, 3) (93,) (25, 160, 160, 3) (25,)
 Loaded Model
 (93, 128)
@@ -680,7 +680,7 @@ Loaded Model
 
 首先，我们必须加载人脸嵌入数据集。
 
-```
+```py
 # load dataset
 data = load('5-celebrity-faces-embeddings.npz')
 trainX, trainy, testX, testy = data['arr_0'], data['arr_1'], data['arr_2'], data['arr_3']
@@ -693,7 +693,7 @@ print('Dataset: train=%d, test=%d' % (trainX.shape[0], testX.shape[0]))
 
 在本文中，[向量归一化](https://machinelearningmastery.com/vector-norms-machine-learning/)意味着缩放值，直到向量的长度或大小为 1 或单位长度。这可以使用 scikit-learn 中的[规格化器类来实现。在前一步中创建面嵌入时，执行这一步可能会更方便。](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html)
 
-```
+```py
 # normalize input vectors
 in_encoder = Normalizer(norm='l2')
 trainX = in_encoder.transform(trainX)
@@ -704,7 +704,7 @@ testX = in_encoder.transform(testX)
 
 这可以通过 scikit-learn 中的[标签编码器类来实现。](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html)
 
-```
+```py
 # label encode targets
 out_encoder = LabelEncoder()
 out_encoder.fit(trainy)
@@ -716,7 +716,7 @@ testy = out_encoder.transform(testy)
 
 在处理标准化人脸嵌入输入时，通常使用[线性支持向量机(SVM)](https://machinelearningmastery.com/support-vector-machines-for-machine-learning/) 。这是因为该方法在分离人脸嵌入向量方面非常有效。我们可以使用 scikit-learn 中的 [SVC 类](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)将线性 SVM 拟合到训练数据，并将“*内核*属性设置为“*线性*”。我们以后做预测的时候可能也要概率，可以通过设置“*概率*”为“*真*”来配置。
 
-```
+```py
 # fit model
 model = SVC(kernel='linear')
 model.fit(trainX, trainy)
@@ -726,7 +726,7 @@ model.fit(trainX, trainy)
 
 这可以通过使用拟合模型对训练和测试数据集中的每个示例进行预测，然后计算分类精度来实现。
 
-```
+```py
 # predict
 yhat_train = model.predict(trainX)
 yhat_test = model.predict(testX)
@@ -739,7 +739,7 @@ print('Accuracy: train=%.3f, test=%.3f' % (score_train*100, score_test*100))
 
 将所有这些结合在一起，下面列出了在 5 个名人脸数据集的脸嵌入上拟合线性 SVM 的完整示例。
 
-```
+```py
 # develop a classifier for the 5 Celebrity Faces Dataset
 from numpy import load
 from sklearn.metrics import accuracy_score
@@ -776,7 +776,7 @@ print('Accuracy: train=%.3f, test=%.3f' % (score_train*100, score_test*100))
 
 接下来，在训练和测试数据集上对模型进行评估，显示出完美的分类精度。考虑到数据集的大小以及所使用的人脸检测和人脸识别模型的能力，这并不奇怪。
 
-```
+```py
 Dataset: train=93, test=25
 Accuracy: train=100.000, test=100.000
 ```
@@ -785,7 +785,7 @@ Accuracy: train=100.000, test=100.000
 
 首先，我们需要加载人脸数据集，特别是测试数据集中的人脸。我们还可以加载原始照片，使其更加有趣。
 
-```
+```py
 # load faces
 data = load('5-celebrity-faces-dataset.npz')
 testX_faces = data['arr_2']
@@ -795,7 +795,7 @@ testX_faces = data['arr_2']
 
 首先，我们需要从测试集中选择一个随机的例子，然后得到嵌入、人脸像素、期望的类预测以及类的对应名称。
 
-```
+```py
 # test model on a random example from the test dataset
 selection = choice([i for i in range(testX.shape[0])])
 random_face_pixels = testX_faces[selection]
@@ -808,7 +808,7 @@ random_face_name = out_encoder.inverse_transform([random_face_class])
 
 我们可以预测类整数和预测的概率。
 
-```
+```py
 # prediction for the face
 samples = expand_dims(random_face_emb, axis=0)
 yhat_class = model.predict(samples)
@@ -817,7 +817,7 @@ yhat_prob = model.predict_proba(samples)
 
 然后我们可以得到预测的类整数的名称，以及这个预测的概率。
 
-```
+```py
 # get name
 class_index = yhat_class[0]
 class_probability = yhat_prob[0,class_index] * 100
@@ -826,14 +826,14 @@ predict_names = out_encoder.inverse_transform(yhat_class)
 
 然后我们可以打印这些信息。
 
-```
+```py
 print('Predicted: %s (%.3f)' % (predict_names[0], class_probability))
 print('Expected: %s' % random_face_name[0])
 ```
 
 我们还可以绘制人脸像素以及预测的名称和概率。
 
-```
+```py
 # plot for fun
 pyplot.imshow(random_face_pixels)
 title = '%s (%.3f)' % (predict_names[0], class_probability)
@@ -843,7 +843,7 @@ pyplot.show()
 
 将所有这些联系在一起，下面列出了预测测试数据集中给定未见过照片的身份的完整示例。
 
-```
+```py
 # develop a classifier for the 5 Celebrity Faces Dataset
 from random import choice
 from numpy import load
@@ -899,7 +899,7 @@ pyplot.show()
 
 在这种情况下，选择并正确预测了杰瑞·宋飞的照片。
 
-```
+```py
 Predicted: jerry_seinfeld (88.476)
 Expected: jerry_seinfeld
 ```

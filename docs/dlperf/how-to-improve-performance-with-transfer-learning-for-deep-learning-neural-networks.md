@@ -79,7 +79,7 @@ scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/mo
 
 我们可以将问题配置为具有两个输入变量(表示点的 *x* 和 *y* 坐标)和每组内点的标准偏差 2.0。我们将使用相同的随机状态(伪随机数发生器的种子)来确保我们总是获得相同的数据点。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random_state=1)
 ```
@@ -97,7 +97,7 @@ X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random
 
 下面列出了完整的示例。
 
-```
+```py
 # plot of blobs multiclass classification problems 1 and 2
 from sklearn.datasets import make_blobs
 from numpy import where
@@ -149,7 +149,7 @@ pyplot.show()
 
 然后可以将准备好的样本分成两半，训练数据集和测试数据集各有 500 个示例。下面的 *samples_for_seed()* 函数实现了这一点，为给定的随机数种子准备数据集，并重新调整分割成输入和输出组件的训练和测试集。
 
-```
+```py
 # prepare a blobs examples with a given random seed
 def samples_for_seed(seed):
 	# generate samples
@@ -165,7 +165,7 @@ def samples_for_seed(seed):
 
 我们可以调用这个函数为问题 1 准备一个数据集，如下所示。
 
-```
+```py
 # prepare data
 trainX, trainy, testX, testy = samples_for_seed(1)
 ```
@@ -174,7 +174,7 @@ trainX, trainy, testX, testy = samples_for_seed(1)
 
 模型预期数据中的两个变量有两个输入。该模型将有两个隐藏层，每个隐藏层有五个节点，以及经过校正的线性激活函数。这个函数可能不需要两层，尽管我们对模型学习一些深层结构感兴趣，我们可以跨这个问题的实例重用这些结构。输出层有三个节点，目标变量和 softmax 激活函数中的每个类一个节点。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(5, input_dim=2, activation='relu', kernel_initializer='he_uniform'))
@@ -184,20 +184,20 @@ model.add(Dense(3, activation='softmax'))
 
 假设问题是一个多类分类问题，分类交叉熵损失函数被最小化，具有默认学习率和无动量的随机梯度下降被用来学习问题。
 
-```
+```py
 # compile model
 model.compile(loss='categorical_crossentropy', optimizer='sgd', metrics=['accuracy'])
 ```
 
 该模型适用于训练数据集上的 100 个时期，测试集在训练期间用作验证数据集，在每个时期结束时评估两个数据集上的性能，以便我们可以[绘制学习曲线](https://machinelearningmastery.com/how-to-control-neural-network-model-capacity-with-nodes-and-layers/)。
 
-```
+```py
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=100, verbose=0)
 ```
 
 *fit_model()* 函数将这些元素联系在一起，将训练和测试数据集作为参数，并返回 fit 模型和训练历史。
 
-```
+```py
 # define and fit model on a training dataset
 def fit_model(trainX, trainy, testX, testy):
 	# define model
@@ -214,7 +214,7 @@ def fit_model(trainX, trainy, testX, testy):
 
 我们可以用准备好的数据集调用这个函数来获得一个拟合模型和在训练过程中收集的历史。
 
-```
+```py
 # fit model on train dataset
 model, history = fit_model(trainX, trainy, testX, testy)
 ```
@@ -223,7 +223,7 @@ model, history = fit_model(trainX, trainy, testX, testy)
 
 可以评估模型在列车和测试集上的分类精度。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -232,7 +232,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 在训练期间收集的历史可以用于创建线图，该线图显示了在每个训练时期模型和测试集的损失和分类精度，提供了学习曲线。
 
-```
+```py
 # plot loss during training
 pyplot.subplot(211)
 pyplot.title('Loss')
@@ -250,7 +250,7 @@ pyplot.show()
 
 下面的*summary _ model()*函数实现了这一点，将拟合模型、训练历史和数据集作为参数，打印模型性能，并创建模型学习曲线图。
 
-```
+```py
 # summarize the performance of the fit model
 def summarize_model(model, history, trainX, trainy, testX, testy):
 	# evaluate the model
@@ -274,7 +274,7 @@ def summarize_model(model, history, trainX, trainy, testX, testy):
 
 我们可以用拟合模型和准备好的数据调用这个函数。
 
-```
+```py
 # evaluate model behavior
 summarize_model(model, history, trainX, trainy, testX, testy)
 ```
@@ -283,20 +283,20 @@ summarize_model(model, history, trainX, trainy, testX, testy)
 
 请注意，将模型保存到文件需要安装 *h5py* 库。该库可以通过 *pip* 安装，如下所示:
 
-```
+```py
 sudo pip install h5py
 ```
 
 通过调用模型上的 *save()* 函数，可以保存拟合模型。
 
-```
+```py
 # save model to file
 model.save('model.h5')
 ```
 
 将这些元素结合在一起，下面列出了在问题 1 中拟合 MLP、总结模型性能并将模型保存到文件中的完整示例。
 
-```
+```py
 # fit mlp model on problem 1 and save model to file
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -366,7 +366,7 @@ model.save('model.h5')
 
 在这种情况下，我们可以看到该模型在问题 1 上表现良好，在训练和测试数据集上都达到了大约 92%的分类准确率。
 
-```
+```py
 Train: 0.916, Test: 0.920
 ```
 
@@ -390,14 +390,14 @@ Train: 0.916, Test: 0.920
 
 需要进行一次更改，将对 *samples_for_seed()* 的调用更改为使用两个而不是一个的伪随机数发生器种子。
 
-```
+```py
 # prepare data
 trainX, trainy, testX, testy = samples_for_seed(2)
 ```
 
 为完整起见，下面列出了此更改的完整示例。
 
-```
+```py
 # fit mlp model on problem 2 and save model to file
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -465,7 +465,7 @@ summarize_model(model, history, trainX, trainy, testX, testy)
 
 在这种情况下，我们可以看到模型在问题 2 上表现良好，但不如在问题 1 上表现得好，在训练数据集和测试数据集上都达到了大约 79%的分类准确率。
 
-```
+```py
 Train: 0.794, Test: 0.794
 ```
 
@@ -489,7 +489,7 @@ Train: 0.794, Test: 0.794
 
 保存在“model.h5”中的模型可以使用 *load_model()* Keras 函数加载。
 
-```
+```py
 # load model
 model = load_model('model.h5')
 ```
@@ -498,7 +498,7 @@ model = load_model('model.h5')
 
 更新后的 *fit_model()* 有此变化，如下所示。
 
-```
+```py
 # load and re-fit model on a training dataset
 def fit_model(trainX, trainy, testX, testy):
 	# load model
@@ -514,7 +514,7 @@ def fit_model(trainX, trainy, testX, testy):
 
 为完整起见，下面列出了此更改的完整示例。
 
-```
+```py
 # transfer learning with mlp model on problem 2
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -580,7 +580,7 @@ summarize_model(model, history, trainX, trainy, testX, testy)
 
 在这种情况下，我们可以看到模型实现了较低的泛化误差，在问题 2 的测试数据集上实现了约 81%的精度，而独立模型实现了约 79%的精度。
 
-```
+```py
 Train: 0.786, Test: 0.810
 ```
 
@@ -608,7 +608,7 @@ Train: 0.786, Test: 0.810
 
 作为第一步，我们将简化 *fit_model()* 函数来拟合模型，并丢弃任何训练历史，这样我们就可以专注于训练模型的最终精度。
 
-```
+```py
 # define and fit model on a training dataset
 def fit_model(trainX, trainy):
 	# define model
@@ -627,7 +627,7 @@ def fit_model(trainX, trainy):
 
 下面的 *eval_standalone_model()* 函数实现了这一点，将训练集和测试集作为参数以及重复次数，并返回测试数据集中模型的准确度分数列表。
 
-```
+```py
 # repeated evaluation of a standalone model
 def eval_standalone_model(trainX, trainy, testX, testy, n_repeats):
 	scores = list()
@@ -642,7 +642,7 @@ def eval_standalone_model(trainX, trainy, testX, testy, n_repeats):
 
 总结从该函数返回的准确度分数的分布将给出所选独立模型在问题 2 上表现如何的想法。
 
-```
+```py
 # repeated evaluation of standalone model
 standalone_scores = eval_standalone_model(trainX, trainy, testX, testy, n_repeats)
 print('Standalone %.3f (%.3f)' % (mean(standalone_scores), std(standalone_scores)))
@@ -658,7 +658,7 @@ print('Standalone %.3f (%.3f)' % (mean(standalone_scores), std(standalone_scores
 
 该函数返回一个测试准确性分数列表，总结这个分布将给出一个合理的想法，即具有所选类型的迁移学习的模型在问题 2 上的表现如何。
 
-```
+```py
 # repeated evaluation of a model with transfer learning
 def eval_transfer_model(trainX, trainy, testX, testy, n_fixed, n_repeats):
 	scores = list()
@@ -680,7 +680,7 @@ def eval_transfer_model(trainX, trainy, testX, testy, n_fixed, n_repeats):
 
 我们可以重复调用这个函数，在一个循环中将 n_fixed 设置为 0、1、2，并在进行的同时总结性能；例如:
 
-```
+```py
 # repeated evaluation of transfer learning model, vary fixed layers
 n_fixed = 3
 for i in range(n_fixed):
@@ -692,7 +692,7 @@ for i in range(n_fixed):
 
 将所有这些元素结合在一起，下面列出了完整的示例。
 
-```
+```py
 # compare standalone mlp model performance to transfer learning
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -798,7 +798,7 @@ pyplot.show()
 
 看到最后一种方法的结果如何与第二个隐藏层(可能还有输出层)的权重用随机数重新初始化的相同模型进行比较可能会很有趣。这种比较将证明单独的转移学习的特征提取属性或者特征提取和权重初始化属性都是有益的。
 
-```
+```py
 Standalone 0.787 (0.101)
 Transfer (fixed=0) 0.805 (0.004)
 Transfer (fixed=1) 0.817 (0.005)

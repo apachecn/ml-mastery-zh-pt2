@@ -170,7 +170,7 @@ AdaGrad 是 Adam 的扩展，它保持第二个矩向量的最大值，并使用
 
 下面的*目标()*函数实现了这一点。
 
-```
+```py
 # objective function
 def objective(x, y):
 	return x**2.0 + y**2.0
@@ -180,7 +180,7 @@ def objective(x, y):
 
 下面列出了绘制目标函数的完整示例。
 
-```
+```py
 # 3d plot of the test function
 from numpy import arange
 from numpy import meshgrid
@@ -219,7 +219,7 @@ pyplot.show()
 
 以下示例创建了目标函数的等高线图。
 
-```
+```py
 # contour plot of the test function
 from numpy import asarray
 from numpy import arange
@@ -268,7 +268,7 @@ pyplot.show()
 
 *导数()*函数实现如下。
 
-```
+```py
 # derivative of objective function
 def derivative(x, y):
 	return asarray([x * 2.0, y * 2.0])
@@ -280,7 +280,7 @@ def derivative(x, y):
 
 这假设我们有一个定义搜索范围的数组，每个维度有一行，第一列定义维度的最小值，第二列定义维度的最大值。
 
-```
+```py
 ...
 # generate an initial point
 x = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
@@ -288,7 +288,7 @@ x = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
 
 接下来，我们需要初始化力矩矢量。
 
-```
+```py
 ...
 # initialize moment vectors
 m = [0.0 for _ in range(bounds.shape[0])]
@@ -298,7 +298,7 @@ vhat = [0.0 for _ in range(bounds.shape[0])]
 
 然后，我们运行由“ *n_iter* ”超参数定义的算法的固定迭代次数。
 
-```
+```py
 ...
 # run iterations of gradient descent
 for t in range(n_iter):
@@ -307,7 +307,7 @@ for t in range(n_iter):
 
 第一步是计算当前参数集的导数。
 
-```
+```py
 ...
 # calculate gradient g(t)
 g = derivative(x[0], x[1])
@@ -317,7 +317,7 @@ g = derivative(x[0], x[1])
 
 实际上，为了提高效率，我建议使用 NumPy 向量运算。
 
-```
+```py
 ...
 # build a solution one variable at a time
 for i in range(x.shape[0]):
@@ -326,7 +326,7 @@ for i in range(x.shape[0]):
 
 首先，我们需要计算第一个力矩矢量。
 
-```
+```py
 ...
 # m(t) = beta1(t) * m(t-1) + (1 - beta1(t)) * g(t)
 m[i] = beta1**(t+1) * m[i] + (1.0 - beta1**(t+1)) * g[i]
@@ -334,7 +334,7 @@ m[i] = beta1**(t+1) * m[i] + (1.0 - beta1**(t+1)) * g[i]
 
 接下来，我们需要计算第二个矩向量。
 
-```
+```py
 ...
 # v(t) = beta2 * v(t-1) + (1 - beta2) * g(t)^2
 v[i] = (beta2 * v[i]) + (1.0 - beta2) * g[i]**2
@@ -342,7 +342,7 @@ v[i] = (beta2 * v[i]) + (1.0 - beta2) * g[i]**2
 
 然后是第二个矩向量与前一次迭代和当前值的最大值。
 
-```
+```py
 ...
 # vhat(t) = max(vhat(t-1), v(t))
 vhat[i] = max(vhat[i], v[i])
@@ -350,7 +350,7 @@ vhat[i] = max(vhat[i], v[i])
 
 最后，我们可以计算变量的新值。
 
-```
+```py
 ...
 # x(t) = x(t-1) - alpha(t) * m(t) / sqrt(vhat(t)))
 x[i] = x[i] - alpha * m[i] / sqrt(vhat[i])
@@ -358,7 +358,7 @@ x[i] = x[i] - alpha * m[i] / sqrt(vhat[i])
 
 我们可能希望在分母上增加一个小值，以避免被零除的误差；例如:
 
-```
+```py
 ...
 # x(t) = x(t-1) - alpha(t) * m(t) / sqrt(vhat(t)))
 x[i] = x[i] - alpha * m[i] / (sqrt(vhat[i]) + 1e-8)
@@ -368,7 +368,7 @@ x[i] = x[i] - alpha * m[i] / (sqrt(vhat[i]) + 1e-8)
 
 迭代结束时，我们可以评估新的参数值，并报告搜索的性能。
 
-```
+```py
 ...
 # evaluate candidate point
 score = objective(x[0], x[1])
@@ -378,7 +378,7 @@ print('>%d f(%s) = %.5f' % (t, x, score))
 
 我们可以将所有这些联系到一个名为 *amsgrad()* 的函数中，该函数采用目标函数和导数函数以及算法超参数的名称，并返回搜索结束时找到的最佳解及其评估。
 
-```
+```py
 # gradient descent algorithm with amsgrad
 def amsgrad(objective, derivative, bounds, n_iter, alpha, beta1, beta2):
 	# generate an initial point
@@ -412,7 +412,7 @@ def amsgrad(objective, derivative, bounds, n_iter, alpha, beta1, beta2):
 
 在这种情况下，我们将运行该算法 100 次迭代，初始学习率为 0.007，beta 为 0.9，beta2 为 0.99，这是经过一点尝试和错误后发现的。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -432,7 +432,7 @@ best, score = amsgrad(objective, derivative, bounds, n_iter, alpha, beta1, beta2
 
 运行结束时，我们将报告找到的最佳解决方案。
 
-```
+```py
 ...
 # summarize the result
 print('Done!')
@@ -441,7 +441,7 @@ print('f(%s) = %f' % (best, score))
 
 将所有这些联系在一起，下面列出了应用于我们测试问题的完整的 AMSGrad 梯度下降示例。
 
-```
+```py
 # gradient descent optimization with amsgrad for a two-dimensional test function
 from math import sqrt
 from numpy import asarray
@@ -508,7 +508,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以看到，在大约 90 次搜索迭代后，找到了一个接近最优的解，输入值接近 0.0 和 0.0，评估为 0.0。
 
-```
+```py
 ...
 >90 f([-5.74880707e-11 2.16227707e-03]) = 0.00000
 >91 f([-4.53359947e-11 2.03974264e-03]) = 0.00000
@@ -534,7 +534,7 @@ f([-6.78222208e-12 1.27905115e-03]) = 0.000002
 
 下面列出了带有这些更改的功能的更新版本。
 
-```
+```py
 # gradient descent algorithm with amsgrad
 def amsgrad(objective, derivative, bounds, n_iter, alpha, beta1, beta2):
 	solutions = list()
@@ -569,7 +569,7 @@ def amsgrad(objective, derivative, bounds, n_iter, alpha, beta1, beta2):
 
 然后，我们可以像以前一样执行搜索，这次检索解决方案列表，而不是最佳最终解决方案。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -589,7 +589,7 @@ solutions = amsgrad(objective, derivative, bounds, n_iter, alpha, beta1, beta2)
 
 然后，我们可以像以前一样创建目标函数的等高线图。
 
-```
+```py
 ...
 # sample input range uniformly at 0.1 increments
 xaxis = arange(bounds[0,0], bounds[0,1], 0.1)
@@ -604,7 +604,7 @@ pyplot.contourf(x, y, results, levels=50, cmap='jet')
 
 最后，我们可以将搜索过程中找到的每个解决方案绘制成由一条线连接的白点。
 
-```
+```py
 ...
 # plot the sample as black circles
 solutions = asarray(solutions)
@@ -613,7 +613,7 @@ pyplot.plot(solutions[:, 0], solutions[:, 1], '.-', color='w')
 
 将所有这些结合在一起，下面列出了对测试问题执行 AMSGrad 优化并将结果绘制在等高线图上的完整示例。
 
-```
+```py
 # example of plotting the amsgrad search on a contour plot of the test function
 from math import sqrt
 from numpy import asarray

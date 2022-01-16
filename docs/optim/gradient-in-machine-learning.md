@@ -141,7 +141,7 @@ Let’s get started.![What Is a Gradient in Machine Learning?](img/770b708744f66
 
 以下示例以 0.1 的增量对此函数的输入进行采样，计算每个输入的函数值，并绘制结果图。
 
-```
+```py
 # plot of simple function
 from numpy import arange
 from matplotlib import pyplot
@@ -180,7 +180,7 @@ pyplot.show()
 
 下面的例子为我们的目标函数计算了特定输入点的导数。
 
-```
+```py
 # calculate the derivative of the objective function
 
 # derivative of objective function
@@ -200,7 +200,7 @@ print('f\'(0.0) = %.3f' % d3)
 
 我们可以看到，函数陡点处的导数为-1 和 1，函数平坦部分的导数为 0.0。
 
-```
+```py
 f'(-0.5) = -1.000
 f'(0.5) = 1.000
 f'(0.0) = 0.000

@@ -56,7 +56,7 @@
 
 具体来说，所有变量都是带引号的字符串；有些是序数，有些不是。
 
-```
+```py
 '40-49','premeno','15-19','0-2','yes','3','right','left_up','no','recurrence-events'
 '50-59','ge40','15-19','0-2','no','1','right','central','no','no-recurrence-events'
 '50-59','ge40','35-39','0-2','no','2','left','left_low','no','recurrence-events'
@@ -67,7 +67,7 @@
 
 我们可以使用熊猫库将这个数据集加载到内存中。
 
-```
+```py
 ...
 # load the dataset as a pandas DataFrame
 data = read_csv(filename, header=None)
@@ -77,7 +77,7 @@ dataset = data.values
 
 加载后，我们可以将列拆分为输入( *X* )和输出进行建模。
 
-```
+```py
 ...
 # split into input (X) and output (y) variables
 X = dataset[:, :-1]
@@ -86,7 +86,7 @@ y = dataset[:,-1]
 
 最后，我们可以强制输入数据中的所有字段都是字符串，以防 Pandas 尝试自动将一些字段映射到数字(它确实尝试了)。
 
-```
+```py
 ...
 # format all fields as string
 X = X.astype(str)
@@ -94,7 +94,7 @@ X = X.astype(str)
 
 我们可以将所有这些结合到一个有用的函数中，以便以后重用。
 
-```
+```py
 # load the dataset
 def load_dataset(filename):
 	# load the dataset as a pandas DataFrame
@@ -113,7 +113,7 @@ def load_dataset(filename):
 
 我们将使用 [train_test_split()函数](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)形成 scikit-learn，使用 67%的数据进行训练，33%的数据进行测试。
 
-```
+```py
 ...
 # load the dataset
 X, y = load_dataset('breast-cancer.csv')
@@ -123,7 +123,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random
 
 将所有这些元素结合在一起，下面列出了加载、拆分和汇总原始分类数据集的完整示例。
 
-```
+```py
 # load and summarize the dataset
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -154,7 +154,7 @@ print('Test', X_test.shape, y_test.shape)
 
 我们可以看到，我们有 191 个示例用于培训，95 个示例用于测试。
 
-```
+```py
 Train (191, 9) (191, 1)
 Test (95, 9) (95, 1)
 ```
@@ -169,7 +169,7 @@ Test (95, 9) (95, 1)
 
 下面名为 *prepare_inputs()* 的函数获取列车和测试集的输入数据，并使用顺序编码对其进行编码。
 
-```
+```py
 # prepare input data
 def prepare_inputs(X_train, X_test):
 	oe = OrdinalEncoder()
@@ -185,7 +185,7 @@ def prepare_inputs(X_train, X_test):
 
 *prepare_targets()* 函数对列车和测试集的输出数据进行整数编码。
 
-```
+```py
 # prepare target
 def prepare_targets(y_train, y_test):
 	le = LabelEncoder()
@@ -197,7 +197,7 @@ def prepare_targets(y_train, y_test):
 
 我们可以调用这些函数来准备我们的数据。
 
-```
+```py
 ...
 # prepare input data
 X_train_enc, X_test_enc = prepare_inputs(X_train, X_test)
@@ -207,7 +207,7 @@ y_train_enc, y_test_enc = prepare_targets(y_train, y_test)
 
 将所有这些结合起来，下面列出了为乳腺癌分类数据集加载和编码输入和输出变量的完整示例。
 
-```
+```py
 # example of loading and preparing the breast cancer dataset
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -284,7 +284,7 @@ scikit-learn 机器库提供了 [chi2()函数](https://scikit-learn.org/stable/m
 
 例如，我们可以定义 *SelectKBest* 类来使用 *chi2()* 功能并选择所有特征，然后转换列车和测试集。
 
-```
+```py
 ...
 fs = SelectKBest(score_func=chi2, k='all')
 fs.fit(X_train, y_train)
@@ -294,7 +294,7 @@ X_test_fs = fs.transform(X_test)
 
 然后，我们可以打印每个变量的分数(越大越好)，并将每个变量的分数绘制成条形图，以了解我们应该选择多少个特征。
 
-```
+```py
 ...
 # what are scores for the features
 for i in range(len(fs.scores_)):
@@ -306,7 +306,7 @@ pyplot.show()
 
 将此与上一节中乳腺癌数据集的数据准备结合起来，下面列出了完整的示例。
 
-```
+```py
 # example of chi squared feature selection for categorical data
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -379,7 +379,7 @@ pyplot.show()
 
 也许特性 3、4、5 和 8 最相关。
 
-```
+```py
 Feature 0: 0.472553
 Feature 1: 0.029193
 Feature 2: 2.137658
@@ -415,7 +415,7 @@ scikit-learn 机器学习库通过 [mutual_info_classif()函数](https://scikit-
 
 和 *chi2()* 一样，可以在 *SelectKBest* 特征选择策略(和其他策略)中使用。
 
-```
+```py
 # feature selection
 def select_features(X_train, y_train, X_test):
 	fs = SelectKBest(score_func=mutual_info_classif, k='all')
@@ -429,7 +429,7 @@ def select_features(X_train, y_train, X_test):
 
 下面列出了使用互信息进行分类特征选择的完整示例。
 
-```
+```py
 # example of mutual information feature selection for categorical data
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -502,7 +502,7 @@ pyplot.show()
 
 也许特性 3、6、2 和 5 最相关。
 
-```
+```py
 Feature 0: 0.003588
 Feature 1: 0.000000
 Feature 2: 0.025934
@@ -542,7 +542,7 @@ Feature 8: 0.000000
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluation of a model using all input features
 from pandas import read_csv
 from sklearn.preprocessing import LabelEncoder
@@ -606,7 +606,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 我们更喜欢使用达到与此相同或更好的分类精度的特征子集。
 
-```
+```py
 Accuracy: 75.79
 ```
 
@@ -616,7 +616,7 @@ Accuracy: 75.79
 
 下面的 *select_features()* 功能被更新以实现这一点。
 
-```
+```py
 # feature selection
 def select_features(X_train, y_train, X_test):
 	fs = SelectKBest(score_func=chi2, k=4)
@@ -628,7 +628,7 @@ def select_features(X_train, y_train, X_test):
 
 下面列出了使用此特征选择方法评估逻辑回归模型拟合和评估数据的完整示例。
 
-```
+```py
 # evaluation of a model fit using chi squared input features
 from pandas import read_csv
 from sklearn.preprocessing import LabelEncoder
@@ -706,7 +706,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 在这个阶段，我们可能更喜欢使用所有的输入特性。
 
-```
+```py
 Accuracy: 74.74
 ```
 
@@ -716,7 +716,7 @@ Accuracy: 74.74
 
 下面列出了实现此功能的 *select_features()* 功能的更新版本。
 
-```
+```py
 # feature selection
 def select_features(X_train, y_train, X_test):
 	fs = SelectKBest(score_func=mutual_info_classif, k=4)
@@ -728,7 +728,7 @@ def select_features(X_train, y_train, X_test):
 
 下面列出了使用互信息进行特征选择以拟合逻辑回归模型的完整示例。
 
-```
+```py
 # evaluation of a model fit using mutual information input features
 from pandas import read_csv
 from sklearn.preprocessing import LabelEncoder
@@ -804,7 +804,7 @@ print('Accuracy: %.2f' % (accuracy*100))
 
 为了确保效果是真实的，将每个实验重复多次并比较平均性能将是一个好主意。探索使用 k-fold 交叉验证而不是简单的训练/测试分割可能也是一个好主意。
 
-```
+```py
 Accuracy: 76.84
 ```
 

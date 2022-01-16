@@ -82,7 +82,7 @@ MNIST 问题，简称 MNIST，是一个由 70，000 幅手写数字图像组成�
 
 该函数返回两个元组:一个用于训练输入和输出，一个用于测试输入和输出。例如:
 
-```
+```py
 # example of loading the MNIST dataset
 from keras.datasets import mnist
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -92,7 +92,7 @@ from keras.datasets import mnist
 
 下面列出了完整的示例。
 
-```
+```py
 # load and summarize the MNIST dataset
 from keras.datasets import mnist
 # load dataset
@@ -111,7 +111,7 @@ print('Train', test_images.min(), test_images.max(), test_images.mean(), test_im
 
 我们还可以看到，像素值是介于 0 和 255 之间的整数值，并且两个数据集之间像素值的平均值和标准差相似。
 
-```
+```py
 Train (60000, 28, 28) (60000,)
 Test ((10000, 28, 28), (10000,))
 Train 0 255 33.318421449829934 78.56748998339798
@@ -134,7 +134,7 @@ Train 0 255 33.791224489795916 79.17246322228644
 
 首先，必须加载数据集，扩展训练和测试数据集的形状以添加通道维度，设置为 1，因为我们只有一个黑白通道。
 
-```
+```py
 # load dataset
 (trainX, trainY), (testX, testY) = mnist.load_data()
 # reshape dataset to have a single channel
@@ -145,7 +145,7 @@ testX = testX.reshape((testX.shape[0], width, height, channels))
 
 接下来，我们将对本例的像素值进行归一化，并对多类分类所需的目标值进行热编码。
 
-```
+```py
 # normalize pixel values
 trainX = trainX.astype('float32') / 255
 testX = testX.astype('float32') / 255
@@ -158,7 +158,7 @@ testY = to_categorical(testY)
 
 ReLU 激活功能用于隐藏层，softmax 激活功能用于输出层。指定足够的过滤器映射和节点，以提供足够的能力来学习问题。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(width, height, channels)))
@@ -172,21 +172,21 @@ model.add(Dense(10, activation='softmax'))
 
 随机梯度下降的 [Adam](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/) 变异用于寻找模型权重。使用分类交叉熵损失函数，这是多类分类所需要的，并且在训练期间监控分类精度。
 
-```
+```py
 # compile model
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 ```
 
 该模型适用于五个训练时期，并且使用了 128 幅图像的大批量。
 
-```
+```py
 # fit model
 model.fit(trainX, trainY, epochs=5, batch_size=128)
 ```
 
 一旦拟合，就在测试数据集上评估模型。
 
-```
+```py
 # evaluate model
 _, acc = model.evaluate(testX, testY, verbose=0)
 print(acc)
@@ -194,7 +194,7 @@ print(acc)
 
 下面列出了完整的例子，大约一分钟后就可以在中央处理器上轻松运行。
 
-```
+```py
 # baseline cnn model for the mnist problem
 from keras.datasets import mnist
 from keras.utils import to_categorical
@@ -239,7 +239,7 @@ print(acc)
 
 事实上，在这次运行中，模型在测试数据集上的性能是 99%，即 1%的错误率。这不是最先进的(通过设计)，但也离最先进的不远。
 
-```
+```py
 60000/60000 [==============================] - 13s 220us/step - loss: 0.2321 - acc: 0.9323
 Epoch 2/5
 60000/60000 [==============================] - 12s 204us/step - loss: 0.0628 - acc: 0.9810
@@ -283,7 +283,7 @@ Epoch 5/5
 
 以下示例实现了三种选定的像素缩放方法，并演示了它们对 MNIST 数据集的影响。
 
-```
+```py
 # demonstrate pixel scaling methods on mnist dataset
 from keras.datasets import mnist
 
@@ -350,7 +350,7 @@ print('Test', testX.min(), testX.max(), testX.mean(), testX.std())
 
 然后，针对定心和标准化数据准备方案重复这一过程。结果提供了缩放程序确实被正确实施的证据。
 
-```
+```py
 normalization
 Train 0.0 1.0 0.13066062 0.30810776
 Test 0.0 1.0 0.13251467 0.31048027
@@ -372,7 +372,7 @@ Test -0.42407447 2.8215446 0.0060174568 1.0077008
 
 我们可以定义一个函数，在需要时重新加载数据集。
 
-```
+```py
 # load train and test dataset
 def load_dataset():
 	# load dataset
@@ -389,7 +389,7 @@ def load_dataset():
 
 我们还可以定义一个函数来定义和编译我们的模型，以适应问题。
 
-```
+```py
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -409,7 +409,7 @@ def define_model():
 
 最后，我们可以定义一个名为*repeat _ evaluation()*的函数，该函数以数据准备函数的名称调用来准备数据，并将加载数据集并重复定义模型、准备数据集、拟合和评估模型。它将返回一个准确性分数列表，可用于总结模型在所选数据准备方案下的性能。
 
-```
+```py
 # repeated evaluation of model with data prep scheme
 def repeated_evaluation(datapre_func, n_repeats=10):
 	# prepare data
@@ -435,7 +435,7 @@ def repeated_evaluation(datapre_func, n_repeats=10):
 
 我们还可以创建一个方框和触须图来总结和比较每个方案的准确性分数分布。
 
-```
+```py
 all_scores = list()
 # normalization
 scores = repeated_evaluation(prep_normalize)
@@ -456,7 +456,7 @@ pyplot.show()
 
 将所有这些结合在一起，下面列出了运行实验来比较 MNIST 数据集上的像素缩放方法的完整示例。
 
-```
+```py
 # comparison of training-set based pixel scaling methods on MNIST
 from numpy import mean
 from numpy import std
@@ -578,7 +578,7 @@ pyplot.show()
 
 报告模型每次重复评估的准确性，并在每次运行结束时重复准确性得分的平均值和标准偏差。
 
-```
+```py
 > 0: 98.930
 > 1: 98.960
 > 2: 98.910

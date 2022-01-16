@@ -108,7 +108,7 @@ scikit-learn 库通过[输出编码分类器类](https://scikit-learn.org/stable
 
 下面的例子演示了如何定义一个每类 2 位的*输出编码分类器*的例子，并为编码中的每一位使用一个[物流分类器](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型。
 
-```
+```py
 ...
 # define the binary classification model
 model = LogisticRegression()
@@ -124,7 +124,7 @@ ecoc = OutputCodeClassifier(model, code_size=2, random_state=1)
 
 下面的示例演示了如何创建数据集并汇总数据集中的行数、列数和类数。
 
-```
+```py
 # multi-class classification dataset
 from collections import Counter
 from sklearn.datasets import make_classification
@@ -140,7 +140,7 @@ print(Counter(y))
 
 然后报告每个类别中的示例数量，显示三个已配置类别中每个类别的案例数量几乎相等。
 
-```
+```py
 (1000, 20) (1000,)
 Counter({2: 335, 1: 333, 0: 332})
 ```
@@ -149,7 +149,7 @@ Counter({2: 335, 1: 333, 0: 332})
 
 我们将使用上面定义的每类 2 位的逻辑回归。然后将使用重复的分层 k-fold 交叉验证对模型进行评估，重复 3 次，重复 10 次。我们将使用所有重复和折叠的分类精度的平均值和标准差来总结模型的性能。
 
-```
+```py
 ...
 # define the evaluation procedure
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -161,7 +161,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # evaluate error-correcting output codes for multi-class classification
 from numpy import mean
 from numpy import std
@@ -190,7 +190,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到该模型实现了大约 76.6%的平均分类准确率。
 
-```
+```py
 Accuracy: 0.766 (0.037)
 ```
 
@@ -200,7 +200,7 @@ Accuracy: 0.766 (0.037)
 
 下面的示例提供了一个完整的示例，说明如何拟合并使用纠错输出模型作为最终模型。
 
-```
+```py
 # use error-correcting output codes model as a final model and make a prediction
 from sklearn.datasets import make_classification
 from sklearn.linear_model import LogisticRegression
@@ -223,7 +223,7 @@ print('Predicted Class: %d' % yhat[0])
 
 在这种情况下，我们可以看到模型预测了类标签 0。
 
-```
+```py
 Predicted Class: 0
 ```
 
@@ -248,7 +248,7 @@ ECOC 模型的关键超参数是类标签的编码。
 
 首先，我们可以定义一个函数来创建和返回数据集。
 
-```
+```py
 # get the dataset
 def get_dataset():
 	X, y = make_classification(n_samples=1000, n_features=20, n_informative=15, n_redundant=5, random_state=1, n_classes=3)
@@ -259,7 +259,7 @@ def get_dataset():
 
 每个模型都将是*输出编码分类器*的一个例子，为每个二进制分类问题使用一个逻辑分类器。我们将配置每个型号的*代码大小*不同，数值范围从 1 到 20。
 
-```
+```py
 # get a list of models to evaluate
 def get_models():
 	models = dict()
@@ -273,7 +273,7 @@ def get_models():
 
 我们可以使用相关的 k-fold 交叉验证来评估每个模型，就像我们在上一节中所做的那样，以给出一个分类准确性分数的样本。
 
-```
+```py
 # evaluate a give model using cross-validation
 def evaluate_model(model):
 	cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -283,7 +283,7 @@ def evaluate_model(model):
 
 我们可以报告每种配置得分的平均值和标准偏差，并将分布绘制为并排的方框图和触须图，以便直观地比较结果。
 
-```
+```py
 ...
 # evaluate the models and store results
 results, names = list(), list()
@@ -299,7 +299,7 @@ pyplot.show()
 
 将所有这些联系在一起，下面列出了将 ECOC 分类与每个类的位数网格进行比较的完整示例。
 
-```
+```py
 # compare the number of bits per class for error-correcting output code classification
 from numpy import mean
 from numpy import std
@@ -353,7 +353,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到，每个类可能有 5 或 6 个比特导致最佳性能，报告的平均准确度分数分别约为 78.2%和 78.0%。我们还看到每个类 9、13、17 和 20 位的良好结果，每个类 17 位可能给出大约 78.5%的最佳结果。
 
-```
+```py
 >1 0.545 (0.032)
 >2 0.766 (0.037)
 >3 0.776 (0.036)

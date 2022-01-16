@@ -61,7 +61,7 @@
 
 下面的 *define_discriminator()* 函数实现了这一点，定义并编译鉴别器模型并返回。图像的输入形状被参数化为默认函数参数，以使其清晰。
 
-```
+```py
 # define the standalone discriminator model
 def define_discriminator(in_shape=(28,28,1)):
 	# weight initialization
@@ -87,7 +87,7 @@ def define_discriminator(in_shape=(28,28,1)):
 
 下面的 *define_generator()* 函数定义了生成器模型，但由于没有直接训练，所以故意不编译，然后返回模型。潜在空间的大小被参数化为函数参数。
 
-```
+```py
 # define the standalone generator model
 def define_generator(latent_dim):
 	# weight initialization
@@ -116,7 +116,7 @@ def define_generator(latent_dim):
 
 下面的 *define_gan()* 函数实现了这一点，将已经定义的生成器和鉴别器模型作为输入。
 
-```
+```py
 # define the combined generator and discriminator model, for updating the generator
 def define_gan(generator, discriminator):
 	# make weights in the discriminator not trainable
@@ -139,7 +139,7 @@ def define_gan(generator, discriminator):
 
 下面的 *load_real_samples()* 函数实现了这一点，返回 MNIST 训练数据集的加载和缩放子集，为建模做好准备。
 
-```
+```py
 # load mnist images
 def load_real_samples():
 	# load dataset
@@ -160,7 +160,7 @@ def load_real_samples():
 
 下面的 *generate_real_samples()* 函数实现了这一点，以准备好的数据集为自变量，选择并返回一个人脸图像的随机样本，以及它们对应的类别标签给鉴别器，具体为 class=1 表示它们是真实图像。
 
-```
+```py
 # select real samples
 def generate_real_samples(dataset, n_samples):
 	# choose random instances
@@ -176,7 +176,7 @@ def generate_real_samples(dataset, n_samples):
 
 *generate _ 潜伏 _points()* 函数实现了这一点，将潜伏空间的大小作为自变量和所需的点数，作为生成器模型的一批输入样本返回。
 
-```
+```py
 # generate points in latent space as input for the generator
 def generate_latent_points(latent_dim, n_samples):
 	# generate points in the latent space
@@ -190,7 +190,7 @@ def generate_latent_points(latent_dim, n_samples):
 
 下面的 *generate_fake_samples()* 函数实现了这一点，将生成器模型和潜在空间的大小作为参数，然后在潜在空间中生成点，并将其用作生成器模型的输入。该函数为鉴别器模型返回生成的图像及其对应的类标签，具体来说，class=0 表示它们是伪造的或生成的。
 
-```
+```py
 # use the generator to generate n fake examples, with class labels
 def generate_fake_samples(generator, latent_dim, n_samples):
 	# generate points in latent space
@@ -206,7 +206,7 @@ def generate_fake_samples(generator, latent_dim, n_samples):
 
 下面的*summary _ performance()*函数在训练过程中获取给定点的生成器模型，并使用它在 10×10 的网格中生成 100 个图像，然后绘制并保存到文件中。这个模型现在也保存到文件中，以防我们以后想用它来生成更多的图像。
 
-```
+```py
 # generate samples and save as a plot and save the model
 def summarize_performance(step, g_model, latent_dim, n_samples=100):
 	# prepare fake examples
@@ -234,7 +234,7 @@ def summarize_performance(step, g_model, latent_dim, n_samples=100):
 
 下面的 *plot_history()* 函数实现了这一点，并将结果保存到文件中。
 
-```
+```py
 # create a line plot of loss for the gan and save to file
 def plot_history(d1_hist, d2_hist, g_hist, a1_hist, a2_hist):
 	# plot loss
@@ -263,7 +263,7 @@ def plot_history(d1_hist, d2_hist, g_hist, a1_hist, a2_hist):
 
 每次迭代都报告鉴别器和生成器模型的性能。样本图像在每个时期生成并保存，模型性能的线图在运行结束时创建并保存。
 
-```
+```py
 # train the generator and discriminator
 def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=10, n_batch=128):
 	# calculate the number of batches per epoch
@@ -307,7 +307,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=10, n_batch
 
 既然已经定义了所有的函数，我们可以创建存储图像和模型的目录(在本例中为“ *results_baseline* ”)，创建模型，加载数据集，并开始训练过程。
 
-```
+```py
 # make folder for results
 makedirs('results_baseline', exist_ok=True)
 # size of the latent space
@@ -327,7 +327,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # example of training a stable gan for generating a handwritten digit
 from os import makedirs
 from numpy import expand_dims
@@ -552,7 +552,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 对于鉴别器和发生器来说，在模型收敛到一个稳定的平衡之前，行为很可能开始不稳定并移动很多。
 
-```
+```py
 >1, d1=0.859, d2=0.664 g=0.872, a1=37, a2=59
 >2, d1=0.190, d2=1.429 g=0.555, a1=100, a2=10
 >3, d1=0.094, d2=1.467 g=0.597, a1=100, a2=4
@@ -637,14 +637,14 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 具体来说，‘*潜伏 _ dim*’变量可以从 100 变为 1，实验重新运行。
 
-```
+```py
 # size of the latent space
 latent_dim = 1
 ```
 
 为了完整起见，下面提供了完整的代码列表。
 
-```
+```py
 # example of training an unstable gan for generating a handwritten digit
 from os import makedirs
 from numpy import expand_dims
@@ -861,7 +861,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 在这种情况下，鉴频器的损耗位于一个合理的范围内，尽管发生器的损耗会上下跳动。鉴别器的准确度也显示出更高的值，许多值在 100%左右，这意味着对于许多批次，它在识别真实或虚假例子方面具有完美的技能，这是图像质量或多样性的一个不好的迹象。
 
-```
+```py
 >1, d1=0.963, d2=0.699 g=0.614, a1=28, a2=54
 >2, d1=0.185, d2=5.084 g=0.097, a1=96, a2=0
 >3, d1=0.088, d2=4.861 g=0.065, a1=100, a2=0
@@ -922,7 +922,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 为了完整起见，下面提供了包含这些更改的完整代码列表。
 
-```
+```py
 # example of training an unstable gan for generating a handwritten digit
 from os import makedirs
 from numpy import expand_dims
@@ -1137,7 +1137,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 这就是我们在这个案例中看到的。
 
-```
+```py
 >1, d=0.514, g=0.969, a=80
 >2, d=0.475, g=0.395, a=74
 >3, d=0.452, g=0.223, a=69
@@ -1180,7 +1180,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 例如，鉴别器可以编译如下:
 
-```
+```py
 ...
 # compile model
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -1188,7 +1188,7 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 
 复合氮化镓模型可以编制如下:
 
-```
+```py
 ...
 # compile model
 model.compile(loss='binary_crossentropy', optimizer='adam')
@@ -1196,7 +1196,7 @@ model.compile(loss='binary_crossentropy', optimizer='adam')
 
 为了完整起见，下面提供了完整的代码列表。
 
-```
+```py
 # example of training an unstable gan for generating a handwritten digit
 from os import makedirs
 from numpy import expand_dims
@@ -1410,7 +1410,7 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 
 正如我们预期的那样，鉴别器的损失迅速下降到接近于零的值，并且鉴别器在真实和虚假例子上的分类精度保持在 100%。
 
-```
+```py
 >1, d1=0.728, d2=0.902 g=0.763, a1=54, a2=12
 >2, d1=0.001, d2=4.509 g=0.033, a1=100, a2=0
 >3, d1=0.000, d2=0.486 g=0.542, a1=100, a2=76

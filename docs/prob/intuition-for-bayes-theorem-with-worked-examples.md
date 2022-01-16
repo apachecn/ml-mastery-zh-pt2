@@ -159,7 +159,7 @@ Phoo[土地管理局](https://flickr.com/photos/blmutah/33293078111/)，保留�
 
 下面列出了完整的示例。
 
-```
+```py
 # calculate P(A|B) given P(B|A), P(A) and P(B)
 def bayes_theorem(p_a, p_b, p_b_given_a):
 	# calculate P(A|B) = P(B|A) * P(A) / P(B)
@@ -180,7 +180,7 @@ print('P(A|B) = %.3f%%' % (result * 100))
 
 运行该示例确认了我们手动计算的值。
 
-```
+```py
 P(A|B) = 14%
 ```
 
@@ -233,7 +233,7 @@ P(A|B) = 14%
 
 下面列出了完整的示例。
 
-```
+```py
 # calculate the probability of an email in the spam folder being spam
 
 # calculate P(A|B) given P(A), P(B|A), P(B|not A)
@@ -260,7 +260,7 @@ print('P(A|B) = %.3f%%' % (result * 100))
 
 运行该示例给出了相同的结果，证实了我们的手动计算。
 
-```
+```py
 P(A|B) = 95.284%
 ```
 
@@ -326,7 +326,7 @@ P(A|B) = 95.284%
 
 下面列出了完整的示例。
 
-```
+```py
 # calculate the probability of a person lying given a positive lie detector result
 
 # calculate P(A|B) given P(A), P(B|A), P(not B|not A)
@@ -355,7 +355,7 @@ print('P(A|B) = %.3f%%' % (result * 100))
 
 运行该示例给出了相同的结果，证实了我们的手动计算。
 
-```
+```py
 P(A|B) = 32.877%
 ```
 

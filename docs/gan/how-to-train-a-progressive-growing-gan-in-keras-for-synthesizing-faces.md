@@ -87,13 +87,13 @@ GANs 在生成清晰的合成图像方面很有效，尽管通常受限于可以
 
 我们将在 [ipazc/mtcnn 项目](https://github.com/ipazc/mtcnn)中使用 [Iván de Paz Centeno](https://github.com/ipazc) 提供的实现。这也可以通过 pip 安装，如下所示:
 
-```
+```py
 sudo pip install mtcnn
 ```
 
 我们可以通过导入库并打印版本来确认库安装正确；例如:
 
-```
+```py
 # confirm mtcnn was installed correctly
 import mtcnn
 # print version
@@ -102,7 +102,7 @@ print(mtcnn.__version__)
 
 运行该示例将打印库的当前版本。
 
-```
+```py
 0.0.8
 ```
 
@@ -112,7 +112,7 @@ MTCNN 模型非常容易使用。
 
 结果是检测到的人脸列表，边界框以像素偏移值定义。
 
-```
+```py
 ...
 # prepare model
 model = MTCNN()
@@ -130,7 +130,7 @@ x1, y1, width, height = faces[0]['box']
 
 下面的 *load_image()* 函数会将一个给定的照片文件名加载为一个 NumPy 像素数组。
 
-```
+```py
 # load an image as an rgb numpy array
 def load_image(filename):
 	# load image from file
@@ -144,7 +144,7 @@ def load_image(filename):
 
 下面的 *extract_face()* 函数以一张照片的 MTCNN 模型和像素值为参数，返回仅包含人脸的 128x128x3 像素值数组，如果没有检测到人脸，则返回 *None* (这种情况很少发生)。
 
-```
+```py
 # extract the face from a loaded image and resize
 def extract_face(model, pixels, required_size=(128, 128)):
 	# detect face in the image
@@ -171,7 +171,7 @@ def extract_face(model, pixels, required_size=(128, 128)):
 
 我们通过 *n_faces* 参数限制加载的面的总数，因为我们不需要所有面。
 
-```
+```py
 # load images and extract faces for all images in a directory
 def load_faces(directory, n_faces):
 	# prepare model
@@ -198,7 +198,7 @@ def load_faces(directory, n_faces):
 
 在这种情况下，我们将加载的人脸总数增加到 50，000 个，以便为我们的 GAN 模型提供一个良好的训练数据集。
 
-```
+```py
 # example of extracting and resizing faces into a new dataset
 from os import listdir
 from numpy import asarray
@@ -274,7 +274,7 @@ savez_compressed('img_align_celeba_128.npz', all_faces)
 
 然后可以随时加载准备好的数据集，如下所示。
 
-```
+```py
 # load the prepared dataset
 from numpy import load
 # load the face dataset
@@ -285,13 +285,13 @@ print('Loaded: ', faces.shape)
 
 加载数据集总结了阵列的形状，显示了 50K 图像，大小为 128×128 像素，有三个颜色通道。
 
-```
+```py
 Loaded: (50000, 128, 128, 3)
 ```
 
 我们可以详细说明这个例子，并将数据集中的前 100 个面绘制成 10×10 的网格。下面列出了完整的示例。
 
-```
+```py
 # load the prepared dataset
 from numpy import load
 from matplotlib import pyplot
@@ -358,7 +358,7 @@ plot_faces(faces, 10)
 
 下面将*加权求和*类定义为*添加*合并层的扩展。
 
-```
+```py
 # weighted sum output
 class WeightedSum(Add):
 	# init with default value
@@ -385,7 +385,7 @@ class WeightedSum(Add):
 
 下面定义了*迷你 batchStdev* 层。
 
-```
+```py
 # mini-batch standard deviation layer
 class MinibatchStdev(Layer):
 	# initialize the layer
@@ -433,7 +433,7 @@ class MinibatchStdev(Layer):
 
 下面的*像素归一化*类实现了这一点，可以在生成器中的每个[卷积层](https://machinelearningmastery.com/convolutional-layers-for-deep-learning-neural-networks/)之后，但在任何激活功能之前使用。
 
-```
+```py
 # pixel-wise feature vector normalization layer
 class PixelNormalization(Layer):
 	# initialize the layer
@@ -483,7 +483,7 @@ class PixelNormalization(Layer):
 
 首先，我们必须将损失函数定义为平均预测值乘以目标值。真实图像的目标值为 1，伪造图像的目标值为-1。这意味着权重更新将寻求增加真实图像和虚假图像之间的差异。
 
-```
+```py
 # calculate wasserstein loss
 def wasserstein_loss(y_true, y_pred):
 	return backend.mean(y_true * y_pred)
@@ -493,7 +493,7 @@ def wasserstein_loss(y_true, y_pred):
 
 我们仔细利用[功能 API](https://machinelearningmastery.com/keras-functional-api-deep-learning/) 和模型结构的知识为每个增长阶段创建两个模型。成长阶段也总是使预期的输入形状翻倍。
 
-```
+```py
 # add a discriminator block
 def add_discriminator_block(old_model, n_input_layers=3):
 	# weight initialization
@@ -603,7 +603,7 @@ def define_discriminator(n_blocks, input_shape=(4,4,3)):
 
 定义和增长生成器模型的功能定义如下。
 
-```
+```py
 # add a generator block
 def add_generator_block(old_model):
 	# weight initialization
@@ -693,7 +693,7 @@ def define_generator(latent_dim, n_blocks, in_dim=4):
 
 *define_composite()* 函数实现了这一点，定义如下。
 
-```
+```py
 # define composite models for training generators via discriminators
 def define_composite(discriminators, generators):
 	model_list = list()
@@ -725,7 +725,7 @@ def define_composite(discriminators, generators):
 
 下面的 *load_real_samples()* 函数加载我们准备好的名人脸数据集，然后将像素转换为浮点值，并将其缩放到[-1，1]范围，这是大多数 GAN 实现所共有的。
 
-```
+```py
 # load dataset
 def load_real_samples(filename):
 	# load dataset
@@ -743,7 +743,7 @@ def load_real_samples(filename):
 
 下面的 *generate_real_samples()* 函数实现了这一点，从加载的数据集中返回图像的随机样本以及它们对应的目标值 *class=1* ，以指示图像是真实的。
 
-```
+```py
 # select real samples
 def generate_real_samples(dataset, n_samples):
 	# choose random instances
@@ -759,7 +759,7 @@ def generate_real_samples(dataset, n_samples):
 
 下面的*generate _ 潜伏 _points()* 函数实现了这一点，返回一批具有所需维度的潜伏点。
 
-```
+```py
 # generate points in latent space as input for the generator
 def generate_latent_points(latent_dim, n_samples):
 	# generate points in the latent space
@@ -775,7 +775,7 @@ def generate_latent_points(latent_dim, n_samples):
 
 下面的 *generate_fake_samples()* 函数取一个生成器模型，生成并返回一批合成图像和对应的目标给 *class=-1* 的鉴别器，表示图像是假的。调用*生成潜在点()*函数来创建随机潜在点所需的批量值。
 
-```
+```py
 # use the generator to generate n fake examples, with class labels
 def generate_fake_samples(generator, latent_dim, n_samples):
 	# generate points in latent space
@@ -795,7 +795,7 @@ def generate_fake_samples(generator, latent_dim, n_samples):
 
 这是一种笨拙但有效的改变*α*值的方法。也许一个更干净的实现会包含一个 Keras 回调，留给读者作为练习。
 
-```
+```py
 # update the alpha value on each instance of WeightedSum
 def update_fadein(models, step, n_steps):
 	# calculate current alpha (linear from 0 to 1)
@@ -819,7 +819,7 @@ def update_fadein(models, step, n_steps):
 
 每次训练迭代结束时都会打印模型性能摘要，总结真实(d1)和虚假(d2)图像上鉴别器的损失以及生成器(g)的损失。
 
-```
+```py
 # train a generator and discriminator
 def train_epochs(g_model, d_model, gan_model, dataset, n_epochs, n_batch, fadein=False):
 	# calculate the number of batches per training epoch
@@ -853,7 +853,7 @@ def train_epochs(g_model, d_model, gan_model, dataset, n_epochs, n_batch, fadein
 
 数据集的这些缩放版本可以预先计算和加载，而不是在每次运行时重新缩放。如果您打算多次运行该示例，这可能是一个不错的扩展。
 
-```
+```py
 # scale images to preferred size
 def scale_dataset(images, new_shape):
 	images_list = list()
@@ -871,7 +871,7 @@ def scale_dataset(images, new_shape):
 
 下面的*summary _ performance()*函数实现了这一点，给定一个状态字符串，如“*褪色的*或“*调谐的*”，一个发电机模型，以及潜在空间的大小。该功能将使用“*状态*”字符串(如“*04×04-褪色的*”)为系统状态创建一个唯一的名称，然后创建一个包含 25 个生成图像的绘图，并使用定义的名称将绘图和生成器模型保存到文件中。
 
-```
+```py
 # generate samples and save as a plot and save the model
 def summarize_performance(status, g_model, latent_dim, n_samples=25):
 	# devise name
@@ -903,7 +903,7 @@ def summarize_performance(status, g_model, latent_dim, n_samples=25):
 
 然后列举增长的步骤，包括首先将图像数据集缩放到优选尺寸，为新图像尺寸训练和保存淡入模型，然后为新图像尺寸训练和保存正常或微调模型。
 
-```
+```py
 # train the generator and discriminator
 def train(g_models, d_models, gan_models, dataset, latent_dim, e_norm, e_fadein, n_batch):
 	# fit the baseline model
@@ -943,7 +943,7 @@ def train(g_models, d_models, gan_models, dataset, latent_dim, e_norm, e_fadein,
 
 批次大小和训练时期的选择有些随意，您可能想要试验不同的值并检查它们的效果。
 
-```
+```py
 # number of growth phases, e.g. 6 == [4, 8, 16, 32, 64, 128]
 n_blocks = 6
 # size of the latent space
@@ -968,7 +968,7 @@ train(g_models, d_models, gan_models, dataset, latent_dim, n_epochs, n_epochs, n
 
 下面列出了在名人面孔数据集上训练渐进增长的生成性对抗网络的完整示例。
 
-```
+```py
 # example of progressive growing gan on celebrity faces dataset
 from math import sqrt
 from numpy import load
@@ -1413,7 +1413,7 @@ train(g_models, d_models, gan_models, dataset, latent_dim, n_epochs, n_epochs, n
 
 运行该示例首先报告准备好的数据集的成功加载以及数据集缩放到第一个图像大小，然后报告训练过程的每个步骤中每个模型的损失。
 
-```
+```py
 Loaded (50000, 128, 128, 3)
 Scaled Data (50000, 4, 4, 3)
 >1, d1=0.993, d2=0.001 g=0.951
@@ -1486,7 +1486,7 @@ Scaled Data (50000, 4, 4, 3)
 
 因为生成器模型使用自定义图层，所以我们必须指定如何加载自定义图层。这是通过向 load_model()函数提供 dict 来实现的，该函数将每个自定义图层名称映射到适当的类。
 
-```
+```py
 ...
 # load model
 cust = {'PixelNormalization': PixelNormalization, 'MinibatchStdev': MinibatchStdev, 'WeightedSum': WeightedSum}
@@ -1495,7 +1495,7 @@ model = load_model('model_016x016-tuned.h5', cust)
 
 然后，我们可以使用上一节中的*生成 _ 潜在点()*函数来生成潜在空间中的点，作为生成器模型的输入。
 
-```
+```py
 ...
 # size of the latent space
 latent_dim = 100
@@ -1509,7 +1509,7 @@ X = model.predict(latent_points)
 
 然后，我们可以通过首先将像素值缩放到范围[0，1]并绘制每个图像来绘制结果，在这种情况下是以正方形网格模式绘制。
 
-```
+```py
 # create a plot of generated images
 def plot_generated(images, n_images):
 	# plot images
@@ -1530,7 +1530,7 @@ def plot_generated(images, n_images):
 
 在这种情况下，我们演示加载调谐模型以生成 16×16 个面。
 
-```
+```py
 # example of loading the generator model and generating images
 from math import sqrt
 from numpy import asarray
@@ -1665,7 +1665,7 @@ plot_generated(X, n_images)
 
 然后，我们可以将文件名更改为不同的模型，例如用于生成 128×128 个面的调整模型。
 
-```
+```py
 ...
 model = load_model('model_128x128-tuned.h5', cust)
 ```

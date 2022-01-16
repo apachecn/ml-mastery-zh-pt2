@@ -50,7 +50,7 @@ GANs 由生成器和鉴别器模型组成。生成器负责从域中生成新的
 
 某种形式的东西:
 
-```
+```py
 y = f(x)
 ```
 
@@ -62,7 +62,7 @@ y = f(x)
 
 我们可以用 Python 定义函数如下:
 
-```
+```py
 # simple function
 def calculate(x):
 	return x * x
@@ -72,7 +72,7 @@ def calculate(x):
 
 下面列出了完整的示例。
 
-```
+```py
 # demonstrate simple x^2 function
 from matplotlib import pyplot
 
@@ -109,7 +109,7 @@ X^2 函数的输入与输出图。
 
 首先，我们生成 0 到 1 之间的均匀随机值，然后将它们移动到-0.5 到 0.5 的范围内。然后，我们计算每个随机生成的输入值的输出值，并将这些数组组合成一个具有 *n* 行(100)和两列的单个 NumPy 数组。
 
-```
+```py
 # example of generating random samples from X^2
 from numpy.random import rand
 from numpy import hstack
@@ -164,7 +164,7 @@ X^2 函数随机生成的输入样本与计算输出的关系图。
 
 下面的 *define_discriminator()* 函数定义并返回鉴别器模型。该函数参数化预期的输入数量，默认为两个。
 
-```
+```py
 # define the standalone discriminator model
 def define_discriminator(n_inputs=2):
 	model = Sequential()
@@ -177,7 +177,7 @@ def define_discriminator(n_inputs=2):
 
 我们可以使用这个函数来定义鉴别器模型并对其进行总结。下面列出了完整的示例。
 
-```
+```py
 # define the discriminator model
 from keras.models import Sequential
 from keras.layers import Dense
@@ -202,7 +202,7 @@ plot_model(model, to_file='discriminator_plot.png', show_shapes=True, show_layer
 
 运行该示例定义了鉴别器模型并对其进行了总结。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -230,7 +230,7 @@ _________________________________________________________________
 
 首先，我们可以从预测部分更新我们的 *generate_samples()* 函数，并将其称为 *generate_real_samples()* ，并让它返回真实样本的输出类标签，具体来说，就是 1 个值的数组，其中 class=1 表示 real。
 
-```
+```py
 # generate n real samples with class labels
 def generate_real_samples(n):
 	# generate inputs in [-0.5, 0.5]
@@ -252,7 +252,7 @@ def generate_real_samples(n):
 
 这个函数将充当我们的假生成器模型。
 
-```
+```py
 # generate n fake samples with class labels
 def generate_fake_samples(n):
 	# generate inputs in [-1, 1]
@@ -276,7 +276,7 @@ def generate_fake_samples(n):
 
 下面的 *train_discriminator()* 函数实现了这一点，对模型进行了 1000 批次的训练，每批次使用 128 个样本(64 个假样本，64 个真样本)。
 
-```
+```py
 # train the discriminator model
 def train_discriminator(model, n_epochs=1000, n_batch=128):
 	half_batch = int(n_batch / 2)
@@ -300,7 +300,7 @@ def train_discriminator(model, n_epochs=1000, n_batch=128):
 
 下面列出了完整的示例。
 
-```
+```py
 # define and fit a discriminator model
 from numpy import zeros
 from numpy import ones
@@ -377,7 +377,7 @@ train_discriminator(model)
 
 在这种情况下，模型快速学会以完美的准确率正确识别真实的例子，并且非常擅长以 80%到 90%的准确率识别虚假的例子。
 
-```
+```py
 ...
 995 1.0 0.875
 996 1.0 0.921875
@@ -415,7 +415,7 @@ train_discriminator(model)
 
 潜在维度的大小是参数化的，以防我们以后想要使用它，模型的输出形状也是参数化的，与定义鉴别器模型的函数相匹配。
 
-```
+```py
 # define the standalone generator model
 def define_generator(latent_dim, n_outputs=2):
 	model = Sequential()
@@ -428,7 +428,7 @@ def define_generator(latent_dim, n_outputs=2):
 
 下面列出了完整的示例。
 
-```
+```py
 # define the generator model
 from keras.models import Sequential
 from keras.layers import Dense
@@ -451,7 +451,7 @@ plot_model(model, to_file='generator_plot.png', show_shapes=True, show_layer_nam
 
 运行该示例定义了生成器模型并对其进行了总结。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -481,7 +481,7 @@ _________________________________________________________________
 
 然后随机数的数组可以被重新整形为样本:即 n 行，每行五个元素。下面的*生成 _ 潜在 _ 点()*函数实现了这一点，并在潜在空间中生成所需数量的点，这些点可用作生成器模型的输入。
 
-```
+```py
 # generate points in latent space as input for the generator
 def generate_latent_points(latent_dim, n):
 	# generate points in the latent space
@@ -495,7 +495,7 @@ def generate_latent_points(latent_dim, n):
 
 下面的 *generate_fake_samples()* 函数实现了这一点，其中定义的生成器和潜在空间的大小以及模型要生成的点数作为参数传递。
 
-```
+```py
 # use the generator to generate n fake examples and plot the results
 def generate_fake_samples(generator, latent_dim, n):
 	# generate points in latent space
@@ -509,7 +509,7 @@ def generate_fake_samples(generator, latent_dim, n):
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # define and use the generator model
 from numpy.random import randn
 from keras.models import Sequential
@@ -592,7 +592,7 @@ generate_fake_samples(model, latent_dim, 100)
 
 GAN 模型然后使用相同的二元交叉熵损失函数作为鉴别器和有效的[亚当版本的随机梯度下降](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)。
 
-```
+```py
 # define the combined generator and discriminator model, for updating the generator
 def define_gan(generator, discriminator):
 	# make weights in the discriminator not trainable
@@ -620,7 +620,7 @@ def define_gan(generator, discriminator):
 
 下面列出了创建鉴别器、生成器和复合模型的完整示例。
 
-```
+```py
 # demonstrate creating the three models in the gan
 from keras.models import Sequential
 from keras.layers import Dense
@@ -672,7 +672,7 @@ plot_model(gan_model, to_file='gan_plot.png', show_shapes=True, show_layer_names
 
 运行该示例首先会创建复合模型的摘要。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -698,7 +698,7 @@ _________________________________________________________________
 
 下面的 *train_gan()* 函数演示了这一点，尽管它非常无趣，因为每个时期只有生成器会被更新，给鉴别器留下默认的模型权重。
 
-```
+```py
 # train the composite model
 def train_gan(gan_model, latent_dim, n_epochs=10000, n_batch=128):
 	# manually enumerate epochs
@@ -717,7 +717,7 @@ def train_gan(gan_model, latent_dim, n_epochs=10000, n_batch=128):
 
 下面列出了更新鉴别器模型和生成器(通过复合模型)的完整训练函数。
 
-```
+```py
 # train the generator and discriminator
 def train(g_model, d_model, gan_model, latent_dim, n_epochs=10000, n_batch=128):
 	# determine half the size of one batch, for updating the discriminator
@@ -753,7 +753,7 @@ def train(g_model, d_model, gan_model, latent_dim, n_epochs=10000, n_batch=128):
 
 首先，我们可以使用上面鉴别器部分开发的 *generate_real_samples()* 函数来生成真实的例子。创建这些示例的散点图将创建我们熟悉的目标函数 u 形。
 
-```
+```py
 # generate n real samples with class labels
 def generate_real_samples(n):
 	# generate inputs in [-0.5, 0.5]
@@ -773,7 +773,7 @@ def generate_real_samples(n):
 
 这需要首先通过上面生成器部分中开发的*生成潜在点()*函数在潜在空间中生成相同数量的点。然后，这些可以传递到生成器模型，并用于生成样本，这些样本也可以绘制在同一散点图上。
 
-```
+```py
 # generate points in latent space as input for the generator
 def generate_latent_points(latent_dim, n):
 	# generate points in the latent space
@@ -785,7 +785,7 @@ def generate_latent_points(latent_dim, n):
 
 下面的 *generate_fake_samples()* 函数生成这些假样本和关联的类标签 0，这些标签在后面会很有用。
 
-```
+```py
 # use the generator to generate n fake examples, with class labels
 def generate_fake_samples(generator, latent_dim, n):
 	# generate points in latent space
@@ -801,7 +801,7 @@ def generate_fake_samples(generator, latent_dim, n):
 
 下面的*summary _ performance()*函数可以在训练期间随时调用，以创建真实点和生成点的散点图，从而了解发电机模型的当前能力。
 
-```
+```py
 # plot real and fake points
 def summarize_performance(generator, latent_dim, n=100):
 	# prepare real samples
@@ -820,7 +820,7 @@ def summarize_performance(generator, latent_dim, n=100):
 
 我们可以更新*summary _ performance()*函数，也可以将鉴别器和当前历元号作为参数，并在真假示例的样本上报告准确性。
 
-```
+```py
 # evaluate the discriminator and plot real and fake points
 def summarize_performance(epoch, generator, discriminator, latent_dim, n=100):
 	# prepare real samples
@@ -847,7 +847,7 @@ def summarize_performance(epoch, generator, discriminator, latent_dim, n=100):
 
 带此变化的*列车()*功能的更新版本如下。
 
-```
+```py
 # train the generator and discriminator
 def train(g_model, d_model, gan_model, latent_dim, n_epochs=10000, n_batch=128, n_eval=2000):
 	# determine half the size of one batch, for updating the discriminator
@@ -878,7 +878,7 @@ def train(g_model, d_model, gan_model, latent_dim, n_epochs=10000, n_batch=128, 
 
 下面列出了完整的示例。
 
-```
+```py
 # train a generative adversarial network on a one-dimensional function
 from numpy import hstack
 from numpy import zeros
@@ -1011,7 +1011,7 @@ train(generator, discriminator, gan_model, latent_dim)
 
 在这种情况下，我们可以看到鉴别器对真实的例子仍然相对困惑，并且识别假例子的性能各不相同。
 
-```
+```py
 1999 0.45 1.0
 3999 0.45 0.91
 5999 0.86 0.16

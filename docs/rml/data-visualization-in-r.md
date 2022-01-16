@@ -77,7 +77,7 @@
 
 它们对于获得属性分布的指示很有用。
 
-```
+```py
 # load the data
 data(iris)
 # create histograms for each attribute
@@ -97,7 +97,7 @@ R 中的直方图
 
 我们可以使用密度图将直方图平滑成线条。这些对于更抽象地描述每个变量的分布是有用的。
 
-```
+```py
 # load libraries
 library(lattice)
 # load dataset
@@ -119,7 +119,7 @@ R 中的密度图
 
 我们可以使用方框图和触须图以不同的方式观察数据的分布。方框捕捉了中间 50%的数据，线条显示了中间值，图中的胡须显示了数据的合理范围。胡须外的任何点都是异常值的良好候选点。
 
-```
+```py
 # load dataset
 data(iris)
 # Create separate boxplots for each attribute
@@ -139,7 +139,7 @@ R 中的方框图和触须图
 
 在具有分类属性而不是数字属性的数据集中，我们可以创建条形图，给出属于每个类别的实例的比例。
 
-```
+```py
 # load the library
 library(mlbench)
 # load the dataset
@@ -165,7 +165,7 @@ R 中的条形图
 
 您可以使用缺失图快速了解数据集中缺失的数据量。x 轴显示属性，y 轴显示实例。水平线表示实例缺少数据，垂直块表示属性缺少数据。
 
-```
+```py
 # load libraries
 library(Amelia)
 library(mlbench)
@@ -189,7 +189,7 @@ R 中缺少地图
 
 我们可以计算每对数字属性之间的相关性。这些成对的相关性可以绘制在相关性矩阵图中，以给出哪些属性一起改变的想法。
 
-```
+```py
 # load library
 library(corrplot)
 # load the data
@@ -210,7 +210,7 @@ corrplot(correlations, method="circle")
 
 散点图将两个变量绘制在一起，x 轴和 y 轴各有一个，各点表示相互作用。点的分布表示属性之间的关系。您可以为数据集中的所有属性对创建散点图，称为散点图矩阵。
 
-```
+```py
 # load the data
 data(iris)
 # pair-wise scatterplots of all 4 attributes
@@ -227,7 +227,7 @@ R 中的散点图矩阵
 
 在分类问题中，散点图矩阵中的点可以通过类标签来着色。这有助于发现清晰(或不清晰)的类分离，并可能给出问题有多难的想法。
 
-```
+```py
 # load the data
 data(iris)
 # pair-wise scatterplots colored by class
@@ -244,7 +244,7 @@ R 中按类别划分的散点图矩阵
 
 我们可以查看按类值细分的每个属性的密度分布。像散点图矩阵一样，按类的密度图可以帮助看到类的分离。这也有助于理解属性类值的重叠。
 
-```
+```py
 # load the library
 library(caret)
 # load the data
@@ -266,7 +266,7 @@ R 中按类别划分的密度图
 
 我们还可以按类值查看每个属性的箱线图分布。这也有助于理解每个属性与类值的关系，但是从不同的角度来看密度图。
 
-```
+```py
 # load the caret library
 library(caret)
 # load the iris dataset

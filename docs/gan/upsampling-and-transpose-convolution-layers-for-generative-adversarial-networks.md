@@ -63,7 +63,7 @@ GAN 中的生成器模型需要传统卷积层中池层的反向操作。它需�
 
 例如，形状为 2×2 的输入图像将输出为 4×4。
 
-```
+```py
          1, 2
 Input = (3, 4)
 
@@ -79,7 +79,7 @@ Keras 深度学习库在一个名为*upsmampling 2d*的层中提供了这种能�
 
 它可以被添加到卷积神经网络，并在输出中重复作为输入提供的行和列。例如:
 
-```
+```py
 ...
 # define model
 model = Sequential()
@@ -90,7 +90,7 @@ model.add(UpSampling2D())
 
 首先，我们可以定义一个 2×2 像素的人为输入图像。我们可以为每个像素使用特定的值，这样在上采样后，我们就可以确切地看到操作对输入的影响。
 
-```
+```py
 ...
 # define input data
 X = asarray([[1, 2],
@@ -101,7 +101,7 @@ print(X)
 
 一旦定义了图像，我们必须添加一个通道维度(例如灰度)和一个样本维度(例如我们有 1 个样本)，这样我们就可以将其作为输入传递给模型。
 
-```
+```py
 ...
 # reshape input data into one sample a sample with a channel
 X = X.reshape((1, 2, 2, 1))
@@ -111,7 +111,7 @@ X = X.reshape((1, 2, 2, 1))
 
 该模型只有*上采样 2D* 层，直接以 2×2 灰度图像作为输入，输出上采样操作的结果。
 
-```
+```py
 ...
 # define model
 model = Sequential()
@@ -122,7 +122,7 @@ model.summary()
 
 然后，我们可以使用该模型进行预测，即对提供的输入图像进行上采样。
 
-```
+```py
 ...
 # make a prediction with the model
 yhat = model.predict(X)
@@ -130,7 +130,7 @@ yhat = model.predict(X)
 
 输出将像输入一样有四个维度，因此，我们可以将其转换回 2×2 数组，以便于查看结果。
 
-```
+```py
 ...
 # reshape output to remove channel to make printing easier
 yhat = yhat.reshape((4, 4))
@@ -140,7 +140,7 @@ print(yhat)
 
 将所有这些结合在一起，下面提供了在 Keras 中使用*upsmampling 2d*层的完整示例。
 
-```
+```py
 # example of using the upsampling layer
 from numpy import asarray
 from keras.models import Sequential
@@ -171,7 +171,7 @@ print(yhat)
 
 最后，该模型用于对我们的输入进行上采样，如我们所料，导致我们的输入数据的每一行和每一列都翻倍。
 
-```
+```py
 [[1 2]
  [3 4]]
 
@@ -195,7 +195,7 @@ _________________________________________________________________
 
 您可能希望在每个维度上使用不同的因子，例如宽度的两倍和高度的三倍。这可以通过将“*大小*参数设置为(2，3)来实现。将该操作应用于 2×2 图像的结果将是 4×6 输出图像(例如 2×2 和 2×3)。例如:
 
-```
+```py
 ...
 # example of using different scale factors for each dimension
 model.add(UpSampling2D(size=(2, 3)))
@@ -205,7 +205,7 @@ model.add(UpSampling2D(size=(2, 3)))
 
 或者，可以使用利用多个周围点的双线性插值方法。这可以通过将“*插值*参数设置为“*双线性*来指定。例如:
 
-```
+```py
 ...
 # example of using bilinear interpolation when upsampling
 model.add(UpSampling2D(interpolation='bilinear'))
@@ -223,7 +223,7 @@ model.add(UpSampling2D(interpolation='bilinear'))
 
 首先，可以使用一个密集的完全连接层来解释输入向量，并创建足够数量的激活(输出)，这些激活可以被重塑为我们输出图像的低分辨率版本，在本例中，是 5×5 图像的 128 个版本。
 
-```
+```py
 ...
 # define model
 model = Sequential()
@@ -235,7 +235,7 @@ model.add(Reshape((5, 5, 128)))
 
 接下来，可以将 5×5 的要素图上采样为 10×10 的要素图。
 
-```
+```py
 ...
 # double input from 128 5x5 to 1 10x10 feature map
 model.add(UpSampling2D())
@@ -245,7 +245,7 @@ model.add(UpSampling2D())
 
 Conv2D 有一个单一的功能图作为输出，以创建我们需要的单一图像。
 
-```
+```py
 ...
 # fill in detail in the upsampled feature maps
 model.add(Conv2D(1, (3,3), padding='same'))
@@ -253,7 +253,7 @@ model.add(Conv2D(1, (3,3), padding='same'))
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # example of using upsampling in a simple generator model
 from keras.models import Sequential
 from keras.layers import Dense
@@ -282,7 +282,7 @@ model.summary()
 
 最后，Conv2D 处理这些特征图并添加细节，输出单个 10×10 图像。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -358,21 +358,21 @@ conv2d 转置或转置卷积层比简单的上采样层更复杂。
 
 考虑大小为 2×2 的输入图像，如下所示:
 
-```
+```py
          1, 2
 Input = (3, 4)
 ```
 
 假设单个滤波器具有 1×1 内核和模型权重，在输出时不会导致输入发生变化(例如，模型权重为 1.0，偏差为 0.0)，输出步长为 1×1 的转置卷积运算将按原样再现输出:
 
-```
+```py
           1, 2
 Output = (3, 4)
 ```
 
 输出步长为(2，2)时，1×1 卷积需要在输入图像中插入额外的行和列，以便可以执行读取操作。因此，输入如下所示:
 
-```
+```py
          1, 0, 2, 0
 Input = (0, 0, 0, 0)
          3, 0, 4, 0
@@ -381,7 +381,7 @@ Input = (0, 0, 0, 0)
 
 然后，模型可以使用(2，2)的输出步幅读取该输入，并将输出 4×4 的图像，在这种情况下没有变化，因为我们的模型权重不受设计影响:
 
-```
+```py
           1, 0, 2, 0
 Output = (0, 0, 0, 0)
           3, 0, 4, 0
@@ -394,7 +394,7 @@ Keras 通过 con v2 转置层提供转置卷积功能。
 
 可以直接添加到您的模型中；例如:
 
-```
+```py
 ...
 # define model
 model = Sequential()
@@ -405,7 +405,7 @@ model.add(Conv2DTranspose(...))
 
 首先，我们可以定义一个 2×2 像素的人为输入图像，就像我们在上一节中所做的那样。我们可以为每个像素使用特定的值，以便在转置卷积运算之后，我们可以确切地看到运算对输入有什么影响。
 
-```
+```py
 ...
 # define input data
 X = asarray([[1, 2],
@@ -416,7 +416,7 @@ print(X)
 
 一旦定义了图像，我们必须添加一个通道维度(例如灰度)和一个样本维度(例如我们有 1 个样本)，这样我们就可以将其作为输入传递给模型。
 
-```
+```py
 ...
 # reshape input data into one sample a sample with a channel
 X = X.reshape((1, 2, 2, 1))
@@ -432,7 +432,7 @@ con v2 转置两个上采样并执行卷积。因此，我们必须指定过滤�
 
 在本例中，我们将使用一个滤波器，其内核为 1×1，步长为 2×2，因此 2×2 的输入图像被上采样到 4×4。
 
-```
+```py
 ...
 # define model
 model = Sequential()
@@ -445,7 +445,7 @@ model.summary()
 
 这些权重以及内核大小(1，1)意味着输入中的值将乘以 1 并按原样输出，通过 2×2 的步长添加的新行和新列中的 0 值将输出为 0(例如，在每种情况下为 1 * 0)。
 
-```
+```py
 ...
 # define weights that they do nothing
 weights = [asarray([[[[1]]]]), asarray([0])]
@@ -455,7 +455,7 @@ model.set_weights(weights)
 
 然后，我们可以使用该模型进行预测，即对提供的输入图像进行上采样。
 
-```
+```py
 ...
 # make a prediction with the model
 yhat = model.predict(X)
@@ -463,7 +463,7 @@ yhat = model.predict(X)
 
 输出将像输入一样有四个维度，因此，我们可以将其转换回 2×2 数组，以便于查看结果。
 
-```
+```py
 ...
 # reshape output to remove channel to make printing easier
 yhat = yhat.reshape((4, 4))
@@ -473,7 +473,7 @@ print(yhat)
 
 将所有这些结合在一起，下面提供了在 Keras 中使用*conv2d 转置*层的完整示例。
 
-```
+```py
 # example of using the transpose convolutional layer
 from numpy import asarray
 from keras.models import Sequential
@@ -508,7 +508,7 @@ print(yhat)
 
 最后，该模型用于对我们的输入进行上采样。我们可以看到，包含实值作为输入的单元格的计算导致实值作为输出(例如 1×1、1×2 等)。).我们可以看到，在以 2×2 的步幅插入新行和新列的情况下，它们的 0.0 值乘以单个 1×1 过滤器中的 1.0 值会在输出中产生 0 值。
 
-```
+```py
 [[1 2]
  [3 4]]
 
@@ -534,7 +534,7 @@ _________________________________________________________________
 
 事实上，您可能会想象不同大小的内核会导致不同大小的输出，超过输入的宽度和高度的两倍。在这种情况下，图层的“*填充*参数可以设置为“*相同*，以强制输出具有所需的(双倍)输出形状；例如:
 
-```
+```py
 ...
 # example of using padding to ensure that the output is only doubled
 model.add(Conv2DTranspose(1, (3,3), strides=(2,2), padding='same', input_shape=(2, 2, 1)))
@@ -552,7 +552,7 @@ model.add(Conv2DTranspose(1, (3,3), strides=(2,2), padding='same', input_shape=(
 
 首先，可以使用一个密集的完全连接层来解释输入向量，并创建足够数量的激活(输出)，这些激活可以被重塑为我们输出图像的低分辨率版本，在本例中，是 5×5 图像的 128 个版本。
 
-```
+```py
 ...
 # define model
 model = Sequential()
@@ -568,7 +568,7 @@ model.add(Reshape((5, 5, 128)))
 
 因此，我们将“*填充*”设置为“相同”，以确保输出尺寸按要求为 10×10。
 
-```
+```py
 ...
 # double input from 128 5x5 to 1 10x10 feature map
 model.add(Conv2DTranspose(1, (3,3), strides=(2,2), padding='same'))
@@ -576,7 +576,7 @@ model.add(Conv2DTranspose(1, (3,3), strides=(2,2), padding='same'))
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # example of using transpose conv in a simple generator model
 from keras.models import Sequential
 from keras.layers import Dense
@@ -601,7 +601,7 @@ model.summary()
 
 conv2d 转置图层将宽度和高度增加了一倍，达到 10×10，从而形成面积增加了四倍的单一要素地图。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================

@@ -132,7 +132,7 @@ X 和 y 一起表示从域中收集的观察值，即用于拟合模型的训练
 
 下面的示例生成了 100 个带有两个数字输入变量的示例，每个变量被分配了两个类中的一个。
 
-```
+```py
 # example of generating a small classification dataset
 from sklearn.datasets import make_blobs
 # generate 2d classification dataset
@@ -149,7 +149,7 @@ print(y[:5])
 
 前五个示例的输入和输出元素也被打印出来，显示了两个输入变量实际上是数字，每个示例的类标签不是 0 就是 1。
 
-```
+```py
 (100, 2) (100,)
 [[-10.6105446    4.11045368]
  [  9.05798365   0.99701708]
@@ -167,7 +167,7 @@ print(y[:5])
 
 下面的 *fit_distribution()* 函数获取一个变量的数据样本，并拟合一个数据分布。
 
-```
+```py
 # fit a probability distribution to a univariate data sample
 def fit_distribution(data):
 	# estimate parameters
@@ -183,7 +183,7 @@ def fit_distribution(data):
 
 首先，我们必须为每个类标签将数据分成样本组。
 
-```
+```py
 ...
 # sort data into classes
 Xy0 = X[y == 0]
@@ -195,7 +195,7 @@ print(Xy0.shape, Xy1.shape)
 
 这将是 50%，假设我们已经在两个类中创建了相同数量的例子；然而，我们将计算这些先验的完整性。
 
-```
+```py
 ...
 # calculate priors
 priory0 = len(Xy0) / len(X)
@@ -205,7 +205,7 @@ print(priory0, priory1)
 
 最后，我们可以调用我们定义的 *fit_distribution()* 函数，为每个变量、每个类标签准备一个概率分布。
 
-```
+```py
 ...
 # create PDFs for y==0
 X1y0 = fit_distribution(Xy0[:, 0])
@@ -217,7 +217,7 @@ X2y1 = fit_distribution(Xy1[:, 1])
 
 将所有这些联系在一起，数据集的完整概率模型如下所示。
 
-```
+```py
 # summarize probability distributions of the dataset
 from sklearn.datasets import make_blobs
 from scipy.stats import norm
@@ -256,7 +256,7 @@ X2y1 = fit_distribution(Xy1[:, 1])
 
 然后为每个类别标签的每个变量准备概率分布，并报告每个分布的平均值和标准偏差参数，确认分布不同。
 
-```
+```py
 (50, 2) (50, 2)
 0.5 0.5
 -1.5632888906409914 0.787444265443213
@@ -271,7 +271,7 @@ X2y1 = fit_distribution(Xy1[:, 1])
 
 给定每个变量的先验和条件概率分布，下面的*概率()*函数对一个输入示例(两个值的数组)执行该计算。返回的值是一个分数，而不是一个概率，因为数量没有标准化，这是在实现朴素贝叶斯时经常执行的一个简化。
 
-```
+```py
 # calculate the independent conditional probability
 def probability(X, prior, dist1, dist2):
 	return prior * dist1.pdf(X[0]) * dist2.pdf(X[1])
@@ -281,7 +281,7 @@ def probability(X, prior, dist1, dist2):
 
 首先，我们可以选择一个例子进行分类；在这种情况下，数据集中的第一个示例。
 
-```
+```py
 ...
 # classify one example
 Xsample, ysample = X[0], y[0]
@@ -289,7 +289,7 @@ Xsample, ysample = X[0], y[0]
 
 接下来，我们可以计算属于第一类的例子的分数，然后是第二类，然后报告结果。
 
-```
+```py
 ...
 py0 = probability(Xsample, priory0, distX1y0, distX2y0)
 py1 = probability(Xsample, priory1, distX1y1, distX2y1)
@@ -301,7 +301,7 @@ print('P(y=1 | %s) = %.3f' % (Xsample, py1*100))
 
 将这些联系在一起，下面列出了拟合朴素贝叶斯模型并使用它进行预测的完整示例。
 
-```
+```py
 # example of preparing and making a prediction with a naive bayes model
 from sklearn.datasets import make_blobs
 from scipy.stats import norm
@@ -351,7 +351,7 @@ print('Truth: y=%d' % ysample)
 
 在这种情况下，真实或实际的结果是已知的， *y=0* ，这与我们的朴素贝叶斯模型的预测相匹配。
 
-```
+```py
 P(y=0 | [-0.79415228  2.10495117]) = 0.348
 P(y=1 | [-0.79415228  2.10495117]) = 0.000
 Truth: y=0
@@ -363,7 +363,7 @@ Truth: y=0
 
 下面列出了将高斯朴素贝叶斯模型(GaussianNB)拟合到同一测试数据集的完整示例。
 
-```
+```py
 # example of gaussian naive bayes
 from sklearn.datasets import make_blobs
 from sklearn.naive_bayes import GaussianNB
@@ -390,7 +390,7 @@ print('Truth: y=%d' % ysample)
 
 最后，直接预测类标签，再次匹配示例的基本事实。
 
-```
+```py
 Predicted Probabilities:  [[1.00000000e+00 5.52387327e-30]]
 Predicted Class:  [0]
 Truth: y=0

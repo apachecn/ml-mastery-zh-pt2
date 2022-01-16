@@ -21,7 +21,7 @@ dottieg 2007 摄影，版权所有
 
 这个方法演示了虹膜数据集上的 MDA 方法。
 
-```
+```py
 # load the package
 library(mda)
 data(iris)
@@ -43,7 +43,7 @@ QDA 寻求属性之间的二次关系，使类之间的距离最大化。
 
 这个方法演示了虹膜数据集上的 QDA 方法。
 
-```
+```py
 # load the package
 library(MASS)
 data(iris)
@@ -63,7 +63,7 @@ table(predictions, iris$Species)
 
 这个配方演示了虹膜数据集上的 RDA 方法。
 
-```
+```py
 # load the package
 library(klaR)
 data(iris)
@@ -85,7 +85,7 @@ table(predictions, iris$Species)
 
 这个食谱展示了虹膜数据集上的神经网络。
 
-```
+```py
 # load the package
 library(nnet)
 data(iris)
@@ -105,7 +105,7 @@ table(predictions, iris$Species)
 
 这个配方展示了美国食品和药物管理局在虹膜数据集上的方法。
 
-```
+```py
 # load the package
 library(mda)
 data(iris)
@@ -127,7 +127,7 @@ table(predictions, iris$Species)
 
 这个方法演示了虹膜数据集上的 SVM 方法。
 
-```
+```py
 # load the package
 library(kernlab)
 data(iris)
@@ -149,7 +149,7 @@ k-近邻(kNN)方法通过定位给定数据实例的相似案例(使用相似性
 
 这个方法演示了虹膜数据集上的 kNN 方法。
 
-```
+```py
 # load the package
 library(caret)
 data(iris)
@@ -171,7 +171,7 @@ table(predictions, iris$Species)
 
 这个方法演示了虹膜数据集上的朴素贝叶斯。
 
-```
+```py
 # load the package
 library(e1071)
 data(iris)

@@ -120,7 +120,7 @@ sqrt 是方阵的[平方根，作为两个协方差矩阵的乘积给出。](htt
 
 如果您在自己的数据集上计算 FID 时遇到问题，我建议查看官方实现并扩展下面的实现来添加这些检查。
 
-```
+```py
 # calculate frechet inception distance
 def calculate_fid(act1, act2):
 	# calculate mean and covariance statistics
@@ -142,7 +142,7 @@ def calculate_fid(act1, act2):
 
 特征向量可能包含小正值，长度为 2，048 个元素。我们可以用小随机数构造两批 10 幅图像的特征向量，如下所示:
 
-```
+```py
 ...
 # define two collections of activations
 act1 = random(10*2048)
@@ -155,7 +155,7 @@ act2 = act2.reshape((10,2048))
 
 然后，我们可以计算两组随机激活之间的距离，我们预计这将是一个很大的数字。
 
-```
+```py
 ...
 # fid between act1 and act1
 fid = calculate_fid(act1, act1)
@@ -167,7 +167,7 @@ print('FID (different): %.3f' % fid)
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # example of calculating the frechet inception distance
 import numpy
 from numpy import cov
@@ -209,7 +209,7 @@ print('FID (different): %.3f' % fid)
 
 两个随机激活集合之间的距离也如我们所料:一个很大的数字，在本例中是 358。
 
-```
+```py
 FID (same): -0.000
 FID (different): 358.927
 ```
@@ -224,7 +224,7 @@ FID (different): 358.927
 
 首先，我们可以直接在 Keras 中加载盗梦空间 v3 模型。
 
-```
+```py
 ...
 # load inception v3 model
 model = InceptionV3()
@@ -236,7 +236,7 @@ model = InceptionV3()
 
 因此，初始模型可以如下加载:
 
-```
+```py
 ...
 # prepare the inception v3 model
 model = InceptionV3(include_top=False, pooling='avg', input_shape=(299,299,3))
@@ -246,7 +246,7 @@ model = InceptionV3(include_top=False, pooling='avg', input_shape=(299,299,3))
 
 我们的图像可能没有所需的形状。我们将使用 [scikit-image 库](https://scikit-image.org/)将像素值的 NumPy 数组调整到所需的大小。下面的 *scale_images()* 功能实现了这一点。
 
-```
+```py
 # scale an array of images to a new size
 def scale_images(images, new_shape):
 	images_list = list()
@@ -260,7 +260,7 @@ def scale_images(images, new_shape):
 
 注意，您可能需要安装 scikit-image 库。这可以通过以下方式实现:
 
-```
+```py
 sudo pip install scikit-image
 ```
 
@@ -270,7 +270,7 @@ sudo pip install scikit-image
 
 *calculate_fid()* 功能的更新版本如下。
 
-```
+```py
 # calculate frechet inception distance
 def calculate_fid(model, images1, images2):
 	# calculate activations
@@ -293,7 +293,7 @@ def calculate_fid(model, images1, images2):
 
 然后，我们可以用一些人为的图像集合来测试这个函数，在这种情况下，10 个 32×32 的图像，随机像素值在[0，255]范围内。
 
-```
+```py
 ...
 # define two fake collections of images
 images1 = randint(0, 255, 10*32*32*3)
@@ -304,7 +304,7 @@ images2 = images2.reshape((10,32,32,3))
 
 然后，我们可以将整数像素值转换为浮点值，并将其缩放至所需的 299×299 像素大小。
 
-```
+```py
 ...
 # convert integer to floating point values
 images1 = images1.astype('float32')
@@ -316,7 +316,7 @@ images2 = scale_images(images2, (299,299,3))
 
 然后可以缩放像素值以满足盗梦空间 v3 模型的期望。
 
-```
+```py
 ...
 # pre-process images
 images1 = preprocess_input(images1)
@@ -325,7 +325,7 @@ images2 = preprocess_input(images2)
 
 然后计算 FID 分数，首先在一组图像和自身之间，然后在两组图像之间。
 
-```
+```py
 ...
 # fid between images1 and images1
 fid = calculate_fid(model, images1, images1)
@@ -337,7 +337,7 @@ print('FID (different): %.3f' % fid)
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # example of calculating the frechet inception distance in Keras
 import numpy
 from numpy import cov
@@ -412,7 +412,7 @@ print('FID (different): %.3f' % fid)
 
 给定的一组图像和它本身之间的 FID 分数是 0.0，正如我们所期望的，两个随机图像集合之间的距离大约是 35。
 
-```
+```py
 Prepared (10, 32, 32, 3) (10, 32, 32, 3)
 Scaled (10, 299, 299, 3) (10, 299, 299, 3)
 FID (same): -0.000
@@ -425,7 +425,7 @@ FID (different): 35.495
 
 Keras 库提供了许多计算机视觉数据集，包括 [CIFAR-10 数据集](https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/)。这些是小尺寸 32×32 像素的彩色照片，分为训练和测试元素，可按如下方式加载:
 
-```
+```py
 ...
 # load cifar10 images
 (images1, _), (images2, _) = cifar10.load_data()
@@ -435,7 +435,7 @@ Keras 库提供了许多计算机视觉数据集，包括 [CIFAR-10 数据集](h
 
 缩放和评分 50K 图像需要很长时间，因此，我们可以将“*训练集*”简化为 10K 随机样本，如下所示:
 
-```
+```py
 ...
 shuffle(images1)
 images1 = images1[:10000]
@@ -443,7 +443,7 @@ images1 = images1[:10000]
 
 将所有这些联系在一起，我们可以计算列车样本和测试数据集之间的 FID 分数，如下所示。
 
-```
+```py
 # example of calculating the frechet inception distance in Keras for cifar10
 import numpy
 from numpy import cov
@@ -513,7 +513,7 @@ print('FID: %.3f' % fid)
 
 在运行结束时，我们可以看到训练数据集和测试数据集之间的 FID 分数约为 5。
 
-```
+```py
 Loaded (10000, 32, 32, 3) (10000, 32, 32, 3)
 Scaled (10000, 299, 299, 3) (10000, 299, 299, 3)
 FID: 5.492

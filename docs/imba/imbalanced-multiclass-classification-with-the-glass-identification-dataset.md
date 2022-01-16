@@ -109,7 +109,7 @@
 
 文件的前几行应该如下所示:
 
-```
+```py
 1.52101,13.64,4.49,1.10,71.78,0.06,8.75,0.00,0.00,1
 1.51761,13.89,3.60,1.36,72.73,0.48,7.83,0.00,0.00,1
 1.51618,13.53,3.55,1.54,72.99,0.39,7.78,0.00,0.00,1
@@ -124,7 +124,7 @@
 
 可以使用 [read_csv()熊猫函数](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)将数据集加载为数据帧，指定数据集的位置和没有标题行的事实。
 
-```
+```py
 ...
 # define the dataset location
 filename = 'glass.csv'
@@ -134,7 +134,7 @@ dataframe = read_csv(filename, header=None)
 
 加载后，我们可以通过打印*数据框*的形状来总结行数和列数。
 
-```
+```py
 ...
 # summarize the shape of the dataset
 print(dataframe.shape)
@@ -142,7 +142,7 @@ print(dataframe.shape)
 
 我们还可以使用 [Counter](https://docs.python.org/3/library/collections.html) 对象总结每个类中的示例数量。
 
-```
+```py
 ...
 # summarize the class distribution
 target = dataframe.values[:,-1]
@@ -154,7 +154,7 @@ for k,v in counter.items():
 
 将这些联系在一起，下面列出了加载和汇总数据集的完整示例。
 
-```
+```py
 # load and summarize the dataset
 from pandas import read_csv
 from collections import Counter
@@ -176,7 +176,7 @@ for k,v in counter.items():
 
 然后总结类别分布，确认每个类别的观测值存在严重偏差。
 
-```
+```py
 (214, 10)
 Class=1, Count=70, Percentage=32.710%
 Class=2, Count=76, Percentage=35.514%
@@ -190,7 +190,7 @@ Class=7, Count=29, Percentage=13.551%
 
 下面列出了创建所有变量直方图的完整示例。
 
-```
+```py
 # create histograms of all variables
 from pandas import read_csv
 from matplotlib import pyplot
@@ -232,7 +232,7 @@ pyplot.show()
 
 首先，我们可以定义一个函数来加载数据集，并将输入变量分成输入和输出变量，并使用标签编码器来确保类标签从 0 到 5 按顺序编号。
 
-```
+```py
 # load the dataset
 def load_dataset(full_path):
 	# load the dataset as a numpy array
@@ -248,7 +248,7 @@ def load_dataset(full_path):
 
 我们可以定义一个函数，使用分层重复的 5 重交叉验证来评估候选模型，然后返回在模型上为每次重复计算的分数列表。下面的 *evaluate_model()* 函数实现了这一点。
 
-```
+```py
 # evaluate a model
 def evaluate_model(X, y, model):
 	# define evaluation procedure
@@ -260,7 +260,7 @@ def evaluate_model(X, y, model):
 
 然后我们可以调用 *load_dataset()* 函数加载并确认玻璃标识数据集。
 
-```
+```py
 ...
 # define the location of the dataset
 full_path = 'glass.csv'
@@ -276,7 +276,7 @@ print(X.shape, y.shape, Counter(y))
 
 因此，鉴于这是训练数据集中最常见类别的分布，我们期望该模型达到大约 35%的分类精度。
 
-```
+```py
 ...
 # define the reference model
 model = DummyClassifier(strategy='most_frequent')
@@ -284,7 +284,7 @@ model = DummyClassifier(strategy='most_frequent')
 
 然后，我们可以通过调用我们的 *evaluate_model()* 函数来评估模型，并报告结果的平均值和标准差。
 
-```
+```py
 ...
 # evaluate the model
 scores = evaluate_model(X, y, model)
@@ -294,7 +294,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 将所有这些结合起来，下面列出了使用分类精度评估玻璃识别数据集基线模型的完整示例。
 
-```
+```py
 # baseline model and test harness for the glass identification dataset
 from collections import Counter
 from numpy import mean
@@ -345,7 +345,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 该分数提供了该数据集的基线，通过该基线可以比较所有其他分类算法。达到大约 35.5%以上的分数表示模型在此数据集上有技能，达到或低于此值的分数表示模型在此数据集上没有技能。
 
-```
+```py
 (214, 9) (214,) Counter({1: 76, 0: 70, 5: 29, 2: 17, 3: 13, 4: 9})
 Mean Accuracy: 0.355 (0.011)
 ```
@@ -378,7 +378,7 @@ Mean Accuracy: 0.355 (0.011)
 
 我们将依次定义每个模型，并将它们添加到一个列表中，以便我们可以顺序评估它们。下面的 *get_models()* 函数定义了用于评估的模型列表，以及用于以后绘制结果的模型简称列表。
 
-```
+```py
 # define models to test
 def get_models():
 	models, names = list(), list()
@@ -402,7 +402,7 @@ def get_models():
 
 然后，我们可以依次列举模型列表，并对每个模型进行评估，存储分数供以后评估。
 
-```
+```py
 ...
 # define models
 models, names = get_models()
@@ -418,7 +418,7 @@ for i in range(len(models)):
 
 在运行结束时，我们可以将每个分数样本绘制成一个方框，并用相同的比例绘制晶须图，这样我们就可以直接比较分布。
 
-```
+```py
 ...
 # plot the results
 pyplot.boxplot(results, labels=names, showmeans=True)
@@ -427,7 +427,7 @@ pyplot.show()
 
 将所有这些结合起来，下面列出了在玻璃识别数据集上评估一套机器学习算法的完整示例。
 
-```
+```py
 # spot check machine learning algorithms on the glass identification dataset
 from numpy import mean
 from numpy import std
@@ -509,7 +509,7 @@ pyplot.show()
 
 结果表明，决策树的集成在这个数据集上表现良好，也许随机森林表现最好，总体分类准确率约为 79.6%。
 
-```
+```py
 >SVM 0.669 (0.057)
 >KNN 0.647 (0.055)
 >BAG 0.767 (0.070)
@@ -535,7 +535,7 @@ pyplot.show()
 
 发现具有自定义类权重的随机森林的成本敏感版本可以获得更好的性能。
 
-```
+```py
 # cost sensitive random forest with custom class weightings
 from numpy import mean
 from numpy import std
@@ -584,7 +584,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，模型达到了约 80.8%的准确率。
 
-```
+```py
 Mean Accuracy: 0.808 (0.059)
 ```
 
@@ -598,7 +598,7 @@ Mean Accuracy: 0.808 (0.059)
 
 首先，我们可以定义模型。
 
-```
+```py
 ...
 # define model to evaluate
 model = RandomForestClassifier(n_estimators=1000)
@@ -606,7 +606,7 @@ model = RandomForestClassifier(n_estimators=1000)
 
 一旦定义好了，我们就可以在整个训练数据集中使用它。
 
-```
+```py
 ...
 # fit the model
 model.fit(X, y)
@@ -618,7 +618,7 @@ model.fit(X, y)
 
 例如:
 
-```
+```py
 ...
 # define a row of data
 row = [...]
@@ -630,7 +630,7 @@ yhat = model.predict([row])
 
 下面列出了完整的示例。
 
-```
+```py
 # fit a model and make predictions for the on the glass identification dataset
 from pandas import read_csv
 from sklearn.preprocessing import LabelEncoder
@@ -682,7 +682,7 @@ print('>Predicted=%d (expected 5)' % (model.predict([row])))
 
 我们可以看到为每个选择的例子预测了正确的类标签。然而，平均而言，我们预计五分之一的预测是错误的，这些错误可能不会在班级中平均分布。
 
-```
+```py
 >Predicted=0 (expected 0)
 >Predicted=1 (expected 1)
 >Predicted=2 (expected 2)

@@ -42,7 +42,7 @@
 
 到目前为止，我们已经:
 
-```
+```py
 data/
 data/train/
 data/test/
@@ -55,7 +55,7 @@ data/validation/
 
 例如:
 
-```
+```py
 data/
 data/train/
 data/train/red/
@@ -72,7 +72,7 @@ data/validation/blue/
 
 例如:
 
-```
+```py
 data/train/red/car01.jpg
 data/train/red/car02.jpg
 data/train/red/car03.jpg
@@ -99,7 +99,7 @@ data/train/blue/car03.jpg
 
 我们必须创建上一节中概述的目录结构，特别是:
 
-```
+```py
 data/
 data/train/
 data/train/red/
@@ -143,7 +143,7 @@ data/validation/blue/
 
 我们现在有了一个非常基本的数据集布局，如下所示(来自*树*命令的输出):
 
-```
+```py
 data
 ├── test
 │   ├── blue
@@ -194,7 +194,7 @@ data
 
 *图像数据生成器*的构造函数包含许多参数来指定如何在加载图像数据后对其进行操作，包括像素缩放和[数据增强](https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/)。我们在这个阶段不需要这些特性，所以配置*图像数据生成器*很容易。
 
-```
+```py
 ...
 # create a data generator
 datagen = ImageDataGenerator()
@@ -214,7 +214,7 @@ datagen = ImageDataGenerator()
 
 我们可以使用相同的 *ImageDataGenerator* 为单独的数据集目录准备单独的迭代器。如果我们希望将相同的像素缩放应用于多个数据集(例如 trian、test 等)，这将非常有用。).
 
-```
+```py
 ...
 # load and iterate training dataset
 train_it = datagen.flow_from_directory('data/train/', class_mode='binary', batch_size=64)
@@ -234,7 +234,7 @@ test_it = datagen.flow_from_directory('data/test/', class_mode='binary', batch_s
 
 同样，如果应用了验证迭代器，则还必须指定“*验证 _ 步骤*”参数，以指示定义一个时期的验证数据集中的批次数量。
 
-```
+```py
 ...
 # define model
 model = ...
@@ -244,7 +244,7 @@ model.fit_generator(train_it, steps_per_epoch=16, validation_data=val_it, valida
 
 一旦模型合适，就可以使用 *evaluate_generator()* 函数在测试数据集上对其进行评估，并通过测试迭代器( *test_it* )。“*步数*参数定义了在停止前评估模型时要通过的样本批次数。
 
-```
+```py
 ...
 # evaluate model
 loss = model.evaluate_generator(test_it, steps=24)
@@ -252,7 +252,7 @@ loss = model.evaluate_generator(test_it, steps=24)
 
 最后，如果您想使用您的拟合模型对非常大的数据集进行预测，您也可以为该数据集创建一个迭代器(例如 *predict_it* )并调用模型上的 *predict_generator()* 函数。
 
-```
+```py
 ...
 # make a prediction
 yhat = model.predict_generator(predict_it, steps=24)
@@ -262,7 +262,7 @@ yhat = model.predict_generator(predict_it, steps=24)
 
 下面列出了一个完整的示例。
 
-```
+```py
 # example of progressively loading images from file
 from keras.preprocessing.image import ImageDataGenerator
 # create generator
@@ -282,7 +282,7 @@ print('Batch shape=%s, min=%.3f, max=%.3f' % (batchX.shape, batchX.min(), batchX
 
 最后，我们测试了用于拟合模型的火车迭代器。检索第一批图像，我们可以确认该批包含两个图像，因为只有两个图像可用。我们还可以确认图像被加载并强制为 256 行和 256 列像素的正方形尺寸，并且像素数据没有被缩放并保持在范围[0，255]内。
 
-```
+```py
 Found 2 images belonging to 2 classes.
 Found 2 images belonging to 2 classes.
 Found 2 images belonging to 2 classes.

@@ -123,25 +123,25 @@ VGFFace2 的作者为他们的模型提供了[源代码，以及可以用标准�
 
 该库可以通过 pip 安装；例如:
 
-```
+```py
 sudo pip install git+https://github.com/rcmalli/keras-vggface.git
 ```
 
 成功安装后，您应该会看到如下消息:
 
-```
+```py
 Successfully installed keras-vggface-0.6
 ```
 
 您可以通过查询已安装的软件包来确认库安装正确:
 
-```
+```py
 pip show keras-vggface
 ```
 
 这将总结包的细节；例如:
 
-```
+```py
 Name: keras-vggface
 Version: 0.6
 Summary: VGGFace implementation with Keras framework
@@ -156,7 +156,7 @@ Required-by:
 
 您也可以通过将库加载到脚本中并打印当前版本来确认库加载正确；例如:
 
-```
+```py
 # check version of keras_vggface
 import keras_vggface
 # print version
@@ -165,7 +165,7 @@ print(keras_vggface.__version__)
 
 运行该示例将加载库并打印当前版本。
 
-```
+```py
 0.6
 ```
 
@@ -179,13 +179,13 @@ print(keras_vggface.__version__)
 
 我们将在 [ipazc/mtcnn](https://github.com/ipazc/mtcnn) 项目中使用 [Iván de Paz Centeno](https://www.linkedin.com/in/ivandepazcenteno/) 提供的实现。这也可以通过 pip 安装，如下所示:
 
-```
+```py
 sudo pip install mtcnn
 ```
 
 我们可以通过导入库并打印版本来确认库安装正确；比如说。
 
-```
+```py
 # confirm mtcnn was installed correctly
 import mtcnn
 # print version
@@ -194,7 +194,7 @@ print(mtcnn.__version__)
 
 运行该示例将打印库的当前版本。
 
-```
+```py
 0.1.0
 ```
 
@@ -202,14 +202,14 @@ print(mtcnn.__version__)
 
 第一步是加载一个图像作为 NumPy 数组，我们可以使用 [Matplotlib imread()函数](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.imread.html)来实现。
 
-```
+```py
 # load image from file
 pixels = pyplot.imread(filename)
 ```
 
 接下来，我们可以创建一个 [MTCNN 人脸检测器](https://machinelearningmastery.com/how-to-perform-face-detection-with-classical-and-deep-learning-methods-in-python-with-keras/)类，并使用它来检测加载的照片中的所有人脸。
 
-```
+```py
 # create the detector, using default weights
 detector = MTCNN()
 # detect faces in the image
@@ -220,7 +220,7 @@ results = detector.detect_faces(pixels)
 
 如果我们假设照片中只有一张脸用于实验，我们可以如下确定边界框的像素坐标。
 
-```
+```py
 # extract the bounding box from the first face
 x1, y1, width, height = results[0]['box']
 x2, y2 = x1 + width, y1 + height
@@ -228,14 +228,14 @@ x2, y2 = x1 + width, y1 + height
 
 我们可以用这些坐标提取人脸。
 
-```
+```py
 # extract the face
 face = pixels[y1:y2, x1:x2]
 ```
 
 然后，我们可以使用 PIL 图书馆来调整这个小图像的脸所需的大小；具体来说，该模型期望形状为 224×224 的正方形输入面。
 
-```
+```py
 # resize pixels to the model size
 image = Image.fromarray(face)
 image = image.resize((224, 224))
@@ -246,7 +246,7 @@ face_array = asarray(image)
 
 它假设照片包含一张脸，并将返回检测到的第一张脸。
 
-```
+```py
 # extract a single face from a given photograph
 def extract_face(filename, required_size=(224, 224)):
 	# load image from file
@@ -282,7 +282,7 @@ Stone，来自维基百科。
 
 下面列出了加载莎朗·斯通的照片、提取面部并绘制结果的完整示例。
 
-```
+```py
 # example of face detection with mtcnn
 from matplotlib import pyplot
 from PIL import Image
@@ -332,7 +332,7 @@ pyplot.show()
 
 可以使用 *VGGFace()* 构造函数并通过“*模型*参数指定要创建的模型类型来创建 VGGFace 模型。
 
-```
+```py
 model = VGGFace(model='...')
 ```
 
@@ -340,7 +340,7 @@ model = VGGFace(model='...')
 
 下面的例子创建了一个“ *resnet50* ”的 VGGFace2 模型，并总结了输入和输出的形状。
 
-```
+```py
 # example of creating a face embedding
 from keras_vggface.vggface import VGGFace
 # create a vggface2 model
@@ -356,14 +356,14 @@ print('Outputs: %s' % model.outputs)
 
 我们可以看到，该模型期望输入 244×244 形状的人脸彩色图像，输出将是 8631 人的类预测。这是有意义的，因为[预训练模型](http://www.robots.ox.ac.uk/~vgg/data/vgg_face2/meta_infor.html)是在 [MS-Celeb-1M 数据集](https://www.microsoft.com/en-us/research/project/ms-celeb-1m-challenge-recognizing-one-million-celebrities-real-world/) ( [列在这个 CSV 文件](http://www.robots.ox.ac.uk/~vgg/data/vgg_face2/meta/identity_meta.csv)中)的 8631 个身份上训练的。
 
-```
+```py
 Inputs: [<tf.Tensor 'input_1:0' shape=(?, 224, 224, 3) dtype=float32>]
 Outputs: [<tf.Tensor 'classifier/Softmax:0' shape=(?, 8631) dtype=float32>]
 ```
 
 这个 Keras 模型可以直接用来预测一张给定的脸属于八千多个已知名人中的一个或多个的概率；例如:
 
-```
+```py
 # perform prediction
 yhat = model.predict(samples)
 ```
@@ -372,7 +372,7 @@ yhat = model.predict(samples)
 
 该行为由 *keras-vggface* 库中的 *decode_predictions()* 函数提供。
 
-```
+```py
 # convert prediction into names
 results = decode_predictions(yhat)
 # display most likely results
@@ -384,7 +384,7 @@ for result in results[0]:
 
 这可以通过使用*keras-vgf ace*库中提供的*prepare _ input()*功能并指定“*版本=2* ”来实现，以便使用用于训练 vgf ace 2 模型而不是 vgf ace 1 模型(默认)的平均值来缩放图像。
 
-```
+```py
 # convert one face into samples
 pixels = pixels.astype('float32')
 samples = expand_dims(pixels, axis=0)
@@ -396,7 +396,7 @@ samples = preprocess_input(samples, version=2)
 
 下面列出了完整的示例。
 
-```
+```py
 # Example of face detection with a vggface2 model
 from numpy import expand_dims
 from matplotlib import pyplot
@@ -452,7 +452,7 @@ for result in results[0]:
 
 我们可以看到，该模型正确地将人脸识别为属于莎朗·斯通，可能性为 99.642%。
 
-```
+```py
 b' Sharon_Stone': 99.642%
 b' Noelle_Reno': 0.085%
 b' Elisabeth_R\xc3\xb6hm': 0.033%
@@ -474,13 +474,13 @@ b' Tina_Maze': 0.019%
 
 请更改代码以加载查宁·塔图姆的照片；例如:
 
-```
+```py
 pixels = extract_face('channing_tatum.jpg')
 ```
 
 用新照片运行该示例，我们可以看到该模型正确地将人脸识别为属于查宁·塔图姆，可能性为 94.432%。
 
-```
+```py
 b' Channing_Tatum': 94.432%
 b' Eoghan_Quigg': 0.146%
 b' Les_Miles': 0.113%
@@ -506,14 +506,14 @@ VGGFace2 模型可用于人脸验证。
 
 首先，我们可以通过将“ *include_top* ”参数设置为“ *False* ”来加载不带分类器的 VGGFace 模型，通过“ *input_shape* 指定输出的形状，并将“ *pooling* ”设置为“ *avg* ”，从而使用全局平均池将模型输出端的过滤器映射简化为一个向量。
 
-```
+```py
 # create a vggface model
 model = VGGFace(model='resnet50', include_top=False, input_shape=(224, 224, 3), pooling='avg')
 ```
 
 然后，该模型可用于进行预测，这将返回作为输入提供的一个或多个面部的面部嵌入。
 
-```
+```py
 # perform prediction
 yhat = model.predict(samples)
 ```
@@ -522,7 +522,7 @@ yhat = model.predict(samples)
 
 下面的*get _ embedding()*函数实现了这一点，为每个提供的照片文件名返回一个包含一个人脸嵌入的数组。
 
-```
+```py
 # extract faces and calculate face embeddings for a list of photo files
 def get_embeddings(filenames):
 	# extract faces
@@ -546,7 +546,7 @@ def get_embeddings(filenames):
 
 下面的 *is_match()* 函数实现了这一点，计算两个嵌入之间的距离并解释结果。
 
-```
+```py
 # determine if a candidate face is a match for a known face
 def is_match(known_embedding, candidate_embedding, thresh=0.5):
 	# calculate distance between embeddings
@@ -568,7 +568,7 @@ def is_match(known_embedding, candidate_embedding, thresh=0.5):
 
 下面列出了人脸验证的完整代码示例。
 
-```
+```py
 # face verification with the VGGFace2 model
 from matplotlib import pyplot
 from PIL import Image
@@ -644,7 +644,7 @@ is_match(embeddings[0], embeddings[3])
 
 我们还可以看到，查宁·塔图姆的照片没有被正确地验证为莎朗·斯通。探索其他负面照片的验证，如其他女性名人的照片，将是一个有趣的扩展。
 
-```
+```py
 Positive Tests
 >face is a Match (0.418 <= 0.500)
 >face is a Match (0.295 <= 0.500)

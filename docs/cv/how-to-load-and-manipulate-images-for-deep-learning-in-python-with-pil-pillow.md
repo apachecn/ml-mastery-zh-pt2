@@ -51,7 +51,7 @@ Python 中用于加载和处理图像数据的最流行和事实上的标准库�
 
 如果自己为工作站管理 Python 软件包的安装，可以使用 pip 轻松安装 pipe；例如:
 
-```
+```py
 sudo pip install Pillow
 ```
 
@@ -61,7 +61,7 @@ sudo pip install Pillow
 
 枕头是建立在旧的 PIL 之上的，你可以通过打印版本号来确认图书馆安装正确；例如:
 
-```
+```py
 # check Pillow version number
 import PIL
 print('Pillow Version:', PIL.__version__)
@@ -69,7 +69,7 @@ print('Pillow Version:', PIL.__version__)
 
 运行该示例将打印枕头的版本号；您的版本号应该相同或更高。
 
-```
+```py
 Pillow Version: 6.1.0
 ```
 
@@ -97,7 +97,7 @@ Pillow Version: 6.1.0
 
 下面的示例演示了如何使用枕头库中的 image 类加载和显示图像。
 
-```
+```py
 # load and show an image with Pillow
 from PIL import Image
 # load the image
@@ -112,7 +112,7 @@ image.show()
 
 运行该示例将首先加载图像，报告格式、模式和大小，然后在桌面上显示图像。
 
-```
+```py
 JPEG
 RGB
 (640, 360)
@@ -136,7 +136,7 @@ RGB
 
 下面的示例使用 Matplotlib 加载和显示相同的图像，而 Matplotlib 又会在封面下使用枕头。
 
-```
+```py
 # load and display an image with Matplotlib
 from matplotlib import image
 from matplotlib import pyplot
@@ -152,7 +152,7 @@ pyplot.show()
 
 运行该示例首先加载图像，然后报告数组的数据类型，在本例中为 8 位无符号整数，然后报告数组的形状，在本例中为 360 像素宽乘 640 像素高，红色、绿色和蓝色有三个通道。
 
-```
+```py
 uint8
 (360, 640, 3)
 ```
@@ -169,7 +169,7 @@ Matplotlib 包装函数可以比直接使用枕头更有效。
 
 下面的示例将照片加载为枕形图像对象，并将其转换为 NumPy 数组，然后再次将其转换回图像对象。
 
-```
+```py
 # load image and convert to and from NumPy array
 from PIL import Image
 from numpy import asarray
@@ -189,7 +189,7 @@ print(image2.size)
 
 运行该示例首先将照片加载为枕头图像，然后将其转换为 NumPy 数组并报告数组的形状。最后，阵列被转换回枕头图像，并报告细节。
 
-```
+```py
 (360, 640, 3)
 JPEG
 RGB
@@ -200,7 +200,7 @@ RGB
 
 例如，您可以轻松地将目录中的所有图像加载为列表，如下所示:
 
-```
+```py
 # load all images in a directory
 from os import listdir
 from matplotlib import image
@@ -224,7 +224,7 @@ for filename in listdir('images'):
 
 例如，下面列出的代码以 JPEG 格式加载照片，并以 PNG 格式保存。
 
-```
+```py
 # example of saving an image in another format
 from PIL import Image
 # load the image
@@ -238,7 +238,7 @@ print(image2.format)
 
 运行示例加载 JPEG 图像，将其保存为 PNG 格式，然后再次加载新保存的图像，并确认该格式确实是 PNG。
 
-```
+```py
 PNG
 ```
 
@@ -246,7 +246,7 @@ PNG
 
 将图像转换为灰度有多种方法，但 Pillow 提供了 *convert()* 功能，模式“ *L* 将图像转换为灰度。
 
-```
+```py
 # example of saving a grayscale version of a loaded image
 from PIL import Image
 # load the image
@@ -277,7 +277,7 @@ image2.show()
 
 下面的示例将加载照片，并创建一个宽度和高度为 100 像素的较小缩略图。
 
-```
+```py
 # create a thumbnail of an image
 from PIL import Image
 # load the image
@@ -292,7 +292,7 @@ print(image.size)
 
 运行该示例首先加载照片并报告宽度和高度。然后调整图像的大小，在这种情况下，宽度减少到 100 像素，高度减少到 56 像素，保持原始图像的纵横比。
 
-```
+```py
 (640, 360)
 (100, 56)
 ```
@@ -303,7 +303,7 @@ print(image.size)
 
 下面的示例演示了如何调整新图像的大小并忽略原始纵横比。
 
-```
+```py
 # resize image and force a new shape
 from PIL import Image
 # load the image
@@ -318,7 +318,7 @@ print(img_resized.size)
 
 运行该示例加载图像，报告图像的形状，然后调整其大小，使其具有 200 像素的宽度和高度。
 
-```
+```py
 (640, 360)
 (200, 200)
 ```
@@ -345,7 +345,7 @@ print(img_resized.size)
 
 下面的示例创建了图像的水平和垂直翻转版本。
 
-```
+```py
 # create flipped versions of an image
 from PIL import Image
 from matplotlib import pyplot
@@ -381,7 +381,7 @@ pyplot.show()
 
 下面的示例创建了图像的几个旋转版本。
 
-```
+```py
 # create rotated versions of an image
 from PIL import Image
 from matplotlib import pyplot
@@ -415,7 +415,7 @@ pyplot.show()
 
 下面的示例演示了如何从加载的图像创建一个新的裁剪图像。
 
-```
+```py
 # example of cropping an image
 from PIL import Image
 # load image

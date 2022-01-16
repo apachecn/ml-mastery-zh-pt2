@@ -161,7 +161,7 @@
 
 下面列出了二进制分类任务的混淆矩阵示例，显示了表中四个单元格中的值的通用名称。
 
-```
+```py
                    | Actual Negative | Actual Positive
 Predicted Negative | True Negative   | False Negative
 Predicted Positive | False Positive  | True Positive
@@ -175,7 +175,7 @@ Predicted Positive | False Positive  | True Positive
 
 下面的例子是一个成本矩阵，我们使用符号 *C()* 来表示成本，第一个值表示为预测类，第二个值表示实际类。混淆矩阵中每个单元格的名称也作为首字母缩略词列出，例如，假阳性是 FP。
 
-```
+```py
                    | Actual Negative | Actual Positive
 Predicted Negative | C(0,0), TN      | C(0,1), FN
 Predicted Positive | C(1,0), FP      | C(1,1), TP
@@ -193,7 +193,7 @@ Predicted Positive | C(1,0), FP      | C(1,1), TP
 
 例如，我们可能在每个类中没有分配正确预测的成本，假阳性的成本为 5，假阴性的成本为 88。
 
-```
+```py
                    | Actual Negative | Actual Positive
 Predicted Negative | 0               | 88
 Predicted Positive | 5               | 0
@@ -229,7 +229,7 @@ Predicted Positive | 5               | 0
 
 例如，我们可能有一个数据集，少数类中的示例与多数类中的示例的比例为 1 比 100 (1:100)。这个比率可以反过来用作错误分类错误的成本，其中假阴性的成本是 100，假阳性的成本是 1。
 
-```
+```py
                    | Actual Negative | Actual Positive
 Predicted Negative | 0               | 100
 Predicted Positive | 1               | 0

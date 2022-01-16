@@ -79,7 +79,7 @@ Keras 提供了实现随机梯度下降优化器的 SGD 类，具有学习速率
 
 默认学习率为 0.01，默认不使用动量。
 
-```
+```py
 from keras.optimizers import SGD
 ...
 opt = SGD()
@@ -88,7 +88,7 @@ model.compile(..., optimizer=opt)
 
 学习率可以通过“ *lr* 参数指定，动量可以通过“*动量*参数指定。
 
-```
+```py
 from keras.optimizers import SGD
 ...
 opt = SGD(lr=0.01, momentum=0.9)
@@ -99,13 +99,13 @@ model.compile(..., optimizer=opt)
 
 随着学习速率的衰减，每次更新(例如，每个小批量的结束)都会计算学习速率，如下所示:
 
-```
+```py
 lrate = initial_lrate * (1 / (1 + decay * iteration))
 ```
 
 其中 *lrate* 是当前纪元的学习速率， *initial_lrate* 是指定为 SGD 参数的学习速率，*衰减*是大于零的衰减速率，*迭代*是当前更新号。
 
-```
+```py
 from keras.optimizers import SGD
 ...
 opt = SGD(lr=0.01, momentum=0.9, decay=0.01)
@@ -126,7 +126,7 @@ Keras 提供了[reduce lronplateaau](https://keras.io/callbacks/#reducelronplate
 
 例如，如果验证损失在 100 个时期内没有改善，我们可以监控验证损失，并将学习率降低一个数量级:
 
-```
+```py
 # snippet of using the ReduceLROnPlateau callback
 from keras.callbacks import ReduceLROnPlateau
 ...
@@ -138,7 +138,7 @@ Keras 还提供了[学习速率调度器](https://keras.io/callbacks/#learningra
 
 您可以定义您的 Python 函数，该函数接受两个参数(纪元和当前学习速率)并返回新的学习速率。
 
-```
+```py
 # snippet of using the LearningRateScheduler callback
 from keras.callbacks import LearningRateScheduler
 ...
@@ -160,7 +160,7 @@ Keras 还提供了一套简单随机梯度下降的扩展，支持自适应学�
 
 #### 优化器
 
-```
+```py
 from keras.optimizers import RMSprop
 ...
 opt = RMSprop()
@@ -169,7 +169,7 @@ model.compile(..., optimizer=opt)
 
 #### Adagrad 优化器
 
-```
+```py
 from keras.optimizers import Adagrad
 ...
 opt = Adagrad()
@@ -178,7 +178,7 @@ model.compile(..., optimizer=opt)
 
 #### 亚当优化器
 
-```
+```py
 from keras.optimizers import Adam
 ...
 opt = Adam()
@@ -193,7 +193,7 @@ scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/mo
 
 该问题有两个输入变量(表示点的 *x* 和 *y* 坐标)和每组内点的标准偏差 2.0。我们将使用相同的随机状态(伪随机数发生器的种子)来确保我们总是获得相同的数据点。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random_state=2)
 ```
@@ -204,7 +204,7 @@ X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random
 
 下面列出了完整的示例。
 
-```
+```py
 # scatter plot of blobs dataset
 from sklearn.datasets import make_blobs
 from matplotlib import pyplot
@@ -241,7 +241,7 @@ pyplot.show()
 
 下面的 *prepare_data()* 函数实现了这种行为，返回分割成输入和输出元素的训练和测试集。
 
-```
+```py
 # prepare train and test dataset
 def prepare_data():
 	# generate 2d classification dataset
@@ -259,7 +259,7 @@ def prepare_data():
 
 首先，我们将定义一个简单的 MLP 模型，该模型期望来自 blobs 问题的两个输入变量，具有一个包含 50 个节点的隐藏层，以及一个包含三个节点的输出层，以预测三个类中每个类的概率。隐藏层的节点将使用[整流线性激活函数(ReLU)](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/) ，而输出层的节点将使用 softmax 激活函数。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(50, input_dim=2, activation='relu', kernel_initializer='he_uniform'))
@@ -268,7 +268,7 @@ model.add(Dense(3, activation='softmax'))
 
 我们将使用随机梯度下降优化器，并要求指定学习速率，以便我们可以评估不同的速率。该模型将被训练为最小化交叉熵。
 
-```
+```py
 # compile model
 opt = SGD(lr=lrate)
 model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
@@ -276,14 +276,14 @@ model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy
 
 该模型将适合 200 个训练时期，通过少量的试错发现，测试集将用作验证数据集，因此我们可以在训练过程中了解模型的泛化误差。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=200, verbose=0)
 ```
 
 一旦合适，我们将在训练和测试集上绘制模型的准确性。
 
-```
+```py
 # plot learning curves
 pyplot.plot(history.history['accuracy'], label='train')
 pyplot.plot(history.history['val_accuracy'], label='test')
@@ -292,7 +292,7 @@ pyplot.title('lrate='+str(lrate), pad=-50)
 
 下面的 *fit_model()* 函数将这些元素联系在一起，并在给定要评估的训练和测试数据集以及特定学习速率的情况下，拟合模型并绘制其性能。
 
-```
+```py
 # fit a model and plot learning curve
 def fit_model(trainX, trainy, testX, testy, lrate):
 	# define model
@@ -314,7 +314,7 @@ def fit_model(trainX, trainy, testX, testy, lrate):
 
 在本例中，我们将在 1E-0 (1.0)到 1E-7 的对数标度上评估学习速率，并通过调用 *fit_model()* 函数为每个学习速率创建线图。
 
-```
+```py
 # create learning curves for different learning rates
 learning_rates = [1E-0, 1E-1, 1E-2, 1E-3, 1E-4, 1E-5, 1E-6, 1E-7]
 for i in range(len(learning_rates)):
@@ -329,7 +329,7 @@ pyplot.show()
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # study of learning rate on accuracy for blobs problem
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -402,7 +402,7 @@ pyplot.show()
 
 下面列出了该功能的更新版本。
 
-```
+```py
 # fit a model and plot learning curve
 def fit_model(trainX, trainy, testX, testy, momentum):
 	# define model
@@ -424,7 +424,7 @@ def fit_model(trainX, trainy, testX, testy, momentum):
 
 在本例中，我们将演示与动量值为 0.5 和更高动量值的模型相比，没有动量的模型的动力学。
 
-```
+```py
 # create learning curves for different momentums
 momentums = [0.0, 0.5, 0.9, 0.99]
 for i in range(len(momentums)):
@@ -439,7 +439,7 @@ pyplot.show()
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # study of momentum on accuracy for blobs problem
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -516,7 +516,7 @@ pyplot.show()
 
 下面的函数实现了在 [SGD 类](https://github.com/keras-team/keras/blob/master/keras/optimizers.py)中实现的学习速率衰减。
 
-```
+```py
 # learning rate decay
 def decay_lrate(initial_lrate, decay, iteration):
 	return initial_lrate * (1.0 / (1.0 + decay * iteration))
@@ -526,7 +526,7 @@ def decay_lrate(initial_lrate, decay, iteration):
 
 我们将比较一系列衰减值[1E-1，1E-2，1E-3，1E-4]，初始学习率为 0.01，权重更新为 200。
 
-```
+```py
 decays = [1E-1, 1E-2, 1E-3, 1E-4]
 lrate = 0.01
 n_updates = 200
@@ -539,7 +539,7 @@ for decay in decays:
 
 下面列出了完整的示例。
 
-```
+```py
 # demonstrate the effect of decay on the learning rate
 from matplotlib import pyplot
 
@@ -579,7 +579,7 @@ pyplot.show()
 
 下面列出了该功能的更新版本。
 
-```
+```py
 # fit a model and plot learning curve
 def fit_model(trainX, trainy, testX, testy, decay):
 	# define model
@@ -601,7 +601,7 @@ def fit_model(trainX, trainy, testX, testy, decay):
 
 下面列出了完整的示例。
 
-```
+```py
 # study of decay rate on accuracy for blobs problem
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -668,7 +668,7 @@ pyplot.show()
 
 我们可以探究不同“*耐心*”值的效果，即在降低学习率之前等待改变的纪元数。我们将使用默认的学习速率 0.01，并将“*因子*”参数设置为 0.1，从而将学习速率降低一个数量级。
 
-```
+```py
 rlrp = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=patience, min_delta=1E-7)
 ```
 
@@ -676,7 +676,7 @@ rlrp = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=patience, min_
 
 我们可以创建一个名为*学习速率监视器*的自定义*回调*。在训练开始时调用 *on_train_begin()* 函数，在该函数中我们可以定义一个学习率的空列表。在每个训练时期结束时调用 *on_epoch_end()* 函数，在该函数中，我们可以从优化器中检索优化器和当前学习速率，并将其存储在列表中。下面列出了完整的*学习速率监视器*回调。
 
-```
+```py
 # monitor the learning rate
 class LearningRateMonitor(Callback):
 	# start of training
@@ -695,7 +695,7 @@ class LearningRateMonitor(Callback):
 
 该函数还会以“*耐心*”作为参数，这样我们就可以评估不同的值。
 
-```
+```py
 # fit model
 rlrp = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=patience, min_delta=1E-7)
 lrm = LearningRateMonitor()
@@ -706,7 +706,7 @@ history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=200, 
 
 下面列出了这些更新的功能。
 
-```
+```py
 # fit a model and plot learning curve
 def fit_model(trainX, trainy, testX, testy, patience):
 	# define model
@@ -727,7 +727,7 @@ def fit_model(trainX, trainy, testX, testy, patience):
 
 我们将在 blobs 问题上测试适合该模型的几个不同的耐心值，并跟踪每次运行的学习率、损失和准确性系列。
 
-```
+```py
 # create learning curves for different patiences
 patiences = [2, 5, 10, 15]
 lr_list, loss_list, acc_list, = list(), list(), list()
@@ -743,7 +743,7 @@ for i in range(len(patiences)):
 
 我们可以创建一个助手函数来轻松地为我们记录的每个系列创建一个带有子情节的图形。
 
-```
+```py
 # create line plots for a series
 def line_plots(patiences, series):
 	for i in range(len(patiences)):
@@ -755,7 +755,7 @@ def line_plots(patiences, series):
 
 将这些元素结合在一起，下面列出了完整的示例。
 
-```
+```py
 # study of patience for the learning rate drop schedule on the blobs problem
 from sklearn.datasets import make_blobs
 from keras.layers import Dense
@@ -880,7 +880,7 @@ Keras 提供了许多具有自适应学习速率的随机梯度下降的流行�
 
 我们可以研究不同的自适应学习速率方法对 blobs 问题的动态性。可以更新 *fit_model()* 函数，取一个优化算法的名字进行求值，在编译 MLP 模型时可以指定给“*优化器*”参数。然后将使用每个方法的默认参数。下面列出了该功能的更新版本。
 
-```
+```py
 # fit a model and plot learning curve
 def fit_model(trainX, trainy, testX, testy, optimizer):
 	# define model
@@ -901,7 +901,7 @@ def fit_model(trainX, trainy, testX, testy, optimizer):
 
 我们期望算法的自适应学习速率版本表现相似或更好，也许在更少的训练时期适应问题，但重要的是，产生更稳定的模型。
 
-```
+```py
 # prepare dataset
 trainX, trainy, testX, testy = prepare_data()
 # create learning curves for different optimizers
@@ -918,7 +918,7 @@ pyplot.show()
 
 将这些元素结合在一起，下面列出了完整的示例。
 
-```
+```py
 # study of sgd with adaptive learning rates in the blobs problem
 from sklearn.datasets import make_blobs
 from keras.layers import Dense

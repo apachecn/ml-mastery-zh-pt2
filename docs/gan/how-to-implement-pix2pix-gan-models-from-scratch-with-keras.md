@@ -87,7 +87,7 @@ PatchGAN 使用 2×2 的固定步长(除了输出层和倒数第二层)和 4×4 
 
 我们可以开发一个名为*感受野()*的 Python 函数来计算感受野，然后计算并打印 Pix2Pix PatchGAN 模型中每一层的感受野。下面列出了完整的示例。
 
-```
+```py
 # example of calculating the receptive field for the PatchGAN
 
 # calculate the effective receptive field size
@@ -113,7 +113,7 @@ print(rf)
 
 我们可以看到，输出层的每个 1×1 像素映射到输入层的 70×70 感受野。
 
-```
+```py
 4
 7
 16
@@ -153,7 +153,7 @@ PatchGAN 配置使用简写符号定义为:C64-C128-C256-C512，其中 C 表示�
 
 下面列出了定义模型的完整示例。
 
-```
+```py
 # example of defining a 70x70 patchgan discriminator model
 from keras.optimizers import Adam
 from keras.initializers import RandomNormal
@@ -223,7 +223,7 @@ plot_model(model, to_file='discriminator_model_plot.png', show_shapes=True, show
 
 该模型是一个二进制分类模型，这意味着它以[0，1]范围内的概率预测输出，在这种情况下，是输入图像是真实的还是来自目标数据集的可能性。可以通过模型对这些值进行平均，以给出真实/虚假的预测。训练时，将目标与目标值矩阵进行比较，0 代表假，1 代表真。
 
-```
+```py
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to
 ==================================================================================================
@@ -317,7 +317,7 @@ U-Net 生成器模型的体系结构
 
 例如，在推理和训练过程中会退出的 Dropout 图层可以添加到模型中，如下所示:
 
-```
+```py
 ...
 g = Dropout(0.5)(g, training=True)
 ```
@@ -353,7 +353,7 @@ U-Net 解码器中的滤波器数量有点误导，因为它是与编码器中�
 
 下面列出了定义模型的完整示例。
 
-```
+```py
 # example of defining a u-net encoder-decoder generator model
 from keras.initializers import RandomNormal
 from keras.models import Model
@@ -444,7 +444,7 @@ plot_model(model, to_file='generator_model_plot.png', show_shapes=True, show_lay
 
 该模型只有一个输入和输出，但跳跃连接使摘要难以阅读。
 
-```
+```py
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to
 ==================================================================================================
@@ -614,7 +614,7 @@ Pix2Pix GAN 架构中使用的 U-Net 编解码模型图
 
 当分别为鉴别器和发生器输出编译模型时，指定了两个损失函数。*损失权重*参数用于定义每个损失相加后的权重，以更新发电机模型权重。
 
-```
+```py
 # define the combined generator and discriminator model, for updating the generator
 def define_gan(g_model, d_model, image_shape):
 	# make weights in the discriminator not trainable
@@ -637,7 +637,7 @@ def define_gan(g_model, d_model, image_shape):
 
 将这一点与前面几节中的模型定义结合起来，下面列出了完整的示例。
 
-```
+```py
 # example of defining a composite model for training the generator model
 from keras.optimizers import Adam
 from keras.initializers import RandomNormal
@@ -788,7 +788,7 @@ plot_model(gan_model, to_file='gan_model_plot.png', show_shapes=True, show_layer
 
 运行示例首先总结复合模型，显示 256×256 的图像输入、来自*模型 _2* (生成器)的相同形状的输出和来自*模型 _1* (鉴别器)的 PatchGAN 分类预测。
 
-```
+```py
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to
 ==================================================================================================
@@ -819,7 +819,7 @@ ________________________________________________________________________________
 
 首先，我们必须定义一个助手函数，它将选择一批真实的源图像和目标图像以及相关的输出(1.0)。这里，数据集是两个图像阵列的列表。
 
-```
+```py
 # select a batch of random samples, returns images and target
 def generate_real_samples(dataset, n_samples, patch_shape):
 	# unpack dataset
@@ -835,7 +835,7 @@ def generate_real_samples(dataset, n_samples, patch_shape):
 
 同样，我们需要一个函数来生成一批假图像和相关的输出(0.0)。这里，样本是将为其生成目标图像的源图像的阵列。
 
-```
+```py
 # generate a batch of images, returns images and targets
 def generate_fake_samples(g_model, samples, patch_shape):
 	# generate fake instance
@@ -851,7 +851,7 @@ def generate_fake_samples(g_model, samples, patch_shape):
 
 通常，批次大小( *n_batch* )设置为 1。在这种情况下，我们将假设 256×256 个输入图像，这意味着用于 PatchGAN 鉴别器的 *n_patch* 将是 16，以指示 16×16 的输出特征图。
 
-```
+```py
 ...
 # select a batch of real samples
 [X_realA, X_realB], y_real = generate_real_samples(dataset, n_batch, n_patch)
@@ -859,7 +859,7 @@ def generate_fake_samples(g_model, samples, patch_shape):
 
 接下来，我们可以使用所选择的真实源图像的批次来生成相应批次的生成的或伪造的目标图像。
 
-```
+```py
 ...
 # generate a batch of fake samples
 X_fakeB, y_fake = generate_fake_samples(g_model, X_realA, n_patch)
@@ -867,7 +867,7 @@ X_fakeB, y_fake = generate_fake_samples(g_model, X_realA, n_patch)
 
 然后，我们可以使用真实和伪造的图像，以及它们的目标，来更新独立的鉴别器模型。
 
-```
+```py
 ...
 # update discriminator for real samples
 d_loss1 = d_model.train_on_batch([X_realA, X_realB], y_real)
@@ -881,7 +881,7 @@ d_loss2 = d_model.train_on_batch([X_realA, X_fakeB], y_fake)
 
 我们有两个损失函数，但是为一个批处理更新计算了三个损失值，其中只有第一个损失值是有意义的，因为它是该批处理的对抗性和 L1 损失值的加权和。
 
-```
+```py
 ...
 # update the generator
 g_loss, _, _ = gan_model.train_on_batch(X_realA, [y_real, X_realB])
@@ -891,7 +891,7 @@ g_loss, _, _ = gan_model.train_on_batch(X_realA, [y_real, X_realB])
 
 我们可以在一个名为 *train()* 的函数中定义所有这些，该函数获取定义的模型和加载的数据集(作为两个 NumPy 数组的列表)并训练模型。
 
-```
+```py
 # train pix2pix models
 def train(d_model, g_model, gan_model, dataset, n_epochs=100, n_batch=1, n_patch=16):
 	# unpack dataset
@@ -918,7 +918,7 @@ def train(d_model, g_model, gan_model, dataset, n_epochs=100, n_batch=1, n_patch
 
 然后可以用我们定义的模型和加载的数据集直接调用训练函数。
 
-```
+```py
 ...
 # load image data
 dataset = ...

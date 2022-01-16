@@ -118,13 +118,13 @@ py-earth Python 包是以 R 版本命名的 MARS 的 Python 实现，提供了�
 
 第一步是安装 py-earth 库。我建议使用 pip 包管理器，从命令行使用以下命令:
 
-```
+```py
 sudo pip install sklearn-contrib-py-earth
 ```
 
 安装后，我们可以加载库，并在 Python 脚本中打印版本，以确认它安装正确。
 
-```
+```py
 # check pyearth version
 import pyearth
 # display version
@@ -135,13 +135,13 @@ print(pyearth.__version__)
 
 您的版本号应该相同或更高。
 
-```
+```py
 0.1.0
 ```
 
 通过创建[地球类](https://contrib.scikit-learn.org/py-earth/content.html#pyearth.Earth)的实例，可以使用默认模型超参数创建火星模型。
 
-```
+```py
 ...
 # define the model
 model = Earth()
@@ -149,7 +149,7 @@ model = Earth()
 
 一旦创建，模型就可以直接拟合训练数据。
 
-```
+```py
 ...
 # fit the model on training dataset
 model.fit(X, y)
@@ -165,7 +165,7 @@ model.fit(X, y)
 
 一旦拟合，该模型可用于对新数据进行预测。
 
-```
+```py
 ...
 Xnew = ...
 # make a prediction
@@ -174,7 +174,7 @@ yhat = model.predict(Xnew)
 
 通过调用 *summary()* 函数，可以创建拟合模型的概要。
 
-```
+```py
 ...
 # print a summary of the fit model
 print(model.summary())
@@ -184,7 +184,7 @@ print(model.summary())
 
 下面提供了一个总结输出的例子，我们可以看到该模型有 19 个基函数，估计的均方误差约为 25。
 
-```
+```py
 Earth Model
 --------------------------------------
 Basis Function   Pruned  Coefficient
@@ -222,7 +222,7 @@ MSE: 25.5896, GCV: 25.8266, RSQ: 0.9997, GRSQ: 0.9997
 
 我们将使用[make _ revolution()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html)创建一个包含 20 个特征(列)和 10，000 个示例(行)的合成回归问题。下面的示例创建并总结了合成数据集的形状。
 
-```
+```py
 # define a synthetic regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -233,7 +233,7 @@ print(X.shape, y.shape)
 
 运行该示例会创建数据集并汇总行数和列数，与我们的预期相符。
 
-```
+```py
 (10000, 20) (10000,)
 ```
 
@@ -241,7 +241,7 @@ print(X.shape, y.shape)
 
 我们将使用默认的超参数来定义模型。
 
-```
+```py
 ...
 # define the model
 model = Earth()
@@ -251,7 +251,7 @@ model = Earth()
 
 在这种情况下，我们将使用三次重复和 10 次折叠。
 
-```
+```py
 ...
 # define the evaluation procedure
 cv = RepeatedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -261,7 +261,7 @@ cv = RepeatedKFold(n_splits=10, n_repeats=3, random_state=1)
 
 scikit-learn API 将使 MAE 分数为负，以便将其最大化，这意味着分数范围将从负无穷大(最差)到 0(最佳)。
 
-```
+```py
 ...
 # evaluate the model and collect results
 n_scores = cross_val_score(model, X, y, scoring='neg_mean_absolute_error', cv=cv, n_jobs=-1)
@@ -269,7 +269,7 @@ n_scores = cross_val_score(model, X, y, scoring='neg_mean_absolute_error', cv=cv
 
 最后，我们将报告模型的性能，作为所有重复和交叉验证折叠的平均 MAE 分数。
 
-```
+```py
 ...
 # report performance
 print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
@@ -277,7 +277,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 将这些联系在一起，下面列出了在回归数据集上评估 MARS 模型的完整示例。
 
-```
+```py
 # evaluate multivariate adaptive regression splines for regression
 from numpy import mean
 from numpy import std
@@ -303,7 +303,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到 MARS 算法在合成回归数据集上实现了大约 4.0(忽略符号)的平均 MAE。
 
-```
+```py
 MAE: -4.041 (0.085)
 ```
 
@@ -311,7 +311,7 @@ MAE: -4.041 (0.085)
 
 这需要首先在所有可用数据上定义和拟合模型。
 
-```
+```py
 ...
 # define the model
 model = Earth()
@@ -321,7 +321,7 @@ model.fit(X, y)
 
 然后我们可以调用 *predict()* 函数，传入新的输入数据，以便进行预测。
 
-```
+```py
 ...
 # make a prediction for a single row of data
 yhat = model.predict([row])
@@ -329,7 +329,7 @@ yhat = model.predict([row])
 
 下面列出了拟合 MARS 最终模型并对单行新数据进行预测的完整示例。
 
-```
+```py
 # make a prediction with multivariate adaptive regression splines for regression
 from sklearn.datasets import make_regression
 from pyearth import Earth
@@ -349,7 +349,7 @@ print('Prediction: %d' % yhat[0])
 
 运行该示例使 MARS 模型适用于所有可用数据，然后进行单一回归预测。
 
-```
+```py
 Prediction: -393
 ```
 

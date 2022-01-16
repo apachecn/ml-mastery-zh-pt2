@@ -85,7 +85,7 @@
 
 例如，下面是一个创建数字列表并计算平均值的示例。
 
-```
+```py
 numbers <- c(1, 2, 3, 4, 5, 6)
 mean(numbers)
 ```
@@ -109,7 +109,7 @@ R 自带的*数据集*包有很多标准数据集，包括著名的鸢尾花数�
 
 为了让您开始，下面的代码片段将安装并加载 *mlbench* 包，列出它提供的所有数据集，并将 PimaIndiansDiabetes 数据集附加到您的环境中供您使用。
 
-```
+```py
 install.packages("mlbench")
 library(mlbench)
 data(package="mlbench")
@@ -136,7 +136,7 @@ head(PimaIndiansDiabetes)
 
 以下示例加载 iris 数据集并总结每个属性的分布。
 
-```
+```py
 data(iris)
 summary(iris)
 ```
@@ -157,7 +157,7 @@ summary(iris)
 
 例如，下面的代码片段将加载 iris 数据集，并创建数据集的散点图矩阵。
 
-```
+```py
 data(iris)
 pairs(iris)
 ```
@@ -172,7 +172,7 @@ pairs(iris)
 
 请记住，您可以按如下方式安装和加载插入符号包:
 
-```
+```py
 install.packages("caret")
 library(caret)
 ```
@@ -183,7 +183,7 @@ library(caret)
 
 例如，下面的代码片段加载 iris 数据集，计算标准化数据所需的参数，然后创建数据的标准化副本。
 
-```
+```py
 # load caret package
 library(caret)
 # load the dataset
@@ -210,7 +210,7 @@ summary(transformed)
 
 下面的代码片段使用插入符号包，使用 10 倍交叉验证来估计朴素贝叶斯算法在虹膜数据集上的准确性。
 
-```
+```py
 # load the library
 library(caret)
 # load the iris dataset
@@ -243,7 +243,7 @@ print(fit)
 
 下面的代码片段演示了在 iris 数据集上计算 LogLoss 度量。
 
-```
+```py
 # load caret library
 library(caret)
 # load the iris dataset
@@ -272,7 +272,7 @@ print(fit)
 
 例如，下面的片段抽查了来自 *mlbench* 包的 Pima Indians 糖尿病数据集上的两个线性算法。
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -307,7 +307,7 @@ summary(results)
 
 下面的代码片段扩展了昨天的示例，并创建了抽查结果的图表。
 
-```
+```py
 # load libraries
 library(caret)
 library(mlbench)
@@ -343,7 +343,7 @@ dotplot(results)
 
 下面使用的代码片段是在 iris 数据集上使用网格搜索随机森林算法的示例。
 
-```
+```py
 # load the library
 library(caret)
 # load the iris dataset
@@ -374,7 +374,7 @@ print(fit)
 
 下面的代码片段演示了如何使用堆叠来组合来自多个模型的预测。
 
-```
+```py
 # Load packages
 library(mlbench)
 library(caret)
@@ -406,7 +406,7 @@ print(stack.glm)
 
 例如，下面的代码片段显示了如何在整个数据集上创建一个随机的森林算法。
 
-```
+```py
 # load package
 library(randomForest)
 # load iris data

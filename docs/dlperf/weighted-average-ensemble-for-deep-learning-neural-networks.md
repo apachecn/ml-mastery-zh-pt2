@@ -73,7 +73,7 @@ scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/mo
 
 该问题有两个输入变量(表示点的 *x* 和 *y* 坐标)和每组内点的标准偏差 2.0。我们将使用相同的随机状态(伪随机数发生器的种子)来确保我们总是获得相同的数据点。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random_state=2)
 ```
@@ -84,7 +84,7 @@ X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random
 
 下面列出了完整的示例。
 
-```
+```py
 # scatter plot of blobs dataset
 from sklearn.datasets import make_blobs
 from matplotlib import pyplot
@@ -119,7 +119,7 @@ pyplot.show()
 
 该问题是一个多类分类问题，我们将在输出层使用 softmax 激活函数对其进行建模。这意味着模型将以样本属于三类中每一类的概率来预测具有三个元素的向量。因此，在将行分割成训练和测试数据集之前，我们必须对类值进行热编码。我们可以使用 Keras to _ classic()函数来实现这一点。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1100, centers=3, n_features=2, cluster_std=2, random_state=2)
 # one hot encode output variable
@@ -137,7 +137,7 @@ print(trainX.shape, testX.shape)
 
 由于问题是多类的，我们将使用分类交叉熵损失函数来优化模型和随机梯度下降的有效[亚当味](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(25, input_dim=2, activation='relu'))
@@ -147,14 +147,14 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 
 该模型适用于 500 个训练时期，我们将使用测试集作为验证集，在测试集上评估每个时期的模型。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=500, verbose=0)
 ```
 
 在运行结束时，我们将评估模型在列车和测试集上的性能。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -163,7 +163,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 最后，我们将在训练和验证数据集上绘制每个训练时期的模型精度的学习曲线。
 
-```
+```py
 # learning curves of model accuracy
 pyplot.plot(history.history['accuracy'], label='train')
 pyplot.plot(history.history['val_accuracy'], label='test')
@@ -173,7 +173,7 @@ pyplot.show()
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # develop an mlp for blobs dataset
 from sklearn.datasets import make_blobs
 from keras.utils import to_categorical
@@ -213,7 +213,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到该模型在训练数据集上获得了大约 87%的准确率，我们知道这是乐观的，在测试数据集上获得了大约 81%的准确率，我们预计这将更加真实。
 
-```
+```py
 (100, 2) (1000, 2)
 Train: 0.870, Test: 0.814
 ```
@@ -236,7 +236,7 @@ Train: 0.870, Test: 0.814
 
 首先，我们需要拟合多个模型来开发一个集合。我们将定义一个名为 *fit_model()* 的函数，在训练数据集上创建和拟合一个单一的模型，我们可以重复调用这个函数来创建任意多个模型。
 
-```
+```py
 # fit model on dataset
 def fit_model(trainX, trainy):
 	trainy_enc = to_categorical(trainy)
@@ -252,7 +252,7 @@ def fit_model(trainX, trainy):
 
 我们可以调用这个函数来创建 10 个模型的池。
 
-```
+```py
 # fit all models
 n_members = 10
 members = [fit_model(trainX, trainy) for _ in range(n_members)]
@@ -266,7 +266,7 @@ members = [fit_model(trainX, trainy) for _ in range(n_members)]
 
 每个模型预测每个类别标签的概率，例如，有三个输出。通过对预测概率使用 [argmax()函数](https://docs.scipy.org/doc/numpy/reference/generated/numpy.argmax.html)，可以将单个预测转换为类别标签，例如返回具有最大概率值的预测中的索引。我们可以通过对每个类别预测的概率求和并对结果使用 *argmax()* 来集成来自多个模型的预测。下面的*集成预测()*函数实现了这种行为。
 
-```
+```py
 # make an ensemble prediction for multi-class classification
 def ensemble_predictions(members, testX):
 	# make predictions
@@ -281,7 +281,7 @@ def ensemble_predictions(members, testX):
 
 我们可以通过从所有模型列表中选择所需数量的模型，调用*integration _ predictions()*函数进行预测，然后通过将其与真实值进行比较来计算预测的准确性，从而估计给定大小的集成的性能。下面的 *evaluate_n_members()* 函数实现了这个行为。
 
-```
+```py
 # evaluate a specific number of members in an ensemble
 def evaluate_n_members(members, n_members, testX, testy):
 	# select a subset of members
@@ -294,7 +294,7 @@ def evaluate_n_members(members, n_members, testX, testy):
 
 每个尺寸的系综的分数可以被存储起来以供以后绘制，并且收集每个单独模型的分数并报告平均性能。
 
-```
+```py
 # evaluate different numbers of ensembles on hold out set
 single_scores, ensemble_scores = list(), list()
 for i in range(1, len(members)+1):
@@ -315,7 +315,7 @@ print('Accuracy %.3f (%.3f)' % (mean(single_scores), std(single_scores)))
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # model averaging ensemble for the blobs dataset
 from sklearn.datasets import make_blobs
 from sklearn.metrics import accuracy_score
@@ -398,7 +398,7 @@ pyplot.show()
 
 在这次运行中，单个模型的平均性能约为 80.4%，我们可以看到一个由 5 到 9 名成员组成的集合将达到 80.8%到 81%的性能。正如预期的那样，中等规模模型平均集成的性能平均超过随机选择的单个模型的性能。
 
-```
+```py
 (100, 2) (1000, 2)
 > 1: single=0.803, ensemble=0.803
 > 2: single=0.805, ensemble=0.808
@@ -433,7 +433,7 @@ Accuracy 0.804 (0.005)
 
 我们必须计算加权和，而不是简单地对每个系综成员的预测求和。我们可以使用 for 循环手动实现这一点，但是这效率非常低；例如:
 
-```
+```py
 # calculated a weighted sum of predictions
 def weighted_sum(weights, yhats):
 	rows = list()
@@ -454,7 +454,7 @@ def weighted_sum(weights, yhats):
 
 对这些函数的全面讨论有点超出范围，因此如果您是线性代数和/或 NumPy 的新手，请参考 API 文档了解如何使用这些函数的更多信息，因为它们具有挑战性。我们将使用 *tensordot()* 函数来应用具有所需求和的张量积；更新后的*集合 _ 预测()*功能如下。
 
-```
+```py
 # make an ensemble prediction for multi-class classification
 def ensemble_predictions(members, weights, testX):
 	# make predictions
@@ -469,7 +469,7 @@ def ensemble_predictions(members, weights, testX):
 
 接下来，我们必须更新 *evaluate_ensemble()* ，以便在为系综进行预测时传递权重。
 
-```
+```py
 # evaluate a specific number of members in an ensemble
 def evaluate_ensemble(members, weights, testX, testy):
 	# make prediction
@@ -480,7 +480,7 @@ def evaluate_ensemble(members, weights, testX, testy):
 
 我们将使用一个由五名成员组成的中等规模的集合，该集合在模型平均集合中表现良好。
 
-```
+```py
 # fit all models
 n_members = 5
 members = [fit_model(trainX, trainy) for _ in range(n_members)]
@@ -488,7 +488,7 @@ members = [fit_model(trainX, trainy) for _ in range(n_members)]
 
 然后，我们可以估计测试数据集中每个单独模型的性能作为参考。
 
-```
+```py
 # evaluate each single model on the test set
 testy_enc = to_categorical(testy)
 for i in range(n_members):
@@ -500,7 +500,7 @@ for i in range(n_members):
 
 我们希望这个组合能表现得和任何单一的模型一样好或者更好。
 
-```
+```py
 # evaluate averaging ensemble (equal weights)
 weights = [1.0/n_members for _ in range(n_members)]
 score = evaluate_ensemble(members, weights, testX, testy)
@@ -513,7 +513,7 @@ print('Equal Weights Score: %.3f' % score)
 
 这种方法的一个限制是，权重向量的总和不会像要求的那样等于 1(称为单位范数)。我们可以通过计算绝对权重值之和(称为 L1 范数)并将每个权重除以该值来强制生成的权重向量具有单位范数。下面的 *normalize()* 函数实现了这个破解。
 
-```
+```py
 # normalize a vector to have unit norm
 def normalize(weights):
 	# calculate l1 vector norm
@@ -527,7 +527,7 @@ def normalize(weights):
 
 现在，我们可以枚举笛卡尔乘积生成的每个权重向量，对其进行归一化，并通过进行预测和保留在最终权重平均集成中使用的最佳值来评估它。
 
-```
+```py
 # grid search weights
 def grid_search(members, testX, testy):
 	# define weights to consider
@@ -550,7 +550,7 @@ def grid_search(members, testX, testy):
 
 一旦被发现，我们就可以在测试数据集上报告我们的加权平均集成的性能，我们期望它比最好的单个模型更好，并且理想地比模型平均集成更好。
 
-```
+```py
 # grid search weights
 weights = grid_search(members, testX, testy)
 score = evaluate_ensemble(members, weights, testX, testy)
@@ -559,7 +559,7 @@ print('Grid Search Weights: %s, Score: %.3f' % (weights, score))
 
 下面列出了完整的示例。
 
-```
+```py
 # grid search for coefficients in a weighted average ensemble for the blobs problem
 from sklearn.datasets import make_blobs
 from sklearn.metrics import accuracy_score
@@ -667,7 +667,7 @@ print('Grid Search Weights: %s, Score: %.3f' % (weights, score))
 
 接下来，创建一个性能约为 80.7%的模型平均集成，与大多数模型相比，这是合理的，但不是全部。
 
-```
+```py
 (100, 2) (1000, 2)
 Model 1: 0.798
 Model 2: 0.817
@@ -683,7 +683,7 @@ Equal Weights Score: 0.807
 
 我们可以看到，使用仅关注第一个和第二个模型的权重在这次运行中获得了最佳性能，在测试数据集上的准确率为 81.8%。这在同一个数据集上执行了单个模型和模型平均集成。
 
-```
+```py
 >[0\. 0\. 0\. 0\. 1.] 0.810
 >[0\.  0\.  0\.  0.5 0.5] 0.814
 >[0\.         0\.         0\.         0.33333333 0.66666667] 0.815
@@ -708,7 +708,7 @@ SciPy 提供了[差分进化](https://docs.scipy.org/doc/scipy/reference/generat
 
 与网格搜索一样，我们在评估权重向量之前，通常会对其进行归一化。下面的 *loss_function()* 函数将在优化过程中用作评估函数。
 
-```
+```py
 # loss function for optimization process, designed to be minimized
 def loss_function(weights, members, testX, testy):
 	# normalize weights
@@ -719,14 +719,14 @@ def loss_function(weights, members, testX, testy):
 
 我们还必须指定优化过程的界限。我们可以将边界定义为 5 维超立方体(例如，5 个系综成员的 5 个权重)，其值在 0.0 和 1.0 之间。
 
-```
+```py
 # define bounds on each weight
 bound_w = [(0.0, 1.0) for _ in range(n_members)]
 ```
 
 除了权重之外，我们的损失函数还需要三个参数，我们将提供一个元组，然后在每次评估一组权重时传递给对*损失函数()*的调用。
 
-```
+```py
 # arguments to the loss function
 search_arg = (members, testX, testy)
 ```
@@ -735,7 +735,7 @@ search_arg = (members, testX, testy)
 
 我们将算法的总迭代次数限制在 1000 次，并使用小于默认的容差来检测搜索过程是否收敛。
 
-```
+```py
 # global optimization of ensemble weights
 result = differential_evolution(loss_function, bound_w, search_arg, maxiter=1000, tol=1e-7)
 ```
@@ -744,7 +744,7 @@ result = differential_evolution(loss_function, bound_w, search_arg, maxiter=1000
 
 重要的是，' *x* '键包含搜索过程中找到的最佳权重集。我们可以检索最佳权重集，然后在测试集中报告它们以及它们在加权集合中使用时的性能。
 
-```
+```py
 # get the chosen weights
 weights = normalize(result['x'])
 print('Optimized Weights: %s' % weights)
@@ -755,7 +755,7 @@ print('Optimized Weights Score: %.3f' % score)
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # global optimization to find coefficients for weighted ensemble on blobs problem
 from sklearn.datasets import make_blobs
 from sklearn.metrics import accuracy_score
@@ -859,7 +859,7 @@ print('Optimized Weights Score: %.3f' % score)
 
 接下来，在测试集上评估具有所有五个成员的模型平均集成，报告准确率为 81.8%，这优于一些但不是全部的单个模型。
 
-```
+```py
 (100, 2) (1000, 2)
 Model 1: 0.814
 Model 2: 0.811
@@ -873,7 +873,7 @@ Equal Weights Score: 0.818
 
 我们可以看到，该过程找到了一组最关注模型 3 和模型 4 的权重，并将剩余的注意力分散到其他模型中，实现了约 82.4%的准确率，优于模型平均集成和单个模型。
 
-```
+```py
 Optimized Weights: [0.1660322  0.09652591 0.33991854 0.34540932 0.05211403]
 Optimized Weights Score: 0.824
 ```

@@ -85,7 +85,7 @@ scikit-learn Python 机器学习库为机器学习提供了一个 Extra Trees �
 
 首先，通过运行以下脚本来确认您使用的是现代版本的库:
 
-```
+```py
 # check scikit-learn version
 import sklearn
 print(sklearn.__version__)
@@ -97,7 +97,7 @@ print(sklearn.__version__)
 
 如果没有，您必须升级 scikit-learn 库的版本。
 
-```
+```py
 0.22.1
 ```
 
@@ -119,7 +119,7 @@ print(sklearn.__version__)
 
 下面列出了完整的示例。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -130,7 +130,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -138,7 +138,7 @@ print(X.shape, y.shape)
 
 我们将使用重复的分层 k 折叠交叉验证来评估模型，重复 3 次，折叠 10 次。我们将报告所有重复和折叠的模型精度的平均值和标准偏差。
 
-```
+```py
 # evaluate extra trees algorithm for classification
 from numpy import mean
 from numpy import std
@@ -163,7 +163,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到带有默认超参数的额外树集成在这个测试数据集上实现了大约 91%的分类精度。
 
-```
+```py
 Accuracy: 0.910 (0.027)
 ```
 
@@ -173,7 +173,7 @@ Accuracy: 0.910 (0.027)
 
 下面的示例在我们的二进制分类数据集上演示了这一点。
 
-```
+```py
 # make predictions using extra trees for classification
 from sklearn.datasets import make_classification
 from sklearn.ensemble import ExtraTreesClassifier
@@ -191,7 +191,7 @@ print('Predicted Class: %d' % yhat[0])
 
 运行该示例使 Extra Trees 集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Predicted Class: 0
 ```
 
@@ -205,7 +205,7 @@ Predicted Class: 0
 
 下面列出了完整的示例。
 
-```
+```py
 # test regression dataset
 from sklearn.datasets import make_regression
 # define dataset
@@ -216,7 +216,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集并总结输入和输出组件的形状。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -228,7 +228,7 @@ scikit-learn 库使 MAE 为负，因此它被最大化而不是最小化。这�
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate extra trees ensemble for regression
 from numpy import mean
 from numpy import std
@@ -253,7 +253,7 @@ print('MAE: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
 
 在这种情况下，我们可以看到带有默认超参数的额外树集合达到了大约 70 的 MAE。
 
-```
+```py
 MAE: -69.561 (5.616)
 ```
 
@@ -263,7 +263,7 @@ MAE: -69.561 (5.616)
 
 下面的例子在我们的回归数据集上演示了这一点。
 
-```
+```py
 # extra trees for making predictions for regression
 from sklearn.datasets import make_regression
 from sklearn.ensemble import ExtraTreesRegressor
@@ -281,7 +281,7 @@ print('Prediction: %d' % yhat[0])
 
 运行该示例使 Extra Trees 集成模型适合整个数据集，然后用于对新的数据行进行预测，就像我们在应用程序中使用该模型时可能做的那样。
 
-```
+```py
 Prediction: 53
 ```
 
@@ -301,7 +301,7 @@ Prediction: 53
 
 下面的示例探讨了值在 10 到 5，000 之间的树的数量的影响。
 
-```
+```py
 # explore extra trees number of trees effect on performance
 from numpy import mean
 from numpy import std
@@ -358,7 +358,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到大约 100 棵树后，性能会上升并保持不变。平均准确度分数在 100、500 和 1000 棵树之间波动，这可能是统计噪声。
 
-```
+```py
 >10 0.860 (0.029)
 >50 0.904 (0.027)
 >100 0.908 (0.026)
@@ -385,7 +385,7 @@ pyplot.show()
 
 以下示例探讨了在每个分割点随机选择的特征数量对模型精度的影响。我们将尝试从 1 到 20 的值，并期望一个大约为 4 的小值根据启发式算法表现良好。
 
-```
+```py
 # explore extra trees number of features effect on performance
 from numpy import mean
 from numpy import std
@@ -443,7 +443,7 @@ pyplot.show()
 
 考虑到分类准确性的较大平均值和较小标准偏差，9 的值甚至可能更好，尽管分数的差异可能具有统计学意义，也可能不具有统计学意义。
 
-```
+```py
 >1 0.901 (0.028)
 >2 0.909 (0.028)
 >3 0.901 (0.026)
@@ -482,7 +482,7 @@ pyplot.show()
 
 下面的示例探讨了拆分前额外树最小样本对模型性能的影响，测试值介于 2 和 14 之间。
 
-```
+```py
 # explore extra trees minimum number of samples for a split effect on performance
 from numpy import mean
 from numpy import std
@@ -538,7 +538,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到较小的值会导致更好的性能，这证实了两个值的合理默认值。
 
-```
+```py
 >2 0.909 (0.025)
 >3 0.907 (0.026)
 >4 0.907 (0.026)

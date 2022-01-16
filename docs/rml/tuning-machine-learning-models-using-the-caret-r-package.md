@@ -38,7 +38,7 @@ caret R 包旨在使寻找算法的最佳参数变得非常容易。它提供了
 
 下面的方法演示了 LVQ 的大小和 k 属性的自动网格搜索，每个(总共 25 个模型)有 5 个(*tunelement = 5*)值。
 
-```
+```py
 # ensure results are repeatable
 set.seed(7)
 # load the library
@@ -61,7 +61,7 @@ print(model)
 
 下面的配方演示了手动调谐网格的搜索，其中大小参数有 4 个值，k 参数有 5 个值(20 种组合)。
 
-```
+```py
 # ensure results are repeatable
 set.seed(7)
 # load the library
@@ -86,7 +86,7 @@ print(model)
 
 虹膜数据集中的属性都是以相同的单位表示的，并且通常具有相同的比例，因此规范化和标准化并不是真正必要的。然而，下面的例子演示了调整 LVQ 的大小和 k 参数，同时使用*prepare = " scale "*归一化数据集。
 
-```
+```py
 # ensure results are repeatable
 set.seed(7)
 # load the library
@@ -107,7 +107,7 @@ print(model)
 
 脱字符号包支持并行处理，以减少给定实验的计算时间。只要进行了配置，就会自动支持。在这个例子中，我们加载了 doMC 包，并将核心数设置为 4，这样在调优模型时就可以为插入符号提供 4 个工作线程。这用于每个参数组合的重复交叉验证循环。
 
-```
+```py
 # ensure results are repeatable
 set.seed(7)
 # configure multicore
@@ -133,7 +133,7 @@ print(model)
 
 在下面的配方中，定义了一个更大的算法参数手动网格，并绘制了结果。该图显示了 x 轴上的尺寸和 y 轴上的模型精度。画了两条线，一条对应一个 k 值。该图显示了性能随大小增加的一般趋势，较大的 k 值可能是首选。
 
-```
+```py
 # ensure results are repeatable
 set.seed(7)
 # load the library

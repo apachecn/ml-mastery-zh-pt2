@@ -144,7 +144,7 @@ AdaGrad 适用于搜索空间的曲率在不同维度上不同的目标函数，
 
 下面的*目标()*函数实现了这个功能。
 
-```
+```py
 # objective function
 def objective(x, y):
 	return x**2.0 + y**2.0
@@ -154,7 +154,7 @@ def objective(x, y):
 
 下面列出了绘制目标函数的完整示例。
 
-```
+```py
 # 3d plot of the test function
 from numpy import arange
 from numpy import meshgrid
@@ -193,7 +193,7 @@ pyplot.show()
 
 以下示例创建了目标函数的等高线图。
 
-```
+```py
 # contour plot of the test function
 from numpy import asarray
 from numpy import arange
@@ -242,7 +242,7 @@ x^2 的导数在每个维度上都是 x * 2。
 
 *导数()*函数实现如下。
 
-```
+```py
 # derivative of objective function
 def derivative(x, y):
 	return asarray([x * 2.0, y * 2.0])
@@ -254,7 +254,7 @@ def derivative(x, y):
 
 这假设我们有一个定义搜索范围的数组，每个维度有一行，第一列定义维度的最小值，第二列定义维度的最大值。
 
-```
+```py
 ...
 # generate an initial point
 solution = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
@@ -262,7 +262,7 @@ solution = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0])
 
 接下来，我们需要将每个维度的平方偏导数之和初始化为 0.0。
 
-```
+```py
 ...
 # list of the sum square gradients for each variable
 sq_grad_sums = [0.0 for _ in range(bounds.shape[0])]
@@ -270,7 +270,7 @@ sq_grad_sums = [0.0 for _ in range(bounds.shape[0])]
 
 然后，我们可以枚举由“ *n_iter* ”超参数定义的搜索优化算法的固定迭代次数。
 
-```
+```py
 ...
 # run the gradient descent
 for it in range(n_iter):
@@ -279,7 +279,7 @@ for it in range(n_iter):
 
 第一步是使用*导数()*函数计算当前解的梯度。
 
-```
+```py
 ...
 # calculate gradient
 gradient = derivative(solution[0], solution[1])
@@ -287,7 +287,7 @@ gradient = derivative(solution[0], solution[1])
 
 然后，我们需要计算每个变量偏导数的平方，并将它们加到这些值的总和中。
 
-```
+```py
 ...
 # update the sum of the squared partial derivatives
 for i in range(gradient.shape[0]):
@@ -298,7 +298,7 @@ for i in range(gradient.shape[0]):
 
 我们将一次处理一个变量，首先计算变量的步长，然后计算变量的新值。这些值在一个数组中建立，直到我们有一个全新的解决方案，该解决方案使用自定义步长从当前点开始以最陡的下降方向下降。
 
-```
+```py
 ...
 # build a solution one variable at a time
 new_solution = list()
@@ -313,7 +313,7 @@ for i in range(solution.shape[0]):
 
 然后，可以使用*客观()*函数来评估这个新的解决方案，并且可以报告搜索的性能。
 
-```
+```py
 ...
 # evaluate candidate point
 solution = asarray(new_solution)
@@ -328,7 +328,7 @@ print('>%d f(%s) = %.5f' % (it, solution, solution_eval))
 
 下面列出了完整的功能。
 
-```
+```py
 # gradient descent algorithm with adagrad
 def adagrad(objective, derivative, bounds, n_iter, step_size):
 	# generate an initial point
@@ -365,7 +365,7 @@ def adagrad(objective, derivative, bounds, n_iter, step_size):
 
 在这种情况下，我们将使用算法的 50 次迭代和 0.1 的初始学习率，这两者都是经过一点点尝试和错误后选择的。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -383,7 +383,7 @@ print('f(%s) = %f' % (best, score))
 
 将所有这些结合在一起，下面列出了具有自适应梯度的梯度下降优化的完整示例。
 
-```
+```py
 # gradient descent optimization with adagrad for a two-dimensional test function
 from math import sqrt
 from numpy import asarray
@@ -447,7 +447,7 @@ print('f(%s) = %f' % (best, score))
 
 在这种情况下，我们可以看到，在大约 35 次搜索迭代后，找到了一个接近最优的解，输入值接近 0.0 和 0.0，评估为 0.0。
 
-```
+```py
 >0 f([-0.06595599  0.34064899]) = 0.12039
 >1 f([-0.02902286  0.27948766]) = 0.07896
 >2 f([-0.0129815   0.23463749]) = 0.05522
@@ -512,7 +512,7 @@ f([-5.90360555e-19  3.21927835e-04]) = 0.000000
 
 下面列出了带有这些更改的功能的更新版本。
 
-```
+```py
 # gradient descent algorithm with adagrad
 def adagrad(objective, derivative, bounds, n_iter, step_size):
 	# track all solutions
@@ -548,7 +548,7 @@ def adagrad(objective, derivative, bounds, n_iter, step_size):
 
 然后，我们可以像以前一样执行搜索，这次检索解决方案列表，而不是最佳最终解决方案。
 
-```
+```py
 ...
 # seed the pseudo random number generator
 seed(1)
@@ -564,7 +564,7 @@ solutions = adagrad(objective, derivative, bounds, n_iter, step_size)
 
 然后，我们可以像以前一样创建目标函数的等高线图。
 
-```
+```py
 ...
 # sample input range uniformly at 0.1 increments
 xaxis = arange(bounds[0,0], bounds[0,1], 0.1)
@@ -579,7 +579,7 @@ pyplot.contourf(x, y, results, levels=50, cmap='jet')
 
 最后，我们可以将搜索过程中找到的每个解决方案绘制成由一条线连接的白点。
 
-```
+```py
 ...
 # plot the sample as black circles
 solutions = asarray(solutions)
@@ -588,7 +588,7 @@ pyplot.plot(solutions[:, 0], solutions[:, 1], '.-', color='w')
 
 将所有这些结合起来，下面列出了对测试问题执行 AdaGrad 优化并将结果绘制在等高线图上的完整示例。
 
-```
+```py
 # example of plotting the adagrad search on a contour plot of the test function
 from math import sqrt
 from numpy import asarray

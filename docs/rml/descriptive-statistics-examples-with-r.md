@@ -72,7 +72,7 @@
 
 如果数据集很小，您可能可以在屏幕上显示所有内容。通常不是，所以你可以拿一个小样本来回顾一下。
 
-```
+```py
 # load the library
 library(mlbench)
 # load the dataset
@@ -83,7 +83,7 @@ head(PimaIndiansDiabetes, n=20)
 
 head 函数将显示前 20 行数据，供您查看和思考。
 
-```
+```py
    pregnant glucose pressure triceps insulin mass pedigree age diabetes
 1         6     148       72      35       0 33.6    0.627  50      pos
 2         1      85       66      29       0 26.6    0.351  31      neg
@@ -113,7 +113,7 @@ head 函数将显示前 20 行数据，供您查看和思考。
 
 如果您有很多实例，您可能需要使用较小的数据样本，以便模型训练和评估在计算上易于处理。如果你有大量的属性，你可能需要选择那些最相关的。如果属性比实例多，您可能需要选择特定的建模技术。
 
-```
+```py
 # load the libraries
 library(mlbench)
 # load the dataset
@@ -124,7 +124,7 @@ dim(PimaIndiansDiabetes)
 
 这将显示加载数据集的行和列。
 
-```
+```py
 [1] 768   9
 ```
 
@@ -136,7 +136,7 @@ dim(PimaIndiansDiabetes)
 
 此外，也许一些属性被加载为一种类型(例如整数)，并且实际上可以被表示为另一种类型(分类因子)。检查类型有助于尽早暴露这些问题并激发想法。
 
-```
+```py
 # load library
 library(mlbench)
 # load dataset
@@ -147,7 +147,7 @@ sapply(BostonHousing, class)
 
 这将列出数据集中每个属性的数据类型。
 
-```
+```py
      crim        zn     indus      chas       nox        rm       age       dis       rad       tax   ptratio         b 
 "numeric" "numeric" "numeric"  "factor" "numeric" "numeric" "numeric" "numeric" "numeric" "numeric" "numeric" "numeric" 
     lstat      medv 
@@ -160,7 +160,7 @@ sapply(BostonHousing, class)
 
 这一点很重要，因为它可能会突出数据中的不平衡，如果严重，可能需要通过重新平衡技术来解决。在多类分类问题的情况下，它可能会暴露具有少量或零个实例的类，这些实例可能是要从数据集中移除的候选实例。
 
-```
+```py
 # load the libraries
 library(mlbench)
 # load the dataset
@@ -172,7 +172,7 @@ cbind(freq=table(y), percentage=prop.table(table(y))*100)
 
 这个方法创建了一个有用的表格，显示了属于每个类的实例数量以及它在整个数据集中所占的百分比。
 
-```
+```py
     freq percentage
 neg  500   65.10417
 pos  268   34.89583
@@ -193,7 +193,7 @@ pos  268   34.89583
 
 细分还包括属性缺失值数量的指示(标记为不适用)。
 
-```
+```py
 # load the iris dataset
 data(iris)
 # summarize the dataset
@@ -202,7 +202,7 @@ summary(iris)
 
 你可以看到这个食谱产生了很多信息供你回顾。慢慢来，依次研究每个属性。
 
-```
+```py
   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width          Species  
  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100   setosa    :50  
  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300   versicolor:50  
@@ -218,7 +218,7 @@ summary(iris)
 
 标准差和平均值有助于了解数据是否具有高斯(或近似高斯)分布。例如，它对于快速和肮脏的异常值去除工具非常有用，其中任何超过平均值标准偏差三倍的值都在数据的 99.7%之外。
 
-```
+```py
 # load the libraries
 library(mlbench)
 # load the dataset
@@ -229,7 +229,7 @@ sapply(PimaIndiansDiabetes[,1:8], sd)
 
 这会计算数据集中每个数值属性的标准偏差。
 
-```
+```py
    pregnant     glucose    pressure     triceps     insulin        mass    pedigree         age 
   3.3695781  31.9726182  19.3558072  15.9522176 115.2440024   7.8841603   0.3313286  11.7602315
 ```
@@ -242,7 +242,7 @@ sapply(PimaIndiansDiabetes[,1:8], sd)
 
 然而，预先计算偏斜给了您一个参考，如果您决定纠正属性的偏斜，您可以在以后使用它。
 
-```
+```py
 # load libraries
 library(mlbench)
 library(e1071)
@@ -256,7 +256,7 @@ print(skew)
 
 偏斜值的分布离零越远，向左(负偏斜值)或向右(正偏斜值)的偏斜就越大。
 
-```
+```py
   pregnant    glucose   pressure    triceps    insulin       mass   pedigree        age 
  0.8981549  0.1730754 -1.8364126  0.1089456  2.2633826 -0.4273073  1.9124179  1.1251880
 ```
@@ -267,7 +267,7 @@ print(skew)
 
 对于数字属性，考虑属性间交互的一个好方法是计算每对属性的相关性。
 
-```
+```py
 # load the libraries
 library(mlbench)
 # load the dataset
@@ -280,7 +280,7 @@ print(correlations)
 
 这为数值数据创建了所有属性相关性对的对称表。偏离零表示更多的正相关或负相关。高于 0.75 或低于-0.75 的值可能更有趣，因为它们显示出很高的相关性。值 1 和-1 表示完全正相关或负相关。
 
-```
+```py
             pregnant    glucose   pressure     triceps     insulin       mass    pedigree         age
 pregnant  1.00000000 0.12945867 0.14128198 -0.08167177 -0.07353461 0.01768309 -0.03352267  0.54434123
 glucose   0.12945867 1.00000000 0.15258959  0.05732789  0.33135711 0.22107107  0.13733730  0.26351432

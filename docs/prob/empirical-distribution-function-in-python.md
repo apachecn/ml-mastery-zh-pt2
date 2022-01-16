@@ -76,7 +76,7 @@ EDF 的计算方法是对数据样本中的所有唯一观测值进行排序，�
 
 下面列出了创建具有双峰概率分布的样本并绘制直方图的完整示例。
 
-```
+```py
 # example of a bimodal data sample
 from matplotlib import pyplot
 from numpy.random import normal
@@ -118,7 +118,7 @@ statmodels Python 库提供了 [ECDF 类](http://www.statsmodels.org/stable/gene
 
 通过调用 ECDF()并传入原始数据样本来拟合分布。
 
-```
+```py
 ...
 # fit a cdf
 ecdf = ECDF(sample)
@@ -126,7 +126,7 @@ ecdf = ECDF(sample)
 
 一旦拟合，就可以调用该函数来计算给定观测值的累积概率。
 
-```
+```py
 ...
 # get cumulative probability for values
 print('P(x<20): %.3f' % ecdf(20))
@@ -136,7 +136,7 @@ print('P(x<60): %.3f' % ecdf(60))
 
 该类还提供了数据中独特观察的有序列表(T0)。x 属性)及其关联概率(*)。y* 属性)。我们可以访问这些属性并直接绘制 CDF 函数。
 
-```
+```py
 ...
 # plot the cdf
 pyplot.plot(ecdf.x, ecdf.y)
@@ -145,7 +145,7 @@ pyplot.show()
 
 将这些联系在一起，下面是为双峰数据样本拟合经验分布函数的完整示例。
 
-```
+```py
 # fit an empirical cdf to a bimodal dataset
 from matplotlib import pyplot
 from numpy.random import normal
@@ -170,7 +170,7 @@ pyplot.show()
 
 运行该示例将经验 CDF 拟合到数据样本，然后打印观察三个值的累积概率。
 
-```
+```py
 P(x<20): 0.149
 P(x<40): 0.654
 P(x<60): 1.000

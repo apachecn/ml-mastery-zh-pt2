@@ -100,7 +100,7 @@
 
 我们将使用 [make_classification()函数](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)创建包含 1000 行数据和 20 个数字输入特征的数据集。下面的示例创建数据集并总结输入和输出变量数组的形状。
 
-```
+```py
 # test classification dataset
 from sklearn.datasets import make_classification
 # define dataset
@@ -111,7 +111,7 @@ print(X.shape, y.shape)
 
 运行该示例将创建数据集，并确认数据集的输入部分对于 20 个输入变量有 1，000 行和 20 列，输出变量有 1，000 个示例来匹配 1，000 行输入数据，每行一个值。
 
-```
+```py
 (1000, 20) (1000,)
 ```
 
@@ -123,7 +123,7 @@ print(X.shape, y.shape)
 
 我们可以使用[最小最大缩放器类](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)来归一化输入变量，该类首先用默认配置定义，将数据缩放到 0-1 的范围，然后调用 *fit_transform()* 函数来拟合数据集上的变换，并在一个步骤中将其应用于数据集。结果是输入变量的规范化版本，其中数组中的每一列都被单独规范化(例如，计算出它自己的最小值和最大值)。
 
-```
+```py
 ...
 # standardize the dataset
 scaler = MinMaxScaler()
@@ -132,7 +132,7 @@ X = scaler.fit_transform(X)
 
 接下来，我们可以使用 [train_test_split()函数](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)将数据集分割成训练集和测试集。我们将 67%用于训练集，33%用于测试集。
 
-```
+```py
 ...
 # split into train and test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=1)
@@ -140,7 +140,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random
 
 然后，我们可以通过[logisticreduction 类](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)定义我们的逻辑回归算法，使用默认配置，并使其适合训练数据集。
 
-```
+```py
 ...
 # fit the model
 model = LogisticRegression()
@@ -149,7 +149,7 @@ model.fit(X_train, y_train)
 
 然后，拟合模型可以对测试集的输入数据进行预测，我们可以将预测值与期望值进行比较，并计算分类精度分数。
 
-```
+```py
 ...
 # evaluate the model
 yhat = model.predict(X_test)
@@ -160,7 +160,7 @@ print('Accuracy: %.3f' % (accuracy*100))
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # naive approach to normalizing the data before splitting the data and evaluating the model
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -190,7 +190,7 @@ print('Accuracy: %.3f' % (accuracy*100))
 
 在这种情况下，我们可以看到模型的估计值约为 84.848%。
 
-```
+```py
 Accuracy: 84.848
 ```
 
@@ -204,7 +204,7 @@ Accuracy: 84.848
 
 这要求我们首先将数据分成训练集和测试集。
 
-```
+```py
 ...
 # split into train and test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=1)
@@ -212,7 +212,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random
 
 然后我们可以定义*最小最大缩放器*并在训练集上调用 *fit()* 函数，然后在训练集和测试集上应用*变换()*函数来创建每个数据集的规范化版本。
 
-```
+```py
 ...
 # define the scaler
 scaler = MinMaxScaler()
@@ -230,7 +230,7 @@ X_test = scaler.transform(X_test)
 
 将这些联系在一起，完整的示例如下所示。
 
-```
+```py
 # correct approach for normalizing the data after the data is split before the model is evaluated
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -267,7 +267,7 @@ print('Accuracy: %.3f' % (accuracy*100))
 
 我们预计数据泄露会导致对模型性能的错误估计。我们希望这是一个乐观的估计，数据泄漏会带来更好的性能，尽管在这种情况下，我们可以看到数据泄漏会导致性能略微下降。这可能是因为预测任务的难度。
 
-```
+```py
 Accuracy: 85.455
 ```
 
@@ -287,7 +287,7 @@ k-fold 交叉验证程序通常比训练测试分割给出更可靠的模型性�
 
 我们将使用上一节中准备的合成数据集，并直接对数据进行规范化。
 
-```
+```py
 ...
 # standardize the dataset
 scaler = MinMaxScaler()
@@ -298,7 +298,7 @@ X = scaler.fit_transform(X)
 
 这可以通过使用[repeated stratifiedfold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html)来实现，它可以配置为三次重复和 10 次折叠，然后使用 [cross_val_score()函数](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html)来执行该过程，传入定义的模型、交叉验证对象和度量来计算精度，在这种情况下。
 
-```
+```py
 ...
 # define the evaluation procedure
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -310,7 +310,7 @@ scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 
 将所有这些结合起来，下面列出了使用数据准备和数据泄漏来评估模型的交叉验证的完整示例。
 
-```
+```py
 # naive data preparation for model evaluation with k-fold cross-validation
 from numpy import mean
 from numpy import std
@@ -340,7 +340,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores)*100, std(scores)*100))
 
 在这种情况下，我们可以看到模型达到了大约 85.300%的估计精度，考虑到数据准备过程允许的数据泄漏，我们知道这是不正确的。
 
-```
+```py
 Accuracy: 85.300 (3.607)
 ```
 
@@ -364,7 +364,7 @@ Accuracy: 85.300 (3.607)
 
 这个类列出了定义管道的步骤。列表中的每个步骤都是一个包含两个元素的元组。第一个元素是步骤的名称(字符串)，第二个元素是步骤的配置对象，例如转换或模型。该模型仅作为最后一步被支持，尽管我们可以在序列中拥有任意多的变换。
 
-```
+```py
 ...
 # define the pipeline
 steps = list()
@@ -375,7 +375,7 @@ pipeline = Pipeline(steps=steps)
 
 然后，我们可以将配置的对象传递给 *cross_val_score()* 函数进行评估。
 
-```
+```py
 ...
 # define the evaluation procedure
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -385,7 +385,7 @@ scores = cross_val_score(pipeline, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
 
 将这些结合在一起，下面列出了使用交叉验证时正确执行数据准备而不泄漏数据的完整示例。
 
-```
+```py
 # correct data preparation for model evaluation with k-fold cross-validation
 from numpy import mean
 from numpy import std
@@ -418,7 +418,7 @@ print('Accuracy: %.3f (%.3f)' % (mean(scores)*100, std(scores)*100))
 
 与上一节中的训练测试示例一样，当我们的直觉认为数据泄漏通常会导致对模型性能的乐观估计时，消除数据泄漏会使性能略有提高。尽管如此，这些示例清楚地表明，数据泄漏确实会影响模型性能的估计，以及如何在数据拆分后通过正确执行数据准备来纠正数据泄漏。
 
-```
+```py
 Accuracy: 85.433 (3.471)
 ```
 

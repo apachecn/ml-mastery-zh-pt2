@@ -94,7 +94,7 @@
 
 重要的是， *random_state* 是在创建数据集和拆分数据时设置的，这样每次运行代码时都会创建相同的数据集并执行相同的数据拆分。
 
-```
+```py
 # example of creating a test dataset and splitting it into train and test sets
 from sklearn.datasets import make_blobs
 from sklearn.model_selection import train_test_split
@@ -113,7 +113,7 @@ for i in range(X_test.shape[1]):
 
 我们可以看到，每个变量都有不同的尺度，并且训练数据集和测试数据集之间的尺度不同。这是一个现实的场景，我们可能会遇到真实的数据集。
 
-```
+```py
 >0, train: min=-11.856, max=0.526, test: min=-11.270, max=0.085
 >1, train: min=-6.388, max=6.507, test: min=-5.581, max=5.926
 ```
@@ -126,7 +126,7 @@ for i in range(X_test.shape[1]):
 
 下面列出了缩放数据和总结效果的完整示例。
 
-```
+```py
 # example of scaling the dataset
 from sklearn.datasets import make_blobs
 from sklearn.model_selection import train_test_split
@@ -153,7 +153,7 @@ for i in range(X_test.shape[1]):
 
 我们可以看到，两个数据集中的所有变量现在的值都在 0 到 1 的期望范围内。
 
-```
+```py
 >0, train: min=0.000, max=1.000, test: min=0.047, max=0.964
 >1, train: min=0.000, max=1.000, test: min=0.063, max=0.955
 ```
@@ -170,7 +170,7 @@ for i in range(X_test.shape[1]):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of fitting a model on the scaled dataset
 from sklearn.datasets import make_blobs
 from sklearn.model_selection import train_test_split
@@ -213,7 +213,7 @@ dump(scaler, open('scaler.pkl', 'wb'))
 
 下面列出了完整的示例。
 
-```
+```py
 # load model and scaler and make predictions on new data
 from sklearn.datasets import make_blobs
 from sklearn.model_selection import train_test_split
@@ -249,7 +249,7 @@ print('Test Accuracy:', acc)
 
 在这种情况下，正如预期的那样，数据集正确地规范化了模型，在测试集上实现了 100%的准确性，因为测试问题微不足道。
 
-```
+```py
 Raw test set range
 >0, min=-11.270, max=0.085
 >1, min=-5.581, max=5.926

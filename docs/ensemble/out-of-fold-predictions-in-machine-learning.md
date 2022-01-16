@@ -117,7 +117,7 @@ k 重交叉验证过程包括将训练数据集分成 *k* 组，然后在测试�
 
 下面的示例准备了一个数据示例，并总结了数据集的输入和输出元素的形状。
 
-```
+```py
 # example of creating a test dataset
 from sklearn.datasets import make_blobs
 # create the inputs and outputs
@@ -128,7 +128,7 @@ print(X.shape, y.shape)
 
 运行该示例会打印输入数据的形状，显示 1000 行数据、100 列或输入要素以及相应的分类标签。
 
-```
+```py
 (1000, 100) (1000,)
 ```
 
@@ -140,7 +140,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate model by averaging performance across each fold
 from numpy import mean
 from numpy import std
@@ -178,7 +178,7 @@ print('Mean: %.3f, Standard Deviation: %.3f' % (mean_s, std_s))
 
 运行结束时，报告准确度分数的平均值和标准偏差。
 
-```
+```py
 >  0.95
 >  0.92
 >  0.95
@@ -198,7 +198,7 @@ Mean: 0.946, Standard Deviation: 0.023
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate model by calculating the score across all predictions
 from sklearn.datasets import make_blobs
 from sklearn.model_selection import KFold
@@ -231,7 +231,7 @@ print('Accuracy: %.3f' % (acc))
 
 运行该示例会收集每个保持数据集的所有预期值和预测值，并在运行结束时报告一个准确度分数。
 
-```
+```py
 Accuracy: 0.930
 ```
 
@@ -286,7 +286,7 @@ Accuracy: 0.930
 
 首先，我们将数据分成训练和验证数据集。训练数据集将用于拟合子模型和元模型，验证数据集将从训练中保留下来，并在最后用于评估元模型和子模型。
 
-```
+```py
 ...
 # split
 X, X_val, y, y_val = train_test_split(X, y, test_size=0.33)
@@ -298,7 +298,7 @@ X, X_val, y, y_val = train_test_split(X, y, test_size=0.33)
 
 我们还将跟踪折叠数据的输入数据(100 个特征)和输出数据(预期标签)。
 
-```
+```py
 ...
 # collect out of sample predictions
 data_x, data_y, knn_yhat, cart_yhat = list(), list(), list(), list()
@@ -325,7 +325,7 @@ for train_ix, test_ix in kfold.split(X):
 
 下面的 *create_meta_dataset()* 函数实现了这一点，将折叠外的数据和跨折叠的预测作为输入，并为元模型构建输入数据集。
 
-```
+```py
 # create a meta dataset
 def create_meta_dataset(data_x, yhat1, yhat2):
 	# convert to columns
@@ -338,7 +338,7 @@ def create_meta_dataset(data_x, yhat1, yhat2):
 
 然后我们可以调用这个函数为元模型准备数据。
 
-```
+```py
 ...
 # construct meta dataset
 meta_X = create_meta_dataset(data_x, knn_yhat, cart_yhat)
@@ -346,7 +346,7 @@ meta_X = create_meta_dataset(data_x, knn_yhat, cart_yhat)
 
 然后，我们可以在整个训练数据集中拟合每个子模型，以便在验证数据集中进行预测。
 
-```
+```py
 ...
 # fit final submodels
 model1 = DecisionTreeClassifier()
@@ -357,7 +357,7 @@ model2.fit(X, y)
 
 然后，我们可以在准备好的数据集上拟合元模型，在这种情况下，是[物流配送](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)模型。
 
-```
+```py
 ...
 # construct meta classifier
 meta_model = LogisticRegression(solver='liblinear')
@@ -368,7 +368,7 @@ meta_model.fit(meta_X, data_y)
 
 这要求数据首先通过子模型，即用于构建元模型数据集的输出，然后元模型用于进行预测。我们将把所有这些打包成一个名为 *stack_prediction()* 的函数，该函数获取将要进行预测的模型和数据。
 
-```
+```py
 # make predictions with stacked model
 def stack_prediction(model1, model2, meta_model, X):
 	# make predictions
@@ -384,7 +384,7 @@ def stack_prediction(model1, model2, meta_model, X):
 
 我们预计，元模型在保持数据集上的性能将与任何单个子模型一样好或更好。如果不是这种情况，可以使用替代子模型或元模型来解决问题。
 
-```
+```py
 ...
 # evaluate sub models on hold out dataset
 acc1 = accuracy_score(y_val, model1.predict(X_val))
@@ -398,7 +398,7 @@ print('Meta Model Accuracy: %.3f' % (acc))
 
 将这些结合在一起，完整的示例如下所示。
 
-```
+```py
 # example of a stacked model for binary classification
 from numpy import hstack
 from numpy import array
@@ -478,7 +478,7 @@ print('Meta Model Accuracy: %.3f' % (acc))
 
 在这种情况下，我们可以看到元模型在两个子模型上都表现出色。
 
-```
+```py
 Model1 Accuracy: 0.670, Model2 Accuracy: 0.930
 Meta-Model Accuracy: 0.955
 ```

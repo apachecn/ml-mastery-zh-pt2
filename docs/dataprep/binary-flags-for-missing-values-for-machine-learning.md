@@ -49,7 +49,7 @@ Keith o connell 摄，保留部分权利。
 
 下面提供了数据集中带有标记缺失值的行的示例。
 
-```
+```py
 2,1,530101,38.50,66,28,3,3,?,2,5,4,4,?,?,?,3,5,45.00,8.40,?,?,2,2,11300,00000,00000,2
 1,1,534817,39.2,88,20,?,?,4,1,3,4,2,?,?,?,4,2,50,85,2,2,3,2,02208,00000,00000,2
 2,1,530334,38.30,40,24,1,1,3,1,3,3,1,?,?,?,1,1,33.00,6.70,?,?,1,2,00000,00000,00000,1
@@ -70,7 +70,7 @@ Keith o connell 摄，保留部分权利。
 
 下面的示例下载数据集，标记“？”值为 NaN(缺少)并总结数据集的形状。
 
-```
+```py
 # summarize the horse colic dataset
 from pandas import read_csv
 # load dataset
@@ -85,7 +85,7 @@ print(X.shape, y.shape)
 
 运行该示例会下载数据集并报告行数和列数，符合我们的预期。
 
-```
+```py
 (300, 27) (300,)
 ```
 
@@ -101,7 +101,7 @@ print(X.shape, y.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate mean imputation and random forest for the horse colic dataset
 from numpy import mean
 from numpy import std
@@ -135,7 +135,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，管道实现了大约 86.2%的估计分类精度。
 
-```
+```py
 Mean Accuracy: 0.862 (0.056)
 ```
 
@@ -162,7 +162,7 @@ Mean Accuracy: 0.862 (0.056)
 
 将这些联系在一起，下面列出了添加二进制标志来指示每行中一个或多个缺失值的完整示例。
 
-```
+```py
 # add a binary flag that indicates if a row contains a missing value
 from numpy import isnan
 from numpy import hstack
@@ -191,7 +191,7 @@ print(X.shape)
 
 然后创建新的二进制变量，指示一行是否包含缺失值，并将其添加到输入变量的末尾。然后报告输入数据的形状，确认增加了特征，从 27 列到 28 列。
 
-```
+```py
 (300, 27)
 (300, 28)
 ```
@@ -200,7 +200,7 @@ print(X.shape)
 
 下面列出了完整的示例。
 
-```
+```py
 # evaluate model performance with a binary flag for missing values and imputed missing
 from numpy import isnan
 from numpy import hstack
@@ -245,7 +245,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 在这种情况下，我们看到性能从 86.2%适度提升到 86.3%。差异很小，可能没有统计学意义。
 
-```
+```py
 Mean Accuracy: 0.863 (0.055)
 ```
 
@@ -261,7 +261,7 @@ Mean Accuracy: 0.863 (0.055)
 
 这可以通过在定义[简单估算器实例](https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)时将“ *add_indicator* ”参数设置为 *True* 来实现。
 
-```
+```py
 ...
 # impute and mark missing values
 X = SimpleImputer(add_indicator=True).fit_transform(X)
@@ -271,7 +271,7 @@ X = SimpleImputer(add_indicator=True).fit_transform(X)
 
 下面的示例像以前一样加载 horse colic 数据集，然后估算整个数据集的缺失值，并为每个缺失值的输入变量添加指示变量
 
-```
+```py
 # impute and add indicators for columns with missing values
 from pandas import read_csv
 from sklearn.impute import SimpleImputer
@@ -292,7 +292,7 @@ print(X.shape)
 
 我们可以看到输入变量的数量从 27 个增加到了 48 个，这表明增加了 21 个二进制输入变量，反过来，27 个输入变量中的 21 个必须包含至少一个缺失值。
 
-```
+```py
 (300, 27)
 (300, 48)
 ```
@@ -301,7 +301,7 @@ print(X.shape)
 
 下面完整的例子演示了这一点。
 
-```
+```py
 # evaluate imputation with added indicators features on the horse colic dataset
 from numpy import mean
 from numpy import std
@@ -337,7 +337,7 @@ print('Mean Accuracy: %.3f (%.3f)' % (mean(scores), std(scores)))
 
 这可能提供强有力的证据，表明在这个数据集和所选模型上，为输入的每一列添加一个标志是更好的策略。
 
-```
+```py
 Mean Accuracy: 0.867 (0.055)
 ```
 

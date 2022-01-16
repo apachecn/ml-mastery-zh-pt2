@@ -52,7 +52,7 @@ Keras 通过 [mnist.load_dataset()函数](https://keras.io/datasets/#mnist-datab
 
 **注意**:第一次加载数据集时，Keras 会自动下载图片的压缩版本，保存在*的主目录下~/。keras/数据集/* 。下载速度很快，因为压缩形式的数据集只有大约 11 兆字节。
 
-```
+```py
 # example of loading the mnist dataset
 from keras.datasets.mnist import load_data
 # load the images into memory
@@ -66,7 +66,7 @@ print('Test', testX.shape, testy.shape)
 
 我们可以看到训练集中有 60K 个例子，测试集中有 10K，每个图像都是 28 乘 28 像素的正方形。
 
-```
+```py
 Train (60000, 28, 28) (60000,)
 Test (10000, 28, 28) (10000,)
 ```
@@ -75,7 +75,7 @@ Test (10000, 28, 28) (10000,)
 
 我们可以使用 matplotlib 库使用 [imshow()函数](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.imshow.html)绘制训练数据集中的一些图像，并通过“ *cmap* ”参数将颜色映射指定为“*灰色*，以正确显示像素值。
 
-```
+```py
 # plot raw pixel data
 pyplot.imshow(trainX[i], cmap='gray')
 ```
@@ -84,14 +84,14 @@ pyplot.imshow(trainX[i], cmap='gray')
 
 它们更容易观看，因为大部分图像现在是白色的，而感兴趣的区域是黑色的。这可以通过使用反向灰度色图来实现，如下所示:
 
-```
+```py
 # plot raw pixel data
 pyplot.imshow(trainX[i], cmap='gray_r')
 ```
 
 以下示例将训练数据集中的前 25 幅图像绘制成一个 5 乘 5 的正方形。
 
-```
+```py
 # example of loading the mnist dataset
 from keras.datasets.mnist import load_data
 from matplotlib import pyplot
@@ -137,7 +137,7 @@ MNIST 数据集中前 25 个手写数字的绘图。
 
 下面的函数*定义 _ 鉴别器()*定义鉴别器模型，并参数化输入图像的大小。
 
-```
+```py
 # define the standalone discriminator model
 def define_discriminator(in_shape=(28,28,1)):
 	model = Sequential()
@@ -159,7 +159,7 @@ def define_discriminator(in_shape=(28,28,1)):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of defining the discriminator model
 from keras.models import Sequential
 from keras.optimizers import Adam
@@ -200,7 +200,7 @@ plot_model(model, to_file='discriminator_plot.png', show_shapes=True, show_layer
 
 这种模式是通过设计实现的，因为我们不使用汇集层，而是使用大跨度来实现类似的下采样效果。我们将在下一节的生成器模型中看到类似的模式，但方向相反。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -242,7 +242,7 @@ MNIST GAN 中鉴别器模型的绘制
 
 我们将使用 *mnist.load_data()* 函数加载 mnist 数据集，只使用训练数据集的输入部分作为真实图像。
 
-```
+```py
 # load mnist dataset
 (trainX, _), (_, _) = load_data()
 ```
@@ -251,14 +251,14 @@ MNIST GAN 中鉴别器模型的绘制
 
 我们必须更新图像，为灰度通道增加一个维度。我们可以使用 [expand_dims() NumPy 函数](https://docs.scipy.org/doc/numpy/reference/generated/numpy.expand_dims.html)来实现这一点，并指定通道的最终尺寸-最后图像格式。
 
-```
+```py
 # expand to 3d, e.g. add channels dimension
 X = expand_dims(trainX, axis=-1)
 ```
 
 最后，我们必须[将像素值](https://machinelearningmastery.com/how-to-manually-scale-image-pixel-data-for-deep-learning/)从[0，255]中的无符号整数范围缩放到[0，1]的归一化范围。
 
-```
+```py
 # convert from unsigned ints to floats
 X = X.astype('float32')
 # scale from [0,255] to [0,1]
@@ -267,7 +267,7 @@ X = X / 255.0
 
 下面的 *load_real_samples()* 函数实现了这一点。
 
-```
+```py
 # load and prepare mnist training images
 def load_real_samples():
 	# load mnist dataset
@@ -287,7 +287,7 @@ def load_real_samples():
 
 下面的 *generate_real_samples()* 函数将以训练数据集为参数，选择图像的随机子样本；它还将返回样本的类标签，特别是类标签 1，以指示真实图像。
 
-```
+```py
 # select real samples
 def generate_real_samples(dataset, n_samples):
 	# choose random instances
@@ -305,7 +305,7 @@ def generate_real_samples(dataset, n_samples):
 
 下面的 *generate_fake_samples()* 函数实现了这一行为，并为 fake 生成随机像素值及其关联的类标签为 0 的图像。
 
-```
+```py
 # generate n fake samples with class labels
 def generate_fake_samples(n_samples):
 	# generate uniform random numbers in [0,1]
@@ -327,7 +327,7 @@ def generate_fake_samples(n_samples):
 
 我们为真实和虚假的例子分别更新鉴别器，以便我们可以在更新之前计算每个样本上模型的准确性。这让我们深入了解了鉴别器模型在一段时间内的表现。
 
-```
+```py
 # train the discriminator model
 def train_discriminator(model, dataset, n_iter=100, n_batch=256):
 	half_batch = int(n_batch / 2)
@@ -347,7 +347,7 @@ def train_discriminator(model, dataset, n_iter=100, n_batch=256):
 
 将所有这些结合在一起，下面列出了在真实和随机生成(假)图像上训练鉴别器模型实例的完整示例。
 
-```
+```py
 # example of training the discriminator model on real and random mnist images
 from numpy import expand_dims
 from numpy import ones
@@ -441,7 +441,7 @@ train_discriminator(model, dataset)
 
 在这种情况下，鉴别器模型学会非常快速地分辨真实和随机生成的 MNIST 图像，大约分 50 批。
 
-```
+```py
 ...
 >96 real=100% fake=100%
 >97 real=100% fake=100%
@@ -475,14 +475,14 @@ train_discriminator(model, dataset)
 
 因此，第一个隐藏层“密集”需要足够的节点来存储我们输出图像的多个低分辨率版本，例如 128。
 
-```
+```py
 # foundation for 7x7 image
 model.add(Dense(128 * 7 * 7, input_dim=100))
 ```
 
 然后，来自这些节点的激活可以被重新整形为类似图像的东西，以传递到卷积层，例如 128 个不同的 7×7 特征图。
 
-```
+```py
 model.add(Reshape((7, 7, 128)))
 ```
 
@@ -494,7 +494,7 @@ model.add(Reshape((7, 7, 128)))
 
 *conv2d 转置*图层可以配置为(2×2)的步幅，这将使输入要素地图的面积增加四倍(宽度和高度尺寸增加一倍)。使用作为步长因子的内核大小(例如双倍)来避免上采样时可能观察到的棋盘图案也是一种良好的做法。
 
-```
+```py
 # upsample to 14x14
 model.add(Conv2DTranspose(128, (4,4), strides=(2,2), padding='same'))
 ```
@@ -509,7 +509,7 @@ model.add(Conv2DTranspose(128, (4,4), strides=(2,2), padding='same'))
 
 **注**:发电机模型未编译，未指定损失函数或优化算法。这是因为发电机不是直接训练的。我们将在下一节中了解更多信息。
 
-```
+```py
 # define the standalone generator model
 def define_generator(latent_dim):
 	model = Sequential()
@@ -532,7 +532,7 @@ def define_generator(latent_dim):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of defining the generator model
 from keras.models import Sequential
 from keras.layers import Dense
@@ -573,7 +573,7 @@ plot_model(model, to_file='generator_plot.png', show_shapes=True, show_layer_nam
 
 我们可以看到，按照设计，第一个隐藏层有 6，272 个参数或 128 * 7 * 7，它们的激活被重新整形为 128 个 7×7 特征图。然后，通过两个*conv2d 转置*层将特征图升级到 28×28 的期望输出形状，直到输出层，在那里输出单个激活图。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -615,7 +615,7 @@ MNIST 氮化镓发电机模型图
 
 然后，随机数的数组可以被重新整形为样本，即 n 行，每行 100 个元素。下面的*生成 _ 潜在 _ 点()*函数实现了这一点，并在潜在空间中生成所需数量的点，这些点可用作生成器模型的输入。
 
-```
+```py
 # generate points in latent space as input for the generator
 def generate_latent_points(latent_dim, n_samples):
 	# generate points in the latent space
@@ -631,7 +631,7 @@ def generate_latent_points(latent_dim, n_samples):
 
 更新后的 *generate_fake_samples()* 函数如下所示，返回生成的样本和关联的类标签。
 
-```
+```py
 # use the generator to generate n fake examples, with class labels
 def generate_fake_samples(g_model, latent_dim, n_samples):
 	# generate points in latent space
@@ -647,7 +647,7 @@ def generate_fake_samples(g_model, latent_dim, n_samples):
 
 下面列出了使用未经训练的生成器模型生成新 MNIST 图像的完整示例。
 
-```
+```py
 # example of defining and using the generator model
 from numpy import zeros
 from numpy.random import randn
@@ -756,7 +756,7 @@ pyplot.show()
 
 然后，GAN 模型使用相同的二元交叉熵损失函数作为鉴别器，并使用学习率为 0.0002、动量为 0.5 的随机梯度下降的高效 Adam 版本，这是在训练深度卷积 GAN 时推荐的。
 
-```
+```py
 # define the combined generator and discriminator model, for updating the generator
 def define_gan(g_model, d_model):
 	# make weights in the discriminator not trainable
@@ -785,7 +785,7 @@ def define_gan(g_model, d_model):
 
 下面列出了创建鉴别器、生成器和复合模型的完整示例。
 
-```
+```py
 # demonstrate creating the three models in the gan
 from keras.optimizers import Adam
 from keras.models import Sequential
@@ -864,7 +864,7 @@ plot_model(gan_model, to_file='gan_plot.png', show_shapes=True, show_layer_names
 
 我们可以看到，该模型期望 MNIST 图像作为输入，并预测单个值作为输出。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -890,7 +890,7 @@ MNIST GAN 中复合发生器和鉴别器模型的绘图
 
 下面的 *train_gan()* 函数演示了这一点，尽管它非常简单，因为每个时期只有生成器会更新，给鉴别器留下默认的模型权重。
 
-```
+```py
 # train the composite model
 def train_gan(gan_model, latent_dim, n_epochs=100, n_batch=256):
 	# manually enumerate epochs
@@ -919,7 +919,7 @@ def train_gan(gan_model, latent_dim, n_epochs=100, n_batch=256):
 
 监控鉴别器损耗，并期望它在该数据集上每批大约 0.5 到 0.8。发电机损耗不太重要，可能会在 0.5 和 2 之间徘徊或更高。一个聪明的程序员甚至可能试图检测鉴别器的崩溃丢失，暂停，然后重新开始训练过程。
 
-```
+```py
 # train the generator and discriminator
 def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batch=256):
 	bat_per_epo = int(dataset.shape[0] / n_batch)
@@ -970,7 +970,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
 
 首先，我们可以定义一个名为*summary _ performance()*的函数，该函数将总结鉴别器模型的性能。它通过检索真实 MNIST 图像的样本，以及用生成器模型生成相同数量的假 MNIST 图像，然后在每个样本上评估鉴别器模型的分类精度并报告这些分数来实现这一点。
 
-```
+```py
 # evaluate the discriminator, plot generated images, save generator model
 def summarize_performance(epoch, g_model, d_model, dataset, latent_dim, n_samples=100):
 	# prepare real samples
@@ -987,7 +987,7 @@ def summarize_performance(epoch, g_model, d_model, dataset, latent_dim, n_sample
 
 该功能可以从*列车()*功能中基于当前历元号调用，如每 10 个历元调用一次。
 
-```
+```py
 # train the generator and discriminator
 def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batch=256):
 	bat_per_epo = int(dataset.shape[0] / n_batch)
@@ -1004,7 +1004,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
 
 通过调用发电机模型上的 *save()* 函数，并根据训练时期号提供唯一的文件名，可以保存发电机模型。
 
-```
+```py
 ...
 # save the generator model tile file
 filename = 'generator_model_%03d.h5' % (epoch + 1)
@@ -1015,7 +1015,7 @@ g_model.save(filename)
 
 当我们在 100 幅生成的 MNIST 图像上评估鉴别器时，我们可以将所有 100 幅图像绘制成 10×10 的网格。下面的 *save_plot()* 函数实现了这一点，再次使用基于纪元号的唯一文件名保存结果图。
 
-```
+```py
 # create and save a plot of generated images (reversed grayscale)
 def save_plot(examples, epoch, n=10):
 	# plot images
@@ -1034,7 +1034,7 @@ def save_plot(examples, epoch, n=10):
 
 添加了这些内容的更新后的*summary _ performance()*功能如下所示。
 
-```
+```py
 # evaluate the discriminator, plot generated images, save generator model
 def summarize_performance(epoch, g_model, d_model, dataset, latent_dim, n_samples=100):
 	# prepare real samples
@@ -1066,7 +1066,7 @@ def summarize_performance(epoch, g_model, d_model, dataset, latent_dim, n_sample
 
 *   [如何设置亚马逊 AWS EC2 GPUs 训练 Keras 深度学习模型(分步)](https://machinelearningmastery.com/develop-evaluate-large-deep-learning-models-keras-amazon-web-services/)
 
-```
+```py
 # example of training a gan on mnist
 from numpy import expand_dims
 from numpy import zeros
@@ -1257,7 +1257,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 在这种情况下，损失在整个训练过程中保持稳定。
 
-```
+```py
 >1, 1/234, d=0.711, g=0.678
 >1, 2/234, d=0.703, g=0.698
 >1, 3/234, d=0.694, g=0.717
@@ -1278,7 +1278,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 这是一个粗略的、可能不可靠的氮化镓性能指标，还有损耗。
 
-```
+```py
 >Accuracy real: 51%, fake: 78%
 >Accuracy real: 30%, fake: 95%
 >Accuracy real: 75%, fake: 59%
@@ -1319,7 +1319,7 @@ train(g_model, d_model, gan_model, dataset, latent_dim)
 
 下面列出了加载保存的模型并生成图像的完整示例。在这种情况下，我们将使用在 100 个训练时期之后保存的模型，但是在 40 或 50 个时期之后保存的模型也同样有效。
 
-```
+```py
 # example of loading the generator model and generating images
 from keras.models import load_model
 from numpy.random import randn
@@ -1369,7 +1369,7 @@ save_plot(X, 5)
 
 下面的示例使用所有 0.0 值的向量生成一个手写数字。
 
-```
+```py
 # example of generating an image for a specific point in the latent space
 from keras.models import load_model
 from numpy import asarray

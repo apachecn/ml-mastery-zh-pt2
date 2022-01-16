@@ -120,7 +120,7 @@ GANs 在生成清晰的合成图像方面很有效，尽管通常受限于可以
 
 我们可以将其实现为一个名为*加权求和*的新图层，该图层扩展了*添加*合并图层，并使用超参数“ *alpha* ”来控制每个输入的贡献。下面定义了这个新类。该图层仅假设两个输入:第一个用于旧图层或现有图层的输出，第二个用于新添加的图层。新的超参数被定义为后端变量，这意味着我们可以通过改变变量的值随时改变它。
 
-```
+```py
 # weighted sum output
 class WeightedSum(Add):
 	# init with default value
@@ -141,7 +141,7 @@ class WeightedSum(Add):
 
 首先，我们可以定义一个鉴别器模型，它以一幅 4×4 的彩色图像作为输入，并输出图像是真是假的预测。该模型由 1×1 输入处理层(fromRGB)和输出模块组成。
 
-```
+```py
 ...
 # base model input
 in_image = Input(shape=(4,4,3))
@@ -171,7 +171,7 @@ model.compile(loss='mse', optimizer=Adam(lr=0.001, beta_1=0, beta_2=0.99, epsilo
 
 给定第一个定义的模型和我们关于这个模型的知识(例如，对于 Conv2D 和 LeakyReLU，输入处理层的层数是 2)，我们可以使用来自旧模型的层索引来构建这个新的中间或淡入模型。
 
-```
+```py
 ...
 old_model = model
 # get shape of existing model
@@ -218,7 +218,7 @@ model.compile(loss='mse', optimizer=Adam(lr=0.001, beta_1=0, beta_2=0.99, epsilo
 
 为了确保*加权求和*层正确工作，我们已经将所有卷积层固定为总是有 64 个滤波器，并依次输出 64 个特征图。如果旧模型的输入处理层和新块输出之间在特征图(通道)数量方面不匹配，则加权和将失败。
 
-```
+```py
 # add a discriminator block
 def add_discriminator_block(old_model, n_input_layers=3):
 	# get shape of existing model
@@ -268,7 +268,7 @@ def add_discriminator_block(old_model, n_input_layers=3):
 
 下面的示例定义了一个名为 *define_discriminator()* 的新函数，该函数定义了我们的基础模型，该模型需要一个 4×4 的彩色图像作为输入，然后在每次需要四倍面积的图像时，重复添加块来创建新版本的鉴别器模型。
 
-```
+```py
 # define the discriminator models for each image resolution
 def define_discriminator(n_blocks, input_shape=(4,4,3)):
 	model_list = list()
@@ -311,7 +311,7 @@ def define_discriminator(n_blocks, input_shape=(4,4,3)):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of defining discriminator models for the progressive growing gan
 from keras.optimizers import Adam
 from keras.models import Model
@@ -428,7 +428,7 @@ plot_model(m, to_file='discriminator_plot.png', show_shapes=True, show_layer_nam
 
 运行示例首先总结了第三个模型的淡入版本，显示了 16×16 彩色图像输入和单值输出。
 
-```
+```py
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to
 ==================================================================================================
@@ -534,7 +534,7 @@ toRGB 层是具有 3 个 1×1 滤波器的卷积层，足以输出彩色图像�
 
 我们可以定义基线模型，该模型将潜在空间中的一点作为输入，并输出 4×4 彩色图像，如下所示:
 
-```
+```py
 ...
 # base model latent input
 in_latent = Input(shape=(100,))
@@ -561,7 +561,7 @@ model = Model(in_latent, out_image)
 
 添加了新块和输出层的新模型定义如下:
 
-```
+```py
 ...
 old_model = model
 # get the end of the last block
@@ -586,7 +586,7 @@ model = Model(old_model.input, out_image)
 
 这包括在新块开始时将旧的输出层连接到新的上采样层，并使用上一节中定义的加权采样层的实例来组合新旧输出层的输出。
 
-```
+```py
 ...
 # get the output layer from old model
 out_old = old_model.layers[-1]
@@ -600,7 +600,7 @@ model2 = Model(old_model.input, merged)
 
 我们可以将这两个操作的定义合并到一个名为 *add_generator_block()* 的函数中，如下定义，该函数将扩展给定的模型，并返回添加了 block 的新的 generator 模型( *model1* )和带有旧输出层的新块淡入的模型版本( *model2* )。
 
-```
+```py
 # add a generator block
 def add_generator_block(old_model):
 	# get the end of the last block
@@ -634,7 +634,7 @@ def add_generator_block(old_model):
 
 基线模型定义为输出形状为 4×4 的彩色图像，由默认参数 *in_dim* 控制。
 
-```
+```py
 # define generator models
 def define_generator(latent_dim, n_blocks, in_dim=4):
 	model_list = list()
@@ -672,7 +672,7 @@ def define_generator(latent_dim, n_blocks, in_dim=4):
 
 下面列出了完整的示例。
 
-```
+```py
 # example of defining generator models for the progressive growing gan
 from keras.models import Model
 from keras.layers import Input
@@ -773,7 +773,7 @@ plot_model(m, to_file='generator_plot.png', show_shapes=True, show_layer_names=T
 
 这与我们的预期相匹配，因为基线模型输出 4×4 的图像，添加一个块会将其增加到 8×8，再添加一个块会将其增加到 16×16。
 
-```
+```py
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to
 ==================================================================================================
@@ -858,14 +858,14 @@ ________________________________________________________________________________
 
 例如，我们可以检索给定增长水平的生成器和鉴别器模型。
 
-```
+```py
 ...
 g_models, d_models = generators[0], discriminators[0]
 ```
 
 然后，我们可以使用它们来创建一个用于训练直通发生器的复合模型，其中发生器的输出被直接馈送到鉴别器以进行分类。
 
-```
+```py
 # straight-through model
 d_models[0].trainable = False
 model1 = Sequential()
@@ -876,7 +876,7 @@ model1.compile(loss='mse', optimizer=Adam(lr=0.001, beta_1=0, beta_2=0.99, epsil
 
 对淡入发生器的复合模型进行同样的操作。
 
-```
+```py
 # fade-in model
 d_models[1].trainable = False
 model2 = Sequential()
@@ -887,7 +887,7 @@ model2.compile(loss='mse', optimizer=Adam(lr=0.001, beta_1=0, beta_2=0.99, epsil
 
 下面的函数名为 *define_composite()* ，它自动执行此操作；给定定义的鉴别器和生成器模型的列表，它将创建一个适当的复合模型来训练每个生成器模型。
 
-```
+```py
 # define composite models for training generators via discriminators
 def define_composite(discriminators, generators):
 	model_list = list()
@@ -913,7 +913,7 @@ def define_composite(discriminators, generators):
 
 将此与上面的鉴别器和生成器模型的定义结合起来，下面列出了在每个预定义的增长级别定义所有模型的完整示例。
 
-```
+```py
 # example of defining composite models for the progressive growing gan
 from keras.optimizers import Adam
 from keras.models import Sequential
@@ -1121,7 +1121,7 @@ composite = define_composite(discriminators, generators)
 
 下面的 *update_fadein()* 函数实现了这一点，并将循环遍历模型列表，并根据给定数量的训练步骤中的当前步骤设置每个模型的 alpha 值。您可能能够使用回调更优雅地实现这一点。
 
-```
+```py
 # update the alpha value on each instance of WeightedSum
 def update_fadein(models, step, n_steps):
 	# calculate current alpha (linear from 0 to 1)
@@ -1139,7 +1139,7 @@ def update_fadein(models, step, n_steps):
 
 该函数调用助手函数，用于通过*生成真实样本()*检索一批真实图像，用生成器*生成一批假样本()*生成一批假样本，并生成潜在空间*中点的样本生成 _ 潜在点()*。你可以很简单地自己定义这些函数。
 
-```
+```py
 # train a generator and discriminator
 def train_epochs(g_model, d_model, gan_model, dataset, n_epochs, n_batch, fadein=False):
 	# calculate the number of batches per training epoch
@@ -1171,7 +1171,7 @@ def train_epochs(g_model, d_model, gan_model, dataset, n_epochs, n_batch, fadein
 
 在这种情况下，我们使用 [scikit-image library](https://scikit-image.org/) 中的[skimpage . transform . resize](https://scikit-image.org/docs/dev/api/skimage.transform.html#skimage.transform.resize)函数将 NumPy 像素阵列调整到所需的大小，并使用最近邻插值。
 
-```
+```py
 # scale images to preferred size
 def scale_dataset(images, new_shape):
 	images_list = list()
@@ -1187,7 +1187,7 @@ def scale_dataset(images, new_shape):
 
 这将需要将加载的图像缩放到由生成器模型输出层的形状定义的所需大小。
 
-```
+```py
 # fit the baseline model
 g_normal, d_normal, gan_normal = g_models[0][0], d_models[0][0], gan_models[0][0]
 # scale dataset to appropriate size
@@ -1204,7 +1204,7 @@ train_epochs(g_normal, d_normal, gan_normal, scaled_data, e_norm, n_batch)
 
 我们可以对循环中的每个增长水平重复这一过程。
 
-```
+```py
 # process each level of growth
 for i in range(1, len(g_models)):
 	# retrieve models for this level of growth
@@ -1223,7 +1223,7 @@ for i in range(1, len(g_models)):
 
 我们可以把这个联系在一起，定义一个叫做 *train()* 的函数来训练渐进式生长 GAN 函数。
 
-```
+```py
 # train the generator and discriminator
 def train(g_models, d_models, gan_models, dataset, latent_dim, e_norm, e_fadein, n_batch):
 	# fit the baseline model
@@ -1260,7 +1260,7 @@ def train(g_models, d_models, gan_models, dataset, latent_dim, e_norm, e_fadein,
 
 然后我们可以像上一节一样定义我们的模型，然后调用训练函数。
 
-```
+```py
 # number of growth phase, e.g. 3 = 16x16 images
 n_blocks = 3
 # size of the latent space

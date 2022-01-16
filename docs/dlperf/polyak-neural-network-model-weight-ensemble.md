@@ -90,7 +90,7 @@ scikit-learn 类提供了 [make_blobs()函数](http://scikit-learn.org/stable/mo
 
 该问题有两个输入变量(表示点的 *x* 和 *y* 坐标)和每组内点的标准偏差 2.0。我们将使用相同的随机状态(伪随机数发生器的种子)来确保我们总是获得相同的数据点。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random_state=2)
 ```
@@ -101,7 +101,7 @@ X, y = make_blobs(n_samples=1000, centers=3, n_features=2, cluster_std=2, random
 
 下面列出了完整的示例。
 
-```
+```py
 # scatter plot of blobs dataset
 from sklearn.datasets import make_blobs
 from matplotlib import pyplot
@@ -136,7 +136,7 @@ pyplot.show()
 
 该问题是一个多类分类问题，我们将在输出层使用 softmax 激活函数对其进行建模。这意味着模型将以样本属于三类中每一类的概率来预测具有三个元素的向量。因此，在将行分割成训练和测试数据集之前，我们必须对类值进行热编码。我们可以使用 Keras *到 _ classic()*函数来实现这一点。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_blobs(n_samples=1100, centers=3, n_features=2, cluster_std=2, random_state=2)
 # one hot encode output variable
@@ -153,7 +153,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 由于问题是多类的，我们将使用分类交叉熵损失函数来优化模型和具有小学习率和动量的[随机梯度下降](https://keras.io/optimizers/#sgd)。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(25, input_dim=2, activation='relu'))
@@ -164,14 +164,14 @@ model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy
 
 该模型适用于 500 个训练时期，我们将使用测试集作为验证集，在测试集上评估每个时期的模型。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=500, verbose=0)
 ```
 
 在运行结束时，我们将评估模型在列车和测试集上的性能。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -180,7 +180,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 最后，我们将在训练和验证数据集上绘制每个训练时期的模型精度的学习曲线。
 
-```
+```py
 # learning curves of model accuracy
 pyplot.plot(history.history['accuracy'], label='train')
 pyplot.plot(history.history['val_accuracy'], label='test')
@@ -190,7 +190,7 @@ pyplot.show()
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # develop an mlp for blobs dataset
 from sklearn.datasets import make_blobs
 from keras.utils import to_categorical
@@ -231,7 +231,7 @@ pyplot.show()
 
 在这种情况下，我们可以看到该模型在训练数据集上获得了大约 86%的准确率，我们知道这是乐观的，在测试数据集上获得了大约 81%的准确率，我们预计这将更加真实。
 
-```
+```py
 Train: 0.860, Test: 0.812
 ```
 
@@ -259,7 +259,7 @@ Train: 0.860, Test: 0.812
 
 例如，对于我们的测试问题，我们将为 500 个时期训练模型，并且可能保存从时期 490 开始的模型(例如，在时期 490 和 499 之间并且包括时期 490 和 499)。
 
-```
+```py
 # fit model
 n_epochs, n_save_after = 500, 490
 for i in range(n_epochs):
@@ -274,13 +274,13 @@ for i in range(n_epochs):
 
 注意，在 Keras 中保存和加载神经网络模型需要安装 h5py 库。您可以使用 pip 安装此库，如下所示:
 
-```
+```py
 pip install h5py
 ```
 
 将所有这些结合在一起，下面列出了在训练数据集上拟合模型并保存最近 10 个时代的所有模型的完整示例。
 
-```
+```py
 # save models to file toward the end of a training run
 from sklearn.datasets import make_blobs
 from keras.utils import to_categorical
@@ -319,7 +319,7 @@ for i in range(n_epochs):
 
 [*load_model()* Keras 函数](https://machinelearningmastery.com/save-load-keras-deep-learning-models/)可用于从文件加载已保存的模型。下面的功能 *load_all_models()* 将从当前工作目录加载模型。它以开始和结束时代作为参数，这样您就可以试验在连续时代中保存的不同组的模型。
 
-```
+```py
 # load models from file
 def load_all_models(n_start, n_end):
 	all_models = list()
@@ -336,7 +336,7 @@ def load_all_models(n_start, n_end):
 
 我们可以调用函数来加载所有的模型。
 
-```
+```py
 # load models in order
 members = load_all_models(490, 500)
 print('Loaded %d models' % len(members))
@@ -348,7 +348,7 @@ print('Loaded %d models' % len(members))
 
 然后，我们可以使用 *clone_model()* Keras 函数来创建架构的克隆，并调用 *set_weights()* 函数来使用我们准备的平均权重。下面的*模型 _ 权重 _ 集合()*函数实现了这一点。
 
-```
+```py
 # create a model from the weights of multiple models
 def model_weight_ensemble(members, weights):
 	# determine how many layers need to be averaged
@@ -372,7 +372,7 @@ def model_weight_ensemble(members, weights):
 
 将这些元素结合在一起，我们可以加载 10 个模型，并计算模型权重的平均加权平均值(算术平均值)。完整列表如下。
 
-```
+```py
 # average the weights of multiple loaded models
 from keras.models import load_model
 from keras.models import clone_model
@@ -426,7 +426,7 @@ model.summary()
 
 运行该示例首先从文件中加载 10 个模型。
 
-```
+```py
 >loaded model_490.h5
 >loaded model_491.h5
 >loaded model_492.h5
@@ -442,7 +442,7 @@ Loaded 10 models
 
 从这 10 个模型中创建一个模型权重集合，给予每个模型相等的权重，并报告模型结构的概要。
 
-```
+```py
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -464,7 +464,7 @@ _________________________________________________________________
 
 下面的 *evaluate_n_members()* 函数将根据给定数量的加载模型创建一个新模型。每个模型在对最终模型的贡献中被赋予相同的权重，然后调用*模型 _ 权重 _ 集成()*函数来创建最终模型，然后在测试数据集上对其进行评估。
 
-```
+```py
 # evaluate a specific number of members in an ensemble
 def evaluate_n_members(members, n_members, testX, testy):
 	# reverse loaded models so we build the ensemble with the last models first
@@ -482,14 +482,14 @@ def evaluate_n_members(members, n_members, testX, testy):
 
 重要的是，首先颠倒加载模型的列表，以确保使用训练运行中最后的 *n* 个模型，我们假设这些模型的平均性能可能更好。
 
-```
+```py
 # reverse loaded models so we build the ensemble with the last models first
 members = list(reversed(members))
 ```
 
 然后，我们可以评估从最后 1 个模型到最后 10 个模型的训练运行中保存的最后 *n* 个模型的不同数量所创建的模型。除了评估组合的最终模型，我们还可以评估测试数据集中每个保存的独立模型，以比较性能。
 
-```
+```py
 # evaluate different numbers of ensembles on hold out set
 single_scores, ensemble_scores = list(), list()
 for i in range(1, len(members)+1):
@@ -505,7 +505,7 @@ for i in range(1, len(members)+1):
 
 可以绘制收集的分数，蓝色圆点代表单个保存模型的准确性，橙色线条代表组合了最后 *n* 个模型的权重的模型的测试准确性。
 
-```
+```py
 # plot score vs number of ensemble members
 x_axis = [i for i in range(1, len(members)+1)]
 pyplot.plot(x_axis, single_scores, marker='o', linestyle='None')
@@ -515,7 +515,7 @@ pyplot.show()
 
 将所有这些结合在一起，下面列出了完整的示例。
 
-```
+```py
 # average of model weights on blobs problem
 from sklearn.datasets import make_blobs
 from sklearn.metrics import accuracy_score
@@ -606,7 +606,7 @@ pyplot.show()
 
 运行该示例首先加载 10 个保存的模型。
 
-```
+```py
 >loaded model_490.h5
 >loaded model_491.h5
 >loaded model_492.h5
@@ -626,7 +626,7 @@ Loaded 10 models
 
 结果表明，后两种模型的测试精度最高可达 81.4%。我们可以看到，模型权重集成的测试精度平衡了性能，并且表现良好。
 
-```
+```py
 > 1: single=0.814, ensemble=0.814
 > 2: single=0.814, ensemble=0.814
 > 3: single=0.811, ensemble=0.813
@@ -653,7 +653,7 @@ Loaded 10 models
 
 权重可以按如下方式计算:
 
-```
+```py
 # prepare an array of linearly decreasing weights
 weights = [i/n_members for i in range(n_members, 0, -1)]
 ```
@@ -662,7 +662,7 @@ weights = [i/n_members for i in range(n_members, 0, -1)]
 
 下面列出了完整的示例。
 
-```
+```py
 # linearly decreasing weighted average of models on blobs problem
 from sklearn.datasets import make_blobs
 from sklearn.metrics import accuracy_score
@@ -757,7 +757,7 @@ pyplot.show()
 
 我们可以看到，至少在这种情况下，集成实现了比任何独立模型都小的性能提升，达到了大约 81.5%的准确率。
 
-```
+```py
 ...
 > 1: single=0.814, ensemble=0.814
 > 2: single=0.814, ensemble=0.815
@@ -779,7 +779,7 @@ pyplot.show()
 
 我们也可以试验模型贡献的指数衰减。这要求指定衰减率(α)。下面的示例为递减率为 2 的指数衰减创建权重。
 
-```
+```py
 # prepare an array of exponentially decreasing weights
 alpha = 2.0
 weights = [exp(-i/alpha) for i in range(1, n_members+1)]
@@ -787,7 +787,7 @@ weights = [exp(-i/alpha) for i in range(1, n_members+1)]
 
 下面列出了模型对集合模型中平均权重的贡献呈指数衰减的完整示例。
 
-```
+```py
 # exponentially decreasing weighted average of models on blobs problem
 from sklearn.datasets import make_blobs
 from sklearn.metrics import accuracy_score
@@ -882,7 +882,7 @@ pyplot.show()
 
 运行该示例显示了性能的小幅提升，就像使用已保存模型的加权平均值的线性衰减一样。
 
-```
+```py
 > 1: single=0.814, ensemble=0.814
 > 2: single=0.814, ensemble=0.815
 > 3: single=0.811, ensemble=0.814

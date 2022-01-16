@@ -68,7 +68,7 @@ Bagging 是一种集成算法，它在训练数据集的不同子集上拟合多
 
 首先，让我们用 10，000 个例子来定义一个合成的不平衡二进制分类问题，其中 99%属于多数类，1%属于少数类。
 
-```
+```py
 ...
 # generate dataset
 X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
@@ -77,7 +77,7 @@ X, y = make_classification(n_samples=10000, n_features=2, n_redundant=0,
 
 然后，我们可以定义标准的袋装决策树集成模型，以备评估。
 
-```
+```py
 ...
 # define model
 model = BaggingClassifier()
@@ -87,7 +87,7 @@ model = BaggingClassifier()
 
 我们将使用所有折叠和重复的平均值 [ROC AUC 评分](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)来评估模型的性能。
 
-```
+```py
 ...
 # define evaluation procedure
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
@@ -97,7 +97,7 @@ scores = cross_val_score(model, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 
 将这些联系在一起，下面列出了在不平衡分类数据集上评估标准袋装集成的完整示例。
 
-```
+```py
 # bagged decision trees on an imbalanced classification problem
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -123,7 +123,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到模型获得了大约 0.87 的分数。
 
-```
+```py
 Mean ROC AUC: 0.871
 ```
 
@@ -143,7 +143,7 @@ Mean ROC AUC: 0.871
 
 具体来说，它提供了 bagging 的一个版本，在引导样本内的多数类上使用随机欠采样策略，以便平衡这两个类。这在[平衡分类器类](https://imbalanced-learn.org/stable/generated/imblearn.ensemble.BalancedBaggingClassifier.html)中提供。
 
-```
+```py
 ...
 # define model
 model = BalancedBaggingClassifier()
@@ -157,7 +157,7 @@ model = BalancedBaggingClassifier()
 
 下面列出了完整的示例。
 
-```
+```py
 # bagged decision trees with random undersampling for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -185,7 +185,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 这不是一个真正的苹果对苹果的比较，因为我们使用的是来自两个不同库的相同算法实现，但是它表明了一个普遍的观点，即在适应弱学习者之前平衡引导提供了一些好处，当类分布是倾斜的。
 
-```
+```py
 Mean ROC AUC: 0.962
 ```
 
@@ -213,7 +213,7 @@ Mean ROC AUC: 0.962
 
 我们可以使用 scikit 中的 [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) 类——学习并使用少量的树，在本例中为 10 棵树。
 
-```
+```py
 ...
 # define model
 model = RandomForestClassifier(n_estimators=10)
@@ -221,7 +221,7 @@ model = RandomForestClassifier(n_estimators=10)
 
 下面列出了在不平衡数据集上拟合标准随机森林集合的完整示例。
 
-```
+```py
 # random forest for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -247,7 +247,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到模型实现了大约 0.86 的平均 ROC AUC。
 
-```
+```py
 Mean ROC AUC: 0.869
 ```
 
@@ -267,7 +267,7 @@ Mean ROC AUC: 0.869
 
 此参数使用一个字典，其中包含每个类值(例如 0 和 1)到权重的映射。可以提供“ *balanced* ”的自变量值，以自动使用来自训练数据集的反向加权，从而将焦点放在少数类上。
 
-```
+```py
 ...
 # define model
 model = RandomForestClassifier(n_estimators=10, class_weight='balanced')
@@ -277,7 +277,7 @@ model = RandomForestClassifier(n_estimators=10, class_weight='balanced')
 
 下面列出了完整的示例。
 
-```
+```py
 # class balanced random forest for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -303,7 +303,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到模型实现了平均 ROC AUC 从 0.86 到约 0.87 的适度提升。
 
-```
+```py
 Mean ROC AUC: 0.871
 ```
 
@@ -317,7 +317,7 @@ Mean ROC AUC: 0.871
 
 我们可以测试这种修改，并将结果与上面的“平衡”情况进行比较；下面列出了完整的示例。
 
-```
+```py
 # bootstrap class balanced random forest for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -343,7 +343,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到模型实现了平均 ROC AUC 从 0.87 到约 0.88 的适度提升。
 
-```
+```py
 Mean ROC AUC: 0.884
 ```
 
@@ -353,7 +353,7 @@ Mean ROC AUC: 0.884
 
 不平衡学习库中的[平衡随机森林分类器类](https://imbalanced-learn.org/stable/generated/imblearn.ensemble.BalancedRandomForestClassifier.html)实现了这一点，并对 reach bootstrap 样本中的大多数类执行随机欠采样。这通常被称为平衡随机森林。
 
-```
+```py
 ...
 # define model
 model = BalancedRandomForestClassifier(n_estimators=10)
@@ -363,7 +363,7 @@ model = BalancedRandomForestClassifier(n_estimators=10)
 
 我们可以在合成数据集上测试随机森林的这种修改，并比较结果。下面列出了完整的示例。
 
-```
+```py
 # random forest with random undersampling for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -389,7 +389,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到模型实现了平均 ROC AUC 从 0.89 到约 0.97 的适度提升。
 
-```
+```py
 Mean ROC AUC: 0.970
 ```
 
@@ -425,7 +425,7 @@ Mean ROC AUC: 0.970
 
 来自不平衡学习库的[简易集成分类器类](https://imbalanced-learn.org/stable/generated/imblearn.ensemble.EasyEnsembleClassifier.html)提供了简易集成技术的实现。
 
-```
+```py
 ...
 # define model
 model = EasyEnsembleClassifier(n_estimators=10)
@@ -437,7 +437,7 @@ model = EasyEnsembleClassifier(n_estimators=10)
 
 下面列出了完整的示例。
 
-```
+```py
 # easy ensemble for imbalanced classification
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -463,7 +463,7 @@ print('Mean ROC AUC: %.3f' % mean(scores))
 
 在这种情况下，我们可以看到集成在数据集上表现良好，实现了约 0.96 的平均 ROC AUC，接近于在具有随机欠采样的随机森林的数据集上实现的平均 ROC AUC(0.97)。
 
-```
+```py
 Mean ROC AUC: 0.968
 ```
 

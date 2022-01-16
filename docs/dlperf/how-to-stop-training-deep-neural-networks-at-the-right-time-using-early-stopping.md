@@ -46,21 +46,21 @@
 
 首先，回调必须被实例化。
 
-```
+```py
 ...
 cb = Callback(...)
 ```
 
 然后，您打算使用的一个或多个回调必须添加到 Python 列表中。
 
-```
+```py
 ...
 cb_list = [cb, ...]
 ```
 
 最后，在拟合模型时，回调列表被提供给回调参数。
 
-```
+```py
 ...
 model.fit(..., callbacks=cb_list)
 ```
@@ -75,7 +75,7 @@ model.fit(..., callbacks=cb_list)
 
 第一种方法是将训练数据手动拆分成训练和验证数据集，并通过 *validation_data* 参数将验证数据集指定给 *fit()* 函数。例如:
 
-```
+```py
 ...
 model.fit(train_X, train_y, validation_data=(val_x, val_y))
 ```
@@ -84,7 +84,7 @@ model.fit(train_X, train_y, validation_data=(val_x, val_y))
 
 *validation_split* 是一个介于 0 和 1 之间的值，定义了用于验证数据集的训练数据集的百分比量。例如:
 
-```
+```py
 ...
 model.fit(train_X, train_y, validation_split=0.3)
 ```
@@ -103,7 +103,7 @@ model.fit(train_X, train_y, validation_split=0.3)
 
 它们可以在编译模型时通过编译函数的“*度量*”参数来指定。该参数采用已知度量函数的 Python 列表，例如均方误差为“ *mse* ，精度为“*精度*”。例如:
 
-```
+```py
 ...
 model.compile(..., metrics=['accuracy'])
 ```
@@ -120,7 +120,7 @@ Keras 支持通过名为*提前停止*的回调提前停止训练。
 
 “*监视器*”允许您指定要监视的性能度量，以便结束培训。回想一下上一节，验证数据集上的度量计算将具有“ *val_* 前缀，例如验证数据集上的损失的“ *val_loss* ”。
 
-```
+```py
 es = EarlyStopping(monitor='val_loss')
 ```
 
@@ -128,7 +128,7 @@ es = EarlyStopping(monitor='val_loss')
 
 例如，我们将寻求验证损失的最小值和验证均方误差的最小值，而我们将寻求验证准确度的最大值。
 
-```
+```py
 es = EarlyStopping(monitor='val_loss', mode='min')
 ```
 
@@ -136,7 +136,7 @@ es = EarlyStopping(monitor='val_loss', mode='min')
 
 这就是最简单的提前停止所需要的。当所选的绩效指标停止改善时，培训将停止。要发现停止训练的训练时期，可以将“ *verbose* ”参数设置为 1。一旦停止，回调将打印纪元号。
 
-```
+```py
 es = EarlyStopping(monitor='val_loss', mode='min', verbose=1)
 ```
 
@@ -144,7 +144,7 @@ es = EarlyStopping(monitor='val_loss', mode='min', verbose=1)
 
 我们可以通过在我们不希望看到改进的时期数量方面增加触发器的延迟来说明这一点。这可以通过设置“*耐心*”参数来完成。
 
-```
+```py
 es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=50)
 ```
 
@@ -152,7 +152,7 @@ es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=50)
 
 默认情况下，绩效指标的任何变化，无论多小，都将被视为改进。您可能需要考虑特定增量的改进，例如均方误差为 1 个单位，精度为 1%。这可以通过“ *min_delta* ”参数来指定。
 
-```
+```py
 es = EarlyStopping(monitor='val_accuracy', mode='max', min_delta=1)
 ```
 
@@ -160,7 +160,7 @@ es = EarlyStopping(monitor='val_accuracy', mode='max', min_delta=1)
 
 这在微调模型时可能更有用，因为在训练新模型的早期阶段所看到的性能度量的初始剧烈波动已经过去。
 
-```
+```py
 es = EarlyStopping(monitor='val_loss', mode='min', baseline=0.4)
 ```
 
@@ -174,7 +174,7 @@ es = EarlyStopping(monitor='val_loss', mode='min', baseline=0.4)
 
 保存和加载模型需要在您的工作站上安装 HDF5 支持。例如，使用 *pip* Python 安装程序，这可以通过以下方式实现:
 
-```
+```py
 sudo pip install h5py
 ```
 
@@ -182,25 +182,25 @@ sudo pip install h5py
 
 回调将模型保存到文件中，这需要通过第一个参数指定路径和文件名。
 
-```
+```py
 mc = ModelCheckpoint('best_model.h5')
 ```
 
 可以通过 monitor 参数指定要监控的首选损失函数，方式与*早期暂停*回调相同。例如，验证数据集丢失(默认值)。
 
-```
+```py
 mc = ModelCheckpoint('best_model.h5', monitor='val_loss')
 ```
 
 此外，与*早期预测*回调一样，我们必须将“*模式*指定为最小化或最大化性能度量。同样，默认为“*汽车*”，它知道标准的性能指标。
 
-```
+```py
 mc = ModelCheckpoint('best_model.h5', monitor='val_loss', mode='min')
 ```
 
 最后，我们只对训练期间观察到的最佳模型感兴趣，而不是与前一个时期相比的最佳模型，如果训练是嘈杂的，这可能不是最佳的整体模型。这可以通过将“ *save_best_only* ”参数设置为 *True* 来实现。
 
-```
+```py
 mc = ModelCheckpoint('best_model.h5', monitor='val_loss', mode='min', save_best_only=True)
 ```
 
@@ -208,13 +208,13 @@ mc = ModelCheckpoint('best_model.h5', monitor='val_loss', mode='min', save_best_
 
 了解性能度量的价值以及模型是在哪个时期保存的可能会很有趣。通过将“ *verbose* ”参数设置为“ *1* ，回调就可以打印出来。
 
-```
+```py
 mc = ModelCheckpoint('best_model.h5', monitor='val_loss', mode='min', verbose=1)
 ```
 
 然后，通过调用 *load_model()* 函数，可以随时加载和评估保存的模型。
 
-```
+```py
 # load a saved model
 from keras.models import load_model
 saved_model = load_model('best_model.h5')
@@ -236,7 +236,7 @@ saved_model = load_model('best_model.h5')
 
 我们可以使用 [make_moons()函数](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_moons.html)从这个问题中生成观测值。我们将向数据中添加噪声，并为随机数生成器播种，这样每次运行代码时都会生成相同的样本。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_moons(n_samples=100, noise=0.2, random_state=1)
 ```
@@ -245,7 +245,7 @@ X, y = make_moons(n_samples=100, noise=0.2, random_state=1)
 
 下面列出了生成数据集并绘制它的完整示例。
 
-```
+```py
 # generate two moons dataset
 from sklearn.datasets import make_moons
 from matplotlib import pyplot
@@ -280,7 +280,7 @@ pyplot.show()
 
 在定义模型之前，我们将把数据集分成训练集和测试集，用 30 个例子训练模型，用 70 个例子评估拟合模型的性能。
 
-```
+```py
 # generate 2d classification dataset
 X, y = make_moons(n_samples=100, noise=0.2, random_state=1)
 # split into train and test
@@ -293,7 +293,7 @@ trainy, testy = y[:n_train], y[n_train:]
 
 隐藏层使用 500 个节点和校正的线性激活函数。输出层使用 sigmoid 激活函数来预测类值 0 或 1。该模型采用二元交叉熵损失函数进行优化，适用于二元分类问题和高效的 [Adam 版本梯度下降](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)。
 
-```
+```py
 # define model
 model = Sequential()
 model.add(Dense(500, input_dim=2, activation='relu'))
@@ -305,14 +305,14 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 
 我们还将使用测试数据集作为验证数据集。这只是这个例子的简化。实际上，您可以将训练集分为训练集和验证集，并保留一个测试集用于最终的模型评估。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=4000, verbose=0)
 ```
 
 我们可以在测试数据集上评估模型的性能并报告结果。
 
-```
+```py
 # evaluate the model
 _, train_acc = model.evaluate(trainX, trainy, verbose=0)
 _, test_acc = model.evaluate(testX, testy, verbose=0)
@@ -323,7 +323,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 如果模型确实过度训练了训练数据集，那么随着模型学习训练数据集中的统计噪声，我们将期望训练集上的损失(和精度)的线图继续增加，并且测试集上升，然后再次下降。
 
-```
+```py
 # plot training history
 pyplot.plot(history.history['loss'], label='train')
 pyplot.plot(history.history['val_loss'], label='test')
@@ -333,7 +333,7 @@ pyplot.show()
 
 我们可以把所有这些部分绑在一起；下面列出了完整的示例。
 
-```
+```py
 # mlp overfit on the moons dataset
 from sklearn.datasets import make_moons
 from keras.layers import Dense
@@ -371,7 +371,7 @@ pyplot.show()
 
 因为模型被严重过度拟合，我们通常不会期望模型在同一数据集上重复运行时的精度有太大差异。
 
-```
+```py
 Train: 1.000, Test: 0.914
 ```
 
@@ -393,21 +393,21 @@ Train: 1.000, Test: 0.914
 
 首先，我们可以定义提前停止回调。
 
-```
+```py
 # simple early stopping
 es = EarlyStopping(monitor='val_loss', mode='min', verbose=1)
 ```
 
 然后，我们可以更新对 *fit()* 函数的调用，并通过“*回调*参数指定回调列表。
 
-```
+```py
 # fit model
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=4000, verbose=0, callbacks=[es])
 ```
 
 下面列出了添加简单提前停止的完整示例。
 
-```
+```py
 # mlp overfit on the moons dataset with simple early stopping
 from sklearn.datasets import make_moons
 from keras.models import Sequential
@@ -446,7 +446,7 @@ pyplot.show()
 
 我们还可以看到回调在 epoch 200 停止了训练。这还为时过早，因为我们预计早停会在 800 年前后。列车和测试集上的分类精度也凸显了这一点，这比不提前停车更糟糕。
 
-```
+```py
 Epoch 00219: early stopping
 Train: 0.967, Test: 0.814
 ```
@@ -463,14 +463,14 @@ Train: 0.967, Test: 0.814
 
 在这种情况下，我们将等待 200 个纪元，然后停止训练。具体来说，这意味着在验证损失开始下降后，我们将允许培训再持续 200 个时期，从而使培训过程有机会跨越平坦点或发现一些额外的改进。
 
-```
+```py
 # patient early stopping
 es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=200)
 ```
 
 下面列出了此更改的完整示例。
 
-```
+```py
 # mlp overfit on the moons dataset with patient early stopping
 from sklearn.datasets import make_moons
 from keras.models import Sequential
@@ -509,7 +509,7 @@ pyplot.show()
 
 我们还可以看到，测试数据集上的性能比不使用任何提前停止要好。
 
-```
+```py
 Epoch 01033: early stopping
 Train: 1.000, Test: 0.943
 ```
@@ -528,7 +528,7 @@ Train: 1.000, Test: 0.943
 
 这突出了模型选择中的一个重要概念。当使用不同的绩效衡量标准进行评估时，培训期间“*最佳*”模型的概念可能会发生冲突。试着根据在领域中评估和呈现模型的标准来选择模型。在平衡二进制分类问题中，这很可能是分类精度。因此，我们将在*模型检查点*回调中使用准确性进行验证，以保存训练期间观察到的最佳模型。
 
-```
+```py
 mc = ModelCheckpoint('best_model.h5', monitor='val_accuracy', mode='max', verbose=1, save_best_only=True)
 ```
 
@@ -536,7 +536,7 @@ mc = ModelCheckpoint('best_model.h5', monitor='val_accuracy', mode='max', verbos
 
 当调用 *fit()* 函数时，这个新的附加回调可以被添加到回调列表中。
 
-```
+```py
 history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=4000, verbose=0, callbacks=[es, mc])
 ```
 
@@ -544,7 +544,7 @@ history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=4000,
 
 相反，我们希望[从文件](https://machinelearningmastery.com/save-load-keras-deep-learning-models/)中加载保存的模型，并在测试数据集上评估其性能。
 
-```
+```py
 # load the saved model
 saved_model = load_model('best_model.h5')
 # evaluate the model
@@ -555,7 +555,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 下面列出了这些更改的完整示例。
 
-```
+```py
 # mlp overfit on the moons dataset with patient early stopping and model checkpointing
 from sklearn.datasets import make_moons
 from keras.models import Sequential
@@ -596,7 +596,7 @@ print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
 
 同样，我们可以看到早期停止耐心地持续到纪元 1000 年之后。注意历元 880 +耐心 200 不是历元 1044。回想一下，早期停止是监控验证数据集的损失，模型检查点是基于准确性保存模型。因此，早停的耐心始于 880 年以外的时代。
 
-```
+```py
 ...
 Epoch 00878: val_acc did not improve from 0.92857
 Epoch 00879: val_acc improved from 0.92857 to 0.94286, saving model to best_model.h5
